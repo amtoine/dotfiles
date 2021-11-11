@@ -18,6 +18,7 @@ flex
 gimp
 grub
 htop
+libappindicator-gtk3
 neofetch
 ntfs-3g
 patch
@@ -70,3 +71,4 @@ xorg-xwayland
 xorg-xwd
 xorg-xwud
 xscreensaver
+zip

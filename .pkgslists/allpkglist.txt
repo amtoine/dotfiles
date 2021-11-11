@@ -25,6 +25,7 @@ gimp
 git
 grub
 htop
+libappindicator-gtk3
 linux
 linux-firmware
 m4
@@ -45,7 +46,6 @@ python-mpi4py
 python-tqdm
 python-virtualenv
 scrot
-spacefm
 spectrwm
 sudo
 texinfo
@@ -108,3 +108,4 @@ xorg-xwininfo
 xorg-xwud
 xscreensaver
 yay-git
+zip

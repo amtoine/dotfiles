@@ -1,5 +1,4 @@
 arduino-mk
 nerd-fonts-mononoki
 paru
-spacefm
 yay-git

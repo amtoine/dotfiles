@@ -1,0 +1,25 @@
+#! /usr/bin/bash
+# prints some information about the current virtual
+# python environment running.
+
+PY=$(which python)
+PIP=$(which pip)
+PYV=$(python --version)
+PIPV=$(pip --version | cut -d' ' -f1-2)
+
+PY3=$(which python3)
+PIP3=$(which pip3)
+PY3V=$(python3 --version)
+PIP3V=$(pip3 --version | cut -d' ' -f1-2)
+
+JUPYTER=$(which jupyter)
+NOTEBOOK=$(which jupyter-notebook)
+
+echo " command |                    path (version)"
+echo "---------+-------------------------------------------------------"
+echo " python  | $PY ($PYV)"
+echo "    pip  | $PIP ($PIPV)"
+echo "python3  | $PY3 ($PY3V)"
+echo "   pip3  | $PIP3 ($PIP3V)"
+echo "jupyter  | $JUPYTER"
+echo "notebook | $NOTEBOOK"
