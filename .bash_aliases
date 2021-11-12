@@ -1,3 +1,11 @@
+#           __               __              ___
+#          / /_  ____ ______/ /_      ____ _/ (_)___ _________  _____
+#         / __ \/ __ `/ ___/ __ \    / __ `/ / / __ `/ ___/ _ \/ ___/
+#      _ / /_/ / /_/ (__  ) / / /   / /_/ / / / /_/ (__  )  __(__  )
+#     (_)_.___/\__,_/____/_/ /_/____\__,_/_/_/\__,_/____/\___/____/
+#                             /_____/
+# full config can be found at: https://github.com/a2n-s/dotfiles
+
 # >>> head of .bash_aliases.
 # uncomment to see the execution order of bash files at startup.
 #echo ".bash_aliases"

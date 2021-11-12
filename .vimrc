@@ -1,3 +1,9 @@
+"              _
+"       _   __(_)___ ___  __________
+"      | | / / / __ `__ \/ ___/ ___/
+"     _| |/ / / / / / / / /  / /__
+"    (_)___/_/_/ /_/ /_/_/   \___/
+" full config can be found at: https://github.com/a2n-s/dotfiles
 
 " An example for a vimrc file.
 "

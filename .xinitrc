@@ -1,3 +1,11 @@
+#                _       _ __
+#          _  __(_)___  (_) /___________
+#         | |/_/ / __ \/ / __/ ___/ ___/
+#      _ _>  </ / / / / / /_/ /  / /__
+#     (_)_/|_/_/_/ /_/_/\__/_/   \___/
+# full config can be found at: https://github.com/a2n-s/dotfiles
+
+
 #!/bin/sh
 
 userresources=$HOME/.Xresources

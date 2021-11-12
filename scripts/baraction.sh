@@ -1,8 +1,15 @@
 #!/bin/bash
+#                            __      _       ____  ___   __                             __  _
+#      _________  ___  _____/ /_____| |     / /  |/  /  / /_  ____ ______   ____ ______/ /_(_)___  ____
+#     / ___/ __ \/ _ \/ ___/ __/ ___/ | /| / / /|_/ /  / __ \/ __ `/ ___/  / __ `/ ___/ __/ / __ \/ __ \
+#    (__  ) /_/ /  __/ /__/ /_/ /   | |/ |/ / /  / /  / /_/ / /_/ / /     / /_/ / /__/ /_/ / /_/ / / / /
+#   /____/ .___/\___/\___/\__/_/    |__/|__/_/  /_/  /_.___/\__,_/_/      \__,_/\___/\__/_/\____/_/ /_/
+#       /_/
+#
 # Example Bar Action Script for Linux.
-# Requires: acpi, iostat, lm-sensors, aptitude.
-# Tested on: Debian Buster(with newest spectrwm built from source), Debian Bullseye, Devuan Chimaera, Devuan Ceres
-# This config can be found on github.com/linuxdabbler
+# Requires: acpi, iostat, lm-sensors, aptitude, ...
+# Tested on: (with newest spectrwm built from source), ...
+# This config can be found on github.com/a2n-s
 
 hostname="${HOSTNAME:-${hostname:-$(hostname)}}"
 

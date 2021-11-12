@@ -1,3 +1,11 @@
+#           __               __
+#          / /_  ____ ______/ /_  __________
+#         / __ \/ __ `/ ___/ __ \/ ___/ ___/
+#      _ / /_/ / /_/ (__  ) / / / /  / /__
+#     (_)_.___/\__,_/____/_/ /_/_/   \___/
+# full config can be found at: https://github.com/a2n-s/dotfiles
+
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
