@@ -13,6 +13,7 @@ brightnessctl
 cmus
 eog
 fakeroot
+figlet
 firefox
 flex
 gimp

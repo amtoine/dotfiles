@@ -18,6 +18,7 @@ dosfstools
 efibootmgr
 eog
 fakeroot
+figlet
 firefox
 flex
 gcc

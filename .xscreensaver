@@ -1,11 +1,11 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-settings 6.02 for ants on Wed Nov 10 18:04:22 2021.
+# Written by xscreensaver-settings 6.02 for ants on Thu Nov 11 20:50:24 2021.
 # https://www.jwz.org/xscreensaver/
 
-timeout:	0:10:00
+timeout:	0:15:00
 cycle:		0:01:00
-lock:		True
-lockTimeout:	0:05:00
+lock:		False
+lockTimeout:	0:01:00
 passwdTimeout:	0:00:30
 visualID:	default
 installColormap:    True
@@ -15,11 +15,11 @@ splashDuration:	0:00:05
 demoCommand:	xscreensaver-settings
 nice:		10
 fade:		True
-unfade:		True
-fadeSeconds:	0:00:03
+unfade:		False
+fadeSeconds:	0:00:01
 ignoreUninstalledPrograms:False
 font:		
-dpmsEnabled:	False
+dpmsEnabled:	True
 dpmsQuickOff:	False
 dpmsStandby:	2:00:00
 dpmsSuspend:	2:00:00
@@ -37,7 +37,7 @@ textLiteral:	XScreenSaver
 textFile:	
 textProgram:	fortune
 textURL:	https://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=rss
-dialogTheme:	default
+dialogTheme:	wine
 
 programs:								      \
 				maze -root				    \n\
