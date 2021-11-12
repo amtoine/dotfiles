@@ -184,7 +184,11 @@ set -o vi
 #	neofetch;
 #fi
 
-. ~/.config/neofetch/neofetchrc
+if [[ -f ~/.config/neofetch/neofetchrc ]]; then
+	. ~/.config/neofetch/neofetchrc;
+else
+	neofetch;
+fi
 # <<<
 
 

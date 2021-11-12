@@ -26,6 +26,7 @@ gimp
 git
 grub
 htop
+kolourpaint
 libappindicator-gtk3
 linux
 linux-firmware

@@ -19,9 +19,9 @@ flex
 gimp
 grub
 htop
+kolourpaint
 libappindicator-gtk3
 neofetch
-ntfs-3g
 patch
 picom
 pkgconf
