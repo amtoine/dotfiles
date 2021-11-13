@@ -151,11 +151,11 @@ function countdown(){
    done
    echo -n "COUNTDOWN OVER!!"
    while [ true ]; do
-	   echo -ne "\a";
-	   sleep 0.1
-	   echo -ne "\a";
-	   sleep 0.1
-	   echo -ne "\a";
+        play -q -n synth .1 sine 880 vol 0.5
+        play -q -n synth .1 sine 880 vol 0.5
+        play -q -n synth .1 sine 880 vol 0.5
+        play -q -n synth .1 sine 880 vol 0.5
+        play -q -n synth .1 sine 880 vol 0.5
 	   sleep 0.5
 	 done
 }
