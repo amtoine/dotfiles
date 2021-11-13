@@ -10,7 +10,6 @@ bison
 blueman
 bluez-utils
 brightnessctl
-cmake
 cmus
 dstat
 eog
@@ -31,6 +30,7 @@ pkgconf
 python-mpi4py
 python-tqdm
 python-virtualenv
+sox
 spectrwm
 sysstat
 thunderbird

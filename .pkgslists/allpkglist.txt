@@ -13,7 +13,6 @@ blueman
 bluez
 bluez-utils
 brightnessctl
-cmake
 cmus
 dosfstools
 dstat
@@ -28,10 +27,8 @@ gimp
 git
 grub
 htop
-jsoncpp
 kolourpaint
 libappindicator-gtk3
-libuv
 linux
 linux-firmware
 m4
@@ -52,8 +49,8 @@ pkgconf
 python-mpi4py
 python-tqdm
 python-virtualenv
-rhash
 scrot
+sox
 spectrwm
 sudo
 sysstat

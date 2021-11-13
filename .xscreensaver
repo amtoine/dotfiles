@@ -1,10 +1,10 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-settings 6.02 for ants on Thu Nov 11 20:50:24 2021.
+# Written by xscreensaver-settings 6.02 for ants on Sat Nov 13 13:30:13 2021.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:15:00
 cycle:		0:01:00
-lock:		False
+lock:		True
 lockTimeout:	0:01:00
 passwdTimeout:	0:00:30
 visualID:	default
