@@ -95,6 +95,10 @@ let &undodir = expand('~/.vim/undo//')
 if !isdirectory(&undodir) | call mkdir(&undodir, "p") | endif
 if !isdirectory(&backupdir) | call mkdir(&backupdir, "p") | endif
 if !isdirectory(&directory) | call mkdir(&directory, "p") | endif
+
+if !isdirectory("$HOME/.vim/autoload") | call mkdir("$HOME/.vim/autoload", "p") | endif
+if !isdirectory("$HOME/.vim/colors") | call mkdir("$HOME/.vim/colors", "p") | endif
+if !isdirectory("$HOME/.vim/plugged") | call mkdir("$HOME/.vim/plugged", "p") | endif
 " }}}
 
 

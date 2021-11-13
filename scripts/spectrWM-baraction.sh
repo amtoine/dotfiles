@@ -159,24 +159,25 @@ dateinfo() {
   echo "$(date "+%b %d %Y (%a)")"
 }
 clockinfo() {
-  echo $(date +"%H %M %S")
+  echo $(date +"%H:%M:%S")
 }
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #         BAR PRINT
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<
-DELAY=0.5
+DELAY=1
 #loops forever outputting a line every SLEEP_SEC secs
 while :; do
-  bat_level=$(battery)
-  bat_stat=$(batstat)
-  if [[ "$bat_level" -le 15  && "$bat_stat" = "Discharging" ]]; then 
+    bat_level=$(battery)
+    bat_stat=$(batstat)
+    if [[ "$bat_level" -le 15  && "$bat_stat" = "Discharging" ]]; then 
       play -q -n synth .05 sine 880 vol 0.02
       if [[ $bat_color = "+@fg=6;" ]]; then bat_color="+@fg=2;"; else bat_color="+@fg=6;"; fi;
-  elif [[ "$bat_level" -ge 85  && "$bat_stat" = "Charging" ]]; then 
+    elif [[ "$bat_level" -ge 85  && "$bat_stat" = "Charging" ]]; then 
       if [[ $bat_color = "+@fg=6;" ]]; then bat_color="+@fg=1;"; else bat_color="+@fg=6;"; fi;
-  else bat_color="+@fg=6;"; fi
-  echo -e "+@fg=1; $(cpuicon) +@fg=0; $(cpu) | 
+    else bat_color="+@fg=6;"; 
+    fi
+    echo -e "+@fg=1; $(cpuicon) +@fg=0; $(cpu) | \
 +@fg=1; $(memicon) +@fg=0; $(mem) | \
 +@fg=1; $(pkgicon) +@fg=0; $(pkgs) | \
 +@fg=1; $(remicon) +@fg=0; $(rem) | \
