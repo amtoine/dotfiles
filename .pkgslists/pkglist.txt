@@ -6,6 +6,7 @@ arduino
 autoconf
 automake
 base
+bc
 bison
 blueman
 bluez-utils

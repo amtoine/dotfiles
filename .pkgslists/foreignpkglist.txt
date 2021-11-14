@@ -1,4 +1,5 @@
 arduino-mk
 nerd-fonts-mononoki
 paru
+pixterm
 yay-git

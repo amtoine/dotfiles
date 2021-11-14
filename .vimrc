@@ -17,6 +17,8 @@ filetype on
 filetype plugin on
 " load an indent file for the detected file type.
 filetype indent on
+" allows vim to process unicode characters.
+set encoding=utf-8
 " }}}
 
 

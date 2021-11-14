@@ -7,12 +7,14 @@ arduino-mk
 autoconf
 automake
 base
+bc
 binutils
 bison
 blueman
 bluez
 bluez-utils
 brightnessctl
+catimg
 cmus
 dosfstools
 dstat
@@ -45,6 +47,7 @@ patch
 pavucontrol
 picom
 pipewire-pulse
+pixterm
 pkgconf
 python-mpi4py
 python-tqdm
@@ -61,6 +64,7 @@ tree
 vi
 vim
 vnstat
+w3m
 which
 xclip
 xdotool
