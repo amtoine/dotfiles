@@ -245,7 +245,12 @@ YOU can contribute to this project in the wonderfull world of linux, arch and co
 do not hesitate to contact me, either via email, github issues or pull requests!
 
 ## 5. Gallery. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
-- [ ] TODO  
+![My wallpaper.](images/shots/nitrogen.png)
+![SpectrWM in a dual monitor setup: left monitor selected.](images/shots/spectrwm1.png)
+![SpectrWM in a dual monitor setup: right monitor selected.](images/shots/spectrwm2.png)
+![A screenshot of seing all processes.](images/shots/htop.png)
+![A screenshot of being in a git repository.](images/shots/git.png)
+![A screenshot of being in vim.](images/shots/vim.png)
 
 [`pkgslists`]:             .pkgslists
 [`.basrc`]:                .bashrc
