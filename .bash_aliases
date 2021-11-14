@@ -41,7 +41,7 @@ alias xrandr-run='xrandr --output eDP-1 --auto --output HDMI-2 --mode 1920x1080 
 alias xcc='xclip -selection c'
 
 alias pkgl='tail -n +1 .pkgslists/* | grep -e "==>.*<==" -e'
-alias cfg='/usr/bin/git --git-dir=/home/ants/dotfiles --work-tree=/home/ants'
+alias cfg='/usr/bin/git --git-dir=/home/ants/.dotfiles --work-tree=/home/ants'
 
 # uncomment to use colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
