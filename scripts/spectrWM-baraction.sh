@@ -146,10 +146,31 @@ batstat() {
   stat="$(cat /sys/class/power_supply/BAT0/status)"
   echo "$stat"
 }
-battery() {
-#  battery="$(cat /sys/class/power_supply/BAT0/capacity)"
-#  echo "$battery"
-  echo $(battery.sh)
+batlevel() {
+  level="$(cat /sys/class/power_supply/BAT0/capacity)"
+  echo "$level"
+}
+baticon() {
+  bat_stat="$(batstat)"
+  bat_level="$(batlevel)"
+  if [[ $bat_stat = 'Unknown' ]]; then
+    bat_icon="x"
+  elif [[ $bat_stat = 'Charging' ]]; then
+    bat_icon=""
+  elif [[ $bat_level -ge 5 ]] && [[ $bat_level -le 19 ]]; then
+    bat_icon=""
+  elif [[ $bat_level -ge 20 ]] && [[ $bat_level -le 39 ]]; then
+    bat_icon=""
+  elif [[ $bat_level -ge 40 ]] && [[ $bat_level -le 59 ]]; then
+    bat_icon=""
+  elif [[ $bat_level -ge 60 ]] && [[ $bat_level -le 79 ]]; then
+    bat_icon=""
+  elif [[ $bat_level -ge 80 ]] && [[ $bat_level -le 95 ]]; then
+    bat_icon=""
+  elif [[ $bat_level -ge 96 ]] && [[ $bat_level -le 100 ]]; then
+    bat_icon=""
+  fi
+  echo "$bat_icon"
 }
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -203,7 +224,7 @@ kbinfo() {
 DELAY=1
 #loops forever outputting a line every SLEEP_SEC secs
 while :; do
-    bat_level=$(battery)
+    bat_level=$(batlevel)
     bat_stat=$(batstat)
     if [[ "$bat_level" -le 15  && "$bat_stat" = "Discharging" ]]; then 
       play -q -n synth .05 sine 880 vol 0.02
@@ -220,7 +241,7 @@ while :; do
 +@fg=1;$(upicon) +@fg=4;$(up) +@fg=1;$(downicon) +@fg=4;$(down) +@fg=0;| \
 +@fg=1;$(entropyicon) +@fg=4;$(entropy) +@fg=0;| \
 +@fg=1;$(volicon) +@fg=4;$(vol) +@fg=0;| \
-$bat_color$(battery.sh) +@fg=0;| \
+$bat_color$(baticon)  $bat_level% +@fg=0;| \
 +@fg=1;$(kbicon) +@fg=4;$(kbinfo) +@fg=0;| \
 +@fg=4;$(dateinfo) +@fg=1;$(clockicon) +@fg=4;$(clockinfo) +@fg=0;\
 "
