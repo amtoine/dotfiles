@@ -245,6 +245,10 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 |:--:|
 | *My wallpaper.* |
 
+| ![My bar.](images/shots/bar.png) |
+|:--:|
+| *My bar.* |
+
 | ![SpectrWM in a dual monitor setup: left monitor selected.](images/shots/spectrwm1.png) |
 |:--:|
 | *SpectrWM in a dual monitor setup: left monitor selected.* |

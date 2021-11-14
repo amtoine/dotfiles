@@ -18,7 +18,8 @@ hostname="${HOSTNAME:-${hostname:-$(hostname)}}"
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 hddicon() {
-  echo "HDD"
+#  echo "HDD"
+  echo ""
 }
 hdd() {
   free="$(df -h /home | grep /dev | awk '{print $3}' | sed 's/G/Gb/')"
@@ -30,7 +31,8 @@ hdd() {
 #              RAM
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<
 memicon() {
-  echo "MEM"
+#  echo "MEM"
+  echo ""
 }
 
 mem() {
@@ -45,7 +47,8 @@ mem() {
 #              CPU
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<
 cpuicon() {
-  echo "CPU"
+#  echo "CPU"
+  echo ""
 }
 cpu() {
   echo "$(mpstat | tail -n 1 | awk '{print $3}')%"
@@ -55,7 +58,8 @@ cpu() {
 #            VOLUME
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<
 volicon() {
-  echo "VOL"
+#  echo "VOL"
+  echo "遼"
 }
 vol() {
   echo ""
@@ -65,7 +69,8 @@ vol() {
 #          PACKAGES
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<
 pkgicon() {
-  echo "PKGs"
+#  echo "PKGs"
+  echo ""
 }
 pkgs() {
   pkgs=$(pacman -Qq | wc -l)
@@ -84,11 +89,11 @@ networkicon() {
   wifi="$(ip a | grep "wl" | grep inet | wc -l)"
 
   if [ $wire = 1 ]; then
-  	echo "WIRE"
+      echo ""
   elif [ $wifi = 1 ]; then
-  	echo "WIFI"
+      echo ""
   else
-  	echo "OFF"
+      echo "睊"
   fi
 }
 connection() {
@@ -106,9 +111,6 @@ up(){
 down(){
   ifstat | grep $(nmcli d | grep "\<connected\>" | awk '{ print $1 }') | awk '{ print $7}'
 }
-ipicon(){
-  echo "IP"
-}
 ipaddress() {
   address=$(ip a | grep \.255 | awk '{ print $2 }' | cut -d/ -f1)
   echo "$address"
@@ -120,9 +122,9 @@ vpnconnection() {
   state="$(ip a | grep tun0 | grep inet | wc -l)"
 
   if [ $state = 1 ]; then
-  	echo "Y"
+    echo "ﱾ"
   else
-  	echo "N"
+      echo ""
   fi
 }
 
@@ -130,7 +132,8 @@ vpnconnection() {
 #           ENTROPY
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<
 entropyicon() {
-  echo "ENT"
+#  echo "ENT"
+  echo "✨"
 }
 entropy(){
   echo "$(cat /proc/sys/kernel/random/entropy_avail)"
@@ -144,8 +147,9 @@ batstat() {
   echo "$stat"
 }
 battery() {
-  battery="$(cat /sys/class/power_supply/BAT0/capacity)"
-  echo "$battery"
+#  battery="$(cat /sys/class/power_supply/BAT0/capacity)"
+#  echo "$battery"
+  echo $(battery.sh)
 }
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -155,7 +159,25 @@ dateicon() {
   echo "DATE"
 }
 clockicon() {
-  echo "CLK"
+  CLOCK=$(date '+%I')
+
+  case "$CLOCK" in
+  "00") icon="" ;;
+  "01") icon="" ;;
+  "02") icon="" ;;
+  "03") icon="" ;;
+  "04") icon="" ;;
+  "05") icon="" ;;
+  "06") icon="" ;;
+  "07") icon="" ;;
+  "08") icon="" ;;
+  "09") icon="" ;;
+  "10") icon="" ;;
+  "11") icon="" ;;
+  "12") icon="" ;;
+  esac
+
+  echo "$(date "+$icon")"
 }
 dateinfo() {
   echo "$(date "+%D")"
@@ -194,13 +216,13 @@ while :; do
 +@fg=1;$(memicon) +@fg=4;$(mem) +@fg=0;| \
 +@fg=1;$(pkgicon) +@fg=4;$(pkgs) +@fg=0;/ +@fg=4;$(removable) +@fg=0;| \
 +@fg=1;$(hddicon) +@fg=4;$(hdd) +@fg=0;| \
-+@fg=1;$(networkicon) +@fg=4;$(connection) +@fg=1;$(ipicon) +@fg=4;$(ipaddress) +@fg=1;$(vpnicon) +@fg=4;$(vpnconnection) +@fg=0;| \
++@fg=1;$(networkicon) +@fg=4;$(connection) $(ipaddress) $(vpnconnection) +@fg=0;| \
 +@fg=1;$(upicon) +@fg=4;$(up) +@fg=1;$(downicon) +@fg=4;$(down) +@fg=0;| \
 +@fg=1;$(entropyicon) +@fg=4;$(entropy) +@fg=0;| \
 +@fg=1;$(volicon) +@fg=4;$(vol) +@fg=0;| \
-$bat_color$bat_stat $bat_level % +@fg=0;| \
+$bat_color$(battery.sh) +@fg=0;| \
 +@fg=1;$(kbicon) +@fg=4;$(kbinfo) +@fg=0;| \
-+@fg=1;$(dateicon) +@fg=4;$(dateinfo) +@fg=1;$(clockicon) +@fg=4;$(clockinfo) +@fg=0;\
++@fg=4;$(dateinfo) +@fg=1;$(clockicon) +@fg=4;$(clockinfo) +@fg=0;\
 "
   sleep $DELAY
 done
