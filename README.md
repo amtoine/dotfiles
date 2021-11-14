@@ -4,10 +4,10 @@ This particular config has been tested on ArchLinux only (last update on 11/14/2
 Thus, only `pacman` and `yay` have been used and tested as arch and AUR packages managers respectively.  
 The reader is highly adviced to search the internet and in particular the [ArchWiki](https://archlinux.org/), **EVEN in NON arch-based systems!!**
 
-First, a very high view of the repo is given with the project architecture and a brief explaination of all the files involved.  
-Then, a sligthly more precise view is given in section 1.  
-Installation process and dependencies are explained and listed in sections 2 and 3 respectively.  
-Finally, ways to contribute to this project are put forward for who is interested and a gallery of photos is presented, 
+First, a very high view of the repo is given with the project architecture and a brief explaination of all the files involved in [section 0](https://github.com/a2n-s/dotfiles/tree/main/#0-config-architecture-toc).  
+Then, a sligthly more precise view is given in [section 1](https://github.com/a2n-s/dotfiles/tree/main/#1-overview-toc).  
+Installation process and dependencies are explained and listed in [sections 2](https://github.com/a2n-s/dotfiles/tree/main/#2-installation-toc) and [section 3](https://github.com/a2n-s/dotfiles/tree/main/#3-dependencies-toc) respectively.  
+Finally, ways to contribute to this project are put forward in [section 4](https://github.com/a2n-s/dotfiles/tree/main/#4-contribute-toc) for who is interested and a gallery of photos is presented in [section 5](https://github.com/a2n-s/dotfiles/tree/main/#5-gallery-toc), 
 to give an idea of the final rendering of the config.  
 
 If you want a quick brief of what dotfiles really are, I recommend the following video of *FireShip*: https://www.youtube.com/watch?v=r_MpUP6aKiQ.
@@ -245,12 +245,24 @@ YOU can contribute to this project in the wonderfull world of linux, arch and co
 do not hesitate to contact me, either via email, github issues or pull requests!
 
 ## 5. Gallery. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
-![My wallpaper.](images/shots/nitrogen.png)
-![SpectrWM in a dual monitor setup: left monitor selected.](images/shots/spectrwm1.png)
-![SpectrWM in a dual monitor setup: right monitor selected.](images/shots/spectrwm2.png)
-![A screenshot of seing all processes.](images/shots/htop.png)
-![A screenshot of being in a git repository.](images/shots/git.png)
-![A screenshot of being in vim.](images/shots/vim.png)
+| ![My wallpaper.](images/shots/nitrogen.png) |
+|:--:|
+| *My wallpaper.* |
+| ![SpectrWM in a dual monitor setup: left monitor selected.](images/shots/spectrwm1.png) |
+|:--:|
+| *SpectrWM in a dual monitor setup: left monitor selected.* |
+| ![SpectrWM in a dual monitor setup: right monitor selected.](images/shots/spectrwm2.png) |
+|:--:|
+| *SpectrWM in a dual monitor setup: right monitor selected.* |
+| ![A screenshot of seing all processes.](images/shots/htop.png) |
+|:--:|
+| *A screenshot of seing all processes.* |
+| ![A screenshot of being in a git repository.](images/shots/git.png) |
+|:--:|
+| *A screenshot of being in a git repository.* |
+| ![A screenshot of being in vim.](images/shots/vim.png) |
+|:--:|
+| *A screenshot of being in vim.* |
 
 [`pkgslists`]:             .pkgslists
 [`.basrc`]:                .bashrc
