@@ -4,8 +4,7 @@ This particular config has been tested on ArchLinux only (last update on 11/14/2
 Thus, only `pacman` and `yay` have been used and tested as arch and AUR packages managers respectively.  
 The reader is highly adviced to search the internet and in particular the [ArchWiki](https://archlinux.org/), **EVEN in NON arch-based systems!!**
 
-First, a very high view of the repo is given with the project architecture and a brief explaination of all the files involved in [section 0](https://github.com/a2n-s/dotfiles/tree/main/#0-config-architecture-toc).  
-Then, a sligthly more precise view is given in [section 1](https://github.com/a2n-s/dotfiles/tree/main/#1-overview-toc).  
+First, an overview of the repo is given with the project architecture and a brief explaination of all the files involved in [section 1](https://github.com/a2n-s/dotfiles/tree/main/#1-overview-and-architecture-toc).  
 Installation process and dependencies are explained and listed in [sections 2](https://github.com/a2n-s/dotfiles/tree/main/#2-installation-toc) and [section 3](https://github.com/a2n-s/dotfiles/tree/main/#3-dependencies-toc) respectively.  
 Finally, ways to contribute to this project are put forward in [section 4](https://github.com/a2n-s/dotfiles/tree/main/#4-contribute-toc) for who is interested and a gallery of photos is presented in [section 5](https://github.com/a2n-s/dotfiles/tree/main/#5-gallery-toc), 
 to give an idea of the final rendering of the config.  
@@ -13,14 +12,13 @@ to give an idea of the final rendering of the config.
 If you want a quick brief of what dotfiles really are, I recommend the following video of *FireShip*: https://www.youtube.com/watch?v=r_MpUP6aKiQ.
 
 ## Table Of Content.
-- **0** [**Config architecture.**](https://github.com/a2n-s/dotfiles/tree/main/#0-config-architecture-toc)
-- **1** [**Overview.**](https://github.com/a2n-s/dotfiles/tree/main/#1-overview-toc)
+- **1** [**Overview and architecture.**](https://github.com/a2n-s/dotfiles/tree/main/#1-overview-and-architecture-toc)
 - **2** [**Installation.**](https://github.com/a2n-s/dotfiles/tree/main/#2-installation-toc)
 - **3** [**Dependencies.**](https://github.com/a2n-s/dotfiles/tree/main/#3-dependencies-toc)
 - **4** [**Contribute.**](https://github.com/a2n-s/dotfiles/tree/main/#4-contribute-toc)
 - **5** [**Gallery.**](https://github.com/a2n-s/dotfiles/tree/main/#5-gallery-toc)
 
-## 0. Config architecture. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
+## 1. Overview and architecture. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
 Below is a snapshot of the architecture of the config project.  
 This repo has been created using a `bare` repository, i.e. initialization has been done with `git init --bare $HOME/.dotfiles` instead of the
 usual `git init`.  This command creates a *bare* repository, meaning that there is no working directory inside it, only git files.
@@ -79,8 +77,6 @@ $HOME
 |-- [-] .xscreensaver               -- my config when the machine is idle or manually locked.
 `-- [-] README.md
 ```
-
-## 1. Overview. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
 
 ## 2. Installation. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
 For now, the only way to install my config is to manually:
