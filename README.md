@@ -244,18 +244,23 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 | ![My wallpaper.](images/shots/nitrogen.png) |
 |:--:|
 | *My wallpaper.* |
+
 | ![SpectrWM in a dual monitor setup: left monitor selected.](images/shots/spectrwm1.png) |
 |:--:|
 | *SpectrWM in a dual monitor setup: left monitor selected.* |
+
 | ![SpectrWM in a dual monitor setup: right monitor selected.](images/shots/spectrwm2.png) |
 |:--:|
 | *SpectrWM in a dual monitor setup: right monitor selected.* |
+
 | ![A screenshot of seing all processes.](images/shots/htop.png) |
 |:--:|
 | *A screenshot of seing all processes.* |
+
 | ![A screenshot of being in a git repository.](images/shots/git.png) |
 |:--:|
 | *A screenshot of being in a git repository.* |
+
 | ![A screenshot of being in vim.](images/shots/vim.png) |
 |:--:|
 | *A screenshot of being in vim.* |
