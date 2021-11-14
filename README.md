@@ -92,7 +92,7 @@ or directly:
 - clone the repo with `git clone https://github.com/a2n-s/dotfiles.git` or `git clone git@github.com:a2n-s/dotfiles.git`.
 - place your version of the `.vimrc` file inside a backup directory or archive.
 - copy my `.vimrc` file in replacement of yours.
-- follow additional instructions in the dedicated section ([here](https://github.com/a2n-s/dotfiles/tree/main/#install-vim) for `vim`).
+- follow additional instructions in the dedicated section ([here](https://github.com/a2n-s/dotfiles/tree/main/#install-vim-toc) for `vim`).
 - enjoy your new `vim` experience!
 
 I will try, in the future, to provide an `install.sh` script to (1) select what part of the config to install,
@@ -114,7 +114,7 @@ List of manual installation processes:
 - [xscreensaver](https://github.com/a2n-s/dotfiles/tree/main/#install-xscreensaver-toc)
 
 ### Install alacritty. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
-- install the dependencies in [alacritty](https://github.com/a2n-s/dotfiles/tree/main/#dependencie-for-alacritty-toc).
+- install the dependencies in [alacritty](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-alacritty-toc).
 - install the `alacritty` command.
 - copy [`alacritty.yml`] inside your `~/.config/alacritty` directory.
 ### Install bash. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
@@ -161,17 +161,17 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - install all the packages I have on my system by using the lists in [`pkgslists`] and `pacman` or `yay` to install them.
 
 List of commands dependencies:
-- [alacritty](https://github.com/a2n-s/dotfiles/tree/main/#dependencie-for-alacritty-toc)
+- [alacritty](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-alacritty-toc)
 - [bash](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-bash-toc)
 - [neofetch](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-neofetch-toc)
 - [nitrogen](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-nitrogen-toc)
-- [spectrWM](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-spectrWM-toc)
+- [spectrWM](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-spectrwm-toc)
 - [vim](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-vim-toc)
 - [x](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-x-toc)
 
 List of scripts dependencies:
-- [screenshot.sh](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-screenshot-sh-toc)
-- [spectrWM-baraction.sh](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-spectrWM-baraction-sh-toc)
+- [screenshot.sh](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-screenshotsh-toc)
+- [spectrWM-baraction.sh](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-spectrwm-baractionsh-toc)
 - [togkb.sh](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-togkb-sh-toc)
 - [wvenv](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-wvenv-toc)
 - [xtcl](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-xtcl-toc)
@@ -247,7 +247,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 ## 5. Gallery. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
 - [ ] TODO  
 
-[`pkgslists`]:             pkgslists
+[`pkgslists`]:             .pkgslists
 [`.basrc`]:                .bashrc
 [`scripts`]:               scripts
 [`spectrWM-baraction.sh`]: scripts/spectrWM-baraction.sh
