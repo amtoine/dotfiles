@@ -125,7 +125,7 @@ List of manual installation processes:
 ### Install neofetch. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
 - install the dependencies in [neofetch](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-neofetch-toc).
 - install the `neofetch` command.
-- copy [`config.conf`] inside your `~/.config/neofetch` directory.
+- copy [`config.conf`], [`.neofetchrc`] and the files in [`ascii`] inside your `~/.config/neofetch` directory.
 ### Install nitrogen. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
 - install the dependencies in [nitrogen](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-nitrogen-toc).
 - install the `nitrogen` command.
@@ -180,7 +180,7 @@ List of scripts dependencies:
 - `neofetch`, `git` and `cal`.
 ### Dependencies for neofetch. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
 - some art works
-- an optional `.neofetchrc` file -> see [`.basrc`].
+- an optional `.neofetchrc` file -> see [`.basrc`] and [`.neofetchrc`].
 ### Dependencies for nitrogen. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
 - some wallpapers to load and restore.
 - mine currently is a [vibrant scene](https://voyage-onirique.com/wp-content/uploads/2020/03/backiee-138908-landscape-scaled.jpg).
@@ -284,3 +284,5 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`.vimrc`]:                .vimrc
 [`.xinitrc`]:              .xinitrc
 [`.xscreensaver`]:         .xscreensaver
+[`.neofetchrc`]:           .config/neofetch/.neofetchrc
+[`ascii`]:                 .config/neofetch/ascii

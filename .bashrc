@@ -174,16 +174,6 @@ set -o vi
 # <<<
 
 # >>> neofetch based on date.
-# an example of neofetchrc file.
-#DATE=$(date +"%m%d" | sed "s/^0\+//")
-#if [ $DATE -ge 1024 -a $DATE -le 1107 ]; then
-#	neofetch --ascii ~/.config/neofetch/ascii/halloween.art --ascii_colors 1 9
-#elif [ $DATE -ge 215 -o $DATE -le 105 ]; then
-#	neofetch --ascii ~/.config/neofetch/ascii/christmas.art --ascii_colors 7 7
-#else
-#	neofetch;
-#fi
-
 if [[ -f ~/.config/neofetch/.neofetchrc ]]; then
 	. ~/.config/neofetch/.neofetchrc;
 else

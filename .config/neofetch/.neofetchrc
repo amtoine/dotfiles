@@ -1,0 +1,40 @@
+#                            ____     __       __             
+#          ____  ___  ____  / __/__  / /______/ /_  __________
+#         / __ \/ _ \/ __ \/ /_/ _ \/ __/ ___/ __ \/ ___/ ___/
+#      _ / / / /  __/ /_/ / __/  __/ /_/ /__/ / / / /  / /__  
+#     (_)_/ /_/\___/\____/_/  \___/\__/\___/_/ /_/_/   \___/  
+# full config can be found at https://github.com/a2n-s/dotfiles
+#! /usr/bin/bash
+
+
+# get the date as integer between 0 and 1231, i.e. the dates of the year.
+DATE=$(date +"%m%d" | sed "s/^0\+//")
+# write the output of neofetch to a special file.
+ninfo="$HOME/.config/neofetch/.neofetchinfo"
+# create the file if not already here.
+if [[ ! -f $ninfo ]]; then touch $ninfo; fi
+# put the output of neofetch inside the file.
+neofetch --off > $ninfo
+
+# check the date to adapt the image displayed.
+# first, the narrowest events, i.e. a few days, e.g. birthdays.
+if [ $DATE -eq 1105 ]; then
+  neofetch --ascii $HOME/.config/neofetch/ascii/lolo.art --ascii_colors 10 1 5 2 9 13
+# then, medium sized events, e.g. christmas, holydays, halloween, ...
+elif [ $DATE -ge 1024 -a $DATE -le 1107 ]; then
+  neofetch --ascii $HOME/.config/neofetch/ascii/halloween.art --ascii_colors 1 9
+elif [ $DATE -ge 1215 -o $DATE -le 105 ]; then
+  neofetch --ascii $HOME/.config/neofetch/ascii/christmas.art --ascii_colors 7 7
+# finally, seasons.
+elif [ $DATE -ge 1221 -o $DATE -le 319 ]; then
+  pr -mtJ $HOME/.config/neofetch/ascii/winter-snow.art $ninfo
+elif [ $DATE -ge 320 -a $DATE -le 620 ]; then
+  pr -mtJ $HOME/.config/neofetch/ascii/spring-flower.art $ninfo
+elif [ $DATE -ge 621 -a $DATE -le 922 ]; then
+  pr -mtJ $HOME/.config/neofetch/ascii/summer-sun.art $ninfo
+elif [ $DATE -ge 923 -a $DATE -le 1221 ]; then
+  pr -mtJ $HOME/.config/neofetch/ascii/fall-leaf.art $ninfo
+# if nothing passed.
+else
+	neofetch;
+fi
