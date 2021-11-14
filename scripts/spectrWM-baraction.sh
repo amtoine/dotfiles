@@ -23,7 +23,7 @@ hddicon() {
 hdd() {
   free="$(df -h /home | grep /dev | awk '{print $3}' | sed 's/G/Gb/')"
   perc="$(df -h /home | grep /dev/ | awk '{print $5}')"
-  echo "$perc  ($free)"
+  echo "$perc($free)"
 }
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -37,7 +37,7 @@ mem() {
   used="$(free | grep Mem: | awk '{print $3}')"
   total="$(free | grep Mem: | awk '{print $2}')"
   human="$(free -h | grep Mem: | awk '{print $3}' | sed s/i//g)"
-  ram="$(( 200 * $used/$total - 100 * $used/$total ))% ($human) "
+  ram="$(( 200 * $used/$total - 100 * $used/$total ))%($human)"
   echo "$ram"
 }
 
@@ -71,14 +71,7 @@ pkgs() {
   pkgs=$(pacman -Qq | wc -l)
   echo "$pkgs"
 }
-
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>
-#          REMOVABLE
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<<
-remicon() {
-  echo "REM"
-}
-rem() {
+removable() {
   rems=$(pacman -Qdt | wc -l)
   echo "$rems"
 }
@@ -101,19 +94,6 @@ networkicon() {
 connection() {
   echo "$(nmcli d | grep "\<connected\>" | awk '{ print substr($0, index($0,$4)) }')"
 }
-ipaddress() {
-  address="$(ip a | grep .255 | grep -v wlp | cut -d ' ' -f6 | sed 's/\/24//')"
-  echo "$address"
-}
-vpnconnection() {
-  state="$(ip a | grep tun0 | grep inet | wc -l)"
-
-  if [ $state = 1 ]; then
-  	echo "VPN"
-  else
-  	echo "NO VPN"
-  fi
-}
 upicon(){ 
   echo "TX" 
 }
@@ -125,6 +105,25 @@ up(){
 }
 down(){
   ifstat | grep $(nmcli d | grep "\<connected\>" | awk '{ print $1 }') | awk '{ print $7}'
+}
+ipicon(){
+  echo "IP"
+}
+ipaddress() {
+  address=$(ip a | grep \.255 | awk '{ print $2 }' | cut -d/ -f1)
+  echo "$address"
+}
+vpnicon(){
+  echo "VPN"
+}
+vpnconnection() {
+  state="$(ip a | grep tun0 | grep inet | wc -l)"
+
+  if [ $state = 1 ]; then
+  	echo "Y"
+  else
+  	echo "N"
+  fi
 }
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -152,15 +151,29 @@ battery() {
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #        DATE AND TIME
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+dateicon() {
+  echo "DATE"
+}
 clockicon() {
   echo "CLK"
 }
 dateinfo() {
-  echo "$(date "+%b %d %Y (%a)")"
+  echo "$(date "+%D")"
 }
 clockinfo() {
   echo $(date +"%H:%M:%S")
 }
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#       KEYBOARD LAYOUT
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+kbicon() {
+  echo "KB"
+}
+kbinfo() {
+  setxkbmap -query | grep layout | awk '{ print $2 }'
+}
+
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #         BAR PRINT
@@ -177,17 +190,17 @@ while :; do
       if [[ $bat_color = "+@fg=6;" ]]; then bat_color="+@fg=1;"; else bat_color="+@fg=6;"; fi;
     else bat_color="+@fg=6;"; 
     fi
-    echo -e "+@fg=1; $(cpuicon) +@fg=0; $(cpu) | \
-+@fg=1; $(memicon) +@fg=0; $(mem) | \
-+@fg=1; $(pkgicon) +@fg=0; $(pkgs) | \
-+@fg=1; $(remicon) +@fg=0; $(rem) | \
-+@fg=3; $(hddicon) +@fg=0; $(hdd) | \
-+@fg=4; $(networkicon) $(connection) +@fg=0; $(ipaddress) +@fg=4; $(vpnconnection) | \
-+@fg=4; $(upicon) $(up) +@fg=0; $(downicon) +@fg=4; $(down) | \
-+@fg=3; $(entropyicon) +@fg=0; $(entropy) | \
-+@fg=5; $(volicon) +@fg=0; $(vol) | \
-$bat_color $bat_stat $bat_level % +@fg=0; | \
-+@fg=1; $(dateinfo) +@fg=4; $(clockicon) +@fg=0; $(clockinfo) |\
+    echo -e "+@fg=1;$(cpuicon) +@fg=4;$(cpu) +@fg=0;| \
++@fg=1;$(memicon) +@fg=4;$(mem) +@fg=0;| \
++@fg=1;$(pkgicon) +@fg=4;$(pkgs) +@fg=0;/ +@fg=4;$(removable) +@fg=0;| \
++@fg=1;$(hddicon) +@fg=4;$(hdd) +@fg=0;| \
++@fg=1;$(networkicon) +@fg=4;$(connection) +@fg=1;$(ipicon) +@fg=4;$(ipaddress) +@fg=1;$(vpnicon) +@fg=4;$(vpnconnection) +@fg=0;| \
++@fg=1;$(upicon) +@fg=4;$(up) +@fg=1;$(downicon) +@fg=4;$(down) +@fg=0;| \
++@fg=1;$(entropyicon) +@fg=4;$(entropy) +@fg=0;| \
++@fg=1;$(volicon) +@fg=4;$(vol) +@fg=0;| \
+$bat_color$bat_stat $bat_level % +@fg=0;| \
++@fg=1;$(kbicon) +@fg=4;$(kbinfo) +@fg=0;| \
++@fg=1;$(dateicon) +@fg=4;$(dateinfo) +@fg=1;$(clockicon) +@fg=4;$(clockinfo) +@fg=0;\
 "
   sleep $DELAY
 done
