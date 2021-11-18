@@ -38,44 +38,63 @@ If you want more information about *bare* `git` repositories, you can check one 
 - https://www.youtube.com/watch?v=tBoLDpTWVOM&t=879s: if you want to see the creation of such a repository step by step.
 ```
 $HOME
-|-- [d] .config                     -- main config directory
-|   |-- [d] alacritty                 --  the alacritty terminal emulator.
-|   |   `-- [-] alacritty.yml
-|   |-- [d] cmus                      --  my favorite music player based on ncurses.
-|   |   |-- [-] autosave
-|   |   `-- [-] lib.pl
-|   |-- [d] htop                      -- my process monitor.
-|   |   `-- [-] htoprc
-|   |-- [d] neofetch                  -- my logo printer. 
-|   |   `-- [-] config.conf
-|   |-- [d] nitrogen                  -- my wallpaper manager. 
-|   |   `-- [-] nitrogen.cfg
-|   `-- [d] spectrwm                  -- the spectrWM tilling window manager.
-|       |-- [-] spectrwm.conf
-|       |-- [-] spectrwm_fr.conf
-|       `-- [-] spectrwm_us.conf
-|-- [d] .pkgslists                  -- packages.
-|   |-- [-] allpkglist.txt            -- the list of all installed packages.
-|   |-- [-] foreignpkglist.txt        -- the list of AUR packages.
-|   |-- [-] optdeplist.txt            -- the list of optional packages.
-|   `-- [-] pkglist.txt               -- the list of arch packages.
-|-- [d] scripts                     -- my scripts. 
-|    |-- [-] screenshot.sh            -- takes screeshots with scrot.
-|    |-- [-] spectrWM-baraction.sh    -- controls the spectrWM bar.
-|    |-- [-] togkb.sh                 -- toggles the keyboard layout.
-|    |-- [-] wvenv                    -- shows current python environment.
-|    `-- [-] xtcl                     -- disables my broken caps lock key.
-|-- [-] .bash_aliases               -- all my command aliases.
-|-- [-] .bash_logout                -- what bash should do on logout.
-|-- [-] .bash_profile               -- runs bash and starts the WM on startup.
-|-- [-] .bashrc                     -- runs config stuff to make the experience what it is.
-|-- [-] .gitconfig                  -- all my git config.
-|-- [-] .profile                    -- profile script.
-|-- [-] .tmux.conf                  -- my tmux config file.
-|-- [-] .vimrc                      -- all needed configuration for a pretty vim.
-|-- [-] .xinitrc                    -- what to do when x starts.
-|-- [-] .xscreensaver               -- my config when the machine is idle or manually locked.
-`-- [-] README.md
+|-- [d]  .config                                -- main config directory
+|   |-- [d]  alacritty                            --  the alacritty terminal emulator.
+|   |   `-- [-]  alacritty.yml
+|   |-- [d]  cmus                                 --  my favorite music player based on ncurses.
+|   |   |-- [-]  autosave
+|   |   `-- [-]  lib.pl
+|   |-- [d]  htop                                 -- my process monitor.
+|   |   `-- [-]  htoprc
+|   |-- [d]  images                               -- images used for the readme.
+|   |   `-- [d]  readme
+|   |       |-- [-]  bar.png
+|   |       |-- [-]  git.png
+|   |       |-- [-]  htop.png
+|   |       |-- [-]  nitrogen.png
+|   |       |-- [-]  spectrwm1.png
+|   |       |-- [-]  spectrwm2.png
+|   |       `-- [-]  vim.png
+|   |-- [d]  neofetch                             -- my logo printer.
+|   |   |-- [d]  ascii                              -- all used arts.
+|   |   |   |-- [-]  christmas.art
+|   |   |   |-- [-]  fall-leaf.art
+|   |   |   |-- [-]  halloween.art
+|   |   |   |-- [-]  lolo.art
+|   |   |   |-- [-]  spring-flower.art
+|   |   |   |-- [-]  summer-sun.art
+|   |   |   `-- [-]  winter-snow.art
+|   |   |-- [-]  .neofetchrc                        -- lauches the right art based on date.
+|   |   `-- [-]  config.conf                        -- the actual config for basic use.
+|   |-- [d]  nitrogen                             -- my wallpaper manager.
+|   |   `-- [-]  nitrogen.cfg
+|   `-- [d]  spectrwm                             -- the spectrWM tilling window manager.
+|       |-- [-]  spectrwm.conf
+|       |-- [-]  spectrwm_fr.conf
+|       `-- [-]  spectrwm_us.conf
+|-- [d]  .pkgslists                             -- packages.
+|   |-- [-]  allpkglist.txt                       -- the list of all installed packages.
+|   |-- [-]  foreignpkglist.txt                   -- the list of AUR packages.
+|   |-- [-]  optdeplist.txt                       -- the list of optional packages.
+|   `-- [-]  pkglist.txt                          -- the list of arch packages.
+|-- [d]  scripts                                -- my scripts.
+|   |-- [-]  screenshot.sh                        -- takes screeshots with scrot.
+|   |-- [-]  spectrWM-baraction.sh                -- controls the spectrWM bar.
+|   |-- [-]  togkb.sh                             -- toggles the keyboard layout.
+|   |-- [l]  upl -> /etc/pacman.d/hooks.bin/upl   -- updates the list of installed packages.
+|   |-- [-]  wvenv                                -- shows current python environment.
+|   `-- [-]  xtcl                                 -- disables my broken caps lock key.
+|-- [-]  .bash_aliases                          -- all my command aliases.
+|-- [-]  .bash_logout                           -- what bash should do on logout.
+|-- [-]  .bash_profile                          -- runs bash and starts the WM on startup.
+|-- [-]  .bashrc                                -- runs config stuff to make the experience what it is.
+|-- [-]  .gitconfig                             -- all my git config.
+|-- [-]  .profile                               -- profile script.
+|-- [-]  .tmux.conf                             -- my tmux config file.
+|-- [-]  .vimrc                                 -- all needed configuration for a pretty vim.
+|-- [-]  .xinitrc                               -- what to do when x starts.
+|-- [-]  .xscreensaver                          -- my config when the machine is idle or manually locked.
+`-- [-]  README.md
 ```
 
 ## 2. Installation. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
@@ -241,31 +260,31 @@ YOU can contribute to this project in the wonderfull world of linux, arch and co
 do not hesitate to contact me, either via email, github issues or pull requests!
 
 ## 5. Gallery. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
-| ![My wallpaper.](images/shots/nitrogen.png) |
+| ![My wallpaper.](.config/images/readme/nitrogen.png) |
 |:--:|
 | *My wallpaper.* |
 
-| ![My bar.](images/shots/bar.png) |
+| ![My bar.](.config/images/readme/bar.png) |
 |:--:|
 | *My bar.* |
 
-| ![SpectrWM in a dual monitor setup: left monitor selected.](images/shots/spectrwm1.png) |
+| ![SpectrWM in a dual monitor setup: left monitor selected.](.config/images/readme/spectrwm1.png) |
 |:--:|
 | *SpectrWM in a dual monitor setup: left monitor selected.* |
 
-| ![SpectrWM in a dual monitor setup: right monitor selected.](images/shots/spectrwm2.png) |
+| ![SpectrWM in a dual monitor setup: right monitor selected.](.config/images/readme/spectrwm2.png) |
 |:--:|
 | *SpectrWM in a dual monitor setup: right monitor selected.* |
 
-| ![A screenshot of seing all processes.](images/shots/htop.png) |
+| ![A screenshot of seing all processes.](.config/images/readme/htop.png) |
 |:--:|
 | *A screenshot of seing all processes.* |
 
-| ![A screenshot of being in a git repository.](images/shots/git.png) |
+| ![A screenshot of being in a git repository.](.config/images/readme/git.png) |
 |:--:|
 | *A screenshot of being in a git repository.* |
 
-| ![A screenshot of being in vim.](images/shots/vim.png) |
+| ![A screenshot of being in vim.](.config/images/readme/vim.png) |
 |:--:|
 | *A screenshot of being in vim.* |
 
