@@ -167,6 +167,29 @@ function stopwatch(){
    done
 }
 
+function seecsv (){ perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K ; }
+function vcreate (){ virtualenv "$HOME/.venvs/$@"; }
+function vlist (){ ls $HOME/.venvs/ | sed 's/ /\r/'; }
+function vremove (){
+    if [[ !"$#" = "1" ]]; then
+        echo "wrong number of arguments";
+        exit 1
+    fi
+    venv=$(echo "$1" | sed "s/\s\+$//; s/\s\+//g; s/\///g; s/\.//g")
+    if [[ "$1" != '' ]]; then
+        venv="$HOME/.venvs/$venv"
+        echo -n "removing $venv? (yes/no) " ;
+        read usr_rem
+        case $usr_rem in
+          yes|y|YES|Yes|Y) echo "removing $venv"
+              rm "$venv" -rf;;
+          no|n|NO|No|N) echo "keeping $venv";;
+          *) echo "unknown answer $usr_rem! keeping $venv!"
+        esac
+    fi
+}
+function vsource (){ source "$HOME/.venvs/$@/bin/activate"; }
+
 # changes the editor in the terminal, to edit long commands.
 export EDITOR='vim'
 export VISUAL='vim'

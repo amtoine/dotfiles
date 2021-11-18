@@ -50,7 +50,11 @@ alias cfg='/usr/bin/git --git-dir=/home/ants/.dotfiles --work-tree=/home/ants'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+# a way to manage bluetooth devices.
 alias bmm='blueman-manager'
+
+# to list all the git repositiories inside the home directory.
+alias lgr='find $HOME -type d | grep "\.git$" | sed "s/\/\.git//"'
 # <<<
 
 # >>> tmux shortcuts.
@@ -61,7 +65,8 @@ alias tkt='tmux kill-session -t'
 # <<<
 
 # >>> network shortcuts.
-alias ncuh='nmcli c up ">>> HOTSPOT <<<"'
+alias ncua='nmcli c up "a2n-s"'
+alias ncue='nmcli c up "eduroam"'
 # <<<
 
 # >>> jupyter shortcuts.
@@ -95,3 +100,7 @@ alias ll='ls -l'
 alias llha='ls -lha'
 # <<<
 
+
+# >>> applications.
+alias discord="$HOME/Discord/Discord > /dev/null 2> /dev/null &"
+# <<<
