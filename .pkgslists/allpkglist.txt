@@ -16,6 +16,7 @@ bluez-utils
 brightnessctl
 catimg
 cmus
+dolphin
 dosfstools
 dstat
 efibootmgr
@@ -29,6 +30,7 @@ gimp
 git
 grub
 htop
+hugo
 kolourpaint
 libappindicator-gtk3
 linux
@@ -38,6 +40,7 @@ make
 mtools
 neofetch
 nerd-fonts-mononoki
+network-manager-applet
 networkmanager
 nitrogen
 ntfs-3g
@@ -50,16 +53,20 @@ pipewire-pulse
 pixterm
 pkgconf
 python-mpi4py
+python-opengl
 python-tqdm
 python-virtualenv
 scrot
 sox
 spectrwm
 sudo
+swig
 sysstat
 texinfo
 thunderbird
 tk
+tldr
+tmux
 tree
 vi
 vim
