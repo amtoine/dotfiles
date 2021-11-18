@@ -24,7 +24,9 @@ hddicon() {
 hdd() {
   free="$(df -h /home | grep /dev | awk '{print $3}' | sed 's/G/Gb/')"
   perc="$(df -h /home | grep /dev/ | awk '{print $5}')"
-  echo "$perc($free)"
+  cache=$(du ~/.cache/ -sh | awk '{ print $1 }')
+  venvs=$(du ~/.venvs/ -sh | awk '{ print $1 }')
+  echo "$perc($free/$cache/$venvs)"
 }
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -59,10 +61,15 @@ cpu() {
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<
 volicon() {
 #  echo "VOL"
-  echo "遼"
+  stat=$(amixer get Master | grep "Mono:" | sed 's/[][]//g' | awk '{ print $6 }')
+  if [[ $stat = "on" ]]; then
+      echo ""
+  else
+      echo "婢"
+  fi
 }
 vol() {
-  echo ""
+  amixer get Master | grep "Mono:" | sed 's/[][]//g' | awk '{ print $4 }'
 }
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -97,7 +104,7 @@ networkicon() {
   fi
 }
 connection() {
-  echo "$(nmcli d | grep "\<connected\>" | awk '{ print substr($0, index($0,$4)) }')"
+  echo "$(nmcli d | grep "\<connected\>" | awk '{ print $4 }')"
 }
 upicon(){ 
   echo "TX" 
@@ -237,7 +244,7 @@ while :; do
 +@fg=1;$(memicon) +@fg=4;$(mem) +@fg=0;| \
 +@fg=1;$(pkgicon) +@fg=4;$(pkgs) +@fg=0;/ +@fg=4;$(removable) +@fg=0;| \
 +@fg=1;$(hddicon) +@fg=4;$(hdd) +@fg=0;| \
-+@fg=1;$(networkicon) +@fg=4;$(connection) $(ipaddress) $(vpnconnection) +@fg=0;| \
++@fg=1;$(networkicon) +@fg=4;$(connection)@$(ipaddress) $(vpnconnection) +@fg=0;| \
 +@fg=1;$(upicon) +@fg=4;$(up) +@fg=1;$(downicon) +@fg=4;$(down) +@fg=0;| \
 +@fg=1;$(entropyicon) +@fg=4;$(entropy) +@fg=0;| \
 +@fg=1;$(volicon) +@fg=4;$(vol) +@fg=0;| \
