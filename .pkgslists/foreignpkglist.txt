@@ -2,4 +2,5 @@ arduino-mk
 nerd-fonts-mononoki
 paru
 pixterm
+python38
 yay-git
