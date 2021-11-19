@@ -68,10 +68,14 @@ $HOME
 |   |   `-- [-]  config.conf                        -- the actual config for basic use.
 |   |-- [d]  nitrogen                             -- my wallpaper manager.
 |   |   `-- [-]  nitrogen.cfg
-|   `-- [d]  spectrwm                             -- the spectrWM tilling window manager.
-|       |-- [-]  spectrwm.conf
-|       |-- [-]  spectrwm_fr.conf
-|       `-- [-]  spectrwm_us.conf
+|   |-- [d]  spectrwm                             -- the spectrWM tilling window manager.
+|   |   |-- [-]  spectrwm.conf 
+|   |   |-- [-]  spectrwm_fr.conf
+|   |   `-- [-]  spectrwm_us.conf
+|   `-- [d]  vifm                                 -- the file manager.
+|       |-- [d]  colors
+|       |   `-- [-]  molokai.vifm
+|       `-- [-]  vifmrc
 |-- [d]  .pkgslists                             -- packages.
 |   |-- [-]  allpkglist.txt                       -- the list of all installed packages.
 |   |-- [-]  foreignpkglist.txt                   -- the list of AUR packages.
@@ -95,6 +99,15 @@ $HOME
 |-- [-]  .xinitrc                               -- what to do when x starts.
 |-- [-]  .xscreensaver                          -- my config when the machine is idle or manually locked.
 `-- [-]  README.md
+
+
+
+
+
+
+
+
+
 ```
 
 ## 2. Installation. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
@@ -124,7 +137,6 @@ List of manual installation processes:
 - [nitrogen](https://github.com/a2n-s/dotfiles/tree/main/#install-nitrogen-toc)
 - [spectrWM](https://github.com/a2n-s/dotfiles/tree/main/#install-spectrWM-toc)
 - [tmux](https://github.com/a2n-s/dotfiles/tree/main/#install-tmux-toc)
-- [vim](https://github.com/a2n-s/dotfiles/tree/main/#install-vim-toc)
 - [x](https://github.com/a2n-s/dotfiles/tree/main/#install-x-toc)
 - [xscreensaver](https://github.com/a2n-s/dotfiles/tree/main/#install-xscreensaver-toc)
 
@@ -156,10 +168,6 @@ List of manual installation processes:
 ### Install tmux. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
 - install the `tmux` command.
 - copy [`tmux.conf`] inside your `~/` directory.
-### Install vim. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
-- install the dependencies in [vim](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-vim-toc).
-- install the `vim` command.
-- copy [`.vimrc`] inside your `~/` directory.
 ### Install x. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
 - install the dependencies in [x](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-x-toc).
 - install the `x` package.
@@ -181,7 +189,6 @@ List of commands dependencies:
 - [neofetch](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-neofetch-toc)
 - [nitrogen](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-nitrogen-toc)
 - [spectrWM](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-spectrwm-toc)
-- [vim](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-vim-toc)
 - [x](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-x-toc)
 
 List of scripts dependencies:
@@ -216,10 +223,6 @@ List of scripts dependencies:
 - `amixer` to control the volume of the main screen.
 - [`togkb.sh`] to switch the keyboard layout.
 - `xscreensaver` to lock and save the screen usage.
-### Dependencies for vim. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
-- make sure to either run `vim` once with the `.vimrc` file installed or issue `mkdir -p ~/.vim ~/.vim/autoload ~/.vim/backup ~/.vim/color ~/.vim/plugged`.
-- a plugin manager: I use `vim-plug` which can be installed with `curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
-- the `molokai` colorscheme -> can be installed with `cd ~/.vim/colors; curl -o molokai.vim https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim`.
 ### Dependencies for x. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
 - `picom`: a compositor for `X11`
 - `nitrogen` to load and restore wallpapers.
