@@ -1,6 +1,6 @@
 # xtcl
 
-script can be found [here](../../xtcl).
+script can be found [here](scripts/xtcl).
 
 ## Dependencies for xtcl
 - base commands such as `echo`.
