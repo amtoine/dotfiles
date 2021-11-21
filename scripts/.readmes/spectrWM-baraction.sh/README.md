@@ -1,5 +1,8 @@
 # spectrWM-baraction.sh
 
+script can be found [`here`].
+[`here`]: ../../spectrWM-baraction.sh
+
 
 ## Dependencies for spectrWM-baraction.sh
 - basic commands: `echo`, `grep`, `awk`, `sed`, `pacman`, `cut`, `cat`, `date`, `sleep`
