@@ -1,3 +1,6 @@
+# spectrWM-baraction.sh
+
+
 ## Dependencies for spectrWM-baraction.sh
 - basic commands: `echo`, `grep`, `awk`, `sed`, `pacman`, `cut`, `cat`, `date`, `sleep`
 - disk commands: `df`, `free`, `mpstat`
