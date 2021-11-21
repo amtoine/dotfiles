@@ -11,10 +11,10 @@
 
 ## Install vifm.
 - install the `vifm` command.
-- copy [`.vifmrc`] and the [`colors`] inside your `~/` directory.
+- copy [`vifmrc`] and the [`colors`] inside your `~/.config/vifm` directory.
 
 ## Gallery.
 Available soon.
 
-[`.vifmrc`]: .vifmrc
+[`vifmrc`]: vifmrc
 [`colors`]: colors
