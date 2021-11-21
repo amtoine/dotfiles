@@ -16,4 +16,4 @@
 ## Gallery.
 Available soon.
 
-[`.tmux.conf`]: ~/.tmux.conf
+[`.tmux.conf`]: ../../../.tmux.conf
