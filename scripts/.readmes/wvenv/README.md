@@ -1,6 +1,6 @@
 # wvenv.
 
-script can be found [`here`].
+script can be found [here](../../wvenv).
 
 
 ## Dependencies for wvenv.
@@ -16,6 +16,3 @@ and NEVER intall `python` package on you system directly!
 - instead, create a sane virtual environment with your prefered environment manager above and install everything in it.
 - one can use multiple environments for different purposes. For instance a dedicated environment for `jupyter`
 (it is a pain to uninstall from the main system), another one for machine learning stuff, and so on...
-
-
-[`here`]: ../../wvenv

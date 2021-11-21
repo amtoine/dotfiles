@@ -1,2 +1,1 @@
-script can be found [`here`].
-[`here`]: ../../upl
+script can be found [here](../../upl).
