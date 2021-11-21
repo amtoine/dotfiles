@@ -141,12 +141,12 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [xscreensaver](.config/.readmes/xscreensaver)
 
 #### List of scripts:
-- [x] [screenshot.sh](.config/scripts/.readmes/screenshot.sh)
-- [x] [spectrWM-baraction.sh](.config/scripts/.readmes/spectrWM-baraction.sh)
-- [x] [togkb.sh](.config/scripts/.readmes/togkb.sh)
-- [x] [upl](.config/scripts/.readmes/upl)
-- [x] [wvenv](.config/scripts/.readmes/wvenv)
-- [x] [xtcl](.config/scripts/.readmes/xtcl)
+- [x] [screenshot.sh](scripts/.readmes/screenshot.sh)
+- [x] [spectrWM-baraction.sh](scripts/.readmes/spectrWM-baraction.sh)
+- [x] [togkb.sh](scripts/.readmes/togkb.sh)
+- [x] [upl](scripts/.readmes/upl)
+- [x] [wvenv](scripts/.readmes/wvenv)
+- [x] [xtcl](scripts/.readmes/xtcl)
 
 ## 3. Contribute. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
 YOU can contribute to this project in the wonderfull world of linux, arch and configuration!
