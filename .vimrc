@@ -215,7 +215,7 @@ endif
   " Plug 'vim-airline/vim-airline-themes'                          " https://github.com/vim-airline/vim-airline-themes 
   Plug 'tpope/vim-commentary'                                    " https://github.com/tpope/vim-commentary 
   Plug 'liuchengxu/vim-which-key'                                " https://github.com/liuchengxu/vim-which-key 
-  Plug 'jeffkreeftmeijer/vim-numbertoggle'                       " https://github.com/jeffkreeftmeijer/vim-numbertoggle 
+  " Plug 'jeffkreeftmeijer/vim-numbertoggle'                       " https://github.com/jeffkreeftmeijer/vim-numbertoggle 
 " A Vim Plugin for Lively Previewing LaTeX PDF Output
 " Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }         " https://github.com/xuhdev/vim-latex-live-preview 
 "

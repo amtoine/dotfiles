@@ -111,7 +111,7 @@ or directly:
 - clone the repo with `git clone https://github.com/a2n-s/dotfiles.git` or `git clone git@github.com:a2n-s/dotfiles.git`.
 - place your version of the `.vimrc` file inside a backup directory or archive.
 - copy my `.vimrc` file in replacement of yours.
-- follow additional instructions in the dedicated section ([here](https://github.com/a2n-s/dotfiles/tree/main/#install-vim-toc) for `vim`).
+- follow additional instructions in the dedicated section ([here](.vim/) for `vim`).
 - enjoy your new `vim` experience!
 
 I will try, in the future, to provide an `install.sh` script to (1) select what part of the config to install,
@@ -135,15 +135,16 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [nitrogen](.config/nitrogen)
 - [x] [spectrWM](.config/spectrwm)
 - [ ] [tmux](.config/.readmes/tmux)
+- [x] [vim](.vim)
 - [x] [x](.config/.readmes/x)
 - [x] [xscreensaver](.config/.readmes/xscreensaver)
 
 #### List of scripts:
-- [x] [screenshot.sh](.config/scripts/screenshot.sh)
-- [x] [spectrWM-baraction.sh](.config/scripts/spectrWM-baraction.sh)
-- [x] [togkb.sh](.config/scripts/togkb.sh)
-- [x] [wvenv](.config/scripts/wvenv)
-- [x] [xtcl](.config/scripts/xtcl)
+- [x] [screenshot.sh](.config/.readmes/scripts/screenshot.sh)
+- [x] [spectrWM-baraction.sh](.config/.readmes/scripts/spectrWM-baraction.sh)
+- [x] [togkb.sh](.config/.readmes/scripts/togkb.sh)
+- [x] [wvenv](.config/.readmes/scripts/wvenv)
+- [x] [xtcl](.config/.readmes/scripts/xtcl)
 
 ## 3. Contribute. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
 YOU can contribute to this project in the wonderfull world of linux, arch and configuration!
