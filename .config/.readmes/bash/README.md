@@ -1,4 +1,4 @@
-# Bash shell environment.
+# bash shell environment.
 
 <img src="logo.png" width="100">
 
