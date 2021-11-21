@@ -22,7 +22,7 @@
 - [`togkb.sh`] to switch the keyboard layout.
 - `xscreensaver` to lock and save the screen usage.
 
-## Install alacritty manually.
+## Install spectrwm manually.
 - install the dependencies.
 - install the `spectrwm` command.
 - copy [`spectrwm.conf`] and [`spectrwm_us.conf`] inside your `~/.config/spectrwm` directory.
