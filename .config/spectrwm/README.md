@@ -1,7 +1,14 @@
-# The spectrWM window manager.
+# spectrWM
+
+"spectrwm is a small, dynamic tiling and reparenting window manager for X11."
 
 
-## Dependencies.
+## Some resources.
+- the github page [here](https://github.com/conformal/spectrwm).
+- the arch wiki page [here](https://wiki.archlinux.org/title/spectrwm).
+- the arch manual page [here](https://man.archlinux.org/man/spectrwm.1).
+
+## Dependencies for spectrWM.
 - the `mononoki nerd` font.
 - a [`spectrWM-baraction.sh`] file.
 - a browser: `firefox`
@@ -15,7 +22,15 @@
 - [`togkb.sh`] to switch the keyboard layout.
 - `xscreensaver` to lock and save the screen usage.
 
-## Install.
+## Install alacritty manually.
 - install the dependencies.
 - install the `spectrwm` command.
 - copy [`spectrwm.conf`] and [`spectrwm_us.conf`] inside your `~/.config/spectrwm` directory.
+
+## Gallery.
+Available soon.
+
+[`spectrWM-baraction.sh`]: ../../scripts/spectrWM-baraction.sh
+[`togkb.sh`]:              ../../scripts/togkb.sh
+[`spectrwm.conf`]:         spectwm.conf
+[`spectrwm_us.conf`]:      spectrwm_us.conf
