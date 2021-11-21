@@ -135,6 +135,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [nitrogen](.config/nitrogen)
 - [x] [spectrWM](.config/spectrwm)
 - [ ] [tmux](.config/.readmes/tmux)
+- [x] [vifm](.config/vifm)
 - [x] [vim](.vim)
 - [x] [x](.config/.readmes/x)
 - [x] [xscreensaver](.config/.readmes/xscreensaver)
@@ -154,31 +155,31 @@ YOU can contribute to this project in the wonderfull world of linux, arch and co
 do not hesitate to contact me, either via email, github issues or pull requests!
 
 ## 4. Gallery. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
-| ![My wallpaper.](.config/images/readme/nitrogen.png) |
+| ![My wallpaper.](.config/.images/readme/nitrogen.png) |
 |:--:|
 | *My wallpaper.* |
 
-| ![My bar.](.config/images/readme/bar.png) |
+| ![My bar.](.config/.images/readme/bar.png) |
 |:--:|
 | *My bar.* |
 
-| ![SpectrWM in a dual monitor setup: left monitor selected.](.config/images/readme/spectrwm1.png) |
+| ![SpectrWM in a dual monitor setup: left monitor selected.](.config/.images/readme/spectrwm1.png) |
 |:--:|
 | *SpectrWM in a dual monitor setup: left monitor selected.* |
 
-| ![SpectrWM in a dual monitor setup: right monitor selected.](.config/images/readme/spectrwm2.png) |
+| ![SpectrWM in a dual monitor setup: right monitor selected.](.config/.images/readme/spectrwm2.png) |
 |:--:|
 | *SpectrWM in a dual monitor setup: right monitor selected.* |
 
-| ![A screenshot of seing all processes.](.config/images/readme/htop.png) |
+| ![A screenshot of seing all processes.](.config/.images/readme/htop.png) |
 |:--:|
 | *A screenshot of seing all processes.* |
 
-| ![A screenshot of being in a git repository.](.config/images/readme/git.png) |
+| ![A screenshot of being in a git repository.](.config/.images/readme/git.png) |
 |:--:|
 | *A screenshot of being in a git repository.* |
 
-| ![A screenshot of being in vim.](.config/images/readme/vim.png) |
+| ![A screenshot of being in vim.](.config/.images/readme/vim.png) |
 |:--:|
 | *A screenshot of being in vim.* |
 
