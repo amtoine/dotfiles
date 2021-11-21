@@ -10,7 +10,7 @@
 - the arch wiki page [here](https://wiki.archlinux.org/title/git).
 - an interactive and visual tutorial to learn git [here](https://learngitbranching.js.org/).
 
-## Install alacritty manually.
+## Install git manually.
 - install the `git` command.
 - copy [`.gitconfig`] inside your `~/` directory.
 
