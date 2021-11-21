@@ -1,8 +1,10 @@
-#           __               __
-#          / /_  ____ ______/ /_  __________
-#         / __ \/ __ `/ ___/ __ \/ ___/ ___/
-#      _ / /_/ / /_/ (__  ) / / / /  / /__
-#     (_)_.___/\__,_/____/_/ /_/_/   \___/
+#          _               _
+#         | |             | |
+#         | |__   __ _ ___| |__  _ __ ___
+#         | '_ \ / _` / __| '_ \| '__/ __|
+#      _  | |_) | (_| \__ \ | | | | | (__
+#     (_) |_.__/ \__,_|___/_| |_|_|  \___|
+#
 # full config can be found at: https://github.com/a2n-s/dotfiles
 
 
@@ -123,7 +125,7 @@ shortwd() {
 # gives information about the current git repository.
 parse_git_info() {
 	git branch 1> /dev/null 2> /dev/null
-	if [ $? -eq 0 ]; then 
+	if [ $? -eq 0 ]; then
 		branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
 		tbc=$(git status 2> /dev/null | awk '/^Changes to be committed/,/^$/' | grep -e $'^\t' | wc -l)
 		nsfc=$(git status 2> /dev/null | awk '/^Changes not staged for commit/,/^$/' | grep -e $'^\t' | wc -l)

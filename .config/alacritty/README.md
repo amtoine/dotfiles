@@ -7,8 +7,7 @@ Alacritty is a minimal terminal emulator.
 
 ## Some resources.
 - the github page [here](https://github.com/alacritty/alacritty).
-- the arch wiki page [here](https://wiki.archlinux.org/title/Alacritty)
-
+- the arch wiki page [here](https://wiki.archlinux.org/title/Alacritty).
 
 ## Dependencies for alacritty.
 - `xterm-256color` mode to display many colors.u
@@ -18,7 +17,6 @@ Alacritty is a minimal terminal emulator.
 - install the dependencies.
 - install the `alacritty` command.
 - copy [`alacritty.yml`] inside your `~/.config/alacritty` directory.
-
 
 ## Gallery.
 Available soon.
