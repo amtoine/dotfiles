@@ -1,6 +1,6 @@
 # togkb.sh
 
-script can be found [here](scripts/togkb.sh).
+script can be found [here](../../togkb.sh).
 
 
 ## Dependencies for togkb.sh

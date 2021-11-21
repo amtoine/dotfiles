@@ -1,6 +1,6 @@
 # screenshot.sh
 
-script can be found [here](scripts/screenshot.sh).
+script can be found [here](../../screenshot.sh).
 
 
 ## Dependencies for screenshot.sh.

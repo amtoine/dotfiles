@@ -1,6 +1,6 @@
 # wvenv.
 
-script can be found [here](scripts/wvenv).
+script can be found [here](../../wvenv).
 
 
 ## Dependencies for wvenv.
