@@ -13,7 +13,7 @@ If you want a quick brief of what dotfiles really are, I recommend the following
 
 ## Table Of Content.
 - **1** [**Overview and architecture.**](https://github.com/a2n-s/dotfiles/tree/main/#1-overview-and-architecture-toc)
-- **2** [**Progams.**](https://github.com/a2n-s/dotfiles/tree/main/#2-progams-toc)
+- **2** [**Programs.**](https://github.com/a2n-s/dotfiles/tree/main/#2-programs-toc)
 - **3** [**Contribute.**](https://github.com/a2n-s/dotfiles/tree/main/#3-contribute-toc)
 - **4** [**Gallery.**](https://github.com/a2n-s/dotfiles/tree/main/#4-gallery-toc)
 
@@ -127,23 +127,23 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - install all the packages I have on my system by using the lists in [`pkgslists`] and `pacman` or `yay` to install them.
 
 #### List of programs:
-- [alacritty](https://github.com/a2n-s/dotfiles/tree/main/#install-alacritty-toc)
-- [bash](https://github.com/a2n-s/dotfiles/tree/main/#install-bash-toc)
-- [git](https://github.com/a2n-s/dotfiles/tree/main/#install-git-toc)
-- [htop](https://github.com/a2n-s/dotfiles/tree/main/#install-htop-toc)
-- [neofetch](https://github.com/a2n-s/dotfiles/tree/main/#install-neofetch-toc)
-- [nitrogen](https://github.com/a2n-s/dotfiles/tree/main/#install-nitrogen-toc)
-- [spectrWM](https://github.com/a2n-s/dotfiles/tree/main/#install-spectrWM-toc)
-- [tmux](https://github.com/a2n-s/dotfiles/tree/main/#install-tmux-toc)
-- [x](https://github.com/a2n-s/dotfiles/tree/main/#install-x-toc)
-- [xscreensaver](https://github.com/a2n-s/dotfiles/tree/main/#install-xscreensaver-toc)
+- [x] [alacritty](.config/alacritty)
+- [x] [bash](.config/.readmes/bash)
+- [x] [git](.config/.readmes/git)
+- [x] [htop](.config/htop)
+- [x] [neofetch](.config/neofetch)
+- [x] [nitrogen](.config/nitrogen)
+- [x] [spectrWM](.config/spectrwm)
+- [ ] [tmux](.config/.readmes/tmux)
+- [x] [x](.config/.readmes/x)
+- [x] [xscreensaver](.config/.readmes/xscreensaver)
 
 #### List of scripts:
-- [screenshot.sh](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-screenshotsh-toc)
-- [spectrWM-baraction.sh](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-spectrwm-baractionsh-toc)
-- [togkb.sh](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-togkb-sh-toc)
-- [wvenv](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-wvenv-toc)
-- [xtcl](https://github.com/a2n-s/dotfiles/tree/main/#dependencies-for-xtcl-toc)
+- [x] [screenshot.sh](.config/scripts/screenshot.sh)
+- [x] [spectrWM-baraction.sh](.config/scripts/spectrWM-baraction.sh)
+- [x] [togkb.sh](.config/scripts/togkb.sh)
+- [x] [wvenv](.config/scripts/wvenv)
+- [x] [xtcl](.config/scripts/xtcl)
 
 ## 3. Contribute. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
 YOU can contribute to this project in the wonderfull world of linux, arch and configuration!
@@ -182,23 +182,3 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 | *A screenshot of being in vim.* |
 
 [`pkgslists`]:             .pkgslists
-[`.basrc`]:                .bashrc
-[`scripts`]:               scripts
-[`spectrWM-baraction.sh`]: scripts/spectrWM-baraction.sh
-[`togkb.sh`]:              scripts/togkb.sh
-[`.bash_aliases`]:         .bash_aliases
-[`.bash_logout`]:          .bash_logout
-[`.bash_profile`]:         .bash_profile
-[`.bashrc`]:               .bashrc
-[`.profile`]:              .profile
-[`.gitconfig`]:            .gitconfig
-[`htoprc`]:                .config/htop/htoprc
-[`config.conf`]:           .config/neofetch/config.conf
-[`nitrogen.cfg`]:          .config/nitrogen/nitrogen.cfg
-[`spectrwm.conf`]:         .config/spectrwm/spectrwm.conf
-[`spectrwm_us.conf`]:      .config/spectrwm/spectrwm_us.conf
-[`.vimrc`]:                .vimrc
-[`.xinitrc`]:              .xinitrc
-[`.xscreensaver`]:         .xscreensaver
-[`.neofetchrc`]:           .config/neofetch/.neofetchrc
-[`ascii`]:                 .config/neofetch/ascii
