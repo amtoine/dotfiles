@@ -1,10 +1,10 @@
 #!/bin/bash
-#                            __      _       ____  ___   __                             __  _
-#      _________  ___  _____/ /_____| |     / /  |/  /  / /_  ____ ______   ____ ______/ /_(_)___  ____
-#     / ___/ __ \/ _ \/ ___/ __/ ___/ | /| / / /|_/ /  / __ \/ __ `/ ___/  / __ `/ ___/ __/ / __ \/ __ \
-#    (__  ) /_/ /  __/ /__/ /_/ /   | |/ |/ / /  / /  / /_/ / /_/ / /     / /_/ / /__/ /_/ / /_/ / / / /
-#   /____/ .___/\___/\___/\__/_/    |__/|__/_/  /_/  /_.___/\__,_/_/      \__,_/\___/\__/_/\____/_/ /_/
-#       /_/
+#                              __      _       ____  ___            __                          __  _                           __
+#        _________  ___  _____/ /_____| |     / /  |/  /           / /_  ____ __________ ______/ /_(_)___  ____           _____/ /_
+#       / ___/ __ \/ _ \/ ___/ __/ ___/ | /| / / /|_/ /  ______   / __ \/ __ `/ ___/ __ `/ ___/ __/ / __ \/ __ \         / ___/ __ \
+#      (__  ) /_/ /  __/ /__/ /_/ /   | |/ |/ / /  / /  /_____/  / /_/ / /_/ / /  / /_/ / /__/ /_/ / /_/ / / / /   _    (__  ) / / /
+#     /____/ .___/\___/\___/\__/_/    |__/|__/_/  /_/           /_.___/\__,_/_/   \__,_/\___/\__/_/\____/_/ /_/   (_)  /____/_/ /_/
+#         /_/
 #
 # Example Bar Action Script for Linux.
 # Requires: acpi, iostat, ...
@@ -106,8 +106,8 @@ networkicon() {
 connection() {
   echo "$(nmcli d | grep "\<connected\>" | awk '{ print $4 }')"
 }
-upicon(){ 
-  echo "TX" 
+upicon(){
+  echo "TX"
 }
 downicon(){
   echo "RX"
@@ -233,12 +233,12 @@ DELAY=1
 while :; do
     bat_level=$(batlevel)
     bat_stat=$(batstat)
-    if [[ "$bat_level" -le 15  && "$bat_stat" = "Discharging" ]]; then 
+    if [[ "$bat_level" -le 15  && "$bat_stat" = "Discharging" ]]; then
       play -q -n synth .05 sine 880 vol 0.02
       if [[ $bat_color = "+@fg=6;" ]]; then bat_color="+@fg=2;"; else bat_color="+@fg=6;"; fi;
-    elif [[ "$bat_level" -ge 85  && "$bat_stat" = "Charging" ]]; then 
+    elif [[ "$bat_level" -ge 85  && "$bat_stat" = "Charging" ]]; then
       if [[ $bat_color = "+@fg=6;" ]]; then bat_color="+@fg=1;"; else bat_color="+@fg=6;"; fi;
-    else bat_color="+@fg=6;"; 
+    else bat_color="+@fg=6;";
     fi
     echo -e "+@fg=1;$(cpuicon) +@fg=4;$(cpu) +@fg=0;| \
 +@fg=1;$(memicon) +@fg=4;$(mem) +@fg=0;| \

@@ -32,5 +32,5 @@ Available soon.
 
 [`spectrWM-baraction.sh`]: ../../scripts/spectrWM-baraction.sh
 [`togkb.sh`]:              ../../scripts/togkb.sh
-[`spectrwm.conf`]:         spectwm.conf
+[`spectrwm.conf`]:         spectrwm.conf
 [`spectrwm_us.conf`]:      spectrwm_us.conf
