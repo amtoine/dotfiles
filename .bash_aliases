@@ -57,6 +57,9 @@ alias bmm='blueman-manager'
 
 # to list all the git repositiories inside the home directory.
 alias lgr='find $HOME -type d | grep "\.git$" | sed "s/\/\.git//"'
+
+# allows to see any csv file directly in the terminal.
+alias seecsv='perl -pe "s/((?<=,)|(?<=^)),/ ,/g;" "$@" | column -t -s, | less  -F -S -X -K ;'
 # <<<
 
 # >>> tmux shortcuts.

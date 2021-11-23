@@ -109,67 +109,13 @@ export PATH=$PATH:$HOME/scripts:$HOME/.local/bin
 # <<<
 
 # >>> prompt.
-# gives a short directory in prompt, not to fill the entire line when inside nested directories.
-shortwd() {
-    max_num_dirs=7
-    newPWD="${PWD/#$HOME/~}"
-    num_dirs=$(echo -n $newPWD | awk -F '/' '{print NF}')
-    if [ $num_dirs -gt $max_num_dirs ]; then
-        newPWD="~$(echo -n $newPWD | awk -F '/' '{print $1 "/.../" $(NF-1) "/" $(NF)}')"
-    else
-        newPWD=$(echo $newPWD | sed -e "s|$HOME|~|g")
-    fi
-    echo -n $newPWD
-}
-
-# gives information about the current git repository.
-parse_git_info() {
-	git branch 1> /dev/null 2> /dev/null
-	if [ $? -eq 0 ]; then
-		branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
-		tbc=$(git status 2> /dev/null | awk '/^Changes to be committed/,/^$/' | grep -e $'^\t' | wc -l)
-		nsfc=$(git status 2> /dev/null | awk '/^Changes not staged for commit/,/^$/' | grep -e $'^\t' | wc -l)
-		uf=$(git status 2> /dev/null | awk '/^Untracked files/,/^$/' | grep -e $'^\t' | wc -l)
-		sl=$(git stash list 2> /dev/null | wc -l)
-		repo=$(git remote -v 2> /dev/null | grep -e "origin.*fetch"  | rev | cut -d'/' -f1 | rev | sed "s/ (fetch)//g; s/ (push)//g; s/\.git$//")
-		echo -e "\e[39m(\e[36m$repo\e[96m@\e[36m$branch\e[39m:\e[92m$tbc\e[39m,\e[93m$nsfc\e[39m,\e[91m$uf\e[39m,\e[95m$sl\e[39m)"
-	fi
-}
-
-# final prompt in the terminal.
-export PS1="\033[01;32m\u@\h\[\033[00m:\[\033[01;34m\$(shortwd)\[\033[33m\$(parse_git_info)\[\033[00m\n$ "
+export PS1="\033[01;32m\u@\h\[\033[00m:\[\033[01;34m\$(_shortwd)\[\033[33m\$(_parse_git_info)\[\033[00m\n$ "
 # <<<
 
 # >>> misc.
 # disables the caps lock key.
 xtcl -d -q
 
-# some tool funtions.
-function countdown(){
-   date1=$((`date +%s` + $1));
-   while [ "$date1" -ge `date +%s` ]; do
-     echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
-     sleep 0.1
-   done
-   echo -n "COUNTDOWN OVER!!"
-   while [ true ]; do
-        play -q -n synth .1 sine 880 vol 0.5
-        play -q -n synth .1 sine 880 vol 0.5
-        play -q -n synth .1 sine 880 vol 0.5
-        play -q -n synth .1 sine 880 vol 0.5
-        play -q -n synth .1 sine 880 vol 0.5
-	   sleep 0.5
-	 done
-}
-function stopwatch(){
-  date1=`date +%s`;
-   while true; do
-    echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r";
-    sleep 0.1
-   done
-}
-
-function seecsv (){ perl -pe 's/((?<=,)|(?<=^)),/ ,/g;' "$@" | column -t -s, | less  -F -S -X -K ; }
 
 # changes the editor in the terminal, to edit long commands.
 export EDITOR='vim'
