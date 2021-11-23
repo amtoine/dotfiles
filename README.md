@@ -184,4 +184,4 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 |:--:|
 | *A screenshot of being in vim.* |
 
-[`pkgslists`]:             .pkgslists
+[`pkgslists`]: .pkgslists

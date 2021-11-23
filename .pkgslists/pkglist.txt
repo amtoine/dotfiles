@@ -11,6 +11,7 @@ bison
 blueman
 bluez-utils
 brightnessctl
+bspwm
 cmake
 cmus
 ctags

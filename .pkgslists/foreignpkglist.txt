@@ -1,6 +1,9 @@
 arduino-mk
 nerd-fonts-mononoki
 paru
+pfetch
 pixterm
+polybar
 python38
+shell-color-scripts
 yay-git

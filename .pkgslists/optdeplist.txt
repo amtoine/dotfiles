@@ -1,1 +1,2 @@
+i3-wm
 mpdecimal

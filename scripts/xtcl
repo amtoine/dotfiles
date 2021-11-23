@@ -1,4 +1,11 @@
 #! /usr/bin/bash
+#                        _       __             __        __       __
+#        _______________(_)___  / /______     _/_/  _  __/ /______/ /
+#       / ___/ ___/ ___/ / __ \/ __/ ___/   _/_/   | |/_/ __/ ___/ /
+#      (__  ) /__/ /  / / /_/ / /_(__  )  _/_/    _>  </ /_/ /__/ /
+#     /____/\___/_/  /_/ .___/\__/____/  /_/     /_/|_|\__/\___/_/
+#                     /_/
+#
 # turns off proprely the Caps_Lock key.
 
 while [[ $# -gt 0 ]]; do
@@ -26,7 +33,7 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if [[ ${#POSITIONAL[@]} -eq 1 ]]; then if [[ ! -v QUIET ]]; then echo "unknown flag $POSITIONAL... Aborting."; fi; exit; 
+if [[ ${#POSITIONAL[@]} -eq 1 ]]; then if [[ ! -v QUIET ]]; then echo "unknown flag $POSITIONAL... Aborting."; fi; exit;
 else if [[ ${#POSITIONAL[@]} -gt 1 ]]; then if [[ ! -v QUIET ]]; then echo "unknown flags ${POSITIONAL[@]}... Aborting."; fi; exit; fi; fi
 if [[ -v ENABLE && -v DISABLE ]]; then if [[ ! -v QUIET ]]; then echo "you cannot enable and disable at the same time... Aborting..."; fi; exit; fi
 if [[ ! -v ENABLE && ! -v DISABLE ]]; then if [[ ! -v QUIET ]]; then echo "defaulting to DISABLE"; DISABLE=YES; fi; fi
