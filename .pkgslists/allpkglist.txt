@@ -74,6 +74,7 @@ sudo
 swig
 sxhkd
 sysstat
+termdown
 texinfo
 thunderbird
 tk

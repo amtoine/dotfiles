@@ -43,6 +43,7 @@ sox
 spectrwm
 swig
 sysstat
+termdown
 thunderbird
 tldr
 tree

@@ -3,6 +3,7 @@
 #         | |/_/ / __ \/ / __/ ___/ ___/
 #      _ _>  </ / / / / / /_/ /  / /__
 #     (_)_/|_/_/_/ /_/_/\__/_/   \___/
+#
 # full config can be found at: https://github.com/a2n-s/dotfiles
 
 
@@ -56,7 +57,23 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+### window manager launching:
+# the compositor.
 picom &
-nitrogen --restore &
+
+# the wallpaper.
+#nitrogen --restore &
+~/.fehbg &
+
+# the screen saver.
 xscreensaver --no-splash > /dev/null &
-exec spectrwm
+
+# the window manager itself.
+case "$_my_wm" in
+    spectrwm) exec spectrwm ;;
+    bspwm)    exec bspwm ;;
+    i3)       exec i3 ;;
+    awesome)  exec awesome ;;
+    qtile)    exec qtile start ;;
+    *)        exec spectrwm ;;
+esac
