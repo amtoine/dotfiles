@@ -164,6 +164,8 @@ baticon() {
     bat_icon="x"
   elif [[ $bat_stat = 'Charging' ]]; then
     bat_icon=""
+  elif [[ $bat_level -eq 100 ]] && [[ $bat_stat = 'Not charging' ]]; then
+    bat_icon=""
   elif [[ $bat_level -ge 5 ]] && [[ $bat_level -le 19 ]]; then
     bat_icon=""
   elif [[ $bat_level -ge 20 ]] && [[ $bat_level -le 39 ]]; then
