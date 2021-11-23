@@ -81,9 +81,12 @@ $HOME
 |   |-- [-]  optdeplist.txt                       -- the list of optional packages.
 |   `-- [-]  pkglist.txt                          -- the list of arch packages.
 |-- [d]  scripts                                -- my scripts.
+|   |-- [-]  dmenu-edit-config-files.sh           -- TODO
+|   |-- [-]  prompt                               -- TODO
 |   |-- [-]  screenshot.sh                        -- takes screeshots with scrot.
 |   |-- [-]  spectrWM-baraction.sh                -- controls the spectrWM bar.
 |   |-- [-]  togkb.sh                             -- toggles the keyboard layout.
+|   |-- [-]  tree2md                              -- TODO
 |   |-- [l]  upl -> /etc/pacman.d/hooks.bin/upl   -- updates the list of installed packages.
 |   |-- [-]  wvenv                                -- shows current python environment.
 |   `-- [-]  xtcl                                 -- disables my broken caps lock key.
@@ -139,14 +142,19 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [vim](.vim)
 - [x] [x](.config/.readmes/x)
 - [x] [xscreensaver](.config/.readmes/xscreensaver)
-
 #### List of scripts:
+- [x] [dmenu-edit-config-files.sh](scripts/.readmes/dmenu-edit-condif-files.sh)
+- [x] [prompt](scripts/.readmes/prompt)
 - [x] [screenshot.sh](scripts/.readmes/screenshot.sh)
 - [x] [spectrWM-baraction.sh](scripts/.readmes/spectrWM-baraction.sh)
 - [x] [togkb.sh](scripts/.readmes/togkb.sh)
+- [x] [tree2md](scripts/.readmes/tree2md)
 - [x] [upl](scripts/.readmes/upl)
 - [x] [wvenv](scripts/.readmes/wvenv)
 - [x] [xtcl](scripts/.readmes/xtcl)
+#### Other programs I use:
+- [x] virtualenvwrapper [here in english](https://virtualenvwrapper.readthedocs.io/en/latest/) or [here in french](https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html).
+
 
 ## 3. Contribute. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
 YOU can contribute to this project in the wonderfull world of linux, arch and configuration!

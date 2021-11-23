@@ -62,6 +62,7 @@ pkgconf
 polybar
 python-mpi4py
 python-opengl
+python-pip
 python-tqdm
 python-virtualenv
 python38
