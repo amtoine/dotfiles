@@ -7,23 +7,23 @@
 #                     /_/                                                                                                             /____/
 #
 # full config at https://github.com/a2n-s/dotfiles
-term="alacritty"
-editor="vim"
+term="/usr/bin/alacritty"
+editor="/usr/bin/vim"
 
 msg="What config do you want to edit?"
 choices="alacritty\nbash\ngit\nhtop\nneofetch\nspectrWM\ntmux\nvifm\nvim\nx\nxscreensaver"
-chosen=$(echo -e "$choices" | dmenu -i -p "$msg")
+chosen=$(/usr/bin/echo -e "$choices" | /usr/local/bin/dmenu -i -p "$msg")
 
 case "$chosen" in 
-    alacritty) "$term" -e "$editor" "$HOME/.config/alacritty/alacritty.yml" ;;
-    bash) "$term" -e "$editor" "$HOME/.bashrc" ;;
-    git) "$term" -e "$editor" "$HOME/.gitconfig" ;;
-    htop) "$term" -e "$editor" "$HOME/.config/htop/htoprc" ;;
-    neofetch) "$term" -e "$editor" "$HOME/.config/neofetch/config.conf" ;;
-    spectrWM) "$term" -e "$editor" "$HOME/.config/spectrwm/spectrwm.conf" ;;
-    tmux) "$term" -e "$editor" "$HOME/.tmux.conf" ;;
-    vifm) "$term" -e "$editor" "$HOME/.config/vifm/vifmrc" ;;
-    vim) "$term" -e "$editor" "$HOME/.vimrc" ;;
-    x) "$term" -e "$editor" "$HOME/.xinitrc" ;;
+    alacritty)    "$term" -e "$editor" "$HOME/.config/alacritty/alacritty.yml" ;;
+    bash)         "$term" -e "$editor" "$HOME/.bashrc" ;;
+    git)          "$term" -e "$editor" "$HOME/.gitconfig" ;;
+    htop)         "$term" -e "$editor" "$HOME/.config/htop/htoprc" ;;
+    neofetch)     "$term" -e "$editor" "$HOME/.config/neofetch/config.conf" ;;
+    spectrWM)     "$term" -e "$editor" "$HOME/.config/spectrwm/spectrwm.conf" ;;
+    tmux)         "$term" -e "$editor" "$HOME/.tmux.conf" ;;
+    vifm)         "$term" -e "$editor" "$HOME/.config/vifm/vifmrc" ;;
+    vim)          "$term" -e "$editor" "$HOME/.vimrc" ;;
+    x)            "$term" -e "$editor" "$HOME/.xinitrc" ;;
     xscreensaver) "$term" -e "$editor" "$HOME/.xscreensaver" ;;
 esac

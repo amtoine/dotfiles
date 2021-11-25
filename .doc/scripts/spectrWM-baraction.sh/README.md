@@ -1,6 +1,6 @@
 # spectrWM-baraction.sh
 
-script can be found [here](../../spectrWM-baraction.sh).
+script can be found [here](https://github.com/a2n-s/dotfiles/blob/main/scripts/spectrWM-baraction.sh).
 
 
 ## Dependencies for spectrWM-baraction.sh

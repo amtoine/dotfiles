@@ -81,6 +81,7 @@ tk
 tldr
 tmux
 tree
+unzip
 vi
 vifm
 vim

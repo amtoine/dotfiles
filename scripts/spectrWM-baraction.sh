@@ -238,7 +238,7 @@ while :; do
     if [[ "$bat_level" -le 15  && "$bat_stat" = "Discharging" ]]; then
       play -q -n synth .05 sine 880 vol 0.02
       if [[ $bat_color = "+@fg=6;" ]]; then bat_color="+@fg=2;"; else bat_color="+@fg=6;"; fi;
-    elif [[ "$bat_level" -ge 85  && "$bat_stat" = "Charging" ]]; then
+    elif [[ "$bat_level" -ge 85 ]] && [[ "$bat_stat" = "Charging" || "$bat_stat" = "Not charging" ]]; then
       if [[ $bat_color = "+@fg=6;" ]]; then bat_color="+@fg=1;"; else bat_color="+@fg=6;"; fi;
     else bat_color="+@fg=6;";
     fi

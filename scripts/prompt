@@ -15,4 +15,4 @@
 # ~/scripts/prompt "Do you really want to shutdown your machine?" "shutdown -h now"
 # will ask you before shutting down.
 
-[ $(echo -e "No\nYes" | dmenu -i -p "$1") == "Yes" ] && $2
+[[ $(/usr/bin/echo -e "No\nYes" | /usr/bin/dmenu -i -p "$1") == "Yes" ]] && $2

@@ -16,4 +16,4 @@
 ## Gallery.
 Available soon.
 
-[`.tmux.conf`]: ../../../.tmux.conf
+[`.tmux.conf`]: https://github.com/a2n-s/dotfiles/blob/main/.tmux.conf

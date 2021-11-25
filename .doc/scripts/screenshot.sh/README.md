@@ -1,6 +1,6 @@
 # screenshot.sh
 
-script can be found [here](../../screenshot.sh).
+script can be found [here](https://github.com/a2n-s/dotfiles/blob/main/scripts/screenshot.sh).
 
 
 ## Dependencies for screenshot.sh.

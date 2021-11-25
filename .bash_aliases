@@ -23,15 +23,6 @@ alias dfm='df -h | grep media | sed "s/\s\+/ /g" | cut -d" " -f6,1'
 # automatically connects to an HDMI-2 monitor on the right of the main laptop screen.
 alias xrandr-run='xrandr --output eDP-1 --auto --output HDMI-2 --mode 1920x1080 --rate 60 --right-of eDP-1'
 
-# uncomment to use julia.
-#alias julia='/home/antoine/julia-1.6.1/bin/julia'
-
-# uncomment to get the printing parameters
-#alias printing_pages='python ~/Documents/programming/python/printing_pages.py'
-
-# to play snake.
-#alias snake='~/Documents/programming/scsc/snake/run'
-
 # uncomment to assemble some assembly using vasm.
 #alias vasm6502_oldstyle='~/Documents/softwares/vasm/vasm/vasm6502_oldstyle'
 
@@ -42,7 +33,9 @@ alias xrandr-run='xrandr --output eDP-1 --auto --output HDMI-2 --mode 1920x1080 
 # automatic copy from terminal output with xclip.
 alias xcc='xclip -selection c'
 
+# list the packages that match the pattern given after the alias.
 alias pkgl='tail -n +1 .pkgslists/* | grep -e "==>.*<==" -e'
+# interacts with my config's git bare repository.
 alias cfg='/usr/bin/git --git-dir=/home/ants/.dotfiles --work-tree=/home/ants'
 
 # uncomment to use colored GCC warnings and errors
@@ -63,15 +56,15 @@ alias seecsv='perl -pe "s/((?<=,)|(?<=^)),/ ,/g;" "$@" | column -t -s, | less  -
 # <<<
 
 # >>> tmux shortcuts.
-alias tls='tmux ls'
-alias tns='tmux new -s'
-alias tat='tmux attach -t'
-alias tkt='tmux kill-session -t'
+alias tls='tmux ls'               # list the sessions.
+alias tns='tmux new -s'           # creates a new session with name given after the alias.
+alias tat='tmux attach -t'        # attaches to the session given after the alias.
+alias tkt='tmux kill-session -t'  # kills the session with name given after the alias.
 # <<<
 
 # >>> network shortcuts.
-alias ncua='nmcli c up "a2n-s"'
-alias ncue='nmcli c up "eduroam"'
+alias ncua='nmcli c up "a2n-s"'    # connects to my 4g, change to what you want.
+alias ncue='nmcli c up "eduroam"'  # connects to the network of my school.
 # <<<
 
 # >>> jupyter shortcuts.
@@ -80,7 +73,7 @@ alias jnb='jupyter-notebook'
 # <<<
 
 # >>> shutdown shortcuts.
-alias sdn='shutdown now'
+alias sdn='shutdown now -h'
 alias sdnr='shutdown now -r'
 # <<<
 

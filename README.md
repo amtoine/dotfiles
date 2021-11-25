@@ -45,15 +45,6 @@ $HOME
 |   |   `-- [-]  lib.pl
 |   |-- [d]  htop                                 -- my process monitor.
 |   |   `-- [-]  htoprc
-|   |-- [d]  images                               -- images used for the readme.
-|   |   `-- [d]  readme
-|   |       |-- [-]  bar.png
-|   |       |-- [-]  git.png
-|   |       |-- [-]  htop.png
-|   |       |-- [-]  nitrogen.png
-|   |       |-- [-]  spectrwm1.png
-|   |       |-- [-]  spectrwm2.png
-|   |       `-- [-]  vim.png
 |   |-- [d]  neofetch                             -- my logo printer.
 |   |   |-- [d]  ascii                              -- all used arts.
 |   |   |   |-- [-]  christmas.art
@@ -135,37 +126,40 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - install all the packages I have on my system by using the lists in [`pkgslists`] and `pacman` or `yay` to install them.
 
 #### List of programs:
-- [x] [alacritty](.config/alacritty)
-- [x] [bash](.config/.readmes/bash)
-- [x] [git](.config/.readmes/git)
-- [x] [htop](.config/htop)
-- [x] [neofetch](.config/neofetch)
-- [x] [nitrogen](.config/nitrogen)
-- [x] [spectrWM](.config/spectrwm)
-- [ ] [tmux](.config/.readmes/tmux)
-- [x] [vifm](.config/vifm)
-- [x] [vim](.vim)
-- [x] [x](.config/.readmes/x)
-- [x] [xscreensaver](.config/.readmes/xscreensaver)
+- [x] [`alacritty`](.config/alacritty)
+- [x] [`bash`](.doc/programs/bash)
+- [x] [`dmenu`](https://github.com/a2n-s/dmenu) (\*)
+- [x] [`git`](.doc/programs/git)
+- [x] [`htop`](.config/htop)
+- [x] [`neofetch`](.config/neofetch)
+- [x] [`nitrogen`](.config/nitrogen)
+- [x] [`spectrWM`](.config/spectrwm)
+- [ ] [`tmux`](.doc/programs/tmux)
+- [x] [`vifm`](.config/vifm)
+- [x] [`vim`](.vim)
+- [x] [`x`](.doc/programs/x)
+- [x] [`xscreensaver`](.doc/programs/xscreensaver)
 
 #### List of scripts:
-- [ ] _countdown
-- [x] _parse_git_info
-- [x] _shortwd
-- [ ] _stopwatch
-- [x] [dmenu-edit-config-files.sh](scripts/.readmes/dmenu-edit-config-files.sh)
-- [x] [prompt](scripts/.readmes/prompt)
-- [x] [screenshot.sh](scripts/.readmes/screenshot.sh)
-- [x] [spectrWM-baraction.sh](scripts/.readmes/spectrWM-baraction.sh)
-- [x] [togkb.sh](scripts/.readmes/togkb.sh)
-- [x] [tree2md](scripts/.readmes/tree2md)
-- [x] [upl](scripts/.readmes/upl)
-- [x] [wvenv](scripts/.readmes/wvenv)
-- [x] [xtcl](scripts/.readmes/xtcl)
+- [ ] `_countdown`
+- [x] `_parse_git_info`
+- [x] `_shortwd`
+- [ ] `_stopwatch`
+- [x] [`dmenu-edit-config-files.sh`](.doc/scripts/dmenu-edit-config-files.sh)
+- [x] [`prompt`](.doc/scripts/prompt)
+- [x] [`screenshot.sh`](.doc/scripts/screenshot.sh)
+- [x] [`spectrWM-baraction.sh`](.doc/scripts/spectrWM-baraction.sh)
+- [x] [`togkb.sh`](.doc/scripts/togkb.sh)
+- [x] [`tree2md`](.doc/scripts/tree2md)
+- [x] [`upl`](.doc/scripts/upl)
+- [x] [`wvenv`](.doc/scripts/wvenv)
+- [x] [`xtcl`](.doc/scripts/xtcl)
 
 #### Other programs and stuff I use:
-- [x] virtualenvwrapper [here in english](https://virtualenvwrapper.readthedocs.io/en/latest/) or [here in french](https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html).
-- [x] some wallpapers [here](https://github.com/a2n-s/wallpapers).
+- [x] virtualenvwrapper: tutorials [in english](https://virtualenvwrapper.readthedocs.io/en/latest/) or [in french](https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html).
+- [x] some [wallpapers](https://github.com/a2n-s/wallpapers) (\*)
+
+(\*) comes from another repo.
 
 
 ## 3. Contribute. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
@@ -176,31 +170,31 @@ YOU can contribute to this project in the wonderfull world of linux, arch and co
 do not hesitate to contact me, either via email, github issues or pull requests!
 
 ## 4. Gallery. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
-| ![My wallpaper.](.config/.images/readme/nitrogen.png) |
+| ![My wallpaper.](.doc/images/nitrogen.png) |
 |:--:|
 | *My wallpaper.* |
 
-| ![My bar.](.config/.images/readme/bar.png) |
+| ![My bar.](.doc/images/bar.png) |
 |:--:|
 | *My bar.* |
 
-| ![SpectrWM in a dual monitor setup: left monitor selected.](.config/.images/readme/spectrwm1.png) |
+| ![SpectrWM in a dual monitor setup: left monitor selected.](.doc/images/spectrwm1.png) |
 |:--:|
 | *SpectrWM in a dual monitor setup: left monitor selected.* |
 
-| ![SpectrWM in a dual monitor setup: right monitor selected.](.config/.images/readme/spectrwm2.png) |
+| ![SpectrWM in a dual monitor setup: right monitor selected.](.doc/images/spectrwm2.png) |
 |:--:|
 | *SpectrWM in a dual monitor setup: right monitor selected.* |
 
-| ![A screenshot of seing all processes.](.config/.images/readme/htop.png) |
+| ![A screenshot of seing all processes.](.doc/images/htop.png) |
 |:--:|
 | *A screenshot of seing all processes.* |
 
-| ![A screenshot of being in a git repository.](.config/.images/readme/git.png) |
+| ![A screenshot of being in a git repository.](.doc/images/git.png) |
 |:--:|
 | *A screenshot of being in a git repository.* |
 
-| ![A screenshot of being in vim.](.config/.images/readme/vim.png) |
+| ![A screenshot of being in vim.](.doc/images/vim.png) |
 |:--:|
 | *A screenshot of being in vim.* |
 

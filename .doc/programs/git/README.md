@@ -17,5 +17,5 @@
 ## Gallery.
 Available soon.
 
-[`.gitconfig`]: ../../../.gitconfig
+[`.gitconfig`]: https://github.com/a2n-s/dotfiles/blob/main/.gitconfig
 

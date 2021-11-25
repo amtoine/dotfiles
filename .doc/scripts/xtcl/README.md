@@ -1,6 +1,6 @@
 # xtcl
 
-script can be found [here](../../xtcl).
+script can be found [here](https://github.com/a2n-s/dotfiles/blob/main/scripts/xtcl).
 
 ## Dependencies for xtcl
 - base commands such as `echo`.

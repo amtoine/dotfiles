@@ -20,9 +20,9 @@
 ## Gallery.
 Available soon.
 
-[`scripts`]:       ../../../scripts
-[`.bash_aliases`]: ../../../.bash_aliases
-[`.bash_logout`]:  ../../../.bash_logout
-[`.bash_profile`]: ../../../.bash_profile
-[`.bashrc`]:       ../../../.bashrc
-[`.profile`]:      ../../../.profile
+[`scripts`]:       https://github.com/a2n-s/dotfiles/blob/main/scripts
+[`.bash_aliases`]: https://github.com/a2n-s/dotfiles/blob/main/.bash_aliases
+[`.bash_logout`]:  https://github.com/a2n-s/dotfiles/blob/main/.bash_logout
+[`.bash_profile`]: https://github.com/a2n-s/dotfiles/blob/main/.bash_profile
+[`.bashrc`]:       https://github.com/a2n-s/dotfiles/blob/main/.bashrc
+[`.profile`]:      https://github.com/a2n-s/dotfiles/blob/main/.profile

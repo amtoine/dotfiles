@@ -23,4 +23,4 @@
 ## Gallery.
 Available soon.
 
-[`.xinitrc`]: ../../../.xinitrc
+[`.xinitrc`]: https://github.com/a2n-s/dotfiles/blob/main/.xinitrc

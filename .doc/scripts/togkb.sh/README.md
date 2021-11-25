@@ -1,6 +1,6 @@
 # togkb.sh
 
-script can be found [here](../../togkb.sh).
+script can be found [here](https://github.com/a2n-s/dotfiles/blob/main/scripts/togkb.sh).
 
 
 ## Dependencies for togkb.sh

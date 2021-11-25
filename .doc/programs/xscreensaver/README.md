@@ -14,4 +14,4 @@
 ## Gallery.
 Available soon.
 
-[`.xscreensaver`]: ../../../.xscreensaver
+[`.xscreensaver`]: https://github.com/a2n-s/dotfiles/blob/main/.xscreensaver

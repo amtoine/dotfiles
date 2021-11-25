@@ -47,6 +47,7 @@ termdown
 thunderbird
 tldr
 tree
+unzip
 vi
 vifm
 vnstat
