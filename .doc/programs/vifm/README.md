@@ -1,6 +1,6 @@
 # vifm
 
-<img src="logo.png" width="100">
+<img src="https://github.com/a2n-s/dotfiles/blob/main/.doc/images/vifm-logo.png" width="100">
 
 "Vifm is a file manager with curses interface, which provides Vim-like environment for managing objects within file systems, extended with some useful ideas from mutt. "
 
@@ -16,5 +16,5 @@
 ## Gallery.
 Available soon.
 
-[`vifmrc`]: vifmrc
-[`colors`]: colors
+[`vifmrc`]: https://github.com/a2n-s/dotfiles/blob/main/.config/vifm/vifmrc
+[`colors`]: https://github.com/a2n-s/dotfiles/blob/main/.config/vifm/colors

@@ -1,6 +1,6 @@
 # vim
 
-<img src="logo.png" width="100">
+<img src="https://github.com/a2n-s/dotfiles/blob/main/.doc/images/vim-logo.png" width="100">
 
 "Vim (/vɪm/; a contraction of Vi IMproved) is a free and open-source, screen-based text editor program for Unix."
 
@@ -24,4 +24,4 @@
 ## Gallery.
 Available soon.
 
-[`.vimrc`]: ../.vimrc
+[`.vimrc`]: https://github.com/a2n-s/dotfiles/blob/main/.vimrc

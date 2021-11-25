@@ -1,6 +1,6 @@
 # neofetch
 
-<img src="logo.png" width="200">
+<img src="https://github.com/a2n-s/dotfiles/blob/main/.doc/images/neofetch-logo.png" width="200">
 
 neofetch is "a command-line system information tool written in bash 3.2+"
 
@@ -20,6 +20,6 @@ neofetch is "a command-line system information tool written in bash 3.2+"
 ## Gallery.
 Available soon.
 
-[`config.conf`]: config.conf
-[`.neofetchrc`]: .neofetchrc
-[`ascii`]: ascii
+[`config.conf`]: https://github.com/a2n-s/dotfiles/blob/main/.config/neofetch/config.conf
+[`.neofetchrc`]: https://github.com/a2n-s/dotfiles/blob/main/.config/neofetch/.neofetchrc
+[`ascii`]:       https://github.com/a2n-s/dotfiles/blob/main/.config/neofetch/ascii

@@ -14,4 +14,4 @@
 ## Gallery.
 Available soon.
 
-[`htoprc`]: htoprc
+[`htoprc`]: https://github.com/a2n-s/dotfiles/blob/main/.config/htop/htoprc

@@ -30,7 +30,7 @@
 ## Gallery.
 Available soon.
 
-[`spectrWM-baraction.sh`]: ../../scripts/spectrWM-baraction.sh
-[`togkb.sh`]:              ../../scripts/togkb.sh
-[`spectrwm.conf`]:         spectrwm.conf
-[`spectrwm_us.conf`]:      spectrwm_us.conf
+[`spectrWM-baraction.sh`]: https://github.com/a2n-s/dotfiles/blob/main/scripts/spectrWM-baraction.sh
+[`togkb.sh`]:              https://github.com/a2n-s/dotfiles/blob/main/scripts/togkb.sh
+[`spectrwm.conf`]:         https://github.com/a2n-s/dotfiles/blob/main/.config/spectrwm/spectrwm.conf
+[`spectrwm_us.conf`]:      https://github.com/a2n-s/dotfiles/blob/main/.config/spectrwm/spectrwm_us.conf

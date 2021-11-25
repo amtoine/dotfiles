@@ -1,6 +1,6 @@
 # alacritty
 
-<img src="logo.png" width="100">
+<img src="https://github.com/a2n-s/dotfiles/blob/main/.doc/images/alacritty-logo.png" width="100">
 
 Alacritty is a minimal terminal emulator.
 
@@ -21,4 +21,4 @@ Alacritty is a minimal terminal emulator.
 ## Gallery.
 Available soon.
 
-[`alacritty.yml`]: alacritty.yml
+[`alacritty.yml`]: https://github.com/a2n-s/dotfiles/blob/main/.config/alacritty/alacritty.yml

@@ -19,4 +19,4 @@
 ## Gallery.
 Available soon.
 
-[`nitrogen.cfg`]: nitrogen.cfg
+[`nitrogen.cfg`]: https://github.com/a2n-s/dotfiles/blob/main/.config/nitrogen/nitrogen.cfg
