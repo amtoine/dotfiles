@@ -126,17 +126,17 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - install all the packages I have on my system by using the lists in [`pkgslists`] and `pacman` or `yay` to install them.
 
 #### List of programs:
-- [x] [`alacritty`](.config/alacritty)
+- [x] [`alacritty`](.doc/programs/alacritty)
 - [x] [`bash`](.doc/programs/bash)
 - [x] [`dmenu`](https://github.com/a2n-s/dmenu) (\*)
 - [x] [`git`](.doc/programs/git)
-- [x] [`htop`](.config/htop)
-- [x] [`neofetch`](.config/neofetch)
-- [x] [`nitrogen`](.config/nitrogen)
-- [x] [`spectrWM`](.config/spectrwm)
+- [x] [`htop`](.doc/programs/htop)
+- [x] [`neofetch`](.doc/programs/neofetch)
+- [x] [`nitrogen`](.doc/programs/nitrogen)
+- [x] [`spectrWM`](.doc/programs/spectrwm)
 - [ ] [`tmux`](.doc/programs/tmux)
-- [x] [`vifm`](.config/vifm)
-- [x] [`vim`](.vim)
+- [x] [`vifm`](.doc/programs/vifm)
+- [x] [`vim`](.doc/programs.vim)
 - [x] [`x`](.doc/programs/x)
 - [x] [`xscreensaver`](.doc/programs/xscreensaver)
 
