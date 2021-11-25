@@ -110,7 +110,7 @@ or directly:
 - clone the repo with `git clone https://github.com/a2n-s/dotfiles.git` or `git clone git@github.com:a2n-s/dotfiles.git`.
 - place your version of the `.vimrc` file inside a backup directory or archive.
 - copy my `.vimrc` file in replacement of yours.
-- follow additional instructions in the dedicated section ([here](.vim/) for `vim`).
+- follow additional instructions in the dedicated section ([here](.doc/programs/vim/) for `vim`).
 - enjoy your new `vim` experience!
 
 I will try, in the future, to provide an `install.sh` script to (1) select what part of the config to install,
@@ -136,7 +136,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [`spectrWM`](.doc/programs/spectrwm)
 - [ ] [`tmux`](.doc/programs/tmux)
 - [x] [`vifm`](.doc/programs/vifm)
-- [x] [`vim`](.doc/programs.vim)
+- [x] [`vim`](.doc/programs/vim)
 - [x] [`x`](.doc/programs/x)
 - [x] [`xscreensaver`](.doc/programs/xscreensaver)
 
