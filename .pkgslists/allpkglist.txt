@@ -16,6 +16,7 @@ bluez-utils
 brightnessctl
 bspwm
 catimg
+cava
 cmake
 cmus
 ctags
@@ -66,6 +67,7 @@ python-pip
 python-tqdm
 python-virtualenv
 python38
+read-edid
 scrot
 shell-color-scripts
 sox

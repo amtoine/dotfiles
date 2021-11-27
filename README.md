@@ -37,16 +37,16 @@ If you want more information about *bare* `git` repositories, you can check one 
 - https://www.youtube.com/watch?v=tBoLDpTWVOM&t=879s: if you want to see the creation of such a repository step by step.
 ```
 $HOME
-|-- [d]  .config                                -- main config directory
-|   |-- [d]  alacritty                            --  the alacritty terminal emulator.
+|-- [d]  .config                                 -- main config directory
+|   |-- [d]  alacritty                             --  the alacritty terminal emulator.
 |   |   `-- [-]  alacritty.yml
-|   |-- [d]  cmus                                 --  my favorite music player based on ncurses.
+|   |-- [d]  cmus                                  --  my favorite music player based on ncurses.
 |   |   |-- [-]  autosave
 |   |   `-- [-]  lib.pl
-|   |-- [d]  htop                                 -- my process monitor.
+|   |-- [d]  htop                                  -- my process monitor.
 |   |   `-- [-]  htoprc
-|   |-- [d]  neofetch                             -- my logo printer.
-|   |   |-- [d]  ascii                              -- all used arts.
+|   |-- [d]  neofetch                              -- my logo printer.
+|   |   |-- [d]  ascii                               -- all used arts.
 |   |   |   |-- [-]  christmas.art
 |   |   |   |-- [-]  fall-leaf.art
 |   |   |   |-- [-]  halloween.art
@@ -54,47 +54,46 @@ $HOME
 |   |   |   |-- [-]  spring-flower.art
 |   |   |   |-- [-]  summer-sun.art
 |   |   |   `-- [-]  winter-snow.art
-|   |   |-- [-]  .neofetchrc                        -- lauches the right art based on date.
-|   |   `-- [-]  config.conf                        -- the actual config for basic use.
-|   |-- [d]  nitrogen                             -- my wallpaper manager.
+|   |   |-- [-]  .neofetchrc                         -- lauches the right art based on date.
+|   |   `-- [-]  config.conf                         -- the actual config for basic use.
+|   |-- [d]  nitrogen                              -- my wallpaper manager.
 |   |   `-- [-]  nitrogen.cfg
-|   |-- [d]  spectrwm                             -- the spectrWM tilling window manager.
+|   |-- [d]  spectrwm                              -- the spectrWM tilling window manager.
 |   |   |-- [-]  spectrwm.conf 
 |   |   |-- [-]  spectrwm_fr.conf
 |   |   `-- [-]  spectrwm_us.conf
-|   `-- [d]  vifm                                 -- the file manager.
+|   `-- [d]  vifm                                  -- the file manager.
 |       |-- [d]  colors
 |       |   `-- [-]  molokai.vifm
 |       `-- [-]  vifmrc
-|-- [d]  .pkgslists                             -- packages.
-|   |-- [-]  allpkglist.txt                       -- the list of all installed packages.
-|   |-- [-]  foreignpkglist.txt                   -- the list of AUR packages.
-|   |-- [-]  optdeplist.txt                       -- the list of optional packages.
-|   `-- [-]  pkglist.txt                          -- the list of arch packages.
-|-- [d]  scripts                                -- my scripts.
-|   |-- [-]  _countdown                           -- TODO
-|   |-- [-]  _parse_git_info                      -- TODO
-|   |-- [-]  _shortwd                             -- TODO
-|   |-- [-]  _stopwatch                           -- TODO
-|   |-- [-]  dmenu-edit-config-files.sh           -- TODO
-|   |-- [-]  prompt                               -- TODO
-|   |-- [-]  screenshot.sh                        -- takes screeshots with scrot.
-|   |-- [-]  spectrWM-baraction.sh                -- controls the spectrWM bar.
-|   |-- [-]  togkb.sh                             -- toggles the keyboard layout.
-|   |-- [-]  tree2md                              -- TODO
-|   |-- [l]  upl -> /etc/pacman.d/hooks.bin/upl   -- updates the list of installed packages.
-|   |-- [-]  wvenv                                -- shows current python environment.
-|   `-- [-]  xtcl                                 -- disables my broken caps lock key.
-|-- [-]  .bash_aliases                          -- all my command aliases.
-|-- [-]  .bash_logout                           -- what bash should do on logout.
-|-- [-]  .bash_profile                          -- runs bash and starts the WM on startup.
-|-- [-]  .bashrc                                -- runs config stuff to make the experience what it is.
-|-- [-]  .gitconfig                             -- all my git config.
-|-- [-]  .profile                               -- profile script.
-|-- [-]  .tmux.conf                             -- my tmux config file.
-|-- [-]  .vimrc                                 -- all needed configuration for a pretty vim.
-|-- [-]  .xinitrc                               -- what to do when x starts.
-|-- [-]  .xscreensaver                          -- my config when the machine is idle or manually locked.
+|-- [d]  .pkgslists                              -- packages.
+|   |-- [-]  allpkglist.txt                        -- the list of all installed packages.
+|   |-- [-]  foreignpkglist.txt                    -- the list of AUR packages.
+|   |-- [-]  optdeplist.txt                        -- the list of optional packages.
+|   `-- [-]  pkglist.txt                           -- the list of arch packages.
+|-- [d]  scripts                                 -- my scripts.
+|   |-- [-]  _countdown.sh                         -- a countdown with alarm (deprecated).
+|   |-- [-]  _parse_git_info.sh                    -- parses the repo information if available.
+|   |-- [-]  _shortwd.sh                           -- gives a short directory name for prompt.
+|   |-- [-]  _stopwatch.sh                         -- a stopwatch (deprecated)
+|   |-- [-]  prompt.sh                             -- a binary prompt that executes commands.
+|   |-- [-]  screenshot.sh                         -- takes screeshots with scrot.
+|   |-- [-]  spectrWM-baraction.sh                 -- controls the spectrWM bar.
+|   |-- [-]  togkb.sh                              -- toggles the keyboard layout.
+|   |-- [-]  tree2md.sh                            -- transforms a directory into a tree for .md files.
+|   |-- [l]  upl.sh -> /etc/pacman.d/hooks.bin/upl -- updates the list of installed packages.
+|   |-- [-]  wvenv.sh                              -- shows current python environment.
+|   `-- [-]  xtcl.sh                               -- disables my broken caps lock key.
+|-- [-]  .bash_aliases                           -- all my command aliases.
+|-- [-]  .bash_logout                            -- what bash should do on logout.
+|-- [-]  .bash_profile                           -- runs bash and starts the WM on startup.
+|-- [-]  .bashrc                                 -- runs config stuff to make the experience what it is.
+|-- [-]  .gitconfig                              -- all my git config.
+|-- [-]  .profile                                -- profile script.
+|-- [-]  .tmux.conf                              -- my tmux config file.
+|-- [-]  .vimrc                                  -- all needed configuration for a pretty vim.
+|-- [-]  .xinitrc                                -- what to do when x starts.
+|-- [-]  .xscreensaver                           -- my config when the machine is idle or manually locked.
 `-- [-]  README.md
 ```
 
@@ -145,7 +144,6 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] `_parse_git_info`
 - [x] `_shortwd`
 - [ ] `_stopwatch`
-- [x] [`dmenu-edit-config-files.sh`](.doc/scripts/dmenu-edit-config-files.sh)
 - [x] [`prompt`](.doc/scripts/prompt)
 - [x] [`screenshot.sh`](.doc/scripts/screenshot.sh)
 - [x] [`spectrWM-baraction.sh`](.doc/scripts/spectrWM-baraction.sh)
@@ -158,6 +156,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 #### Other programs and stuff I use:
 - [x] virtualenvwrapper: tutorials [in english](https://virtualenvwrapper.readthedocs.io/en/latest/) or [in french](https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html).
 - [x] some [wallpapers](https://github.com/a2n-s/wallpapers) (\*)
+- [x] my fork of [dt's dmscripts](https://gitlab.com/dwt1/dmscripts) [here](https://github.com/a2n-s/dmscripts) (\*)
 
 (\*) comes from another repo.
 

@@ -39,6 +39,7 @@ python-mpi4py
 python-opengl
 python-tqdm
 python-virtualenv
+read-edid
 sox
 spectrwm
 swig

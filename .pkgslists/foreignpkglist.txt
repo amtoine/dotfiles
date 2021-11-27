@@ -1,4 +1,5 @@
 arduino-mk
+cava
 nerd-fonts-mononoki
 paru
 pfetch
