@@ -122,16 +122,25 @@ map \c ebi{<Esc>ea}<Esc>
 " Set the backslash as the leader key.
 let mapleader = "\\"
 " applies the changes made to .vimrc
-:nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 " Turn off search highlighting by pressing \\.
 nnoremap <leader>\ :nohlsearch<CR>
 " Press \\ to jump back to the last cursor position.
 nnoremap <leader>' ``
+" make all splits the same size, as best as vim can do.
+noremap <leader>] <c-w>=
+" clears trailling spaces.
+noremap <leader>t :%s/\s\+$//<cr>
 " Press \p to print the current file to the default printer from a Linux operating system.
 " View available printers:   lpstat -v
 " Set default printer:       lpoptions -d <printer_name>
 " <silent> means do not display output.
 "nnoremap <silent> <leader>p :%w !lp<CR>
+" moves lines up and dowm in every mode.
+nnoremap <S-j> :m .+1<CR>
+nnoremap <S-k> :m .-2<CR>
+vnoremap <S-j> :m '>+1<CR>gv=gv
+vnoremap <S-k> :m '<-2<CR>gv=gv
 " Type jj to exit insert mode quickly.
 inoremap jj <Esc>
 " Press the space bar to type the : character in command mode.
@@ -164,8 +173,6 @@ noremap <c-up> <c-w>+
 noremap <c-down> <c-w>-
 noremap <c-left> <c-w>>
 noremap <c-right> <c-w><
-" make all splits the same size, as best as vim can do.
-noremap <leader>] <c-w>=
 " NERDTree specific mappings.
 " Map the F3 key to toggle NERDTree open and close.
 nnoremap <F3> :NERDTreeToggle<cr>
