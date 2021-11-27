@@ -6,7 +6,11 @@
 #     /____/\___/_/  /_/ .___/\__/____/  /_/     /____/\___/_/   \___/\___/_/ /_/____/_/ /_/\____/\__/   (_)  /____/_/ /_/
 #                     /_/
 #
-# takes a screenshot of all the screens with the 'full' flag and only a selected window with the 'window' flag.
+# Description: takes a screenshot of all the screens with the 'full' flag and only a selected window with the 'window' flag.
+# Dependencies: scrot
+# GitHub: https://github.com/a2n-s/dotfiles 
+# License: https://github.com/a2n-s/dotfiles/LICENSE 
+# Contributors: Stevan Antoine
 
 screenshot() {
 	case $1 in

@@ -6,8 +6,13 @@
 #     /____/\___/_/  /_/ .___/\__/____/  /_/     ______    \___/\____/\__,_/_/ /_/\__/\__,_/\____/|__/|__/_/ /_/
 #                     /_/                       /_____/
 #
-# simple coundown
-# deprecated -> see termdown instead.
+# Description: simple countdown
+#              deprecated -> see termdown instead.
+# Dependencies: play
+# GitHub: https://github.com/a2n-s/dotfiles 
+# License: https://github.com/a2n-s/dotfiles/LICENSE 
+# Contributors: Stevan Antoine
+
 
 date1=$((`date +%s` + $1));
 while [ "$date1" -ge `date +%s` ]; do

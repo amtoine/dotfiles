@@ -6,10 +6,11 @@
 #     /____/ .___/\___/\___/\__/_/    |__/|__/_/  /_/           /_.___/\__,_/_/   \__,_/\___/\__/_/\____/_/ /_/   (_)  /____/_/ /_/
 #         /_/
 #
-# Example Bar Action Script for Linux.
-# Requires: acpi, iostat, ...
-# Tested on: (with newest spectrwm built from source), ...
-# This config can be found on github.com/a2n-s
+# Description: the baraction script for the spectwm windows manager.
+# Dependencies:  df, du, mpstat, amixer, ip, nmcli, ifstat, setxkbmap, play.
+# GitHub: https://github.com/a2n-s/dotfiles 
+# License: https://github.com/a2n-s/dotfiles/LICENSE 
+# Contributors: Stevan Antoine
 
 hostname="${HOSTNAME:-${hostname:-$(hostname)}}"
 

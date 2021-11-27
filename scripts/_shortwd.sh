@@ -6,7 +6,11 @@
 #     /____/\___/_/  /_/ .___/\__/____/  /_/     ______   /____/_/ /_/\____/_/   \__/ |__/|__/\__,_/
 #                     /_/                       /_____/
 #
-# gives a short directory in prompt, not to fill the entire line when inside nested directories.
+# Description: gives a short directory in prompt, not to fill the entire line when inside nested directories.
+# Dependencies:
+# GitHub: https://github.com/a2n-s/dotfiles 
+# License: https://github.com/a2n-s/dotfiles/LICENSE 
+# Contributors: Stevan Antoine
 
 max_num_dirs=7
 newPWD="${PWD/#$HOME/~}"

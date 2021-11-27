@@ -6,7 +6,11 @@
 #     /____/\___/_/  /_/ .___/\__/____/  /_/     /_/|_|\__/\___/_/
 #                     /_/
 #
-# turns off proprely the Caps_Lock key.
+# Description: turns off proprely the Caps_Lock key.
+# Dependencies: xdotool, xmodmap.
+# GitHub: https://github.com/a2n-s/dotfiles 
+# License: https://github.com/a2n-s/dotfiles/LICENSE 
+# Contributors: Stevan Antoine
 
 while [[ $# -gt 0 ]]; do
   key="$1"

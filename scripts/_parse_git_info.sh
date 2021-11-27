@@ -6,7 +6,12 @@
 #     /____/\___/_/  /_/ .___/\__/____/  /_/     ______   / .___/\__,_/_/  /____/\___/  ______    \__, /_/\__/  ______  /_/_/ /_/_/  \____/
 #                     /_/                       /_____/  /_/                           /_____/   /____/        /_____/
 #
-# gives information about the current git repository.
+# Description: gives information about the current git repository.
+# Dependencies: git
+# GitHub: https://github.com/a2n-s/dotfiles 
+# License: https://github.com/a2n-s/dotfiles/LICENSE 
+# Contributors: Stevan Antoine
+
 git branch 1> /dev/null 2> /dev/null
 if [ $? -eq 0 ]; then
   branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')

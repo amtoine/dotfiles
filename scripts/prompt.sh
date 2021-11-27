@@ -6,13 +6,15 @@
 #     /____/\___/_/  /_/ .___/\__/____/  /_/     / .___/_/   \____/_/ /_/ /_/ .___/\__/
 #                     /_/                       /_/                        /_/
 #
-# full config at https://github.com/a2n-s/dotfiles
+# Description: a dmenu binary prompt inspired from https://www.youtube.com/watch?v=R9m723tAurA 
+#              Gives a dmenu prompt labeled with $1 and ask to perform command $2.
 
-# a dmenu binary prompt inspired from https://www.youtube.com/watch?v=R9m723tAurA 
-# Gives a dmenu prompt labeled with $1 and ask to perform command $2.
-#
-# For example:
-# ~/scripts/prompt "Do you really want to shutdown your machine?" "shutdown -h now"
-# will ask you before shutting down.
+#              For example:
+#              ~/scripts/prompt "Do you really want to shutdown your machine?" "shutdown -h now"
+#              will ask you before shutting down.
+# Dependencies: dmenu
+# GitHub: https://github.com/a2n-s/dotfiles 
+# License: https://github.com/a2n-s/dotfiles/LICENSE 
+# Contributors: Stevan Antoine
 
 [[ $(/usr/bin/echo -e "No\nYes" | /usr/bin/dmenu -i -p "$1") == "Yes" ]] && $2

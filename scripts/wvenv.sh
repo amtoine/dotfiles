@@ -6,8 +6,12 @@
 #    /____/\___/_/  /_/ .___/\__/____/  /_/       |__/|__/ |___/\___/_/ /_/|___/
 #                    /_/
 #
-# prints some information about the current virtual
-# python environment running.
+# Description: prints some information about the current virtual
+#              python environment running.
+# Dependencies: python, pip.
+# GitHub: https://github.com/a2n-s/dotfiles 
+# License: https://github.com/a2n-s/dotfiles/LICENSE 
+# Contributors: Stevan Antoine
 
 PY=$(which python)
 PIP=$(which pip)

@@ -6,8 +6,12 @@
 #     /____/\___/_/  /_/ .___/\__/____/  /_/     ______   /____/\__/\____/ .___/|__/|__/\__,_/\__/\___/_/ /_/
 #                     /_/                       /_____/                 /_/
 #
-# simple stopwatch
-# deprecated -> see termdown instead.
+# Description: simple stopwatch
+#              deprecated -> see termdown instead.
+# Dependencies:
+# GitHub: https://github.com/a2n-s/dotfiles 
+# License: https://github.com/a2n-s/dotfiles/LICENSE 
+# Contributors: Stevan Antoine
 
   date1=`date +%s`;
    while true; do
