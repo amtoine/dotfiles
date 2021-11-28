@@ -5,7 +5,7 @@ Thus, only `pacman` and `yay` have been used and tested as arch and AUR packages
 The reader is highly adviced to search the internet and in particular the [ArchWiki](https://archlinux.org/), **EVEN in NON arch-based systems!!**
 
 First, an overview of the repo is given with the project architecture and a brief explaination of all the files involved in [section 1](https://github.com/a2n-s/dotfiles/tree/main/#1-overview-and-architecture-toc).  
-Installation process and dependencies are explained and listed in [sections 2](https://github.com/a2n-s/dotfiles/tree/main/#2-programs-toc)'s programs.  
+The documentation is presented and linked in [sections 2](https://github.com/a2n-s/dotfiles/tree/main/#2-documentation-toc).  
 Finally, ways to contribute to this project are put forward in [section 3](https://github.com/a2n-s/dotfiles/tree/main/#3-contribute-toc) for who is interested and a gallery of photos is presented in [section 4](https://github.com/a2n-s/dotfiles/tree/main/#4-gallery-toc), 
 to give an idea of the final rendering of the config.  
 
@@ -13,7 +13,7 @@ If you want a quick brief of what dotfiles really are, I recommend the following
 
 ## Table Of Content.
 - **1** [**Overview and architecture.**](https://github.com/a2n-s/dotfiles/tree/main/#1-overview-and-architecture-toc)
-- **2** [**Programs.**](https://github.com/a2n-s/dotfiles/tree/main/#2-programs-toc)
+- **2** [**Documentation.**](https://github.com/a2n-s/dotfiles/tree/main/#2-documentation-toc)
 - **3** [**Contribute.**](https://github.com/a2n-s/dotfiles/tree/main/#3-contribute-toc)
 - **4** [**Gallery.**](https://github.com/a2n-s/dotfiles/tree/main/#4-gallery-toc)
 
@@ -98,7 +98,10 @@ $HOME
 ```
 
 
-## 2. Programs. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
+## 2. Documentation. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
+The doc of my dotfiles can be found on my personal website [here](https://a2n-s.github.io/graphic.github.io/) under the `config/doc/` domain.  
+In this section, some general ideas are given and the lists of the programs, scripts and other stuff I use are put forward.
+
 #### Installation.
 For now, the only way to install my config is to manually:
 - backup your config files.
@@ -125,38 +128,38 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - install all the packages I have on my system by using the lists in [`pkgslists`] and `pacman` or `yay` to install them.
 
 #### List of programs:
-- [x] [`alacritty`](.doc/programs/alacritty)
-- [x] [`bash`](.doc/programs/bash)
-- [x] [`dmenu`](https://github.com/a2n-s/dmenu) (\*)
-- [x] [`git`](.doc/programs/git)
-- [x] [`htop`](.doc/programs/htop)
-- [x] [`neofetch`](.doc/programs/neofetch)
-- [x] [`nitrogen`](.doc/programs/nitrogen)
-- [x] [`spectrWM`](.doc/programs/spectrwm)
-- [ ] [`tmux`](.doc/programs/tmux)
-- [x] [`vifm`](.doc/programs/vifm)
-- [x] [`vim`](.doc/programs/vim)
-- [x] [`x`](.doc/programs/x)
-- [x] [`xscreensaver`](.doc/programs/xscreensaver)
+- [x] `alacritty`
+- [x] `bash`
+- [x] `dmenu` ([\*](https://github.com/a2n-s/dmenu))
+- [x] `git`
+- [x] `htop`
+- [x] `neofetch`
+- [x] `nitrogen`
+- [x] `spectrWM`
+- [ ] `tmux`
+- [x] `vifm`
+- [x] `vim`
+- [x] `x`
+- [x] `xscreensaver`
 
 #### List of scripts:
 - [ ] `_countdown`
 - [x] `_parse_git_info`
 - [x] `_shortwd`
 - [ ] `_stopwatch`
-- [x] [`prompt`](.doc/scripts/prompt)
-- [x] [`screenshot.sh`](.doc/scripts/screenshot.sh)
-- [x] [`spectrWM-baraction.sh`](.doc/scripts/spectrWM-baraction.sh)
-- [x] [`togkb.sh`](.doc/scripts/togkb.sh)
-- [x] [`tree2md`](.doc/scripts/tree2md)
-- [x] [`upl`](.doc/scripts/upl)
-- [x] [`wvenv`](.doc/scripts/wvenv)
-- [x] [`xtcl`](.doc/scripts/xtcl)
+- [x] `prompt`
+- [x] `screenshot.sh`
+- [x] `spectrWM-baraction.sh`
+- [x] `togkb.sh`
+- [x] `tree2md`
+- [x] `upl`
+- [x] `wvenv`
+- [x] `xtcl`
 
 #### Other programs and stuff I use:
 - [x] virtualenvwrapper: tutorials [in english](https://virtualenvwrapper.readthedocs.io/en/latest/) or [in french](https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html).
-- [x] some [wallpapers](https://github.com/a2n-s/wallpapers) (\*)
-- [x] my fork of [dt's dmscripts](https://gitlab.com/dwt1/dmscripts) [here](https://github.com/a2n-s/dmscripts) (\*)
+- [x] some wallpapers ([\*](https://github.com/a2n-s/wallpapers))
+- [x] my fork of [dt's dmscripts](https://gitlab.com/dwt1/dmscripts) ([\*](https://github.com/a2n-s/dmscripts))
 
 (\*) comes from another repo.
 
