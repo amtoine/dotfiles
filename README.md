@@ -196,7 +196,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 |:--:|
 | *A screenshot of being in a git repository.* |
 
-https://a2n-s.github.io/graphic.github.io/| ![A screenshot of being in vim.](https://a2n-s.github.io/graphic.github.io/config/doc/images/vim.png) |
+| ![A screenshot of being in vim.](https://a2n-s.github.io/graphic.github.io/config/doc/images/vim.png) |
 |:--:|
 | *A screenshot of being in vim.* |
 
