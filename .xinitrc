@@ -60,20 +60,16 @@ fi
 ### window manager launching:
 # the compositor.
 picom &
-
 # the wallpaper.
-#nitrogen --restore &
-~/.fehbg &
-
+#~/.fehbg &
+feh --bg-fill --randomize ~/images/wallpapers/wallpapers/
 # the screen saver.
 xscreensaver --no-splash > /dev/null &
 
 # the window manager itself.
-case "$_my_wm" in
-    spectrwm) exec spectrwm ;;
-    bspwm)    exec bspwm ;;
-    i3)       exec i3 ;;
-    awesome)  exec awesome ;;
-    qtile)    exec qtile start ;;
-    *)        exec spectrwm ;;
-esac
+# exec spectrwm
+exec bspwm
+# exec i3
+# exec awesome
+# exec qtile start
+# exec spectrwm

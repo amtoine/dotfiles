@@ -9,7 +9,6 @@
 #
 # full config can be found at: https://github.com/a2n-s/dotfiles
 
-_my_wm="spectrwm"
 if [[ $(fgconsole 2> /dev/null) == 1 ]]; then
     echo "Starting x..."
     exec startx -- vt1;
