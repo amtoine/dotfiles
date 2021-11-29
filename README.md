@@ -177,7 +177,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [ ] [`neofetch`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/neofetch))
 - [ ] [`nitrogen`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/nitrogen))
 - [x] [`polybar`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/polybar))
-- [ ] [`spectrWM`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/spectrWM))
+- [ ] [`spectrWM`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/spectrwm))
 - [x] [`sxhkd`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/sxhkd))
 - [ ] [`tmux`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/tmux))
 - [x] [`vifm`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/vifm))
@@ -205,6 +205,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] my fork of [dt's dmscripts](https://gitlab.com/dwt1/dmscripts) ([\*](https://github.com/a2n-s/dmscripts))
 
 (\*) comes from another repo.
+(\*\*) the associated documentation page.
 
 
 ## 3. Contribute. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
@@ -252,7 +253,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`neofetch`]:              .config/neofetch
 [`nitrogen`]:              .config/nitrogen
 [`polybar`]:               .config/polybar
-[`spectrWM`]:              .config/spectrWM
+[`spectrWM`]:              .config/spectrwm
 [`sxhkd`]:                 .config/sxhkd
 [`tmux`]:                  .tmux.conf
 [`vifm`]:                  .config/vifm
