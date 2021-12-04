@@ -114,7 +114,7 @@ export PS1="\033[01;32m\u@\h\[\033[00m:\[\033[01;34m\$($HOME/scripts/_shortwd.sh
 
 # >>> misc.
 # disables the caps lock key.
-xtcl -d -q
+xtcl.sh -d -q
 
 
 # changes the editor in the terminal, to edit long commands.
@@ -129,12 +129,12 @@ source $HOME/.local/bin/virtualenvwrapper.sh
 # <<<
 
 # >>> neofetch based on date.
-if [[ -f ~/.config/neofetch/.neofetchrc ]]; then
-	. ~/.config/neofetch/.neofetchrc;
-else
-	neofetch;
-fi
+#if [[ -f ~/.config/neofetch/.neofetchrc ]]; then
+#	. ~/.config/neofetch/.neofetchrc;
+#else
+#	neofetch;
+#fi
 # <<<
 
-
+colorscript -e elfman
 cal -3

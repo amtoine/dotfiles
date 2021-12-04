@@ -25,6 +25,7 @@ flake8
 flex
 fzf
 gimp
+github-cli
 grub
 htop
 hugo
@@ -40,6 +41,7 @@ python-opengl
 python-tqdm
 python-virtualenv
 read-edid
+sfml
 sox
 spectrwm
 swig

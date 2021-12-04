@@ -74,7 +74,7 @@ alias jnb='jupyter-notebook'
 
 # >>> shutdown shortcuts.
 alias sdn='shutdown now -h'
-alias sdnr='shutdown now -r'
+alias sdnr='shutdown now -h -r'
 # <<<
 
 # >>> color commands.
