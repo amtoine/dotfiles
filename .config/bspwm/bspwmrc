@@ -3,7 +3,7 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 polybar example &
 
-bspc monitor eDp-1 k-d I II III IV V VI VII VIII IX X
+bspc monitor eDP-1  -d I II III IV V VI VII VIII IX X
 bspc monitor HDMI-2 -d I II III IV V VI VII VIII IX X
 
 #### BSPWM configuration ####

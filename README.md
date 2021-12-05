@@ -171,7 +171,6 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [`bspwm`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/bspwm))
 - [x] [`bash`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/bash))
 - [x] `dmenu` ([\*](https://github.com/a2n-s/dmenu))
-- [ ] [`feh`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/feh))
 - [x] [`git`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/git))
 - [x] [`htop`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/htop))
 - [ ] [`neofetch`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/neofetch))
