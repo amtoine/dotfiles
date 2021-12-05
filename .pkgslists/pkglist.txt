@@ -14,6 +14,7 @@ brightnessctl
 bspwm
 cmake
 cmus
+cronie
 ctags
 dolphin
 dstat
@@ -94,4 +95,5 @@ xorg-xwayland
 xorg-xwd
 xorg-xwud
 xscreensaver
+zenity
 zip

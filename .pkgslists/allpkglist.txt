@@ -20,6 +20,7 @@ catimg
 cava
 cmake
 cmus
+cronie
 ctags
 dolphin
 dosfstools
@@ -147,4 +148,5 @@ xorg-xwininfo
 xorg-xwud
 xscreensaver
 yay-git
+zenity
 zip
