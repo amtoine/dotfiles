@@ -172,31 +172,31 @@ YOU can contribute to this project in the wonderfull world of linux, arch and co
 do not hesitate to contact me, either via email, github issues or pull requests!
 
 ## 4. Gallery. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
-| ![My wallpaper.](https://a2n-s.github.io/public/config/doc/images/nitrogen.png) |
+| ![My wallpaper.](https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-nitrogen.png) |
 |:--:|
 | *My wallpaper.* |
 
-| ![My bar.](https://a2n-s.github.io/public/config/doc/images/bar.png) |
+| ![My bar.](https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-bar.png) |
 |:--:|
 | *My bar.* |
 
-| ![SpectrWM in a dual monitor setup: left monitor selected.](https://a2n-s.github.io/public/config/doc/images/spectrwm1.png) |
+| ![SpectrWM in a dual monitor setup: left monitor selected.](https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-spectrwm1.png) |
 |:--:|
 | *SpectrWM in a dual monitor setup: left monitor selected.* |
 
-| ![SpectrWM in a dual monitor setup: right monitor selected.](https://a2n-s.github.io/public/config/doc/images/spectrwm2.png) |
+| ![SpectrWM in a dual monitor setup: right monitor selected.](https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-spectrwm2.png) |
 |:--:|
 | *SpectrWM in a dual monitor setup: right monitor selected.* |
 
-| ![A screenshot of seing all processes.](https://a2n-s.github.io/public/config/doc/images/htop.png) |
+| ![A screenshot of seing all processes.](https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-htop.png) |
 |:--:|
 | *A screenshot of seing all processes.* |
 
-| ![A screenshot of being in a git repository.](https://a2n-s.github.io/public/config/doc/images/git.png) |
+| ![A screenshot of being in a git repository.](https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-git.png) |
 |:--:|
 | *A screenshot of being in a git repository.* |
 
-| ![A screenshot of being in vim.](https://a2n-s.github.io/public/config/doc/images/vim.png) |
+| ![A screenshot of being in vim.](https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-vim.png) |
 |:--:|
 | *A screenshot of being in vim.* |
 
