@@ -62,37 +62,6 @@ $HOME
 |   |   `-- [-]  config.conf                             -- the actual config for basic use.
 |   |-- [d]  nitrogen                                  -- a wallpaper manager.
 |   |   `-- [-]  nitrogen.cfg
-|   |-- [d]  polybar
-|   |   |-- [d]  bars
-|   |   |   |-- [-]  example.ini
-|   |   |   `-- [-]  main.ini
-|   |   |-- [d]  modules
-|   |   |   |-- [-]  alsa.ini
-|   |   |   |-- [-]  backlight-acpi.ini
-|   |   |   |-- [-]  battery.ini
-|   |   |   |-- [-]  bspwm.ini
-|   |   |   |-- [-]  cpu.ini
-|   |   |   |-- [-]  date.ini
-|   |   |   |-- [-]  eth.ini
-|   |   |   |-- [-]  filesystem.ini
-|   |   |   |-- [-]  i3.ini
-|   |   |   |-- [-]  memory.ini
-|   |   |   |-- [-]  mpd.ini
-|   |   |   |-- [-]  powermenu.ini
-|   |   |   |-- [-]  pulseaudio.ini
-|   |   |   |-- [-]  temperature.ini
-|   |   |   |-- [-]  wlan.ini
-|   |   |   |-- [-]  xbacklight.ini
-|   |   |   |-- [-]  xkeyboard.ini
-|   |   |   `-- [-]  xwindow.ini
-|   |   |-- [d]  scripts
-|   |   |   |-- [-]  check-all-updates.sh
-|   |   |   |-- [-]  mullvad-status.sh
-|   |   |   |-- [-]  pavolume.sh
-|   |   |   `-- [-]  polypomo
-|   |   |-- [-]  colors.ini
-|   |   |-- [-]  config.ini
-|   |   `-- [-]  launch.sh
 |   |-- [d]  spectrwm                                  -- the spectrWM tilling window manager.
 |   |   |-- [-]  spectrwm.conf
 |   |   |-- [-]  spectrwm_fr.conf
@@ -175,7 +144,6 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [`htop`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/htop))
 - [ ] [`neofetch`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/neofetch))
 - [ ] [`nitrogen`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/nitrogen))
-- [x] [`polybar`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/polybar))
 - [ ] [`spectrWM`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/spectrwm))
 - [x] [`sxhkd`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/sxhkd))
 - [ ] [`tmux`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/tmux))
@@ -251,7 +219,6 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`htop`]:                  .config/htop
 [`neofetch`]:              .config/neofetch
 [`nitrogen`]:              .config/nitrogen
-[`polybar`]:               .config/polybar
 [`spectrWM`]:              .config/spectrwm
 [`sxhkd`]:                 .config/sxhkd
 [`tmux`]:                  .tmux.conf
