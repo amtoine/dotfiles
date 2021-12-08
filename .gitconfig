@@ -19,8 +19,8 @@
 	tr      = log --graph --oneline --all --decorate
 	ga      = log --graph --all                                  # expanded version of the above.
 	lf      = ls-files                                           # list tracked files.
-	lfs     = !git ls-files | xargs ls -l | sort -nrk5           # sorts the tracked files by order of size.
-	lfsh    = !git ls-files | xargs ls -l | sort -nrk5 | head -n # show the n biggest tracked files.
+	lfs     = !git ls-files | xargs ls -1 | sort -nrk5           # sorts the tracked files by order of size.
+	lfsh    = !git ls-files | xargs ls -1 | sort -nrk5 | head -n # show the n biggest tracked files.
 	praff   = pull --rebase --autostash --ff
 	praffom = pull --rebase --autostash --ff origin main
 	praffum = pull --rebase --autostash --ff upstream main
@@ -29,3 +29,5 @@
 	cfd     = clean -fd
 	cdf     = clean -fd
 	cm      = commit
+[pull]
+	rebase = true

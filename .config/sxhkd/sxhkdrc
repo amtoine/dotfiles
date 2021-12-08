@@ -28,7 +28,19 @@ super + Escape
 	pkill -USR1 -x sxhkd
 
 super + alt + p
-  ~/.config/polybar/launch.sh
+  bash ~/.config/polybar/launch.sh --forest
+super + alt + o
+  killall -q polybar
+super + alt + e
+  ~/repos/dmscripts/scripts/dm-confedit
+super + alt + h
+  ~/repos/dmscripts/scripts/dm-hub
+super + shift + l
+  xscreensaver-command --lock
+super + F5
+  brightnessctl s 8-
+super + F6
+  brightnessctl s 8+
 
 #
 # bspwm hotkeys

@@ -9,6 +9,7 @@
 #
 # full config can be found at: https://github.com/a2n-s/dotfiles
 
+[ ! -s ~/.config/mpd/pid ] && mpd
 if [[ $(fgconsole 2> /dev/null) == 1 ]]; then
     echo "Starting x..."
     exec startx -- vt1;

@@ -42,9 +42,6 @@ $HOME
 |   |   `-- [-]  alacritty.yml
 |   |-- [d]  bspwm
 |   |   `-- [-]  bspwmrc
-|   |-- [d]  cmus                                      --  my favorite music player based on ncurses.
-|   |   |-- [-]  autosave
-|   |   `-- [-]  lib.pl
 |   |-- [d]  dmscripts
 |   |   `-- [-]  config
 |   |-- [d]  htop                                      -- my process monitor.

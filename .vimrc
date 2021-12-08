@@ -82,6 +82,8 @@ set autoindent
 set confirm
 " Use visual bell instead of beeping when doing something wrong
 set visualbell
+" enables the raindow parentheses.
+au VimEnter * RainbowParentheses
 " }}}
 
 

@@ -31,8 +31,13 @@ grub
 htop
 hugo
 kolourpaint
+mpc
+mpd
+ncmpc
+ncmpcpp
 neofetch
 network-manager-applet
+okular
 patch
 pavucontrol
 picom
