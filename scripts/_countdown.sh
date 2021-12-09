@@ -1,16 +1,20 @@
 #! /usr/bin/bash
-#                        _       __             __                                   __      __
-#        _______________(_)___  / /______     _/_/           _________  __  ______  / /_____/ /___ _      ______
-#       / ___/ ___/ ___/ / __ \/ __/ ___/   _/_/            / ___/ __ \/ / / / __ \/ __/ __  / __ \ | /| / / __ \
-#      (__  ) /__/ /  / / /_/ / /_(__  )  _/_/             / /__/ /_/ / /_/ / / / / /_/ /_/ / /_/ / |/ |/ / / / /
-#     /____/\___/_/  /_/ .___/\__/____/  /_/     ______    \___/\____/\__,_/_/ /_/\__/\__,_/\____/|__/|__/_/ /_/
+#             ___
+#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+#     \__,_/____/_/ /_/           /____/
+#                        _       __             __                                   __      __                                  __
+#        _______________(_)___  / /______     _/_/           _________  __  ______  / /_____/ /___ _      ______           _____/ /_
+#       / ___/ ___/ ___/ / __ \/ __/ ___/   _/_/            / ___/ __ \/ / / / __ \/ __/ __  / __ \ | /| / / __ \         / ___/ __ \
+#      (__  ) /__/ /  / / /_/ / /_(__  )  _/_/             / /__/ /_/ / /_/ / / / / /_/ /_/ / /_/ / |/ |/ / / / /   _    (__  ) / / /
+#     /____/\___/_/  /_/ .___/\__/____/  /_/     ______    \___/\____/\__,_/_/ /_/\__/\__,_/\____/|__/|__/_/ /_/   (_)  /____/_/ /_/
 #                     /_/                       /_____/
 #
-# Description: simple countdown
-#              deprecated -> see termdown instead.
+# Description:  simple countdown
+#               deprecated -> see the termdown command instead.
 # Dependencies: play
-# GitHub: https://github.com/a2n-s/dotfiles 
-# License: https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/LICENSE 
 # Contributors: Stevan Antoine
 
 

@@ -5,7 +5,7 @@ Thus, only `pacman` and `yay` have been used and tested as arch and AUR packages
 The reader is highly adviced to search the internet and in particular the [ArchWiki](https://archlinux.org/), **EVEN in NON arch-based systems!!**
 
 First, an overview of the repo is given with the project architecture and a brief explaination of all the files involved in [section 1](https://github.com/a2n-s/dotfiles/tree/main/#1-overview-and-architecture-toc).  
-The documentation is presented and linked in [sections 2](https://github.com/a2n-s/dotfiles/tree/main/#2-documentation-toc).  
+The documentation is presented and linked in [section 2](https://github.com/a2n-s/dotfiles/tree/main/#2-documentation-toc).  
 Finally, ways to contribute to this project are put forward in [section 3](https://github.com/a2n-s/dotfiles/tree/main/#3-contribute-toc) for who is interested and a gallery of photos is presented in [section 4](https://github.com/a2n-s/dotfiles/tree/main/#4-gallery-toc), 
 to give an idea of the final rendering of the config.  
 
@@ -87,8 +87,8 @@ $HOME
 |   |-- [-]  screenshot.sh                             -- takes screeshots with scrot.
 |   |-- [-]  spectrWM-baraction.sh                     -- controls the spectrWM bar.
 |   |-- [-]  togkb.sh                                  -- toggles the keyboard layout.
-|   |-- [-]  tree2md.sh                                -- transforms a directory into a tree for .md files.
-|   |-- [l]  upl.sh -> /etc/pacman.d/hooks.bin/upl.sh  -- updates the list of installed packages.
+|   |-- [-]  tr2md.sh                                  -- transforms a directory into a tree for .md files.
+|   |-- [-]  upl.sh                                    -- updates the list of installed packages.
 |   |-- [-]  wvenv.sh                                  -- shows current python environment.
 |   |-- [-]  xtcl.sh                                   -- disables my broken caps lock key.
 |   `-- [-]  ytdl.sh
@@ -121,12 +121,12 @@ or directly:
 - clone the repo with `git clone https://github.com/a2n-s/dotfiles.git` or `git clone git@github.com:a2n-s/dotfiles.git`.
 - place your version of the `.vimrc` file inside a backup directory or archive.
 - copy my `.vimrc` file in replacement of yours.
-- follow additional instructions in the dedicated section ([here](.doc/programs/vim/) for `vim`).
+- follow additional instructions in the dedicated section ([here](https://a2n-s.github.io/public/doc/config/dotfiles/vim) for `vim`).
 - enjoy your new `vim` experience!
 
 I will try, in the future, to provide an `install.sh` script to (1) select what part of the config to install,
 (2) backup the choosen files of the user inside a safe place and (3) install my config files in replacement.  
-I also plan to develop an `uninstall.sh` script that does the exact inverse to restore the config of the user
+I.doc/programs/vim/ also plan to develop an `uninstall.sh` script that does the exact inverse to restore the config of the user
 just as it was before the installation.
 
 #### Dependencies.
@@ -164,7 +164,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [`screenshot.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/screenshot.sh))
 - [x] [`spectrWM-baraction.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/spectrWM-baraction.sh))
 - [x] [`togkb.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/togkb.sh))
-- [x] [`tree2md.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/tree2md.sh))
+- [x] [`tr2md.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/tr2md.sh))
 - [x] [`upl.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/upl.sh))
 - [x] [`wvenv.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/wvenv.sh))
 - [x] [`xtcl.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/xtcl.sh))
@@ -239,7 +239,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`screenshot.sh`]:         scripts/screenshot.sh
 [`spectrWM-baraction.sh`]: scripts/spectrWM-baraction.sh
 [`togkb.sh`]:              scripts/togkb.sh
-[`tree2md.sh`]:            scripts/tree2md.sh
+[`tr2md.sh`]:              scripts/tr2md.sh
 [`upl.sh`]:                scripts/upl.sh
 [`wvenv.sh`]:              scripts/wvenv.sh
 [`xtcl.sh`]:               scripts/xtcl.sh

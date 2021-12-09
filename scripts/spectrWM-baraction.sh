@@ -1,15 +1,19 @@
 #!/bin/bash
-#                              __      _       ____  ___            __                          __  _                           __
-#        _________  ___  _____/ /_____| |     / /  |/  /           / /_  ____ __________ ______/ /_(_)___  ____           _____/ /_
-#       / ___/ __ \/ _ \/ ___/ __/ ___/ | /| / / /|_/ /  ______   / __ \/ __ `/ ___/ __ `/ ___/ __/ / __ \/ __ \         / ___/ __ \
-#      (__  ) /_/ /  __/ /__/ /_/ /   | |/ |/ / /  / /  /_____/  / /_/ / /_/ / /  / /_/ / /__/ /_/ / /_/ / / / /   _    (__  ) / / /
-#     /____/ .___/\___/\___/\__/_/    |__/|__/_/  /_/           /_.___/\__,_/_/   \__,_/\___/\__/_/\____/_/ /_/   (_)  /____/_/ /_/
-#         /_/
+#             ___
+#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+#     \__,_/____/_/ /_/           /____/
+#                        _       __             __                        __      _       ____  ___            __                          __  _                           __
+#        _______________(_)___  / /______     _/_/  _________  ___  _____/ /_____| |     / /  |/  /           / /_  ____ __________ ______/ /_(_)___  ____           _____/ /_
+#       / ___/ ___/ ___/ / __ \/ __/ ___/   _/_/   / ___/ __ \/ _ \/ ___/ __/ ___/ | /| / / /|_/ /  ______   / __ \/ __ `/ ___/ __ `/ ___/ __/ / __ \/ __ \         / ___/ __ \
+#      (__  ) /__/ /  / / /_/ / /_(__  )  _/_/    (__  ) /_/ /  __/ /__/ /_/ /   | |/ |/ / /  / /  /_____/  / /_/ / /_/ / /  / /_/ / /__/ /_/ / /_/ / / / /   _    (__  ) / / /
+#     /____/\___/_/  /_/ .___/\__/____/  /_/     /____/ .___/\___/\___/\__/_/    |__/|__/_/  /_/           /_.___/\__,_/_/   \__,_/\___/\__/_/\____/_/ /_/   (_)  /____/_/ /_/
+#                     /_/                            /_/
 #
-# Description: the baraction script for the spectwm windows manager.
-# Dependencies:  df, du, mpstat, amixer, ip, nmcli, ifstat, setxkbmap, play.
-# GitHub: https://github.com/a2n-s/dotfiles 
-# License: https://github.com/a2n-s/dotfiles/LICENSE 
+# Description:   the baraction script for the spectwm windows manager.
+# Dependencies:  mpstat, amixer, nmcli, ifstat, setxkbmap, play.
+# License:       https://github.com/a2n-s/dotfiles/LICENSE 
 # Contributors: Stevan Antoine
 
 hostname="${HOSTNAME:-${hostname:-$(hostname)}}"

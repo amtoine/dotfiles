@@ -1,4 +1,9 @@
 #! /usr/bin/bash
+#             ___
+#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+#     \__,_/____/_/ /_/           /____/
 #                        _       __             __         __      ____              __
 #        _______________(_)___  / /______     _/_/  __  __/ /_____/ / /        _____/ /_
 #       / ___/ ___/ ___/ / __ \/ __/ ___/   _/_/   / / / / __/ __  / /        / ___/ __ \
@@ -6,10 +11,10 @@
 #     /____/\___/_/  /_/ .___/\__/____/  /_/      \__, /\__/\__,_/_/   (_)  /____/_/ /_/
 #                     /_/                        /____/
 
-# Description: allows one to download a youtube video audio or a whole playlist.
+# Description:  allows one to download a youtube video audio or a whole playlist.
+#               WORK IN PROGRESS
 # Dependencies: youtube-dl
-# GitHub: https://github.com/a2n-s/dotfiles
-# License: https://github.com/a2n-s/dotfiles/LICENSE
+# License:      https://github.com/a2n-s/dotfiles/LICENSE
 # Contributors: Stevan Antoine
 
 youtube-dl \

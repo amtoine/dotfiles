@@ -109,7 +109,7 @@ export PATH=$PATH:$HOME/scripts:$HOME/.local/bin
 # <<<
 
 # >>> prompt.
-export PS1="\033[01;32m\u@\h\[\033[00m:\[\033[01;34m\$($HOME/scripts/_shortwd.sh)\[\033[33m\$($HOME/scripts/_parse_git_info.sh)\[\033[00m\n$ "
+export PS1="\033[01;32m\u@\h\[\033[00m:\[\033[01;34m\$($HOME/scripts/_shortwd.sh 3)\[\033[33m\$($HOME/scripts/_parse_git_info.sh)\[\033[00m\n$ "
 # <<<
 
 # >>> misc.
