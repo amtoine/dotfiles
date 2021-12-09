@@ -78,6 +78,7 @@ python-tqdm
 python-virtualenv
 python38
 read-edid
+rogue
 scrot
 sfml
 shell-color-scripts

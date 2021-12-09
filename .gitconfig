@@ -29,5 +29,6 @@
 	cfd     = clean -fd
 	cdf     = clean -fd
 	cm      = commit
+	sw = switch
 [pull]
 	rebase = true

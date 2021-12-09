@@ -47,6 +47,7 @@ python-opengl
 python-tqdm
 python-virtualenv
 read-edid
+rogue
 sfml
 sox
 spectrwm

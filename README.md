@@ -46,6 +46,10 @@ $HOME
 |   |   `-- [-]  config
 |   |-- [d]  htop                                      -- my process monitor.
 |   |   `-- [-]  htoprc
+|   |-- [d]  mpd                                       -- music server deamon.
+|   |   `-- [-]  mpd.conf                                 crashes for some reason...
+|   |-- [d]  ncmpcpp                                   -- music client.
+|   |   `-- [-]  config
 |   |-- [d]  neofetch                                  -- a logo printer.
 |   |   |-- [d]  ascii                                   -- all used arts.
 |   |   |   |-- [-]  christmas.art
@@ -133,21 +137,23 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - install all the packages I have on my system by using the lists in [`pkgslists`] and `pacman` or `yay` to install them.
 
 #### List of programs:
-- [x] [`alacritty`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/alacritty))
-- [x] [`bspwm`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/bspwm))
-- [x] [`bash`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/bash))
+- [x] [`alacritty`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/alacritty))
+- [x] [`bspwm`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/bspwm))
+- [x] [`bash`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/bash))
 - [x] `dmenu` ([\*](https://github.com/a2n-s/dmenu))
-- [x] [`git`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/git))
-- [x] [`htop`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/htop))
-- [ ] [`neofetch`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/neofetch))
-- [ ] [`nitrogen`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/nitrogen))
-- [ ] [`spectrWM`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/spectrwm))
-- [x] [`sxhkd`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/sxhkd))
-- [ ] [`tmux`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/tmux))
-- [x] [`vifm`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/vifm))
-- [x] [`vim`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/vim))
-- [x] [`x`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/x))
-- [x] [`xscreensaver`] ([\*\*](https://a2n-s.github.io/public/doc/config/programs/xscreensaver))
+- [x] [`git`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/git))
+- [x] [`htop`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/htop))
+- [ ] [`mpd`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/mpd))
+- [ ] [`ncmcpp`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/ncmcpp))
+- [ ] [`neofetch`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/neofetch))
+- [ ] [`nitrogen`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/nitrogen))
+- [ ] [`spectrWM`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/spectrwm))
+- [x] [`sxhkd`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/sxhkd))
+- [ ] [`tmux`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/tmux))
+- [x] [`vifm`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/vifm))
+- [x] [`vim`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/vim))
+- [x] [`x`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/x))
+- [x] [`xscreensaver`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/xscreensaver))
 
 #### List of scripts:
 - [ ] [`_countdown.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/_countdown.sh))
@@ -214,6 +220,8 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`bash`]:                  .bashrc
 [`git`]:                   .gitconfig
 [`htop`]:                  .config/htop
+[`mpd`]:                   .config/mpd
+[`ncmcpp`]:                .config/ncmcpp
 [`neofetch`]:              .config/neofetch
 [`nitrogen`]:              .config/nitrogen
 [`spectrWM`]:              .config/spectrwm
