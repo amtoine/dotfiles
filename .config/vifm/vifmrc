@@ -1,3 +1,19 @@
+#             ___
+#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+#     \__,_/____/_/ /_/           /____/
+#             _ ____                __         _ ____
+#      _   __(_) __/___ ___       _/_/  _   __(_) __/___ ___  __________
+#     | | / / / /_/ __ `__ \    _/_/   | | / / / /_/ __ `__ \/ ___/ ___/
+#     | |/ / / __/ / / / / /  _/_/     | |/ / / __/ / / / / / /  / /__
+#     |___/_/_/ /_/ /_/ /_/  /_/       |___/_/_/ /_/ /_/ /_/_/   \___/
+#
+# Description:  my config for the vifm file explorer based on vim.
+# Dependencies:
+# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# Contributors: Stevan Antoine
+#
 " vim: filetype=vifm :
 " Sample configuration file for vifm (last updated: 31 August, 2021)
 " You can edit this file by hand.

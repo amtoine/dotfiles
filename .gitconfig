@@ -1,3 +1,8 @@
+#             ___
+#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+#     \__,_/____/_/ /_/           /____/
 #                    _ __                   _____
 #             ____ _(_) /__________  ____  / __(_)___ _
 #            / __ `/ / __/ ___/ __ \/ __ \/ /_/ / __ `/
@@ -5,7 +10,11 @@
 #     (_)   \__, /_/\__/\___/\____/_/ /_/_/ /_/\__, /
 #          /____/                             /____/
 #
-# my personal git config with some aliases.
+# Description:  my personal git config with some aliases.
+# Dependencies: git, vim
+# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# Contributors: Stevan Antoine
+
 
 [user]
 	name = a2n-s
@@ -29,6 +38,6 @@
 	cfd     = clean -fd
 	cdf     = clean -fd
 	cm      = commit
-	sw = switch
+	sw      = switch
 [pull]
 	rebase = true

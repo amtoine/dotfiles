@@ -1,12 +1,21 @@
+"             ___
+"       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
+"      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
+"     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+"     \__,_/____/_/ /_/           /____/
 "              _
 "       _   __(_)___ ___  __________
 "      | | / / / __ `__ \/ ___/ ___/
 "     _| |/ / / / / / / / /  / /__
 "    (_)___/_/_/ /_/ /_/_/   \___/
-" full config can be found at: https://github.com/a2n-s/dotfiles
 "
-" greatly inspired from:
-"      https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
+" Description:  greatly inspired from:
+"                     https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
+" Dependencies:
+" License:      https://github.com/a2n-s/dotfiles/LICENSE 
+" Contributors: Stevan Antoine
+"
+"
 
 " BASIC OPTIONS ---------------------------------------------------------------- {{{
 " disable compatibility with vi which can cause unexpected issues.

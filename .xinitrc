@@ -1,10 +1,18 @@
+#             ___
+#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+#     \__,_/____/_/ /_/           /____/
 #                _       _ __
 #          _  __(_)___  (_) /___________
 #         | |/_/ / __ \/ / __/ ___/ ___/
 #      _ _>  </ / / / / / /_/ /  / /__
 #     (_)_/|_/_/_/ /_/_/\__/_/   \___/
 #
-# full config can be found at: https://github.com/a2n-s/dotfiles
+# Description:  my x config.
+# Dependencies: picom, feh, a wm, xscreensaver.
+# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# Contributors: Stevan Antoine
 
 
 #!/bin/sh
