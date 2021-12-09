@@ -1,7 +1,7 @@
 #             ___
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles
 #     \__,_/____/_/ /_/           /____/
 #                    _ __                   _____
 #             ____ _(_) /__________  ____  / __(_)___ _
@@ -12,32 +12,65 @@
 #
 # Description:  my personal git config with some aliases.
 # Dependencies: git, vim
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/LICENSE
 # Contributors: Stevan Antoine
 
 
 [user]
-	name = a2n-s
-	email = 44101798+AntoineStevan@users.noreply.github.com
+  name = a2n-s
+  email = 44101798+AntoineStevan@users.noreply.github.com
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [core]
-	editor = vim
+  editor = vim
 [alias]
-	st      = status
-	tr      = log --graph --oneline --all --decorate
-	ga      = log --graph --all                                  # expanded version of the above.
-	lf      = ls-files                                           # list tracked files.
-	lfs     = !git ls-files | xargs ls -1 | sort -nrk5           # sorts the tracked files by order of size.
-	lfsh    = !git ls-files | xargs ls -1 | sort -nrk5 | head -n # show the n biggest tracked files.
-	praff   = pull --rebase --autostash --ff
-	praffom = pull --rebase --autostash --ff origin main
-	praffum = pull --rebase --autostash --ff upstream main
-	pom     = push origin main
-	rh      = reset --hard
-	cfd     = clean -fd
-	cdf     = clean -fd
-	cm      = commit
-	sw      = switch
+; basic aliases.
+  i       = init
+  cl      = clone
+  st      = status
+  cm      = commit
+  sw      = switch
+  co      = checkout
+
+; to move branched around.
+  cp      = cherry-pick
+  rb      = rebase
+  rbi     = rebase -i
+  mg      = merge
+
+; to inspect the commit tree.
+  ga      = log --graph --all                                   # expanded version of the above.
+  tr      = log --graph --oneline --all --decorate
+  trs     = log --oneline --decorate --all --graph --stat
+
+; to inspect the tracked files.
+  lf      = ls-files                                            # list tracked files.
+  lfs     = !git ls-files | xargs ls -1 | sort -nrk5            # sorts the tracked files by order of size.
+  lfsh    = !git ls-files | xargs ls -1 | sort -nrk5 | head -n  # show the n biggest tracked files.
+
+; interact with remote repos.
+; down;
+  fc      = fetch
+  fcp     = fetch -p
+  pl      = pull
+  praff   = pull --rebase --autostash --ff
+  praffom = pull --rebase --autostash --ff origin main
+  praffum = pull --rebase --autostash --ff upstream main
+; up
+  ps      = push
+  pom     = push origin main
+
+; undo and clean the tree.
+  rv      = revert
+  rs      = reset
+  rh      = reset --hard
+  cfd     = clean -fd
+  cdf     = clean -fd
+
+; remote links actions.
+  rmt     = remote
+  rmtv    = remote -v
+  rmta    = remote add
+  rmtsu   = remote set-url
 [pull]
-	rebase = true
+  rebase = true

@@ -41,6 +41,10 @@ super + F5
   brightnessctl s 8-
 super + F6
   brightnessctl s 8+
+super + alt + s
+  ~/scripts/screenshot.sh full
+super + alt + shift + s
+  ~/scripts/screenshot.sh window
 
 #
 # bspwm hotkeys
