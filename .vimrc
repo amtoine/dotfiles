@@ -15,7 +15,42 @@
 " License:      https://github.com/a2n-s/dotfiles/LICENSE 
 " Contributors: Stevan Antoine
 "
+"               Table of Content:
+"                 BASIC OPTIONS
+"                 STYLE
+"                 MORE OPTIONS
+"                 WILD MENU
+"                 FILE MANAGEMENT
+"                 MAPPINGS
+"                 PLUGINS
+"                    FastFold
+"                    SimpylFold
+"                    YouCompleteMe
+"                    vim-flake8
+"                    ctrlp
+"                    powerline
+"                    ultisnips
+"                    vim-floaterm
+"                    vim=startify
+"                    fzf
+"                    fzf.vim
+"                    vim-cmake
+"                    vim-signify
+"                    vim-fugitive
+"                    vim-rhubarb
+"                    gv.vim
+"                    rainbow_parentheses.vim
+"                    onedark.vim
+"                    vim-airline
+"                    vim-airline-themes
+"                    vim-commentary
+"                    vim-which-key
+"                 VIMSCRIPT
+"                 python support
+"                 full stack support
+"                 STATUS LINE
 "
+
 
 " BASIC OPTIONS ---------------------------------------------------------------- {{{
 " disable compatibility with vi which can cause unexpected issues.
@@ -136,7 +171,7 @@ let mapleader = "\\"
 nnoremap <leader>sv :source $MYVIMRC<cr>
 " Turn off search highlighting by pressing \\.
 nnoremap <leader>\ :nohlsearch<CR>
-" Press \\ to jump back to the last cursor position.
+" Press `` to jump back to the last cursor position.
 nnoremap <leader>' ``
 " make all splits the same size, as best as vim can do.
 noremap <leader>] <c-w>=
@@ -209,15 +244,15 @@ call plug#begin('~/.vim/plugged')
   Plug 'kien/ctrlp.vim'                                          " https://github.com/kien/ctrlp.vim 
   Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}  " https://github.com/powerline/powerline 
   " Plug 'Lokaltog/vim-powerline'                                  " https://github.com/Lokaltog/vim-powerline 
-"  Plug 'SirVer/ultisnips'                                        " https://github.com/SirVer/ultisnips 
-"  Plug 'honza/vim-snippets'
-"  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Plug 'SirVer/ultisnips'                                        " https://github.com/SirVer/ultisnips 
+  " Plug 'honza/vim-snippets'
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'voldikss/vim-floaterm'                                   " https://github.com/voldikss/vim-floaterm 
   Plug 'mhinz/vim-startify'                                      " https://github.com/mhinz/vim-startify 
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }            " https://github.com/junegunn/fzf 
   Plug 'junegunn/fzf.vim'                                        " https://github.com/junegunn/fzf.vim 
   Plug 'cdelledonne/vim-cmake'                                   " https://github.com/cdelledonne/vim-cmake 
-"  Plug 'antoinemadec/FixCursorHold.nvim'
+  " Plug 'antoinemadec/FixCursorHold.nvim'
 if has('nvim') || has('patch-8.0.902')                           " https://github.com/mhinz/vim-signify 
   Plug 'mhinz/vim-signify'
 else
@@ -226,7 +261,7 @@ endif
   Plug 'tpope/vim-fugitive'                                      " https://github.com/tpope/vim-fugitive 
   Plug 'tpope/vim-rhubarb'                                       " https://github.com/tpope/vim-rhubarb 
   Plug 'junegunn/gv.vim'                                         " https://github.com/junegunn/gv.vim 
-"  Plug 'norcalli/nvim-colorizer.lua'
+  " Plug 'norcalli/nvim-colorizer.lua'
   Plug 'junegunn/rainbow_parentheses.vim'                        " https://github.com/junegunn/rainbow_parentheses.vim 
   Plug 'joshdick/onedark.vim'                                    " https://github.com/joshdick/onedark.vim 
   " Plug 'vim-airline/vim-airline'                                 " https://github.com/vim-airline/vim-airline 
@@ -235,10 +270,10 @@ endif
   Plug 'liuchengxu/vim-which-key'                                " https://github.com/liuchengxu/vim-which-key 
   " Plug 'jeffkreeftmeijer/vim-numbertoggle'                       " https://github.com/jeffkreeftmeijer/vim-numbertoggle 
 " A Vim Plugin for Lively Previewing LaTeX PDF Output
-" Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }         " https://github.com/xuhdev/vim-latex-live-preview 
+  " Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }         " https://github.com/xuhdev/vim-latex-live-preview 
 "
 "  " Sagemath
-"  Plug 'petRUShka/vim-sage'
+  " Plug 'petRUShka/vim-sage'
 call plug#end()
 
 " FastFold config -- https://github.com/Konfekt/FastFold ----------------- {{{
@@ -367,8 +402,6 @@ let g:airline#extensions#tabline#enabled = 1
 " vim-which-key config -- https://github.com/liuchengxu/vim-which-key  --------------------------- {{{
 " }}}
 
-" config -- ----------------- {{{
-" }}}
 " }}}
 
 
