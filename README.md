@@ -59,7 +59,7 @@ $HOME
 |   |   |   |-- [-]  spring-flower.art
 |   |   |   |-- [-]  summer-sun.art
 |   |   |   `-- [-]  winter-snow.art
-|   |   |-- [-]  .neofetchrc                             -- lauches the right art based on date.
+|   |   |-- [-]  neofetchrc                              -- lauches the right art based on date.
 |   |   `-- [-]  config.conf                             -- the actual config for basic use.
 |   |-- [d]  nitrogen                                  -- a wallpaper manager.
 |   |   `-- [-]  nitrogen.cfg
