@@ -172,7 +172,9 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 #### Other programs and stuff I use:
 - [x] virtualenvwrapper: tutorials [in english](https://virtualenvwrapper.readthedocs.io/en/latest/) or [in french](https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html).
 - [x] some wallpapers ([\*](https://github.com/a2n-s/wallpapers))
+- [x] my fork of [suckless dmenu](https://git.suckless.org/dmenu/) ([\*](https://github.com/a2n-s/dmenu))
 - [x] my fork of [dt's dmscripts](https://gitlab.com/dwt1/dmscripts) ([\*](https://github.com/a2n-s/dmscripts))
+- [x] my fork of [polybar-themes](https://github.com/adi1090x/polybar-themes) ([\*](https://github.com/a2n-s/polybar-themes))
 
 (\*) comes from another repo.
 (\*\*) the associated documentation page.

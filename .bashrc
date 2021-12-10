@@ -17,6 +17,15 @@
 #               colorscript at https://gitlab.com/dwt1/shell-color-scripts 
 # License:      https://github.com/a2n-s/dotfiles/LICENSE 
 # Contributors: Stevan Antoine
+#
+#               Table of Content:
+#                 head of .bashrc.
+#                 Alias definitions.
+#                 completion.
+#                 path.
+#                 prompt.
+#                 misc.
+#                 neofetch based on date.
 
 
 # >>> head of .bashrc.

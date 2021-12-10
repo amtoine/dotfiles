@@ -16,6 +16,16 @@
 # Dependencies: sxhkd
 # License:      https://github.com/a2n-s/dotfiles/LICENSE 
 # Contributors: Stevan Antoine
+#
+#               Table of Content:
+#                 head of .bash_aliases.
+#                 misc.
+#                 tmux shortcuts.
+#                 network shortcuts.
+#                 jupyter shortcuts.
+#                 shutdown shortcuts.
+#                 color commands.
+#                 applications.
 
 # >>> head of .bash_aliases.
 # uncomment to see the execution order of bash files at startup.

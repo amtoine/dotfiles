@@ -16,17 +16,26 @@
 # License:      https://github.com/a2n-s/dotfiles/LICENSE 
 # Contributors: Stevan Antoine
 #
+#               Table of Content:
+#                 BSPWM initialization.
+#                 BSPWM monitor connection.
+#                 BSPWM configuration.
+#                 BSPWM coloring.
+#                 BSPWM rules.
+#                 BSPWM autostart.
+#
 
+# >>> BSPWM initialization.
 feh --bg-fill --randomize ~/images/wallpapers/wallpapers/
-
 pgrep -x sxhkd > /dev/null || sxhkd &
 #set -U SXHKD_SHELL sh
 bash $HOME/.config/polybar/launch.sh --forest &
 
+# >>> BSPWM monitor connection.
 bspc monitor eDP-1  -d I II III IV V
 bspc monitor HDMI-2 -d VI VII VIII IX X
 
-#### BSPWM configuration ####
+# >>> BSPWM configuration.
 #bspc config border_radius                8
 bspc config border_width                  2
 bspc config window_gap                    4
@@ -49,17 +58,19 @@ bspc config pointer_action1 move
 bspc config pointer_action2 resize_side
 bspc config pointer_action3 resize_corner
 
-#### BSPWM coloring ####
+# >>> BSPWM coloring.
 bspc config normal_border_color   "#4c566a"
 bspc config active_border_color   "#1e1e1e"
 bspc config focused_border_color  "#5e81ac"
 bspc config presel_feedback_color "#5e81ac"
 bspc config urgent_border_color   "#dd2727"
 
+# >>> BSPWM rules.
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
+# >>> BSPWM autostart.
 alacritty

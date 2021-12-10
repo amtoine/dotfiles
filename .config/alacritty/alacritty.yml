@@ -16,7 +16,23 @@
 # Dependencies:
 # License:      https://github.com/a2n-s/dotfiles/LICENSE 
 # Contributors: Stevan Antoine
-
+#
+#               Table of content.
+#                 General.
+#                 Window.
+#                   Window dimensions (changes require restart)
+#                   Window position (changes require restart)
+#                   Window padding (changes require restart)
+#                   Window decorations
+#                   Startup Mode (changes require restart)
+#                 scrolling.
+#                 Font configuration.
+#                 Colors (Tomorrow Night Bright).
+#                 Visual Bell.
+#                 Background opacity
+#                 Shell.
+#                 Mouse bindings
+#                 Key bindings
 
 #
 # >>> General.
@@ -108,7 +124,7 @@ window:
   gtk_theme_variant: dark
 
 #
-# >>> scorlling.
+# >>> scrolling.
 #
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -254,6 +270,7 @@ draw_bold_text_with_bright_colors: true
 
 #
 # >>> Colors (Tomorrow Night Bright).
+#
 #
 colors:
   # Default colors
