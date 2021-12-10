@@ -1,19 +1,35 @@
-#             ___
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles
-#     \__,_/____/_/ /_/           /____/
-#                    _ __                   _____
-#             ____ _(_) /__________  ____  / __(_)___ _
-#            / __ `/ / __/ ___/ __ \/ __ \/ /_/ / __ `/
-#      _    / /_/ / / /_/ /__/ /_/ / / / / __/ / /_/ /
-#     (_)   \__, /_/\__/\___/\____/_/ /_/_/ /_/\__, /
-#          /____/                             /____/
-#
-# Description:  my personal git config with some aliases.
-# Dependencies: git, vim
-# License:      https://github.com/a2n-s/dotfiles/LICENSE
-# Contributors: Stevan Antoine
+;             ___
+;       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/
+;      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s
+;     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles
+;     \__,_/____/_/ /_/           /____/
+;                    _ __                   _____
+;             ____ _(_) /__________  ____  / __(_)___ _
+;            / __ `/ / __/ ___/ __ \/ __ \/ /_/ / __ `/
+;      _    / /_/ / / /_/ /__/ /_/ / / / / __/ / /_/ /
+;     (_)   \__, /_/\__/\___/\____/_/ /_/_/ /_/\__, /
+;          /____/                             /____/
+;
+; Description:  my personal git config with some aliases.
+; Dependencies: git, vim
+; License:      https://github.com/a2n-s/dotfiles/LICENSE
+; Contributors: Stevan Antoine
+;
+;               Table of Content:
+;                 user
+;                 init
+;                 core
+;                 alias
+;                   basic aliases.
+;                   to move branches and commits around.
+;                   to inspect the commit tree.
+;                   to inspect the tracked files.
+;                   interact with remote repos.
+;                     down;
+;                     up
+;                   undo and clean the tree.
+;                   remote links actions.
+;                 pull
 
 
 [user]
@@ -32,14 +48,14 @@
   sw      = switch
   co      = checkout
 
-; to move branched around.
+; to move branches and commits around.
   cp      = cherry-pick
   rb      = rebase
   rbi     = rebase -i
   mg      = merge
 
 ; to inspect the commit tree.
-  ga      = log --graph --all                                   # expanded version of the above.
+  ga      = log --graph --all
   tr      = log --graph --oneline --all --decorate
   trs     = log --oneline --decorate --all --graph --stat
 
@@ -49,14 +65,14 @@
   lfsh    = !git ls-files | xargs ls -1 | sort -nrk5 | head -n  # show the n biggest tracked files.
 
 ; interact with remote repos.
-; down;
+;   down stream;
   fc      = fetch
   fcp     = fetch -p
   pl      = pull
   praff   = pull --rebase --autostash --ff
   praffom = pull --rebase --autostash --ff origin main
   praffum = pull --rebase --autostash --ff upstream main
-; up
+;   up stream
   ps      = push
   pom     = push origin main
 
