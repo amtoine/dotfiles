@@ -24,6 +24,7 @@
 #                 network shortcuts.
 #                 jupyter shortcuts.
 #                 shutdown shortcuts.
+#                 rm shortcuts.
 #                 color commands.
 #                 applications.
 
@@ -94,6 +95,13 @@ alias jnb='jupyter-notebook'
 # >>> shutdown shortcuts.
 alias sdn='shutdown now -h'
 alias sdnr='shutdown now -h -r'
+# <<<
+
+# >>> rm shortcuts.
+alias rmv='rm -v'
+alias rmi='rm -i'
+alias rmr='rm -r'
+alias rmrf='rm -rf'
 # <<<
 
 # >>> color commands.
