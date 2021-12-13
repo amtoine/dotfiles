@@ -2,22 +2,24 @@
 The following document gives a high level overview of my linux config.  
 This particular config has been tested on ArchLinux only (last update on 11/14/21).  
 Thus, only `pacman` and `yay` have been used and tested as arch and AUR packages managers respectively.  
-The reader is highly adviced to search the internet and in particular the [ArchWiki](https://archlinux.org/), **EVEN in NON arch-based systems!!**
+The reader is highly adviced to search the internet and in particular the [ArchWiki][archlinux], **EVEN in NON arch-based systems!!**
 
-First, an overview of the repo is given with the project architecture and a brief explaination of all the files involved in [section 1](https://github.com/a2n-s/dotfiles/tree/main/#1-overview-and-architecture-toc).  
-The documentation is presented and linked in [section 2](https://github.com/a2n-s/dotfiles/tree/main/#2-documentation-toc).  
-Finally, ways to contribute to this project are put forward in [section 3](https://github.com/a2n-s/dotfiles/tree/main/#3-contribute-toc) for who is interested and a gallery of photos is presented in [section 4](https://github.com/a2n-s/dotfiles/tree/main/#4-gallery-toc), 
+First, an overview of the repo is given with the project architecture and a brief explaination of all the files involved in [section 1](#1-overview-and-architecture-toc).  
+The documentation is presented and linked in [section 2](#2-documentation-toc).  
+Finally, ways to contribute to this project are put forward in [section 3](#3-contribute-toc) for who is interested and a gallery of photos is presented in [section 4](#4-gallery-toc), 
 to give an idea of the final rendering of the config.  
 
-If you want a quick brief of what dotfiles really are, I recommend the following video of *FireShip*: https://www.youtube.com/watch?v=r_MpUP6aKiQ.
+If you want a quick brief of what dotfiles really are, I recommend [this video][fireship-dotfiles] of *FireShip*.
 
+<!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## Table Of Content.
-- **1** [**Overview and architecture.**](https://github.com/a2n-s/dotfiles/tree/main/#1-overview-and-architecture-toc)
-- **2** [**Documentation.**](https://github.com/a2n-s/dotfiles/tree/main/#2-documentation-toc)
-- **3** [**Contribute.**](https://github.com/a2n-s/dotfiles/tree/main/#3-contribute-toc)
-- **4** [**Gallery.**](https://github.com/a2n-s/dotfiles/tree/main/#4-gallery-toc)
+- **1** [**Overview and architecture.**](#1-overview-and-architecture-toc)
+- **2** [**Documentation.**](#2-documentation-toc)
+- **3** [**Contribute.**](#3-contribute-toc)
+- **4** [**Gallery.**](#4-gallery-toc)
 
-## 1. Overview and architecture. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
+<!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+## 1. Overview and architecture. [[toc](#table-of-content)]
 Below is a snapshot of the architecture of the config project.  
 This repo has been created using a `bare` repository, i.e. initialization has been done with `git init --bare $HOME/.dotfiles` instead of the
 usual `git init`.  This command creates a *bare* repository, meaning that there is no working directory inside it, only git files.
@@ -33,8 +35,8 @@ Notes:
 - flags are given right before file names -> **[d]** indicates a directory, **[l]** a symbolic link and **[-]** a file.
 
 If you want more information about *bare* `git` repositories, you can check one of the following resources:
-- https://www.atlassian.com/git/tutorials/dotfiles: a blog post about *bare* repositories.
-- https://www.youtube.com/watch?v=tBoLDpTWVOM&t=879s: if you want to see the creation of such a repository step by step.
+- a [blog post][bare-repo-blog] about *bare* repositories.
+- a [video from dt][bare-repo-dt] if you want to see the creation of such a repository step by step.
 ```
 $HOME
 |-- [d]  .config                                     -- main config directory
@@ -107,8 +109,9 @@ $HOME
 ```
 
 
-## 2. Documentation. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
-The doc of my dotfiles can be found on my [personal website](https://a2n-s.github.io/public/doc/config) under the `config/doc/` domain.  
+<!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+## 2. Documentation. [[toc](#table-of-content)]
+The doc of my dotfiles can be found on my [personal website][mysite] under the [`config/doc/`][mydoc] domain.  
 In this section, some general ideas are given and the lists of the programs, scripts and other stuff I use are put forward.
 
 #### Installation.
@@ -121,7 +124,7 @@ or directly:
 - clone the repo with `git clone https://github.com/a2n-s/dotfiles.git` or `git clone git@github.com:a2n-s/dotfiles.git`.
 - place your version of the `.vimrc` file inside a backup directory or archive.
 - copy my `.vimrc` file in replacement of yours.
-- follow additional instructions in the dedicated section ([here](https://a2n-s.github.io/public/doc/config/dotfiles/vim) for `vim`).
+- follow additional instructions in the dedicated section ([here][mydoc-vim]).
 - enjoy your new `vim` experience!
 
 I will try, in the future, to provide an `install.sh` script to (1) select what part of the config to install,
@@ -136,86 +139,94 @@ To install dependencies, one has two options:
 containing the command. Then issue `pacman -S <package>` or `yay -S <package>` to install them.
 - install all the packages I have on my system by using the lists in [`pkgslists`] and `pacman` or `yay` to install them.
 
+(\*) comes from another repo.  
+(\*\*) the associated documentation page.
+
 #### List of programs:
-- [x] [`alacritty`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/alacritty))
-- [x] [`bspwm`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/bspwm))
-- [x] [`bash`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/bash))
-- [x] `dmenu` ([\*](https://github.com/a2n-s/dmenu))
-- [x] [`git`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/git))
-- [x] [`htop`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/htop))
-- [ ] [`mpd`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/mpd))
-- [ ] [`ncmcpp`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/ncmcpp))
-- [ ] [`neofetch`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/neofetch))
-- [ ] [`nitrogen`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/nitrogen))
-- [ ] [`spectrWM`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/spectrwm))
-- [x] [`sxhkd`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/sxhkd))
-- [ ] [`tmux`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/tmux))
-- [x] [`vifm`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/vifm))
-- [x] [`vim`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/vim))
-- [x] [`x`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/x))
-- [x] [`xscreensaver`] ([\*\*](https://a2n-s.github.io/public/doc/config/dotfiles/xscreensaver))
+- [x] [`alacritty`]    ([\*\*][mydoc-alacritty])
+- [x] [`bspwm`]        ([\*\*][mydoc-bspwm])
+- [x] [`bash`]         ([\*\*][mydoc-bash])
+- [x] [`git`]          ([\*\*][mydoc-git])
+- [x] [`htop`]         ([\*\*][mydoc-htop])
+- [ ] [`mpd`]          ([\*\*][mydoc-mpd])
+- [ ] [`ncmcpp`]       ([\*\*][mydoc-ncmcpp])
+- [ ] [`neofetch`]     ([\*\*][mydoc-neofetch])
+- [ ] [`nitrogen`]     ([\*\*][mydoc-nitrogen])
+- [ ] [`spectrWM`]     ([\*\*][mydoc-spectrWM])
+- [x] [`sxhkd`]        ([\*\*][mydoc-sxhkd])
+- [ ] [`tmux`]         ([\*\*][mydoc-tmux])
+- [x] [`vifm`]         ([\*\*][mydoc-vifm])
+- [x] [`vim`]          ([\*\*][mydoc-vim])
+- [x] [`x`]            ([\*\*][mydoc-x])
+- [x] [`xscreensaver`] ([\*\*][mydoc-xscreensaver])
 
 #### List of scripts:
-- [ ] [`_countdown.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/_countdown.sh))
-- [x] [`_parse_git_info.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/_parse_git_info.sh))
-- [x] [`_shortwd.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/_shortwd.sh))
-- [ ] [`_stopwatch.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/_stopwatch.sh))
-- [x] [`prompt.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/prompt.sh))
-- [x] [`screenshot.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/screenshot.sh))
-- [x] [`spectrWM-baraction.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/spectrWM-baraction.sh))
-- [x] [`togkb.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/togkb.sh))
-- [x] [`tr2md.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/tr2md.sh))
-- [x] [`upl.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/upl.sh))
-- [x] [`wvenv.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/wvenv.sh))
-- [x] [`xtcl.sh`] ([\*\*](https://a2n-s.github.io/public/doc/config/scripts/xtcl.sh))
+- [ ] [`_countdown.sh`]         ([\*\*][mydoc-countdown.sh])
+- [x] [`_parse_git_info.sh`]    ([\*\*][mydoc-parse_git_info.sh])
+- [x] [`_shortwd.sh`]           ([\*\*][mydoc-shortwd.sh])
+- [ ] [`_stopwatch.sh`]         ([\*\*][mydoc-stopwatch.sh])
+- [x] [`prompt.sh`]             ([\*\*][mydoc-prompt.sh])
+- [x] [`screenshot.sh`]         ([\*\*][mydoc-screenshot.sh])
+- [x] [`spectrWM-baraction.sh`] ([\*\*][mydoc-spectrWM-baraction.sh])
+- [x] [`togkb.sh`]              ([\*\*][mydoc-togkb.sh])
+- [x] [`tr2md.sh`]              ([\*\*][mydoc-tr2md.sh])
+- [x] [`upl.sh`]                ([\*\*][mydoc-upl.sh])
+- [x] [`wvenv.sh`]              ([\*\*][mydoc-wvenv.sh])
+- [x] [`xtcl.sh`]               ([\*\*][mydoc-xtcl.sh])
 
 #### Other programs and stuff I use:
-- [x] virtualenvwrapper: tutorials [in english](https://virtualenvwrapper.readthedocs.io/en/latest/) or [in french](https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html).
-- [x] some wallpapers ([\*](https://github.com/a2n-s/wallpapers))
-- [x] my fork of [suckless dmenu](https://git.suckless.org/dmenu/) ([\*](https://github.com/a2n-s/dmenu))
-- [x] my fork of [dt's dmscripts](https://gitlab.com/dwt1/dmscripts) ([\*](https://github.com/a2n-s/dmscripts))
-- [x] my fork of [polybar-themes](https://github.com/adi1090x/polybar-themes) ([\*](https://github.com/a2n-s/polybar-themes))
+- [x] virtualenvwrapper: tutorials [in english][virtualenvs-en] and [in french][virtualenvs-fr].
+- [x] some [wallpapers][my-wallpapers]                          (\*) ([\*\*][mydoc-wallpapers])
+- [x] [my fork][my-dmenu] of [suckless dmenu][dmenu]            (\*) ([\*\*][mydoc-dmenu])
+- [x] [my fork][my-dmscripts] of [dt's dmscripts][dmscripts-dt] (\*) ([\*\*][mydoc-dmscripts])
+- [x] [my fork][my-polybar-themes] of [polybar-themes]          (\*) ([\*\*][mydoc-polybar-themes])
+- [x] [my fork][my-surf] of [suckless surf][surf]               (\*) ([\*\*][mydoc-surf])
 
-(\*) comes from another repo.
+(\*) comes from another repo.  
 (\*\*) the associated documentation page.
 
 
-## 3. Contribute. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
+<!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+## 3. Contribute. [[toc](#table-of-content)]
 YOU can contribute to this project in the wonderfull world of linux, arch and configuration!
 - if you like the overview, try to install the config and see what it looks like!
 - if you like the config, please share it to whoever could be interested.
 - if you stumble upon bugs, ideas, new amazing color palettes or alternatives,
 do not hesitate to contact me, either via email, github issues or pull requests!
 
-## 4. Gallery. [[toc](https://github.com/a2n-s/dotfiles/tree/main/#table-of-content)]
-| ![My wallpaper.](https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-nitrogen.png) |
+<!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+## 4. Gallery. [[toc](#table-of-content)]
+| ![My wallpaper.][mygallery-nitrogen] |
 |:--:|
 | *My wallpaper.* |
 
-| ![My bar.](https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-bar.png) |
+| ![My bar.][mygallery-bar] |
 |:--:|
 | *My bar.* |
 
-| ![SpectrWM in a dual monitor setup: left monitor selected.](https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-spectrwm1.png) |
+| ![SpectrWM in a dual monitor setup: left monitor selected.][mygallery-spectwm1] |
 |:--:|
 | *SpectrWM in a dual monitor setup: left monitor selected.* |
 
-| ![SpectrWM in a dual monitor setup: right monitor selected.](https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-spectrwm2.png) |
+| ![SpectrWM in a dual monitor setup: right monitor selected.][mygallery-spectrwm2] |
 |:--:|
 | *SpectrWM in a dual monitor setup: right monitor selected.* |
 
-| ![A screenshot of seing all processes.](https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-htop.png) |
+| ![A screenshot of seing all processes.][mygallery-htop] |
 |:--:|
 | *A screenshot of seing all processes.* |
 
-| ![A screenshot of being in a git repository.](https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-git.png) |
+| ![A screenshot of being in a git repository.][mygallery-git] |
 |:--:|
 | *A screenshot of being in a git repository.* |
 
-| ![A screenshot of being in vim.](https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-vim.png) |
+| ![A screenshot of being in vim.][mygallery-vim] |
 |:--:|
 | *A screenshot of being in vim.* |
 
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- my files -->
 [`pkgslists`]:             .pkgslists
 [`alacritty`]:             .config/alacritty
 [`bspwm`]:                 .config/bspwm
@@ -245,3 +256,71 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`upl.sh`]:                scripts/upl.sh
 [`wvenv.sh`]:              scripts/wvenv.sh
 [`xtcl.sh`]:               scripts/xtcl.sh
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- my links -->
+[archlinux]:                   https://archlinux.org/
+[fireship-dotfiles]:           https://www.youtube.com/watch?v=r_MpUP6aKiQ
+[bare-repo-blog]:              https://www.atlassian.com/git/tutorials/dotfiles
+[bare-repo-dt]:                https://www.youtube.com/watch?v=tBoLDpTWVOM&t=879s
+[mysite]:                      https://a2n-s.github.io/public
+[mydoc]:                       https://a2n-s.github.io/public/doc/config
+
+<!-- programs -->
+[mydoc-alacritty]:             https://a2n-s.github.io/public/doc/config/dotfiles/alacritty
+[mydoc-bspwm]:                 https://a2n-s.github.io/public/doc/config/dotfiles/bspwm
+[mydoc-bash]:                  https://a2n-s.github.io/public/doc/config/dotfiles/bash
+[mydoc-git]:                   https://a2n-s.github.io/public/doc/config/dotfiles/git
+[mydoc-htop]:                  https://a2n-s.github.io/public/doc/config/dotfiles/htop
+[mydoc-mpd]:                   https://a2n-s.github.io/public/doc/config/dotfiles/mpd
+[mydoc-ncmcpp]:                https://a2n-s.github.io/public/doc/config/dotfiles/ncmcpp
+[mydoc-neofetch]:              https://a2n-s.github.io/public/doc/config/dotfiles/neofetch
+[mydoc-nitrogen]:              https://a2n-s.github.io/public/doc/config/dotfiles/nitrogen
+[mydoc-spectrwm]:              https://a2n-s.github.io/public/doc/config/dotfiles/spectrwm
+[mydoc-sxhkd]:                 https://a2n-s.github.io/public/doc/config/dotfiles/sxhkd
+[mydoc-tmux]:                  https://a2n-s.github.io/public/doc/config/dotfiles/tmux
+[mydoc-vifm]:                  https://a2n-s.github.io/public/doc/config/dotfiles/vifm
+[mydoc-vim]:                   https://a2n-s.github.io/public/doc/config/dotfiles/vim
+[mydoc-x]:                     https://a2n-s.github.io/public/doc/config/dotfiles/x
+[mydoc-xscreensaver]:          https://a2n-s.github.io/public/doc/config/dotfiles/xscreensaver
+
+<!-- scripts: -->
+[mydoc-countdown.sh]:          https://a2n-s.github.io/public/doc/config/scripts/_countdown.sh
+[mydoc-parse_git_info.sh]:     https://a2n-s.github.io/public/doc/config/scripts/_parse_git_info.sh
+[mydoc-shortwd.sh]:            https://a2n-s.github.io/public/doc/config/scripts/_shortwd.sh
+[mydoc-stopwatch.sh]:          https://a2n-s.github.io/public/doc/config/scripts/_stopwatch.sh
+[mydoc-prompt.sh]:             https://a2n-s.github.io/public/doc/config/scripts/prompt.sh
+[mydoc-screenshot.sh]:         https://a2n-s.github.io/public/doc/config/scripts/screenshot.sh
+[mydoc-spectrWM-baraction.sh]: https://a2n-s.github.io/public/doc/config/scripts/spectrWM-baraction.sh
+[mydoc-togkb.sh]:              https://a2n-s.github.io/public/doc/config/scripts/togkb.sh
+[mydoc-tr2md.sh]:              https://a2n-s.github.io/public/doc/config/scripts/tr2md.sh
+[mydoc-upl.sh]:                https://a2n-s.github.io/public/doc/config/scripts/upl.sh
+[mydoc-wvenv.sh]:              https://a2n-s.github.io/public/doc/config/scripts/wvenv.sh
+[mydoc-xtcl.sh]:               https://a2n-s.github.io/public/doc/config/scripts/xtcl.sh
+
+<!-- other stuff -->
+[virtualenvs-en]:              https://virtualenvwrapper.readthedocs.io/en/latest/
+[virtualenvs-fr]:              https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html
+[dmenu]:                       https://git.suckless.org/dmenu/
+[dmscripts-dt]:                https://gitlab.com/dwt1/dmscripts.git
+[polybar-themes]:              https://github.com/adi1090x/polybar-themes
+[surf]:                        https://git.suckless.org/surf/
+[my-wallpapers]:               https://github.com/a2n-s/wallpapers
+[my-dmenu]:                    https://github.com/a2n-s/dmenu
+[my-dmscripts]:                https://github.com/a2n-s/dmscripts
+[my-polybar-themes]:           https://github.com/a2n-s/polybar-themes
+[my-surf]:                     https://github.com/a2n-s/surf
+[mydoc-wallpapers]:            https://a2n-s.github.io/public/doc/config/wallpapers
+[mydoc-dmenu]:                 https://a2n-s.github.io/public/doc/config/dmenu
+[mydoc-dmscripts]:             https://a2n-s.github.io/public/doc/config/dmscripts
+[mydoc-polybar-themes]:        https://a2n-s.github.io/public/doc/config/polybar
+[mydoc-surf]:                  https://a2n-s.github.io/public/doc/config/surf
+
+<!-- gallery -->
+[mygallery-nitrogen]:          https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-nitrogen.png
+[mygallery-bar]:               https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-bar.png
+[mygallery-spectrwm1]:         https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-spectrwm1.png
+[mygallery-spectrwm2]:         https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-spectrwm2.png
+[mygallery-htop]:              https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-htop.png
+[mygallery-git]:               https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-git.png
+[mygallery-vim]:               https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-vim.png
