@@ -47,6 +47,10 @@
   cm      = commit
   sw      = switch
   co      = checkout
+  br      = branch
+  brf     = branch -f
+  brm     = branch -m
+  brd     = branch -D
 
 ; to move branches and commits around.
   cp      = cherry-pick
@@ -63,6 +67,7 @@
   lf      = ls-files                                            # list tracked files.
   lfs     = !git ls-files | xargs ls -1 | sort -nrk5            # sorts the tracked files by order of size.
   lfsh    = !git ls-files | xargs ls -1 | sort -nrk5 | head -n  # show the n biggest tracked files.
+  df      = diff
 
 ; interact with remote repos.
 ;   down stream;
@@ -77,6 +82,8 @@
   pom     = push origin main
 
 ; undo and clean the tree.
+  rst     = restore
+  rsts    = restore --staged
   rv      = revert
   rs      = reset
   rh      = reset --hard

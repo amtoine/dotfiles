@@ -31,7 +31,13 @@ super + Return
   alacritty
 # run a program launcher
 super + @space
-  dmenu_run
+  DMWIDTH=700; \
+  DMHEIGHT=10; \
+  DMCOLUMNS=3; \
+  DMLINES=9; \
+  DMBORDER=5; \
+  dmenu_run -g $DMCOLUMNS -l $DMLINES -x $((960 - $DMWIDTH/2)) -y $((540 - ($DMLINES+1)*$DMHEIGHT/2)) -z $DMWIDTH -h $DMHEIGHT -bw $DMBORDER
+  # dmenu_run
 # make sxhkd reload its configuration files:
 super + Escape
   pkill -USR1 -x sxhkd
@@ -105,6 +111,9 @@ super + {_,shift + }c
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
   bspc desktop -f {prev,next}.local
+# focus the next/previous monitor
+super + shift + bracket{left,right}
+  bspc monitor -f {prev,next}
 # focus the last node/desktop
 super + {grave,Tab}
   bspc {node,desktop} -f last

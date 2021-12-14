@@ -25,6 +25,7 @@ ctags
 dolphin
 dosfstools
 dstat
+dwarffortress
 efibootmgr
 eog
 fakeroot
@@ -39,6 +40,9 @@ gimp
 git
 github-cli
 grub
+gst-libav
+gst-plugins-good
+gtk4
 htop
 hugo
 kolourpaint
@@ -49,6 +53,7 @@ m4
 make
 mpc
 mpd
+mpv
 mtools
 ncmpc
 ncmpcpp
@@ -84,6 +89,7 @@ sfml
 shell-color-scripts
 sox
 spectrwm
+starship
 sudo
 swig
 sxhkd
@@ -156,5 +162,6 @@ xorg-xwininfo
 xorg-xwud
 xscreensaver
 yay-git
+youtube-dl
 zenity
 zip

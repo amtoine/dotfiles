@@ -41,7 +41,11 @@ alias chrono='date1=`date +%s`; while true; do echo -ne "$(date -u --date @$((`d
 alias dfm='df -h | grep media | sed "s/\s\+/ /g" | cut -d" " -f6,1'
 
 # automatically connects to an HDMI-2 monitor on the right of the main laptop screen.
-alias xrandr-run='xrandr --output eDP-1 --auto --output HDMI-2 --mode 1920x1080 --rate 60 --right-of eDP-1'
+MAIN_DISPLAY="eDP-1"
+SECOND_MONITOR="HDMI-2"
+alias hdmic='xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --mode 1920x1080 --rate 60 --right-of $MAIN_DISPLAY'
+alias hdmib='xrandr --output $SECOND_MONITOR --brightness'
+alias hdmid='xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --off'
 
 # uncomment to assemble some assembly using vasm.
 #alias vasm6502_oldstyle='~/Documents/softwares/vasm/vasm/vasm6502_oldstyle'

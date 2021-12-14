@@ -18,6 +18,7 @@ cronie
 ctags
 dolphin
 dstat
+dwarffortress
 eog
 fakeroot
 figlet
@@ -28,11 +29,13 @@ fzf
 gimp
 github-cli
 grub
+gtk4
 htop
 hugo
 kolourpaint
 mpc
 mpd
+mpv
 ncmpc
 ncmpcpp
 neofetch
@@ -51,6 +54,7 @@ rogue
 sfml
 sox
 spectrwm
+starship
 swig
 sysstat
 termdown
