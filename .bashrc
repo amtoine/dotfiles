@@ -14,7 +14,7 @@
 #               see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 #               for examples
 # Dependencies: cal, xtcl.sh, _shortwd.sh & _parse_git_info.sh at https://github.com/a2n-s/dotfiles/tree/main/scripts 
-#               colorscript at https://gitlab.com/dwt1/shell-color-scripts 
+#               colorscript at https://gitlab.com/dwt1/shell-color-scripts, starship
 # License:      https://github.com/a2n-s/dotfiles/LICENSE 
 # Contributors: Stevan Antoine
 #
@@ -23,9 +23,9 @@
 #                 Alias definitions.
 #                 completion.
 #                 path.
-#                 prompt.
 #                 misc.
 #                 neofetch based on date.
+#                 prompt.
 
 
 # >>> head of .bashrc.
@@ -64,9 +64,6 @@ fi
 export PATH=$PATH:$HOME/scripts:$HOME/.local/bin
 # <<<
 
-# >>> prompt.
-export PS1="\033[01;32m\u@\h\[\033[00m:\[\033[01;34m\$($HOME/scripts/_shortwd.sh 3)\[\033[33m\$($HOME/scripts/_parse_git_info.sh)\[\033[00m\n$ "
-# <<<
 
 # >>> misc.
 # disables the caps lock key.
@@ -93,3 +90,17 @@ source $HOME/.local/bin/virtualenvwrapper.sh
 
 colorscript -e elfman
 cal -3
+
+# >>> prompt.
+# export PS1="\033[01;32m\u@\h\[\033[00m:\[\033[01;34m\$($HOME/scripts/_shortwd.sh 3)\[\033[33m\$($HOME/scripts/_parse_git_info.sh)\[\033[00m\n$ "
+# PS1="\$?:[\u@\h \W]\$ "
+rightprompt()
+{
+    printf "%*s" $COLUMNS "right prompt"
+}
+
+# PS1='\[$(tput sc; rightprompt; tput rc)\]left prompt > '
+export STARSHIP_CONFIG=~/.config/starship/config.toml
+export STARSHIP_CACHE=~/.config/starship/cache
+eval "$(starship init bash)"
+# <<<

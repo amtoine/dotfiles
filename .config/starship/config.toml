@@ -1,0 +1,286 @@
+#             ___
+#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+#     \__,_/____/_/ /_/           /____/
+#              __                  __    _             __                    _____                __                  __
+#        _____/ /_____ ___________/ /_  (_)___       _/_/  _________  ____  / __(_)___ _         / /_____  ____ ___  / /
+#       / ___/ __/ __ `/ ___/ ___/ __ \/ / __ \    _/_/   / ___/ __ \/ __ \/ /_/ / __ `/        / __/ __ \/ __ `__ \/ /
+#      (__  ) /_/ /_/ / /  (__  ) / / / / /_/ /  _/_/    / /__/ /_/ / / / / __/ / /_/ /   _    / /_/ /_/ / / / / / / /
+#     /____/\__/\__,_/_/  /____/_/ /_/_/ .___/  /_/      \___/\____/_/ /_/_/ /_/\__, /   (_)   \__/\____/_/ /_/ /_/_/
+#                                     /_/                                      /____/
+#
+# Description:  a config file for the starship prompt.
+# Dependencies:
+# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# Contributors: Stevan Antoine
+#
+#               Table of content.    active
+#                 battery              .
+#                 character            x
+#                 cmake                .
+#                 cmd_duration         .
+#                 directory            x
+#                 git_branch           x
+#                 git_commit           .
+#                 git_state            .
+#                 git_metrics          .
+#                 git_status           .
+#                 hostname             x
+#                 line_break           .
+#                 memory_usage         .
+#                 package              .
+#                 python               .
+#                 username             x
+
+
+# starship wide configuration.
+#
+#      https://starship.rs/config 
+# Use custom format
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$python\
+$battery\
+$cmake\
+$cmd_duration\
+$memory_usage\
+$character\
+"""
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10
+# Wait 100 milliseconds for starship to check commands.
+command_timeout = 100
+# Inserts a blank line between shell prompts
+add_newline = false
+
+
+# The battery module shows how charged the device's battery is and its current charging status. The module is only visible when the device's battery is below 10%.
+#
+#      https://starship.rs/config/#battery 
+[battery]
+ format             = "[$symbol$percentage]($style) "
+ full_symbol        = " "    # The symbol shown when the battery is full.
+ charging_symbol    = " "    # The symbol shown when the battery is charging.
+ discharging_symbol = " "    # The symbol shown when the battery is discharging.
+ unknown_symbol     = " "    # The symbol shown when the battery state is unknown.
+ empty_symbol       = " "    # The symbol shown when the battery state is empty.
+ display            = "link"  # Display threshold and style for the module.
+ disabled           = true
+
+
+# The character module shows a character (usually an arrow) beside where the text is entered in your terminal.
+# The character will tell you whether the last command was successful or not. It can do this in two ways:
+#     changing color (red/green)
+#     changing shape (❯/✖)
+# By default it only changes color. If you also want to change its shape take a look at this example.
+# WARNING: error_symbol is not supported on elvish and nu shell.
+# WARNING: vicmd_symbol is only supported in fish and zsh.
+#
+#      https://starship.rs/config/#character 
+[character]
+ format         = "$symbol "
+ success_symbol = "[❯](bold green)"  # The format string used before the text input if the previous command succeeded.
+ error_symbol   = "[✖](bold red)"    # The format string used before the text input if the previous command failed.
+ vicmd_symbol   = "[❮](bold green)"  # The format string used before the text input if the shell is in vim normal mode.
+ disabled       = false
+
+
+# The cmake module shows the currently installed version of CMake. By default the module will be activated if any of the following conditions are met:
+#     The current directory contains a CMakeLists.txt file
+#     The current directory contains a CMakeCache.txt file
+#
+#      https://starship.rs/config/#cmake 
+[cmake]
+ format            = "via [$symbol($version )]($style)"
+ version_format    = "v${raw}"                             # The version format. Available vars are raw, major, minor, & patch
+ symbol            = "△ "                                  # The symbol used before the version of cmake.
+ detect_extensions = []                                    # Which extensions should trigger this module
+ detect_files      = ["CMakeLists.txt", "CMakeCache.txt"]  # Which filenames should trigger this module
+ detect_folders    = []                                    # Which folders should trigger this module
+ style             = "bold blue"                           # The style for the module.
+ disabled          = true
+
+
+# The cmd_duration module shows how long the last command took to execute. The module will be shown only if the command took longer than two seconds, or the min_time config value, if it exists.
+# Do not hook the DEBUG trap in Bash: If you are running Starship in bash, do not hook the DEBUG trap after running eval $(starship init $0), or this module will break.
+# Bash users who need preexec-like functionality can use rcaloras's bash_preexec framework. Simply define the arrays preexec_functions and precmd_functions before running eval $(starship init $0), and then proceed as normal.
+#
+#      https://starship.rs/config/#command-duration 
+[cmd_duration]
+ format             = "took [$duration]($style) "
+ min_time           = 2_000          # Shortest duration to show time for (in milliseconds).
+ show_milliseconds  = false          # Show milliseconds in addition to seconds for the duration.
+ style              = "bold yellow"  # The style for the module.
+ show_notifications = false          # Show desktop notifications when command completes.
+ min_time_to_notify = 45_000         # Shortest duration for notification (in milliseconds).
+ disabled           = true
+
+# The directory module shows the path to your current directory, truncated to three parent folders. Your directory will also be truncated to the root of the git repo that you're currently in.
+# When using the fish style pwd option, instead of hiding the path that is truncated, you will see a shortened name of each directory based on the number you enable for the option.
+# For example, given ~/Dev/Nix/nixpkgs/pkgs where nixpkgs is the repo root, and the option set to 1. You will now see ~/D/N/nixpkgs/pkgs, whereas before it would have been nixpkgs/pkgs.
+#
+#      https://starship.rs/config/#directory 
+[directory]
+ format            = "[$path]($style)[$read_only]($read_only_style) "
+ truncation_length = 3           # The number of parent folders that the current directory should be truncated to.
+ truncate_to_repo  = true        # Whether or not to truncate to the root of the git repo that you're currently in.
+ style             = "bold cyan" # The style for the module.
+ read_only         = "🔒"        # The symbol indicating current directory is read only.
+ read_only_style   = "red"       # The style for the read only symbol.
+ truncation_symbol = ""        # The symbol to prefix to truncated paths. eg: "…/"
+ repo_root_style   = "bold red"  # The style for the root of the git repo when truncate_to_repo option is set to false.
+ home_symbol       = "~"         # The symbol indicating home directory.#
+ disabled          = false
+
+
+# modules configuration.
+# shows the active branch of the repo in your current directory.
+#
+#      https://starship.rs/config/#git-branch 
+[git_branch]
+ # format = "[$symbol$branch]($style) "
+ format = " [$remote_name/$remote_branch $symbol$branch]($style) "
+ symbol             = " "           # A format string representing the symbol of git branch.
+ truncation_length  = 50             # Truncates a git branch to N graphemes.
+ truncation_symbol  = "…"            # The symbol used to indicate a branch name was truncated. You can use "" for no symbol.
+ always_show_remote = true           # Shows the remote tracking branch name, even if it is equal to the local branch name.
+ only_attached      = false          # Only show the branch name when not in a detached HEAD state.
+ style              = "bold yellow"
+ disabled           = false
+
+
+# The git_commit module shows the current commit hash and also the tag (if any) of the repo in your current directory.
+#
+#      https://starship.rs/config/#git-commit 
+[git_commit]
+ format             = "[\\($hash$tag\\)]($style) "
+ commit_hash_length = 7            # The length of the displayed git commit hash.
+ style              = "bold green" # The style for the module.
+ only_detached      = true         # Only show git commit hash when in detached HEAD state
+ tag_disabled       = false        # Disables showing tag info in git_commit module.
+ tag_symbol         = " 🏷 "       # Tag symbol prefixing the info shown
+ disabled           = false
+
+
+# The git_state module will show in directories which are part of a git repository, and where there is an operation in progress, such as: REBASING, BISECTING, etc. If there is progress information (e.g., REBASING 3/10), that information will be shown too.
+#
+#      https://starship.rs/config/#git-state 
+[git_state]
+ format       = '\([$state( $progress_current/$progress_total)]($style)\) '
+ rebase       = "REBASING"            # A format string displayed when a rebase is in progress.
+ merge        = "MERGING"             # A format string displayed when a merge is in progress.
+ revert       = "REVERTING"           # A format string displayed when a revert is in progress.
+ cherry_pick  = "[PICKING](bold red)" # A format string displayed when a cherry-pick is in progress.
+ bisect       = "BISECTING"           # A format string displayed when a bisect is in progress.
+ am           = "AM"                  # A format string displayed when an apply-mailbox (git am) is in progress.
+ am_or_rebase = "AM/REBASE"           # A format string displayed when an ambiguous apply-mailbox or rebase is in progress.
+ style        = "bold yellow"         # The style for the module.
+ disabled     = false
+
+
+# The git_metrics module will show the number of added and deleted lines in the current git repository.
+#
+#      https://starship.rs/config/#git-metrics 
+[git_metrics]
+ format             = '([+$added]($added_style) )([-$deleted]($deleted_style) )'
+ added_style        = "bold green" # The style for the added count.
+ deleted_style      = "bold red"   # The style for the deleted count.
+ only_nonzero_diffs = true         # Render status only for changed items.
+ disabled           = false
+
+
+# The git_status module shows symbols representing the state of the repo in your current directory.
+#
+#      https://starship.rs/config/#git-status 
+[git_status]
+ format     = '([\[$all_status$ahead_behind\]]($style) )'
+ conflicted = "="        # This branch has merge conflicts.
+ ahead      = "⇡"        # The format of ahead
+ behind     = "⇣"        # The format of behind
+ diverged   = "⇕"        # The format of diverged
+ up_to_date = "✓"        # The format of up_to_date
+ untracked  = "?"        # The format of untracked
+ stashed    = "\\$"      # The format of stashed
+ modified   = "!"        # The format of modified
+ staged     = "+"        # The format of staged
+ renamed    = "»"        # The format of renamed
+ deleted    = "✘"        # The format of deleted
+ style      = "bold red" # The style for the module.
+ disabled   = false
+
+
+# The hostname module shows the system hostname.
+#
+#      https://starship.rs/config/#hostname 
+[hostname]
+ format   = "[$hostname]($style) in "
+ ssh_only = true                 # Only show hostname when connected to an SSH session.
+ trim_at  = "."                  # String that the hostname is cut off at, after the first match. "." will stop after the first dot. "" will disable any truncation
+ style    = "bold dimmed green"  # The style for the module.
+ disabled = false
+
+
+# The line_break module separates the prompt into two lines.
+#
+#      https://starship.rs/config/#line-break 
+[line_break]
+ disabled = true
+
+
+# The memory_usage module shows current system memory and swap usage.
+# By default the swap usage is displayed if the total system swap is non-zero.
+# TIP: This module is disabled by default. To enable it, set disabled to false in your configuration file.
+#
+#      https://starship.rs/config/#memory-usage 
+[memory_usage]
+ format    = "via $symbol [${ram}( \\| ${swap})]($style) "
+ threshold = 75                   # Hide the memory usage unless it exceeds this percentage.
+ symbol    = "🐏"                 # The symbol used before displaying the memory usage.
+ style     = "bold dimmed white"  # The style for the module.
+ disabled  = true
+
+
+# The package module is shown when the current directory is the repository for a package, and shows its current version. The module currently supports npm, nimble, cargo, poetry, composer, gradle, julia, mix, helm and shards packages.
+#
+#      https://starship.rs/config/#package-version 
+[package]
+ disabled = true
+
+
+# The python module shows the currently installed version of Python (opens new window) and the current Python virtual environment (opens new window) if one is activated.
+# If pyenv_version_name is set to true, it will display the pyenv version name. Otherwise, it will display the version number from python --version.
+#
+#      https://starship.rs/config/#python 
+[python]
+ format             = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+ version_format     = "v${raw}"                        # The version format. Available vars are raw, major, minor, & patch
+ symbol             = "py "                            # A format string representing the symbol of Python
+ style              = "yellow bold"                    # The style for the module.
+ pyenv_version_name = false                            # Use pyenv to get Python version
+ pyenv_prefix       = "pyenv"                          # Prefix before pyenv version display, only used if pyenv is used
+ python_binary      = ["python", "python3", "python2"] # Configures the python binaries that Starship should executes when getting the version.
+ detect_extensions  = ["py"]                           # Which extensions should trigger this module
+ detect_files       = [".python-version", "Pipfile", "__init__.py", "pyproject.toml", "requirements.txt", "setup.py", "tox.ini"]  # Which filenames should trigger this module
+ detect_folders     = []                               # Which folders should trigger this module
+ disabled           = true
+
+
+# The username module shows active user's username.
+#
+#      https://starship.rs/config/#username 
+[username]
+ format      = "[$user]($style) in "
+ style_root  = "bold red"     # The style used when the user is root.
+ style_user  = "bold yellow"  # The style used for non-root users.
+ show_always = false          # Always shows the username module.
+ disabled    = false
+
+

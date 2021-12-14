@@ -69,6 +69,8 @@ $HOME
 |   |   |-- [-]  spectrwm.conf
 |   |   |-- [-]  spectrwm_fr.conf
 |   |   `-- [-]  spectrwm_us.conf
+|   |-- [d]  starship                                  -- a fast and customizable terminal prompt.
+|   |   `-- [-]  config.toml
 |   |-- [d]  sxhkd
 |   |   `-- [-]  sxhkdrc
 |   `-- [d]  vifm                                      -- the file manager.
@@ -110,6 +112,7 @@ $HOME
 
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+> []
 ## 2. Documentation. [[toc](#table-of-content)]
 The doc of my dotfiles can be found on my [personal website][mysite] under the [`config/doc/`][mydoc] domain.  
 In this section, some general ideas are given and the lists of the programs, scripts and other stuff I use are put forward.
@@ -153,6 +156,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [ ] [`neofetch`]     ([\*\*][mydoc-neofetch])
 - [ ] [`nitrogen`]     ([\*\*][mydoc-nitrogen])
 - [ ] [`spectrWM`]     ([\*\*][mydoc-spectrWM])
+- [x] [`starship`]     ([\*\*][mydoc-starship])
 - [x] [`sxhkd`]        ([\*\*][mydoc-sxhkd])
 - [ ] [`tmux`]         ([\*\*][mydoc-tmux])
 - [x] [`vifm`]         ([\*\*][mydoc-vifm])
@@ -204,7 +208,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 |:--:|
 | *My bar.* |
 
-| ![SpectrWM in a dual monitor setup: left monitor selected.][mygallery-spectwm1] |
+| ![SpectrWM in a dual monitor setup: left monitor selected.][mygallery-spectrwm1] |
 |:--:|
 | *SpectrWM in a dual monitor setup: left monitor selected.* |
 
@@ -239,6 +243,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`nitrogen`]:              .config/nitrogen
 [`spectrWM`]:              .config/spectrwm
 [`sxhkd`]:                 .config/sxhkd
+[`starship`]:              .config/starship
 [`tmux`]:                  .tmux.conf
 [`vifm`]:                  .config/vifm
 [`vim`]:                   .vimrc
@@ -278,6 +283,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [mydoc-nitrogen]:              https://a2n-s.github.io/public/doc/config/dotfiles/nitrogen
 [mydoc-spectrwm]:              https://a2n-s.github.io/public/doc/config/dotfiles/spectrwm
 [mydoc-sxhkd]:                 https://a2n-s.github.io/public/doc/config/dotfiles/sxhkd
+[mydoc-starship]:              https://a2n-s.github.io/public/doc/config/dotfiles/starship
 [mydoc-tmux]:                  https://a2n-s.github.io/public/doc/config/dotfiles/tmux
 [mydoc-vifm]:                  https://a2n-s.github.io/public/doc/config/dotfiles/vifm
 [mydoc-vim]:                   https://a2n-s.github.io/public/doc/config/dotfiles/vim
