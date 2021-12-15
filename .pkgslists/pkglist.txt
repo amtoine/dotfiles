@@ -39,6 +39,7 @@ mpv
 ncmpc
 ncmpcpp
 neofetch
+nethack
 network-manager-applet
 okular
 patch

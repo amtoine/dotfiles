@@ -1,10 +1,12 @@
 arduino-mk
 cava
+myman
 nerd-fonts-mononoki
 paru
 pfetch
 pixterm
 polybar
+python35
 python38
 shell-color-scripts
 yay-git

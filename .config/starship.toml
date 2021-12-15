@@ -3,12 +3,12 @@
 #      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
 #     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
 #     \__,_/____/_/ /_/           /____/
-#              __                  __    _             __                    _____                __                  __
-#        _____/ /_____ ___________/ /_  (_)___       _/_/  _________  ____  / __(_)___ _         / /_____  ____ ___  / /
-#       / ___/ __/ __ `/ ___/ ___/ __ \/ / __ \    _/_/   / ___/ __ \/ __ \/ /_/ / __ `/        / __/ __ \/ __ `__ \/ /
-#      (__  ) /_/ /_/ / /  (__  ) / / / / /_/ /  _/_/    / /__/ /_/ / / / / __/ / /_/ /   _    / /_/ /_/ / / / / / / /
-#     /____/\__/\__,_/_/  /____/_/ /_/_/ .___/  /_/      \___/\____/_/ /_/_/ /_/\__, /   (_)   \__/\____/_/ /_/ /_/_/
-#                                     /_/                                      /____/
+#              __                  __    _               __                  __
+#        _____/ /_____ ___________/ /_  (_)___          / /_____  ____ ___  / /
+#       / ___/ __/ __ `/ ___/ ___/ __ \/ / __ \        / __/ __ \/ __ `__ \/ /
+#      (__  ) /_/ /_/ / /  (__  ) / / / / /_/ /  _    / /_/ /_/ / / / / / / /
+#     /____/\__/\__,_/_/  /____/_/ /_/_/ .___/  (_)   \__/\____/_/ /_/ /_/_/
+#                                     /_/
 #
 # Description:  a config file for the starship prompt.
 # Dependencies:
@@ -42,10 +42,6 @@ format = """
 $username\
 $hostname\
 $directory\
-$character\
-"""
-# move the rest of the prompt to the right
-right_format = """
 $git_branch\
 $git_commit\
 $git_state\
@@ -56,6 +52,10 @@ $battery\
 $cmake\
 $cmd_duration\
 $memory_usage\
+$character\
+"""
+# move the rest of the prompt to the right
+right_format = """
 """
 # Wait 10 milliseconds for starship to check files under the current directory.
 scan_timeout = 10
@@ -76,7 +76,7 @@ add_newline = false
  unknown_symbol     = " "    # The symbol shown when the battery state is unknown.
  empty_symbol       = " "    # The symbol shown when the battery state is empty.
  display            = "link"  # Display threshold and style for the module.
- disabled           = true
+ disabled           = false
 
 
 # The character module shows a character (usually an arrow) beside where the text is entered in your terminal.
@@ -109,7 +109,7 @@ add_newline = false
  detect_files      = ["CMakeLists.txt", "CMakeCache.txt"]  # Which filenames should trigger this module
  detect_folders    = []                                    # Which folders should trigger this module
  style             = "bold blue"                           # The style for the module.
- disabled          = true
+ disabled          = false
 
 
 # The cmd_duration module shows how long the last command took to execute. The module will be shown only if the command took longer than two seconds, or the min_time config value, if it exists.
@@ -273,7 +273,7 @@ add_newline = false
  detect_extensions  = ["py"]                           # Which extensions should trigger this module
  detect_files       = [".python-version", "Pipfile", "__init__.py", "pyproject.toml", "requirements.txt", "setup.py", "tox.ini"]  # Which filenames should trigger this module
  detect_folders     = []                               # Which folders should trigger this module
- disabled           = true
+ disabled           = false
 
 
 # The username module shows active user's username.

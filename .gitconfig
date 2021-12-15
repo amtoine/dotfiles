@@ -43,10 +43,15 @@
 ; basic aliases.
   i       = init
   cl      = clone
+  a       = add
+  au      = add -u
   st      = status
   cm      = commit
+  cmm     = commit -m
   sw      = switch
+  swc     = switch -c
   co      = checkout
+  cob     = checkout -b
   br      = branch
   brf     = branch -f
   brm     = branch -m
@@ -59,9 +64,11 @@
   mg      = merge
 
 ; to inspect the commit tree.
-  ga      = log --graph --all
-  tr      = log --graph --oneline --all --decorate
-  trs     = log --oneline --decorate --all --graph --stat
+  ga      = log --graph --all          
+  tr      = log --graph --all --oneline --decorate        -10
+  tra     = log --graph --all --oneline --decorate
+  trs     = log --graph --all --oneline --decorate --stat -10
+  trsa    = log --graph --all --oneline --decorate --stat
 
 ; to inspect the tracked files.
   lf      = ls-files                                            # list tracked files.
@@ -71,15 +78,19 @@
 
 ; interact with remote repos.
 ;   down stream;
-  fc      = fetch
-  fcp     = fetch -p
+  ft      = fetch
+  ftp     = fetch -p
   pl      = pull
-  praff   = pull --rebase --autostash --ff
-  praffom = pull --rebase --autostash --ff origin main
-  praffum = pull --rebase --autostash --ff upstream main
+  plo     = pull origin
+  plu     = pull upstream
+  plaf    = pull--autostash --ff
+  plafo   = pull--autostash --ff origin
+  plafu   = pull--autostash --ff upstream
 ;   up stream
   ps      = push
   pom     = push origin main
+  pso     = push origin
+  psu     = push upstream
 
 ; undo and clean the tree.
   rst     = restore
@@ -87,13 +98,13 @@
   rv      = revert
   rs      = reset
   rh      = reset --hard
-  cfd     = clean -fd
-  cdf     = clean -fd
+  cdf     = clean -df
 
 ; remote links actions.
   rmt     = remote
   rmtv    = remote -v
   rmta    = remote add
   rmtsu   = remote set-url
+
 [pull]
   rebase = true

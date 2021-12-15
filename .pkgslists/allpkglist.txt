@@ -56,10 +56,12 @@ mpc
 mpd
 mpv
 mtools
+myman
 ncmpc
 ncmpcpp
 neofetch
 nerd-fonts-mononoki
+nethack
 network-manager-applet
 networkmanager
 nitrogen
@@ -82,6 +84,7 @@ python-opengl
 python-pip
 python-tqdm
 python-virtualenv
+python35
 python38
 read-edid
 rogue

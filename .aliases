@@ -18,6 +18,7 @@
 #
 #               Table of Content:
 #                 misc.
+#                 git shortcuts.
 #                 tmux shortcuts.
 #                 network shortcuts.
 #                 jupyter shortcuts.
@@ -42,8 +43,6 @@ alias xcc='xclip -selection c'
 
 # list the packages that match the pattern given after the alias.
 alias pkgl='tail -n +1 .pkgslists/* | grep -e "==>.*<==" -e'
-# interacts with my config's git bare repository.
-alias cfg='/usr/bin/git --git-dir=/home/ants/.dotfiles --work-tree=/home/ants'
 
 # uncomment to use colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -56,6 +55,12 @@ alias lgr='find $HOME -type d | grep "\.git\$" | sed "s/\/\.git//"'
 
 # allows to see any csv file directly in the terminal.
 alias seecsv='perl -pe "s/((?<=,)|(?<=^)),/ ,/g;" "$argv" | column -t -s, | less  -F -S -X -K ;'
+# <<<
+#
+# >>> git shortcuts.
+alias g='git'
+# interacts with my config's git bare repository.
+alias cfg='/usr/bin/git --git-dir=/home/ants/.dotfiles --work-tree=/home/ants'
 # <<<
 
 # >>> tmux shortcuts.
