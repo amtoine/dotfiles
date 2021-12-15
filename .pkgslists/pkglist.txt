@@ -51,6 +51,7 @@ python-tqdm
 python-virtualenv
 read-edid
 rogue
+sc
 sfml
 sox
 spectrwm

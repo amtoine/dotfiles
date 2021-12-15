@@ -46,6 +46,12 @@ $HOME
 |   |   `-- [-]  bspwmrc
 |   |-- [d]  dmscripts
 |   |   `-- [-]  config
+|   |-- [d] fish                                       -- the fish shell
+|   |   |-- [d]  completions
+|   |   |-- [d]  conf.d
+|   |   |-- [-]  config.fish
+|   |   |-- [-]  fish_variables
+|   |   |-- [d]  functions
 |   |-- [d]  htop                                      -- my process monitor.
 |   |   `-- [-]  htoprc
 |   |-- [d]  mpd                                       -- music server deamon.
@@ -96,7 +102,7 @@ $HOME
 |   |-- [-]  wvenv.sh                                  -- shows current python environment.
 |   |-- [-]  xtcl.sh                                   -- disables my broken caps lock key.
 |   `-- [-]  ytdl.sh
-|-- [-]  .bash_aliases                               -- all my command aliases.
+|-- [-]  .aliases                                    -- all my command aliases.
 |-- [-]  .bash_logout                                -- what bash should do on logout.
 |-- [-]  .bash_profile                               -- runs bash and starts the WM on startup.
 |-- [-]  .bashrc                                     -- runs config stuff to make the experience what it is.
@@ -148,7 +154,8 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 #### List of programs:
 - [x] [`alacritty`]    ([\*\*][mydoc-alacritty])
 - [x] [`bspwm`]        ([\*\*][mydoc-bspwm])
-- [x] [`bash`]         ([\*\*][mydoc-bash])
+- [ ] [`bash`]         ([\*\*][mydoc-bash])
+- [x] [`fish`]         ([\*\*][mydoc-fish])
 - [x] [`git`]          ([\*\*][mydoc-git])
 - [x] [`htop`]         ([\*\*][mydoc-htop])
 - [ ] [`mpd`]          ([\*\*][mydoc-mpd])
@@ -235,6 +242,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`alacritty`]:             .config/alacritty
 [`bspwm`]:                 .config/bspwm
 [`bash`]:                  .bashrc
+[`fish`]:                  .config/fish
 [`git`]:                   .gitconfig
 [`htop`]:                  .config/htop
 [`mpd`]:                   .config/mpd
@@ -243,7 +251,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`nitrogen`]:              .config/nitrogen
 [`spectrWM`]:              .config/spectrwm
 [`sxhkd`]:                 .config/sxhkd
-[`starship`]:              .config/starship
+[`starship`]:              .config/starship.toml
 [`tmux`]:                  .tmux.conf
 [`vifm`]:                  .config/vifm
 [`vim`]:                   .vimrc
@@ -275,6 +283,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [mydoc-alacritty]:             https://a2n-s.github.io/public/doc/config/dotfiles/alacritty
 [mydoc-bspwm]:                 https://a2n-s.github.io/public/doc/config/dotfiles/bspwm
 [mydoc-bash]:                  https://a2n-s.github.io/public/doc/config/dotfiles/bash
+[mydoc-fish]:                  https://a2n-s.github.io/public/doc/config/dotfiles/fish
 [mydoc-git]:                   https://a2n-s.github.io/public/doc/config/dotfiles/git
 [mydoc-htop]:                  https://a2n-s.github.io/public/doc/config/dotfiles/htop
 [mydoc-mpd]:                   https://a2n-s.github.io/public/doc/config/dotfiles/mpd

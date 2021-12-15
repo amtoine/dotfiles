@@ -38,10 +38,10 @@
 
 # >>> Alias definitions.
 # You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
+# ~/.aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
 fi
 # <<<
 
@@ -88,6 +88,7 @@ source $HOME/.local/bin/virtualenvwrapper.sh
 #fi
 # <<<
 
+figlet -tf slant "welcome in BASH"
 colorscript -e elfman
 cal -3
 
@@ -100,7 +101,5 @@ rightprompt()
 }
 
 # PS1='\[$(tput sc; rightprompt; tput rc)\]left prompt > '
-export STARSHIP_CONFIG=~/.config/starship/config.toml
-export STARSHIP_CACHE=~/.config/starship/cache
 eval "$(starship init bash)"
 # <<<

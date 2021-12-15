@@ -22,10 +22,10 @@
 #                 cmd_duration         .
 #                 directory            x
 #                 git_branch           x
-#                 git_commit           .
-#                 git_state            .
-#                 git_metrics          .
-#                 git_status           .
+#                 git_commit           x
+#                 git_state            x
+#                 git_metrics          x
+#                 git_status           x
 #                 hostname             x
 #                 line_break           .
 #                 memory_usage         .
@@ -42,6 +42,10 @@ format = """
 $username\
 $hostname\
 $directory\
+$character\
+"""
+# move the rest of the prompt to the right
+right_format = """
 $git_branch\
 $git_commit\
 $git_state\
@@ -52,7 +56,6 @@ $battery\
 $cmake\
 $cmd_duration\
 $memory_usage\
-$character\
 """
 # Wait 10 milliseconds for starship to check files under the current directory.
 scan_timeout = 10
@@ -89,7 +92,7 @@ add_newline = false
  format         = "$symbol "
  success_symbol = "[❯](bold green)"  # The format string used before the text input if the previous command succeeded.
  error_symbol   = "[✖](bold red)"    # The format string used before the text input if the previous command failed.
- vicmd_symbol   = "[❮](bold green)"  # The format string used before the text input if the shell is in vim normal mode.
+ vicmd_symbol   = "[V](bold green)"  # The format string used before the text input if the shell is in vim normal mode.
  disabled       = false
 
 

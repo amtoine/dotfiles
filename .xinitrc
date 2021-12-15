@@ -70,7 +70,7 @@ fi
 picom &
 # the wallpaper.
 #~/.fehbg &
-feh --bg-fill --randomize ~/images/wallpapers/wallpapers/
+feh --bg-fill --randomize ~/repos/wallpapers/wallpapers/
 # the screen saver.
 xscreensaver --no-splash > /dev/null &
 

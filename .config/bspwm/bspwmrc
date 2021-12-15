@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /usr/bin/fish
 #             ___
 #       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
 #      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
@@ -26,9 +26,12 @@
 #
 
 # >>> BSPWM initialization.
-feh --bg-fill --randomize ~/images/wallpapers/wallpapers/
+feh --bg-fill --randomize ~/repos/wallpapers/wallpapers/
+# set -U SHELL /bin/sh
+# set -U SXHKD_SHELL sh
+# set -U SHELL /bin/bash
+# set -U SXHKD_SHELL /bin/bash
 pgrep -x sxhkd > /dev/null || sxhkd &
-#set -U SXHKD_SHELL sh
 bash $HOME/.config/polybar/launch.sh --forest &
 
 # >>> BSPWM monitor connection.

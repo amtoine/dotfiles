@@ -32,6 +32,7 @@ fakeroot
 feh
 figlet
 firefox
+fish
 flake8
 flex
 fzf
@@ -84,6 +85,7 @@ python-virtualenv
 python38
 read-edid
 rogue
+sc
 scrot
 sfml
 shell-color-scripts

@@ -1,24 +1,22 @@
+#! /usr/bin/fish
 #             ___
 #       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
 #      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
 #     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
 #     \__,_/____/_/ /_/           /____/
-#          _               _                      _ _
-#         | |             | |                    | (_)
-#         | |__   __ _ ___| |__              __ _| |_  __ _ ___  ___  ___
-#         | '_ \ / _` / __| '_ \            / _` | | |/ _` / __|/ _ \/ __|
-#      _  | |_) | (_| \__ \ | | |          | (_| | | | (_| \__ \  __/\__ \
-#     (_) |_.__/ \__,_|___/_| |_|           \__,_|_|_|\__,_|___/\___||___/
-#                                  ______
-#                                 |______|
+#                _ _
+#               | (_)
+#           __ _| |_  __ _ ___  ___  ___
+#          / _` | | |/ _` / __|/ _ \/ __|
+#      _  | (_| | | | (_| \__ \  __/\__ \
+#     (_)  \__,_|_|_|\__,_|___/\___||___/
 #
-# Description:  my config of bspwm.
-# Dependencies: sxhkd
+# Description:  my aliases
+# Dependencies:
 # License:      https://github.com/a2n-s/dotfiles/LICENSE 
 # Contributors: Stevan Antoine
 #
 #               Table of Content:
-#                 head of .bash_aliases.
 #                 misc.
 #                 tmux shortcuts.
 #                 network shortcuts.
@@ -28,31 +26,16 @@
 #                 color commands.
 #                 applications.
 
-# >>> head of .bash_aliases.
-# uncomment to see the execution order of bash files at startup.
-#echo ".bash_aliases"
-# <<<
-
 # >>> misc.
-# a simple chronometer.
-alias chrono='date1=`date +%s`; while true; do echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r"; done'
-
 # shows all the media devices connected.
 alias dfm='df -h | grep media | sed "s/\s\+/ /g" | cut -d" " -f6,1'
 
 # automatically connects to an HDMI-2 monitor on the right of the main laptop screen.
-MAIN_DISPLAY="eDP-1"
-SECOND_MONITOR="HDMI-2"
+set MAIN_DISPLAY   "eDP-1"
+set SECOND_MONITOR "HDMI-2"
 alias hdmic='xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --mode 1920x1080 --rate 60 --right-of $MAIN_DISPLAY'
 alias hdmib='xrandr --output $SECOND_MONITOR --brightness'
 alias hdmid='xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --off'
-
-# uncomment to assemble some assembly using vasm.
-#alias vasm6502_oldstyle='~/Documents/softwares/vasm/vasm/vasm6502_oldstyle'
-
-# uncomment to enable custom audio management for bluetooth devices.
-#alias audio-laptop='pacmd set-card-profile 0 output:analog-stereo+input:analog-stereo'
-#alias audio-hdmi='pacmd set-card-profile 0 output:hdmi-stereo+input:analog-stereo'
 
 # automatic copy from terminal output with xclip.
 alias xcc='xclip -selection c'
@@ -65,18 +48,14 @@ alias cfg='/usr/bin/git --git-dir=/home/ants/.dotfiles --work-tree=/home/ants'
 # uncomment to use colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # a way to manage bluetooth devices.
 alias bmm='blueman-manager'
 
 # to list all the git repositiories inside the home directory.
-alias lgr='find $HOME -type d | grep "\.git$" | sed "s/\/\.git//"'
+alias lgr='find $HOME -type d | grep "\.git\$" | sed "s/\/\.git//"'
 
 # allows to see any csv file directly in the terminal.
-alias seecsv='perl -pe "s/((?<=,)|(?<=^)),/ ,/g;" "$@" | column -t -s, | less  -F -S -X -K ;'
+alias seecsv='perl -pe "s/((?<=,)|(?<=^)),/ ,/g;" "$argv" | column -t -s, | less  -F -S -X -K ;'
 # <<<
 
 # >>> tmux shortcuts.
@@ -110,16 +89,12 @@ alias rmrf='rm -rf'
 
 # >>> color commands.
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+alias ls='ls --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 # some more ls aliases
 alias lalf='ls -alF'

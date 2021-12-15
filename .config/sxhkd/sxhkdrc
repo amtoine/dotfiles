@@ -31,13 +31,7 @@ super + Return
   alacritty
 # run a program launcher
 super + @space
-  DMWIDTH=700; \
-  DMHEIGHT=10; \
-  DMCOLUMNS=3; \
-  DMLINES=9; \
-  DMBORDER=5; \
-  dmenu_run -g $DMCOLUMNS -l $DMLINES -x $((960 - $DMWIDTH/2)) -y $((540 - ($DMLINES+1)*$DMHEIGHT/2)) -z $DMWIDTH -h $DMHEIGHT -bw $DMBORDER
-  # dmenu_run
+  sh ~/scripts/dmrun.sh
 # make sxhkd reload its configuration files:
 super + Escape
   pkill -USR1 -x sxhkd
