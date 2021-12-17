@@ -66,10 +66,10 @@
 
 ; to inspect the commit tree.
   ga      = log --graph --all          
-  tr      = log --graph --all --oneline --decorate        -10
-  tra     = log --graph --all --oneline --decorate
-  trs     = log --graph --all --oneline --decorate --stat -10
-  trsa    = log --graph --all --oneline --decorate --stat
+  tr      = log --graph --all --oneline --decorate
+  trs     = log --graph --all --oneline --decorate        -10
+  trs     = log --graph --all --oneline --decorate --stat
+  trss    = log --graph --all --oneline --decorate --stat -10
 
 ; to inspect the tracked files.
   lf      = ls-files                                            # list tracked files.

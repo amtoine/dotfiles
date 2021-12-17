@@ -102,7 +102,6 @@ $HOME
 |   |-- [-]  wvenv.sh                                  -- shows current python environment.
 |   |-- [-]  xtcl.sh                                   -- disables my broken caps lock key.
 |   `-- [-]  ytdl.sh
-|-- [-]  .aliases                                    -- all my command aliases.
 |-- [-]  .bash_logout                                -- what bash should do on logout.
 |-- [-]  .bash_profile                               -- runs bash and starts the WM on startup.
 |-- [-]  .bashrc                                     -- runs config stuff to make the experience what it is.

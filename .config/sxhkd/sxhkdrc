@@ -29,6 +29,8 @@
 # open the terminal emulator
 super + Return
   alacritty
+super + shift + Return
+  kitty
 # run a program launcher
 super + @space
   sh ~/scripts/dmrun.sh
