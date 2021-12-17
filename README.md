@@ -173,9 +173,10 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 
 #### List of scripts:
 - [ ] [`_countdown.sh`]         ([\*\*][mydoc-countdown.sh])
-- [x] [`_parse_git_info.sh`]    ([\*\*][mydoc-parse_git_info.sh])
-- [x] [`_shortwd.sh`]           ([\*\*][mydoc-shortwd.sh])
+- [ ] [`_parse_git_info.sh`]    ([\*\*][mydoc-parse_git_info.sh])
+- [ ] [`_shortwd.sh`]           ([\*\*][mydoc-shortwd.sh])
 - [ ] [`_stopwatch.sh`]         ([\*\*][mydoc-stopwatch.sh])
+- [x] [`dmrun.sh`]              ([\*\*][mydoc-dmrun.sh])
 - [x] [`prompt.sh`]             ([\*\*][mydoc-prompt.sh])
 - [x] [`screenshot.sh`]         ([\*\*][mydoc-screenshot.sh])
 - [x] [`spectrWM-baraction.sh`] ([\*\*][mydoc-spectrWM-baraction.sh])
@@ -261,6 +262,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`_parse_git_info.sh`]:    scripts/_parse_git_info.sh
 [`_shortwd.sh`]:           scripts/_shortwd.sh
 [`_stopwatch.sh`]:         scripts/_stopwatch.sh
+[`dmrun.sh`]:              scripts/dmrun.sh
 [`prompt.sh`]:             scripts/prompt.sh
 [`screenshot.sh`]:         scripts/screenshot.sh
 [`spectrWM-baraction.sh`]: scripts/spectrWM-baraction.sh
@@ -304,6 +306,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [mydoc-parse_git_info.sh]:     https://a2n-s.github.io/public/doc/config/scripts/_parse_git_info.sh
 [mydoc-shortwd.sh]:            https://a2n-s.github.io/public/doc/config/scripts/_shortwd.sh
 [mydoc-stopwatch.sh]:          https://a2n-s.github.io/public/doc/config/scripts/_stopwatch.sh
+[mydoc-dmrun.sh]:              https://a2n-s.github.io/public/doc/config/scripts/dmrun.sh
 [mydoc-prompt.sh]:             https://a2n-s.github.io/public/doc/config/scripts/prompt.sh
 [mydoc-screenshot.sh]:         https://a2n-s.github.io/public/doc/config/scripts/screenshot.sh
 [mydoc-spectrWM-baraction.sh]: https://a2n-s.github.io/public/doc/config/scripts/spectrWM-baraction.sh

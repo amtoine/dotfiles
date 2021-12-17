@@ -13,7 +13,9 @@ bluez-utils
 brightnessctl
 bspwm
 cmake
+cmatrix
 cmus
+cowsay
 cronie
 ctags
 dolphin
@@ -25,6 +27,7 @@ figlet
 firefox
 flake8
 flex
+fortune-mod
 fzf
 gimp
 github-cli
@@ -46,6 +49,7 @@ patch
 pavucontrol
 picom
 pkgconf
+ponysay
 python-mpi4py
 python-opengl
 python-tqdm
@@ -54,6 +58,7 @@ read-edid
 rogue
 sc
 sfml
+sl
 sox
 spectrwm
 starship
@@ -61,6 +66,7 @@ swig
 sysstat
 termdown
 thunderbird
+tig
 tldr
 tree
 unzip

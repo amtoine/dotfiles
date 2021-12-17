@@ -19,7 +19,9 @@ bspwm
 catimg
 cava
 cmake
+cmatrix
 cmus
+cowsay
 cronie
 ctags
 dolphin
@@ -35,6 +37,7 @@ firefox
 fish
 flake8
 flex
+fortune-mod
 fzf
 gcc
 gimp
@@ -76,6 +79,7 @@ picom
 pixterm
 pkgconf
 polybar
+ponysay
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
@@ -92,6 +96,7 @@ sc
 scrot
 sfml
 shell-color-scripts
+sl
 sox
 spectrwm
 starship
@@ -102,6 +107,7 @@ sysstat
 termdown
 texinfo
 thunderbird
+tig
 tk
 tldr
 tmux

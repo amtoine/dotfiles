@@ -48,6 +48,7 @@
   st      = status
   cm      = commit
   cmm     = commit -m
+  cma     = commit --amend
   sw      = switch
   swc     = switch -c
   co      = checkout
@@ -80,12 +81,16 @@
 ;   down stream;
   ft      = fetch
   ftp     = fetch -p
+  fto     = fetch origin
+  ftop    = fetch origin -p
+  ftu     = fetch upstream
+  ftup    = fetch upstream -p
   pl      = pull
+  plaf    = pull          --autostash --ff
   plo     = pull origin
+  plafo   = pull origin   --autostash --ff
   plu     = pull upstream
-  plaf    = pull--autostash --ff
-  plafo   = pull--autostash --ff origin
-  plafu   = pull--autostash --ff upstream
+  plafu   = pull upstream --autostash --ff
 ;   up stream
   ps      = push
   pom     = push origin main

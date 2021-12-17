@@ -17,14 +17,17 @@ if status is-interactive
 
     set EDITOR vim
     set VISUAL vim
-    set -o vim
 
 
-    clear
-    figlet -tf slant "welcome in FISH"
-    colorscript -e elfman
-    cal -3
+#   clear
+#   figlet -tf slant "welcome in FISH"
+#   colorscript -e elfman
+#   cal -3
 
 
     starship init fish --print-full-init | source
+
+    function on_exit --on-event fish_exit
+        ponysay "Bye bye!!"
+    end
 end

@@ -24,6 +24,7 @@
 #                 jupyter shortcuts.
 #                 shutdown shortcuts.
 #                 rm shortcuts.
+#                 pacman shortcuts.
 #                 color commands.
 #                 applications.
 
@@ -35,6 +36,7 @@ alias dfm='df -h | grep media | sed "s/\s\+/ /g" | cut -d" " -f6,1'
 set MAIN_DISPLAY   "eDP-1"
 set SECOND_MONITOR "HDMI-2"
 alias hdmic='xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --mode 1920x1080 --rate 60 --right-of $MAIN_DISPLAY'
+alias hdmim='xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --mode 1920x1080 --rate 60 --same-as  $MAIN_DISPLAY'
 alias hdmib='xrandr --output $SECOND_MONITOR --brightness'
 alias hdmid='xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --off'
 
@@ -90,6 +92,11 @@ alias rmv='rm -v'
 alias rmi='rm -i'
 alias rmr='rm -r'
 alias rmrf='rm -rf'
+# <<<
+#
+# >>> pacman shortcuts.
+alias p='sudo pacman'
+alias pu='sudo pacman -Syu'
 # <<<
 
 # >>> color commands.

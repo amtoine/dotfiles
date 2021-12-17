@@ -149,13 +149,14 @@ add_newline = false
 #
 #      https://starship.rs/config/#git-branch 
 [git_branch]
- # format = "[$symbol$branch]($style) "
- format = " [$remote_name/$remote_branch $symbol$branch]($style) "
+ format = "[$symbol$branch]($style) "
+ # format = "[$remote_name $symbol$branch]($style) "
+ # format = "[$remote_name/$remote_branch $symbol$branch]($style) "
  symbol             = " "           # A format string representing the symbol of git branch.
  truncation_length  = 50             # Truncates a git branch to N graphemes.
  truncation_symbol  = "…"            # The symbol used to indicate a branch name was truncated. You can use "" for no symbol.
- always_show_remote = true           # Shows the remote tracking branch name, even if it is equal to the local branch name.
- only_attached      = false          # Only show the branch name when not in a detached HEAD state.
+ always_show_remote = false          # Shows the remote tracking branch name, even if it is equal to the local branch name.
+ only_attached      = true           # Only show the branch name when not in a detached HEAD state.
  style              = "bold yellow"
  disabled           = false
 

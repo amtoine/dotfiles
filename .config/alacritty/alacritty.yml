@@ -234,7 +234,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 10.0
+  size: 6.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -317,7 +317,7 @@ colors:
   bright:
     black:   '0x5b6268'
     red:     '0xda8548'
-    green:   '0x4db5bd'
+    green:   '0x4dfbbd'
     yellow:  '0xecbe7b'
     blue:    '0x3071db'   # This is 2257a0 in Doom Emacs but I lightened it.
     magenta: '0xa9a1e1'
@@ -328,15 +328,15 @@ colors:
   #
   # If the dim colors are not set, they will be calculated automatically based
   # on the `normal` colors.
-  dim:
-    black:   '0x000000'
-    red:     '0x8c3336'
-    green:   '0x7a8530'
-    yellow:  '0x97822e'
-    blue:    '0x506d8f'
-    magenta: '0x80638e'
-    cyan:    '0x497e7a'
-    white:   '0x9a9a9a'
+  # dim:
+  #   black:   '0x000000'
+  #   red:     '0x8c3336'
+  #   green:   '0x7a8530'
+  #   yellow:  '0x97822e'
+  #   blue:    '0x506d8f'
+  #   magenta: '0x80638e'
+  #   cyan:    '0x497e7a'
+  #   white:   '0x9a9a9a'
 
   # Indexed Colors
   #
@@ -642,6 +642,6 @@ key_bindings:
   - { key: F11,       mods: None,          action: ToggleFullscreen            }
   - { key: Paste,     mods: None,          action: Paste                       }
   - { key: Copy,      mods: None,          action: Copy                        }
-  - { key: L,         mods: Control,       action: ClearLogNotice              }
-  - { key: L,         mods: Control,       chars: "\x0c"                       }
+  - { key: L,         mods: Control|Shift, action: ClearLogNotice              }
+  - { key: L,         mods: Control|Shift, chars: "\x0c"                       }
   - { key: N,         mods: Control,       action: SpawnNewInstance            }

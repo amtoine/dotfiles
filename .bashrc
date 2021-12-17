@@ -88,9 +88,10 @@ source $HOME/.local/bin/virtualenvwrapper.sh
 #fi
 # <<<
 
-figlet -tf slant "welcome in BASH"
-colorscript -e elfman
-cal -3
+# figlet -tf slant "welcome in BASH"
+# colorscript -e elfman
+# cal -3
+fortune -c | cowthink -f $(find /usr/share/cows -type f | shuf -n 1)
 
 # >>> prompt.
 # export PS1="\033[01;32m\u@\h\[\033[00m:\[\033[01;34m\$($HOME/scripts/_shortwd.sh 3)\[\033[33m\$($HOME/scripts/_parse_git_info.sh)\[\033[00m\n$ "
