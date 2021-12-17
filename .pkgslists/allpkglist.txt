@@ -51,6 +51,7 @@ htop
 hugo
 kolourpaint
 libappindicator-gtk3
+librsync
 linux
 linux-firmware
 m4
@@ -176,3 +177,4 @@ yay-git
 youtube-dl
 zenity
 zip
+zsh

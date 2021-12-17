@@ -118,7 +118,6 @@ $HOME
 
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
-> []
 ## 2. Documentation. [[toc](#table-of-content)]
 The doc of my dotfiles can be found on my [personal website][mysite] under the [`config/doc/`][mydoc] domain.  
 In this section, some general ideas are given and the lists of the programs, scripts and other stuff I use are put forward.
@@ -191,6 +190,10 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] some [wallpapers][my-wallpapers]                          (\*) ([\*\*][mydoc-wallpapers])
 - [x] [my fork][my-dmenu] of [suckless dmenu][dmenu]            (\*) ([\*\*][mydoc-dmenu])
 - [x] [my fork][my-dmscripts] of [dt's dmscripts][dmscripts-dt] (\*) ([\*\*][mydoc-dmscripts])
+- [ ] [my fork][my-kitty] of [kitty]                            (\*) ([\*\*][mydoc-kitty])
+- [ ] [my fork][my-oh-my-bash] of [oh-my-bash]                  (\*) ([\*\*][mydoc-oh-my-bash])
+- [ ] [my fork][my-oh-my-fish] of [oh-my-fish]                  (\*) ([\*\*][mydoc-oh-my-fish])
+- [ ] [my fork][my-oh-my-zsh] of [oh-my-zsh]                    (\*) ([\*\*][mydoc-oh-my-zsh])
 - [x] [my fork][my-polybar-themes] of [polybar-themes]          (\*) ([\*\*][mydoc-polybar-themes])
 - [x] [my fork][my-surf] of [suckless surf][surf]               (\*) ([\*\*][mydoc-surf])
 
@@ -246,6 +249,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`fish`]:                  .config/fish
 [`git`]:                   .gitconfig
 [`htop`]:                  .config/htop
+[`kitty`]:                 .config/kitty/kitty.conf
 [`mpd`]:                   .config/mpd
 [`ncmcpp`]:                .config/ncmcpp
 [`neofetch`]:              .config/neofetch
@@ -321,16 +325,28 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [virtualenvs-fr]:              https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html
 [dmenu]:                       https://git.suckless.org/dmenu/
 [dmscripts-dt]:                https://gitlab.com/dwt1/dmscripts.git
+[kitty]:                       https://github.com/kovidgoyal/kitty
+[oh-my-bash]:                  https://github.com/ohmybash/oh-my-bash
+[oh-my-fish]:                  https://github.com/oh-my-fish/oh-my-fish
+[oh-my-zsh]:                   https://github.com/ohmyzsh/ohmyzsh
 [polybar-themes]:              https://github.com/adi1090x/polybar-themes
 [surf]:                        https://git.suckless.org/surf/
 [my-wallpapers]:               https://github.com/a2n-s/wallpapers
 [my-dmenu]:                    https://github.com/a2n-s/dmenu
 [my-dmscripts]:                https://github.com/a2n-s/dmscripts
+[my-kitty]:                    https://github.com/a2n-s/kitty
+[my-oh-my-bash]:               https://github.com/a2n-s/oh-my-bash
+[my-oh-my-fish]:               https://github.com/a2n-s/oh-my-fish
+[my-oh-my-zsh]:                https://github.com/a2n-s/ohmyzsh
 [my-polybar-themes]:           https://github.com/a2n-s/polybar-themes
 [my-surf]:                     https://github.com/a2n-s/surf
 [mydoc-wallpapers]:            https://a2n-s.github.io/public/doc/config/wallpapers
 [mydoc-dmenu]:                 https://a2n-s.github.io/public/doc/config/dmenu
 [mydoc-dmscripts]:             https://a2n-s.github.io/public/doc/config/dmscripts
+[mydoc-kitty]:                 https://a2n-s.github.io/public/doc/config/kitty
+[mydoc-oh-my-bash]:            https://a2n-s.github.io/public/doc/config/bash
+[mydoc-oh-my-fish]:            https://a2n-s.github.io/public/doc/config/fish
+[mydoc-oh-my-zsh]:             https://a2n-s.github.io/public/doc/config/zsh
 [mydoc-polybar-themes]:        https://a2n-s.github.io/public/doc/config/polybar
 [mydoc-surf]:                  https://a2n-s.github.io/public/doc/config/surf
 

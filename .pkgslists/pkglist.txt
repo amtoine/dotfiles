@@ -36,6 +36,7 @@ gtk4
 htop
 hugo
 kolourpaint
+librsync
 mpc
 mpd
 mpv
