@@ -103,6 +103,9 @@ completions=(
 # Add wisely, as too many aliases slow down shell startup.
 aliases=(
   general
+  chmod
+  ls
+  example
 )
 
 
@@ -157,147 +160,10 @@ source $OSH/oh-my-bash.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-#         ______  ___              ___
-#        / ____/ |__ \      ____ _/ (_)___ _________  _____
-#       /___ \   __/ /     / __ `/ / / __ `/ ___/ _ \/ ___/
-#      ____/ /_ / __/_    / /_/ / / / /_/ (__  )  __(__  )
-#     /_____/(_)____(_)   \__,_/_/_/\__,_/____/\___/____/
-
-# Set personal aliases, overriding those provided by oh-my-bash libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-bash
-# users are encouraged to define aliases within the OSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias bashconfig="mate ~/.bashrc"
-# alias ohmybash="mate ~/repos/oh-my-bash"
-
-#   ___   ___   _         _
-#  | __| |_  ) / |  _ __ (_)___ __
-#  |__ \_ / / _| | | '  \| (_-</ _|
-#  |___(_)___(_)_| |_|_|_|_/__/\__|
-#
-# shows all the media devices connected.
-alias dfm='df -h | grep media | sed "s/\s\+/ /g" | cut -d" " -f6,1'
-
-# automatically connects to an HDMI-2 monitor on the right of the main laptop screen.
-MAIN_DISPLAY="eDP-1"
-SECOND_MONITOR="HDMI-2"
-alias hdmic='xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --mode 1920x1080 --rate 60 --right-of $MAIN_DISPLAY'
-alias hdmim='xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --mode 1920x1080 --rate 60 --same-as  $MAIN_DISPLAY'
-alias hdmib='xrandr --output $SECOND_MONITOR --brightness'
-alias hdmid='xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --off'
-
-# automatic copy from terminal output with xclip.
-alias xcc='xclip -selection c'
-
-# list the packages that match the pattern given after the alias.
-alias pkgl='tail -n +1 .pkgslists/* | grep -e "==>.*<==" -e'
-
-# uncomment to use colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# a way to manage bluetooth devices.
-alias bmm='blueman-manager'
-
-# to list all the git repositiories inside the home directory.
-alias lgr='find $HOME -type d | grep "\.git\$" | sed "s/\/\.git//"'
-
-# allows to see any csv file directly in the terminal.
-alias seecsv='perl -pe "s/((?<=,)|(?<=^)),/ ,/g;" "$argv" | column -t -s, | less  -F -S -X -K ;'
-#
-#   ___   ___   ___        _ _
-#  | __| |_  ) |_  )  __ _(_) |_
-#  |__ \_ / / _ / /  / _` | |  _|
-#  |___(_)___(_)___| \__, |_|\__|
-#                   |___/
-alias g='git'
-# interacts with my config's git bare repository.
-alias cfg='/usr/bin/git --git-dir=/home/ants/.dotfiles --work-tree=/home/ants'
-
-#   ___   ___   ____  _
-#  | __| |_  ) |__ / | |_ _ __ _  ___ __
-#  |__ \_ / / _ |_ \ |  _| '  \ || \ \ /
-#  |___(_)___(_)___/  \__|_|_|_\_,_/_\_\
-#
-alias tls='tmux ls'               # list the sessions.
-alias tns='tmux new -s'           # creates a new session with name given after the alias.
-alias tat='tmux attach -t'        # attaches to the session given after the alias.
-alias tkt='tmux kill-session -t'  # kills the session with name given after the alias.
-
-#   ___   ___  _ _             _                  _
-#  | __| |_  )| | |   _ _  ___| |___ __ _____ _ _| |__
-#  |__ \_ / / |_  _| | ' \/ -_)  _\ V  V / _ \ '_| / /
-#  |___(_)___(_)|_|  |_||_\___|\__|\_/\_/\___/_| |_\_\
-#
-alias ncua='nmcli c up "a2n-s"'    # connects to my 4g, change to what you want.
-alias ncue='nmcli c up "eduroam"'  # connects to the network of my school.
-
-#   ___   ___   ___     _                _
-#  | __| |_  ) | __|   (_)_  _ _ __ _  _| |_ ___ _ _
-#  |__ \_ / / _|__ \   | | || | '_ \ || |  _/ -_) '_|
-#  |___(_)___(_)___/  _/ |\_,_| .__/\_, |\__\___|_|
-#                    |__/     |_|   |__/
-alias jpy='jupyter'
-alias jnb='jupyter-notebook'
-
-#   ___   ___    __      _        _      _
-#  | __| |_  )  / /   __| |_ _  _| |_ __| |_____ __ ___ _
-#  |__ \_ / / _/ _ \ (_-< ' \ || |  _/ _` / _ \ V  V / ' \
-#  |___(_)___(_)___/ /__/_||_\_,_|\__\__,_\___/\_/\_/|_||_|
-#
-alias sdn='shutdown now -h'
-alias sdnr='shutdown now -h -r'
-
-#   ___   ___  ____
-#  | __| |_  )|__  |  _ _ _ __
-#  |__ \_ / / _ / /  | '_| '  \
-#  |___(_)___(_)_/   |_| |_|_|_|
-#
-alias rmv='rm -v'
-alias rmi='rm -i'
-alias rmr='rm -r'
-alias rmrf='rm -rf'
-#
-#   ___   ___   ___
-#  | __| |_  ) ( _ )  _ __  __ _ __ _ __  __ _ _ _
-#  |__ \_ / / _/ _ \ | '_ \/ _` / _| '  \/ _` | ' \
-#  |___(_)___(_)___/ | .__/\__,_\__|_|_|_\__,_|_||_|
-#                    |_|
-alias p='sudo pacman'
-alias pu='sudo pacman -Syu'
-
-#   ___   ___  ___          _                                              _
-#  | __| |_  )/ _ \  __ ___| |___ _ _ ___  __ ___ _ __  _ __  __ _ _ _  __| |___
-#  |__ \_ / / \_, / / _/ _ \ / _ \ '_(_-< / _/ _ \ '  \| '  \/ _` | ' \/ _` (_-<
-#  |___(_)___(_)_/  \__\___/_\___/_| /__/ \__\___/_|_|_|_|_|_\__,_|_||_\__,_/__/
-#
-# enable color support of ls and also add handy aliases
-alias ls='ls --color=auto'
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
-# some more ls aliases
-alias lalf='ls -alF'
-alias la='ls -A'
-alias lcf='ls -CF'
-alias ll='ls -l'
-alias llha='ls -lha'
-
-#   ___   ___   _  __
-#  | __| |_  ) / |/  \   __ _ _ __ _ __ ___
-#  |__ \_ / / _| | () | / _` | '_ \ '_ (_-<
-#  |___(_)___(_)_|\__/  \__,_| .__/ .__/__/
-#                            |_|  |_|
-alias discord="$HOME/Discord/Discord > /dev/null 2> /dev/null &"
-
-#         ______  _____                _
-#        / ____/ |__  /     ____ ___  (_)_________
-#       /___ \    /_ <     / __ `__ \/ / ___/ ___/
-#      ____/ /_ ___/ /    / / / / / / (__  ) /__
+#         ______  ___                  _
+#        / ____/ |__ \      ____ ___  (_)_________
+#       /___ \   __/ /     / __ `__ \/ / ___/ ___/
+#      ____/ /_ / __/_    / / / / / / (__  ) /__
 #     /_____/(_)____(_)  /_/ /_/ /_/_/____/\___/
 
 export PATH=$PATH:$HOME/scripts:$HOME/.local/bin
@@ -327,6 +193,8 @@ source $HOME/.local/bin/virtualenvwrapper.sh
 fortune -c | ponysay --pony
 
 eval "$(starship init bash)"
+
+source /etc/bash.command-not-found
 
 
 # BEGIN_KITTY_SHELL_INTEGRATION

@@ -9,4 +9,5 @@ polybar
 python35
 python38
 shell-color-scripts
+xsnow
 yay-git

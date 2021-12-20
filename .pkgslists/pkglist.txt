@@ -12,6 +12,7 @@ blueman
 bluez-utils
 brightnessctl
 bspwm
+chromium
 cmake
 cmatrix
 cmus
@@ -43,6 +44,7 @@ mpv
 ncmpc
 ncmpcpp
 neofetch
+neovim
 nethack
 network-manager-applet
 okular
@@ -75,7 +77,6 @@ vi
 vifm
 vnstat
 vulkan-tools
-xclip
 xf86-video-vesa
 xorg-bdftopcf
 xorg-docs

@@ -35,7 +35,8 @@ DMBROWSER="firefox"
 # DMBROWSER="qutebrowser"
 
 # DMTERM="st -e"
-DMTERM="alacritty -e"
+# DMTERM="alacritty -e"
+DMTERM="kitty"
 
 # DMEDITOR="emacsclient -c -a emacs"
 DMEDITOR="${DMTERM} vim"

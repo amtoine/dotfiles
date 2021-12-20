@@ -18,6 +18,7 @@ brightnessctl
 bspwm
 catimg
 cava
+chromium
 cmake
 cmatrix
 cmus
@@ -64,6 +65,7 @@ myman
 ncmpc
 ncmpcpp
 neofetch
+neovim
 nerd-fonts-mononoki
 nethack
 network-manager-applet
@@ -173,6 +175,7 @@ xorg-xwd
 xorg-xwininfo
 xorg-xwud
 xscreensaver
+xsnow
 yay-git
 youtube-dl
 zenity
