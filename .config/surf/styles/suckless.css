@@ -1,0 +1,41 @@
+body {
+	font-size: 13px;
+    background-color: #282a36 !important;
+    color: #d0d0d0 !important;
+}
+
+#header {
+    background-color: #282a36 !important;
+    clear: both;
+    color: #c3e88d !important;
+}
+
+a {
+	color: #82aaff !important;
+}
+
+#header a {
+	color: #e1acff !important;
+}
+
+#menu {
+	clear: both;
+    color: #c792ea;
+	font-weight: bold;
+    overflow: hidden;
+    padding: 0.7ex;
+    border: 0px !important;
+}
+
+#menu a {
+	color: #d0d0d0 !important;
+}
+
+#nav li a:hover {
+    background-color: #282a36 !important;
+}
+
+h1, h2 {
+	color: #f07178 !important;
+}
+

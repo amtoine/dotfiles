@@ -1,0 +1,186 @@
+body {
+	font-size: 13px !important;
+    background: #282a36 !important;
+    color: #d0d0d0 !important;
+}
+a {
+    color: #9cc4ff !important;
+}
+#archnavbar {
+    min-height: 40px !important;
+    padding: 10px 15px !important;
+    background: #282a36 !important;
+    border-bottom: 0px !important;
+}
+.article-content p, h4 a {
+    font-size: 1.3em !important;
+}
+h4, h4 a, li a {
+    font-size: 1.3em !important;
+}
+h4 a, li a, #content h1, #content h2, #content h3 {
+    color: #82aaff !important;
+}
+#news h3 a {
+    font-size: 1.3em !important;
+    background: #82aaff !important;
+    color: #282a36 !important;
+}
+h3 span.arrow {
+    display: none !important;
+}
+#pkgsearch {
+    background: #9cc4ff !important;
+}
+label {
+    color: #282a36 !important;
+}
+.box {
+    font-size: 1.3em;
+    background: #000000 !important;
+    color: #d0d0d0 !important;
+	border: 1px solid #555 !important;
+}
+pre {
+    background: #9cc4ff !important;
+    margin: 1em 0px !important;
+	border: 1px solid #666666 !important;
+}
+code {
+    color: #282a36 !important;
+    background: #9cc4ff !important;
+}
+p code {
+    color: #000 !important;
+	font-size: 12px !important;
+    background: #ff8b92 !important;
+}
+
+
+dl dt{
+    color: #ff8b92 !important;
+    font-size: 1.2em;
+}
+dd a{
+    color: #82aaff !important;
+    font-size: 1.2em;
+}
+
+
+/* ARCH WIKI */
+
+#mw-panel .portal .body li {
+    font-size: 0.9em !important;
+}
+#mw-panel .portal h3 {
+    color: #ff8b92 !important;
+    font-size: 0.9em !important;
+}
+#content {
+    background: #282a36 !important;
+    border: none !important;
+}
+#toc, .toc, .mw-warning, .toccolours {
+    background-color: #000000 !important;
+    border: 1px solid #666666 !important;
+    color: #d0d0d0 !important;
+}
+.tocnumber, .toctogglelabel {
+    color: #d0d0d0 !important;
+}
+.mw-body-content p {
+    color: #d0d0d0 !important;
+}
+div#mw-head {
+    top: 38px !important;
+}
+div.vectorTabs li.selected {
+    border: 1px solid #666666 !important;
+    border-bottom-color: #666666 !important;
+    background-color: #000000 !important;
+    padding-bottom: 20px !important;
+}
+.vectorTabs span {
+    background: none !important;
+}
+.catlinks {
+    border: 1px solid #666666 !important;
+    background-color: #000000 !important;
+}
+.mw-body, .parsoid-body {
+    color: #d0d0d0 !important;
+    font-size: 1.2em !important;
+}
+
+
+/* AUR */
+.results th {
+    background-color: #282a36 !important;
+}
+.results tr:nth-child(2n+1), #article-list tr:nth-child(2n+1) {
+    background: #282a36 !important;
+}
+.results tr:nth-child(2n), #article-list tr:nth-child(2n) {
+    background: #1f212a !important;
+}
+
+
+
+/* ARCH FORUMS */
+#brdmenu, #brdmenu a {
+    background: #000000 !important;
+    border-color: #444444 !important;
+}
+#brdmenu.inbox {
+    margin-left: 30px !important;
+}
+.pun, .punwrap {
+    background: #282a36 !important;
+    border: none !important;
+}
+.pun .blocktable th {
+    background: #000000 !important;
+    border-color: #000 !important;
+    color: #ff8b92 !important;
+}
+#punindex .blocktable h2 {
+    font-size: 1.2em !important;
+    color: #ff8b92 !important;
+}
+tr.rowodd {
+    background: #282a36 !important;
+}
+tr.roweven {
+    background: #282a36 !important;
+}
+.pun .blocktable td {
+    border-color: #444444 !important;
+}
+.pun .blockpost {
+    background: #282a36 !important;
+    border-color: #444444 !important;
+}
+.pun .blockpost h2 {
+    background: #000000 !important;
+    border: none !important;
+    color: #82aaff !important;
+}
+.pun .blockpost .postbody, .pun .blockpost .postfoot {
+    background: #282a36 !important;
+    border-color: #444444 !important;
+}
+#punviewtopic .blockpost dt, #punmoderate .blockpost dt {
+    top: -1.8em !important;
+    color: #ff8b92 !important;
+}
+.pun .postmsg, #punhelp code, #punhelp samp {
+    color: #d0d0d0 !important;
+}
+.pun .codebox {
+    border-color: #444444 !important;
+    background: #9cc4ff !important;
+    color: #000000 !important;
+}
+.pun .codebox pre {
+    border: none !important;
+}
