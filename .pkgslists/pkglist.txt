@@ -38,6 +38,7 @@ htop
 hugo
 kolourpaint
 librsync
+lolcat
 mpc
 mpd
 mpv
@@ -77,6 +78,7 @@ vi
 vifm
 vnstat
 vulkan-tools
+xautolock
 xf86-video-vesa
 xorg-bdftopcf
 xorg-docs

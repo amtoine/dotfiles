@@ -72,7 +72,7 @@ picom &
 #~/.fehbg &
 feh --bg-fill --randomize ~/repos/wallpapers/wallpapers/
 # the screen saver.
-xscreensaver --no-splash > /dev/null &
+# xscreensaver --no-splash > /dev/null &
 
 # the window manager itself.
 # exec spectrwm

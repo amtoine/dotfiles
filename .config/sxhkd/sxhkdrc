@@ -61,7 +61,7 @@ super + {_, shift +}F7
   ~/scripts/screenshot.sh {full, window}
 # lock the computer.
 super + ctrl + F12
-  xscreensaver-command --lock
+  ~/scripts/slock-cst.sh
 
 #
 # >>> bspwm hotkeys

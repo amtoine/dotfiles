@@ -55,6 +55,7 @@ libappindicator-gtk3
 librsync
 linux
 linux-firmware
+lolcat
 m4
 make
 mpc
@@ -123,6 +124,7 @@ vnstat
 vulkan-tools
 w3m
 which
+xautolock
 xclip
 xdotool
 xf86-video-vesa

@@ -137,6 +137,7 @@ confedit_list[oh-my-zsh]="$HOME/repos/oh-my-zsh"
 confedit_list[polybar]="$HOME/repos/polybar"
 confedit_list[sites]="$HOME/repos/sites"
 confedit_list[surf]="$HOME/repos/surf"
+confedit_list[slock]="$HOME/repos/slock"
 confedit_list[uzbl]="$HOME/repos/uzbl"
 
 

@@ -33,6 +33,7 @@ feh --bg-fill --randomize ~/repos/wallpapers/wallpapers/
 # set -U SXHKD_SHELL /bin/bash
 pgrep -x sxhkd > /dev/null || sxhkd &
 bash $HOME/.config/polybar/launch.sh --forest &
+xautolock -time 1 -locker ~/scripts/slock-cst.sh &
 
 # >>> BSPWM monitor connection.
 bspc monitor eDP-1  -n 1 -d I II III IV V
