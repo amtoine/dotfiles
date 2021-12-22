@@ -16,7 +16,11 @@
 # License:      https://github.com/a2n-s/dotfiles/LICENSE 
 # Contributors: Stevan Antoine
 
-bookmarks="$HOME/.config/surf/bookmarks"
-uri=$(xprop -id $2 $3 | sed "s/^$3(UTF8_STRING) = //; s/^\"\(.*\)\"$/\1/")
-prop=$(printf '%b' "$(echo "$uri"; cat $bookmarks)" | dmenu -l 10 -p "$5" -w "$2")
+if [[ "$4" = '_SURF_FIND' ]]; then
+  prop=$(echo "" | dmenu -p "$5" -w "$2")
+else
+  bookmarks="$HOME/.config/surf/bookmarks"
+  uri=$(xprop -id $2 $3 | sed "s/^$3(UTF8_STRING) = //; s/^\"\(.*\)\"$/\1/")
+  prop=$(printf '%b' "$(echo "$uri"; cat $bookmarks)" | dmenu -l 10 -p "$5" -w "$2")
+fi
 xprop -id "$2" -f "$4" 8u -set "$4" "$prop"

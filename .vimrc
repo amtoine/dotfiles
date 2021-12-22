@@ -226,6 +226,8 @@ nnoremap <F3> :NERDTreeToggle<cr>
 "au VimEnter * wincmd p
 " Have nerdtree ignore certain files and directories.
 let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
+" search visually selected text.
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 " }}}
 
 

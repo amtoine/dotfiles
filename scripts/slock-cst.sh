@@ -16,4 +16,4 @@
 # License:      https://github.com/a2n-s/dotfiles/LICENSE 
 # Contributors: Stevan Antoine
 
-slock -m "$(cowsay $(fortune) | lolcat -ft)"
+slock -m "$(cowsay $(fortune -c) | lolcat -ft)"

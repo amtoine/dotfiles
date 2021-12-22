@@ -42,8 +42,9 @@ DMTERM="kitty"
 DMEDITOR="${DMTERM} vim"
 
 # TODO: Rename this variable to something more traditional
-#logout_locker='slock'
-logout_locker='xscreensaver-command -lock'
+# logout_locker='slock'
+logout_locker="$HOME/scripts/slock-cst.sh"
+# logout_locker='xscreensaver-command -lock'
 # logout_locker='dm-tool lock'
 
 # This case statement lets you change what the DMENU variable is for different scripts, so if you
@@ -106,6 +107,7 @@ confedit_list[fish]="$HOME/.config/fish"
 confedit_list[gitconfig]="$HOME/.gitconfig"
 confedit_list[kitty]="$HOME/.config/kitty/kitty.conf"
 confedit_list[mpd]="$HOME/.config/mpd/mpd.conf"
+confedit_list[mpv]="$HOME/.config/mpv"
 confedit_list[neofetch]="$HOME/.config/neofetch"
 confedit_list[ncmcpp]="$HOME/.config/ncmpcpp/config"
 confedit_list[picom]="$HOME/.config/picom/picom.conf"
@@ -121,6 +123,7 @@ confedit_list[spectrwm]="$HOME/.config/spectrwm/spectrwm.conf"
 confedit_list[spectrwm_us]="$HOME/.config/spectrwm/spectrwm_us.conf"
 confedit_list[spectrwm_fr]="$HOME/.config/spectrwm/spectrwm_fr.conf"
 confedit_list[ssh]="$HOME/.ssh/config"
+confedit_list[surf-cfg]="$HOME/.config/surf"
 confedit_list[sxhkd]="$HOME/.config/sxhkd/sxhkdrc"
 confedit_list[tmux.conf]="$HOME/.tmux.conf"
 confedit_list[vifm]="$HOME/.config/vifm/vifmrc"
@@ -138,6 +141,7 @@ confedit_list[polybar]="$HOME/repos/polybar"
 confedit_list[sites]="$HOME/repos/sites"
 confedit_list[surf]="$HOME/repos/surf"
 confedit_list[slock]="$HOME/repos/slock"
+confedit_list[tabbed]="$HOME/repos/tabbed"
 confedit_list[uzbl]="$HOME/repos/uzbl"
 
 

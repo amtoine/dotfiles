@@ -61,7 +61,7 @@ super + {_, shift +}F7
   ~/scripts/screenshot.sh {full, window}
 # mt web browser.
 super + F8
-  tabbed -c surf -e
+  tabbed -c surf -N -e
 # lock the computer.
 super + ctrl + F12
   ~/scripts/slock-cst.sh

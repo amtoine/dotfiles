@@ -54,8 +54,15 @@ $HOME
 |   |   |-- [d]  functions
 |   |-- [d]  htop                                      -- my process monitor.
 |   |   `-- [-]  htoprc
+|   |-- [d]  kitty
+|   |   `-- [-]  kitty.conf
 |   |-- [d]  mpd                                       -- music server deamon.
 |   |   `-- [-]  mpd.conf                                 crashes for some reason...
+|   |-- [d]  mpv
+|   |   |-- [-]  input.conf
+|   |   |-- [-]  mplayer-input.conf
+|   |   |-- [-]  mpv.conf
+|   |   `-- [-]  restore-old-bindings.conf
 |   |-- [d]  ncmpcpp                                   -- music client.
 |   |   `-- [-]  config
 |   |-- [d]  neofetch                                  -- a logo printer.
@@ -75,15 +82,32 @@ $HOME
 |   |   |-- [-]  spectrwm.conf
 |   |   |-- [-]  spectrwm_fr.conf
 |   |   `-- [-]  spectrwm_us.conf
-|   |-- [d]  starship                                  -- a fast and customizable terminal prompt.
-|   |   `-- [-]  config.toml
+|   |-- [d]  surf
+|   |   |-- [d]  html
+|   |   |   `-- [-]  homepage.html
+|   |   |-- [d]  scripts
+|   |   |   |-- [-]  bm.add.sh
+|   |   |   |-- [-]  dmenu.linkselect.sh
+|   |   |   |-- [-]  dmenu.mpv.sh
+|   |   |   |-- [-]  dmenu.setprop.sh
+|   |   |   |-- [-]  dmenu.uri.sh
+|   |   |   |-- [-]  edit_screen.sh
+|   |   |   |-- [-]  editurl.sh
+|   |   |   `-- [-]  link_hints.js
+|   |   `-- [d]  styles
+|   |       |-- [-]  archlinux.css
+|   |       |-- [-]  homepage.css
+|   |       |-- [-]  suckless.css
+|   |       `-- [-]  wikipedia.css
 |   |-- [d]  sxhkd
 |   |   `-- [-]  sxhkdrc
-|   `-- [d]  vifm                                      -- the file manager.
-|       |-- [d]  colors
-|       |   `-- [-]  molokai.vifm
-|       `-- [-]  vifmrc
+|   |-- [d]  vifm                                      -- the file manager.
+|   |   |-- [d]  colors
+|   |   |   `-- [-]  molokai.vifm
+|   |   `-- [-]  vifmrc
+|   `-- [-]  starship.toml                             -- a fast and customizable terminal prompt.
 |-- [d]  .pkgslists                                  -- packages.
+|   |-- [-]  README.md
 |   |-- [-]  allpkglist.txt                            -- the list of all installed packages.
 |   |-- [-]  foreignpkglist.txt                        -- the list of AUR packages.
 |   |-- [-]  optdeplist.txt                            -- the list of optional packages.
@@ -93,8 +117,10 @@ $HOME
 |   |-- [-]  _parse_git_info.sh                        -- parses the repo information if available.
 |   |-- [-]  _shortwd.sh                               -- gives a short directory name for prompt.
 |   |-- [-]  _stopwatch.sh                             -- a stopwatch (deprecated)
+|   |-- [-]  dmrun.sh                                  -- a wrapper around dmenu.
 |   |-- [-]  prompt.sh                                 -- a binary prompt that executes commands.
 |   |-- [-]  screenshot.sh                             -- takes screeshots with scrot.
+|   |-- [-]  slock-cst.sh                              -- a wrapper around slock.
 |   |-- [-]  spectrWM-baraction.sh                     -- controls the spectrWM bar.
 |   |-- [-]  togkb.sh                                  -- toggles the keyboard layout.
 |   |-- [-]  tr2md.sh                                  -- transforms a directory into a tree for .md files.
@@ -111,6 +137,7 @@ $HOME
 |-- [-]  .vimrc                                      -- all needed configuration for a pretty vim.
 |-- [-]  .xinitrc                                    -- what to do when x starts.
 |-- [-]  .xscreensaver                               -- my config when the machine is idle or manually locked.
+|-- [-]  .zshrc
 |-- [-]  LICENSE
 `-- [-]  README.md
 ```
@@ -150,13 +177,15 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 (\*\*) the associated documentation page.
 
 #### List of programs:
-- [x] [`alacritty`]    ([\*\*][mydoc-alacritty])
+- [ ] [`alacritty`]    ([\*\*][mydoc-alacritty])
 - [x] [`bspwm`]        ([\*\*][mydoc-bspwm])
-- [ ] [`bash`]         ([\*\*][mydoc-bash])
-- [x] [`fish`]         ([\*\*][mydoc-fish])
+- [x] [`bash`]         ([\*\*][mydoc-bash])
+- [ ] [`fish`]         ([\*\*][mydoc-fish])
 - [x] [`git`]          ([\*\*][mydoc-git])
 - [x] [`htop`]         ([\*\*][mydoc-htop])
+- [x] [`kitty`]        ([\*\*][mydoc-kitty])
 - [ ] [`mpd`]          ([\*\*][mydoc-mpd])
+- [x] [`mpv`]          ([\*\*][mydoc-mpv])
 - [ ] [`ncmcpp`]       ([\*\*][mydoc-ncmcpp])
 - [ ] [`neofetch`]     ([\*\*][mydoc-neofetch])
 - [ ] [`nitrogen`]     ([\*\*][mydoc-nitrogen])
@@ -164,10 +193,11 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [`starship`]     ([\*\*][mydoc-starship])
 - [x] [`sxhkd`]        ([\*\*][mydoc-sxhkd])
 - [ ] [`tmux`]         ([\*\*][mydoc-tmux])
-- [x] [`vifm`]         ([\*\*][mydoc-vifm])
+- [ ] [`vifm`]         ([\*\*][mydoc-vifm])
 - [x] [`vim`]          ([\*\*][mydoc-vim])
 - [x] [`x`]            ([\*\*][mydoc-x])
-- [x] [`xscreensaver`] ([\*\*][mydoc-xscreensaver])
+- [ ] [`xscreensaver`] ([\*\*][mydoc-xscreensaver])
+- [ ] [`zsh`]          ([\*\*][mydoc-zsh])
 
 #### List of scripts:
 - [ ] [`_countdown.sh`]         ([\*\*][mydoc-countdown.sh])
@@ -177,6 +207,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [`dmrun.sh`]              ([\*\*][mydoc-dmrun.sh])
 - [x] [`prompt.sh`]             ([\*\*][mydoc-prompt.sh])
 - [x] [`screenshot.sh`]         ([\*\*][mydoc-screenshot.sh])
+- [x] [`slock-cst.sh`]          ([\*\*][mydoc-slock-cst.sh])
 - [x] [`spectrWM-baraction.sh`] ([\*\*][mydoc-spectrWM-baraction.sh])
 - [x] [`togkb.sh`]              ([\*\*][mydoc-togkb.sh])
 - [x] [`tr2md.sh`]              ([\*\*][mydoc-tr2md.sh])
@@ -189,12 +220,14 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] some [wallpapers][my-wallpapers]                          (\*) ([\*\*][mydoc-wallpapers])
 - [x] [my fork][my-dmenu] of [suckless dmenu][dmenu]            (\*) ([\*\*][mydoc-dmenu])
 - [x] [my fork][my-dmscripts] of [dt's dmscripts][dmscripts-dt] (\*) ([\*\*][mydoc-dmscripts])
-- [ ] [my fork][my-kitty] of [kitty]                            (\*) ([\*\*][mydoc-kitty])
-- [ ] [my fork][my-oh-my-bash] of [oh-my-bash]                  (\*) ([\*\*][mydoc-oh-my-bash])
+- [x] [my fork][my-kitty] of [kitty]                            (\*) ([\*\*][mydoc-kitty])
+- [x] [my fork][my-oh-my-bash] of [oh-my-bash]                  (\*) ([\*\*][mydoc-oh-my-bash])
 - [ ] [my fork][my-oh-my-fish] of [oh-my-fish]                  (\*) ([\*\*][mydoc-oh-my-fish])
 - [ ] [my fork][my-oh-my-zsh] of [oh-my-zsh]                    (\*) ([\*\*][mydoc-oh-my-zsh])
 - [x] [my fork][my-polybar-themes] of [polybar-themes]          (\*) ([\*\*][mydoc-polybar-themes])
 - [x] [my fork][my-surf] of [suckless surf][surf]               (\*) ([\*\*][mydoc-surf])
+- [x] [my fork][my-tabbed] of [suckless tabbed][tabbed]         (\*) ([\*\*][mydoc-tabbed])
+- [x] [my fork][my-slock] of [suckless slock][slock]            (\*) ([\*\*][mydoc-slock])
 
 (\*) comes from another repo.  
 (\*\*) the associated documentation page.
@@ -250,6 +283,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`htop`]:                  .config/htop
 [`kitty`]:                 .config/kitty/kitty.conf
 [`mpd`]:                   .config/mpd
+[`mpv`]:                   .config/mpv
 [`ncmcpp`]:                .config/ncmcpp
 [`neofetch`]:              .config/neofetch
 [`nitrogen`]:              .config/nitrogen
@@ -261,6 +295,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`vim`]:                   .vimrc
 [`x`]:                     .xinitrc
 [`xscreensaver`]:          .xscreensaver
+[`zsh`]:                   .zshrc
 [`_countdown.sh`]:         scripts/_countdown.sh
 [`_parse_git_info.sh`]:    scripts/_parse_git_info.sh
 [`_shortwd.sh`]:           scripts/_shortwd.sh
@@ -268,6 +303,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`dmrun.sh`]:              scripts/dmrun.sh
 [`prompt.sh`]:             scripts/prompt.sh
 [`screenshot.sh`]:         scripts/screenshot.sh
+[`slock-cst.sh`]:          scripts/slock-cst.sh
 [`spectrWM-baraction.sh`]: scripts/spectrWM-baraction.sh
 [`togkb.sh`]:              scripts/togkb.sh
 [`tr2md.sh`]:              scripts/tr2md.sh
@@ -291,7 +327,9 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [mydoc-fish]:                  https://a2n-s.github.io/public/doc/config/dotfiles/fish
 [mydoc-git]:                   https://a2n-s.github.io/public/doc/config/dotfiles/git
 [mydoc-htop]:                  https://a2n-s.github.io/public/doc/config/dotfiles/htop
+[mydoc-kitty]:                 https://a2n-s.github.io/public/doc/config/dotfiles/kitty
 [mydoc-mpd]:                   https://a2n-s.github.io/public/doc/config/dotfiles/mpd
+[mydoc-mpv]:                   https://a2n-s.github.io/public/doc/config/dotfiles/mpv
 [mydoc-ncmcpp]:                https://a2n-s.github.io/public/doc/config/dotfiles/ncmcpp
 [mydoc-neofetch]:              https://a2n-s.github.io/public/doc/config/dotfiles/neofetch
 [mydoc-nitrogen]:              https://a2n-s.github.io/public/doc/config/dotfiles/nitrogen
@@ -303,6 +341,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [mydoc-vim]:                   https://a2n-s.github.io/public/doc/config/dotfiles/vim
 [mydoc-x]:                     https://a2n-s.github.io/public/doc/config/dotfiles/x
 [mydoc-xscreensaver]:          https://a2n-s.github.io/public/doc/config/dotfiles/xscreensaver
+[mydoc-zsh]:                   https://a2n-s.github.io/public/doc/config/dotfiles/zsh
 
 <!-- scripts: -->
 [mydoc-countdown.sh]:          https://a2n-s.github.io/public/doc/config/scripts/_countdown.sh
@@ -312,6 +351,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [mydoc-dmrun.sh]:              https://a2n-s.github.io/public/doc/config/scripts/dmrun.sh
 [mydoc-prompt.sh]:             https://a2n-s.github.io/public/doc/config/scripts/prompt.sh
 [mydoc-screenshot.sh]:         https://a2n-s.github.io/public/doc/config/scripts/screenshot.sh
+[mydoc-slock-cst.sh]:          https://a2n-s.github.io/public/doc/config/scripts/slock-cst.sh
 [mydoc-spectrWM-baraction.sh]: https://a2n-s.github.io/public/doc/config/scripts/spectrWM-baraction.sh
 [mydoc-togkb.sh]:              https://a2n-s.github.io/public/doc/config/scripts/togkb.sh
 [mydoc-tr2md.sh]:              https://a2n-s.github.io/public/doc/config/scripts/tr2md.sh
@@ -330,6 +370,8 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [oh-my-zsh]:                   https://github.com/ohmyzsh/ohmyzsh
 [polybar-themes]:              https://github.com/adi1090x/polybar-themes
 [surf]:                        https://git.suckless.org/surf/
+[tabbed]:                      https://git.suckless.org/tabbed/
+[slock]:                       https://git.suckless.org/slock/
 [my-wallpapers]:               https://github.com/a2n-s/wallpapers
 [my-dmenu]:                    https://github.com/a2n-s/dmenu
 [my-dmscripts]:                https://github.com/a2n-s/dmscripts
@@ -339,6 +381,8 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [my-oh-my-zsh]:                https://github.com/a2n-s/ohmyzsh
 [my-polybar-themes]:           https://github.com/a2n-s/polybar-themes
 [my-surf]:                     https://github.com/a2n-s/surf
+[my-tabbed]:                   https://github.com/a2n-s/tabbed
+[my-slock]:                    https://github.com/a2n-s/slock
 [mydoc-wallpapers]:            https://a2n-s.github.io/public/doc/config/wallpapers
 [mydoc-dmenu]:                 https://a2n-s.github.io/public/doc/config/dmenu
 [mydoc-dmscripts]:             https://a2n-s.github.io/public/doc/config/dmscripts
@@ -348,6 +392,8 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [mydoc-oh-my-zsh]:             https://a2n-s.github.io/public/doc/config/zsh
 [mydoc-polybar-themes]:        https://a2n-s.github.io/public/doc/config/polybar
 [mydoc-surf]:                  https://a2n-s.github.io/public/doc/config/surf
+[mydoc-tabbed]:                https://a2n-s.github.io/public/doc/config/tabbed
+[mydoc-slock]:                 https://a2n-s.github.io/public/doc/config/slock
 
 <!-- gallery -->
 [mygallery-nitrogen]:          https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-nitrogen.png
