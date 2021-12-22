@@ -59,6 +59,9 @@ super + F6
 # take a screenshot of everything or chose a window.
 super + {_, shift +}F7
   ~/scripts/screenshot.sh {full, window}
+# mt web browser.
+super + F8
+  tabbed -c surf -e
 # lock the computer.
 super + ctrl + F12
   ~/scripts/slock-cst.sh
