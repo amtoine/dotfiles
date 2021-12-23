@@ -31,7 +31,8 @@ DMBORDER=5
 DMENU="dmenu -i -g $DMCOLUMNS -l $DMLINES -x $((960 - $DMWIDTH/2)) -y $((540 - ($DMLINES+1)*$DMHEIGHT/2)) -z $DMWIDTH -h $DMHEIGHT -bw $DMBORDER -p"
 
 # DMBROWSER="brave"
-DMBROWSER="firefox"
+DMBROWSER="surf"
+# DMBROWSER="firefox"
 # DMBROWSER="qutebrowser"
 
 # DMTERM="st -e"
@@ -55,9 +56,7 @@ logout_locker="$HOME/scripts/slock-cst.sh"
 
 # include -p in standard dmenu as we use prompts by default
 case "${0##*-}" in
-#  "colpick") DMENU="dmenu -i -p";;
-#  "confedit") DMENU="dmenu -i -l 30 -p";;
-#  "youtube") DMBROWSER="firefox";;
+ "youtube") DMENU="dmenu -i -l 30 -p";;
   *);;
 esac
 
@@ -72,22 +71,6 @@ esac
 # TODO: Move almost all of these variables into the case statement
 # TODO: Make some of the more useful ones general variables
 # IE a pictures directory, an audio directory, config locations, etc
-
-# dm-bookman
-bookman_show_source=1
-
-# dm-sounds
-sounds_dir="${HOME}/.config/dmscripts/dmsounds"
-
-# dm-setbg
-setbg_dir="${HOME}/Pictures/Wallpapers"
-# Set this to 1 if you want to use imv and wayland, 0 if you want to use sxiv
-# Note that sxiv is X11 only, you need to mark the image you want to use.
-use_imv=1
-
-# dm-maim
-maim_dir="${HOME}/Screenshots"
-maim_file_prefix="maim"
 
 # dm-note
 note_dir="${HOME}/.config/dmscripts/dmnote"
@@ -209,7 +192,123 @@ websearch[stackoverflow]="https://stackoverflow.com/search?q="
 # Syntax: youtube_channels[name]="https://www.youtube.com/link/to/channel"
 
 declare -A youtube_channels
-youtube_channels[distrotube]="https://www.youtube.com/c/DistroTube/featured"
+youtube_channels[2Cheese MilkShake]="https://www.youtube.com/channel/UCCC5_hzMojUE01etdJxVjAA"
+youtube_channels[2CheeseMilkShake]="https://www.youtube.com/channel/UCSQgph4-9v9SN0TWPWZQWEw"
+youtube_channels[2TH Officiel]="https://www.youtube.com/channel/UCm2nD8breD2X5DvYCnN_bCQ"
+youtube_channels[3Blue1Brown]="https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw"
+youtube_channels[7 Jaws]="https://www.youtube.com/channel/UCjuBrpUqR5bFvZYOsRmFqJQ"
+youtube_channels[13 Block]="https://www.youtube.com/channel/UCWY75uWazCXwtobPO232qAA"
+youtube_channels[47Ter]="https://www.youtube.com/channel/UC7HvOYL0E1yWe7Fp31TWvXQ"
+youtube_channels[75e Session]="https://www.youtube.com/channel/UCo1zHzOv9O6JuT-jGp_flKw"
+youtube_channels[a-ha]="https://www.youtube.com/channel/UCeEi1My3KTXHT0SG1JkR9gA"
+youtube_channels[AaRON]="https://www.youtube.com/channel/UCV-q3-VuGgYzDEFXYDxIZRw"
+youtube_channels[Abrege]="https://www.youtube.com/channel/UCWimnuBF27nwOxgUBJ4qNeg"
+youtube_channels[Achile]="https://www.youtube.com/channel/UC0lG2Ixze6G6beMjULun5qw"
+youtube_channels[AcousticTrench]="https://www.youtube.com/channel/UCV-hwVczs0GQRApxZS4TUNA"
+youtube_channels[Akim Omiri]="https://www.youtube.com/channel/UCbOdpYBG53zmFuDK0qaTSmw"
+youtube_channels[Alice et Moi]="https://www.youtube.com/channel/UCj6rtx3HBZEEPAYd0mT2SvQ"
+youtube_channels[ALKPOTE]="https://www.youtube.com/channel/UC5eyo1DYNuDKkIExfXKeGIg"
+youtube_channels[Amixem]="https://www.youtube.com/channel/UCgvqvBoSHB1ctlyyhoHrGwQ"
+youtube_channels[An\'Om x Vayn]="https://www.youtube.com/channel/UCtSeaEcC85sFVBybLkPNFNA"
+youtube_channels[Angerfist]="https://www.youtube.com/channel/UCdluEI4RUCXmIgWyGmt5y9g"
+youtube_channels[apilune]="https://www.youtube.com/channel/UCio0T1T1I-sTXJDuQuTip9Q"
+youtube_channels[Ari Seff]="https://www.youtube.com/channel/UCIxertsVDip8QHpnhinkAow"
+youtube_channels[Arma Jackson]="https://www.youtube.com/channel/UCla-BsUB_GekvCCIwd-gC1g"
+youtube_channels[Arxiv Insights]="https://www.youtube.com/channel/UCNIkB2IeJ-6AmZv7bQ1oBYg"
+youtube_channels[Asaf Avidan]="https://www.youtube.com/channel/UCAtSxW7FSDbzZqD-my6UW2A"
+youtube_channels[AstronoGeek]="https://www.youtube.com/channel/UC5X4e8ScZI2AFd_vkjSoyoQ"
+youtube_channels[AURORA]="https://www.youtube.com/channel/UCNjHgaLpdy1IMNK57pYiKiQ"
+youtube_channels[Axiome]="https://www.youtube.com/channel/UCNHFiyWgsnaSOsMtSoV_Q1A"
+youtube_channels[Axolot]="https://www.youtube.com/channel/UC2_OG1L8DLTzQ7UrZVOk7OA"
+youtube_channels[Aypierre]="https://www.youtube.com/channel/UCA5sfitizqs1oEbB5KY4uKQ"
+youtube_channels[B-NOM Music]="https://www.youtube.com/channel/UCMz09FwSJiEcDVDoEQGwOtA"
+youtube_channels[Balade Mentale]="https://www.youtube.com/channel/UCS_7tplUgzJG4DhA16re5Yg"
+youtube_channels[BASTILLEvideos]="https://www.youtube.com/channel/UC0q_PBWOkFe3SKllFXf3eWw"
+youtube_channels[bbno$]="https://www.youtube.com/channel/UCC8FSfSnbjiZ6vGr68ZLtzg"
+youtube_channels[Bekar NFR]="https://www.youtube.com/channel/UCOvYc9SLXqnfOB-jEiYo_Xg"
+youtube_channels[Ben Eater]="https://www.youtube.com/channel/UCS0N5baNlQWJCUrhCEo8WlA"
+youtube_channels[Ben Vallack]="https://www.youtube.com/channel/UC4NNPgQ9sOkBjw6GlkgCylg"
+youtube_channels[BEN.]="https://www.youtube.com/channel/UCanCcT8_W0moKZutEnJdWSA"
+youtube_channels[Berywam]="https://www.youtube.com/channel/UCxXFx2jz8N02sNqv1VeDEGA"
+youtube_channels[Best Of Antoine Daniel]="https://www.youtube.com/channel/UCBuee5JCBlI_VuKjxmqtyUA"
+youtube_channels[BiG HEATH]="https://www.youtube.com/channel/UCAANvWwf0p9UfKBD2Rgn5gg"
+youtube_channels[Biga*Ranx]="https://www.youtube.com/channel/UCHJ-g0a43Jcp_xa1LPjQvaQ"
+youtube_channels[Bigflo et Oli]="https://www.youtube.com/channel/UCp6bpinXPzdx7d7-gekWzZQ"
+youtube_channels[Bigorneaux \& Coquillages]="https://www.youtube.com/channel/UCWMYFDuCcvkmPiOf1RP_IKQ"
+youtube_channels[Billie Eilish]="https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ"
+youtube_channels[Billx Official]="https://www.youtube.com/channel/UCwGuOEGEQjT2Goecz3BCNfg"
+youtube_channels[Birdy Nam Nam]="https://www.youtube.com/channel/UCOVkvGg2nfiuInRpIJgsxbA"
+youtube_channels[Bob Lennon]="https://www.youtube.com/channel/UCo0U1tbk3YbqiLDhkeWOviQ"
+youtube_channels[Booska-P]="https://www.youtube.com/channel/UCczuNg-bajJgZLYhrY7FpfA"
+youtube_channels[Breakbot]="https://www.youtube.com/channel/UCH6TCcFxQjVHLEwcJ8iXusA"
+youtube_channels[Brick Experiment Channel]="https://www.youtube.com/channel/UClsFdM0HzTdF1JYoraQ0aUw"
+youtube_channels[Brulux Officiel]="https://www.youtube.com/channel/UCa4Pn-ln0eyqFHml6IwQRTA"
+youtube_channels[Caballero \& JeanJass]="https://www.youtube.com/channel/UCeg0PVLfsBKFLGd9V_EvbGA"
+youtube_channels[Camelia Jordana]="https://www.youtube.com/channel/UCQUOX5YyYrgE5rKOPTcLm_w"
+youtube_channels[CaravanPalace]="https://www.youtube.com/channel/UCKH9HfYY_GEcyltl2mbD5lA"
+youtube_channels[Castor Mother]="https://www.youtube.com/channel/UCfO4BQD5_S1272GVmuXmTxA"
+youtube_channels[CGP Grey]="https://www.youtube.com/channel/UC2C_jShtL725hvbm1arSV9w"
+youtube_channels[chambrefroideprod]="https://www.youtube.com/channel/UC5LQaZr2hG6nIjDxWc3zs6g"
+youtube_channels[Channel Tres]="https://www.youtube.com/channel/UCx0H8GdP66dOal6yTGQDpeA"
+youtube_channels[Charlotte Cardin]="https://www.youtube.com/channel/UCIEcq0eG63LS-4J9M1qNj9Q"
+youtube_channels[Chat Sceptique]="https://www.youtube.com/channel/UCOuIgj0CYCXCvjWywjDbauw"
+youtube_channels[Chilla]="https://www.youtube.com/channel/UCKMd3Shk0viCnCs1nsSOibw"
+youtube_channels[CHRIS]="https://www.youtube.com/channel/UCMDgD_erEoLUkrbvae4-Weg"
+youtube_channels[CHRIS 2.0]="https://www.youtube.com/channel/UCRx4CFKzNz8Ojp_Hikkn7Tg"
+youtube_channels[Code Bullet]="https://www.youtube.com/channel/UC0e3QhIYukixgh5VVpKHH9Q"
+youtube_channels[CodeParade]="https://www.youtube.com/channel/UCrv269YwJzuZL3dH5PCgxUw"
+youtube_channels[COLAS BIM]="https://www.youtube.com/channel/UCBK2DclO34h6BDqqrh-drPw"
+youtube_channels[COLAS BIM GAMING]="https://www.youtube.com/channel/UC9orcd4I_3Uy_8_UAz2r48g"
+youtube_channels[COLORS]="https://www.youtube.com/channel/UC2Qw1dzXDBAZPwS7zm37g8g"
+youtube_channels[Columbine]="https://www.youtube.com/channel/UCJQsU9zWJHUCp2Wr088UN-g"
+youtube_channels[Computerphile]="https://www.youtube.com/channel/UC9-y-6csu5WGm29I7JiwpnA"
+youtube_channels[Creel]="https://www.youtube.com/channel/UCq7dxy_qYNEBcHqQVCbc20w"
+youtube_channels[CYRILmp4]="https://www.youtube.com/channel/UC-4M8AN08hw39nn2v91VuMQ"
+youtube_channels[Cyrus North]="https://www.youtube.com/channel/UCah8C0gmLkdtvsy0b2jrjrw"
+youtube_channels[D!NG]="https://www.youtube.com/channel/UClq42foiSgl7sSpLupnugGA"
+youtube_channels[D. Ace Officiel]="https://www.youtube.com/channel/UCZ430y2VULo_kIPplRBgsaw"
+youtube_channels[Darktek]="https://www.youtube.com/channel/UCMwR4ASVjad2nSXASTo8e_w"
+youtube_channels[Davie504]="https://www.youtube.com/channel/UCgFvT6pUq9HLOvKBYERzXSQ"
+youtube_channels[DeenBurbigo]="https://www.youtube.com/channel/UCk0FyZXVQ_FmGi-XP8YqYsg"
+youtube_channels[Des Cuts \& Des Zooms]="https://www.youtube.com/channel/UCFtaxL-IZiZHJqzxvv1LmZQ"
+youtube_channels[Didi Chandouidoui]="https://www.youtube.com/channel/UCf0mOxfawezlHIVuHd3L2VA"
+youtube_channels[Die Antwoord]="https://www.youtube.com/channel/UC6DicDItkLQ7N4ag1JS5mqg"
+youtube_channels[DigiDigger]="https://www.youtube.com/channel/UCCa794oAhys-HzkqdfmnjdQ"
+youtube_channels[Dimeh Todo]="https://www.youtube.com/channel/UCc10uwCHG3GXcuUsoOlHavA"
+youtube_channels[DIMENSION]="https://www.youtube.com/channel/UCiw_8x43hludK0PhuN9AJGg"
+youtube_channels[DirtyBiology]="https://www.youtube.com/channel/UCtqICqGbPSbTN09K1_7VZ3Q"
+youtube_channels[DistroTube]="https://www.youtube.com/channel/UCVls1GmFKf6WlTraIb_IaJg"
+youtube_channels[Dj Weedim]="https://www.youtube.com/channel/UCACYV5bhqgguyqRUJ_MDMRA"
+youtube_channels[Doc Geraud]="https://www.youtube.com/channel/UCQfrSok6xuClEq8bOwiEWfA"
+youtube_channels[Dorothee Pousseo]="https://www.youtube.com/channel/UCuj27gPDOWEPwwQe6j8SXQQ"
+youtube_channels[Doums L\'Entourage]="https://www.youtube.com/channel/UCe8txrJC396zSzlv2FLCITg"
+youtube_channels[Dr Nozman]="https://www.youtube.com/channel/UCWnfDPdZw6A23UtuBpYBbAg"
+youtube_channels[Dr. Peacock]="https://www.youtube.com/channel/UCsq3H3cTxvDU1Mktk1DQVkA"
+youtube_channels[Dream]="https://www.youtube.com/channel/UCTkXRDQl0luXxVQrRQvWS6w"
+youtube_channels[Dream Team]="https://www.youtube.com/channel/UC9bvUn7x3IrZ4yMANYjexUw"
+youtube_channels[DreamXD]="https://www.youtube.com/channel/UChU3JRloULzdFX3aCu7BiSA"
+youtube_channels[Dude Perfect]="https://www.youtube.com/channel/UCRijo3ddMTht_IHyNSNXpNQ"
+youtube_channels[e-penser \[archives\]]="https://www.youtube.com/channel/UCcziTK2NKeWtWQ6kB5tmQ8Q"
+youtube_channels[Echelon]="https://www.youtube.com/channel/UCdlj_P8-ZdYZyJYYN4qmKQA"
+youtube_channels[Eddy de Pretto]="https://www.youtube.com/channel/UCKt7TGLZ1d81OeyJemba8aA"
+youtube_channels[eden dillinger]="https://www.youtube.com/channel/UCNnnnvJdlsVCdeSSTtnO6Gw"
+
+
+# dm-bookman
+bookman_show_source=1
+
+# dm-sounds
+sounds_dir="${HOME}/.config/dmscripts/dmsounds"
+
+# dm-setbg
+setbg_dir="${HOME}/Pictures/Wallpapers"
+# Set this to 1 if you want to use imv and wayland, 0 if you want to use sxiv
+# Note that sxiv is X11 only, you need to mark the image you want to use.
+use_imv=1
+
+# dm-maim
+maim_dir="${HOME}/Screenshots"
+maim_file_prefix="maim"
 
 # dm-colpick config
 declare -A colpick_list

@@ -48,7 +48,6 @@ neofetch
 nethack
 network-manager-applet
 okular
-pass
 patch
 pavucontrol
 picom
@@ -116,5 +115,6 @@ xorg-xwayland
 xorg-xwd
 xorg-xwud
 xscreensaver
+yad
 zenity
 zip

@@ -3,11 +3,13 @@ cava
 myman
 nerd-fonts-mononoki
 paru
+pass-import
 pfetch
 pixterm
 polybar
 python35
 python38
+reddio
 shell-color-scripts
 xsnow
 yay-git

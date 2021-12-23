@@ -50,6 +50,7 @@ gst-plugins-good
 gtk4
 htop
 hugo
+jq
 kolourpaint
 libappindicator-gtk3
 librsync
@@ -77,6 +78,7 @@ okular
 os-prober
 paru
 pass
+pass-import
 patch
 pavucontrol
 pfetch
@@ -96,6 +98,7 @@ python-virtualenv
 python35
 python38
 read-edid
+reddio
 rogue
 sc
 scrot
@@ -179,6 +182,7 @@ xorg-xwininfo
 xorg-xwud
 xscreensaver
 xsnow
+yad
 yay-git
 youtube-dl
 zenity
