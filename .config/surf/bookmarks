@@ -1,0 +1,212 @@
+home                             | misc                    | file:///home/ants/.config/surf/html/homepage.html
+quora                            | misc                    | fr.quora.com/
+cover letter                     | misc                    | indeed.com/career-advice/resumes-cover-letters/how-to-write-a-cover-letter
+motivation letter                | misc                    | indeed.com/career-advice/resumes-cover-letters/motivation-letter
+overleaf                         | misc                    | overleaf.com/project
+mila                             | misc                    | mila.quebec/en/
+wali                             | misc                    | wali-m.isae.fr/SOGo/so/a.stevan/Mail/view
+iris                             | misc                    | iris.isae-supaero.fr/?lang=fr
+pws                              | misc                    | a2n-s.github.io/
+insta                            | misc                    | instagram.com/
+fb                               | misc                    | facebook.com/
+foss                             | misc                    | itsfoss.com/
+google                           | misc                    | google.de/search?q=
+surf                             | misc                    | troubleshooters.com/linux/surf.htm
+pass                             | misc                    | fossmint.com/linux-password-managers/
+slack                            | misc                    | slack.com/
+discord                          | misc                    | discord.com/login
+github                           | misc                    | github.com/
+suckless                         | misc                    | suckless.org/
+wikipedia                        | misc                    | wikipedia.org/
+arch                             | misc                    | archlinux.org/
+youtube                          | misc                    | youtube.com/
+HTTP protocol                    | misc                    | https://repository.root-me.org/RFC/EN%20-%20rfc1945.txt
+3Blue1Brown                      | misc                    | https://www.3blue1brown.com/
+Messenger                        | misc                    | https://www.messenger.com/
+Bias Variance Tradeoff           | misc                    | https://mlu-explain.github.io/bias-variance/
+Google Traduction                | misc                    | https://translate.google.com/
+Red Blob Games                   | misc                    | https://www.redblobgames.com/
+Overleaf                         | misc                    | https://fr.overleaf.com/project
+fontawesome                      | misc                    | https://mirrors.ibiblio.org/CTAN/fonts/fontawesome/doc/fontawesome.pdf
+Basim Khajwal                    | misc                    | https://basimkhajwal.github.io/
+suckless.org                     | misc                    | http://suckless.org/
+FMovies                          | misc                    | https://fmovies.ps/
+efs                              | misc                    | https://dondesang.efs.sante.fr/
+wali                             | misc                    | https://wali-m.isae.fr/SOGo/so/a.stevan/Mail/view#!/Mail/0/INBOX
+stevan.antoine@gmail.com         | misc                    | https://mail.google.com/mail/u/1/#inbox
+antoineulk17@gmail.com           | misc                    | https://mail.google.com/mail/u/0/#inbox
+cost-of-living                   | misc                    | https://www.numbeo.com/cost-of-living/
+Dwarf Fortress - Arch Wiki       | misc                    | https://wiki.archlinux.org/title/Dwarf_Fortress
+Rogue - FAQ                      | misc                    | https://gamefaqs.gamespot.com/unixlinux/564240-rogue/faqs/2603
+Start X after fish login         | misc                    | https://bbs.archlinux.org/viewtopic.php?id=186943
+xinit - ArchWiki                 | misc                    | https://wiki.archlinux.org/title/Xinit#Autostart_X_at_login
+12 Amazing Terminal Based Games  | misc                    | https://www.tecmint.com/best-linux-terminal-console-games/
+List of games - ArchWiki         | misc                    | https://wiki.archlinux.org/title/List_of_games
+HackMD                           | misc                    | https://hackmd.io/?nav=overview
+5 commandes amusantes pour linux | misc                    | https://epnrelais59.wordpress.com/2015/12/17/x-commandes-amusantes-dans-le-terminal-linux/
+A regarder plus tard             | misc                    | https://www.youtube.com/playlist?list=WL
+Undo possibilities in Git        | misc                    | https://docs.gitlab.com/ee/topics/git/numerous_undo_possibilities_in_git/
+Overview - kitty                 | misc                    | https://sw.kovidgoyal.net/kitty/overview/
+Bspwm: A Bare-Bones WM           | misc                    | https://dev.to/l04db4l4nc3r/bspwm-a-bare-bones-window-manager-44di#automatic-layout
+pdf2speech                       | tools                   | https://www.naturalreaders.com/online/
+html2pdf                         | tools                   | https://www.sejda.com/fr/html-to-pdf
+Signer un PDF                    | tools                   | https://smallpdf.com/fr/signer-un-pdf
+Ubuntu                           | linux ubuntu            | http://www.ubuntu.com/
+Ubuntu Wiki                      | linux ubuntu            | http://wiki.ubuntu.com/
+external screen brightness       | linux ubuntu            | https://askubuntu.com/questions/894465/changing-the-screen-brightness-of-the-external-screen
+Debian                           | linux ubuntu            | http://www.debian.org/
+ArchWiki                         | linux arch              | https://wiki.archlinux.org/
+Multihead                        | linux arch              | https://wiki.archlinux.org/title/multihead#Configuration_using_xrandr
+XScreenSaver                     | linux arch              | https://wiki.archlinux.org/title/XScreenSaver
+man xscreensaver                 | linux arch              | https://man.archlinux.org/man/xscreensaver.1
+man spectrwm                     | linux arch              | https://man.archlinux.org/man/community/spectrwm/spectrwm.1.en
+wpa_supplicant                   | linux arch              | https://wiki.archlinux.org/title/wpa_supplicant
+Zsh                              | linux arch              | https://wiki.archlinux.org/title/zsh
+DTOS                             | linux arch              | https://gitlab.com/dwt1/dtos#enable-sddm-for-login-manager
+vasm                             | linux tools asm         | http://sun.hasenbraten.de/vasm/index.php?view=main
+script shell                     | linux tools bash        | http://doc.ubuntu-fr.org/tutoriel/script_shell
+bash colors and formatting       | linux tools bash        | https://misc.flogisoft.com/bash/tip_colors_and_formatting
+bash guide for beginners         | linux tools bash        | https://tldp.org/LDP/Bash-Beginners-Guide/html/index.html
+tqdm                             | linux tools bash        | https://github.com/tqdm/tqdm
+bash conditions                  | linux tools bash        | https://openclassrooms.com/fr/courses/43538-reprenez-le-controle-a-laide-de-linux/43394-les-conditions
+Learn Git Branching              | linux tools git         | https://learngitbranching.js.org/?NODEMO
+git - no deep shit!              | linux tools git         | https://rogerdudler.github.io/git-guide/index.fr.html
+How to store dotfiles            | linux tools git         | https://www.atlassian.com/git/tutorials/dotfiles
+gh repo create                   | linux tools git         | https://cli.github.com/manual/gh_repo_create
+How to Delete a Git Branch       | linux tools git         | https://www.freecodecamp.org/news/how-to-delete-a-git-branch-both-locally-and-remotely/
+jupyter-nbextensions             | linux tools jupyter     | https://www.codegrepper.com/code-examples/shell/how+to+install+nbextensions+jupyter+ubuntu
+The Ultimate Markdown Guide      | linux tools markdown    | https://medium.com/analytics-vidhya/the-ultimate-markdown-guide-for-jupyter-notebook-d5e5abf728fd
+readme.so                        | linux tools markdown    | https://readme.so/
+grip                             | linux tools markdown    | https://github.com/joeyespo/grip
+Cheatsheet for nano              | linux tools nano        | https://www.nano-editor.org/dist/latest/cheatsheet.html
+SSH With Public-Key              | linux tools ssh         | https://www.howtoforge.com/set-up-ssh-with-public-key-authentication-debian-etch
+Selecteur de Couleur             | linux tools style       | https://htmlcolorcodes.com/fr/selecteur-de-couleur/
+TAAG                             | linux tools style       | https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
+Free Up Space                    | linux tools system      | https://itsfoss.com/free-up-space-ubuntu-linux/
+Use rc.local on Ubuntu           | linux tools system      | https://linuxhint.com/use-rc-local-on-ubuntu/
+bluetooth                        | linux tools system      | https://computingforgeeks.com/connect-to-bluetooth-device-from-linux-terminal/
+bluetooth speaker                | linux tools system      | https://askubuntu.com/questions/634382/bluetooth-speaker-pairs-but-wont-connect
+alert when battery low           | linux tools system      | https://unix.stackexchange.com/questions/60778/how-can-i-get-an-alert-when-my-battery-is-about-to-die-in-linux-mint
+disable a keyboard key           | linux tools system      | https://superuser.com/questions/775785/how-to-disable-a-keyboard-key-in-linux-ubuntu
+tmux cheatsheet                  | linux tools tmux        | https://gist.github.com/MohamedAlaa/2961058
+jupyter-vim-binding              | linux tools vim         | https://github.com/lambdalisue/jupyter-vim-binding
+Vimrc Configuration Guide        | linux tools vim         | https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
+VIM and Python                   | linux tools vim         | https://realpython.com/vim-and-python-a-match-made-in-heaven/
+Vim vs Neovim                    | linux tools vim         | https://www.linuxfordevices.com/tutorials/linux/vim-vs-neovim
+Snapcraft                        | linux tools vim         | https://snapcraft.io/
+Top 5 Command Line Music Players | linux tools vim         | https://www.tecmint.com/command-line-music-players-for-linux/
+junegunn/vim-plug                | linux tools vim plugins | https://github.com/junegunn/vim-plug
+vim-scripts/indentpython.vim     | linux tools vim plugins | https://github.com/vim-scripts/indentpython.vim
+ycm-core/YouCompleteMe           | linux tools vim plugins | https://github.com/ycm-core/YouCompleteMe
+SirVer/ultisnips                 | linux tools vim plugins | https://github.com/SirVer/ultisnips
+honza/vim-snippets               | linux tools vim plugins | https://github.com/honza/vim-snippets
+neoclide/coc.nvim                | linux tools vim plugins | https://github.com/neoclide/coc.nvim
+voldikss/vim-floaterm            | linux tools vim plugins | https://github.com/voldikss/vim-floaterm
+mhinz/vim-startify               | linux tools vim plugins | https://github.com/mhinz/vim-startify
+junegunn/fzf                     | linux tools vim plugins | https://github.com/junegunn/fzf
+junegunn/fzf.vim                 | linux tools vim plugins | https://github.com/junegunn/fzf.vim
+cdelledonne/vim-cmake            | linux tools vim plugins | https://github.com/cdelledonne/vim-cmake
+antoinemadec/FixCursorHold.nvim  | linux tools vim plugins | https://github.com/antoinemadec/FixCursorHold.nvim
+mhinz/vim-signify                | linux tools vim plugins | https://github.com/mhinz/vim-signify
+tpope/vim-fugitive               | linux tools vim plugins | https://github.com/tpope/vim-fugitive
+tpope/vim-rhubarb                | linux tools vim plugins | https://github.com/tpope/vim-rhubarb
+junegunn/gv.vim                  | linux tools vim plugins | https://github.com/junegunn/gv.vim
+norcalli/nvim-colorizer.lua      | linux tools vim plugins | https://github.com/norcalli/nvim-colorizer.lua
+joshdick/onedark.vim             | linux tools vim plugins | https://github.com/joshdick/onedark.vim
+vim-airline/vim-airline          | linux tools vim plugins | https://github.com/vim-airline/vim-airline
+vim-airline/vim-airline-themes   | linux tools vim plugins | https://github.com/vim-airline/vim-airline-themes
+tpope/vim-commentary             | linux tools vim plugins | https://github.com/tpope/vim-commentary
+liuchengxu/vim-which-key         | linux tools vim plugins | https://github.com/liuchengxu/vim-which-key
+jeffkreeftmeijer/vim-numbertoggl | linux tools vim plugins | https://github.com/jeffkreeftmeijer/vim-numbertoggle
+xuhdev/vim-latex-live-preview    | linux tools vim plugins | https://github.com/xuhdev/vim-latex-live-preview
+petRUShka/vim-sage               | linux tools vim plugins | https://github.com/petRUShka/vim-sage
+junegunn/rainbow_parentheses.vim | linux tools vim plugins | https://github.com/junegunn/rainbow_parentheses.vim
+kien/ctrlp.vim                   | linux tools vim plugins | https://github.com/kien/ctrlp.vim
+Konfekt/FastFold                 | linux tools vim plugins | https://github.com/Konfekt/FastFold
+tmhedberg/SimpylFold             | linux tools vim plugins | https://github.com/tmhedberg/SimpylFold
+vim-syntastic/syntastic          | linux tools vim plugins | https://github.com/vim-syntastic/syntastic
+nvie/vim-flake8                  | linux tools vim plugins | https://github.com/nvie/vim-flake8
+ctags                            | linux tools vim plugins | https://andrew.stwrt.ca/posts/vim-ctags/
+TupperVim                        | linux tools vim plugins | https://tuppervim.org/
+vifm                             | linux tools vim plugins | https://github.com/vifm/vifm
+pipenv vs virtualenv vs conda    | python                  | https://medium.com/@krishnaregmi/pipenv-vs-virtualenv-vs-conda-environment-3dde3f6869ed
+pyenv &amp; poetry               | python                  | https://blog.jayway.com/2019/12/28/pyenv-poetry-saviours-in-the-python-chaos/
+prompt-toolkit/ptpython          | python                  | https://github.com/prompt-toolkit/ptpython
+dark background for plt          | python                  | https://matplotlib.org/stable/gallery/style_sheets/dark_background.html
+willmcgugan/rich                 | python                  | https://github.com/willmcgugan/rich 
+PSX Controllers                  | electronics             | https://gamesx.com/controldata/psxcont/psxcont.htm#MICRO
+Raspberry Pi Zero GPIO Pinout    | electronics             | https://fr.pinout.xyz/pinout/io_pi_zero#
+Tasmota                          | electronics             | https://tasmota.github.io/docs/
+Raspberry Pi Documentation       | electronics             | https://www.raspberrypi.org/documentation/usage/gpio/
+65C02                            | electronics             | http://www.obelisk.me.uk/65C02/
+Matt&#39;s projects              | electronics             | https://matthewshaile.blogspot.com/?fbclid=IwAR23HZ0Z2Pfxt8tvdFN5y1s7PLZqvbTaPnQo98mZZuHTNtmTxa5PUKCV34s
+How To Solder Mask PCBs          | electronics             | https://learn.adafruit.com/how-to-solder-mask-pcbs/overview
+A cycle-stepped 6502 emulator    | electronics             | https://floooh.github.io/2019/12/13/cycle-stepped-6502.html
+The PS/2 Mouse/Keyboard Protocol | electronics             | http://www.burtonsys.com/ps2_chapweske.htm
+Burn the Nano with the UNO       | electronics             | https://support.arduino.cc/hc/en-us/articles/360012048100-How-to-burn-the-bootloader-in-an-Arduino-Nano-using-an-Arduino-UNO
+Pi Zero and Zero W Guide         | electronics             | https://www.seeedstudio.com/blog/2019/10/30/raspberry-pi-zero-and-zero-w-guide-set-up-accessories-projects/
+Arduino Editor                   | electronics             | https://create.arduino.cc/editor/astevan/6b57da5a-5b5b-4fcb-bf63-a18fb9099fe6
+SuReLib                          | sureli                  | https://sureli.github.io/surelib/
+Slack | SuReLI                   | sureli                  | https://app.slack.com/client/TC16ATWRH/unreads
+Home - Flowers Laboratory        | flowers                 | https://flowers.inria.fr/
+Developmental Systems, Flowers   | flowers                 | https://developmentalsystems.org/
+Cedric Colas | LinkedIn          | flowers cedric-colas    | https://fr.linkedin.com/in/c%C3%A9dric-colas-2684aa168
+Understanding RL Vision          | rl                      | https://distill.pub/2020/understanding-rl-vision/#model-editing
+Exploring Bayesian Optimization  | rl                      | https://distill.pub/2020/bayesian-optimization/
+Video Tutorials | PerceptiLabs   | rl                      | https://www.perceptilabs.com/docs/video_tutorials
+Policy Gradient (RLVS 1/3)       | rl                      | https://www.youtube.com/watch?v=R7ULMBXOQtE
+Evolutionary Computation         | ml                      | https://d9w.github.io/evolution/
+design/visualize NNs             | ml                      | https://github.com/ashishpatel26/Tools-to-Design-or-Visualize-Architecture-of-Neural-Network
+Tensor Studio                    | ml                      | https://mlajtos.github.io/L1/latest/
+ICML 2021                        | ml                      | https://icml.cc/virtual/2021/index.html
+SDD                              | sdd                     | https://lms.isae.fr/course/index.php?categoryid=282
+SDD                              | sdd                     | https://supaerodatascience.github.io/
+Xavier Olive                     | sdd                     | https://www.xoolive.org/
+Slack | SDD 21-22                | sdd                     | https://app.slack.com/client/T02DR5CN7PW/C02DFU5KUDB
+Lazy Foo Productions             | sdl2                    | https://lazyfoo.net/tutorials/SDL/index.php#Geometry%20Rendering
+CategoryAPI - SDL Wiki           | sdl2                    | https://wiki.libsdl.org/CategoryAPI
+Panda3D Beginner's Tutorial      | code                    | https://arsthaumaturgis.github.io/Panda3DTutorial.io/about/
+Date and time in Python?         | code                    | https://www.programiz.com/python-programming/datetime/current-datetime
+Game of Thrones                  | series                  | https://got.game-of-thrones-streaming.site/accueil
+Trigun                           | series                  | https://www.adkami.com/anime/865
+Trigun saison 1 episode 19       | series                  | https://vostanimez.com/Episode/trigun-saison-1-episode-19-streaming-hd/
+DL32                             | youtube                 | https://www.youtube.com/playlist?list=PLex3MS8x-JtqE2KmymN0mXv9yMKN1B6Ql
+DL33                             | youtube                 | https://www.youtube.com/playlist?list=PLex3MS8x-Jtrw8goQuLnFgktTxopDIaNZ
+my personal website              | github                  | https://a2n-s.github.io/
+my github dotfiles               | github                  | https://github.com/a2n-s/dotfiles
+my github stars                  | github                  | https://github.com/a2n-s?tab=stars
+my github profile                | github                  | https://github.com/a2n-s
+my github wallpapers             | github                  | https://github.com/a2n-s/wallpapers
+my repositories                  | github                  | https://github.com/a2n-s?tab=repositories
+A list of GitHub READMEs         | github                  | https://github.com/abhisheknaiidu/awesome-github-profile-readme#a-little-bit-of-everything-
+Personal Website on GitHub       | github github.io        | http://jmcglone.com/guides/github-pages/
+Nikunj Gupta                     | github github.io        | https://nikunj-gupta.github.io/
+Yukuro/hugo-theme-shell          | github github.io        | https://github.com/Yukuro/hugo-theme-shell
+terminal | Hugo Themes           | github github.io        | https://themes.gohugo.io/themes/hugo-theme-terminal/#terminal-theme-user
+Github Pages and Hugo            | github github.io        | https://levelup.gitconnected.com/build-a-personal-website-with-github-pages-and-hugo-6c68592204c7
+terminal | Hugo Themes           | hugo themes             | https://themes.gohugo.io/themes/hugo-theme-terminal/
+hello-friend-ng | Hugo Themes    | hugo themes             | https://themes.gohugo.io/themes/hugo-theme-hello-friend-ng/
+hello-friend | Hugo Themes       | hugo themes             | https://themes.gohugo.io/themes/hugo-theme-hello-friend/
+Call me Sam. | Hugo Themes       | hugo themes             | https://themes.gohugo.io/themes/hugo-theme-sam/
+Base16 | Hugo Themes             | hugo themes             | https://themes.gohugo.io/themes/hugo-base16-theme/
+solar-theme-hugo | Hugo Themes   | hugo themes             | https://themes.gohugo.io/themes/solar-theme-hugo/
+Photophobia | Hugo Themes        | hugo themes             | https://themes.gohugo.io/themes/photophobia/
+InstaDeep - Evolutionary RL.pdf  | internships             | https://files-origin.slack.com/files-email-priv/T02DR5CN7PW-F02N65QCK63-b34170f4dd-c222af7a/instadeep_internship_2022_-_evolutionary_reinforcement_learning.pdf?teamId=T02DR5CN7PW
+Mila                             | internships             | https://mila.quebec/en/
+Universite de Montreal           | internships             | https://www.umontreal.ca/
+Bureaux de Microsoft Canada      | internships             | https://www.microsoft.com/fr-ca/about/locations.aspx
+IVADO                            | internships             | https://ivado.ca/
+Ubisoft La Forge - Montreal      | internships ubisoft     | https://montreal.ubisoft.com/fr/nos-engagements/recherche-et-developpement/
+Amazon Internships for students  | internships amazon      | https://www.amazon.jobs/en/teams/internships-for-students?offset=10&result_limit=10&sort=relevant&category%5B%5D=machine-learning-science&cities%5B%5D=Tel%20Aviv-Yafo%2C%20Tel%20Aviv%2C%20ISR&cities%5B%5D=Kobierzyce%2C%20Woj.%20Dolno%C5%9Bl%C4%85skie%2C%20POL&cities%5B%5D=Iasi%2C%20ROU&cities%5B%5D=Haifa%2C%20Haifa%2C%20ISR&cities%5B%5D=Graz%2C%20Styria%2C%20AUT&cities%5B%5D=Gdansk%2C%20Woj.%20Pomorskie%2C%20POL&cities%5B%5D=Bucharest%2C%20ROU&cities%5B%5D=Bengaluru%2C%20Karnataka%2C%20IND&cities%5B%5D=Barcelona%2C%20Catalonia%2C%20ESP&cities%5B%5D=Turin%2C%20Piedmont%2C%20ITA&cities%5B%5D=Luxembourg%2C%20Luxembourg%2C%20LUX&distanceType=Mi&radius=24km&latitude=&longitude=&loc_group_id=&loc_query=&base_query=&city=&country=&region=&county=&query_options=&
+Job ID: 1733260 | Amazon.jobs    | internships amazon      | https://www.amazon.jobs/en/jobs/1733260/2022-applied-science-internship-information-retrieval-nlu-machine-learning-time-series-forecasting-predictive-models
+Job ID: 1733644 | Amazon.jobs    | internships amazon      | https://www.amazon.jobs/en/jobs/1733644/2022-applied-science-internship-machine-learning-deep-learning-recommender-systems-reinforcement-learning
+Job ID: 1733478 | Amazon.jobs    | internships amazon      | https://www.amazon.jobs/en/jobs/1733478/2022-applied-science-internship-machine-learning-automated-reasoning-natural-language-processing-understanding-information-retrieval
+Job ID: 1732914 | Amazon.jobs    | internships amazon      | https://www.amazon.jobs/en/jobs/1732914/2022-applied-science-internship-computer-vision-machine-learning-robotics-nlp-probabilistic-and-causal-modeling-information-retrieval
+Cambridge                        | internships microsoft   | https://www.microsoft.com/en-us/research/lab/microsoft-research-cambridge/internships/
+Deep RL for Games in Cambridge   | internships microsoft   | https://careers.microsoft.com/us/en/job/1203916/Internship-opportunities-Deep-Reinforcement-Learning-for-Games
+Careers Google Research          | internships google      | https://research.google/careers/
+Students: Applying to Google     | internships google      | https://careers.google.com/stories/applying-to-google/
+Research Intern, BS, Summer 2022 | internships google      | https://careers.google.com/jobs/results/95509575383294662-research-intern-bs-summer-2022/?%22=&category=DATA_CENTER_OPERATIONS&category=DEVELOPER_RELATIONS&category=HARDWARE_ENGINEERING&category=INFORMATION_TECHNOLOGY&category=NETWORK_ENGINEERING&category=PRODUCT_MANAGEMENT&category=SOFTWARE_ENGINEERING&category=TECHNICAL_INFRASTRUCTURE_ENGINEERING&category=TECHNICAL_SOLUTIONS&category=TECHNICAL_WRITING&category=USER_EXPERIENCE&company=Google&company=YouTube&distance=50&employment_type=INTERN&jld=20&jlo=en_US&location=42.3736158%3A-71.1097335%3ACambridge,%20MA,%20USA%3AUS%3A%3A3.0992927368728473%3ALOCALITY%3A%3A%3A%3A%3A%3A&skills=deep%20learning
+Student Researcher, BS, 2022     | internships google      | https://careers.google.com/jobs/results/130911650774426310-student-researcher-bs-2022/?%22=&category=DATA_CENTER_OPERATIONS&category=DEVELOPER_RELATIONS&category=HARDWARE_ENGINEERING&category=INFORMATION_TECHNOLOGY&category=NETWORK_ENGINEERING&category=PRODUCT_MANAGEMENT&category=SOFTWARE_ENGINEERING&category=TECHNICAL_INFRASTRUCTURE_ENGINEERING&category=TECHNICAL_SOLUTIONS&category=TECHNICAL_WRITING&category=USER_EXPERIENCE&company=Google&company=YouTube&distance=50&employment_type=INTERN&jld=20&jlo=en_US&location=42.3736158%3A-71.1097335%3ACambridge,%20MA,%20USA%3AUS%3A%3A3.0992927368728473%3ALOCALITY%3A%3A%3A%3A%3A%3A&skills=deep%20learning
+Oryx                             | other                   | https://configure.zsa.io/account
+Surf Demystified                 | other                   | http://troubleshooters.com/linux/surf.htm#linkhints
