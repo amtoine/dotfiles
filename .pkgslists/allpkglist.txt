@@ -76,6 +76,7 @@ ntfs-3g
 okular
 os-prober
 paru
+pass
 patch
 pavucontrol
 pfetch

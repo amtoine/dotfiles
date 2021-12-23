@@ -45,10 +45,10 @@ mpv
 ncmpc
 ncmpcpp
 neofetch
-neovim
 nethack
 network-manager-applet
 okular
+pass
 patch
 pavucontrol
 picom
@@ -72,7 +72,6 @@ termdown
 thunderbird
 tig
 tldr
-tree
 unzip
 vi
 vifm

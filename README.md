@@ -86,18 +86,20 @@ $HOME
 |   |   |-- [d]  html
 |   |   |   `-- [-]  homepage.html
 |   |   |-- [d]  scripts
-|   |   |   |-- [-]  bm.add.sh
+|   |   |   |-- [-]  add.bm.sh
 |   |   |   |-- [-]  dmenu.linkselect.sh
 |   |   |   |-- [-]  dmenu.mpv.sh
 |   |   |   |-- [-]  dmenu.setprop.sh
 |   |   |   |-- [-]  dmenu.uri.sh
-|   |   |   |-- [-]  edit_screen.sh
-|   |   |   |-- [-]  editurl.sh
+|   |   |   |-- [-]  edit.bookmarks.sh
+|   |   |   |-- [-]  edit.screen.sh
+|   |   |   |-- [-]  edit.url.sh
 |   |   |   `-- [-]  link_hints.js
 |   |   `-- [d]  styles
 |   |       |-- [-]  archlinux.css
 |   |       |-- [-]  homepage.css
 |   |       |-- [-]  suckless.css
+|   |       |-- [-]  youtube.css
 |   |       `-- [-]  wikipedia.css
 |   |-- [d]  sxhkd
 |   |   `-- [-]  sxhkdrc
@@ -177,27 +179,28 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 (\*\*) the associated documentation page.
 
 #### List of programs:
-- [ ] [`alacritty`]    ([\*\*][mydoc-alacritty])
-- [x] [`bspwm`]        ([\*\*][mydoc-bspwm])
-- [x] [`bash`]         ([\*\*][mydoc-bash])
-- [ ] [`fish`]         ([\*\*][mydoc-fish])
-- [x] [`git`]          ([\*\*][mydoc-git])
-- [x] [`htop`]         ([\*\*][mydoc-htop])
-- [x] [`kitty`]        ([\*\*][mydoc-kitty])
-- [ ] [`mpd`]          ([\*\*][mydoc-mpd])
-- [x] [`mpv`]          ([\*\*][mydoc-mpv])
-- [ ] [`ncmcpp`]       ([\*\*][mydoc-ncmcpp])
-- [ ] [`neofetch`]     ([\*\*][mydoc-neofetch])
-- [ ] [`nitrogen`]     ([\*\*][mydoc-nitrogen])
-- [ ] [`spectrWM`]     ([\*\*][mydoc-spectrWM])
-- [x] [`starship`]     ([\*\*][mydoc-starship])
-- [x] [`sxhkd`]        ([\*\*][mydoc-sxhkd])
-- [ ] [`tmux`]         ([\*\*][mydoc-tmux])
-- [ ] [`vifm`]         ([\*\*][mydoc-vifm])
-- [x] [`vim`]          ([\*\*][mydoc-vim])
-- [x] [`x`]            ([\*\*][mydoc-x])
-- [ ] [`xscreensaver`] ([\*\*][mydoc-xscreensaver])
-- [ ] [`zsh`]          ([\*\*][mydoc-zsh])
+- [ ] [`alacritty`]         ([\*\*][mydoc-alacritty])
+- [x] [`bspwm`]             ([\*\*][mydoc-bspwm])
+- [x] [`bash`]              ([\*\*][mydoc-bash])
+- [ ] [`fish`]              ([\*\*][mydoc-fish])
+- [x] [`git`]               ([\*\*][mydoc-git])
+- [x] [`htop`]              ([\*\*][mydoc-htop])
+- [x] [`kitty`]        (\*) ([\*\*][mydoc-kitty])
+- [ ] [`mpd`]               ([\*\*][mydoc-mpd])
+- [x] [`mpv`]               ([\*\*][mydoc-mpv])
+- [ ] [`ncmcpp`]            ([\*\*][mydoc-ncmcpp])
+- [ ] [`neofetch`]          ([\*\*][mydoc-neofetch])
+- [ ] [`nitrogen`]          ([\*\*][mydoc-nitrogen])
+- [ ] [`spectrWM`]          ([\*\*][mydoc-spectrWM])
+- [x] [`starship`]          ([\*\*][mydoc-starship])
+- [x] [`sxhkd`]             ([\*\*][mydoc-sxhkd])
+- [x] [`surf`]         (\*) ([\*\*][mydoc-surf])
+- [ ] [`tmux`]              ([\*\*][mydoc-tmux])
+- [ ] [`vifm`]              ([\*\*][mydoc-vifm])
+- [x] [`vim`]               ([\*\*][mydoc-vim])
+- [x] [`x`]                 ([\*\*][mydoc-x])
+- [ ] [`xscreensaver`]      ([\*\*][mydoc-xscreensaver])
+- [ ] [`zsh`]               ([\*\*][mydoc-zsh])
 
 #### List of scripts:
 - [ ] [`_countdown.sh`]         ([\*\*][mydoc-countdown.sh])

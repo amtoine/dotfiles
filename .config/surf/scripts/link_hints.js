@@ -167,7 +167,6 @@ function addKeyBind( key, func, eve ){
 }
 function initKeyBind(e){
 	var t = e.target;
-  console.log("lol");
 	if( t.nodeType == 1){
 		addKeyBind( 'C-e', 'hintMode()', e );
 		addKeyBind( 'C-E', 'hintMode(true)', e );
