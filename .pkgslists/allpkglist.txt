@@ -26,7 +26,6 @@ cmus
 cowsay
 cronie
 ctags
-dolphin
 dosfstools
 dstat
 dwarffortress
@@ -61,20 +60,15 @@ linux-firmware
 lolcat
 m4
 make
-mpc
 mpd
 mpv
 mtools
 myman
-ncmpc
-ncmpcpp
-neofetch
 neovim
 nerd-fonts-mononoki
 nethack
 network-manager-applet
 networkmanager
-nitrogen
 ntfs-3g
 okular
 os-prober
@@ -117,7 +111,6 @@ sxhkd
 sysstat
 termdown
 texinfo
-thunderbird
 tig
 tk
 tldr
@@ -126,7 +119,6 @@ tree
 ueberzug
 unzip
 vi
-vifm
 vim
 vnstat
 vulkan-tools

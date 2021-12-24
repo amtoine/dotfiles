@@ -65,6 +65,9 @@ super + F8
 # my password manager.
 super + F9
   passmenu -l 10 -c
+# my file explorer.
+super + F10
+  kitty ~/scripts/lfrun.sh
 # lock the computer.
 super + ctrl + F12
   ~/scripts/slock-cst.sh
