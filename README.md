@@ -54,8 +54,10 @@ $HOME
 |   |   |-- [d]  functions
 |   |-- [d]  htop                                      -- my process monitor.
 |   |   `-- [-]  htoprc
-|   |-- [d]  kitty
+|   |-- [d]  kitty                                     -- terminal emulator.
 |   |   `-- [-]  kitty.conf
+|   |-- [d]  lf                                        -- file explorer.
+|   |   `-- [-]  lfrc
 |   |-- [d]  mpd                                       -- music server deamon.
 |   |   `-- [-]  mpd.conf                                 crashes for some reason...
 |   |-- [d]  mpv
@@ -82,7 +84,7 @@ $HOME
 |   |   |-- [-]  spectrwm.conf
 |   |   |-- [-]  spectrwm_fr.conf
 |   |   `-- [-]  spectrwm_us.conf
-|   |-- [d]  surf
+|   |-- [d]  surf                                      -- the suckless web browser.
 |   |   |-- [d]  html
 |   |   |   `-- [-]  homepage.html
 |   |   |-- [d]  scripts
@@ -101,9 +103,9 @@ $HOME
 |   |       |-- [-]  suckless.css
 |   |       |-- [-]  youtube.css
 |   |       `-- [-]  wikipedia.css
-|   |-- [d]  sxhkd
+|   |-- [d]  sxhkd                                     -- the simple x hot key daemon.
 |   |   `-- [-]  sxhkdrc
-|   |-- [d]  vifm                                      -- the file manager.
+|   |-- [d]  vifm                                      -- a file manager.
 |   |   |-- [d]  colors
 |   |   |   `-- [-]  molokai.vifm
 |   |   `-- [-]  vifmrc
@@ -186,6 +188,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [`git`]               ([\*\*][mydoc-git])
 - [x] [`htop`]              ([\*\*][mydoc-htop])
 - [x] [`kitty`]        (\*) ([\*\*][mydoc-kitty])
+- [x] [`lf`]                ([\*\*][mydoc-lf])
 - [ ] [`mpd`]               ([\*\*][mydoc-mpd])
 - [x] [`mpv`]               ([\*\*][mydoc-mpv])
 - [ ] [`ncmcpp`]            ([\*\*][mydoc-ncmcpp])
@@ -285,6 +288,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`git`]:                   .gitconfig
 [`htop`]:                  .config/htop
 [`kitty`]:                 .config/kitty/kitty.conf
+[`lf`]:                    .config/lf/lfrc
 [`mpd`]:                   .config/mpd
 [`mpv`]:                   .config/mpv
 [`ncmcpp`]:                .config/ncmcpp
@@ -331,6 +335,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [mydoc-git]:                   https://a2n-s.github.io/public/doc/config/dotfiles/git
 [mydoc-htop]:                  https://a2n-s.github.io/public/doc/config/dotfiles/htop
 [mydoc-kitty]:                 https://a2n-s.github.io/public/doc/config/dotfiles/kitty
+[mydoc-lf]:                    https://a2n-s.github.io/public/doc/config/dotfiles/lf
 [mydoc-mpd]:                   https://a2n-s.github.io/public/doc/config/dotfiles/mpd
 [mydoc-mpv]:                   https://a2n-s.github.io/public/doc/config/dotfiles/mpv
 [mydoc-ncmcpp]:                https://a2n-s.github.io/public/doc/config/dotfiles/ncmcpp

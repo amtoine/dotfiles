@@ -18,6 +18,7 @@ brightnessctl
 bspwm
 catimg
 cava
+chafa
 chromium
 cmake
 cmatrix
@@ -52,6 +53,7 @@ htop
 hugo
 jq
 kolourpaint
+lf
 libappindicator-gtk3
 librsync
 linux
@@ -81,6 +83,7 @@ pass
 pass-import
 patch
 pavucontrol
+perl-file-mimeinfo
 pfetch
 picom
 pixterm
@@ -120,6 +123,7 @@ tk
 tldr
 tmux
 tree
+ueberzug
 unzip
 vi
 vifm

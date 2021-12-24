@@ -71,6 +71,7 @@ termdown
 thunderbird
 tig
 tldr
+ueberzug
 unzip
 vi
 vifm

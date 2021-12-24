@@ -1,5 +1,6 @@
 arduino-mk
 cava
+lf
 myman
 nerd-fonts-mononoki
 paru
