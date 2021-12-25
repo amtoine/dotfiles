@@ -109,6 +109,7 @@ $HOME
 |   |   |-- [d]  colors
 |   |   |   `-- [-]  molokai.vifm
 |   |   `-- [-]  vifmrc
+|   |-- [-]  tigrc                                     -- shows git diffs in a pretty way.
 |   `-- [-]  starship.toml                             -- a fast and customizable terminal prompt.
 |-- [d]  .pkgslists                                  -- packages.
 |   |-- [-]  README.md
@@ -198,9 +199,10 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [`starship`]          ([\*\*][mydoc-starship])
 - [x] [`sxhkd`]             ([\*\*][mydoc-sxhkd])
 - [x] [`surf`]         (\*) ([\*\*][mydoc-surf])
+- [x] [`tig`]               ([\*\*][mydoc-tig])
 - [ ] [`tmux`]              ([\*\*][mydoc-tmux])
 - [ ] [`vifm`]              ([\*\*][mydoc-vifm])
-- [x] [`vim`]               ([\*\*][mydoc-vim])
+- [ ] [`vim`]               ([\*\*][mydoc-vim])
 - [x] [`x`]                 ([\*\*][mydoc-x])
 - [ ] [`xscreensaver`]      ([\*\*][mydoc-xscreensaver])
 - [ ] [`zsh`]               ([\*\*][mydoc-zsh])
@@ -234,6 +236,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [my fork][my-surf] of [suckless surf][surf]               (\*) ([\*\*][mydoc-surf])
 - [x] [my fork][my-tabbed] of [suckless tabbed][tabbed]         (\*) ([\*\*][mydoc-tabbed])
 - [x] [my fork][my-slock] of [suckless slock][slock]            (\*) ([\*\*][mydoc-slock])
+- [x] [my fork][my-neovim] of [LunarVim's neovim config][nvim]  (\*) ([\*\*][mydoc-neovim])
 
 (\*) comes from another repo.  
 (\*\*) the associated documentation page.
@@ -297,6 +300,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`spectrWM`]:              .config/spectrwm
 [`sxhkd`]:                 .config/sxhkd
 [`starship`]:              .config/starship.toml
+[`tig`]:                   .config/tigrc
 [`tmux`]:                  .tmux.conf
 [`vifm`]:                  .config/vifm
 [`vim`]:                   .vimrc
@@ -334,7 +338,6 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [mydoc-fish]:                  https://a2n-s.github.io/public/doc/config/dotfiles/fish
 [mydoc-git]:                   https://a2n-s.github.io/public/doc/config/dotfiles/git
 [mydoc-htop]:                  https://a2n-s.github.io/public/doc/config/dotfiles/htop
-[mydoc-kitty]:                 https://a2n-s.github.io/public/doc/config/dotfiles/kitty
 [mydoc-lf]:                    https://a2n-s.github.io/public/doc/config/dotfiles/lf
 [mydoc-mpd]:                   https://a2n-s.github.io/public/doc/config/dotfiles/mpd
 [mydoc-mpv]:                   https://a2n-s.github.io/public/doc/config/dotfiles/mpv
@@ -344,6 +347,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [mydoc-spectrwm]:              https://a2n-s.github.io/public/doc/config/dotfiles/spectrwm
 [mydoc-sxhkd]:                 https://a2n-s.github.io/public/doc/config/dotfiles/sxhkd
 [mydoc-starship]:              https://a2n-s.github.io/public/doc/config/dotfiles/starship
+[mydoc-tig]:                   https://a2n-s.github.io/public/doc/config/dotfiles/tig
 [mydoc-tmux]:                  https://a2n-s.github.io/public/doc/config/dotfiles/tmux
 [mydoc-vifm]:                  https://a2n-s.github.io/public/doc/config/dotfiles/vifm
 [mydoc-vim]:                   https://a2n-s.github.io/public/doc/config/dotfiles/vim
@@ -376,6 +380,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [oh-my-bash]:                  https://github.com/ohmybash/oh-my-bash
 [oh-my-fish]:                  https://github.com/oh-my-fish/oh-my-fish
 [oh-my-zsh]:                   https://github.com/ohmyzsh/ohmyzsh
+[nvim]:                        https://github.com/LunarVim/Neovim-from-scratch
 [polybar-themes]:              https://github.com/adi1090x/polybar-themes
 [surf]:                        https://git.suckless.org/surf/
 [tabbed]:                      https://git.suckless.org/tabbed/
@@ -387,6 +392,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [my-oh-my-bash]:               https://github.com/a2n-s/oh-my-bash
 [my-oh-my-fish]:               https://github.com/a2n-s/oh-my-fish
 [my-oh-my-zsh]:                https://github.com/a2n-s/ohmyzsh
+[my-neovim]:                   https://github.com/a2n-s/neovim
 [my-polybar-themes]:           https://github.com/a2n-s/polybar-themes
 [my-surf]:                     https://github.com/a2n-s/surf
 [my-tabbed]:                   https://github.com/a2n-s/tabbed
@@ -398,6 +404,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [mydoc-oh-my-bash]:            https://a2n-s.github.io/public/doc/config/bash
 [mydoc-oh-my-fish]:            https://a2n-s.github.io/public/doc/config/fish
 [mydoc-oh-my-zsh]:             https://a2n-s.github.io/public/doc/config/zsh
+[mydoc-neovim]:                https://a2n-s.github.io/public/doc/config/neovim
 [mydoc-polybar-themes]:        https://a2n-s.github.io/public/doc/config/polybar
 [mydoc-surf]:                  https://a2n-s.github.io/public/doc/config/surf
 [mydoc-tabbed]:                https://a2n-s.github.io/public/doc/config/tabbed

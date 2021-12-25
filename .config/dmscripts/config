@@ -40,7 +40,7 @@ DMBROWSER="surf"
 DMTERM="kitty"
 
 # DMEDITOR="emacsclient -c -a emacs"
-DMEDITOR="${DMTERM} vim"
+DMEDITOR="${DMTERM} nvim"
 
 # TODO: Rename this variable to something more traditional
 # logout_locker='slock'
