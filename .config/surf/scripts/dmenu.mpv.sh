@@ -12,10 +12,23 @@
 #                                                    /_/                                                                           /_/
 #
 # Description:  Meant to be used from surf: asks the user to choose a video quality and then opens
-#               mpv instance with the video or the playlist.
+#               mpv instance with the video or the playlist. When a playlist is selected, the dmenu asks the user
+#               whether to shuffle the playlist or not, about the loop option on the playlist and the start index.
+#               One can simply abort the process at any time by pressing escape.
 # Dependencies: mpv, youtube-dl, dmenu
 # License:      https://github.com/a2n-s/dotfiles/LICENSE 
 # Contributors: Stevan Antoine
 
-prop=$(echo -e "144\n240\n360\n480\n720\n1080" | dmenu -l 10 -p "Video quality")
-mpv --shuffle --ytdl-format="bestvideo[ext=mp4][height<=?$prop]+bestaudio[ext=m4a]" --really-quiet "$1"
+quality=$(echo -e "144\n240\n360\n480\n720\n1080" | dmenu -l 10 -p "Video quality (press escape at any time to abort)"); [[ "$quality" == "" ]] && exit 1
+if [[ "$1" == *"playlist"* ]]; then
+  shuffle=$(echo -e "Yes\nNo\n" | dmenu -p "Shuffle?"); [[ "$shuffle" == "" ]] && exit 1
+  loop=$(echo -e "inf\nno\nforce" | dmenu -p "Loop? (option | number of loops)"); [[ "$loop" == "" ]] && exit 1
+  index=$(echo -e "auto" | dmenu -p "Start video (auto | index)"); [[ "$index" == "" ]] && exit 1
+  if [[ $shuffle == "Yes" ]]; then
+    mpv --playlist-start="$index" --loop-playlist="$loop" --ytdl-format="bestvideo[ext=mp4][height<=?$quality]+bestaudio[ext=m4a]" --really-quiet "$1" --shuffle
+  else
+    mpv --playlist-start="$index" --loop-playlist="$loop" --ytdl-format="bestvideo[ext=mp4][height<=?$quality]+bestaudio[ext=m4a]" --really-quiet "$1"
+  fi
+else
+  mpv --ytdl-format="bestvideo[ext=mp4][height<=?$quality]+bestaudio[ext=m4a]" --really-quiet "$1"
+fi

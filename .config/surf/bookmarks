@@ -54,6 +54,7 @@ ghs  | github                  | my github stars                  | https://gith
      | linux                   | Bspwm: A Bare-Bones WM           | https://dev.to/l04db4l4nc3r/bspwm-a-bare-bones-window-manager-44di#automatic-layout
      | linux                   | Dwarf Fortress - Arch Wiki       | https://wiki.archlinux.org/title/Dwarf_Fortress
      | linux                   | List of games - ArchWiki         | https://wiki.archlinux.org/title/List_of_games
+     | linux                   | nerd fonts                       | https://www.github.com/ryanoasis/nerd-fonts
      | linux                   | Overview - kitty                 | https://sw.kovidgoyal.net/kitty/overview/
      | linux                   | pass                             | https://fossmint.com/linux-password-managers/
      | linux                   | Rogue - FAQ                      | https://gamefaqs.gamespot.com/unixlinux/564240-rogue/faqs/2603
@@ -61,6 +62,7 @@ ghs  | github                  | my github stars                  | https://gith
      | linux                   | suckless.org                     | http://suckless.org/
      | linux                   | surf                             | http://troubleshooters.com/linux/surf.htm
      | linux                   | Surf Demystified                 | http://troubleshooters.com/linux/surf.htm#linkhints
+     | linux                   | Top 5 Command Line Music Players | https://www.tecmint.com/command-line-music-players-for-linux/
      | linux                   | Undo possibilities in Git        | https://docs.gitlab.com/ee/topics/git/numerous_undo_possibilities_in_git/
      | linux                   | xinit - ArchWiki                 | https://wiki.archlinux.org/title/Xinit#Autostart_X_at_login
      | linux arch              | DTOS                             | https://gitlab.com/dwt1/dtos#enable-sddm-for-login-manager
@@ -75,6 +77,9 @@ ghs  | github                  | my github stars                  | https://gith
      | linux debian ubuntu     | Debian                           | http://www.debian.org/
      | linux debian ubuntu     | Ubuntu                           | http://www.ubuntu.com/
      | linux debian ubuntu     | external screen brightness       | https://askubuntu.com/questions/894465/changing-the-screen-brightness-of-the-external-screen
+ed   | linux editor ed         | an introduction to the ed editor | https://inconsolation.wordpress.com/2013/10/18/ed-the-much-maligned-text-editor/
+ed   | linux editor ed         | the man page of ed               | https://linux.die.net/man/1/ed
+ed   | linux editor ed         | a tutorial on ed                 | https://wiki.linuxquestions.org/wiki/Ed
      | linux pass              | a tutorial around pass command   | https://gist.github.com/flbuddymooreiv/a4f24da7e0c3552942ff
      | linux pass              | import passwords                 | https://github.com/roddhjav/pass-import
      | linux pass              | the pass command                 | https://passwordstore.org/
@@ -102,12 +107,12 @@ ghs  | github                  | my github stars                  | https://gith
      | linux tools system      | disable a keyboard key           | https://superuser.com/questions/775785/how-to-disable-a-keyboard-key-in-linux-ubuntu
      | linux tools system      | alert when battery low           | https://unix.stackexchange.com/questions/60778/how-can-i-get-an-alert-when-my-battery-is-about-to-die-in-linux-mint
      | linux tools tmux        | tmux cheatsheet                  | https://gist.github.com/MohamedAlaa/2961058
+     | linux tools vim         | column aligned reformating       | stackoverflow.com/questions/1229900/reformat-in-vim-for-a-nice-column-layout
      | linux tools vim         | jupyter-vim-binding              | https://github.com/lambdalisue/jupyter-vim-binding
-     | linux tools vim         | VIM and Python                   | https://realpython.com/vim-and-python-a-match-made-in-heaven/
      | linux tools vim         | Snapcraft                        | https://snapcraft.io/
+     | linux tools vim         | VIM and Python                   | https://realpython.com/vim-and-python-a-match-made-in-heaven/
      | linux tools vim         | Vimrc Configuration Guide        | https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
      | linux tools vim         | Vim vs Neovim                    | https://www.linuxfordevices.com/tutorials/linux/vim-vs-neovim
-     | linux tools vim         | Top 5 Command Line Music Players | https://www.tecmint.com/command-line-music-players-for-linux/
      | linux tools vim plugins | ctags                            | https://andrew.stwrt.ca/posts/vim-ctags/
      | linux tools vim plugins | antoinemadec/FixCursorHold.nvim  | https://github.com/antoinemadec/FixCursorHold.nvim
      | linux tools vim plugins | cdelledonne/vim-cmake            | https://github.com/cdelledonne/vim-cmake
@@ -214,7 +219,405 @@ sdd  | research supaero sdd    | SDD                              | https://supa
      | web hugo themes         | solar-theme-hugo - Hugo Themes   | https://themes.gohugo.io/themes/solar-theme-hugo/
 
 yt   | youtube                 | youtube                          | https://www.youtube.com/
+     | youtube channels        | Étincelles, EPFL                 | https://www.youtube.com/channel/UC0o_ULEdwva8ksC63qvxMAA
+     | youtube channels        | 13 Block                         | https://www.youtube.com/channel/UCWY75uWazCXwtobPO232qAA
+     | youtube channels        | 2Cheese MilkShake                | https://www.youtube.com/channel/UCCC5_hzMojUE01etdJxVjAA
+     | youtube channels        | 2CheeseMilkShake - Topic         | https://www.youtube.com/channel/UCSQgph4-9v9SN0TWPWZQWEw
+     | youtube channels        | 2TH Officiel                     | https://www.youtube.com/channel/UCm2nD8breD2X5DvYCnN_bCQ
+     | youtube channels        | 3Blue1Brown                      | https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw
+     | youtube channels        | 47Ter                            | https://www.youtube.com/channel/UC7HvOYL0E1yWe7Fp31TWvXQ
+     | youtube channels        | 7 Jaws                           | https://www.youtube.com/channel/UCjuBrpUqR5bFvZYOsRmFqJQ
+     | youtube channels        | 75e Session                      | https://www.youtube.com/channel/UCo1zHzOv9O6JuT-jGp_flKw
+     | youtube channels        | a-ha                             | https://www.youtube.com/channel/UCeEi1My3KTXHT0SG1JkR9gA
+     | youtube channels        | AaRON                            | https://www.youtube.com/channel/UCV-q3-VuGgYzDEFXYDxIZRw
+     | youtube channels        | Abrège                           | https://www.youtube.com/channel/UCWimnuBF27nwOxgUBJ4qNeg
+     | youtube channels        | Achile                           | https://www.youtube.com/channel/UC0lG2Ixze6G6beMjULun5qw
+     | youtube channels        | AcousticTrench                   | https://www.youtube.com/channel/UCV-hwVczs0GQRApxZS4TUNA
+     | youtube channels        | Akim Omiri                       | https://www.youtube.com/channel/UCbOdpYBG53zmFuDK0qaTSmw
+     | youtube channels        | Alice et Moi                     | https://www.youtube.com/channel/UCj6rtx3HBZEEPAYd0mT2SvQ
+     | youtube channels        | ALKPOTE                          | https://www.youtube.com/channel/UC5eyo1DYNuDKkIExfXKeGIg
+     | youtube channels        | Amixem                           | https://www.youtube.com/channel/UCgvqvBoSHB1ctlyyhoHrGwQ
+     | youtube channels        | An\'Om x Vayn                    | https://www.youtube.com/channel/UCtSeaEcC85sFVBybLkPNFNA
+     | youtube channels        | Angerfist                        | https://www.youtube.com/channel/UCdluEI4RUCXmIgWyGmt5y9g
+     | youtube channels        | apilune                          | https://www.youtube.com/channel/UCio0T1T1I-sTXJDuQuTip9Q
+     | youtube channels        | Ari Seff                         | https://www.youtube.com/channel/UCIxertsVDip8QHpnhinkAow
+     | youtube channels        | Arma Jackson                     | https://www.youtube.com/channel/UCla-BsUB_GekvCCIwd-gC1g
+     | youtube channels        | Arxiv Insights                   | https://www.youtube.com/channel/UCNIkB2IeJ-6AmZv7bQ1oBYg
+     | youtube channels        | Asaf Avidan                      | https://www.youtube.com/channel/UCAtSxW7FSDbzZqD-my6UW2A
+     | youtube channels        | AstronoGeek                      | https://www.youtube.com/channel/UC5X4e8ScZI2AFd_vkjSoyoQ
+     | youtube channels        | AURORA                           | https://www.youtube.com/channel/UCNjHgaLpdy1IMNK57pYiKiQ
+     | youtube channels        | Axiome                           | https://www.youtube.com/channel/UCNHFiyWgsnaSOsMtSoV_Q1A
+     | youtube channels        | Axolot                           | https://www.youtube.com/channel/UC2_OG1L8DLTzQ7UrZVOk7OA
+     | youtube channels        | Aypierre                         | https://www.youtube.com/channel/UCA5sfitizqs1oEbB5KY4uKQ
+     | youtube channels        | B-NØM Music                      | https://www.youtube.com/channel/UCMz09FwSJiEcDVDoEQGwOtA
+     | youtube channels        | Balade Mentale                   | https://www.youtube.com/channel/UCS_7tplUgzJG4DhA16re5Yg
+     | youtube channels        | BASTILLEvideos                   | https://www.youtube.com/channel/UC0q_PBWOkFe3SKllFXf3eWw
+     | youtube channels        | bbno$                            | https://www.youtube.com/channel/UCC8FSfSnbjiZ6vGr68ZLtzg
+     | youtube channels        | Bekar NFR                        | https://www.youtube.com/channel/UCOvYc9SLXqnfOB-jEiYo_Xg
+     | youtube channels        | Ben Eater                        | https://www.youtube.com/channel/UCS0N5baNlQWJCUrhCEo8WlA
+     | youtube channels        | Ben Vallack                      | https://www.youtube.com/channel/UC4NNPgQ9sOkBjw6GlkgCylg
+     | youtube channels        | BEN.                             | https://www.youtube.com/channel/UCanCcT8_W0moKZutEnJdWSA
+     | youtube channels        | Berywam                          | https://www.youtube.com/channel/UCxXFx2jz8N02sNqv1VeDEGA
+     | youtube channels        | Best Of Antoine Daniel           | https://www.youtube.com/channel/UCBuee5JCBlI_VuKjxmqtyUA
+     | youtube channels        | BiG HEATH                        | https://www.youtube.com/channel/UCAANvWwf0p9UfKBD2Rgn5gg
+     | youtube channels        | Biga*Ranx                        | https://www.youtube.com/channel/UCHJ-g0a43Jcp_xa1LPjQvaQ
+     | youtube channels        | Bigflo et Oli                    | https://www.youtube.com/channel/UCp6bpinXPzdx7d7-gekWzZQ
+     | youtube channels        | Bigorneaux & Coquillages         | https://www.youtube.com/channel/UCWMYFDuCcvkmPiOf1RP_IKQ
+     | youtube channels        | Billie Eilish                    | https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ
+     | youtube channels        | Billx Official                   | https://www.youtube.com/channel/UCwGuOEGEQjT2Goecz3BCNfg
+     | youtube channels        | Birdy Nam Nam                    | https://www.youtube.com/channel/UCOVkvGg2nfiuInRpIJgsxbA
+     | youtube channels        | Bob Lennon                       | https://www.youtube.com/channel/UCo0U1tbk3YbqiLDhkeWOviQ
+     | youtube channels        | Booska-P                         | https://www.youtube.com/channel/UCczuNg-bajJgZLYhrY7FpfA
+     | youtube channels        | Breakbot                         | https://www.youtube.com/channel/UCH6TCcFxQjVHLEwcJ8iXusA
+     | youtube channels        | Brick Experiment Channel         | https://www.youtube.com/channel/UClsFdM0HzTdF1JYoraQ0aUw
+     | youtube channels        | Brulux Officiel                  | https://www.youtube.com/channel/UCa4Pn-ln0eyqFHml6IwQRTA
+     | youtube channels        | Caballero & JeanJass             | https://www.youtube.com/channel/UCeg0PVLfsBKFLGd9V_EvbGA
+     | youtube channels        | Camélia Jordana                  | https://www.youtube.com/channel/UCQUOX5YyYrgE5rKOPTcLm_w
+     | youtube channels        | CaravanPalace                    | https://www.youtube.com/channel/UCKH9HfYY_GEcyltl2mbD5lA
+     | youtube channels        | Castor Mother                    | https://www.youtube.com/channel/UCfO4BQD5_S1272GVmuXmTxA
+     | youtube channels        | CGP Grey                         | https://www.youtube.com/channel/UC2C_jShtL725hvbm1arSV9w
+     | youtube channels        | chambrefroideprod                | https://www.youtube.com/channel/UC5LQaZr2hG6nIjDxWc3zs6g
+     | youtube channels        | Channel Tres                     | https://www.youtube.com/channel/UCx0H8GdP66dOal6yTGQDpeA
+     | youtube channels        | Charlotte Cardin                 | https://www.youtube.com/channel/UCIEcq0eG63LS-4J9M1qNj9Q
+     | youtube channels        | Chat Sceptique                   | https://www.youtube.com/channel/UCOuIgj0CYCXCvjWywjDbauw
+     | youtube channels        | Chilla                           | https://www.youtube.com/channel/UCKMd3Shk0viCnCs1nsSOibw
+     | youtube channels        | CHRIS                            | https://www.youtube.com/channel/UCMDgD_erEoLUkrbvae4-Weg
+     | youtube channels        | CHRIS 2.0                        | https://www.youtube.com/channel/UCRx4CFKzNz8Ojp_Hikkn7Tg
+     | youtube channels        | chrisatmachine                   | https://www.youtube.com/c/ChrisAtMachine
+     | youtube channels        | Code Bullet                      | https://www.youtube.com/channel/UC0e3QhIYukixgh5VVpKHH9Q
+     | youtube channels        | CodeParade                       | https://www.youtube.com/channel/UCrv269YwJzuZL3dH5PCgxUw
+     | youtube channels        | COLAS BIM                        | https://www.youtube.com/channel/UCBK2DclO34h6BDqqrh-drPw
+     | youtube channels        | COLAS BIM GAMING                 | https://www.youtube.com/channel/UC9orcd4I_3Uy_8_UAz2r48g
+     | youtube channels        | COLORS                           | https://www.youtube.com/channel/UC2Qw1dzXDBAZPwS7zm37g8g
+     | youtube channels        | Columbine                        | https://www.youtube.com/channel/UCJQsU9zWJHUCp2Wr088UN-g
+     | youtube channels        | Computerphile                    | https://www.youtube.com/channel/UC9-y-6csu5WGm29I7JiwpnA
+     | youtube channels        | Creel                            | https://www.youtube.com/channel/UCq7dxy_qYNEBcHqQVCbc20w
+     | youtube channels        | CYRILmp4                         | https://www.youtube.com/channel/UC-4M8AN08hw39nn2v91VuMQ
+     | youtube channels        | Cyrus North                      | https://www.youtube.com/channel/UCah8C0gmLkdtvsy0b2jrjrw
+     | youtube channels        | D!NG                             | https://www.youtube.com/channel/UClq42foiSgl7sSpLupnugGA
+     | youtube channels        | D. Ace Officiel                  | https://www.youtube.com/channel/UCZ430y2VULo_kIPplRBgsaw
+     | youtube channels        | Darktek                          | https://www.youtube.com/channel/UCMwR4ASVjad2nSXASTo8e_w
+     | youtube channels        | Davie504                         | https://www.youtube.com/channel/UCgFvT6pUq9HLOvKBYERzXSQ
+     | youtube channels        | DeenBurbigo                      | https://www.youtube.com/channel/UCk0FyZXVQ_FmGi-XP8YqYsg
+     | youtube channels        | Des Cuts & Des Zooms             | https://www.youtube.com/channel/UCFtaxL-IZiZHJqzxvv1LmZQ
+     | youtube channels        | Didi Chandouidoui                | https://www.youtube.com/channel/UCf0mOxfawezlHIVuHd3L2VA
+     | youtube channels        | Die Antwoord                     | https://www.youtube.com/channel/UC6DicDItkLQ7N4ag1JS5mqg
+     | youtube channels        | DigiDigger                       | https://www.youtube.com/channel/UCCa794oAhys-HzkqdfmnjdQ
+     | youtube channels        | Dimeh Todo                       | https://www.youtube.com/channel/UCc10uwCHG3GXcuUsoOlHavA
+     | youtube channels        | DIMENSION                        | https://www.youtube.com/channel/UCiw_8x43hludK0PhuN9AJGg
+     | youtube channels        | DirtyBiology                     | https://www.youtube.com/channel/UCtqICqGbPSbTN09K1_7VZ3Q
+     | youtube channels        | DistroTube                       | https://www.youtube.com/channel/UCVls1GmFKf6WlTraIb_IaJg
+     | youtube channels        | Dj Weedim                        | https://www.youtube.com/channel/UCACYV5bhqgguyqRUJ_MDMRA
+     | youtube channels        | Doc Geraud                       | https://www.youtube.com/channel/UCQfrSok6xuClEq8bOwiEWfA
+     | youtube channels        | Dorothée Pousséo                 | https://www.youtube.com/channel/UCuj27gPDOWEPwwQe6j8SXQQ
+     | youtube channels        | Doums L\'Entourage               | https://www.youtube.com/channel/UCe8txrJC396zSzlv2FLCITg
+     | youtube channels        | Dr Nozman                        | https://www.youtube.com/channel/UCWnfDPdZw6A23UtuBpYBbAg
+     | youtube channels        | Dr. Peacock                      | https://www.youtube.com/channel/UCsq3H3cTxvDU1Mktk1DQVkA
+     | youtube channels        | Dream                            | https://www.youtube.com/channel/UCTkXRDQl0luXxVQrRQvWS6w
+     | youtube channels        | Dream Team                       | https://www.youtube.com/channel/UC9bvUn7x3IrZ4yMANYjexUw
+     | youtube channels        | DreamXD                          | https://www.youtube.com/channel/UChU3JRloULzdFX3aCu7BiSA
+     | youtube channels        | Dude Perfect                     | https://www.youtube.com/channel/UCRijo3ddMTht_IHyNSNXpNQ
+     | youtube channels        | e-penser \[archives\]            | https://www.youtube.com/channel/UCcziTK2NKeWtWQ6kB5tmQ8Q
+     | youtube channels        | Echelon                          | https://www.youtube.com/channel/UCdlj_P8-ZdYZyJYYN4qmKQA
+     | youtube channels        | Eddy de Pretto                   | https://www.youtube.com/channel/UCKt7TGLZ1d81OeyJemba8aA
+     | youtube channels        | eden dillinger                   | https://www.youtube.com/channel/UCNnnnvJdlsVCdeSSTtnO6Gw
+     | youtube channels        | El Jj                            | https://www.youtube.com/channel/UCgkhWgBGRp0sdFy2MHDWfSg
+     | youtube channels        | ElectroBOOM                      | https://www.youtube.com/channel/UCJ0-OtVpF0wOKEqT2Z1HEtA
+     | youtube channels        | Epic Mountain Music              | https://www.youtube.com/channel/UCgDfzIiPpEHMmpkvRYs7x9w
+     | youtube channels        | Eta Musique                      | https://www.youtube.com/channel/UCFYalvitTOU_uBNFRl_hI-Q
+     | youtube channels        | Euphonik                         | https://www.youtube.com/channel/UCXhZbZqNnk03jZVQDDI-hXA
+     | youtube channels        | Experimentboy                    | https://www.youtube.com/channel/UCvGag7MyHR8H9oRm9iL9Ifw
+     | youtube channels        | Felckin                          | https://www.youtube.com/channel/UCPgH1KIGI1Zrp0mqy99kgkg
+     | youtube channels        | Fireship                         | https://www.youtube.com/channel/UCsBjURrPoezykLs9EqgamOA
+     | youtube channels        | Flammable Maths                  | https://www.youtube.com/channel/UCtAIs1VCQrymlAnw3mGonhw
+     | youtube channels        | Florence Porcel                  | https://www.youtube.com/channel/UC9HapjjoLqdDNwKEWQRaiyA
+     | youtube channels        | Fouloscopie                      | https://www.youtube.com/channel/UCLXDNUOO3EQ80VmD9nQBHPg
+     | youtube channels        | Franz Ferdinand                  | https://www.youtube.com/channel/UCrvJwuMaOeKg1Rb062glUJQ
+     | youtube channels        | Freeze Corleone                  | https://www.youtube.com/channel/UCKU0CiLJ075xJ7Pgq1N5L5g
+     | youtube channels        | FrenchBall                       | https://www.youtube.com/channel/UCQ5nOq77BZoKN_sB2iZsJ6Q
+     | youtube channels        | Fundy                            | https://www.youtube.com/channel/UCCE5NVlm0FhbunMMBT48WAw
+     | youtube channels        | FundyLIVE                        | https://www.youtube.com/channel/UCJhTTqtsvThK99_IbNDtwSw
+     | youtube channels        | Gambi                            | https://www.youtube.com/channel/UCicqCO-7o9d6D2888BJWZ8Q
+     | youtube channels        | GeorgeNotFound                   | https://www.youtube.com/channel/UCA2tt9GSU2sl8rAqjlLR3mQ
+     | youtube channels        | GeorgeWasFound                   | https://www.youtube.com/channel/UCtWJFkS6AQ4dQ_nUTBPWi4A
+     | youtube channels        | Georgioxv3                       | https://www.youtube.com/channel/UCAkhlZVATV8Ky0SMt4xb4RA
+     | youtube channels        | Gonkee                           | https://www.youtube.com/channel/UCG2IoSJBUhrGL8fb5stMCWw
+     | youtube channels        | Gonzi Channelcore                | https://www.youtube.com/channel/UCXdVtgy9XEHWqSz3n2ivluQ
+     | youtube channels        | Gorillaz                         | https://www.youtube.com/channel/UCfIXdjDQH9Fau7y99_Orpjw
+     | youtube channels        | GORSKI Official Channel          | https://www.youtube.com/channel/UCLVX5J-HwTD-BR0o-82cHrg
+     | youtube channels        | Grant Sanderson                  | https://www.youtube.com/channel/UC78Ib99EBhMN3NemVjYm3Ig
+     | youtube channels        | Graven - Développement           | https://www.youtube.com/channel/UCIHVyohXw6j2T-83-uLngEg
+     | youtube channels        | Greg Guillotin                   | https://www.youtube.com/channel/UCM1c1okZ-7cPV7BEZ-pzUGg
+     | youtube channels        | Gringe Officiel                  | https://www.youtube.com/channel/UCcbG0C6CZuPiQkkHxo_Prgw
+     | youtube channels        | Hamza                            | https://www.youtube.com/channel/UCGdSAF50uDAxghTy_3MpKng
+     | youtube channels        | Hardware-Related Coding          | https://www.youtube.com/channel/UC8VOeUKN6JAZPKXiXw_EzRw
+     | youtube channels        | Hatik                            | https://www.youtube.com/channel/UC2qYnTW-cuVAqghnekPU6Jg
+     | youtube channels        | Hippocampe Fou                   | https://www.youtube.com/channel/UC_TF0o9fX25CW7ka6W7U11A
+     | youtube channels        | Holly Humberstone                | https://www.youtube.com/channel/UC0xtJUctDSc7QncZAHYU26g
+     | youtube channels        | Homo Fabulus                     | https://www.youtube.com/channel/UC-Dmq5q3-FIBknv1TVIR__Q
+     | youtube channels        | Hugo Lisoir                      | https://www.youtube.com/channel/UCDC6DBi0kRp6Jk21xqfvFLA
+     | youtube channels        | Hungry Music                     | https://www.youtube.com/channel/UCrDeYr6rmcyKpaKFSywWchg
+     | youtube channels        | Hunter                           | https://www.youtube.com/channel/UCIS1fhFKrVY90DgzZ4yvbDQ
+     | youtube channels        | Hygiène Mentale                  | https://www.youtube.com/channel/UCMFcMhePnH4onVHt2-ItPZw
+     | youtube channels        | ici Amy Plant                    | https://www.youtube.com/channel/UC9wzC5mFFcIdguoyveTo6Ng
+     | youtube channels        | ICO                              | https://www.youtube.com/channel/UCQzRMPX5VvPkQeccJeJV7vA
+     | youtube channels        | IlluminaHD                       | https://www.youtube.com/channel/UCYsOW2PkoNjdYol4ej8OYLw
+     | youtube channels        | Jabrils                          | https://www.youtube.com/channel/UCQALLeQPoZdZC4JNUboVEUg
+     | youtube channels        | James Baker                      | https://www.youtube.com/channel/UCv_sHjokZ9qISkIpmV2ptww
+     | youtube channels        | James Sharman                    | https://www.youtube.com/channel/UCeRXQ_B5WZD3yjPly45myvg
+     | youtube channels        | Jamy - Epicurieux                | https://www.youtube.com/channel/UCG9G2dyRv04FDSH1FSYuLBg
+     | youtube channels        | jdh                              | https://www.youtube.com/channel/UCUzQJ3JBuQ9w-po4TXRJHiA
+     | youtube channels        | Jelle\'s Marble Runs             | https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g
+     | youtube channels        | JewelUsain                       | https://www.youtube.com/channel/UCFMH1P9XIgiPjJOwXPEIqOw
+     | youtube channels        | JHON RACHID                      | https://www.youtube.com/channel/UCnzWXmq8l0TIguCPDsrY78Q
+     | youtube channels        | Jnr Slice Officiel               | https://www.youtube.com/channel/UCXeJbdm3GLoQw5qOS0oHsww
+     | youtube channels        | joanna                           | https://www.youtube.com/channel/UCXN8fZKzbgUwKUYc4tL_jCQ
+     | youtube channels        | Joe Hisaishi Official            | https://www.youtube.com/channel/UCxyzciBLt1Hyw06dlqwAIkw
+     | youtube channels        | JOLLY Lyonzon                    | https://www.youtube.com/channel/UCsYa_h03khu_bGCmzsApuZg
+     | youtube channels        | Josman                           | https://www.youtube.com/channel/UCZz-I0tsMCqEirxCAjAiI0A
+     | youtube channels        | Joueur Du Grenier                | https://www.youtube.com/channel/UC_yP2DpIgs5Y1uWC0T03Chw
+     | youtube channels        | JOYCA                            | https://www.youtube.com/channel/UCow2IGnug1l3Xazkrc5jM_Q
+     | youtube channels        | JOYCA - Topic                    | https://www.youtube.com/channel/UCBNZiKATbjZ0MF-qdI-yt4w
+     | youtube channels        | Joyca Music                      | https://www.youtube.com/channel/UCZakU1z0jijzvw940Hwmlxg
+     | youtube channels        | Joysad                           | https://www.youtube.com/channel/UC4M9gnm0243vZjyWe5dGRVg
+     | youtube channels        | Julien Doré                      | https://www.youtube.com/channel/UC_HN4UwLGkimyAzgfDhap9w
+     | youtube channels        | jäde yours                       | https://www.youtube.com/channel/UCttH7ODjdEiBISk-pE1ja2w
+     | youtube channels        | K Camp                           | https://www.youtube.com/channel/UC83Tvu566Glh1OJR4gTDFIg
+     | youtube channels        | Kendrick Lamar                   | https://www.youtube.com/channel/UC3lBXcrKFnFAFkfVk5WuKcQ
+     | youtube channels        | KezahProd                        | https://www.youtube.com/channel/UCSvyuHw1gWtOYQiUS7t3vtw
+     | youtube channels        | KIKESA                           | https://www.youtube.com/channel/UCcX5UhgQ3fCSXpemJzEuZIw
+     | youtube channels        | Kiuvo Officiel                   | https://www.youtube.com/channel/UCx34fsksK2XWktpzJS9NlyQ
+     | youtube channels        | Koba LaD                         | https://www.youtube.com/channel/UCCSFseZ6DfCtVO8giGp7GfA
+     | youtube channels        | KSHMR                            | https://www.youtube.com/channel/UCFMjkrMT7Gvg84v0av-DIwA
+     | youtube channels        | Kurzgesagt – In a Nutshell       | https://www.youtube.com/channel/UCsXVk37bltHxD1rDPwtNM8Q
+     | youtube channels        | L\'histoire racontée par des chau| https://www.youtube.com/channel/UCrp9ngtJ52JQ3XM1RF9rNIg
+     | youtube channels        | L\'Or du Commun                  | https://www.youtube.com/channel/UC_b01YmccNwcGGegEqBcsxg
+     | youtube channels        | L.E.J                            | https://www.youtube.com/channel/UCRctnXfqPKaB4Ywp0y94ZDg
+     | youtube channels        | La Carologie                     | https://www.youtube.com/channel/UCxQcOTjUpeI8Goo6UXJ2NgA
+     | youtube channels        | La chaîne de P.A.U.L             | https://www.youtube.com/channel/UCS-NkJiYhYku2YtKi2W4p3w
+     | youtube channels        | La Femme                         | https://www.youtube.com/channel/UCIVKqDHYh8eidalfpfip2Wg
+     | youtube channels        | La P\'tite Fumée                 | https://www.youtube.com/channel/UCwXEuIq6bAlYr_hdtSpv2jQ
+     | youtube channels        | La Tronche en Biais              | https://www.youtube.com/channel/UCq-8pBMM3I40QlrhM9ExXJQ
+     | youtube channels        | Lala &ce                         | https://www.youtube.com/channel/UCh3J3l2nXAf-T17aBJfbUEQ
+     | youtube channels        | Lanterne Cosmique                | https://www.youtube.com/channel/UCWYxQt9Y3y2CDzXLf2K7xCA
+     | youtube channels        | Lasco                            | https://www.youtube.com/channel/UCmCsV6pjdGluwL9if3UqoQA
+     | youtube channels        | LauCarré                         | https://www.youtube.com/channel/UC7QfeEQ18LHJctDKeIOeGiw
+     | youtube channels        | Le Monde                         | https://www.youtube.com/channel/UCYpRDnhk5H8h16jpS84uqsA
+     | youtube channels        | Le Monde à L\'Envers             | https://www.youtube.com/channel/UCeqsLJGWhZXEerY5JWvwLkg
+     | youtube channels        | le rappeur damso                 | https://www.youtube.com/channel/UCxsYR3_7CKZeRfdJpqGxmdw
+     | youtube channels        | Le Règlement                     | https://www.youtube.com/channel/UCcqe1EHmdaLVBwfqk5OtmXw
+     | youtube channels        | Le Sense Of Wonder               | https://www.youtube.com/channel/UCjsHDXUU3BjBCG7OaCbNDyQ
+     | youtube channels        | Le Tatou                         | https://www.youtube.com/channel/UCR9DNIWLeXKQh_ZJWeXAl5Q
+     | youtube channels        | Le Vortex - ARTE                 | https://www.youtube.com/channel/UCZxLew-WXWm5dhRZBgEFl-Q
+     | youtube channels        | Le Wanski                        | https://www.youtube.com/channel/UCPtTIYromdoe5xqQNwKMB-A
+     | youtube channels        | LEFA                             | https://www.youtube.com/channel/UCnKCBjL2VJipAhyz6n2AeOg
+     | youtube channels        | Leios Labs                       | https://www.youtube.com/channel/UCd0dc7kQA1FUpJ76o1EjLqQ
+     | youtube channels        | Leo Roi                          | https://www.youtube.com/channel/UCBzxtDhnU8J59TKvhUIOYGA
+     | youtube channels        | Les Alchimistes                  | https://www.youtube.com/channel/UCU2W6Yj5ry_n89hdne_u2tQ
+     | youtube channels        | Les Freres Poulain               | https://www.youtube.com/channel/UCjED9uS41ioeFuPfbR-OBlw
+     | youtube channels        | Les Kassos                       | https://www.youtube.com/channel/UCv88958LRDfndKV_Y7XmAnA
+     | youtube channels        | LesAnticipateurs                 | https://www.youtube.com/channel/UC725ySNLBEjHTRakayL74dA
+     | youtube channels        | Leto                             | https://www.youtube.com/channel/UCP9zhgBhlIwgF5UEf3Pmj8Q
+     | youtube channels        | Lil Joyca                        | https://www.youtube.com/channel/UCgANFlYnbE47942AoazfNsg
+     | youtube channels        | LincaTV                          | https://www.youtube.com/channel/UCIeD9nXMZmJWeq3zl3UtA9w
+     | youtube channels        | Linguisticae                     | https://www.youtube.com/channel/UCofQxJWd4qkqc7ZgaLkZfcw
+     | youtube channels        | Little Big                       | https://www.youtube.com/channel/UCu7TZ_ATWgjgD9IrNLdnYDA
+     | youtube channels        | Livaï Off                        | https://www.youtube.com/channel/UCn5TXAY8hdoG34goIzf-Tbg
+     | youtube channels        | Logic                            | https://www.youtube.com/channel/UC4EDjfs78AhVgpBqE3WFGJg
+     | youtube channels        | LogicalGeekBoy                   | https://www.youtube.com/channel/UCJx74HaacAjDZk8LPdOfUFQ
+     | youtube channels        | Lolo Zouaï                       | https://www.youtube.com/channel/UCFlQ8q0A6zC-54DrSbX4UHQ
+     | youtube channels        | Lomepal                          | https://www.youtube.com/channel/UCqswLq9y07OU_NNQKaSyoBQ
+     | youtube channels        | London Grammar                   | https://www.youtube.com/channel/UC1oCOqdqlNDz5Sxnlk08ZrQ
+     | youtube channels        | Lorage                           | https://www.youtube.com/channel/UCrBg36uOObPqoTp2tj4r5RQ
+     | youtube channels        | Lord Esperanza                   | https://www.youtube.com/channel/UCE4Ykh2JJKBmS_Gf2o5cqIg
+     | youtube channels        | Lorenzo                          | https://www.youtube.com/channel/UCrQjCrWOS63rBxO15TA5CfQ
+     | youtube channels        | Lorenzo VEVO                     | https://www.youtube.com/channel/UCp-oJIAot-rMOHB2gWehzOA
+     | youtube channels        | Loud Officiel                    | https://www.youtube.com/channel/UCTrRtszYvMOgEqL4ClnS7PQ
+     | youtube channels        | Low Level Learning               | https://www.youtube.com/channel/UC6biysICWOJ-C3P4Tyeggzg
+     | youtube channels        | Lujipeka                         | https://www.youtube.com/channel/UC-4NatkpQeYGNjFY4brrJzw
+     | youtube channels        | LuvResval                        | https://www.youtube.com/channel/UCPj63YTEirrOXgCp5xiBYJQ
+     | youtube channels        | Lycos                            | https://www.youtube.com/channel/UC6l99GHukeTBrfmGVwi_RLQ
+     | youtube channels        | Lyonzon 69                       | https://www.youtube.com/channel/UCtvTE64cO4YCheMmCn9rnmQ
+     | youtube channels        | Léopold                          | https://www.youtube.com/channel/UCGfys_ojj4e-oN0adNX6siw
+     | youtube channels        | Madame Monsieur                  | https://www.youtube.com/channel/UCiI-vXCD2rlCIsXVavrCJmg
+     | youtube channels        | Maghla                           | https://www.youtube.com/channel/UChzNfUfgk7sQ5VOdy2r1Jow
+     | youtube channels        | MAKALA                           | https://www.youtube.com/channel/UCg20mF_zavsqCjjERZqyyPw
+     | youtube channels        | Malaa                            | https://www.youtube.com/channel/UCIyzc4i5ewvmJLzHFF4G5kw
+     | youtube channels        | Mandragora                       | https://www.youtube.com/channel/UCCiKQNEkXQ1yEMZFr5pCA-w
+     | youtube channels        | Mangemort Squad                  | https://www.youtube.com/channel/UCaW8nWryLD0TunnyUYqp5dQ
+     | youtube channels        | MARNIK                           | https://www.youtube.com/channel/UCfz5we5RWJL0cLnYfRwwE7w
+     | youtube channels        | Mastu                            | https://www.youtube.com/channel/UCAhaFPP6v3WCfK5Tjao0B7A
+     | youtube channels        | MastuTV                          | https://www.youtube.com/channel/UCLnv0iKl-QbLnkuF-aSZKTQ
+     | youtube channels        | Mathologer                       | https://www.youtube.com/channel/UC1_uAIS3r8Vu6JjXWvastJg
+     | youtube channels        | Mathologer 2                     | https://www.youtube.com/channel/UCH74Hc_7WYVzx1GXhLEH6Eg
+     | youtube channels        | Matou                            | https://www.youtube.com/channel/UC1u24fhJpejLDv6dU7iEwiQ
+     | youtube channels        | Matt_Parker_2                    | https://www.youtube.com/channel/UCzV9N7eGedBchEQjQhPapyQ
+     | youtube channels        | Max Bird                         | https://www.youtube.com/channel/UC-4WUubuVGowG_R7gdgesPA
+     | youtube channels        | Maxence                          | https://www.youtube.com/channel/UCLcUntFF_kV9mI4YjpAL1Qw
+     | youtube channels        | mc bess                          | https://www.youtube.com/channel/UCtGBG1M175UvlMJEocYaadg
+     | youtube channels        | Mcfly et Carlito                 | https://www.youtube.com/channel/UCDPK_MTu3uTUFJXRVcTJcEw
+     | youtube channels        | Mcfly et Carlito la chaîne second| https://www.youtube.com/channel/UCtxhwJ-6n4_C6ElALThD25Q
+     | youtube channels        | mCoding                          | https://www.youtube.com/channel/UCaiL2GDNpLYH6Wokkk1VNcg
+     | youtube channels        | Meduza                           | https://www.youtube.com/channel/UC65kzmQBQ-hdEIS5THSOUtA
+     | youtube channels        | Michael Bronstein                | https://www.youtube.com/channel/UCVt9rN2LzKzNwJG-VXvZGkA
+     | youtube channels        | Michel                           | https://www.youtube.com/channel/UCXl0qYV97iychaUIWLIR7KQ
+     | youtube channels        | Mickaël Launay                   | https://www.youtube.com/channel/UC4PasDd25MXqlXBogBw9CAg
+     | youtube channels        | Miegakure                        | https://www.youtube.com/channel/UCNqSF-tYoFYFxa7aayp_wiA
+     | youtube channels        | Minecraft Manhunt                | https://www.youtube.com/channel/UC2EQTEfNO6Uzx84IvJjjE-Q
+     | youtube channels        | Mister V                         | https://www.youtube.com/channel/UC8Q0SLrZLiTj5s4qc9aad-w
+     | youtube channels        | Mister V Music                   | https://www.youtube.com/channel/UCGbkLk615v-fh5Qgc6b-TVQ
+     | youtube channels        | Monkey Dee Youv                  | https://www.youtube.com/channel/UCiEQTnvUaRLgwdPhqJRqPRg
+     | youtube channels        | Monsieur Phi                     | https://www.youtube.com/channel/UCqA8H22FwgBVcF3GJpp0MQw
+     | youtube channels        | MrBboy45                         | https://www.youtube.com/channel/UC33lqxChj2yKSoSjK6NWkZQ
+     | youtube channels        | MrSuicideSheep                   | https://www.youtube.com/channel/UC5nc_ZtjKW1htCVZVRxlQAQ
+     | youtube channels        | MsBgirl45                        | https://www.youtube.com/channel/UCqrtWbyOj-LA4hvdb7zyVPg
+     | youtube channels        | Mutual Information               | https://www.youtube.com/channel/UCCcrR0XBH0aWbdffktUBEdw
+     | youtube channels        | Nanek                            | https://www.youtube.com/channel/UCFMMQTLgdW19Ewf7ROxhnOw
+     | youtube channels        | Naâman Official                  | https://www.youtube.com/channel/UCOxnDkpY5EgqH4YqE4lHuxQ
+     | youtube channels        | NEMIRNEMS                        | https://www.youtube.com/channel/UCVN7uXZrWcXdyyMZGOLyWEA
+     | youtube channels        | Nepal - Topic                    | https://www.youtube.com/channel/UCdWGxWejEXZrKMz8Br37Glg
+     | youtube channels        | Night Lovell                     | https://www.youtube.com/channel/UCjwf9oA4C9Yzxcg4vjI5GDg
+     | youtube channels        | Ninho                            | https://www.youtube.com/channel/UCXdHJabqwLJ3NvPfx6XmS5Q
+     | youtube channels        | Nota Bene                        | https://www.youtube.com/channel/UCP46_MXP_WG_auH88FnfS1A
+     | youtube channels        | Numberphile                      | https://www.youtube.com/channel/UCoxcjq-8xIDTYp3uz647V5A
+     | youtube channels        | Numberphile2                     | https://www.youtube.com/channel/UCyp1gCHZJU_fGWFf2rtMkCg
+     | youtube channels        | Nusky                            | https://www.youtube.com/channel/UCUak4byYyCGpyvpu-v17Rdw
+     | youtube channels        | NuskyVaatiVEVO                   | https://www.youtube.com/channel/UCc9-iPl_atZJ2FT79JmzNEQ
+     | youtube channels        | odezenne                         | https://www.youtube.com/channel/UCstYELvMHHhLQfYHEZhYNng
+     | youtube channels        | Officiel DEFAKATOR               | https://www.youtube.com/channel/UCU0FhLr6fr7U9GOn6OiQHpQ
+     | youtube channels        | Oklou                            | https://www.youtube.com/channel/UCPmfaXPGbC03r30Q5eR5atw
+     | youtube channels        | omido                            | https://www.youtube.com/channel/UCkxa9ydfsyR6EtvH4AWmvLg
+     | youtube channels        | orelsan                          | https://www.youtube.com/channel/UCEnFzIYw3BrndPCddyQ6c5A
+     | youtube channels        | Origami with Jo Nakashima        | https://www.youtube.com/channel/UC3ICcukYYeSn26KlCRnhOhA
+     | youtube channels        | Oscar Anton                      | https://www.youtube.com/channel/UCMu7q-D4nxTUCr6gCoUk-cQ
+     | youtube channels        | OWSLA                            | https://www.youtube.com/channel/UC8nidfOKkcgpO6tfc9OSdBQ
+     | youtube channels        | Oxmo Puccino \[Officiel\]        | https://www.youtube.com/channel/UCXMsmrUmeJBdtKEDREREv-w
+     | youtube channels        | Panda Dub                        | https://www.youtube.com/channel/UCg3X4g3oKr1AQFnkM-dCR_Q
+     | youtube channels        | Pandrezz                         | https://www.youtube.com/channel/UCwwxREa1Rm9vh0On9bRWo_Q
+     | youtube channels        | Passe-Science                    | https://www.youtube.com/channel/UCsz9DiwPtgDvxJ-njWnieZw
+     | youtube channels        | PATAPOUFGANG                     | https://www.youtube.com/channel/UCF5PlHGBfShLo8OHA0wwrkA
+     | youtube channels        | Paul Law                         | https://www.youtube.com/channel/UCDn07eKw2HDPIgSAGQgliAA
+     | youtube channels        | PAUSE PROCESS                    | https://www.youtube.com/channel/UC0JUkXAVVA4qWH1BQRs5N3A
+     | youtube channels        | Petit Voyou                      | https://www.youtube.com/channel/UCtOIFqhJGOTZdT2raQc8VpQ
+     | youtube channels        | phelto                           | https://www.youtube.com/channel/UCSrg8YPpUJDNNVL1RxadCFw
+     | youtube channels        | Physics Girl                     | https://www.youtube.com/channel/UC7DdEm33SyaTDtWYGO2CwdA
+     | youtube channels        | Pink Noise                       | https://www.youtube.com/channel/UCyVax3AQfKeuiuOyg0DucEQ
+     | youtube channels        | PLK TV                           | https://www.youtube.com/channel/UCL6gZm742-Xhxp4Cwa6kqpw
+     | youtube channels        | PNL                              | https://www.youtube.com/channel/UCtBjt766LG9EDVKZx4Q4IHw
+     | youtube channels        | PNL WORLD                        | https://www.youtube.com/channel/UCIh4fbWil1PPwvSxA1bAl2A
+     | youtube channels        | Polo & Pan                       | https://www.youtube.com/channel/UCQUFWrwQshjbq3VN0yfm_5Q
+     | youtube channels        | PommeMusic                       | https://www.youtube.com/channel/UCZy0-5YHgLpzgT-biGtJgJg
+     | youtube channels        | Poupie                           | https://www.youtube.com/channel/UC4N3njjvdn9OfpkzaBnxkBA
+     | youtube channels        | Powfu                            | https://www.youtube.com/channel/UCmR-xOM0ZjY1cPdFp2WXT4g
+     | youtube channels        | Primer                           | https://www.youtube.com/channel/UCKzJFdi57J53Vr_BkTfN3uQ
+     | youtube channels        | Primum Non Nocere                | https://www.youtube.com/channel/UC9BnGZLT4iPaJtDOXYwQuHQ
+     | youtube channels        | pvnova                           | https://www.youtube.com/channel/UCB0qpLkjzVlVZ4c8nKiCEyw
+     | youtube channels        | Reducible                        | https://www.youtube.com/channel/UCK8XIGR5kRidIw2fWqwyHRA
+     | youtube channels        | Remzcore                         | https://www.youtube.com/channel/UCxJ5wHDqQcCWs771UxeIFjg
+     | youtube channels        | Reta                             | https://www.youtube.com/channel/UC_NSOPMFJXCNJLoyjd2rhfg
+     | youtube channels        | REZZ                             | https://www.youtube.com/channel/UCMcWPM9eOz9Dsn7YwAlpOoQ
+     | youtube channels        | Rilès                            | https://www.youtube.com/channel/UC-NwsBEyZqZnPc9OaCFJSsw
+     | youtube channels        | Risque Alpha                     | https://www.youtube.com/channel/UCJ7_Ld2cIVY5MM3NcKW3D8A
+     | youtube channels        | Robert Miles                     | https://www.youtube.com/channel/UCLB7AzTwc6VFZrBsO2ucBMg
+     | youtube channels        | Roméo Elvis                      | https://www.youtube.com/channel/UCrLTHz-a-RgeVCkx4iOhs0w
+     | youtube channels        | Ruskov                           | https://www.youtube.com/channel/UCE8q-CUstv-HicI8d6-n0LA
+     | youtube channels        | Règlement Radio                  | https://www.youtube.com/channel/UCsb692t2JYv9UrubQeTfqLA
+     | youtube channels        | Sadek                            | https://www.youtube.com/channel/UCI0fO--ObkF3KuRj7vvXazw
+     | youtube channels        | San-Nom                          | https://www.youtube.com/channel/UCKTHzUOy46AgKnENDWsezMQ
+     | youtube channels        | SANTA SALUT                      | https://www.youtube.com/channel/UCYhiDGVTQHHkS_1khuLqlgA
+     | youtube channels        | Sapnap                           | https://www.youtube.com/channel/UCqynl7rdtktKMQESdSBmE-g
+     | youtube channels        | Savage Toddy                     | https://www.youtube.com/channel/UC2fC-4EBKf3nus9Q6G3do2g
+     | youtube channels        | SCH                              | https://www.youtube.com/channel/UCeBu6AFsaPVElhFzlj5hetg
+     | youtube channels        | Science4All                      | https://www.youtube.com/channel/UC0NCbj8CxzeCGIF6sODJ-7A
+     | youtube channels        | ScienceClic                      | https://www.youtube.com/channel/UCV6uM3y-8TeO7JlCtcEN-Bg
+     | youtube channels        | ScienceEtonnante                 | https://www.youtube.com/channel/UCaNlbnghtwlsGF-KzAFThqA
+     | youtube channels        | Scilabus                         | https://www.youtube.com/channel/UCeR8BYZS7IHYjk_9Mh5JgkA
+     | youtube channels        | Scinéma                          | https://www.youtube.com/channel/UCPF7JOWMDWZmnP_cQfyAezg
+     | youtube channels        | Scyllaofficiel                   | https://www.youtube.com/channel/UCz3KCKF7Fi32FWOOfhLdnUg
+     | youtube channels        | SEB                              | https://www.youtube.com/channel/UCK3inMNRNAVUleEbpDU1k2g
+     | youtube channels        | SEB - Topic                      | https://www.youtube.com/channel/UCy0G9iQtW-T7EyeJVZMaG6A
+     | youtube channels        | Sebastian Lague                  | https://www.youtube.com/channel/UCmtyQOKKmrMVaKuRXz02jbQ
+     | youtube channels        | Seth Gueko                       | https://www.youtube.com/channel/UCi8NwgKNP8qpp8n4DUTJvpg
+     | youtube channels        | SethBling                        | https://www.youtube.com/channel/UC8aG3LDTDwNR1UQhSn9uVrw
+     | youtube channels        | Shayofficiel                     | https://www.youtube.com/channel/UC_ckA7BVoVkUTty1LvJqVoQ
+     | youtube channels        | Simon Puech                      | https://www.youtube.com/channel/UCMQSwUNSnMOP4IRysfeg8EA
+     | youtube channels        | SimonDev                         | https://www.youtube.com/channel/UCEwhtpXrg5MmwlH04ANpL8A
+     | youtube channels        | SIMONY Musique                   | https://www.youtube.com/channel/UCBC2uxcPkp-8iCL9pD2OsVw
+     | youtube channels        | Sixty Symbols                    | https://www.youtube.com/channel/UCvBqzzvUBLCs8Y7Axb-jZew
+     | youtube channels        | SLIMKA                           | https://www.youtube.com/channel/UC7GaaYKkVNyKHnHnkXalrlw
+     | youtube channels        | SmarterEveryDay                  | https://www.youtube.com/channel/UC6107grRI4m0o2-emgoDnAA
+     | youtube channels        | Sneazzy                          | https://www.youtube.com/channel/UC5f7mqpu4JipuK43PL9lnog
+     | youtube channels        | Sofyan                           | https://www.youtube.com/channel/UCGWoTWsXJi1UtCjOiBHIsfw
+     | youtube channels        | SolangeTeParle                   | https://www.youtube.com/channel/UCQfakletOMk9zXVRSHUdyDA
+     | youtube channels        | Son Lux                          | https://www.youtube.com/channel/UCvaVEjRMc91tuAxO3b3JuQw
+     | youtube channels        | Soso Maness                      | https://www.youtube.com/channel/UCNBsZQ6NvqRYpF5472QxlXA
+     | youtube channels        | Spider ZED                       | https://www.youtube.com/channel/UCzJjSzJlY1V41u5lGVNwGtg
+     | youtube channels        | SpriNoirTv                       | https://www.youtube.com/channel/UCKI8PEQkFi-aRktWXHK838w
+     | youtube channels        | SQUEEZIE                         | https://www.youtube.com/channel/UCWeg2Pkate69NFdBeuRFTAw
+     | youtube channels        | SQUEEZIE GAMING                  | https://www.youtube.com/channel/UCY-_QmcW09PHAImgVnKxU2g
+     | youtube channels        | Stand-up Maths                   | https://www.youtube.com/channel/UCSju5G2aFaWMqn-_0YBtq5A
+     | youtube channels        | Steve Mould                      | https://www.youtube.com/channel/UCEIwxahdLz7bap-VDs9h35A
+     | youtube channels        | String Theory FR                 | https://www.youtube.com/channel/UCfxwT02Bu5R7l21uMAu8H1w
+     | youtube channels        | Studio Bagel                     | https://www.youtube.com/channel/UCZ8kV8vuMdDLSerCIFfWnFQ
+     | youtube channels        | Stuff Made Here                  | https://www.youtube.com/channel/UCj1VqrHhDte54oLgPG4xpuQ
+     | youtube channels        | Suzane                           | https://www.youtube.com/channel/UCY0I0w7JbRyn-5p5Ni9Z9_A
+     | youtube channels        | Swing ODC                        | https://www.youtube.com/channel/UC7Hb27QY77X11YZ-gxndpJg
+     | youtube channels        | Tech2Tech - Mikaël               | https://www.youtube.com/channel/UC4wj8LCLrOfgKrOVDLW4yOA
+     | youtube channels        | Techniques Spatiales             | https://www.youtube.com/channel/UCwf-gTeemly9VOVALdBXiTw
+     | youtube channels        | TEDx Talks                       | https://www.youtube.com/channel/UCsT0YIqwnpJCM-mx7-gSA4Q
+     | youtube channels        | Tengo John                       | https://www.youtube.com/channel/UC6NOeYQolq4rMPPkIisk9MQ
+     | youtube channels        | The 8-Bit Guy                    | https://www.youtube.com/channel/UC8uT9cgJorJPWu7ITLGo9Ww
+     | youtube channels        | The Action Lab                   | https://www.youtube.com/channel/UC1VLQPn9cYSqx8plbk9RxxQ
+     | youtube channels        | The Clash                        | https://www.youtube.com/channel/UCWfAZudbGLAyrrEBaGuslNA
+     | youtube channels        | The Coding Train                 | https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw
+     | youtube channels        | The Hop                          | https://www.youtube.com/channel/UCrnYm9EWnNNS2x2lk92Js3A
+     | youtube channels        | The Marías                       | https://www.youtube.com/channel/UChmZkdugBmAP_zpyzayv6VQ
+     | youtube channels        | The Pirouettes                   | https://www.youtube.com/channel/UCc8u72IB8_MNi-lWGRw7xbw
+     | youtube channels        | thekooksofficial                 | https://www.youtube.com/channel/UC3lSoOBQYPsZPYpgoC6_RVg
+     | youtube channels        | Thomas Gauthier                  | https://www.youtube.com/channel/UCx0oS6YmHSbOMnN3vQvTR0Q
+     | youtube channels        | Tibees                           | https://www.youtube.com/channel/UC52kszkc08-acFOuogFl5jw
+     | youtube channels        | Timmy Trumpet                    | https://www.youtube.com/channel/UCd61k-5ykv_4RIbQg-Mpvrg
+     | youtube channels        | Todiefor                         | https://www.youtube.com/channel/UCT2MY5cNK9ea8m86v-1MU7g
+     | youtube channels        | Tom Scott                        | https://www.youtube.com/channel/UCBa659QWEk1AI4Tg--mrJ2A
+     | youtube channels        | Tones And I                      | https://www.youtube.com/channel/UCQeiBlCcS4-XGwFjrvDn96w
+     | youtube channels        | Tove Lo                          | https://www.youtube.com/channel/UCN7gplqpfnrT-mxjoTR4ENg
+     | youtube channels        | TrackZero                        | https://www.youtube.com/channel/UC2nsQ2YLRqYNOzI3Rty58_Q
+     | youtube channels        | Trampsta                         | https://www.youtube.com/channel/UCOlxGyNCuzG8xm5ogYM6OOQ
+     | youtube channels        | Trei Degete - Topic              | https://www.youtube.com/channel/UCeUqjjJlyNYIMGm-ieMgsHA
+     | youtube channels        | Trxns                            | https://www.youtube.com/channel/UCnOuKKfBkvt2VsXcYSr8W2Q
+     | youtube channels        | Two Minute Papers                | https://www.youtube.com/channel/UCbfYPyITQ-7l4upoX8nvctg
+     | youtube channels        | Usagi Electric                   | https://www.youtube.com/channel/UCE4xstUnu0YmkG-W9_PyYrQ
+     | youtube channels        | USKY                             | https://www.youtube.com/channel/UCn3rDtMbhZGAb6L-avf_WvQ
+     | youtube channels        | Vald Sullyvan                    | https://www.youtube.com/channel/UCUNv0EUZYhuelHXWoFLTqwg
+     | youtube channels        | vcubingx                         | https://www.youtube.com/channel/UCv0nF8zWevEsSVcmz6mlw6A
+     | youtube channels        | VENLO                            | https://www.youtube.com/channel/UCjTNeO1fF2dXsL3GyR6wqEg
+     | youtube channels        | Veritasium                       | https://www.youtube.com/channel/UCHnyfMqiRRG1u-2MsSQLbXA
+     | youtube channels        | VIDEOCLUB                        | https://www.youtube.com/channel/UC7fW7oNXyRDSxMOHVJE1jrA
+     | youtube channels        | Vihart                           | https://www.youtube.com/channel/UCOGeU-1Fig3rrDjhm9Zs_wg
+     | youtube channels        | vins wazacrew                    | https://www.youtube.com/channel/UC2GJz3_g-SBaVE8IzrYJgoQ
+     | youtube channels        | vladimir cauchemar               | https://www.youtube.com/channel/UC07udoHCKUb36kImuvm5zJw
+     | youtube channels        | Vlanx                            | https://www.youtube.com/channel/UCZ3-PmXGBBFv-lZ6yYDlUbQ
+     | youtube channels        | Vons                             | https://www.youtube.com/channel/UCXQyNNX6Q-2XtTPUhnTkrBw
+     | youtube channels        | Vsauce                           | https://www.youtube.com/channel/UC6nSFpj9HTCZ5t-N3Rm3-HA
+     | youtube channels        | Vsauce2                          | https://www.youtube.com/channel/UCqmugCqELzhIMNYnsjScXXw
+     | youtube channels        | VSOFFICIEL                       | https://www.youtube.com/channel/UCgfBiRWckyGTT0m8D8omYPw
+     | youtube channels        | Wankil Studio - Laink et Terracid| https://www.youtube.com/channel/UCYGjxo5ifuhnmvhPvCc3DJQ
+     | youtube channels        | Waxx                             | https://www.youtube.com/channel/UCVBXlR7YhYUr-DfNG1XLrHA
+     | youtube channels        | Will Smith                       | https://www.youtube.com/channel/UCKuHFYu3smtrl2AwwMOXOlg
+     | youtube channels        | Wintergatan                      | https://www.youtube.com/channel/UCcXhhVwCT6_WqjkEniejRJQ
+     | youtube channels        | Y2K                              | https://www.youtube.com/channel/UCjFSstOzzKPU8WjEySZpPvA
+     | youtube channels        | Yannic Kilcher                   | https://www.youtube.com/channel/UCZHmQk67mSJgfCCTn7xBfew
+     | youtube channels        | Younès                           | https://www.youtube.com/channel/UCQ5Te6_mT6DsW3wDPclnDRw
+     | youtube channels        | Youssoupha                       | https://www.youtube.com/channel/UCcVrym0F4OFhLkrc-f4h2sg
+     | youtube channels        | Yung Gravy                       | https://www.youtube.com/channel/UCLQPinZNWKlLBF7C_m2YP3g
+     | youtube channels        | YUNGBLUD                         | https://www.youtube.com/channel/UCd3Llj2WWJh8ItfYl32eJ4Q
+     | youtube channels        | Yuzmv                            | https://www.youtube.com/channel/UCLDJBuTfBXuaAMnlGYVr6mg
+     | youtube channels        | Zach Star                        | https://www.youtube.com/channel/UCpCSAcbqs-sjEVfk_hMfY9w
+     | youtube channels        | Zapping Sauvage                  | https://www.youtube.com/channel/UCAdyNOE80FsFPYlFliyXfwQ
+     | youtube channels        | Zed Yun Pavarotti                | https://www.youtube.com/channel/UC7yikfNqxwaU-XU5TRx8-pA
+     | youtube channels        | Zinée                            | https://www.youtube.com/channel/UCYwe0x5pDu6AqBRDGqYYzqw
      | youtube playlist        | blockchain                       | https://www.youtube.com/playlist?list=PLex3MS8x-JtpUJ4TzDcDzM-AhWqLGdqPm
+     | youtube playlist        | chrisatmachine ricing neovim     | https://www.youtube.com/playlist?list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ
      | youtube playlist        | Films                            | https://www.youtube.com/playlist?list=PLex3MS8x-Jtrvn_akhSMtFBQ9Yhzcyn75
      | youtube playlist        | Fractales                        | https://www.youtube.com/playlist?list=PLex3MS8x-Jtpq4mQ_lbcRDz-M0ia6y-96
      | youtube playlist        | Guitare                          | https://www.youtube.com/playlist?list=PLex3MS8x-JtrsRCjoeZEpWXiZ3wVu_JCy

@@ -25,6 +25,7 @@ dwarffortress
 emacs
 eog
 fakeroot
+fd
 feh
 figlet
 firefox
@@ -56,6 +57,7 @@ python-opengl
 python-tqdm
 python-virtualenv
 read-edid
+ripgrep
 rogue
 sc
 sfml

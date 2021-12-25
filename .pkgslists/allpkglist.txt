@@ -34,6 +34,7 @@ efibootmgr
 emacs
 eog
 fakeroot
+fd
 feh
 figlet
 firefox
@@ -71,6 +72,7 @@ nerd-fonts-mononoki
 nethack
 network-manager-applet
 networkmanager
+npm
 ntfs-3g
 okular
 os-prober
@@ -98,6 +100,7 @@ python35
 python38
 read-edid
 reddio
+ripgrep
 rogue
 sc
 scrot
