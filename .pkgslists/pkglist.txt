@@ -22,6 +22,7 @@ cronie
 ctags
 dstat
 dwarffortress
+emacs
 eog
 fakeroot
 feh

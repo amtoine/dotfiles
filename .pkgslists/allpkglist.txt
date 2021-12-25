@@ -29,7 +29,9 @@ ctags
 dosfstools
 dstat
 dwarffortress
+ed
 efibootmgr
+emacs
 eog
 fakeroot
 feh
