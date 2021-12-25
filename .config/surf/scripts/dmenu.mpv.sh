@@ -16,7 +16,7 @@
 #               whether to shuffle the playlist or not, about the loop option on the playlist and the start index.
 #               One can simply abort the process at any time by pressing escape.
 # Dependencies: mpv, youtube-dl, dmenu
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 quality=$(echo -e "144\n240\n360\n480\n720\n1080" | dmenu -l 10 -p "Video quality (press escape at any time to abort)"); [[ "$quality" == "" ]] && exit 1

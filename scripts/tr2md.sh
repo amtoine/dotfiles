@@ -14,7 +14,7 @@
 # Description:  turns the tree architecture of a directory into a usable one inside a markdown file.
 #               WORK IN PROGRESS.
 # Dependencies: tree
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 # name=$(pwd | rev | cut -d'/' -f1 | rev)

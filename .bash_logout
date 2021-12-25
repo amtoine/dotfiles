@@ -14,7 +14,7 @@
 #
 # Description:  ~/.bash_logout: executed by bash(1) when login shell exits.
 # Dependencies:
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 # when leaving the console clear the screen to increase privacy

@@ -13,7 +13,7 @@
 #
 # Description:  a wrapper for slock which prints a fancy raibow cow on the lock screen.
 # Dependencies: cowsay, fortune, locat.
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 slock -m "$(cowsay $(fortune -c) | lolcat -ft)"

@@ -14,7 +14,7 @@
 # Description:  simple countdown
 #               deprecated -> see the termdown command instead.
 # Dependencies: play
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 

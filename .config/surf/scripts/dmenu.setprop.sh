@@ -13,7 +13,7 @@
 #
 # Description:  Opens a dmenu menu in surf with all the bookmarks and the current url.
 # Dependencies: xprop, dmenu, a bookmark file at ~/.config/surf/bookmarks
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 if [[ "$4" = '_SURF_FIND' ]]; then

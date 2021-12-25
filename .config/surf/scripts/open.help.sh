@@ -13,7 +13,7 @@
 #
 # Description:  Open a help file in a text editor, shows key bindings...
 # Dependencies: kitty
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 configfile="$HOME/repos/surf/config.def.h"

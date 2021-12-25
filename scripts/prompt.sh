@@ -19,7 +19,7 @@
 #               ~/scripts/prompt "Do you really want to shutdown your machine?" "shutdown -h now"
 #               will ask you before shutting down.
 # Dependencies: dmenu
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 [[ $(/usr/bin/echo -e "No\nYes" | /usr/bin/dmenu -i -p "$1") == "Yes" ]] && $2

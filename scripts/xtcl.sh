@@ -14,7 +14,7 @@
 # Description:  turns off proprely the Caps_Lock key because it is broken and ultra sensitive on my machine.
 #               semi-deprecated but can still be useful to disable broken and annoying keys.
 # Dependencies: xdotool, xmodmap.
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 # parse the input.

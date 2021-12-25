@@ -12,7 +12,7 @@
 " Description:  greatly inspired from:
 "                     https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
 " Dependencies:
-" License:      https://github.com/a2n-s/dotfiles/LICENSE 
+" License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 " Contributors: Stevan Antoine
 "
 "               Table of Content:

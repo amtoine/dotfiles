@@ -13,7 +13,7 @@
 #
 # Description:  Opens the history to allow the user to go back in time with surf.
 # Dependencies: tac, dmenu
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 tac ~/.config/surf/history.txt | dmenu -l 10 -b -i | awk '{ print $2 }'

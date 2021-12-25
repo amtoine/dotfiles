@@ -13,7 +13,7 @@
 #
 # Description:  updates some lists of installed packages.
 # Dependencies: pacman, comm
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 dir="$HOME/.pkgslists"

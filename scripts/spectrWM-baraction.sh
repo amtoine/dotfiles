@@ -13,7 +13,7 @@
 #
 # Description:   the baraction script for the spectwm windows manager.
 # Dependencies:  mpstat, amixer, nmcli, ifstat, setxkbmap, play.
-# License:       https://github.com/a2n-s/dotfiles/LICENSE 
+# License:       https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 hostname="${HOSTNAME:-${hostname:-$(hostname)}}"

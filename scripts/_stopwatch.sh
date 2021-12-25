@@ -14,7 +14,7 @@
 # Description:  simple stopwatch
 #               deprecated -> see termdown instead.
 # Dependencies:
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
   date1=`date +%s`;

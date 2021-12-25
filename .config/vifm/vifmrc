@@ -11,7 +11,7 @@
 #
 # Description:  my config for the vifm file explorer based on vim.
 # Dependencies:
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 #
 " vim: filetype=vifm :

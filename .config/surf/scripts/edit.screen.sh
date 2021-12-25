@@ -13,7 +13,7 @@
 #
 # Description:  Should open the source code a the cuttent surf page in the $EDITOR. NOT WORKING.
 # Dependencies: kitty
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 tmpfile=$(mktemp /tmp/surf-edit.XXXXXX)

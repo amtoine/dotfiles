@@ -14,7 +14,7 @@
 # Description:  allows one to download a youtube video audio or a whole playlist.
 #               WORK IN PROGRESS
 # Dependencies: youtube-dl
-# License:      https://github.com/a2n-s/dotfiles/LICENSE
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 youtube-dl \

@@ -13,7 +13,7 @@
 #
 # Description:  cleans the current preview for next one or other graphical applications.
 # Dependencies: implicitely ueberzug
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 #               cirala -> https://github.com/cirala/lfimg/blob/master/cleaner 
 

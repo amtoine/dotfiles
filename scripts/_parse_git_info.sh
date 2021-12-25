@@ -18,7 +18,7 @@
 #               3 untracked files and no stash, then the output of _parse_git_info will be:
 #                  (repo@branch:1,2,3,0)
 # Dependencies: git
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 git branch 1> /dev/null 2> /dev/null

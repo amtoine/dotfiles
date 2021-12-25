@@ -15,7 +15,7 @@
 #               '$SCRIPTS/screenshot.sh full' will take a screenshot of the whole screen.
 #               '$SCRIPTS/screenshot.sh window' will let the user chose the window he wants to take a screenshot of.
 # Dependencies: scrot
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 screenshot() {

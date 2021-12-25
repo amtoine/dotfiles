@@ -13,7 +13,7 @@
 #
 # Description:  takes care of the previewimg of a lot of file types.
 # Dependencies: chafa. bat
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 #               cirala -> https://github.com/cirala/lfimg/blob/master/preview 
 

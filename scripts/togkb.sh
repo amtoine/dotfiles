@@ -13,7 +13,7 @@
 
 # Description:  toggles the keyboard layout between qwerty and azerty.
 # Dependencies: setxkbmap 
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 if [[ $(setxkbmap -query | grep layout | sed "s/layout:\s\+\(.*\)/\1/") = fr ]]; then

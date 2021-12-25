@@ -17,7 +17,7 @@
 #              Pipe the result to a new surf or xprop _SURF_URI accordingly.
 #     Usage: curl somesite.com | surf_linkselect [SURFWINDOWID] [PROMPT]
 # Dependencies: xmllint, dmenu
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 SURF_WINDOW="${1:-$(xprop -root | sed -n '/^_NET_ACTIVE_WINDOW/ s/.* //p')}"

@@ -13,7 +13,7 @@
 #
 # Description:  wrapper around dmenu_run to launch dmenu in the middle and in a grid fashion.
 # Dependencies: dmenu
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 DMWIDTH=700; \

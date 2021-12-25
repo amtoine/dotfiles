@@ -33,7 +33,7 @@
 #                    jupyter  | /home/ants/.venvs/ml/bin/jupyter
 #                    notebook | /home/ants/.venvs/ml/bin/jupyter-notebook (6.4.6)
 # Dependencies: python, pip, and jupyter, jupyter-notebook to have full information but required.
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 if command -v python &> /dev/null; then

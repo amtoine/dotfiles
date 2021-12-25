@@ -13,7 +13,7 @@
 #
 # Description:  saves a url by adding it to the list of all bookmarks for surf.
 # Dependencies: xprop, a bookmark file at ~/.config/surf/bookmarks
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 bookmarks="$HOME/.config/surf/bookmarks"

@@ -11,7 +11,7 @@
 #
 # Description:  my x config.
 # Dependencies: picom, feh, a wm, xscreensaver.
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 

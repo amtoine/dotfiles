@@ -26,7 +26,7 @@
 #                 the maximum number of cd allowed to go deeper, from $HOME or from /dir/ with dir being
 #                 tmp, var, bin, ...
 # Dependencies:
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 # get the max number of cd allowed.

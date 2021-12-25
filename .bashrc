@@ -15,7 +15,7 @@
 #               for examples
 # Dependencies: cal, xtcl.sh, _shortwd.sh & _parse_git_info.sh at https://github.com/a2n-s/dotfiles/tree/main/scripts
 #               colorscript at https://gitlab.com/dwt1/shell-color-scripts, starship
-# License:      https://github.com/a2n-s/dotfiles/LICENSE
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 
@@ -171,8 +171,8 @@ export PATH=$PATH:$HOME/scripts:$HOME/.local/bin
 xtcl.sh -d -q
 
 # changes the editor in the terminal, to edit long commands.
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='nvim'
+export VISUAL='nvim'
 set -o vi
 
 # activates virtualenvwrapper to manage python virtual environments.

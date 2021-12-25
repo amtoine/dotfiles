@@ -12,7 +12,7 @@
 #                                 /____/                                           /_/                                               /____/
 # Description:  all the config needed by the dmscripts.
 # Dependencies: this is up to you.
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 # shellcheck disable=SC2034
