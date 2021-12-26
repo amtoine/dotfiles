@@ -40,6 +40,7 @@ gtk4
 htop
 hugo
 kolourpaint
+lazygit
 librsync
 lolcat
 mpd
@@ -76,6 +77,7 @@ vi
 vnstat
 vulkan-tools
 w3m
+wget
 xautolock
 xf86-video-vesa
 xorg-bdftopcf

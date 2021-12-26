@@ -55,6 +55,7 @@ htop
 hugo
 jq
 kolourpaint
+lazygit
 lf
 libappindicator-gtk3
 librsync
@@ -128,6 +129,7 @@ vim
 vnstat
 vulkan-tools
 w3m
+wget
 which
 xautolock
 xclip
