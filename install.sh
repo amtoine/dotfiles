@@ -218,12 +218,30 @@ main() {
 
 	cat <<- EOF
 		[*] Installing config...
+    source: $DIR
+    destination: $HDIR
 
 		[*] Choose option-
-		[1] ...
-		[2] ...
+		[1/o] Override everything.
+		[2/m] Minimal install.
+		[3/i] Interactive installation.
 
 	EOF
+  read -p "[?] What do you want the installation to be ? (1/2/3) "
+  case "$REPLY" in
+    1|"o") INST_MODE="override"
+    ;;
+    2|"m") INST_MODE="minimal"
+    ;;
+    3|"i") INST_MODE="interactive"
+    ;;
+    *) echo "defaulting..."
+       INST_MODE="interactive"
+    ;;
+  esac
+  echo "you choose the $INST_MODE mode"
+  echo "                \`--> does not have any impact for now..."
+  exit 0
 
   prompt_for_install_and_install "scripts" "install_scripts"
   prompt_for_install_and_install "files"   "install_files"
