@@ -60,6 +60,7 @@ python-virtualenv
 read-edid
 ripgrep
 rogue
+rust
 sc
 sfml
 sl

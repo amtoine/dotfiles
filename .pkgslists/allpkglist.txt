@@ -103,6 +103,7 @@ read-edid
 reddio
 ripgrep
 rogue
+rust
 sc
 scrot
 sfml

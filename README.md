@@ -51,11 +51,14 @@ $HOME
 |   |   |-- [d]  conf.d
 |   |   |-- [-]  config.fish
 |   |   |-- [-]  fish_variables
-|   |   |-- [d]  functions
+|   |   `-- [d]  functions
 |   |-- [d]  htop                                      -- my process monitor.
 |   |   `-- [-]  htoprc
 |   |-- [d]  kitty                                     -- terminal emulator.
 |   |   `-- [-]  kitty.conf
+|   |-- [d]  lazygit                                   -- the lazi git tui tool.
+|   |   |-- [-]  config.toml
+|   |   `-- [-]  state.toml
 |   |-- [d]  lf                                        -- file explorer.
 |   |   `-- [-]  lfrc
 |   |-- [d]  mpd                                       -- music server deamon.
@@ -167,7 +170,7 @@ or directly:
 - enjoy your new `vim` experience!
 
 I will try, in the future, to provide an `install.sh` script to (1) select what part of the config to install,
-(2) backup the choosen files of the user inside a safe place and (3) install my config files in replacement.  
+(2) backup the chosen files of the user inside a safe place and (3) install my config files in replacement.  
 I.doc/programs/vim/ also plan to develop an `uninstall.sh` script that does the exact inverse to restore the config of the user
 just as it was before the installation.
 
@@ -190,6 +193,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [`htop`]              ([\*\*][mydoc-htop])
 - [x] [`kitty`]        (\*) ([\*\*][mydoc-kitty])
 - [x] [`lf`]                ([\*\*][mydoc-lf])
+- [x] [`lazygit`]           ([\*\*][mydoc-lazygit])
 - [ ] [`mpd`]               ([\*\*][mydoc-mpd])
 - [x] [`mpv`]               ([\*\*][mydoc-mpv])
 - [ ] [`ncmcpp`]            ([\*\*][mydoc-ncmcpp])
@@ -292,6 +296,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`htop`]:                  .config/htop
 [`kitty`]:                 .config/kitty/kitty.conf
 [`lf`]:                    .config/lf/lfrc
+[`lazygit`]:               .config/lazygit
 [`mpd`]:                   .config/mpd
 [`mpv`]:                   .config/mpv
 [`ncmcpp`]:                .config/ncmcpp
