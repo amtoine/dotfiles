@@ -1,3 +1,19 @@
+#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+#     \__,_/____/_/ /_/           /____/
+#                               _____             __   _____      __          __   _____      __                                 _       __    __
+#             _________  ____  / __(_)___ _     _/_/  / __(_)____/ /_       _/_/  / __(_)____/ /_              _   ______ ______(_)___ _/ /_  / /__  _____
+#            / ___/ __ \/ __ \/ /_/ / __ `/   _/_/   / /_/ / ___/ __ \    _/_/   / /_/ / ___/ __ \            | | / / __ `/ ___/ / __ `/ __ \/ / _ \/ ___/
+#      _    / /__/ /_/ / / / / __/ / /_/ /  _/_/    / __/ (__  ) / / /  _/_/    / __/ (__  ) / / /            | |/ / /_/ / /  / / /_/ / /_/ / /  __(__  )
+#     (_)   \___/\____/_/ /_/_/ /_/\__, /  /_/     /_/ /_/____/_/ /_/  /_/     /_/ /_/____/_/ /_/  ______     |___/\__,_/_/  /_/\__,_/_.___/_/\___/____/
+#                                 /____/                                                          /_____/
+#
+# Description:  TODO
+# Dependencies: this is up to you.
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
+# Contributors: Stevan Antoine
+
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR SHELL:/bin/bash

@@ -1,7 +1,7 @@
 #             ___
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles
+#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
 #     \__,_/____/_/ /_/           /____/
 #          _               _
 #         | |             | |

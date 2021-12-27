@@ -1,3 +1,8 @@
+#             ___
+#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+#     \__,_/____/_/ /_/           /____/
 #                           __ _ _
 #                          / _(_) |
 #          _ __  _ __ ___ | |_ _| | ___
@@ -6,6 +11,7 @@
 #     (_) | .__/|_|  \___/|_| |_|_|\___|
 #         | |
 #         |_|
+#
 # full config can be found at: https://github.com/a2n-s/dotfiles
 
 # ~/.profile: executed by the command interpreter for login shells.

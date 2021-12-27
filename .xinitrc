@@ -1,3 +1,4 @@
+#!/bin/sh
 #             ___
 #       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
 #      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
@@ -15,7 +16,6 @@
 # Contributors: Stevan Antoine
 
 
-#!/bin/sh
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap

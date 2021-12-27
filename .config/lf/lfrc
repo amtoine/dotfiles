@@ -3,14 +3,15 @@
 #      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
 #     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
 #     \__,_/____/_/ /_/           /____/
-#         ______      __   ______
-#        / / __/    _/_/  / / __/_________
-#       / / /_    _/_/   / / /_/ ___/ ___/
-#      / / __/  _/_/    / / __/ /  / /__
-#     /_/_/    /_/     /_/_/ /_/   \___/
+#                               _____             __   ______      __   ______
+#             _________  ____  / __(_)___ _     _/_/  / / __/    _/_/  / / __/_________
+#            / ___/ __ \/ __ \/ /_/ / __ `/   _/_/   / / /_    _/_/   / / /_/ ___/ ___/
+#      _    / /__/ /_/ / / / / __/ / /_/ /  _/_/    / / __/  _/_/    / / __/ /  / /__
+#     (_)   \___/\____/_/ /_/_/ /_/\__, /  /_/     /_/_/    /_/     /_/_/ /_/   \___/
+#                                 /____/
 #
 # Description:  startup config file for the lf file manager and explorer.
-# Dependencies: 
+# Dependencies:
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
