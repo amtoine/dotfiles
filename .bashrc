@@ -15,6 +15,7 @@
 #               for examples
 # Dependencies: cal, xtcl.sh, _shortwd.sh & _parse_git_info.sh at https://github.com/a2n-s/dotfiles/tree/main/scripts
 #               colorscript at https://gitlab.com/dwt1/shell-color-scripts, starship
+#               fortune, ponysay, virtualenvwrapper, nvim, bash-insulter
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
@@ -167,8 +168,6 @@ source $OSH/oh-my-bash.sh
 #     /_____/(_)____(_)  /_/ /_/ /_/_/____/\___/
 
 export PATH=$PATH:$HOME/scripts:$HOME/.local/bin
-# disables the caps lock key.
-xtcl.sh -d -q
 
 # changes the editor in the terminal, to edit long commands.
 export EDITOR='nvim'
@@ -194,11 +193,9 @@ fortune -c | ponysay --pony
 
 eval "$(starship init bash)"
 
-source /etc/bash.command-not-found
-
-
-
-
+if [ -f /etc/bash.command-not-found ]; then
+    . /etc/bash.command-not-found
+fi
 
 . /home/ants/torch/install/bin/torch-activate
 
