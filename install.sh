@@ -212,7 +212,7 @@ install_scripts() {
     if [[ -f "$HDIR/$SDIR/$script" ]]; then
       echo "$HDIR/$SDIR/$script already exists"
       if [[ -f "$DIR/old/$SDIR/$script" ]]; then
-        read -p "[*] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
+        read -p "[?] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
         case "$REPLY" in
           1|"o")  echo "${Crt}mv ${Src}$HDIR/$SDIR/$script ${Dst}$DIR/old/$SDIR/$script${Off}"
 	              	mv $HDIR/$SDIR/$script $DIR/old/$SDIR/$script
@@ -240,7 +240,7 @@ install_configs() {
     if [[ -d "$HDIR/$directory" ]]; then
       echo "${Wrn}$HDIR/$directory already exists${Off}"
       if [[ -d "$DIR/old/$directory" ]]; then
-        read -p "[*] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
+        read -p "[?] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
         case "$REPLY" in
           1|"o")  echo "${Crt}mv ${Src}$HDIR/$directory/* ${Dst}$DIR/old/$directory${Off}"
                   mv $HDIR/$directory/* $DIR/old/$directory
@@ -266,12 +266,12 @@ install_configs() {
       cp -rf $DIR/$directory/* $HDIR/$directory
     fi
   done
-	echo -ne "\n[*] Installing files..."
+	echo -e "\n[*] Installing files..."
   for file in ${files[@]}; do
     if [[ -f "$HDIR/$file" ]]; then
       echo "$HDIR/$file already exists"
       if [[ -f "$DIR/old/$file" ]]; then
-        read -p "[*] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
+        read -p "[?] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
         case "$REPLY" in
           1|"o")  echo "${Crt}mv ${Src}$HDIR/$file ${Dst}$DIR/old/$file${Off}"
 	              	mv $HDIR/$file $DIR/old/$file
@@ -349,11 +349,11 @@ main() {
   # exit 0
 
   if [[ ! -d "$HDIR/old" ]]; then
-    echo "${Wrn}mkdir -p $DIR/old"
+    echo "${Wrn}mkdir -p $DIR/old${Off}"
     mkdir -p $DIR/old
   fi
   if [[ ! -d "$HDIR/old/.config" ]]; then
-    echo "${Wrn}mkdir -p $DIR/old/.config"
+    echo "${Wrn}mkdir -p $DIR/old/.config${Off}"
     mkdir -p $DIR/old/.config
   fi
   prompt_for_install_and_install "install_scripts" "scripts"
