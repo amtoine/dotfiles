@@ -16,20 +16,20 @@
 
 (\*\*) the associated documentation page.
 
-[`_countdown.sh`]:         scripts/_countdown.sh
-[`_parse_git_info.sh`]:    scripts/_parse_git_info.sh
-[`_shortwd.sh`]:           scripts/_shortwd.sh
-[`_stopwatch.sh`]:         scripts/_stopwatch.sh
-[`dmrun.sh`]:              scripts/dmrun.sh
-[`prompt.sh`]:             scripts/prompt.sh
-[`screenshot.sh`]:         scripts/screenshot.sh
-[`slock-cst.sh`]:          scripts/slock-cst.sh
-[`spectrWM-baraction.sh`]: scripts/spectrWM-baraction.sh
-[`togkb.sh`]:              scripts/togkb.sh
-[`tr2md.sh`]:              scripts/tr2md.sh
-[`upl.sh`]:                scripts/upl.sh
-[`wvenv.sh`]:              scripts/wvenv.sh
-[`xtcl.sh`]:               scripts/xtcl.sh
+[`_countdown.sh`]:         _countdown.sh
+[`_parse_git_info.sh`]:    _parse_git_info.sh
+[`_shortwd.sh`]:           _shortwd.sh
+[`_stopwatch.sh`]:         _stopwatch.sh
+[`dmrun.sh`]:              dmrun.sh
+[`prompt.sh`]:             prompt.sh
+[`screenshot.sh`]:         screenshot.sh
+[`slock-cst.sh`]:          slock-cst.sh
+[`spectrWM-baraction.sh`]: spectrWM-baraction.sh
+[`togkb.sh`]:              togkb.sh
+[`tr2md.sh`]:              tr2md.sh
+[`upl.sh`]:                upl.sh
+[`wvenv.sh`]:              wvenv.sh
+[`xtcl.sh`]:               xtcl.sh
 
 <!-- scripts: -->
 [mydoc-countdown.sh]:          https://a2n-s.github.io/public/doc/config/scripts/_countdown.sh
