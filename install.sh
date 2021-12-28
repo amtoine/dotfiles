@@ -96,36 +96,38 @@ Cmd=$Blu
 Src=$Pur
 Dst=$Grn
 
-configs=()
-configs+=(".bash_logout")
-configs+=(".bash_profile")
-configs+=(".bashrc")
-configs+=(".config/alacritty")
-configs+=(".config/bspwm")
-configs+=(".config/dmscripts")
-configs+=(".config/fish")
-configs+=(".config/htop")
-configs+=(".config/kitty")
-configs+=(".config/lazygit")
-configs+=(".config/lf")
-configs+=(".config/mpd")
-configs+=(".config/mpv")
-configs+=(".config/ncmpcpp")
-configs+=(".config/neofetch")
-configs+=(".config/nitrogen")
-configs+=(".config/spectrwm")
-configs+=(".config/starship.toml")
-configs+=(".config/surf")
-configs+=(".config/sxhkd")
-configs+=(".config/tigrc")
-configs+=(".config/vifm")
-configs+=(".gitconfig")
-configs+=(".profile")
-configs+=(".tmux.conf")
-configs+=(".vimrc")
-configs+=(".xinitrc")
-configs+=(".xscreensaver")
-configs+=(".zshrc")
+directories=()
+directories+=(".config/alacritty")
+directories+=(".config/bspwm")
+directories+=(".config/dmscripts")
+directories+=(".config/fish")
+directories+=(".config/htop")
+directories+=(".config/kitty")
+directories+=(".config/lazygit")
+directories+=(".config/lf")
+directories+=(".config/mpd")
+directories+=(".config/mpv")
+directories+=(".config/ncmpcpp")
+directories+=(".config/neofetch")
+directories+=(".config/nitrogen")
+directories+=(".config/spectrwm")
+directories+=(".config/surf")
+directories+=(".config/sxhkd")
+directories+=(".config/vifm")
+
+files=()
+files+=(".bash_logout")
+files+=(".bash_profile")
+files+=(".bashrc")
+files+=(".config/starship.toml")
+files+=(".config/tigrc")
+files+=(".gitconfig")
+files+=(".profile")
+files+=(".tmux.conf")
+files+=(".vimrc")
+files+=(".xinitrc")
+files+=(".xscreensaver")
+files+=(".zshrc")
 
 # for repo in ${repos[@]}; do
 #   git -C $repo rmtv | sed 's/.*\s\+\(.*\)\s\+.*/\1/' | uniq
@@ -233,20 +235,62 @@ install_scripts() {
   done
 }
 install_configs() {
-	echo -e "\n[*] Installing configs..."
+	echo -e "\n[*] Installing directories..."
+  for directory in ${directories[@]}; do
+    if [[ -d "$HDIR/$directory" ]]; then
+      echo "${Wrn}$HDIR/$directory already exists${Off}"
+      if [[ -d "$DIR/old/$directory" ]]; then
+        read -p "[*] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
+        case "$REPLY" in
+          1|"o")  echo "${Crt}mv ${Src}$HDIR/$directory/* ${Dst}$DIR/old/$directory${Off}"
+                  mv $HDIR/$directory/* $DIR/old/$directory
+          ;;
+          2|"k")  echo "${Wrn}Keeping previous backup file.${Off}"
+          ;;
+          *) echo "${Wrn}Keeping previous backup file.${Off}"
+          ;;
+        esac
+      else
+        echo "${Wrn}mkdir -p $DIR/old/$directory${Off}"
+        mkdir -p $DIR/old/$directory
+	     	echo "${Crt}mv ${Src}$HDIR/$directory/* ${Dst}$DIR/old/$directory${Off}"
+	     	mv $HDIR/$directory/* $DIR/old/$directory
+      fi
+      echo "${Cmd}cp -rf ${Src}$DIR/$directory/* ${Dst}$HDIR/$directory${Off}"
+      cp -rf $DIR/$directory/* $HDIR/$directory
+    else
+      echo "${Wrn}$HDIR/$directory does not exist${Off}"
+      echo "${Wrn}mkdir -p $HDIR/$directory${Off}"
+      mkdir -p $HDIR/$directory
+      echo "${Cmd}cp -rf ${Src}$DIR/$directory/* ${Dst}$HDIR/$directory${Off}"
+      cp -rf $DIR/$directory/* $HDIR/$directory
+    fi
+  done
+	echo -ne "\n[*] Installing files..."
   for file in ${files[@]}; do
     if [[ -f "$HDIR/$file" ]]; then
       echo "$HDIR/$file already exists"
-      if [[ $(dirname $file) != "." ]]; then
-        echo "mkdir -p $DIR/old/$(dirname $file)"
-      fi
       if [[ -f "$DIR/old/$file" ]]; then
-        echo "backup already exists..."
+        read -p "[*] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
+        case "$REPLY" in
+          1|"o")  echo "${Crt}mv ${Src}$HDIR/$file ${Dst}$DIR/old/$file${Off}"
+	              	mv $HDIR/$file $DIR/old/$file
+          ;;
+          2|"k")  echo "${Wrn}Keeping previous backup file.${Off}"
+          ;;
+          *) echo "${Wrn}Keeping previous backup file.${Off}"
+          ;;
+        esac
       else
-	     	echo "mv $HDIR/$file $DIR/old/$file"
+	     	echo "${Crt}mv ${Src}$HDIR/$file ${Dst}$DIR/old/$file${Off}"
+	     	mv $HDIR/$file $DIR/old/$file
       fi
+      echo "${Cmd}cp -rf ${Src}$DIR/$file ${Dst}$HDIR/$file${Off}"
+      cp -rf $DIR/$file $HDIR/$file
+    else
+      echo "${Cmd}cp -rf ${Src}$DIR/$file ${Dst}$HDIR/$file${Off}"
+      cp -rf $DIR/$file $HDIR/$file
     fi
-		echo "cp -rf $DIR/$file $HDIR/$file"
   done
 }
 install_repos() {
@@ -260,11 +304,11 @@ install_fonts() {
 
 prompt_for_install_and_install() {
   echo ""
-  read -p "[?] Install $1? (y/n/q) "
+  read -p "[?] Install $2? (y/n/q) "
   case "$REPLY" in
-    "y")  $2
+    "y")  $1
     ;;
-    "n")  echo "Discarding installation of $1!"
+    "n")  echo "Discarding installation of $2!"
     ;;
     "q")  echo "Aborting!"
           exit 1
@@ -304,10 +348,18 @@ main() {
   # echo "                \`--> does not have any impact for now..."
   # exit 0
 
-  prompt_for_install_and_install "scripts" "install_scripts"
-  prompt_for_install_and_install "configs" "install_configs"
-  # prompt_for_install_and_install "fonts"   "install_fonts"
-  # prompt_for_install_and_install "repos"   "install_repos"
+  if [[ ! -d "$HDIR/old" ]]; then
+    echo "${Wrn}mkdir -p $DIR/old"
+    mkdir -p $DIR/old
+  fi
+  if [[ ! -d "$HDIR/old/.config" ]]; then
+    echo "${Wrn}mkdir -p $DIR/old/.config"
+    mkdir -p $DIR/old/.config
+  fi
+  prompt_for_install_and_install "install_scripts" "scripts"
+  prompt_for_install_and_install "install_configs" "directories and standalone files"
+  # prompt_for_install_and_install "install_fonts"   "fonts"
+  # prompt_for_install_and_install "install_repos"   "repos"
 
   echo -e "\nBye bye!!"
 }
