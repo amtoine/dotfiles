@@ -42,3 +42,6 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+
+
+. /home/ants/torch/install/bin/torch-activate

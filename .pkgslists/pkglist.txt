@@ -24,7 +24,6 @@ dstat
 dwarffortress
 emacs
 eog
-fakeroot
 fd
 feh
 figlet
@@ -47,12 +46,15 @@ mpd
 mpv
 nethack
 network-manager-applet
+nmap
 okular
+pacman-contrib
 patch
 pavucontrol
 picom
 pkgconf
 ponysay
+protobuf
 python-mpi4py
 python-opengl
 python-tqdm

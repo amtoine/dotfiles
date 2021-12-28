@@ -73,10 +73,12 @@ nerd-fonts-mononoki
 nethack
 network-manager-applet
 networkmanager
+nmap
 npm
 ntfs-3g
 okular
 os-prober
+pacman-contrib
 paru
 pass
 pass-import
@@ -89,6 +91,7 @@ pixterm
 pkgconf
 polybar
 ponysay
+protobuf
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
