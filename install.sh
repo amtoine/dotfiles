@@ -16,7 +16,7 @@
 # Contributors: Stevan Antoine
 
 # Reset
-Color_Off=$(printf '\033[0m')       # Text Reset
+Off=$(printf '\033[0m')             # Text Reset
 
 # Regular Colors
 Blk=$(printf '\033[0;30m')          # Black
@@ -87,6 +87,13 @@ On_IBlue=$(printf '\033[0;104m')    # Blue
 On_IPurple=$(printf '\033[0;105m')  # Purple
 On_ICyan=$(printf '\033[0;106m')    # Cyan
 On_IWhite=$(printf '\033[0;107m')   # White
+
+# Specific color use.
+Wrn=$Ylw
+Crt=$Red
+Cmd=$Ylw
+Src=$Pur
+Dst=$Grn
 
 files=()
 files+=(".bash_logout")
@@ -228,11 +235,13 @@ RDIR="repos"
 install_scripts() {
 	echo -e "\n[*] Installing scripts..."
 	if [[ -d "$HDIR/$SDIR" ]]; then
-		echo "$HDIR/$SDIR exists, prepairing backup"
-		echo "mkdir -p $DIR/old/$SDIR"
+		echo "${Wrn}$HDIR/$SDIR exists, prepairing backup${Off}"
+		echo "${Wrn}mkdir -p $DIR/old/$SDIR${Off}"
+		mkdir -p $DIR/old/$SDIR
 	else
-		echo "$HDIR/$SDIR does not exist"
-		echo "mkdir -p $HDIR/$SDIR"
+		echo "${Wrn}$HDIR/$SDIR does not exist${Off}"
+		echo "${Wrn}mkdir -p $HDIR/$SDIR${Off}"
+		mkdir -p $HDIR/$SDIR
 	fi
   for script in ${scripts[@]}; do
     if [[ -f "$HDIR/$SDIR/$script" ]]; then
@@ -240,11 +249,14 @@ install_scripts() {
       if [[ -f "$DIR/old/$SDIR/$script" ]]; then
         echo "backup already exists..."
       else
-	     	echo "mv $HDIR/$SDIR/$script $DIR/old/$SDIR/$script"
+	     	echo "${Crt}mv ${Src}$HDIR/$SDIR/$script ${Dst}$DIR/old/$SDIR/$script${Off}"
+	     	mv $HDIR/$SDIR/$script $DIR/old/$SDIR/$script
       fi
-      echo "cp -rf $DIR/$SDIR/$script $HDIR/$SDIR/$script"
+      echo "${Cmd}cp -rf ${Src}$DIR/$SDIR/$script ${Dst}$HDIR/$SDIR/$script${Off}"
+      cp -rf $DIR/$SDIR/$script $HDIR/$SDIR/$script
     else
-      echo "cp -rf $DIR/$SDIR/$script $HDIR/$SDIR/$script"
+      echo "${Cmd}cp -rf ${Src}$DIR/$SDIR/$script ${Dst}$HDIR/$SDIR/$script${Off}"
+      cp -rf $DIR/$SDIR/$script $HDIR/$SDIR/$script
     fi
   done
 }
@@ -275,6 +287,7 @@ install_fonts() {
 }
 
 prompt_for_install_and_install() {
+  echo ""
   read -p "[?] Install $1? (y/n) "
 	if [[ $REPLY == "y" ]]; then
     $2
@@ -317,11 +330,11 @@ main() {
   # exit 0
 
   prompt_for_install_and_install "scripts" "install_scripts"
-  prompt_for_install_and_install "files"   "install_files"
-  prompt_for_install_and_install "fonts"   "install_fonts"
-  prompt_for_install_and_install "repos"   "install_repos"
+  # prompt_for_install_and_install "files"   "install_files"
+  # prompt_for_install_and_install "fonts"   "install_fonts"
+  # prompt_for_install_and_install "repos"   "install_repos"
 
-  echo "Bye bye!!"
+  echo -e "\nBye bye!!"
 }
 
 main
