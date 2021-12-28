@@ -158,6 +158,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [ ] [`zsh`]               ([\*\*][mydoc-zsh])
 
 #### Other programs and stuff I use:
+- [x] all my [`scripts`].
 - [x] virtualenvwrapper: tutorials [in english][virtualenvs-en] and [in french][virtualenvs-fr].
 - [x] some [wallpapers][my-wallpapers]                          (\*) ([\*\*][mydoc-wallpapers])
 - [x] [my fork][my-dmenu] of [suckless dmenu][dmenu]            (\*) ([\*\*][mydoc-dmenu])
@@ -236,6 +237,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`spectrWM`]:              .config/spectrwm
 [`sxhkd`]:                 .config/sxhkd/sxhkdrc
 [`starship`]:              .config/starship.toml
+[`surf`]:                  .config/surf
 [`tig`]:                   .config/tigrc
 [`tmux`]:                  .tmux.conf
 [`vifm`]:                  .config/vifm
@@ -243,7 +245,6 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`x`]:                     .xinitrc
 [`xscreensaver`]:          .xscreensaver
 [`zsh`]:                   .zshrc
-[`scripts`]:               scripts
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 <!-- my links -->
@@ -262,6 +263,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [mydoc-git]:                   https://a2n-s.github.io/public/doc/config/dotfiles/git
 [mydoc-htop]:                  https://a2n-s.github.io/public/doc/config/dotfiles/htop
 [mydoc-lf]:                    https://a2n-s.github.io/public/doc/config/dotfiles/lf
+[mydoc-lazygit]:               https://a2n-s.github.io/public/doc/config/dotfiles/lazygit
 [mydoc-mpd]:                   https://a2n-s.github.io/public/doc/config/dotfiles/mpd
 [mydoc-mpv]:                   https://a2n-s.github.io/public/doc/config/dotfiles/mpv
 [mydoc-ncmcpp]:                https://a2n-s.github.io/public/doc/config/dotfiles/ncmcpp
@@ -279,6 +281,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [mydoc-zsh]:                   https://a2n-s.github.io/public/doc/config/dotfiles/zsh
 
 <!-- other stuff -->
+[`scripts`]:                   scripts
 [virtualenvs-en]:              https://virtualenvwrapper.readthedocs.io/en/latest/
 [virtualenvs-fr]:              https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html
 [dmenu]:                       https://git.suckless.org/dmenu/
