@@ -89,9 +89,10 @@ On_ICyan=$(printf '\033[0;106m')    # Cyan
 On_IWhite=$(printf '\033[0;107m')   # White
 
 # Specific color use.
+Err=$Red
 Wrn=$Ylw
 Crt=$Red
-Cmd=$Ylw
+Cmd=$Blu
 Src=$Pur
 Dst=$Grn
 
@@ -247,7 +248,16 @@ install_scripts() {
     if [[ -f "$HDIR/$SDIR/$script" ]]; then
       echo "$HDIR/$SDIR/$script already exists"
       if [[ -f "$DIR/old/$SDIR/$script" ]]; then
-        echo "backup already exists..."
+        read -p "[*] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
+        case "$REPLY" in
+          1|"o")  echo "${Crt}mv ${Src}$HDIR/$SDIR/$script ${Dst}$DIR/old/$SDIR/$script${Off}"
+	              	mv $HDIR/$SDIR/$script $DIR/old/$SDIR/$script
+          ;;
+          2|"k")  echo "${Wrn}Keeping previous backup file.${Off}"
+          ;;
+          *) echo "${Wrn}Keeping previous backup file.${Off}"
+          ;;
+        esac
       else
 	     	echo "${Crt}mv ${Src}$HDIR/$SDIR/$script ${Dst}$DIR/old/$SDIR/$script${Off}"
 	     	mv $HDIR/$SDIR/$script $DIR/old/$SDIR/$script
@@ -309,9 +319,9 @@ main() {
 
 	EOF
 	# 	[*] Choose option-
-	# 	[1/o] Override everything.
-	# 	[2/m] Minimal install.
-	# 	[3/i] Interactive installation.
+	# 	[1|o] Override everything.
+	# 	[2|m] Minimal install.
+	# 	[3|i] Interactive installation.
 	# EOF
   # read -p "[?] What do you want the installation to be ? (1/2/3) "
   # case "$REPLY" in
