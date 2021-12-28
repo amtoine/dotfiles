@@ -17,7 +17,6 @@
 
 # Reset
 Off=$(printf '\033[0m')             # Text Reset
-
 # Regular Colors
 Blk=$(printf '\033[0;30m')          # Black
 Red=$(printf '\033[0;31m')          # Red
@@ -27,7 +26,6 @@ Blu=$(printf '\033[0;34m')          # Blue
 Pur=$(printf '\033[0;35m')          # Purple
 Cyn=$(printf '\033[0;36m')          # Cyan
 Wht=$(printf '\033[0;37m')          # White
-
 # Bold
 BBlack=$(printf '\033[1;30m')       # Black
 BRed=$(printf '\033[1;31m')         # Red
@@ -37,7 +35,6 @@ BBlue=$(printf '\033[1;34m')        # Blue
 BPurple=$(printf '\033[1;35m')      # Purple
 BCyan=$(printf '\033[1;36m')        # Cyan
 BWhite=$(printf '\033[1;37m')       # White
-
 # Underline
 UBlack=$(printf '\033[4;30m')       # Black
 URed=$(printf '\033[4;31m')         # Red
@@ -47,7 +44,6 @@ UBlue=$(printf '\033[4;34m')        # Blue
 UPurple=$(printf '\033[4;35m')      # Purple
 UCyan=$(printf '\033[4;36m')        # Cyan
 UWhite=$(printf '\033[4;37m')       # White
-
 # Background
 On_Black=$(printf '\033[40m')       # Black
 On_Red=$(printf '\033[41m')         # Red
@@ -57,7 +53,6 @@ On_Blue=$(printf '\033[44m')        # Blue
 On_Purple=$(printf '\033[45m')      # Purple
 On_Cyan=$(printf '\033[46m')        # Cyan
 On_White=$(printf '\033[47m')       # White
-
 # High Intensity
 IBlack=$(printf '\033[0;90m')       # Black
 IRed=$(printf '\033[0;91m')         # Red
@@ -67,7 +62,6 @@ IBlue=$(printf '\033[0;94m')        # Blue
 IPurple=$(printf '\033[0;95m')      # Purple
 ICyan=$(printf '\033[0;96m')        # Cyan
 IWhite=$(printf '\033[0;97m')       # White
-
 # Bold High Intensity
 BIBlack=$(printf '\033[1;90m')      # Black
 BIRed=$(printf '\033[1;91m')        # Red
@@ -77,7 +71,6 @@ BIBlue=$(printf '\033[1;94m')       # Blue
 BIPurple=$(printf '\033[1;95m')     # Purple
 BICyan=$(printf '\033[1;96m')       # Cyan
 BIWhite=$(printf '\033[1;97m')      # White
-
 # High Intensity backgrounds
 On_IBlack=$(printf '\033[0;100m')   # Black
 On_IRed=$(printf '\033[0;101m')     # Red
@@ -197,6 +190,31 @@ CDIR=".config"
 SDIR="scripts"
 RDIR="repos"
 
+install_script() {
+  if [[ -f "$HDIR/$SDIR/$1" ]]; then
+    echo "$HDIR/$SDIR/$1 already exists"
+    if [[ -f "$DIR/old/$SDIR/$1" ]]; then
+      read -p "[?] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
+      case "$REPLY" in
+        1|"o")  echo "${Crt}mv ${Src}$HDIR/$SDIR/$1 ${Dst}$DIR/old/$SDIR/$1${Off}"
+                mv $HDIR/$SDIR/$1 $DIR/old/$SDIR/$1
+        ;;
+        2|"k")  echo "${Wrn}Keeping previous backup file.${Off}"
+        ;;
+        *) echo "${Wrn}Keeping previous backup file.${Off}"
+        ;;
+      esac
+    else
+      echo "${Crt}mv ${Src}$HDIR/$SDIR/$1 ${Dst}$DIR/old/$SDIR/$1${Off}"
+      mv $HDIR/$SDIR/$1 $DIR/old/$SDIR/$1
+    fi
+    echo "${Cmd}cp -rf ${Src}$DIR/$SDIR/$1 ${Dst}$HDIR/$SDIR/$1${Off}"
+    cp -rf $DIR/$SDIR/$1 $HDIR/$SDIR/$1
+  else
+    echo "${Cmd}cp -rf ${Src}$DIR/$SDIR/$1 ${Dst}$HDIR/$SDIR/$1${Off}"
+    cp -rf $DIR/$SDIR/$1 $HDIR/$SDIR/$1
+  fi
+}
 install_scripts() {
 	echo -e "\n[*] Installing scripts..."
 	if [[ -d "$HDIR/$SDIR" ]]; then
@@ -209,101 +227,93 @@ install_scripts() {
 		mkdir -p $HDIR/$SDIR
 	fi
   for script in ${scripts[@]}; do
-    if [[ -f "$HDIR/$SDIR/$script" ]]; then
-      echo "$HDIR/$SDIR/$script already exists"
-      if [[ -f "$DIR/old/$SDIR/$script" ]]; then
-        read -p "[?] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
-        case "$REPLY" in
-          1|"o")  echo "${Crt}mv ${Src}$HDIR/$SDIR/$script ${Dst}$DIR/old/$SDIR/$script${Off}"
-	              	mv $HDIR/$SDIR/$script $DIR/old/$SDIR/$script
-          ;;
-          2|"k")  echo "${Wrn}Keeping previous backup file.${Off}"
-          ;;
-          *) echo "${Wrn}Keeping previous backup file.${Off}"
-          ;;
-        esac
-      else
-	     	echo "${Crt}mv ${Src}$HDIR/$SDIR/$script ${Dst}$DIR/old/$SDIR/$script${Off}"
-	     	mv $HDIR/$SDIR/$script $DIR/old/$SDIR/$script
-      fi
-      echo "${Cmd}cp -rf ${Src}$DIR/$SDIR/$script ${Dst}$HDIR/$SDIR/$script${Off}"
-      cp -rf $DIR/$SDIR/$script $HDIR/$SDIR/$script
-    else
-      echo "${Cmd}cp -rf ${Src}$DIR/$SDIR/$script ${Dst}$HDIR/$SDIR/$script${Off}"
-      cp -rf $DIR/$SDIR/$script $HDIR/$SDIR/$script
-    fi
+    install_script $script
   done
+}
+
+install_dir() {
+  if [[ -d "$HDIR/$1" ]]; then
+    echo "${Wrn}$HDIR/$1 already exists${Off}"
+    if [[ -d "$DIR/old/$1" ]]; then
+      read -p "[?] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
+      case "$REPLY" in
+        1|"o")  echo "${Crt}mv ${Src}$HDIR/$1/* ${Dst}$DIR/old/$1${Off}"
+                mv $HDIR/$1/* $DIR/old/$1
+        ;;
+        2|"k")  echo "${Wrn}Keeping previous backup file.${Off}"
+        ;;
+        *) echo "${Wrn}Keeping previous backup file.${Off}"
+        ;;
+      esac
+    else
+      echo "${Wrn}mkdir -p $DIR/old/$1${Off}"
+      mkdir -p $DIR/old/$1
+      echo "${Crt}mv ${Src}$HDIR/$1/* ${Dst}$DIR/old/$1${Off}"
+      mv $HDIR/$1/* $DIR/old/$1
+    fi
+    echo "${Cmd}cp -rf ${Src}$DIR/$1/* ${Dst}$HDIR/$1${Off}"
+    cp -rf $DIR/$1/* $HDIR/$1
+  else
+    echo "${Wrn}$HDIR/$1 does not exist${Off}"
+    echo "${Wrn}mkdir -p $HDIR/$1${Off}"
+    mkdir -p $HDIR/$1
+    echo "${Cmd}cp -rf ${Src}$DIR/$1/* ${Dst}$HDIR/$1${Off}"
+    cp -rf $DIR/$1/* $HDIR/$1
+  fi
+}
+install_file() {
+  if [[ -f "$HDIR/$1" ]]; then
+    echo "$HDIR/$1 already exists"
+    if [[ -f "$DIR/old/$1" ]]; then
+      read -p "[?] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup 1. "
+      case "$REPLY" in
+        1|"o")  echo "${Crt}mv ${Src}$HDIR/$1 ${Dst}$DIR/old/$1${Off}"
+                mv $HDIR/$1 $DIR/old/$1
+        ;;
+        2|"k")  echo "${Wrn}Keeping previous backup 1.${Off}"
+        ;;
+        *) echo "${Wrn}Keeping previous backup 1.${Off}"
+        ;;
+      esac
+    else
+      echo "${Crt}mv ${Src}$HDIR/$1 ${Dst}$DIR/old/$1${Off}"
+      mv $HDIR/$1 $DIR/old/$1
+    fi
+    echo "${Cmd}cp -rf ${Src}$DIR/$1 ${Dst}$HDIR/$1${Off}"
+    cp -rf $DIR/$1 $HDIR/$1
+  else
+    echo "${Cmd}cp -rf ${Src}$DIR/$1 ${Dst}$HDIR/$1${Off}"
+    cp -rf $DIR/$1 $HDIR/$1
+  fi
 }
 install_configs() {
 	echo -e "\n[*] Installing directories..."
   for directory in ${directories[@]}; do
-    if [[ -d "$HDIR/$directory" ]]; then
-      echo "${Wrn}$HDIR/$directory already exists${Off}"
-      if [[ -d "$DIR/old/$directory" ]]; then
-        read -p "[?] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
-        case "$REPLY" in
-          1|"o")  echo "${Crt}mv ${Src}$HDIR/$directory/* ${Dst}$DIR/old/$directory${Off}"
-                  mv $HDIR/$directory/* $DIR/old/$directory
-          ;;
-          2|"k")  echo "${Wrn}Keeping previous backup file.${Off}"
-          ;;
-          *) echo "${Wrn}Keeping previous backup file.${Off}"
-          ;;
-        esac
-      else
-        echo "${Wrn}mkdir -p $DIR/old/$directory${Off}"
-        mkdir -p $DIR/old/$directory
-	     	echo "${Crt}mv ${Src}$HDIR/$directory/* ${Dst}$DIR/old/$directory${Off}"
-	     	mv $HDIR/$directory/* $DIR/old/$directory
-      fi
-      echo "${Cmd}cp -rf ${Src}$DIR/$directory/* ${Dst}$HDIR/$directory${Off}"
-      cp -rf $DIR/$directory/* $HDIR/$directory
-    else
-      echo "${Wrn}$HDIR/$directory does not exist${Off}"
-      echo "${Wrn}mkdir -p $HDIR/$directory${Off}"
-      mkdir -p $HDIR/$directory
-      echo "${Cmd}cp -rf ${Src}$DIR/$directory/* ${Dst}$HDIR/$directory${Off}"
-      cp -rf $DIR/$directory/* $HDIR/$directory
-    fi
+    install_dir $directory
   done
 	echo -e "\n[*] Installing files..."
   for file in ${files[@]}; do
-    if [[ -f "$HDIR/$file" ]]; then
-      echo "$HDIR/$file already exists"
-      if [[ -f "$DIR/old/$file" ]]; then
-        read -p "[?] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
-        case "$REPLY" in
-          1|"o")  echo "${Crt}mv ${Src}$HDIR/$file ${Dst}$DIR/old/$file${Off}"
-	              	mv $HDIR/$file $DIR/old/$file
-          ;;
-          2|"k")  echo "${Wrn}Keeping previous backup file.${Off}"
-          ;;
-          *) echo "${Wrn}Keeping previous backup file.${Off}"
-          ;;
-        esac
-      else
-	     	echo "${Crt}mv ${Src}$HDIR/$file ${Dst}$DIR/old/$file${Off}"
-	     	mv $HDIR/$file $DIR/old/$file
-      fi
-      echo "${Cmd}cp -rf ${Src}$DIR/$file ${Dst}$HDIR/$file${Off}"
-      cp -rf $DIR/$file $HDIR/$file
-    else
-      echo "${Cmd}cp -rf ${Src}$DIR/$file ${Dst}$HDIR/$file${Off}"
-      cp -rf $DIR/$file $HDIR/$file
-    fi
+    install_file $file
   done
+}
+
+install_repo() {
+  r_path=$(echo $repo | awk '{print $1}')
+  r_orig=$(echo $repo | awk '{print $2}')
+  r_upst=$(echo $repo | awk '{print $3}')
+  echo "$r_path"
+  echo "     origin: $r_orig"
+  [[ $r_upst != "" ]] && echo "     upstream: $r_upst"
+  echo
 }
 install_repos() {
 	echo -ne "\n[*] Installing repos..."
   for repo in "${repos[@]}"; do
-    r_path=$(echo $repo | awk '{print $1}')
-    r_orig=$(echo $repo | awk '{print $2}')
-    r_upst=$(echo $repo | awk '{print $3}')
-    echo "$r_path"
-    echo "     origin: $r_orig"
-    [[ $r_upst != "" ]] && echo "     upstream: $r_upst"
-    echo
+    install_repo $repo
   done
+}
+
+install_font() {
 }
 install_fonts() {
 	echo -ne "\n[*] Installing fonts..."
@@ -337,8 +347,8 @@ install () {
   fi
   prompt_for_install_and_install "install_scripts" "scripts"
   prompt_for_install_and_install "install_configs" "directories and standalone files"
-  # prompt_for_install_and_install "install_fonts"   "fonts"
-  # prompt_for_install_and_install "install_repos"   "repos"
+  prompt_for_install_and_install "install_fonts"   "fonts"
+  prompt_for_install_and_install "install_repos"   "repos"
 }
 
 main() {
@@ -371,7 +381,7 @@ main() {
   echo "                \`--> does not have any impact for now..."
   exit 0
 
-  # install
+  install
 
   echo -e "\nBye bye!!"
 }
