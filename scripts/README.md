@@ -14,6 +14,8 @@
 - [x] [`wvenv.sh`]              ([\*\*][mydoc-wvenv.sh])
 - [x] [`xtcl.sh`]               ([\*\*][mydoc-xtcl.sh])
 
+(\*\*) the associated documentation page.
+
 [`_countdown.sh`]:         scripts/_countdown.sh
 [`_parse_git_info.sh`]:    scripts/_parse_git_info.sh
 [`_shortwd.sh`]:           scripts/_shortwd.sh
