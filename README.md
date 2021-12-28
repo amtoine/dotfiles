@@ -40,78 +40,23 @@ If you want more information about *bare* `git` repositories, you can check one 
 ```
 $HOME
 |-- [d]  .config                                     -- main config directory
-|   |-- [d]  alacritty                                 --  the alacritty terminal emulator.
-|   |   `-- [-]  alacritty.yml
-|   |-- [d]  bspwm
-|   |   `-- [-]  bspwmrc
-|   |-- [d]  dmscripts
-|   |   `-- [-]  config
-|   |-- [d] fish                                       -- the fish shell
-|   |   |-- [d]  completions
-|   |   |-- [d]  conf.d
-|   |   |-- [-]  config.fish
-|   |   |-- [-]  fish_variables
-|   |   `-- [d]  functions
-|   |-- [d]  htop                                      -- my process monitor.
-|   |   `-- [-]  htoprc
-|   |-- [d]  kitty                                     -- terminal emulator.
-|   |   `-- [-]  kitty.conf
-|   |-- [d]  lazygit                                   -- the lazi git tui tool.
-|   |   |-- [-]  config.toml
-|   |   `-- [-]  state.toml
-|   |-- [d]  lf                                        -- file explorer.
-|   |   `-- [-]  lfrc
-|   |-- [d]  mpd                                       -- music server deamon.
-|   |   `-- [-]  mpd.conf                                 crashes for some reason...
+|   |-- [-]  alacritty/alacritty.yml                   --  the alacritty terminal emulator.
+|   |-- [-]  bspwm/bspwmrc
+|   |-- [-]  dmscripts/config
+|   |-- [d]  fish                                      -- the fish shell
+|   |-- [-]  htop/htoprc                               -- my process monitor.
+|   |-- [-]  kitty/kitty.conf                          -- terminal emulator.
+|   |-- [d]  lazygit                                   -- the lazy git tui tool.
+|   |-- [-]  lf/lfrc                                   -- file explorer.
+|   |-- [-]  mpd/mpd.conf                              -- music server deamon, crashes for some reason...
 |   |-- [d]  mpv
-|   |   |-- [-]  input.conf
-|   |   |-- [-]  mplayer-input.conf
-|   |   |-- [-]  mpv.conf
-|   |   `-- [-]  restore-old-bindings.conf
-|   |-- [d]  ncmpcpp                                   -- music client.
-|   |   `-- [-]  config
+|   |-- [-]  ncmpcpp/config                            -- music client.
 |   |-- [d]  neofetch                                  -- a logo printer.
-|   |   |-- [d]  ascii                                   -- all used arts.
-|   |   |   |-- [-]  christmas.art
-|   |   |   |-- [-]  fall-leaf.art
-|   |   |   |-- [-]  halloween.art
-|   |   |   |-- [-]  lolo.art
-|   |   |   |-- [-]  spring-flower.art
-|   |   |   |-- [-]  summer-sun.art
-|   |   |   `-- [-]  winter-snow.art
-|   |   |-- [-]  neofetchrc                              -- lauches the right art based on date.
-|   |   `-- [-]  config.conf                             -- the actual config for basic use.
-|   |-- [d]  nitrogen                                  -- a wallpaper manager.
-|   |   `-- [-]  nitrogen.cfg
+|   |-- [-]  nitrogen/nitrogen.cfg                     -- a wallpaper manager.
 |   |-- [d]  spectrwm                                  -- the spectrWM tilling window manager.
-|   |   |-- [-]  spectrwm.conf
-|   |   |-- [-]  spectrwm_fr.conf
-|   |   `-- [-]  spectrwm_us.conf
 |   |-- [d]  surf                                      -- the suckless web browser.
-|   |   |-- [d]  html
-|   |   |   `-- [-]  homepage.html
-|   |   |-- [d]  scripts
-|   |   |   |-- [-]  add.bm.sh
-|   |   |   |-- [-]  dmenu.linkselect.sh
-|   |   |   |-- [-]  dmenu.mpv.sh
-|   |   |   |-- [-]  dmenu.setprop.sh
-|   |   |   |-- [-]  dmenu.uri.sh
-|   |   |   |-- [-]  edit.bookmarks.sh
-|   |   |   |-- [-]  edit.screen.sh
-|   |   |   |-- [-]  edit.url.sh
-|   |   |   `-- [-]  link_hints.js
-|   |   `-- [d]  styles
-|   |       |-- [-]  archlinux.css
-|   |       |-- [-]  homepage.css
-|   |       |-- [-]  suckless.css
-|   |       |-- [-]  youtube.css
-|   |       `-- [-]  wikipedia.css
-|   |-- [d]  sxhkd                                     -- the simple x hot key daemon.
-|   |   `-- [-]  sxhkdrc
+|   |-- [-]  sxhkd/sxhkdrc                             -- the simple x hot key daemon.
 |   |-- [d]  vifm                                      -- a file manager.
-|   |   |-- [d]  colors
-|   |   |   `-- [-]  molokai.vifm
-|   |   `-- [-]  vifmrc
 |   |-- [-]  tigrc                                     -- shows git diffs in a pretty way.
 |   `-- [-]  starship.toml                             -- a fast and customizable terminal prompt.
 |-- [d]  .pkgslists                                  -- packages.
@@ -188,6 +133,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [ ] [`alacritty`]         ([\*\*][mydoc-alacritty])
 - [x] [`bspwm`]             ([\*\*][mydoc-bspwm])
 - [x] [`bash`]              ([\*\*][mydoc-bash])
+- [x] [`dmscripts`]
 - [ ] [`fish`]              ([\*\*][mydoc-fish])
 - [x] [`git`]               ([\*\*][mydoc-git])
 - [x] [`htop`]              ([\*\*][mydoc-htop])
@@ -210,22 +156,6 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [`x`]                 ([\*\*][mydoc-x])
 - [ ] [`xscreensaver`]      ([\*\*][mydoc-xscreensaver])
 - [ ] [`zsh`]               ([\*\*][mydoc-zsh])
-
-#### List of scripts:
-- [ ] [`_countdown.sh`]         ([\*\*][mydoc-countdown.sh])
-- [ ] [`_parse_git_info.sh`]    ([\*\*][mydoc-parse_git_info.sh])
-- [ ] [`_shortwd.sh`]           ([\*\*][mydoc-shortwd.sh])
-- [ ] [`_stopwatch.sh`]         ([\*\*][mydoc-stopwatch.sh])
-- [x] [`dmrun.sh`]              ([\*\*][mydoc-dmrun.sh])
-- [x] [`prompt.sh`]             ([\*\*][mydoc-prompt.sh])
-- [x] [`screenshot.sh`]         ([\*\*][mydoc-screenshot.sh])
-- [x] [`slock-cst.sh`]          ([\*\*][mydoc-slock-cst.sh])
-- [x] [`spectrWM-baraction.sh`] ([\*\*][mydoc-spectrWM-baraction.sh])
-- [x] [`togkb.sh`]              ([\*\*][mydoc-togkb.sh])
-- [x] [`tr2md.sh`]              ([\*\*][mydoc-tr2md.sh])
-- [x] [`upl.sh`]                ([\*\*][mydoc-upl.sh])
-- [x] [`wvenv.sh`]              ([\*\*][mydoc-wvenv.sh])
-- [x] [`xtcl.sh`]               ([\*\*][mydoc-xtcl.sh])
 
 #### Other programs and stuff I use:
 - [x] virtualenvwrapper: tutorials [in english][virtualenvs-en] and [in french][virtualenvs-fr].
@@ -288,22 +218,23 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 <!-- my files -->
 [`pkgslists`]:             .pkgslists
-[`alacritty`]:             .config/alacritty
-[`bspwm`]:                 .config/bspwm
+[`alacritty`]:             .config/alacritty/alacritty.yml
+[`bspwm`]:                 .config/bspwm/bspwmrc
 [`bash`]:                  .bashrc
+[`dmscripts`]:             .config/dmscripts/config
 [`fish`]:                  .config/fish
 [`git`]:                   .gitconfig
-[`htop`]:                  .config/htop
+[`htop`]:                  .config/htop/htoprc
 [`kitty`]:                 .config/kitty/kitty.conf
 [`lf`]:                    .config/lf/lfrc
 [`lazygit`]:               .config/lazygit
-[`mpd`]:                   .config/mpd
+[`mpd`]:                   .config/mpd/mpd.conf
 [`mpv`]:                   .config/mpv
-[`ncmcpp`]:                .config/ncmcpp
+[`ncmcpp`]:                .config/ncmcpp/config
 [`neofetch`]:              .config/neofetch
-[`nitrogen`]:              .config/nitrogen
+[`nitrogen`]:              .config/nitrogen/nitrogen.cfg
 [`spectrWM`]:              .config/spectrwm
-[`sxhkd`]:                 .config/sxhkd
+[`sxhkd`]:                 .config/sxhkd/sxhkdrc
 [`starship`]:              .config/starship.toml
 [`tig`]:                   .config/tigrc
 [`tmux`]:                  .tmux.conf
@@ -312,20 +243,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [`x`]:                     .xinitrc
 [`xscreensaver`]:          .xscreensaver
 [`zsh`]:                   .zshrc
-[`_countdown.sh`]:         scripts/_countdown.sh
-[`_parse_git_info.sh`]:    scripts/_parse_git_info.sh
-[`_shortwd.sh`]:           scripts/_shortwd.sh
-[`_stopwatch.sh`]:         scripts/_stopwatch.sh
-[`dmrun.sh`]:              scripts/dmrun.sh
-[`prompt.sh`]:             scripts/prompt.sh
-[`screenshot.sh`]:         scripts/screenshot.sh
-[`slock-cst.sh`]:          scripts/slock-cst.sh
-[`spectrWM-baraction.sh`]: scripts/spectrWM-baraction.sh
-[`togkb.sh`]:              scripts/togkb.sh
-[`tr2md.sh`]:              scripts/tr2md.sh
-[`upl.sh`]:                scripts/upl.sh
-[`wvenv.sh`]:              scripts/wvenv.sh
-[`xtcl.sh`]:               scripts/xtcl.sh
+[`scripts`]:               scripts
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 <!-- my links -->
@@ -359,22 +277,6 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [mydoc-x]:                     https://a2n-s.github.io/public/doc/config/dotfiles/x
 [mydoc-xscreensaver]:          https://a2n-s.github.io/public/doc/config/dotfiles/xscreensaver
 [mydoc-zsh]:                   https://a2n-s.github.io/public/doc/config/dotfiles/zsh
-
-<!-- scripts: -->
-[mydoc-countdown.sh]:          https://a2n-s.github.io/public/doc/config/scripts/_countdown.sh
-[mydoc-parse_git_info.sh]:     https://a2n-s.github.io/public/doc/config/scripts/_parse_git_info.sh
-[mydoc-shortwd.sh]:            https://a2n-s.github.io/public/doc/config/scripts/_shortwd.sh
-[mydoc-stopwatch.sh]:          https://a2n-s.github.io/public/doc/config/scripts/_stopwatch.sh
-[mydoc-dmrun.sh]:              https://a2n-s.github.io/public/doc/config/scripts/dmrun.sh
-[mydoc-prompt.sh]:             https://a2n-s.github.io/public/doc/config/scripts/prompt.sh
-[mydoc-screenshot.sh]:         https://a2n-s.github.io/public/doc/config/scripts/screenshot.sh
-[mydoc-slock-cst.sh]:          https://a2n-s.github.io/public/doc/config/scripts/slock-cst.sh
-[mydoc-spectrWM-baraction.sh]: https://a2n-s.github.io/public/doc/config/scripts/spectrWM-baraction.sh
-[mydoc-togkb.sh]:              https://a2n-s.github.io/public/doc/config/scripts/togkb.sh
-[mydoc-tr2md.sh]:              https://a2n-s.github.io/public/doc/config/scripts/tr2md.sh
-[mydoc-upl.sh]:                https://a2n-s.github.io/public/doc/config/scripts/upl.sh
-[mydoc-wvenv.sh]:              https://a2n-s.github.io/public/doc/config/scripts/wvenv.sh
-[mydoc-xtcl.sh]:               https://a2n-s.github.io/public/doc/config/scripts/xtcl.sh
 
 <!-- other stuff -->
 [virtualenvs-en]:              https://virtualenvwrapper.readthedocs.io/en/latest/
@@ -415,6 +317,7 @@ do not hesitate to contact me, either via email, github issues or pull requests!
 [mydoc-tabbed]:                https://a2n-s.github.io/public/doc/config/tabbed
 [mydoc-slock]:                 https://a2n-s.github.io/public/doc/config/slock
 
+<!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 <!-- gallery -->
 [mygallery-nitrogen]:          https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-nitrogen.png
 [mygallery-bar]:               https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-bar.png
