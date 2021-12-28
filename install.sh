@@ -96,74 +96,36 @@ Cmd=$Blu
 Src=$Pur
 Dst=$Grn
 
-files=()
-files+=(".bash_logout")
-files+=(".bash_profile")
-files+=(".bashrc")
-files+=(".config/alacritty/alacritty.yml")
-files+=(".config/bspwm/bspwmrc")
-files+=(".config/bspwm/scheme.sh")
-files+=(".config/dmscripts/config")
-files+=(".config/fish/config.fish")
-files+=(".config/fish/fish_variables")
-files+=(".config/fish/functions/fish_greeting.fish")
-files+=(".config/fish/functions/on_exit.fish")
-files+=(".config/htop/htoprc")
-files+=(".config/kitty/kitty.conf")
-files+=(".config/lazygit/config.yml")
-files+=(".config/lazygit/state.yml")
-files+=(".config/lf/lfrc")
-files+=(".config/lf/scripts/cleaner.sh")
-files+=(".config/lf/scripts/previewer.sh")
-files+=(".config/mpd/mpd.conf")
-files+=(".config/mpv/input.conf")
-files+=(".config/mpv/mplayer-input.conf")
-files+=(".config/mpv/mpv.conf")
-files+=(".config/mpv/restore-old-bindings.conf")
-files+=(".config/ncmpcpp/config")
-files+=(".config/neofetch/ascii/christmas.art")
-files+=(".config/neofetch/ascii/fall-leaf.art")
-files+=(".config/neofetch/ascii/halloween.art")
-files+=(".config/neofetch/ascii/lolo.art")
-files+=(".config/neofetch/ascii/spring-flower.art")
-files+=(".config/neofetch/ascii/summer-sun.art")
-files+=(".config/neofetch/ascii/winter-snow.art")
-files+=(".config/neofetch/config.conf")
-files+=(".config/neofetch/neofetchrc")
-files+=(".config/nitrogen/nitrogen.cfg")
-files+=(".config/spectrwm/spectrwm.conf")
-files+=(".config/spectrwm/spectrwm_fr.conf")
-files+=(".config/spectrwm/spectrwm_us.conf")
-files+=(".config/starship.toml")
-files+=(".config/surf/bookmarks")
-files+=(".config/surf/html/homepage.html")
-files+=(".config/surf/scripts/add.bm.sh")
-files+=(".config/surf/scripts/dmenu.linkselect.sh")
-files+=(".config/surf/scripts/dmenu.mpv.sh")
-files+=(".config/surf/scripts/dmenu.setprop.sh")
-files+=(".config/surf/scripts/dmenu.uri.sh")
-files+=(".config/surf/scripts/edit.bookmarks.sh")
-files+=(".config/surf/scripts/edit.screen.sh")
-files+=(".config/surf/scripts/edit.url.sh")
-files+=(".config/surf/scripts/link_hints.js")
-files+=(".config/surf/scripts/open.help.sh")
-files+=(".config/surf/styles/archlinux.css")
-files+=(".config/surf/styles/github.css")
-files+=(".config/surf/styles/homepage.css")
-files+=(".config/surf/styles/suckless.css")
-files+=(".config/surf/styles/wikipedia.css")
-files+=(".config/surf/styles/youtube.css")
-files+=(".config/sxhkd/sxhkdrc")
-files+=(".config/tigrc")
-files+=(".config/vifm/colors/molokai.vifm")
-files+=(".config/vifm/vifmrc")
-files+=(".gitconfig")
-files+=(".profile")
-files+=(".tmux.conf")
-files+=(".vimrc")
-files+=(".xinitrc")
-files+=(".xscreensaver")
-files+=(".zshrc")
+configs=()
+configs+=(".bash_logout")
+configs+=(".bash_profile")
+configs+=(".bashrc")
+configs+=(".config/alacritty")
+configs+=(".config/bspwm")
+configs+=(".config/dmscripts")
+configs+=(".config/fish")
+configs+=(".config/htop")
+configs+=(".config/kitty")
+configs+=(".config/lazygit")
+configs+=(".config/lf")
+configs+=(".config/mpd")
+configs+=(".config/mpv")
+configs+=(".config/ncmpcpp")
+configs+=(".config/neofetch")
+configs+=(".config/nitrogen")
+configs+=(".config/spectrwm")
+configs+=(".config/starship.toml")
+configs+=(".config/surf")
+configs+=(".config/sxhkd")
+configs+=(".config/tigrc")
+configs+=(".config/vifm")
+configs+=(".gitconfig")
+configs+=(".profile")
+configs+=(".tmux.conf")
+configs+=(".vimrc")
+configs+=(".xinitrc")
+configs+=(".xscreensaver")
+configs+=(".zshrc")
 
 # for repo in ${repos[@]}; do
 #   git -C $repo rmtv | sed 's/.*\s\+\(.*\)\s\+.*/\1/' | uniq
@@ -270,8 +232,8 @@ install_scripts() {
     fi
   done
 }
-install_files() {
-	echo -e "\n[*] Installing files..."
+install_configs() {
+	echo -e "\n[*] Installing configs..."
   for file in ${files[@]}; do
     if [[ -f "$HDIR/$file" ]]; then
       echo "$HDIR/$file already exists"
@@ -298,15 +260,18 @@ install_fonts() {
 
 prompt_for_install_and_install() {
   echo ""
-  read -p "[?] Install $1? (y/n) "
-	if [[ $REPLY == "y" ]]; then
-    $2
-	elif [[ $REPLY == "n" ]]; then
-		echo "Discarding $1 installation!"
-	else
-		echo -e "\n[!] Invalid Option, Aborting...\n"
-		exit 1
-	fi
+  read -p "[?] Install $1? (y/n/q) "
+  case "$REPLY" in
+    "y")  $2
+    ;;
+    "n")  echo "Discarding installation of $1!"
+    ;;
+    "q")  echo "Aborting!"
+          exit 1
+    ;;
+    *) echo -e "\n[!] Invalid Option, Skipping...\n"
+    ;;
+  esac
 }
 
 main() {
@@ -340,7 +305,7 @@ main() {
   # exit 0
 
   prompt_for_install_and_install "scripts" "install_scripts"
-  # prompt_for_install_and_install "files"   "install_files"
+  prompt_for_install_and_install "configs" "install_configs"
   # prompt_for_install_and_install "fonts"   "install_fonts"
   # prompt_for_install_and_install "repos"   "install_repos"
 
