@@ -404,6 +404,9 @@ install_repo() {
     echo "${Wrn}$HDIR/$RDIR/$r_path already exists${Off}"
     echo "${Wrn}please backup $HDIR/$RDIR/$r_path before trying again${Off}"
   else
+    echo "${Crt}$HDIR/$RDIR/$r_path does not exist${Off}"
+    echo "${Wrn}mkdir -p $(dirname $r_path)${Off}"
+    mkdir -p $(dirname $r_path)
     echo -e "${Crt}git clone ${Src}$r_orig ${Dst}$HDIR/$RDIR/$r_path${Off}"
     git clone $r_orig $HDIR/$RDIR/$r_path
     echo -e "${Cmd}git -C ${Dst}$HDIR/$RDIR/$r_path ${Cmd}remote add upstream ${Src}$r_upst${Off}"
