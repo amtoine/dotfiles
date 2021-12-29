@@ -768,14 +768,21 @@ EOF
 }
 
 
-options=$(getopt -a -o i::u:: --long install::,uninstall:: -- "$@")
+options=$(getopt -a -o h           \
+                    -l help        \
+                    -o i::         \
+                    -l install::   \
+                    -o u::         \
+                    -l uninstall:: \
+                    -l nvim        \
+                    -- "$@")
 [ $? -eq 0 ] || {
     echo "Incorrect options provided"
     exit 1
 }
 eval set -- "$options"
 
-declare -A FILES
+declare -A CFG
 INSTALL=()
 UNINSTALL=()
 POSITIONAL=()
@@ -785,21 +792,30 @@ while true; do
     -i|--install)
         shift;
         INSTALL+=("$1")
-        for i in $1; do FILES[$i]="i"; done
+        for i in $1; do CFG[$i]="i"; done
         ;;
     -u|--uninstall)
         shift;
         UNINSTALL+=("$1")
-        for i in $1; do FILES[$i]="u"; done
+        for i in $1; do CFG[$i]="u"; done
         ;;
-    -c|--color)
-        shift;
-        COLOR=$1
-        [[ ! $COLOR =~ BLUE|RED|GREEN ]] && {
-            echo "Incorrect options provided"
-            exit 1
-        }
+
+    --nvim)
+        INSTALL+=("nvim")
+        CFG["nvim"]="i"
         ;;
+    --name)
+        INSTALL+=("name")
+        CFG["name"]="i"
+        ;;
+
+    -h|--help)
+cat <<- EOF
+this will be the help
+EOF
+exit
+        ;;
+
     --)
         shift
         break
@@ -807,15 +823,18 @@ while true; do
     esac
     shift
 done
-for posi in $(echo $options | sed 's/.* -- //'); do POSITIONAL+=("$posi"); done
+for posi in $(echo $options | sed 's/.* --//'); do POSITIONAL+=("$posi"); done
 
-echo "INSTALL:    ${INSTALL[@]}"
-echo "UNINSTALL:  ${UNINSTALL[@]}"
-echo "POSITIONAL: ${POSITIONAL[@]}"
-echo "FILES:      ${FILES[@]}"
-for key in "${!FILES[@]}"; do
-    echo "$key ${FILES[$key]}"
+echo "${Grn}Flag preview${Off}"
+echo "INSTALL    | ${INSTALL[@]}"
+echo "UNINSTALL  | ${UNINSTALL[@]}"
+echo "POSITIONAL | ${POSITIONAL[@]}"
+echo "CFG        | ${CFG[@]}"
+echo "config details:"
+for key in "${!CFG[@]}"; do
+    echo "cfg: $key -> ${CFG[$key]}"
 done
+echo "${Red}Aborting${Off}"
 exit 0;
 
 main
