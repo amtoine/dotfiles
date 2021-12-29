@@ -11,6 +11,9 @@ to give an idea of the final rendering of the config.
 
 If you want a quick brief of what dotfiles really are, I recommend [this video][fireship-dotfiles] of *FireShip*.
 
+**AN INSTALLATION SCRIPT IS AVAILABLE AS A DRAFT**  
+Check the [inst branch](https://github.com/a2n-s/dotfiles/tree/inst) if you are interested.
+
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## Table Of Content.
 - **1** [**Overview and architecture.**](#1-overview-and-architecture-toc)
@@ -100,6 +103,9 @@ $HOME
 ## 2. Documentation. [[toc](#table-of-content)]
 The doc of my dotfiles can be found on my [personal website][mysite] under the [`config/doc/`][mydoc] domain.  
 In this section, some general ideas are given and the lists of the programs, scripts and other stuff I use are put forward.
+
+**AN INSTALLATION SCRIPT IS AVAILABLE AS A DRAFT**  
+Check the [inst branch](https://github.com/a2n-s/dotfiles/tree/inst) if you are interested.
 
 #### Installation.
 For now, the only way to install my config is to manually:
