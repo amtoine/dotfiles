@@ -16,6 +16,8 @@
 # Contributors: Stevan Antoine
 
 ################################################################################################
+## Some color definitions ######################################################################
+################################################################################################
 # Reset
 Off=$(printf '\033[0m')        # Text Reset
 # Regular Colors
@@ -83,18 +85,21 @@ OICyn=$(printf '\033[0;106m')  # Cyan
 OIWht=$(printf '\033[0;107m')  # White
 
 ################################################################################################
-# Specific color use.
-Err=$IRed
-Wrn=$IYlw
-Crt=$Red
-Cmd=$IBlu
-Src=$Pur
-Dst=$Grn
-Nrm=$IWht
-Pmt=$Cyn
-Pkg=$Ylw
-Tip=$IGrn
-Url=$IYlw
+## 'Global constants' definitions ##############################################################
+################################################################################################
+# Specific color use. #
+#######################
+Err=$IRed  # errors
+Wrn=$IYlw  # warnings
+Crt=$Red   # critical
+Cmd=$IBlu  # command
+Src=$Pur   # source
+Dst=$Grn   # destination
+Nrm=$IWht  # normal
+Pmt=$Cyn   # prompt
+Pkg=$Ylw   # package
+Tip=$IGrn  # tip
+Url=$IYlw  # url
 
 Normal="${Nrm}[.]${Off}"
 Prompt="${Pmt}[?]${Off}"
@@ -102,8 +107,9 @@ Warning="${Wrn}[*]${Off}"
 Critic="${Crt}[-]${Off}"
 Error="${Err}[!]${Off}"
 
-################################################################################################
-################################################################################################
+#######################
+# all the repos I use #
+#######################
 # for repo in ${repos[@]}; do
 #   git -C $repo rmtv | sed 's/.*\s\+\(.*\)\s\+.*/\1/' | uniq
 # done
@@ -147,7 +153,9 @@ repositories+=("research/imagineXdial https://github.com/SuReLI/imagineXdial.git
 repositories+=("research/gym_ma_toy https://github.com/MehdiZouitine/gym_ma_toy ")
 repositories+=("research/learning-to-communicate-pytorch https://github.com/minqi/learning-to-communicate-pytorch.git ")
 
-################################################################################################
+###############
+# my scripts. #
+###############
 scripts=()
 scripts+=("_countdown.sh")
 scripts+=("_parse_git_info.sh")
@@ -169,7 +177,9 @@ scripts+=("wvenv.sh")
 scripts+=("xtcl.sh")
 scripts+=("ytdl.sh")
 
-################################################################################################
+##########################
+# installation constants #
+##########################
 DIR=`pwd`
 HDIR="$HOME"
 CDIR=".config"
@@ -177,6 +187,9 @@ SDIR="scripts"
 RDIR="repos"
 
 ################################################################################################
+
+################################################################################################
+## script installation functions ###############################################################
 ################################################################################################
 install_script() {
   if [[ -f "$HDIR/$SDIR/$1" ]]; then
@@ -221,6 +234,10 @@ install_scripts() {
 }
 
 ################################################################################################
+## general configuration files installation functions ##########################################
+################################################################################################
+# tools #
+#########
 install_dir() {
   if [[ -d "$HDIR/$1" ]]; then
     echo "${Wrn}$HDIR/$1 already exists${Off}"
@@ -276,6 +293,9 @@ install_file() {
     cp -rf $DIR/$1 $HDIR/$1
   fi
 }
+###########################################################
+# all the different configurations in their own functions #
+###########################################################
 install_git() {
   install_file ".gitconfig"
   echo "${Cmd}sudo pacman -Syu ${Pkg}git${Off}"
@@ -639,6 +659,8 @@ install_configs() {
 }
 
 ################################################################################################
+## standalone repos installation functions #####################################################
+################################################################################################
 install_repo() {
   if [[ -d $HDIR/$RDIR/$1 ]]; then
     echo "${Wrn}$HDIR/$RDIR/$1 already exists${Off}"
@@ -665,6 +687,8 @@ install_repos() {
 }
 
 ################################################################################################
+## font installation functions #################################################################
+################################################################################################
 install_font() {
 	echo -ne "\n$Normal Available soon..."
 }
@@ -673,6 +697,8 @@ install_fonts() {
 	echo -e "\n$Normal Available soon..."
 }
 
+################################################################################################
+## tools ans wrapping up #######################################################################
 ################################################################################################
 prompt_for_install_and_install() {
   echo ""
@@ -705,6 +731,8 @@ install () {
   prompt_for_install_and_install "install_repos"   "Install all repos from my config to ${Dst}$HDIR/$RDIR${Off}?"
 }
 
+################################################################################################
+## main ########################################################################################
 ################################################################################################
 main() {
 	clear
