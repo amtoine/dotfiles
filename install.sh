@@ -171,7 +171,7 @@ scripts+=("ytdl.sh")
 
 ################################################################################################
 DIR=`pwd`
-HDIR="$HOME/fake"
+HDIR="$HOME"
 CDIR=".config"
 SDIR="scripts"
 RDIR="repos"

@@ -18,8 +18,9 @@ Check the [inst branch](https://github.com/a2n-s/dotfiles/tree/inst) if you are 
 ## Table Of Content.
 - **1** [**Overview and architecture.**](#1-overview-and-architecture-toc)
 - **2** [**Documentation.**](#2-documentation-toc)
-- **3** [**Contribute.**](#3-contribute-toc)
-- **4** [**Gallery.**](#4-gallery-toc)
+- **3** [**Automatic install and uninstall.**](#3-automatic-install-and-uninstall-toc)
+- **4** [**Contribute.**](#4-contribute-toc)
+- **5** [**Gallery.**](#5-gallery-toc)
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## 1. Overview and architecture. [[toc](#table-of-content)]
@@ -104,11 +105,8 @@ $HOME
 The doc of my dotfiles can be found on my [personal website][mysite] under the [`config/doc/`][mydoc] domain.  
 In this section, some general ideas are given and the lists of the programs, scripts and other stuff I use are put forward.
 
-**AN INSTALLATION SCRIPT IS AVAILABLE AS A DRAFT**  
-Check the [inst branch](https://github.com/a2n-s/dotfiles/tree/inst) if you are interested.
-
-#### Installation.
-For now, the only way to install my config is to manually:
+#### Manual Installation **DEPRECATED**.
+The idea is to manually:
 - backup your config files.
 - copy mine in replacement.
 
@@ -119,11 +117,6 @@ or directly:
 - copy my `.vimrc` file in replacement of yours.
 - follow additional instructions in the dedicated section ([here][mydoc-vim]).
 - enjoy your new `vim` experience!
-
-I will try, in the future, to provide an `install.sh` script to (1) select what part of the config to install,
-(2) backup the chosen files of the user inside a safe place and (3) install my config files in replacement.  
-I.doc/programs/vim/ also plan to develop an `uninstall.sh` script that does the exact inverse to restore the config of the user
-just as it was before the installation.
 
 #### Dependencies.
 In this config, some part, i.e. commands and programs like window managers or text editors, requires some dependencies.  
@@ -182,17 +175,51 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 (\*) comes from another repo.  
 (\*\*) the associated documentation page.
 
+<!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+## 3. Automatic install and uninstall. [[toc](#table-of-content)]
+#### DISCLAIMERS.
+This is the first time I develop such a complicated and sometimes critical, e.g. when editing `x` or `bspwm` config files, file-modifying-and-removing-and-moving script.  
+It has only been tested a very few times on a fake home directory on my arch linux machine and on a raspberry pi running the `raspberry` distro (previously `raspbian`).
+It looks pretty good to me as a first draft, however:
+  - (1) I plan on testing this a lot more, with testers from relatives of mine (**if YOU want to contribute, see the [contribute section](#4-contribute-toc)).
+  - (2) this first draft is far from perfect and might not be super user-friendly nor understandable, though I tried to make it so. If you have any idea, feel free to [contact me](https://a2n-s.github.io/public/contact)!
+  - (3) there might be, I hope not too many, bugs in the script. As it can be pretty critical depending on the part of the installation where the bug happens (if any ;)), I warn you: **RUNNING THIS SCRIPT ON YOUR PERSONAL MACHINE IS NOT MY RESPONSIBILITY** by any means. If **ANYTHING BAD HAPPENS**, I would **NOT BE TAKEN AS RESPONSIBLE**. However, I would be very pleased to help you if anything unexpected happens, it almost goes without saying ;).
+
+Oh my, I might look a bit dramatical on this ^^  
+But as it is the first time, as I said, that I do such a thing in public, I do not want to broadcast mistakes nor be taken responsible for not warning potential users.
+
+#### Install the config.
+**THE INSTALLATION SCRIPT IS FINALLY THERE!!**  
+Simply run:
+```bash
+git clone git@github.com:a2n-s/dotfiles.git ~/a2n-s.dotfiles
+cd ~/a2n-s.dotfiles
+./install.sh
+```
+and then follow the installation process.  
+The idea of the script is to (*not in chronological order*):
+   - (1) select what part of the config to install,
+   - (2) backup the chosen files of the user inside a safe place and
+   - (3) install my config files in replacement.  
+   - (4) install the needed package at each step.  
+   - (5) install my scripts.  
+   - (6) clone my repos and recreate the same upstream links.
+   - (7) install the fonts I use (**NOT AVAILABLE NOW**)
+
+#### Uninstall the config.
+**NOT AVAILABLE NOW** but should simply be the mirror of the previous.
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
-## 3. Contribute. [[toc](#table-of-content)]
+## 4. Contribute. [[toc](#table-of-content)]
 YOU can contribute to this project in the wonderfull world of linux, arch and configuration!
 - if you like the overview, try to install the config and see what it looks like!
 - if you like the config, please share it to whoever could be interested.
 - if you stumble upon bugs, ideas, new amazing color palettes or alternatives,
-do not hesitate to contact me, either via email, github issues or pull requests!
+- if you want to be part of the testers for my install script.
+do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either via email, github issues or pull requests!
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
-## 4. Gallery. [[toc](#table-of-content)]
+## 5. Gallery. [[toc](#table-of-content)]
 | ![My wallpaper.][mygallery-nitrogen] |
 |:--:|
 | *My wallpaper.* |
