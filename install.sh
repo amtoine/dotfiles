@@ -88,6 +88,14 @@ Crt=$Red
 Cmd=$Blu
 Src=$Pur
 Dst=$Grn
+Nrm=$Wht
+Pmt=$Cyn
+
+Normal="${Nrm}[.]${Off}"
+Prompt="${Pmt}[?]${Off}"
+Warning="${Wrn}[*]${Off}"
+Critic="${Crt}[-]${Off}"
+Error="${Err}[!]${Off}"
 
 # ".gitconfig"
 # sudo pacman -Syu git
@@ -293,7 +301,7 @@ install_script() {
   if [[ -f "$HDIR/$SDIR/$1" ]]; then
     echo "$HDIR/$SDIR/$1 already exists"
     if [[ -f "$DIR/old/$SDIR/$1" ]]; then
-      read -p "[?] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
+      read -p "$Prompt ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
       case "$REPLY" in
         1|"o")  echo "${Crt}mv ${Src}$HDIR/$SDIR/$1 ${Dst}$DIR/old/$SDIR/$1${Off}"
                 mv $HDIR/$SDIR/$1 $DIR/old/$SDIR/$1
@@ -315,7 +323,7 @@ install_script() {
   fi
 }
 install_scripts() {
-	echo -e "\n[*] Installing scripts..."
+	echo -e "\n$Normal Installing scripts..."
 	if [[ -d "$HDIR/$SDIR" ]]; then
 		echo "${Wrn}$HDIR/$SDIR exists, prepairing backup${Off}"
 		echo "${Wrn}mkdir -p $DIR/old/$SDIR${Off}"
@@ -334,7 +342,7 @@ install_dir() {
   if [[ -d "$HDIR/$1" ]]; then
     echo "${Wrn}$HDIR/$1 already exists${Off}"
     if [[ -d "$DIR/old/$1" ]]; then
-      read -p "[?] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
+      read -p "$Prompt ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup file. "
       case "$REPLY" in
         1|"o")  echo "${Crt}mv ${Src}$HDIR/$1/* ${Dst}$DIR/old/$1${Off}"
                 mv $HDIR/$1/* $DIR/old/$1
@@ -364,7 +372,7 @@ install_file() {
   if [[ -f "$HDIR/$1" ]]; then
     echo "$HDIR/$1 already exists"
     if [[ -f "$DIR/old/$1" ]]; then
-      read -p "[?] ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup 1. "
+      read -p "$Prompt ${Crt}backup already exists...${Off} [1|o] Override backup. [2|k] Keep backup 1. "
       case "$REPLY" in
         1|"o")  echo "${Crt}mv ${Src}$HDIR/$1 ${Dst}$DIR/old/$1${Off}"
                 mv $HDIR/$1 $DIR/old/$1
@@ -386,11 +394,11 @@ install_file() {
   fi
 }
 install_configs() {
-	echo -e "\n[*] Installing directories..."
+	echo -e "\n$Normal Installing directories..."
   for directory in ${directories[@]}; do
     install_dir $directory
   done
-	echo -e "\n[*] Installing files..."
+	echo -e "\n$Normal Installing files..."
   for file in ${files[@]}; do
     install_file $file
   done
@@ -415,32 +423,32 @@ install_repo() {
   fi
 }
 install_repos() {
-	echo -e "\n[*] Installing repos..."
+	echo -e "\n$Normal Installing repos..."
   for repository in "${repositories[@]}"; do
     install_repo $repository
   done
 }
 
 install_font() {
-	echo -ne "\n[*] Available soon..."
+	echo -ne "\n$Normal Available soon..."
 }
 install_fonts() {
-	echo -ne "\n[*] Installing fonts..."
-	echo -ne "\n[*] Available soon..."
+	echo -ne "\n$Normal Installing fonts..."
+	echo -e "\n$Normal Available soon..."
 }
 
 prompt_for_install_and_install() {
   echo ""
-  read -p "[?] Install $2? (y/n/q) "
+  read -p "$Prompt Install $2? ${Cyn}(y/n/q)${Off} "
   case "$REPLY" in
     "y")  $1
     ;;
-    "n")  echo "Skipping $2!"
+    "n")  echo "$Warning Skipping $2!"
     ;;
-    "q")  echo "Aborting!"
+    "q")  echo "$Critic Aborting!"
           exit 1
     ;;
-    *) echo -e "\n[!] Invalid Option, Skipping...\n"
+    *) echo -e "$Error Invalid Option, Skipping..."
     ;;
   esac
 }
@@ -464,16 +472,16 @@ main() {
 	clear
 
 	cat <<- EOF
-		[*] Installing config...
-    source: $DIR
-    destination: $HDIR
+$Normal Installing config...${Src}
+  source: $DIR${Dst}
+  destination: $HDIR
 
-		[*] Choose option-
-		[1|o] Override everything.
-		[2|m] Minimal install.
-		[3|i] Interactive installation.
-	EOF
-  read -p "[?] What do you want the installation to be ? (1/2/3) "
+$Normal Choose option-${Pmt}
+  [1|o]${Off} Override everything.${Pmt}
+  [2|m]${Off} Minimal install.${Pmt}
+  [3|i]${Off} Interactive installation.${Off}
+EOF
+  read -p "$Prompt What do you want the installation to be ?${Pmt} (1|o / 2|m / 3|i)${Off} "
   case "$REPLY" in
     1|"o") INST_MODE="override"
     ;;
@@ -490,7 +498,7 @@ main() {
 
   install
 
-  echo -e "\nBye bye!!"
+  echo -e "\n$Normal Bye bye!!"
 }
 
 main
