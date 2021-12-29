@@ -222,45 +222,45 @@ Dst=$Grn
 #   git -C $repo rmtv | sed 's/.*\s\+\(.*\)\s\+.*/\1/' | uniq
 # done
 repos=()
-repos+=(".config/nvim git@github.com:a2n-s/neovim.git ")
-repos+=("prog/sketchbook/FastLED-basics git@github.com:s-marley/FastLED-basics.git ")
+# repos+=(".config/nvim git@github.com:a2n-s/neovim.git ")
+# repos+=("prog/sketchbook/FastLED-basics git@github.com:s-marley/FastLED-basics.git ")
 repos+=("prog/scsc/fil-rouge git@github.com:a2n-s/fil-rouge.git git@github.com:iScsc/fil-rouge.git")
 repos+=("prog/scsc/fgk git@github.com:a2n-s/fgk.git ")
-repos+=("prog/swarm-rescue-g1 git@github.com:a2n-s/swarm-rescue-g1.git git@github.com:atxr/swarm-rescue-g1.git")
-repos+=("sup/tatami https://github.com/a2n-s/tatami.git ")
-repos+=("sup/machine-learning git@github.com:a2n-s/machine-learning.git git@github.com:SupaeroDataScience/machine-learning.git")
-repos+=("sup/imgDesc git@github.com:a2n-s/imgDesc.git ")
-repos+=("sup/flatland-project git@github.com:abfariah/flatland-project.git https://github.com/SupaeroDataScience/flatland-project")
-repos+=("sup/deep-learning git@github.com:a2n-s/deep-learning.git git@github.com:SupaeroDataScience/deep-learning.git")
-repos+=("sup/neuraltalk2 git@github.com:karpathy/neuraltalk2.git ")
-repos+=("sup/stochastic git@github.com:a2n-s/stochastic.git https://github.com/SupaeroDataScience/stochastic.git")
-repos+=("sup/mcdm git@github.com:a2n-s/mcdm.git ")
-repos+=("repos/surf git@github.com:a2n-s/surf.git git://git.suckless.org/surf")
-repos+=("repos/yay-git https://aur.archlinux.org/yay-git.git ")
-repos+=("repos/polybar git@github.com:a2n-s/polybar-themes.git git@github.com:adi1090x/polybar-themes.git")
-repos+=("repos/lazycli git@github.com:jesseduffield/lazycli.git ")
-repos+=("repos/dmscripts git@github.com:a2n-s/dmscripts.git https://gitlab.com/dwt1/dmscripts.git")
-repos+=("repos/dmenu git@github.com:a2n-s/dmenu.git git://git.suckless.org/dmenu")
-repos+=("repos/tabbed git@github.com:a2n-s/tabbed.git git://git.suckless.org/tabbed")
-repos+=("repos/slock git@github.com:a2n-s/slock.git https://git.suckless.org/slock")
-repos+=("repos/bash-insulter git@github.com:a2n-s/bash-insulter.git ")
-repos+=("repos/kitty git@github.com:a2n-s/kitty.git git@github.com:kovidgoyal/kitty.git")
-repos+=("repos/Neovim-from-scratch git@github.com:LunarVim/Neovim-from-scratch.git ")
-repos+=("repos/oh-my-bash git@github.com:a2n-s/oh-my-bash.git git@github.com:ohmybash/oh-my-bash.git")
-repos+=("repos/uzbl git://github.com/uzbl/uzbl.git ")
-repos+=("repos/oh-my-fish git@github.com:a2n-s/oh-my-fish.git git@github.com:oh-my-fish/oh-my-fish.git")
-repos+=("repos/a2n-s git@github.com:a2n-s/a2n-s.git ")
-repos+=("repos/wallpapers git@github.com:a2n-s/wallpapers.git ")
-repos+=("repos/oh-my-zsh git@github.com:a2n-s/ohmyzsh.git git@github.com:ohmyzsh/ohmyzsh.git")
-repos+=("repos/sites/nereuxofficial.github.io git@github.com:Nereuxofficial/nereuxofficial.github.io.git ")
-repos+=("repos/sites/a2n-s.github.io/themes/hugo-theme-terminal git@github.com:a2n-s/hugo-theme-terminal.git git@github.com:panr/hugo-theme-terminal.git")
-repos+=("repos/sites/a2n-s.github.io git@github.com:a2n-s/a2n-s.github.io.git ")
-repos+=("repos/dotfiles/atxr_dotfiles https://github.com/atxr/dotfiles.git ")
-repos+=("research/playground_env git@github.com:flowersteam/playground_env.git ")
-repos+=("research/Imagine https://github.com/flowersteam/Imagine.git ")
-repos+=("research/imagineXdial https://github.com/SuReLI/imagineXdial.git ")
-repos+=("research/gym_ma_toy https://github.com/MehdiZouitine/gym_ma_toy ")
-repos+=("research/learning-to-communicate-pytorch https://github.com/minqi/learning-to-communicate-pytorch.git ")
+# repos+=("prog/swarm-rescue-g1 git@github.com:a2n-s/swarm-rescue-g1.git git@github.com:atxr/swarm-rescue-g1.git")
+# repos+=("sup/tatami https://github.com/a2n-s/tatami.git ")
+# repos+=("sup/machine-learning git@github.com:a2n-s/machine-learning.git git@github.com:SupaeroDataScience/machine-learning.git")
+# repos+=("sup/imgDesc git@github.com:a2n-s/imgDesc.git ")
+# repos+=("sup/flatland-project git@github.com:abfariah/flatland-project.git https://github.com/SupaeroDataScience/flatland-project")
+# repos+=("sup/deep-learning git@github.com:a2n-s/deep-learning.git git@github.com:SupaeroDataScience/deep-learning.git")
+# repos+=("sup/neuraltalk2 git@github.com:karpathy/neuraltalk2.git ")
+# repos+=("sup/stochastic git@github.com:a2n-s/stochastic.git https://github.com/SupaeroDataScience/stochastic.git")
+# repos+=("sup/mcdm git@github.com:a2n-s/mcdm.git ")
+# repos+=("repos/surf git@github.com:a2n-s/surf.git git://git.suckless.org/surf")
+# repos+=("repos/yay-git https://aur.archlinux.org/yay-git.git ")
+# repos+=("repos/polybar git@github.com:a2n-s/polybar-themes.git git@github.com:adi1090x/polybar-themes.git")
+# repos+=("repos/lazycli git@github.com:jesseduffield/lazycli.git ")
+# repos+=("repos/dmscripts git@github.com:a2n-s/dmscripts.git https://gitlab.com/dwt1/dmscripts.git")
+# repos+=("repos/dmenu git@github.com:a2n-s/dmenu.git git://git.suckless.org/dmenu")
+# repos+=("repos/tabbed git@github.com:a2n-s/tabbed.git git://git.suckless.org/tabbed")
+# repos+=("repos/slock git@github.com:a2n-s/slock.git https://git.suckless.org/slock")
+# repos+=("repos/bash-insulter git@github.com:a2n-s/bash-insulter.git ")
+# repos+=("repos/kitty git@github.com:a2n-s/kitty.git git@github.com:kovidgoyal/kitty.git")
+# repos+=("repos/Neovim-from-scratch git@github.com:LunarVim/Neovim-from-scratch.git ")
+# repos+=("repos/oh-my-bash git@github.com:a2n-s/oh-my-bash.git git@github.com:ohmybash/oh-my-bash.git")
+# repos+=("repos/uzbl git://github.com/uzbl/uzbl.git ")
+# repos+=("repos/oh-my-fish git@github.com:a2n-s/oh-my-fish.git git@github.com:oh-my-fish/oh-my-fish.git")
+# repos+=("repos/a2n-s git@github.com:a2n-s/a2n-s.git ")
+# repos+=("repos/wallpapers git@github.com:a2n-s/wallpapers.git ")
+# repos+=("repos/oh-my-zsh git@github.com:a2n-s/ohmyzsh.git git@github.com:ohmyzsh/ohmyzsh.git")
+# repos+=("repos/sites/nereuxofficial.github.io git@github.com:Nereuxofficial/nereuxofficial.github.io.git ")
+# repos+=("repos/sites/a2n-s.github.io/themes/hugo-theme-terminal git@github.com:a2n-s/hugo-theme-terminal.git git@github.com:panr/hugo-theme-terminal.git")
+# repos+=("repos/sites/a2n-s.github.io git@github.com:a2n-s/a2n-s.github.io.git ")
+# repos+=("repos/dotfiles/atxr_dotfiles https://github.com/atxr/dotfiles.git ")
+# repos+=("research/playground_env git@github.com:flowersteam/playground_env.git ")
+# repos+=("research/Imagine https://github.com/flowersteam/Imagine.git ")
+# repos+=("research/imagineXdial https://github.com/SuReLI/imagineXdial.git ")
+# repos+=("research/gym_ma_toy https://github.com/MehdiZouitine/gym_ma_toy ")
+# repos+=("research/learning-to-communicate-pytorch https://github.com/minqi/learning-to-communicate-pytorch.git ")
 
 scripts=()
 scripts+=("_countdown.sh")
@@ -397,13 +397,20 @@ install_configs() {
 }
 
 install_repo() {
-  r_path=$(echo $repo | awk '{print $1}')
-  r_orig=$(echo $repo | awk '{print $2}')
-  r_upst=$(echo $repo | awk '{print $3}')
-  echo "$r_path"
-  echo "     origin: $r_orig"
-  [[ $r_upst != "" ]] && echo "     upstream: $r_upst"
-  echo
+  r_path=$(echo $1 | awk '{print $1}')
+  r_orig=$(echo $1 | awk '{print $2}')
+  r_upst=$(echo $1 | awk '{print $3}')
+  if [[ -d $HDIR/$RDIR/$r_path ]]; then
+    echo "${Wrn}$HDIR/$RDIR/$r_path already exists${Off}"
+    echo "${Wrn}please backup $HDIR/$RDIR/$r_path before trying again${Off}"
+  else
+    echo -e "${Crt}git clone ${Src}$r_orig ${Dst}$HDIR/$RDIR/$r_path${Off}"
+    git clone $r_orig $HDIR/$RDIR/$r_path
+    echo -e "${Cmd}git -C ${Dst}$HDIR/$RDIR/$r_path ${Cmd}remote add upstream ${Src}$r_upst${Off}"
+    git -C $HDIR/$RDIR/$r_path remote add upstream $r_upst
+    echo -e "${Cmd}git -C ${Dst}$HDIR/$RDIR/$r_path ${Cmd}fetch upstream --prune${Off}"
+    git -C $HDIR/$RDIR/$r_path fetch upstream --prune
+  fi
 }
 install_repos() {
 	echo -ne "\n[*] Installing repos..."
