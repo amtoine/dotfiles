@@ -767,4 +767,55 @@ EOF
   echo -e "\n$Normal Bye bye!!"
 }
 
+
+options=$(getopt -a -o i::u:: --long install::,uninstall:: -- "$@")
+[ $? -eq 0 ] || {
+    echo "Incorrect options provided"
+    exit 1
+}
+eval set -- "$options"
+
+declare -A FILES
+INSTALL=()
+UNINSTALL=()
+POSITIONAL=()
+# echo $options
+while true; do
+    case "$1" in
+    -i|--install)
+        shift;
+        INSTALL+=("$1")
+        for i in $1; do FILES[$i]="i"; done
+        ;;
+    -u|--uninstall)
+        shift;
+        UNINSTALL+=("$1")
+        for i in $1; do FILES[$i]="u"; done
+        ;;
+    -c|--color)
+        shift;
+        COLOR=$1
+        [[ ! $COLOR =~ BLUE|RED|GREEN ]] && {
+            echo "Incorrect options provided"
+            exit 1
+        }
+        ;;
+    --)
+        shift
+        break
+        ;;
+    esac
+    shift
+done
+for posi in $(echo $options | sed 's/.* -- //'); do POSITIONAL+=("$posi"); done
+
+echo "INSTALL:    ${INSTALL[@]}"
+echo "UNINSTALL:  ${UNINSTALL[@]}"
+echo "POSITIONAL: ${POSITIONAL[@]}"
+echo "FILES:      ${FILES[@]}"
+for key in "${!FILES[@]}"; do
+    echo "$key ${FILES[$key]}"
+done
+exit 0;
+
 main
