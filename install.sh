@@ -89,38 +89,134 @@ Cmd=$Blu
 Src=$Pur
 Dst=$Grn
 
-directories=()
-directories+=(".config/alacritty")
-directories+=(".config/bspwm")
-directories+=(".config/dmscripts")
-directories+=(".config/fish")
-directories+=(".config/htop")
-directories+=(".config/kitty")
-directories+=(".config/lazygit")
-directories+=(".config/lf")
-directories+=(".config/mpd")
-directories+=(".config/mpv")
-directories+=(".config/ncmpcpp")
-directories+=(".config/neofetch")
-directories+=(".config/nitrogen")
-directories+=(".config/spectrwm")
-directories+=(".config/surf")
-directories+=(".config/sxhkd")
-directories+=(".config/vifm")
+# ".gitconfig"
+# sudo pacman -Syu git
+#
+# ".config/htop"
+# sudo pacman -Syu htop
+#
+# ".bash_logout"
+# ".bash_profile"
+# ".bashrc"
+# ".profile"
+# sudo pacman -Syu nvim git ponysay fortune starship
+# git clone git://github.com/a2n-s/oh-my-bash.git ~/repos/oh-my-bash
+# sudo wget -O /etc/bash.command-not-found https://raw.githubusercontent.com/hkbakke/bash-insulter/master/src/bash.command-not-found
+# pip install virtualenvwrapper
+# yay -S shell-color-scripts
+#
+# ".config/starship.toml"
+# yay -S nerd-fonts-mononoki
+# sudo pacman -Syu starship
+#
+# ".config/neofetch"
+# sudo pacman -Syu neofetch pr
+#
+# ".vimrc"
+# sudo pacman -Syu vim
+# mkdir -p ~/.vim ~/.vim/autoload ~/.vim/backup ~/.vim/color ~/.vim/plugged
+# curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# curl -fLo ~/.vim/colors/molokai.vim --create-dirs https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
+# # run :PlugInstall in vim
+#
+# sudo pacman -Syu nvim
+# git clone https://github.com/a2n-s/neovim ~/.config/nvim
+# # backup your plugins ans LSP servers
+# # run nvim at least once to install plugins.
+# # run :LSPInstallInfo to install language server protocols for your completion
+#
+# ".xinitrc"
+# sudo pacman -Syu xorg picom
+#
+# ".config/bspwm"
+# ".config/sxhkd"
+# sudo pacman -Syu bspwm feh
+# sudo pacman -Syu sxhkd
+#
+#
+# ".config/spectrwm"
+# sudo pacman -Syu spectrwm
+#
+# ".config/alacritty"
+# yay -S nerd-fonts-mononoki
+# sudo pacman -Syu alacritty
+#
+# ".config/kitty"
+# git clone https://github.com/a2n-s/kitty ~/repos/kitty
+# cd ~/repos/kitty
+# git checkout main
+# make
+# ln -s ./kitty/launcher/kitty /usr/bin/kitty
+#
+# ".config/nitrogen"
+# sudo pacman -Syu nitrogen
+#
+# git clone https://github.com/a2n-s/slock ~/repos/slock
+# cd ~/repos/slock
+# git checkout main
+# make clean install
+#
+# ".xscreensaver"
+# sudo pacman -Syu xscreensaver
+#
+# sudo pacman -Syu polybar
+# git clone --depth=1 https://github.com/a2n-s/polybar-themes.git ~/repos/polybar
+# chmod +x ~/repos/polybar/setup.sh
+# ~/repos/polybar/setup.sh
+#
+# ".config/vifm"
+# sudo pacman -Syu vifm
+#
+# ".tmux.conf"
+# sudo pacman -Syu tmux
+#
+# ".config/surf"
+# git clone https://github.com/a2n-s/surf ~/repos/surf
+# cd ~/repos/surf
+# git checkout main
+# make clean install
+#
+# git clone https://github.com/a2n-s/tabbed ~/repos/tabbed
+# cd ~/repos/tabbed
+# git checkout main
+# make clean install
+#
+# git clone https://github.com/a2n-s/wallpaper ~/repos/wallpapers
+#
+# git clone https://github.com/a2n-s/dmenu ~/repos/dmenu
+# cd ~/repos/dmenu
+# git checkout main
+# make clean install
+#
+# ".config/dmscripts"
+# git clone https://github.com/a2n-s/dmscripts ~/repos/dmscripts
+#
+# ".config/fish"
+# sudo pacman -Syu fish
+# git clone git://github.com/a2n-s/oh-my-fish.git ~/repos/oh-my-fish
+#
+# ".config/lazygit"
+# sudo pacman -Syu lazygit
+#
+# ".config/lf"
+# yay -S lf
+#
+# ".config/mpd"
+# sudo pacman -Syu mpd
+#
+# ".config/mpv"
+# sudo pacman -Syu mpv
+#
+# ".config/ncmpcpp"
+# sudo pacman -Syu ncmpcpp
+#
+# ".config/tigrc"
+# sudo pacman -Syu tig
+#
+# ".zshrc"
+# sudo pacman -Syu zsh
+# git clone git://github.com/a2n-s/ohmyzsh.git ~/repos/oh-my-zsh
 
-files=()
-files+=(".bash_logout")
-files+=(".bash_profile")
-files+=(".bashrc")
-files+=(".config/starship.toml")
-files+=(".config/tigrc")
-files+=(".gitconfig")
-files+=(".profile")
-files+=(".tmux.conf")
-files+=(".vimrc")
-files+=(".xinitrc")
-files+=(".xscreensaver")
-files+=(".zshrc")
 
 # for repo in ${repos[@]}; do
 #   git -C $repo rmtv | sed 's/.*\s\+\(.*\)\s\+.*/\1/' | uniq
@@ -173,7 +269,10 @@ scripts+=("_shortwd.sh")
 scripts+=("_stopwatch.sh")
 scripts+=("dmrun.sh")
 scripts+=("lfrun.sh")
+scripts+=("list.git-repos.diagnostic.sh")
+scripts+=("misc.nvim-renaming.sh")
 scripts+=("prompt.sh")
+scripts+=("repo.info.sh")
 scripts+=("screenshot.sh")
 scripts+=("slock-cst.sh")
 scripts+=("spectrWM-baraction.sh")
@@ -185,7 +284,7 @@ scripts+=("xtcl.sh")
 scripts+=("ytdl.sh")
 
 DIR=`pwd`
-HDIR="${HOME}"
+HDIR="$HOME/fake"
 CDIR=".config"
 SDIR="scripts"
 RDIR="repos"
@@ -314,6 +413,7 @@ install_repos() {
 }
 
 install_font() {
+	echo -ne "\n[*] Available soon..."
 }
 install_fonts() {
 	echo -ne "\n[*] Installing fonts..."
@@ -326,7 +426,7 @@ prompt_for_install_and_install() {
   case "$REPLY" in
     "y")  $1
     ;;
-    "n")  echo "Discarding installation of $2!"
+    "n")  echo "Skipping $2!"
     ;;
     "q")  echo "Aborting!"
           exit 1
@@ -337,16 +437,16 @@ prompt_for_install_and_install() {
 }
 
 install () {
-  if [[ ! -d "$HDIR/old" ]]; then
+  if [[ ! -d "$DIR/old" ]]; then
     echo "${Wrn}mkdir -p $DIR/old${Off}"
     mkdir -p $DIR/old
   fi
-  if [[ ! -d "$HDIR/old/.config" ]]; then
+  if [[ ! -d "$DIR/old/.config" ]]; then
     echo "${Wrn}mkdir -p $DIR/old/.config${Off}"
     mkdir -p $DIR/old/.config
   fi
   prompt_for_install_and_install "install_scripts" "scripts"
-  prompt_for_install_and_install "install_configs" "directories and standalone files"
+  # prompt_for_install_and_install "install_configs" "directories and standalone files"
   prompt_for_install_and_install "install_fonts"   "fonts"
   prompt_for_install_and_install "install_repos"   "repos"
 }
@@ -359,7 +459,6 @@ main() {
     source: $DIR
     destination: $HDIR
 
-	EOF
 		[*] Choose option-
 		[1|o] Override everything.
 		[2|m] Minimal install.
@@ -379,7 +478,6 @@ main() {
   esac
   echo "you choose the $INST_MODE mode"
   echo "                \`--> does not have any impact for now..."
-  exit 0
 
   install
 
