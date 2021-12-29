@@ -17,81 +17,84 @@
 
 ################################################################################################
 # Reset
-Off=$(printf '\033[0m')             # Text Reset
+Off=$(printf '\033[0m')        # Text Reset
 # Regular Colors
-Blk=$(printf '\033[0;30m')          # Black
-Red=$(printf '\033[0;31m')          # Red
-Grn=$(printf '\033[0;32m')          # Green
-Ylw=$(printf '\033[0;33m')          # Yellow
-Blu=$(printf '\033[0;34m')          # Blue
-Pur=$(printf '\033[0;35m')          # Purple
-Cyn=$(printf '\033[0;36m')          # Cyan
-Wht=$(printf '\033[0;37m')          # White
+Blk=$(printf '\033[0;30m')     # Black
+Red=$(printf '\033[0;31m')     # Red
+Grn=$(printf '\033[0;32m')     # Green
+Ylw=$(printf '\033[0;33m')     # Yellow
+Blu=$(printf '\033[0;34m')     # Blue
+Pur=$(printf '\033[0;35m')     # Purple
+Cyn=$(printf '\033[0;36m')     # Cyan
+Wht=$(printf '\033[0;37m')     # White
 # Bold
-BBlack=$(printf '\033[1;30m')       # Black
-BRed=$(printf '\033[1;31m')         # Red
-BGreen=$(printf '\033[1;32m')       # Green
-BYellow=$(printf '\033[1;33m')      # Yellow
-BBlue=$(printf '\033[1;34m')        # Blue
-BPurple=$(printf '\033[1;35m')      # Purple
-BCyan=$(printf '\033[1;36m')        # Cyan
-BWhite=$(printf '\033[1;37m')       # White
+BBlk=$(printf '\033[1;30m')    # Black
+BRed=$(printf '\033[1;31m')    # Red
+BGrn=$(printf '\033[1;32m')    # Green
+BYlw=$(printf '\033[1;33m')    # Yellow
+BBlu=$(printf '\033[1;34m')    # Blue
+BPur=$(printf '\033[1;35m')    # Purple
+BCyn=$(printf '\033[1;36m')    # Cyan
+BWht=$(printf '\033[1;37m')    # White
 # Underline
-UBlack=$(printf '\033[4;30m')       # Black
-URed=$(printf '\033[4;31m')         # Red
-UGreen=$(printf '\033[4;32m')       # Green
-UYellow=$(printf '\033[4;33m')      # Yellow
-UBlue=$(printf '\033[4;34m')        # Blue
-UPurple=$(printf '\033[4;35m')      # Purple
-UCyan=$(printf '\033[4;36m')        # Cyan
-UWhite=$(printf '\033[4;37m')       # White
+UBlk=$(printf '\033[4;30m')    # Black
+URed=$(printf '\033[4;31m')    # Red
+UGrn=$(printf '\033[4;32m')    # Green
+UYlw=$(printf '\033[4;33m')    # Yellow
+UBlu=$(printf '\033[4;34m')    # Blue
+UPur=$(printf '\033[4;35m')    # Purple
+UCyn=$(printf '\033[4;36m')    # Cyan
+UWht=$(printf '\033[4;37m')    # White
 # Background
-On_Black=$(printf '\033[40m')       # Black
-On_Red=$(printf '\033[41m')         # Red
-On_Green=$(printf '\033[42m')       # Green
-On_Yellow=$(printf '\033[43m')      # Yellow
-On_Blue=$(printf '\033[44m')        # Blue
-On_Purple=$(printf '\033[45m')      # Purple
-On_Cyan=$(printf '\033[46m')        # Cyan
-On_White=$(printf '\033[47m')       # White
+OBlk=$(printf '\033[40m')      # Black
+ORed=$(printf '\033[41m')      # Red
+OGrn=$(printf '\033[42m')      # Green
+OYlw=$(printf '\033[43m')      # Yellow
+OBlu=$(printf '\033[44m')      # Blue
+OPur=$(printf '\033[45m')      # Purple
+OCyn=$(printf '\033[46m')      # Cyan
+OWht=$(printf '\033[47m')      # White
 # High Intensity
-IBlack=$(printf '\033[0;90m')       # Black
-IRed=$(printf '\033[0;91m')         # Red
-IGreen=$(printf '\033[0;92m')       # Green
-IYellow=$(printf '\033[0;93m')      # Yellow
-IBlue=$(printf '\033[0;94m')        # Blue
-IPurple=$(printf '\033[0;95m')      # Purple
-ICyan=$(printf '\033[0;96m')        # Cyan
-IWhite=$(printf '\033[0;97m')       # White
+IBlk=$(printf '\033[0;90m')    # Black
+IRed=$(printf '\033[0;91m')    # Red
+IGrn=$(printf '\033[0;92m')    # Green
+IYlw=$(printf '\033[0;93m')    # Yellow
+IBlu=$(printf '\033[0;94m')    # Blue
+IPur=$(printf '\033[0;95m')    # Purple
+ICyn=$(printf '\033[0;96m')    # Cyan
+IWht=$(printf '\033[0;97m')    # White
 # Bold High Intensity
-BIBlack=$(printf '\033[1;90m')      # Black
-BIRed=$(printf '\033[1;91m')        # Red
-BIGreen=$(printf '\033[1;92m')      # Green
-BIYellow=$(printf '\033[1;93m')     # Yellow
-BIBlue=$(printf '\033[1;94m')       # Blue
-BIPurple=$(printf '\033[1;95m')     # Purple
-BICyan=$(printf '\033[1;96m')       # Cyan
-BIWhite=$(printf '\033[1;97m')      # White
+BIBlk=$(printf '\033[1;90m')   # Black
+BIRed=$(printf '\033[1;91m')   # Red
+BIGrn=$(printf '\033[1;92m')   # Green
+BIYlw=$(printf '\033[1;93m')   # Yellow
+BIBlu=$(printf '\033[1;94m')   # Blue
+BIPur=$(printf '\033[1;95m')   # Purple
+BICyn=$(printf '\033[1;96m')   # Cyan
+BIWht=$(printf '\033[1;97m')   # White
 # High Intensity backgrounds
-On_IBlack=$(printf '\033[0;100m')   # Black
-On_IRed=$(printf '\033[0;101m')     # Red
-On_IGreen=$(printf '\033[0;102m')   # Green
-On_IYellow=$(printf '\033[0;103m')  # Yellow
-On_IBlue=$(printf '\033[0;104m')    # Blue
-On_IPurple=$(printf '\033[0;105m')  # Purple
-On_ICyan=$(printf '\033[0;106m')    # Cyan
-On_IWhite=$(printf '\033[0;107m')   # White
+OIBlk=$(printf '\033[0;100m')  # Black
+OIRed=$(printf '\033[0;101m')  # Red
+OIGrn=$(printf '\033[0;102m')  # Green
+OIYlw=$(printf '\033[0;103m')  # Yellow
+OIBlu=$(printf '\033[0;104m')  # Blue
+OIPur=$(printf '\033[0;105m')  # Purple
+OICyn=$(printf '\033[0;106m')  # Cyan
+OIWht=$(printf '\033[0;107m')  # White
 
 ################################################################################################
 # Specific color use.
-Err=$Red
-Wrn=$Ylw
+Err=$IRed
+Wrn=$IYlw
 Crt=$Red
-Cmd=$Blu
+Cmd=$IBlu
 Src=$Pur
 Dst=$Grn
-Nrm=$Wht
+Nrm=$IWht
 Pmt=$Cyn
+Pkg=$Ylw
+Tip=$IGrn
+Url=$IYlw
 
 Normal="${Nrm}[.]${Off}"
 Prompt="${Pmt}[?]${Off}"
@@ -105,19 +108,18 @@ Error="${Err}[!]${Off}"
 #   git -C $repo rmtv | sed 's/.*\s\+\(.*\)\s\+.*/\1/' | uniq
 # done
 repositories=()
-repositories+=("nvim git@github.com:a2n-s/neovim.git ")
-repositories+=("sketchbook/FastLED-basics git@github.com:s-marley/FastLED-basics.git ")
-repositories+=("scsc/fil-rouge git@github.com:a2n-s/fil-rouge.git git@github.com:iScsc/fil-rouge.git")
-repositories+=("scsc/fgk git@github.com:a2n-s/fgk.git ")
-repositories+=("swarm-rescue-g1 git@github.com:a2n-s/swarm-rescue-g1.git git@github.com:atxr/swarm-rescue-g1.git")
-repositories+=("tatami https://github.com/a2n-s/tatami.git ")
-repositories+=("machine-learning git@github.com:a2n-s/machine-learning.git git@github.com:SupaeroDataScience/machine-learning.git")
-repositories+=("imgDesc git@github.com:a2n-s/imgDesc.git ")
-repositories+=("flatland-project git@github.com:abfariah/flatland-project.git https://github.com/SupaeroDataScience/flatland-project")
-repositories+=("deep-learning git@github.com:a2n-s/deep-learning.git git@github.com:SupaeroDataScience/deep-learning.git")
-repositories+=("neuraltalk2 git@github.com:karpathy/neuraltalk2.git ")
-repositories+=("stochastic git@github.com:a2n-s/stochastic.git https://github.com/SupaeroDataScience/stochastic.git")
-repositories+=("mcdm git@github.com:a2n-s/mcdm.git ")
+repositories+=("prog/sketchbook/FastLED-basics git@github.com:s-marley/FastLED-basics.git ")
+repositories+=("prog/scsc/fil-rouge git@github.com:a2n-s/fil-rouge.git git@github.com:iScsc/fil-rouge.git")
+repositories+=("prog/scsc/fgk git@github.com:a2n-s/fgk.git ")
+repositories+=("prog/swarm-rescue-g1 git@github.com:a2n-s/swarm-rescue-g1.git git@github.com:atxr/swarm-rescue-g1.git")
+repositories+=("sup/tatami https://github.com/a2n-s/tatami.git ")
+repositories+=("sup/machine-learning git@github.com:a2n-s/machine-learning.git git@github.com:SupaeroDataScience/machine-learning.git")
+repositories+=("sup/imgDesc git@github.com:a2n-s/imgDesc.git ")
+repositories+=("sup/flatland-project git@github.com:abfariah/flatland-project.git https://github.com/SupaeroDataScience/flatland-project")
+repositories+=("sup/deep-learning git@github.com:a2n-s/deep-learning.git git@github.com:SupaeroDataScience/deep-learning.git")
+repositories+=("sup/neuraltalk2 git@github.com:karpathy/neuraltalk2.git ")
+repositories+=("sup/stochastic git@github.com:a2n-s/stochastic.git https://github.com/SupaeroDataScience/stochastic.git")
+repositories+=("sup/mcdm git@github.com:a2n-s/mcdm.git ")
 repositories+=("surf git@github.com:a2n-s/surf.git git://git.suckless.org/surf")
 repositories+=("yay-git https://aur.archlinux.org/yay-git.git ")
 repositories+=("polybar git@github.com:a2n-s/polybar-themes.git git@github.com:adi1090x/polybar-themes.git")
@@ -139,11 +141,11 @@ repositories+=("sites/nereuxofficial.github.io git@github.com:Nereuxofficial/ner
 repositories+=("sites/a2n-s.github.io/themes/hugo-theme-terminal git@github.com:a2n-s/hugo-theme-terminal.git git@github.com:panr/hugo-theme-terminal.git")
 repositories+=("sites/a2n-s.github.io git@github.com:a2n-s/a2n-s.github.io.git ")
 repositories+=("dotfiles/atxr_dotfiles https://github.com/atxr/dotfiles.git ")
-repositories+=("playground_env git@github.com:flowersteam/playground_env.git ")
-repositories+=("Imagine https://github.com/flowersteam/Imagine.git ")
-repositories+=("imagineXdial https://github.com/SuReLI/imagineXdial.git ")
-repositories+=("gym_ma_toy https://github.com/MehdiZouitine/gym_ma_toy ")
-repositories+=("learning-to-communicate-pytorch https://github.com/minqi/learning-to-communicate-pytorch.git ")
+repositories+=("research/playground_env git@github.com:flowersteam/playground_env.git ")
+repositories+=("research/Imagine https://github.com/flowersteam/Imagine.git ")
+repositories+=("research/imagineXdial https://github.com/SuReLI/imagineXdial.git ")
+repositories+=("research/gym_ma_toy https://github.com/MehdiZouitine/gym_ma_toy ")
+repositories+=("research/learning-to-communicate-pytorch https://github.com/minqi/learning-to-communicate-pytorch.git ")
 
 ################################################################################################
 scripts=()
@@ -214,6 +216,7 @@ install_scripts() {
 	fi
   for script in ${scripts[@]}; do
     install_script $script
+    echo "${Tip}[!!] Doc for this particular script is available at ${Url}https://a2n-s.github.io/public/doc/config/scripts/$script ${Off}"
   done
 }
 
@@ -275,20 +278,23 @@ install_file() {
 }
 install_git() {
   install_file ".gitconfig"
-  echo "${Cmd}sudo pacman -Syu git${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}git${Off}"
   sudo pacman -Syu git
+  
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/git ${Off}"
 }
 install_htop() {
   install_dir ".config/htop"
-  echo "${Cmd}sudo pacman -Syu htop${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}htop${Off}"
   sudo pacman -Syu htop
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/htop ${Off}"
 }
 install_bash() {
   install_file ".bash_logout"
   install_file ".bash_profile"
   install_file ".bashrc"
   install_file ".profile"
-  echo "${Cmd}sudo pacman -Syu ponysay fortune${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}ponysay fortune${Off}"
   sudo pacman -Syu ponysay fortune
   if [[ -d $HDIR/$RDIR/oh-my-bash ]]; then
     echo "${Wrn}$HDIR/$RDIR/oh-my-bash already exists${Off}"
@@ -301,24 +307,29 @@ install_bash() {
   sudo wget -O /etc/bash.command-not-found https://raw.githubusercontent.com/hkbakke/bash-insulter/master/src/bash.command-not-found
   echo "${Cmd}pip install virtualenvwrapper${Off}"
   pip install virtualenvwrapper
-  echo "${Cmd}yay -S shell-color-scripts${Off}"
+  echo "${Cmd}yay -S ${Pkg}shell-color-scripts${Off}"
   yay -S shell-color-scripts
+  echo "${Tip}[!!] Do not forget to source your ~/.bashrc for the config to take full effect.${Off}"
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/bash ${Off}and ${Url}https://a2n-s.github.io/public/doc/config/bash ${Off}"
 }
 install_starship() {
   install_file ".config/starship.toml"
-  echo "${Cmd}yay -S nerd-fonts-mononoki${Off}"
+  echo "${Cmd}yay -S ${Pkg}nerd-fonts-mononoki${Off}"
   yay -S nerd-fonts-mononoki
-  echo "${Cmd}sudo pacman -Syu starship${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}starship${Off}"
   sudo pacman -Syu starship
+  echo "${Tip}[!!] Do not forget to source your ~/.bashrc for the config to take full effect.${Off}"
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/starship ${Off}"
 }
 install_neofetch() {
   install_dir ".config/neofetch"
-  echo "${Cmd}sudo pacman -Syu neofetch pr${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}neofetch pr${Off}"
   sudo pacman -Syu neofetch pr
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/neofetch ${Off}"
 }
 install_vim() {
   install_file ".vimrc"
-  echo "${Cmd}sudo pacman -Syu vim${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}vim${Off}"
   sudo pacman -Syu vim
   echo "${Cmd}mkdir -p $HDIR/.vim $HDIR/.vim/autoload $HDIR/.vim/backup $HDIR/.vim/color $HDIR/.vim/plugged${Off}"
   mkdir -p $HDIR/.vim $HDIR/.vim/autoload $HDIR/.vim/backup $HDIR/.vim/color $HDIR/.vim/plugged
@@ -327,9 +338,11 @@ install_vim() {
   echo "${Cmd}curl -fLo $HDIR/.vim/colors/molokai.vim --create-dirs https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim${Off}"
   curl -fLo $HDIR/.vim/colors/molokai.vim --create-dirs https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
   # run :PlugInstall in vim
+  echo "${Tip}[!!] To install the plugins, run vim and then :PlugInstall in the command line.${Off}"
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/vim ${Off}"
 }
 install_neovim() {
-  echo "${Cmd}sudo pacman -Syu nvim${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}nvim${Off}"
   sudo pacman -Syu nvim
   if [[ -d $HDIR/.config/nvim ]]; then
     echo "${Wrn}$HDIR/.config/nvim already exists${Off}"
@@ -338,34 +351,47 @@ install_neovim() {
     echo "${Cmd}git clone https://github.com/a2n-s/neovim $HDIR/.config/nvim${Off}"
     git clone https://github.com/a2n-s/neovim $HDIR/.config/nvim
   fi
-  # backup your plugins ans LSP servers
-  # run nvim at least once to install plugins.
-  # run :LSPInstallInfo to install language server protocols for your completion
+  echo "${Tip}[!!] You are encouraged to backup your plugins and LSP servers, usually located in ~/.local/share/nvim if any at all.${Off}"
+  echo "${Tip}[!!] Run nvim at least once to install plugins.${Off}"
+  echo "${Tip}[!!] Run :LSPInstallInfo or press <space>lI to enter the same menu. Then select the servers you want with i to install or u to update.${Off}"
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/neovim ${Off}"
 }
 install_x() {
   install_file ".xinitrc"
-  echo "${Cmd}sudo pacman -Syu xorg picom${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}xorg picom${Off}"
   sudo pacman -Syu xorg picom
+  echo "${Tip}[!!] Do not forget to restart your session for x config to kick in. If it does not:${Off}"
+  echo "${Tip}[!!]   - check that the uncommented windows manager in ~/.xinitrc is installed and ready to run${Off}"
+  echo "${Tip}[!!]   - you can always fallback to other ttys of your machine. It might be by pressing <ctrl-alt-fn> where n is the number of the tty.${Off}"
+  echo "${Tip}[!!]     The default, and the one which is running ~/.xinitrc, is tty1. I have 6 ttys on my machine. There x won't bother anyone!${Off}"
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/x ${Off}"
 }
 install_bspwm() {
   install_dir ".config/bspwm"
   install_dir ".config/sxhkd"
-  echo "${Cmd}sudo pacman -Syu bspwm feh${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}bspwm feh${Off}"
   sudo pacman -Syu bspwm feh
-  echo "${Cmd}sudo pacman -Syu sxhkd${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}sxhkd${Off}"
   sudo pacman -Syu sxhkd
+  echo "${Tip}[!!] Be sure to restart you x server or at least bspwm and sxhkd for the config to take full effect.${Off}"
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/bspwm ${Off}and ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/sxhkd ${Off}"
 }
 install_spectrwm() {
   install_dir ".config/spectrwm"
-  echo "${Cmd}sudo pacman -Syu spectrwm${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}spectrwm${Off}"
   sudo pacman -Syu spectrwm
+  echo "${Tip}[!!] Be sure to restart you x server or at least spectrwm for the config to take full effect.${Off}"
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/spectrwm ${Off}"
 }
 install_alacritty() {
   install_dir ".config/alacritty"
-  echo "${Cmd}yay -S nerd-fonts-mononoki${Off}"
+  echo "${Cmd}yay -S ${Pkg}nerd-fonts-mononoki${Off}"
   yay -S nerd-fonts-mononoki
-  echo "${Cmd}sudo pacman -Syu alacritty${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}alacritty${Off}"
   sudo pacman -Syu alacritty
+  echo "${Tip}[!!] Be sure to restart the right terminal emulator for the config to take full effect.${Off}"
+  echo "${Tip}[!!] You might need to tell youre wm to use alacritty as default, or just run alacritty in your previous terminal.${Off}"
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/alacritty ${Off}"
 }
 install_kitty() {
   install_dir ".config/kitty"
@@ -384,11 +410,16 @@ install_kitty() {
   make
   echo "${Cmd}ln -s ./kitty/launcher/kitty /usr/bin/kitty${Off}"
   ln -s ./kitty/launcher/kitty /usr/bin/kitty
+  echo "${Tip}[!!] Be sure to restart the right terminal emulator for the config to take full effect.${Off}"
+  echo "${Tip}[!!] You might need to tell youre wm to use kitty as default, or just run kitty in your previous terminal.${Off}"
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/kitty ${Off}"
 }
 install_nitrogen() {
   install_dir ".config/nitrogen"
-  echo "${Cmd}sudo pacman -Syu nitrogen${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}nitrogen${Off}"
   sudo pacman -Syu nitrogen
+  echo "${Tip}[!!] You might need to run nitrogen once to setup it and/or restart your wm for the wallpaper to kick in.${Off}"
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/nitrogen ${Off}"
 }
 install_slock() {
   if [[ -d $HDIR/$RDIR/slock ]]; then
@@ -404,14 +435,16 @@ install_slock() {
   git checkout main
   echo "${Cmd}make clean install${Off}"
   make clean install
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/slock ${Off}"
 }
 install_xscreensaver() {
   install_file ".xscreensaver"
-  echo "${Cmd}sudo pacman -Syu xscreensaver${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}xscreensaver${Off}"
   sudo pacman -Syu xscreensaver
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/xscreensaver ${Off}"
 }
 install_polybar() {
-  echo "${Cmd}sudo pacman -Syu polybar${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}polybar${Off}"
   sudo pacman -Syu polybar
   if [[ -d $HDIR/$RDIR/polybar ]]; then
     echo "${Wrn}$HDIR/$RDIR/polybar already exists${Off}"
@@ -424,16 +457,20 @@ install_polybar() {
   chmod +x $HDIR/$RDIR/polybar/setup.sh
   echo "${Cmd}$HDIR/$RDIR/polybar/setup.sh${Off}"
   $HDIR/$RDIR/polybar/setup.sh
+  echo "${Tip}[!!] Do not forget to launch the bar by either running my bspwm config or running \`bash \$HOME/.config/polybar/launch.sh --forest &\`${Off}"
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/polybar ${Off}"
 }
 install_vifm() {
   install_dir ".config/vifm"
-  echo "${Cmd}sudo pacman -Syu vifm${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}vifm${Off}"
   sudo pacman -Syu vifm
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/vifm ${Off}"
 }
 install_tmux() {
   install_file ".tmux.conf"
-  echo "${Cmd}sudo pacman -Syu tmux${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}tmux${Off}"
   sudo pacman -Syu tmux
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/tmux ${Off}"
 }
 install_surf() {
   install_dir ".config/surf"
@@ -450,6 +487,7 @@ install_surf() {
   git checkout main
   echo "${Cmd}make clean install${Off}"
   make clean install
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/surf ${Off}"
 }
 install_tabbed() {
   if [[ -d $HDIR/$RDIR/tabbed ]]; then
@@ -465,6 +503,7 @@ install_tabbed() {
   git checkout main
   echo "${Cmd}make clean install${Off}"
   make clean install
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/tabbed ${Off}"
 }
 install_wallpapers() {
   if [[ -d $HDIR/$RDIR/wallpapers ]]; then
@@ -474,6 +513,7 @@ install_wallpapers() {
     echo "${Cmd}git clone https://github.com/a2n-s/wallpaper $HDIR/$RDIR/wallpapers${Off}"
     git clone https://github.com/a2n-s/wallpaper $HDIR/$RDIR/wallpapers
   fi
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/wallpapers ${Off}"
 }
 install_dmenu() {
   if [[ -d $HDIR/$RDIR/dmenu ]]; then
@@ -489,6 +529,7 @@ install_dmenu() {
   git checkout main
   echo "${Cmd}make clean install${Off}"
   make clean install
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dmenu ${Off}"
 }
 install_dmscripts() {
   install_dir ".config/dmscripts"
@@ -499,10 +540,11 @@ install_dmscripts() {
     echo "${Cmd}git clone https://github.com/a2n-s/dmscripts $HDIR/$RDIR/dmscripts${Off}"
     git clone https://github.com/a2n-s/dmscripts $HDIR/$RDIR/dmscripts
   fi
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dmscripts ${Off}"
 }
 install_fish() {
   install_dir ".config/fish"
-  echo "${Cmd}sudo pacman -Syu fish${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}fish${Off}"
   sudo pacman -Syu fish
   if [[ -d $HDIR/$RDIR/oh-my-fish ]]; then
     echo "${Wrn}$HDIR/$RDIR/oh-my-fish already exists${Off}"
@@ -511,40 +553,47 @@ install_fish() {
     echo "${Cmd}git clone git://github.com/a2n-s/oh-my-fish.git $HDIR/$RDIR/oh-my-fish${Off}"
     git clone git://github.com/a2n-s/oh-my-fish.git $HDIR/$RDIR/oh-my-fish
   fi
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/fish ${Off}"
 }
 install_lazygit() {
   install_dir ".config/lazygit"
-  echo "${Cmd}sudo pacman -Syu lazygit${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}lazygit${Off}"
   sudo pacman -Syu lazygit
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/lazygit ${Off}(${Red}NOT AVAILABLE FOR NOW${Off})"
 }
 install_lf() {
   install_dir ".config/lf"
-  echo "${Cmd}yay -S lf${Off}"
+  echo "${Cmd}yay -S ${Pkg}lf${Off}"
   yay -S lf
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/lf ${Off}(${Red}NOT AVAILABLE FOR NOW${Off})"
 }
 install_mpd() {
   install_dir ".config/mpd"
-  echo "${Cmd}sudo pacman -Syu mpd${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}mpd${Off}"
   sudo pacman -Syu mpd
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/mpd ${Off}(${Red}NOT AVAILABLE FOR NOW${Off})"
 }
 install_mpv() {
   install_dir ".config/mpv"
-  echo "${Cmd}sudo pacman -Syu mpv${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}mpv${Off}"
   sudo pacman -Syu mpv
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/mpv ${Off}(${Red}NOT AVAILABLE FOR NOW${Off})"
 }
 install_ncmpcpp() {
   install_dir ".config/ncmpcpp"
-  echo "${Cmd}sudo pacman -Syu ncmpcpp${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}ncmpcpp${Off}"
   sudo pacman -Syu ncmpcpp
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/ncmpcpp ${Off}(${Red}NOT AVAILABLE FOR NOW${Off})"
 }
 install_tigrc() {
   install_dir ".config/tigrc"
-  echo "${Cmd}sudo pacman -Syu tig${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}tig${Off}"
   sudo pacman -Syu tig
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/tig ${Off}(${Red}NOT AVAILABLE FOR NOW${Off})"
 }
 install_zsh() {
   install_file ".zshrc"
-  echo "${Cmd}sudo pacman -Syu zsh${Off}"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}zsh${Off}"
   sudo pacman -Syu zsh
   if [[ -d $HDIR/$RDIR/oh-my-zsh ]]; then
     echo "${Wrn}$HDIR/$RDIR/oh-my-zsh already exists${Off}"
@@ -553,6 +602,7 @@ install_zsh() {
     echo "${Cmd}git clone git://github.com/a2n-s/ohmyzsh.git $HDIR/$RDIR/oh-my-zsh${Off}"
     git clone git://github.com/a2n-s/ohmyzsh.git $HDIR/$RDIR/oh-my-zsh
   fi
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/zsh ${Off}"
 }
 install_configs() {
   prompt_for_install_and_install "install_git"          "Install config for git?"
