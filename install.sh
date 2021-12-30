@@ -1006,6 +1006,7 @@ DESCRIPTION
        This is my install script.
        One installs a snippet of my config with '+name-of-config-to-install' or removes one with '-name-of-config-to-remove'.
        Note the use of '-' to remove stuff and '+' to indicate that the config should be installed.
+       Flags are here as preselections only. A popup editor will always open and let you modify the preferences for the installation process. The script tries to open \$VISUAL, then \$EDITOR and finally falls back to \`vi\` in case any of the previous two has been found.
 
        There are four categories of config that one might find in my config files, with their particularities:
          - REPOS:
@@ -1132,6 +1133,8 @@ ENVIRONMENT
        RDIR = repos
 
 EXAMPLES
+       \`./install.sh +bash -fish +bspwm +neovim +git\` will install \`bash\`, \`bspwm\`, \`neovim\` and \`git\` and remove \`fish\` to and from your config.
+       An editor will always popup to let you change the behaviour, but the config snippets above will be already preselected.
 
 AUTHOR
        More about me and my config below:
