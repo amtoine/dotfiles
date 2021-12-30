@@ -214,22 +214,7 @@ install_script() {
     echo "${Cmd}cp -rf ${Src}$DIR/$SDIR/$1 ${Dst}$HDIR/$SDIR/$1${Off}"
     cp -rf $DIR/$SDIR/$1 $HDIR/$SDIR/$1
   fi
-}
-install_scripts() {
-	echo -e "\n$Normal Installing scripts..."
-	if [[ -d "$HDIR/$SDIR" ]]; then
-		echo "${Wrn}$HDIR/$SDIR exists, prepairing backup${Off}"
-		echo "${Wrn}mkdir -p $DIR/old/$SDIR${Off}"
-		mkdir -p $DIR/old/$SDIR
-	else
-		echo "${Wrn}$HDIR/$SDIR does not exist${Off}"
-		echo "${Wrn}mkdir -p $HDIR/$SDIR${Off}"
-		mkdir -p $HDIR/$SDIR
-	fi
-  for script in ${scripts[@]}; do
-    install_script $script
-    echo "${Tip}[!!] Doc for this particular script is available at ${Url}https://a2n-s.github.io/public/doc/config/scripts/$script ${Off}"
-  done
+  echo "${Tip}[!!] Doc for this particular script is available at ${Url}https://a2n-s.github.io/public/doc/config/scripts/$1 ${Off}"
 }
 
 ################################################################################################
@@ -623,39 +608,6 @@ install_zsh() {
   fi
   echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/zsh ${Off}"
 }
-install_configs() {
-  prompt_for_install_and_install "install_git"          "Install config for git?"
-  prompt_for_install_and_install "install_htop"         "Install config for htop?"
-  prompt_for_install_and_install "install_bash"         "Install config for bash?"
-  prompt_for_install_and_install "install_fish"         "Install config for fish?"
-  prompt_for_install_and_install "install_zsh"          "Install config for zsh?"
-  prompt_for_install_and_install "install_starship"     "Install config for starship?"
-  prompt_for_install_and_install "install_neofetch"     "Install config for neofetch?"
-  prompt_for_install_and_install "install_vim"          "Install config for vim?"
-  prompt_for_install_and_install "install_neovim"       "Install config for neovim?"
-  prompt_for_install_and_install "install_x"            "Install config for x?"
-  prompt_for_install_and_install "install_bspwm"        "Install config for bspwm?"
-  prompt_for_install_and_install "install_spectrwm"     "Install config for spectrwm?"
-  prompt_for_install_and_install "install_alacritty"    "Install config for alacritty?"
-  prompt_for_install_and_install "install_kitty"        "Install config for kitty?"
-  prompt_for_install_and_install "install_nitrogen"     "Install config for nitrogen?"
-  prompt_for_install_and_install "install_slock"        "Install config for slock?"
-  prompt_for_install_and_install "install_xscreensaver" "Install config for xscreensaver?"
-  prompt_for_install_and_install "install_polybar"      "Install config for polybar?"
-  prompt_for_install_and_install "install_vifm"         "Install config for vifm?"
-  prompt_for_install_and_install "install_lf"           "Install config for lf?"
-  prompt_for_install_and_install "install_surf"         "Install config for surf?"
-  prompt_for_install_and_install "install_tabbed"       "Install config for tabbed?"
-  prompt_for_install_and_install "install_wallpapers"   "Install config for wallpapers?"
-  prompt_for_install_and_install "install_dmenu"        "Install config for dmenu?"
-  prompt_for_install_and_install "install_dmscripts"    "Install config for dmscripts?"
-  prompt_for_install_and_install "install_lazygit"      "Install config for lazygit?"
-  prompt_for_install_and_install "install_tigrc"        "Install config for tigrc?"
-  prompt_for_install_and_install "install_tmux"         "Install config for tmux?"
-  prompt_for_install_and_install "install_mpd"          "Install config for mpd?"
-  prompt_for_install_and_install "install_mpv"          "Install config for mpv?"
-  prompt_for_install_and_install "install_ncmpcpp"      "Install config for ncmpcpp?"
-}
 
 ################################################################################################
 ## standalone repos installation functions #####################################################
@@ -678,22 +630,12 @@ install_repo() {
     fi
   fi
 }
-install_repos() {
-	echo -e "\n$Normal Installing repos..."
-  for repository in "${repositories[@]}"; do
-    install_repo $repository
-  done
-}
 
 ################################################################################################
 ## font installation functions #################################################################
 ################################################################################################
 install_font() {
 	echo -ne "\n$Normal Available soon..."
-}
-install_fonts() {
-	echo -ne "\n$Normal Installing fonts..."
-	echo -e "\n$Normal Available soon..."
 }
 
 ################################################################################################
@@ -810,6 +752,13 @@ init_CFG() {
 
 install () {
   echo "$Normal ${Cmd}install ${Src}$1${Off}"; 
+  case $1 in
+    CONFIG:*) echo this is a config;;
+    REPO:*)   echo this is a repo;;
+    SCRIPT:*) echo this is a script;;
+    FONT:*)   echo this is a font;;
+    *)        echo "$Warning Unknown argument ${Cyn}$arg${Off}";;
+  esac
 }
 
 restore () {
@@ -835,6 +784,15 @@ EOF
     echo "${Wrn}mkdir -p $DIR/old/.config${Off}"
     mkdir -p $DIR/old/.config
   fi
+	if [[ -d "$HDIR/$SDIR" ]]; then
+		echo "${Wrn}$HDIR/$SDIR exists, prepairing backup${Off}"
+		echo "${Wrn}mkdir -p $DIR/old/$SDIR${Off}"
+		mkdir -p $DIR/old/$SDIR
+	else
+		echo "${Wrn}$HDIR/$SDIR does not exist${Off}"
+		echo "${Wrn}mkdir -p $HDIR/$SDIR${Off}"
+		mkdir -p $HDIR/$SDIR
+	fi
   for cfg in $(cat $tmpfile | grep -v "^\s*#" | grep -v "^\s*$" | grep -v "^discard" | sed 's/^/"/; s/$/"/; s/ /-/'); do
     cmd=$(echo $cfg | sed 's/"//g; s/-/ /' | awk '{print $1}')
     arg=$(echo $cfg | sed 's/"//g; s/-/ /' | awk '{print $2}')
