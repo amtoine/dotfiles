@@ -753,10 +753,10 @@ init_CFG() {
 install () {
   echo "$Normal ${Cmd}install ${Src}$1${Off}"; 
   case $1 in
-    CONFIG:*) install_$1;;
-    REPO:*)   install_repo $1;;
-    SCRIPT:*) install_script $1;;
-    FONT:*)   install_font $1;;
+    CONFIG:*) install_$(echo $1 | sed 's/CONFIG://');;
+    REPO:*)   install_repo $(echo $1 | sed 's/REPO://');;
+    SCRIPT:*) install_script $(echo $1 | sed 's/SCRIPT://');;
+    FONT:*)   install_font $(echo $1 | sed 's/FONT://');;
     *)        echo "$Warning Unknown argument ${Cyn}$arg${Off}";;
   esac
 }
