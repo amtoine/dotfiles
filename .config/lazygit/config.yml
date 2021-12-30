@@ -35,7 +35,8 @@ gui:                                                           # stuff relating 
     optionsTextColor:
       - blue
     selectedLineBgColor:
-      - default
+      # - '#0f0f0f'
+      - '#808080'
     selectedRangeBgColor:
       - blue
     cherryPickedCommitBgColor:
@@ -66,8 +67,8 @@ git:
     showGraph:                     'when-maximised'            # this determines whether the git graph is rendered in the commits panel, one of always, never, when-maximised
   skipHookPrefix:                  WIP
   autoFetch:                       true
-  branchLogCmd:                    'git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --'
-  allBranchesLogCmd:               'git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium'
+  branchLogCmd:                    'git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=oneline {{branchName}} --'
+  allBranchesLogCmd:               'git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=oneline'
   overrideGpg:                     false                       # prevents lazygit from spawning a separate process when using GPG
   disableForcePushing:             false
   parseEmoji:                      false
@@ -91,7 +92,7 @@ keybinding:
   universal:
     quit:                          'q'
     quit-alt1:                     '<c-c>'                     # alternative/alias of quit
-    return:                        '<esc>'                     # return to previous menu, will quit if there's nowhere to return
+    return:                        '<delete>'                  # return to previous menu, will quit if there's nowhere to return
     quitWithoutChangingDirectory:  'Q'
     togglePanel:                   '<tab>'                     # goto the next panel
     prevItem:                      '<up>'                      # go one line up

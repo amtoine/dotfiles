@@ -33,6 +33,7 @@ export OSH=$HOME/repos/oh-my-bash
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
 OSH_THEME="random" # (...please let it be pie... please be some pie..)
+# OSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -191,7 +192,7 @@ source $HOME/.local/bin/virtualenvwrapper.sh
 # fortune -c | cowthink -f $(find /usr/share/cows -type f | shuf -n 1)
 fortune -c | ponysay --pony
 
-eval "$(starship init bash)"
+# eval "$(starship init bash)"
 
 if [ -f /etc/bash.command-not-found ]; then
     . /etc/bash.command-not-found

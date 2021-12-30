@@ -26,6 +26,7 @@ cmus
 cowsay
 cronie
 ctags
+docker
 dosfstools
 dstat
 dwarffortress
@@ -100,6 +101,7 @@ python-opengl
 python-pip
 python-tqdm
 python-virtualenv
+python2
 python35
 python38
 read-edid

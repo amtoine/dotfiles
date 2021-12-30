@@ -37,5 +37,12 @@ modifiers            | key           | function          | parameters
 EOF
 cat "$configfile" | grep -e "GDK_KEY" | sed "s/#define MODKEY GDK_\(\w*\)_MASK/\1/g; s/^\s\+{\s\+//g; s/\s\+},$//g" >> "$tmpfile"
 
+cat << EOF >> "$tmpfile"
+
+tag | search engine               | URL
+----+-----------------------------+--------------------------------------
+EOF
+cat "$configfile" | grep -e '{ "..=", "https' | sed 's/  { "//g; s/", "/ /g; s/" },//g; s/https:\/\/\(.*\)\/\(.*\)/| \1\^| https:\/\/\1\/\2/g;' | column -t -s '^'>> "$tmpfile"
+
 # kitty "$EDITOR" "$tmpfile"
 kitty nvim "$tmpfile"

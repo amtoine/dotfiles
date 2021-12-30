@@ -51,7 +51,7 @@ $python\
 $battery\
 $cmake\
 $cmd_duration\
-$memory_usage\
+$memory_usage\n\
 $character\
 """
 # move the rest of the prompt to the right
