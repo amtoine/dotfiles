@@ -110,9 +110,6 @@ Error="${Err}[!]${Off}"
 #######################
 # all the repos I use #
 #######################
-# for repo in ${repos[@]}; do
-#   git -C $repo rmtv | sed 's/.*\s\+\(.*\)\s\+.*/\1/' | uniq
-# done
 declare -A repositories
 repositories["prog/sketchbook/FastLED-basics"]="git@github.com:s-marley/FastLED-basics.git "
 repositories["prog/scsc/fil-rouge"]="git@github.com:a2n-s/fil-rouge.git git@github.com:iScsc/fil-rouge.git"
@@ -341,7 +338,6 @@ install_vim() {
   curl -fLo $HDIR/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   echo "${Cmd}curl -fLo $HDIR/.vim/colors/molokai.vim --create-dirs https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim${Off}"
   curl -fLo $HDIR/.vim/colors/molokai.vim --create-dirs https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
-  # run :PlugInstall in vim
   echo "${Tip}[!!] To install the plugins, run vim and then :PlugInstall in the command line.${Off}"
   echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/vim ${Off}"
 }
@@ -1169,7 +1165,6 @@ cat << EOF > "$tmpfile"
 # Every line beginning with a '#' will be treated as a comment and thus discarded.
 
 EOF
-# echo "${CFG[$cfg]} $cfg" | sed 's/^none/none\&/;s/^uninstall/uninstall\&/;s/^install/install\&/;' >> $tmpfile
 for cfg in "${!CFG[@]}"; do
     if [[ ! "${CFG[$cfg]}" =~ "none" ]]; then
       echo "${CFG[$cfg]} $cfg" | sed 's/^none/discard/' >> $tmpfile
