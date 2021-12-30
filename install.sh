@@ -123,7 +123,6 @@ repositories+=("sup/machine-learning git@github.com:a2n-s/machine-learning.git g
 repositories+=("sup/imgDesc git@github.com:a2n-s/imgDesc.git ")
 repositories+=("sup/flatland-project git@github.com:abfariah/flatland-project.git https://github.com/SupaeroDataScience/flatland-project")
 repositories+=("sup/deep-learning git@github.com:a2n-s/deep-learning.git git@github.com:SupaeroDataScience/deep-learning.git")
-repositories+=("sup/neuraltalk2 git@github.com:karpathy/neuraltalk2.git ")
 repositories+=("sup/stochastic git@github.com:a2n-s/stochastic.git https://github.com/SupaeroDataScience/stochastic.git")
 repositories+=("sup/mcdm git@github.com:a2n-s/mcdm.git ")
 repositories+=("surf git@github.com:a2n-s/surf.git git://git.suckless.org/surf")
@@ -716,6 +715,98 @@ prompt_for_install_and_install() {
   esac
 }
 
+init_CFG() {
+  CFG["REPO:prog/sketchbook/FastLED-basics"]="none"
+  CFG["REPO:prog/scsc/fil-rouge"]="none"
+  CFG["REPO:prog/scsc/fgk"]="none"
+  CFG["REPO:prog/swarm-rescue-g1"]="none"
+  CFG["REPO:sup/tatami"]="none"
+  CFG["REPO:sup/machine-learning"]="none"
+  CFG["REPO:sup/imgDesc"]="none"
+  CFG["REPO:sup/flatland-project"]="none"
+  CFG["REPO:sup/deep-learning"]="none"
+  CFG["REPO:sup/stochastic"]="none"
+  CFG["REPO:sup/mcdm"]="none"
+  CFG["REPO:surf"]="none"
+  CFG["REPO:yay-git"]="none"
+  CFG["REPO:polybar"]="none"
+  CFG["REPO:lazycli"]="none"
+  CFG["REPO:dmscripts"]="none"
+  CFG["REPO:dmenu"]="none"
+  CFG["REPO:tabbed"]="none"
+  CFG["REPO:slock"]="none"
+  CFG["REPO:bash-insulter"]="none"
+  CFG["REPO:kitty"]="none"
+  CFG["REPO:Neovim-from-scratch"]="none"
+  CFG["REPO:oh-my-bash"]="none"
+  CFG["REPO:uzbl"]="none"
+  CFG["REPO:oh-my-fish"]="none"
+  CFG["REPO:a2n-s"]="none"
+  CFG["REPO:wallpapers"]="none"
+  CFG["REPO:oh-my-zsh"]="none"
+  CFG["REPO:sites/nereuxofficial.github.io"]="none"
+  CFG["REPO:sites/a2n-s.github.io/themes/hugo-theme-terminal"]="none"
+  CFG["REPO:sites/a2n-s.github.io"]="none"
+  CFG["REPO:dotfiles/atxr_dotfiles"]="none"
+  CFG["REPO:research/playground_env"]="none"
+  CFG["REPO:research/Imagine"]="none"
+  CFG["REPO:research/imagineXdial"]="none"
+  CFG["REPO:research/gym_ma_toy"]="none"
+  CFG["REPO:research/learning-to-communicate-pytorch"]="none"
+
+  CFG["SCRIPT:_countdown.sh"]="none"
+  CFG["SCRIPT:_parse_git_info.sh"]="none"
+  CFG["SCRIPT:_shortwd.sh"]="none"
+  CFG["SCRIPT:_stopwatch.sh"]="none"
+  CFG["SCRIPT:dmrun.sh"]="none"
+  CFG["SCRIPT:lfrun.sh"]="none"
+  CFG["SCRIPT:list.git-repos.diagnostic.sh"]="none"
+  CFG["SCRIPT:misc.nvim-renaming.sh"]="none"
+  CFG["SCRIPT:prompt.sh"]="none"
+  CFG["SCRIPT:repo.info.sh"]="none"
+  CFG["SCRIPT:screenshot.sh"]="none"
+  CFG["SCRIPT:slock-cst.sh"]="none"
+  CFG["SCRIPT:spectrWM-baraction.sh"]="none"
+  CFG["SCRIPT:togkb.sh"]="none"
+  CFG["SCRIPT:tr2md.sh"]="none"
+  CFG["SCRIPT:upl.sh"]="none"
+  CFG["SCRIPT:wvenv.sh"]="none"
+  CFG["SCRIPT:xtcl.sh"]="none"
+  CFG["SCRIPT:ytdl.sh"]="none"
+
+  CFG["CONFIG:git"]="none"
+  CFG["CONFIG:htop"]="none"
+  CFG["CONFIG:bash"]="none"
+  CFG["CONFIG:fish"]="none"
+  CFG["CONFIG:zsh"]="none"
+  CFG["CONFIG:starship"]="none"
+  CFG["CONFIG:neofetch"]="none"
+  CFG["CONFIG:vim"]="none"
+  CFG["CONFIG:neovim"]="none"
+  CFG["CONFIG:x"]="none"
+  CFG["CONFIG:bspwm"]="none"
+  CFG["CONFIG:spectrwm"]="none"
+  CFG["CONFIG:alacritty"]="none"
+  CFG["CONFIG:kitty"]="none"
+  CFG["CONFIG:nitrogen"]="none"
+  CFG["CONFIG:slock"]="none"
+  CFG["CONFIG:xscreensaver"]="none"
+  CFG["CONFIG:polybar"]="none"
+  CFG["CONFIG:vifm"]="none"
+  CFG["CONFIG:lf"]="none"
+  CFG["CONFIG:surf"]="none"
+  CFG["CONFIG:tabbed"]="none"
+  CFG["CONFIG:wallpapers"]="none"
+  CFG["CONFIG:dmenu"]="none"
+  CFG["CONFIG:dmscripts"]="none"
+  CFG["CONFIG:lazygit"]="none"
+  CFG["CONFIG:tigrc"]="none"
+  CFG["CONFIG:tmux"]="none"
+  CFG["CONFIG:mpd"]="none"
+  CFG["CONFIG:mpv"]="none"
+  CFG["CONFIG:ncmpcpp"]="none"
+}
+
 install () {
   if [[ ! -d "$DIR/old" ]]; then
     echo "${Wrn}mkdir -p $DIR/old${Off}"
@@ -767,14 +858,18 @@ EOF
   echo -e "\n$Normal Bye bye!!"
 }
 
-
-options=$(getopt -a -o h           \
-                    -l help        \
-                    -o i::         \
-                    -l install::   \
-                    -o u::         \
-                    -l uninstall:: \
-                    -l nvim        \
+################################################################################################
+## define and parse the flags and arguments ####################################################
+################################################################################################
+options=$(getopt -a -o h         \
+                    -l help      \
+                    -o i::       \
+                    -l install:: \
+                    -o r::       \
+                    -l restore:: \
+                    -o d::       \
+                    -l discard:: \
+                    -l nvim      \
                     -- "$@")
 [ $? -eq 0 ] || {
     echo "Incorrect options provided"
@@ -783,30 +878,29 @@ options=$(getopt -a -o h           \
 eval set -- "$options"
 
 declare -A CFG
-INSTALL=()
-UNINSTALL=()
+init_CFG
 POSITIONAL=()
 # echo $options
 while true; do
     case "$1" in
     -i|--install)
         shift;
-        INSTALL+=("$1")
-        for i in $1; do CFG[$i]="i"; done
+        for i in $1; do CFG[$i]="install"; done
         ;;
-    -u|--uninstall)
+    -r|--restore)
         shift;
-        UNINSTALL+=("$1")
-        for i in $1; do CFG[$i]="u"; done
+        for i in $1; do CFG[$i]="restore"; done
+        ;;
+    -d|--discard)
+        shift;
+        for i in $1; do CFG[$i]="discard"; done
         ;;
 
     --nvim)
-        INSTALL+=("nvim")
-        CFG["nvim"]="i"
+        CFG["nvim"]="install"
         ;;
     --name)
-        INSTALL+=("name")
-        CFG["name"]="i"
+        CFG["name"]="install"
         ;;
 
     -h|--help)
@@ -825,16 +919,66 @@ exit
 done
 for posi in $(echo $options | sed 's/.* --//'); do POSITIONAL+=("$posi"); done
 
-echo "${Grn}Flag preview${Off}"
-echo "INSTALL    | ${INSTALL[@]}"
-echo "UNINSTALL  | ${UNINSTALL[@]}"
-echo "POSITIONAL | ${POSITIONAL[@]}"
-echo "CFG        | ${CFG[@]}"
-echo "config details:"
-for key in "${!CFG[@]}"; do
-    echo "cfg: $key -> ${CFG[$key]}"
+
+################################################################################################
+## open up configuration interactive file ######################################################
+################################################################################################
+# build file #
+##############
+tmpfile=$(mktemp /tmp/a2n-s.install.XXXXXX)
+trap  'rm "$tmpfile"' 0 1 15
+cat << EOF > "$tmpfile"
+# Installation process...
+#
+# my personal page: https://a2n-s.github.io/ 
+# my github   page: https://github.com/a2n-s 
+# my      dotfiles: https://github.com/a2n-s/dotfiles 
+#
+# Every line beginning with a '#' will be treated as a comment and thus discarded.
+
+EOF
+# echo "${CFG[$cfg]} $cfg" | sed 's/^none/none\&/;s/^uninstall/uninstall\&/;s/^install/install\&/;' >> $tmpfile
+for cfg in "${!CFG[@]}"; do
+    if [[ ! "${CFG[$cfg]}" =~ "none" ]]; then
+      echo "${CFG[$cfg]} $cfg" | sed 's/^none/discard/' >> $tmpfile
+    fi
 done
-echo "${Red}Aborting${Off}"
+cat << EOF >> "$tmpfile"
+
+# Commands:
+# i, install <config>   | install the config.
+# r, restore <config>   | restore the config.
+# d, discard <config>   | discard the config, same as commenting or deleting the line.
+# n, none <config>      | don't do anything with the config, same as commenting or deleting the line.
+
+EOF
+for cfg in "${!CFG[@]}"; do
+    if [[ "${CFG[$cfg]}" =~ "none" ]]; then
+      echo "${CFG[$cfg]} $cfg" | sed 's/^none/discard/' >> $tmpfile
+    fi
+done
+
+#############
+# open file #
+#############
+if [[ -n $VISUAL ]]; then
+  $VISUAL $tmpfile
+elif [[ -n $EDITOR ]]; then
+  $EDITOR $tmpfile
+else
+  vi $tmpfile
+fi
+
+################################################################################################
+## treat the user inputs #######################################################################
+################################################################################################
+# echo "POSITIONAL | ${POSITIONAL[@]}"
+for cfg in $(cat $tmpfile | grep -v "^\s*#" | grep -v "^\s*$" | grep -v "^discard" | sed 's/^/"/; s/$/"/; s/ /-/');
+do
+  echo $cfg | sed 's/"//g; s/-/ /'
+done
+echo -e "${Red}Aborting${Off}"
 exit 0;
 
 main
+
