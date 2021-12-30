@@ -807,19 +807,13 @@ init_CFG() {
   CFG["CONFIG:ncmpcpp"]="none"
 }
 
+
 install () {
-  if [[ ! -d "$DIR/old" ]]; then
-    echo "${Wrn}mkdir -p $DIR/old${Off}"
-    mkdir -p $DIR/old
-  fi
-  if [[ ! -d "$DIR/old/.config" ]]; then
-    echo "${Wrn}mkdir -p $DIR/old/.config${Off}"
-    mkdir -p $DIR/old/.config
-  fi
-  prompt_for_install_and_install "install_scripts" "Install all scripts from ${Src}$DIR/$SDIR${Off} to ${Dst}$HDIR/$SDIR${Off}?"
-  prompt_for_install_and_install "install_configs" "Install config files from ${Src}$DIR and ${Src}$DIR/$CDIR${Off} to ${Dst}$HDIR${Off} and ${Dst}$HDIR/$CDIR${Off} respectively?"
-  prompt_for_install_and_install "install_fonts"   "Install fonts? (not available)"
-  prompt_for_install_and_install "install_repos"   "Install all repos from my config to ${Dst}$HDIR/$RDIR${Off}?"
+  echo "$Normal ${Cmd}install ${Src}$1${Off}"; 
+}
+
+restore () {
+  echo "$Warning restore process NOT IMPLEMENTED YET, stay tuned."
 }
 
 ################################################################################################
@@ -833,17 +827,25 @@ $Normal Installing config...${Src}
 
 EOF
 
+  if [[ ! -d "$DIR/old" ]]; then
+    echo "${Wrn}mkdir -p $DIR/old${Off}"
+    mkdir -p $DIR/old
+  fi
+  if [[ ! -d "$DIR/old/.config" ]]; then
+    echo "${Wrn}mkdir -p $DIR/old/.config${Off}"
+    mkdir -p $DIR/old/.config
+  fi
   for cfg in $(cat $tmpfile | grep -v "^\s*#" | grep -v "^\s*$" | grep -v "^discard" | sed 's/^/"/; s/$/"/; s/ /-/'); do
     cmd=$(echo $cfg | sed 's/"//g; s/-/ /' | awk '{print $1}')
     arg=$(echo $cfg | sed 's/"//g; s/-/ /' | awk '{print $2}')
-    echo "$Normal ${Cmd}$cmd${Off} : ${Cyn}$arg${Off}" 
+    case $cmd in
+      install|i|inst|add|deploy|test) install $arg ;;
+      restore|remove|rm|delete|del|r) restore $arg ;;
+      *)                              echo "$Warning Unknown command ${Pkg}$cmd${Off} for ${Cyn}$arg${Off}";;
+    esac
   done
   # echo $options
   # echo "POSITIONAL | ${POSITIONAL[@]}"
-  echo -e "$Error Aborting"
-  exit 0;
-
-  install
   echo -e "\n$Normal Bye bye!!"
 }
 
