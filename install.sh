@@ -642,7 +642,7 @@ install_font() {
 }
 
 ################################################################################################
-## tools ans wrapping up #######################################################################
+## tools and wrapping up #######################################################################
 ################################################################################################
 prompt_for_install_and_install() {
   echo ""
@@ -658,6 +658,11 @@ prompt_for_install_and_install() {
     *) echo -e "$Error Invalid Option, Skipping..."
     ;;
   esac
+}
+
+display_center(){
+    columns="$(tput cols)"
+    printf "%*s\n" $(( (${#1} + columns) / 2)) "$1"
 }
 
 init_CFG() {
@@ -815,95 +820,7 @@ EOF
 ################################################################################################
 # define flags. #
 #################
-options=$(getopt -a -l help -o h \
-                    -l prog/sketchbook/FastLED-basics                   \
-                    -l prog/scsc/fil-rouge                              \
-                    -l prog/scsc/fgk                                    \
-                    -l prog/swarm-rescue-g1                             \
-                    -l sup/tatami                                       \
-                    -l sup/machine-learning                             \
-                    -l sup/imgDesc                                      \
-                    -l sup/flatland-project                             \
-                    -l sup/deep-learning                                \
-                    -l sup/stochastic                                   \
-                    -l sup/mcdm                                         \
-                    -l surf                                             \
-                    -l yay-git                                          \
-                    -l polybar                                          \
-                    -l lazycli                                          \
-                    -l dmscripts                                        \
-                    -l dmenu                                            \
-                    -l tabbed                                           \
-                    -l slock                                            \
-                    -l bash-insulter                                    \
-                    -l kitty                                            \
-                    -l Neovim-from-scratch                              \
-                    -l oh-my-bash                                       \
-                    -l uzbl                                             \
-                    -l oh-my-fish                                       \
-                    -l a2n-s                                            \
-                    -l wallpapers                                       \
-                    -l oh-my-zsh                                        \
-                    -l sites/nereuxofficial.github.io                   \
-                    -l sites/a2n-s.github.io/themes/hugo-theme-terminal \
-                    -l sites/a2n-s.github.io                            \
-                    -l dotfiles/atxr_dotfiles                           \
-                    -l research/playground_env                          \
-                    -l research/Imagine                                 \
-                    -l research/imagineXdial                            \
-                    -l research/gym_ma_toy                              \
-                    -l research/learning-to-communicate-pytorch         \
-                    -l _countdown.sh                                    \
-                    -l _parse_git_info.sh                               \
-                    -l _shortwd.sh                                      \
-                    -l _stopwatch.sh                                    \
-                    -l dmrun.sh                                         \
-                    -l lfrun.sh                                         \
-                    -l list.git-repos.diagnostic.sh                     \
-                    -l misc.nvim-renaming.sh                            \
-                    -l prompt.sh                                        \
-                    -l repo.info.sh                                     \
-                    -l screenshot.sh                                    \
-                    -l slock-cst.sh                                     \
-                    -l spectrWM-baraction.sh                            \
-                    -l togkb.sh                                         \
-                    -l tr2md.sh                                         \
-                    -l upl.sh                                           \
-                    -l wvenv.sh                                         \
-                    -l xtcl.sh                                          \
-                    -l ytdl.sh                                          \
-                    -l git                                              \
-                    -l htop                                             \
-                    -l bash                                             \
-                    -l fish                                             \
-                    -l zsh                                              \
-                    -l starship                                         \
-                    -l neofetch                                         \
-                    -l vim                                              \
-                    -l neovim                                           \
-                    -l x                                                \
-                    -l bspwm                                            \
-                    -l spectrwm                                         \
-                    -l alacritty                                        \
-                    -l kitty                                            \
-                    -l nitrogen                                         \
-                    -l slock                                            \
-                    -l xscreensaver                                     \
-                    -l polybar                                          \
-                    -l vifm                                             \
-                    -l lf                                               \
-                    -l surf                                             \
-                    -l tabbed                                           \
-                    -l wallpapers                                       \
-                    -l dmenu                                            \
-                    -l dmscripts                                        \
-                    -l lazygit                                          \
-                    -l tigrc                                            \
-                    -l tmux                                             \
-                    -l mpd                                              \
-                    -l mpv                                              \
-                    -l ncmpcpp                                          \
-                    -- "$@")
+options=$(getopt -a -l help -o h -- "$@")
 [ $? -eq 0 ] || {
     echo "Incorrect options provided"
     exit 1
@@ -918,184 +835,156 @@ init_CFG
 POSITIONAL=()
 while true; do
   case "$1" in
-  --prog/sketchbook/FastLED-basics)                    CFG["REPO:prog/sketchbook/FastLED-basics"]="restore";;
-  --prog/scsc/fil-rouge)                               CFG["REPO:prog/scsc/fil-rouge"]="restore";;
-  --prog/scsc/fgk)                                     CFG["REPO:prog/scsc/fgk"]="restore";;
-  --prog/swarm-rescue-g1)                              CFG["REPO:prog/swarm-rescue-g1"]="restore";;
-  --sup/tatami)                                        CFG["REPO:sup/tatami"]="restore";;
-  --sup/machine-learning)                              CFG["REPO:sup/machine-learning"]="restore";;
-  --sup/imgDesc)                                       CFG["REPO:sup/imgDesc"]="restore";;
-  --sup/flatland-project)                              CFG["REPO:sup/flatland-project"]="restore";;
-  --sup/deep-learning)                                 CFG["REPO:sup/deep-learning"]="restore";;
-  --sup/stochastic)                                    CFG["REPO:sup/stochastic"]="restore";;
-  --sup/mcdm)                                          CFG["REPO:sup/mcdm"]="restore";;
-  --surf)                                              CFG["REPO:surf"]="restore";;
-  --yay-git)                                           CFG["REPO:yay-git"]="restore";;
-  --polybar)                                           CFG["REPO:polybar"]="restore";;
-  --lazycli)                                           CFG["REPO:lazycli"]="restore";;
-  --dmscripts)                                         CFG["REPO:dmscripts"]="restore";;
-  --dmenu)                                             CFG["REPO:dmenu"]="restore";;
-  --tabbed)                                            CFG["REPO:tabbed"]="restore";;
-  --slock)                                             CFG["REPO:slock"]="restore";;
-  --bash-insulter)                                     CFG["REPO:bash-insulter"]="restore";;
-  --kitty)                                             CFG["REPO:kitty"]="restore";;
-  --Neovim-from-scratch)                               CFG["REPO:Neovim-from-scratch"]="restore";;
-  --oh-my-bash)                                        CFG["REPO:oh-my-bash"]="restore";;
-  --uzbl)                                              CFG["REPO:uzbl"]="restore";;
-  --oh-my-fish)                                        CFG["REPO:oh-my-fish"]="restore";;
-  --a2n-s)                                             CFG["REPO:a2n-s"]="restore";;
-  --wallpapers)                                        CFG["REPO:wallpapers"]="restore";;
-  --oh-my-zsh)                                         CFG["REPO:oh-my-zsh"]="restore";;
-  --sites/nereuxofficial.github.io)                    CFG["REPO:sites/nereuxofficial.github.io"]="restore";;
-  --sites/a2n-s.github.io/themes/hugo-theme-terminal)  CFG["REPO:sites/a2n-s.github.io/themes/hugo-theme-terminal"]="restore";;
-  --sites/a2n-s.github.io)                             CFG["REPO:sites/a2n-s.github.io"]="restore";;
-  --dotfiles/atxr_dotfiles)                            CFG["REPO:dotfiles/atxr_dotfiles"]="restore";;
-  --research/playground_env)                           CFG["REPO:research/playground_env"]="restore";;
-  --research/Imagine)                                  CFG["REPO:research/Imagine"]="restore";;
-  --research/imagineXdial)                             CFG["REPO:research/imagineXdial"]="restore";;
-  --research/gym_ma_toy)                               CFG["REPO:research/gym_ma_toy"]="restore";;
-  --research/learning-to-communicate-pytorch)          CFG["REPO:research/learning-to-communicate-pytorch"]="restore";;
-  --_countdown.sh)                                     CFG["SCRIPT:_countdown.sh"]="restore";;
-  --_parse_git_info.sh)                                CFG["SCRIPT:_parse_git_info.sh"]="restore";;
-  --_shortwd.sh)                                       CFG["SCRIPT:_shortwd.sh"]="restore";;
-  --_stopwatch.sh)                                     CFG["SCRIPT:_stopwatch.sh"]="restore";;
-  --dmrun.sh)                                          CFG["SCRIPT:dmrun.sh"]="restore";;
-  --lfrun.sh)                                          CFG["SCRIPT:lfrun.sh"]="restore";;
-  --list.git-repos.diagnostic.sh)                      CFG["SCRIPT:list.git-repos.diagnostic.sh"]="restore";;
-  --misc.nvim-renaming.sh)                             CFG["SCRIPT:misc.nvim-renaming.sh"]="restore";;
-  --prompt.sh)                                         CFG["SCRIPT:prompt.sh"]="restore";;
-  --repo.info.sh)                                      CFG["SCRIPT:repo.info.sh"]="restore";;
-  --screenshot.sh)                                     CFG["SCRIPT:screenshot.sh"]="restore";;
-  --slock-cst.sh)                                      CFG["SCRIPT:slock-cst.sh"]="restore";;
-  --spectrWM-baraction.sh)                             CFG["SCRIPT:spectrWM-baraction.sh"]="restore";;
-  --togkb.sh)                                          CFG["SCRIPT:togkb.sh"]="restore";;
-  --tr2md.sh)                                          CFG["SCRIPT:tr2md.sh"]="restore";;
-  --upl.sh)                                            CFG["SCRIPT:upl.sh"]="restore";;
-  --wvenv.sh)                                          CFG["SCRIPT:wvenv.sh"]="restore";;
-  --xtcl.sh)                                           CFG["SCRIPT:xtcl.sh"]="restore";;
-  --ytdl.sh)                                           CFG["SCRIPT:ytdl.sh"]="restore";;
-  --git)                                               CFG["CONFIG:git"]="restore";;
-  --htop)                                              CFG["CONFIG:htop"]="restore";;
-  --bash)                                              CFG["CONFIG:bash"]="restore";;
-  --fish)                                              CFG["CONFIG:fish"]="restore";;
-  --zsh)                                               CFG["CONFIG:zsh"]="restore";;
-  --starship)                                          CFG["CONFIG:starship"]="restore";;
-  --neofetch)                                          CFG["CONFIG:neofetch"]="restore";;
-  --vim)                                               CFG["CONFIG:vim"]="restore";;
-  --neovim)                                            CFG["CONFIG:neovim"]="restore";;
-  --x)                                                 CFG["CONFIG:x"]="restore";;
-  --bspwm)                                             CFG["CONFIG:bspwm"]="restore";;
-  --spectrwm)                                          CFG["CONFIG:spectrwm"]="restore";;
-  --alacritty)                                         CFG["CONFIG:alacritty"]="restore";;
-  --kitty)                                             CFG["CONFIG:kitty"]="restore";;
-  --nitrogen)                                          CFG["CONFIG:nitrogen"]="restore";;
-  --slock)                                             CFG["CONFIG:slock"]="restore";;
-  --xscreensaver)                                      CFG["CONFIG:xscreensaver"]="restore";;
-  --polybar)                                           CFG["CONFIG:polybar"]="restore";;
-  --vifm)                                              CFG["CONFIG:vifm"]="restore";;
-  --lf)                                                CFG["CONFIG:lf"]="restore";;
-  --surf)                                              CFG["CONFIG:surf"]="restore";;
-  --tabbed)                                            CFG["CONFIG:tabbed"]="restore";;
-  --wallpapers)                                        CFG["CONFIG:wallpapers"]="restore";;
-  --dmenu)                                             CFG["CONFIG:dmenu"]="restore";;
-  --dmscripts)                                         CFG["CONFIG:dmscripts"]="restore";;
-  --lazygit)                                           CFG["CONFIG:lazygit"]="restore";;
-  --tigrc)                                             CFG["CONFIG:tigrc"]="restore";;
-  --tmux)                                              CFG["CONFIG:tmux"]="restore";;
-  --mpd)                                               CFG["CONFIG:mpd"]="restore";;
-  --mpv)                                               CFG["CONFIG:mpv"]="restore";;
-  --ncmpcpp)                                           CFG["CONFIG:ncmpcpp"]="restore";;
-
   -h|--help)
-cat | less <<- EOF
-repo:  help -o h
-repo:  prog/sketchbook/FastLED-basics
-repo:  prog/scsc/fil-rouge
-repo:  prog/scsc/fgk
-repo:  prog/swarm-rescue-g1
-repo:  sup/tatami
-repo:  sup/machine-learning
-repo:  sup/imgDesc
-repo:  sup/flatland-project
-repo:  sup/deep-learning
-repo:  sup/stochastic
-repo:  sup/mcdm
-repo:  surf
-repo:  yay-git
-repo:  polybar
-repo:  lazycli
-repo:  dmscripts
-repo:  dmenu
-repo:  tabbed
-repo:  slock
-repo:  bash-insulter
-repo:  kitty
-repo:  Neovim-from-scratch
-repo:  oh-my-bash
-repo:  uzbl
-repo:  oh-my-fish
-repo:  a2n-s
-repo:  wallpapers
-repo:  oh-my-zsh
-repo:  sites/nereuxofficial.github.io
-repo:  sites/a2n-s.github.io/themes/hugo-theme-terminal
-repo:  sites/a2n-s.github.io
-repo:  dotfiles/atxr_dotfiles
-repo:  research/playground_env
-repo:  research/Imagine
-repo:  research/imagineXdial
-repo:  research/gym_ma_toy
-repo:  research/learning-to-communicate-pytorch
-script:  _countdown.sh
-script:  _parse_git_info.sh
-script:  _shortwd.sh
-script:  _stopwatch.sh
-script:  dmrun.sh
-script:  lfrun.sh
-script:  list.git-repos.diagnostic.sh
-script:  misc.nvim-renaming.sh
-script:  prompt.sh
-script:  repo.info.sh
-script:  screenshot.sh
-script:  slock-cst.sh
-script:  spectrWM-baraction.sh
-script:  togkb.sh
-script:  tr2md.sh
-script:  upl.sh
-script:  wvenv.sh
-script:  xtcl.sh
-script:  ytdl.sh
-config:  git
-config:  htop
-config:  bash
-config:  fish
-config:  zsh
-config:  starship
-config:  neofetch
-config:  vim
-config:  neovim
-config:  x
-config:  bspwm
-config:  spectrwm
-config:  alacritty
-config:  kitty
-config:  nitrogen
-config:  slock
-config:  xscreensaver
-config:  polybar
-config:  vifm
-config:  lf
-config:  surf
-config:  tabbed
-config:  wallpapers
-config:  dmenu
-config:  dmscripts
-config:  lazygit
-config:  tigrc
-config:  tmux
-config:  mpd
-config:  mpv
-config:  ncmpcpp
+cat -e | less <<- EOF
+NAME
+       ./install.sh - installs/removes interactively the config of a2n-s on your arch machine.
+
+SYNOPSIS
+       ./install.sh -cfgToRemove_1 -cfgToRemove_2 +cfgToInstall_1 +cfgToInstall_2 -cfgToRemove_3 ...
+
+DESCRIPTION
+       This is my install script.
+       One installs a snippet of my config with '+name-of-config-to-install' or removes one with '-name-of-config-to-remove'.
+       Note the use of '-' to remove stuff and '+' to indicate that the config should be installed.
+
+       There are four categories of config that one might find in my config files, with their particularities:
+         - REPOS:
+              They get installed, i.e. cloned in the \`\$HDIR/\$RDIR\` directory. The path is given in the flag name, e.g. the repo for my personal website in located at \`~/repos/sites\` under the name of \`a2n-s.github.io\`, thus the path is \`sites/a2n-s.github.io\`. Finally once the repo has been pulled, the origin should point towards my github account and the upstream is also set to reflect original forks.
+              If the repo already exists on your machine, the install will prompt you to backup it and then retry.
+  
+         - SCRIPTS:
+              All the scripts I use, the chosen ones will be installed under \`\$HDIR/\$SDIR\`.
+              Your scripts, if in conflict with mine, will be backed up in \`\$DIR/old/\$SDIR\` to be recovered later.
+
+         - CONFIG FILES:
+              The config files I use. They will be installed either under \`\$HDIR\` or \`\$HDIR/\$CDIR\`.
+              Your config files, if in conflict with mine, will be backed up in \`\$DIR/old\` or \`\$DIR/old/\$CDIR\` to be recovered later.
+
+         - FONTS:
+              coming soon...
+
+OPTIONS
+       -h, --help
+           Display this help message and exits without installing nor removing anything.
+
+      Below one can find the list of all the config one can install:
+        REPOS:
+          +/-prog/sketchbook/FastLED-basics
+          +/-prog/scsc/fil-rouge
+          +/-prog/scsc/fgk
+          +/-prog/swarm-rescue-g1
+          +/-sup/tatami
+          +/-sup/machine-learning
+          +/-sup/imgDesc
+          +/-sup/flatland-project
+          +/-sup/deep-learning
+          +/-sup/stochastic
+          +/-sup/mcdm
+          +/-surf
+          +/-yay-git
+          +/-polybar
+          +/-lazycli
+          +/-dmscripts
+          +/-dmenu
+          +/-tabbed
+          +/-slock
+          +/-bash-insulter
+          +/-kitty
+          +/-Neovim-from-scratch
+          +/-oh-my-bash
+          +/-uzbl
+          +/-oh-my-fish
+          +/-a2n-s
+          +/-wallpapers
+          +/-oh-my-zsh
+          +/-sites/nereuxofficial.github.io
+          +/-sites/a2n-s.github.io/themes/hugo-theme-terminal
+          +/-sites/a2n-s.github.io
+          +/-dotfiles/atxr_dotfiles
+          +/-research/playground_env
+          +/-research/Imagine
+          +/-research/imagineXdial
+          +/-research/gym_ma_toy
+          +/-research/learning-to-communicate-pytorch
+
+        SCRIPTS:
+          +/-_countdown.sh
+          +/-_parse_git_info.sh
+          +/-_shortwd.sh
+          +/-_stopwatch.sh
+          +/-dmrun.sh
+          +/-lfrun.sh
+          +/-list.git-repos.diagnostic.sh
+          +/-misc.nvim-renaming.sh
+          +/-prompt.sh
+          +/-repo.info.sh
+          +/-screenshot.sh
+          +/-slock-cst.sh
+          +/-spectrWM-baraction.sh
+          +/-togkb.sh
+          +/-tr2md.sh
+          +/-upl.sh
+          +/-wvenv.sh
+          +/-xtcl.sh
+          +/-ytdl.sh
+
+        MISCELLANEOUS CONFIG FILES:
+          +/-git
+          +/-htop
+          +/-bash
+          +/-fish
+          +/-zsh
+          +/-starship
+          +/-neofetch
+          +/-vim
+          +/-neovim
+          +/-x
+          +/-bspwm
+          +/-spectrwm
+          +/-alacritty
+          +/-kitty
+          +/-nitrogen
+          +/-slock
+          +/-xscreensaver
+          +/-polybar
+          +/-vifm
+          +/-lf
+          +/-surf
+          +/-tabbed
+          +/-wallpapers
+          +/-dmenu
+          +/-dmscripts
+          +/-lazygit
+          +/-tigrc
+          +/-tmux
+          +/-mpd
+          +/-mpv
+          +/-ncmpcpp
+
+        FONTS:
+          coming soon...
+
+ENVIRONMENT
+       DIR  = directory where the config has been pulled, computed with pwd by install.sh
+       HDIR = \$HOME
+       CDIR = .config
+       SDIR = scripts
+       RDIR = repos
+
+EXAMPLES
+
+AUTHOR
+       More about me and my config below:
+       
+         my personal page: https://a2n-s.github.io/
+         my github   page: https://github.com/a2n-s
+         my      dotfiles: https://github.com/a2n-s/dotfiles
+
+REPORTING BUGS
+       For bug reports, use the issue tracker at https://github.com/a2n-s/dotfiles/issues.
+
+                                         $(display_center 2021-12-30)
 EOF
 exit
       ;;
@@ -1114,92 +1003,179 @@ for posi in $(echo $options | sed 's/.*--//'); do POSITIONAL+=("$posi"); done
 for posi in "${POSITIONAL[@]}"; do
   case "$posi" in
   "'+prog/sketchbook/FastLED-basics'")                    CFG["REPO:prog/sketchbook/FastLED-basics"]="install";;
+  "'-prog/sketchbook/FastLED-basics'")                    CFG["REPO:prog/sketchbook/FastLED-basics"]="restore";;
   "'+prog/scsc/fil-rouge'")                               CFG["REPO:prog/scsc/fil-rouge"]="install";;
+  "'-prog/scsc/fil-rouge'")                               CFG["REPO:prog/scsc/fil-rouge"]="restore";;
   "'+prog/scsc/fgk'")                                     CFG["REPO:prog/scsc/fgk"]="install";;
+  "'-prog/scsc/fgk'")                                     CFG["REPO:prog/scsc/fgk"]="restore";;
   "'+prog/swarm-rescue-g1'")                              CFG["REPO:prog/swarm-rescue-g1"]="install";;
+  "'-prog/swarm-rescue-g1'")                              CFG["REPO:prog/swarm-rescue-g1"]="restore";;
   "'+sup/tatami'")                                        CFG["REPO:sup/tatami"]="install";;
+  "'-sup/tatami'")                                        CFG["REPO:sup/tatami"]="restore";;
   "'+sup/machine-learning'")                              CFG["REPO:sup/machine-learning"]="install";;
+  "'-sup/machine-learning'")                              CFG["REPO:sup/machine-learning"]="restore";;
   "'+sup/imgDesc'")                                       CFG["REPO:sup/imgDesc"]="install";;
+  "'-sup/imgDesc'")                                       CFG["REPO:sup/imgDesc"]="restore";;
   "'+sup/flatland-project'")                              CFG["REPO:sup/flatland-project"]="install";;
+  "'-sup/flatland-project'")                              CFG["REPO:sup/flatland-project"]="restore";;
   "'+sup/deep-learning'")                                 CFG["REPO:sup/deep-learning"]="install";;
+  "'-sup/deep-learning'")                                 CFG["REPO:sup/deep-learning"]="restore";;
   "'+sup/stochastic'")                                    CFG["REPO:sup/stochastic"]="install";;
+  "'-sup/stochastic'")                                    CFG["REPO:sup/stochastic"]="restore";;
   "'+sup/mcdm'")                                          CFG["REPO:sup/mcdm"]="install";;
+  "'-sup/mcdm'")                                          CFG["REPO:sup/mcdm"]="restore";;
   "'+surf'")                                              CFG["REPO:surf"]="install";;
+  "'-surf'")                                              CFG["REPO:surf"]="restore";;
   "'+yay-git'")                                           CFG["REPO:yay-git"]="install";;
+  "'-yay-git'")                                           CFG["REPO:yay-git"]="restore";;
   "'+polybar'")                                           CFG["REPO:polybar"]="install";;
+  "'-polybar'")                                           CFG["REPO:polybar"]="restore";;
   "'+lazycli'")                                           CFG["REPO:lazycli"]="install";;
+  "'-lazycli'")                                           CFG["REPO:lazycli"]="restore";;
   "'+dmscripts'")                                         CFG["REPO:dmscripts"]="install";;
+  "'-dmscripts'")                                         CFG["REPO:dmscripts"]="restore";;
   "'+dmenu'")                                             CFG["REPO:dmenu"]="install";;
+  "'-dmenu'")                                             CFG["REPO:dmenu"]="restore";;
   "'+tabbed'")                                            CFG["REPO:tabbed"]="install";;
+  "'-tabbed'")                                            CFG["REPO:tabbed"]="restore";;
   "'+slock'")                                             CFG["REPO:slock"]="install";;
+  "'-slock'")                                             CFG["REPO:slock"]="restore";;
   "'+bash-insulter'")                                     CFG["REPO:bash-insulter"]="install";;
+  "'-bash-insulter'")                                     CFG["REPO:bash-insulter"]="restore";;
   "'+kitty'")                                             CFG["REPO:kitty"]="install";;
+  "'-kitty'")                                             CFG["REPO:kitty"]="restore";;
   "'+Neovim-from-scratch'")                               CFG["REPO:Neovim-from-scratch"]="install";;
+  "'-Neovim-from-scratch'")                               CFG["REPO:Neovim-from-scratch"]="restore";;
   "'+oh-my-bash'")                                        CFG["REPO:oh-my-bash"]="install";;
+  "'-oh-my-bash'")                                        CFG["REPO:oh-my-bash"]="restore";;
   "'+uzbl'")                                              CFG["REPO:uzbl"]="install";;
+  "'-uzbl'")                                              CFG["REPO:uzbl"]="restore";;
   "'+oh-my-fish'")                                        CFG["REPO:oh-my-fish"]="install";;
+  "'-oh-my-fish'")                                        CFG["REPO:oh-my-fish"]="restore";;
   "'+a2n-s'")                                             CFG["REPO:a2n-s"]="install";;
+  "'-a2n-s'")                                             CFG["REPO:a2n-s"]="restore";;
   "'+wallpapers'")                                        CFG["REPO:wallpapers"]="install";;
+  "'-wallpapers'")                                        CFG["REPO:wallpapers"]="restore";;
   "'+oh-my-zsh'")                                         CFG["REPO:oh-my-zsh"]="install";;
+  "'-oh-my-zsh'")                                         CFG["REPO:oh-my-zsh"]="restore";;
   "'+sites/nereuxofficial.github.io'")                    CFG["REPO:sites/nereuxofficial.github.io"]="install";;
+  "'-sites/nereuxofficial.github.io'")                    CFG["REPO:sites/nereuxofficial.github.io"]="restore";;
   "'+sites/a2n-s.github.io/themes/hugo-theme-terminal'")  CFG["REPO:sites/a2n-s.github.io/themes/hugo-theme-terminal"]="install";;
+  "'-sites/a2n-s.github.io/themes/hugo-theme-terminal'")  CFG["REPO:sites/a2n-s.github.io/themes/hugo-theme-terminal"]="restore";;
   "'+sites/a2n-s.github.io'")                             CFG["REPO:sites/a2n-s.github.io"]="install";;
+  "'-sites/a2n-s.github.io'")                             CFG["REPO:sites/a2n-s.github.io"]="restore";;
   "'+dotfiles/atxr_dotfiles'")                            CFG["REPO:dotfiles/atxr_dotfiles"]="install";;
+  "'-dotfiles/atxr_dotfiles'")                            CFG["REPO:dotfiles/atxr_dotfiles"]="restore";;
   "'+research/playground_env'")                           CFG["REPO:research/playground_env"]="install";;
+  "'-research/playground_env'")                           CFG["REPO:research/playground_env"]="restore";;
   "'+research/Imagine'")                                  CFG["REPO:research/Imagine"]="install";;
+  "'-research/Imagine'")                                  CFG["REPO:research/Imagine"]="restore";;
   "'+research/imagineXdial'")                             CFG["REPO:research/imagineXdial"]="install";;
+  "'-research/imagineXdial'")                             CFG["REPO:research/imagineXdial"]="restore";;
   "'+research/gym_ma_toy'")                               CFG["REPO:research/gym_ma_toy"]="install";;
+  "'-research/gym_ma_toy'")                               CFG["REPO:research/gym_ma_toy"]="restore";;
   "'+research/learning-to-communicate-pytorch'")          CFG["REPO:research/learning-to-communicate-pytorch"]="install";;
+  "'-research/learning-to-communicate-pytorch'")          CFG["REPO:research/learning-to-communicate-pytorch"]="restore";;
   "'+_countdown.sh'")                                     CFG["SCRIPT:_countdown.sh"]="install";;
+  "'-_countdown.sh'")                                     CFG["SCRIPT:_countdown.sh"]="restore";;
   "'+_parse_git_info.sh'")                                CFG["SCRIPT:_parse_git_info.sh"]="install";;
+  "'-_parse_git_info.sh'")                                CFG["SCRIPT:_parse_git_info.sh"]="restore";;
   "'+_shortwd.sh'")                                       CFG["SCRIPT:_shortwd.sh"]="install";;
+  "'-_shortwd.sh'")                                       CFG["SCRIPT:_shortwd.sh"]="restore";;
   "'+_stopwatch.sh'")                                     CFG["SCRIPT:_stopwatch.sh"]="install";;
+  "'-_stopwatch.sh'")                                     CFG["SCRIPT:_stopwatch.sh"]="restore";;
   "'+dmrun.sh'")                                          CFG["SCRIPT:dmrun.sh"]="install";;
+  "'-dmrun.sh'")                                          CFG["SCRIPT:dmrun.sh"]="restore";;
   "'+lfrun.sh'")                                          CFG["SCRIPT:lfrun.sh"]="install";;
+  "'-lfrun.sh'")                                          CFG["SCRIPT:lfrun.sh"]="restore";;
   "'+list.git-repos.diagnostic.sh'")                      CFG["SCRIPT:list.git-repos.diagnostic.sh"]="install";;
+  "'-list.git-repos.diagnostic.sh'")                      CFG["SCRIPT:list.git-repos.diagnostic.sh"]="restore";;
   "'+misc.nvim-renaming.sh'")                             CFG["SCRIPT:misc.nvim-renaming.sh"]="install";;
+  "'-misc.nvim-renaming.sh'")                             CFG["SCRIPT:misc.nvim-renaming.sh"]="restore";;
   "'+prompt.sh'")                                         CFG["SCRIPT:prompt.sh"]="install";;
+  "'-prompt.sh'")                                         CFG["SCRIPT:prompt.sh"]="restore";;
   "'+repo.info.sh'")                                      CFG["SCRIPT:repo.info.sh"]="install";;
+  "'-repo.info.sh'")                                      CFG["SCRIPT:repo.info.sh"]="restore";;
   "'+screenshot.sh'")                                     CFG["SCRIPT:screenshot.sh"]="install";;
+  "'-screenshot.sh'")                                     CFG["SCRIPT:screenshot.sh"]="restore";;
   "'+slock-cst.sh'")                                      CFG["SCRIPT:slock-cst.sh"]="install";;
+  "'-slock-cst.sh'")                                      CFG["SCRIPT:slock-cst.sh"]="restore";;
   "'+spectrWM-baraction.sh'")                             CFG["SCRIPT:spectrWM-baraction.sh"]="install";;
+  "'-spectrWM-baraction.sh'")                             CFG["SCRIPT:spectrWM-baraction.sh"]="restore";;
   "'+togkb.sh'")                                          CFG["SCRIPT:togkb.sh"]="install";;
+  "'-togkb.sh'")                                          CFG["SCRIPT:togkb.sh"]="restore";;
   "'+tr2md.sh'")                                          CFG["SCRIPT:tr2md.sh"]="install";;
+  "'-tr2md.sh'")                                          CFG["SCRIPT:tr2md.sh"]="restore";;
   "'+upl.sh'")                                            CFG["SCRIPT:upl.sh"]="install";;
+  "'-upl.sh'")                                            CFG["SCRIPT:upl.sh"]="restore";;
   "'+wvenv.sh'")                                          CFG["SCRIPT:wvenv.sh"]="install";;
+  "'-wvenv.sh'")                                          CFG["SCRIPT:wvenv.sh"]="restore";;
   "'+xtcl.sh'")                                           CFG["SCRIPT:xtcl.sh"]="install";;
+  "'-xtcl.sh'")                                           CFG["SCRIPT:xtcl.sh"]="restore";;
   "'+ytdl.sh'")                                           CFG["SCRIPT:ytdl.sh"]="install";;
+  "'-ytdl.sh'")                                           CFG["SCRIPT:ytdl.sh"]="restore";;
   "'+git'")                                               CFG["CONFIG:git"]="install";;
+  "'-git'")                                               CFG["CONFIG:git"]="restore";;
   "'+htop'")                                              CFG["CONFIG:htop"]="install";;
+  "'-htop'")                                              CFG["CONFIG:htop"]="restore";;
   "'+bash'")                                              CFG["CONFIG:bash"]="install";;
+  "'-bash'")                                              CFG["CONFIG:bash"]="restore";;
   "'+fish'")                                              CFG["CONFIG:fish"]="install";;
+  "'-fish'")                                              CFG["CONFIG:fish"]="restore";;
   "'+zsh'")                                               CFG["CONFIG:zsh"]="install";;
+  "'-zsh'")                                               CFG["CONFIG:zsh"]="restore";;
   "'+starship'")                                          CFG["CONFIG:starship"]="install";;
+  "'-starship'")                                          CFG["CONFIG:starship"]="restore";;
   "'+neofetch'")                                          CFG["CONFIG:neofetch"]="install";;
+  "'-neofetch'")                                          CFG["CONFIG:neofetch"]="restore";;
   "'+vim'")                                               CFG["CONFIG:vim"]="install";;
+  "'-vim'")                                               CFG["CONFIG:vim"]="restore";;
   "'+neovim'")                                            CFG["CONFIG:neovim"]="install";;
+  "'-neovim'")                                            CFG["CONFIG:neovim"]="restore";;
   "'+x'")                                                 CFG["CONFIG:x"]="install";;
+  "'-x'")                                                 CFG["CONFIG:x"]="restore";;
   "'+bspwm'")                                             CFG["CONFIG:bspwm"]="install";;
+  "'-bspwm'")                                             CFG["CONFIG:bspwm"]="restore";;
   "'+spectrwm'")                                          CFG["CONFIG:spectrwm"]="install";;
+  "'-spectrwm'")                                          CFG["CONFIG:spectrwm"]="restore";;
   "'+alacritty'")                                         CFG["CONFIG:alacritty"]="install";;
+  "'-alacritty'")                                         CFG["CONFIG:alacritty"]="restore";;
   "'+kitty'")                                             CFG["CONFIG:kitty"]="install";;
+  "'-kitty'")                                             CFG["CONFIG:kitty"]="restore";;
   "'+nitrogen'")                                          CFG["CONFIG:nitrogen"]="install";;
+  "'-nitrogen'")                                          CFG["CONFIG:nitrogen"]="restore";;
   "'+slock'")                                             CFG["CONFIG:slock"]="install";;
+  "'-slock'")                                             CFG["CONFIG:slock"]="restore";;
   "'+xscreensaver'")                                      CFG["CONFIG:xscreensaver"]="install";;
+  "'-xscreensaver'")                                      CFG["CONFIG:xscreensaver"]="restore";;
   "'+polybar'")                                           CFG["CONFIG:polybar"]="install";;
+  "'-polybar'")                                           CFG["CONFIG:polybar"]="restore";;
   "'+vifm'")                                              CFG["CONFIG:vifm"]="install";;
+  "'-vifm'")                                              CFG["CONFIG:vifm"]="restore";;
   "'+lf'")                                                CFG["CONFIG:lf"]="install";;
+  "'-lf'")                                                CFG["CONFIG:lf"]="restore";;
   "'+surf'")                                              CFG["CONFIG:surf"]="install";;
+  "'-surf'")                                              CFG["CONFIG:surf"]="restore";;
   "'+tabbed'")                                            CFG["CONFIG:tabbed"]="install";;
+  "'-tabbed'")                                            CFG["CONFIG:tabbed"]="restore";;
   "'+wallpapers'")                                        CFG["CONFIG:wallpapers"]="install";;
+  "'-wallpapers'")                                        CFG["CONFIG:wallpapers"]="restore";;
   "'+dmenu'")                                             CFG["CONFIG:dmenu"]="install";;
+  "'-dmenu'")                                             CFG["CONFIG:dmenu"]="restore";;
   "'+dmscripts'")                                         CFG["CONFIG:dmscripts"]="install";;
+  "'-dmscripts'")                                         CFG["CONFIG:dmscripts"]="restore";;
   "'+lazygit'")                                           CFG["CONFIG:lazygit"]="install";;
+  "'-lazygit'")                                           CFG["CONFIG:lazygit"]="restore";;
   "'+tigrc'")                                             CFG["CONFIG:tigrc"]="install";;
+  "'-tigrc'")                                             CFG["CONFIG:tigrc"]="restore";;
   "'+tmux'")                                              CFG["CONFIG:tmux"]="install";;
+  "'-tmux'")                                              CFG["CONFIG:tmux"]="restore";;
   "'+mpd'")                                               CFG["CONFIG:mpd"]="install";;
+  "'-mpd'")                                               CFG["CONFIG:mpd"]="restore";;
   "'+mpv'")                                               CFG["CONFIG:mpv"]="install";;
+  "'-mpv'")                                               CFG["CONFIG:mpv"]="restore";;
   "'+ncmpcpp'")                                           CFG["CONFIG:ncmpcpp"]="install";;
+  "'-ncmpcpp'")                                           CFG["CONFIG:ncmpcpp"]="restore";;
     *)
       echo -e "$Error Unknown flag ${Pkg}$posi${Off}"
       exit 2
@@ -1215,12 +1191,6 @@ done
 tmpfile=$(mktemp /tmp/a2n-s.install.XXXXXX)
 trap  'rm "$tmpfile"' 0 1 15
 cat << EOF > "$tmpfile"
-# Installation process...
-#
-# my personal page: https://a2n-s.github.io/ 
-# my github   page: https://github.com/a2n-s 
-# my      dotfiles: https://github.com/a2n-s/dotfiles 
-#
 # Every line beginning with a '#' will be treated as a comment and thus discarded.
 
 EOF
