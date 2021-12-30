@@ -861,6 +861,8 @@ EOF
 ################################################################################################
 ## define and parse the flags and arguments ####################################################
 ################################################################################################
+# define flags. #
+#################
 options=$(getopt -a -o h         \
                     -l help      \
                     -o i::       \
@@ -869,6 +871,9 @@ options=$(getopt -a -o h         \
                     -l restore:: \
                     -o d::       \
                     -l discard:: \
+                    -o b         \
+                    -l bash      \
+                    -o n         \
                     -l nvim      \
                     -- "$@")
 [ $? -eq 0 ] || {
@@ -879,46 +884,74 @@ eval set -- "$options"
 
 declare -A CFG
 init_CFG
+########################
+# parse regular flags. #
+########################
 POSITIONAL=()
-# echo $options
 while true; do
-    case "$1" in
-    -i|--install)
-        shift;
-        for i in $1; do CFG[$i]="install"; done
-        ;;
-    -r|--restore)
-        shift;
-        for i in $1; do CFG[$i]="restore"; done
-        ;;
-    -d|--discard)
-        shift;
-        for i in $1; do CFG[$i]="discard"; done
-        ;;
+  case "$1" in
+  -i|--install)
+    shift;
+    for i in $1; do CFG[$i]="install"; done
+    ;;
+  -r|--restore)
+    shift;
+    for i in $1; do
+      if [[ ! CFG[$i] ]]; then
+        echo "${Red}Unknown config $i${Off}"
+        exit 2
+      fi
+      CFG[$i]="restore"; done
+    ;;
+  -d|--discard)
+    shift;
+    for i in $1; do CFG[$i]="discard"; done
+    ;;
 
-    --nvim)
-        CFG["nvim"]="install"
-        ;;
-    --name)
-        CFG["name"]="install"
-        ;;
+  --bash)
+    CFG["bash"]="restore"
+    ;;
+  --nvim)
+    CFG["nvim"]="restore"
+    ;;
+  --name)
+    CFG["name"]="restore"
+    ;;
 
-    -h|--help)
+  -h|--help)
 cat <<- EOF
 this will be the help
 EOF
 exit
-        ;;
+      ;;
 
-    --)
-        shift
-        break
-        ;;
-    esac
+  --)
     shift
+    break
+    ;;
+  esac
+  shift
 done
+################################################
+# parse flags treated as positional arguments. #
+################################################
 for posi in $(echo $options | sed 's/.* --//'); do POSITIONAL+=("$posi"); done
-
+for posi in "${POSITIONAL[@]}"; do
+  case "$posi" in
+    "'+bash'"|"'+b'")
+        CFG["bash"]="install"
+        ;;
+    "'+nvim'"|"'+n'")
+        CFG["nvim"]="install"
+        ;;
+    "'+name'"|"'+n'")
+        CFG["name"]="install"
+        ;;
+    *)
+      echo -e "${Red}Unknown flag $posi${Off}"
+        ;;
+  esac
+done
 
 ################################################################################################
 ## open up configuration interactive file ######################################################
@@ -972,11 +1005,11 @@ fi
 ################################################################################################
 ## treat the user inputs #######################################################################
 ################################################################################################
-# echo "POSITIONAL | ${POSITIONAL[@]}"
-for cfg in $(cat $tmpfile | grep -v "^\s*#" | grep -v "^\s*$" | grep -v "^discard" | sed 's/^/"/; s/$/"/; s/ /-/');
-do
+for cfg in $(cat $tmpfile | grep -v "^\s*#" | grep -v "^\s*$" | grep -v "^discard" | sed 's/^/"/; s/$/"/; s/ /-/'); do
   echo $cfg | sed 's/"//g; s/-/ /'
 done
+# echo $options
+# echo "POSITIONAL | ${POSITIONAL[@]}"
 echo -e "${Red}Aborting${Off}"
 exit 0;
 
