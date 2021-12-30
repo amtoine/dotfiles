@@ -753,10 +753,10 @@ init_CFG() {
 install () {
   echo "$Normal ${Cmd}install ${Src}$1${Off}"; 
   case $1 in
-    CONFIG:*) echo this is a config;;
-    REPO:*)   echo this is a repo;;
-    SCRIPT:*) echo this is a script;;
-    FONT:*)   echo this is a font;;
+    CONFIG:*) install_$1;;
+    REPO:*)   install_repo $1;;
+    SCRIPT:*) install_script $1;;
+    FONT:*)   install_font $1;;
     *)        echo "$Warning Unknown argument ${Cyn}$arg${Off}";;
   esac
 }
