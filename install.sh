@@ -113,44 +113,44 @@ Error="${Err}[!]${Off}"
 # for repo in ${repos[@]}; do
 #   git -C $repo rmtv | sed 's/.*\s\+\(.*\)\s\+.*/\1/' | uniq
 # done
-repositories=()
-repositories+=("prog/sketchbook/FastLED-basics git@github.com:s-marley/FastLED-basics.git ")
-repositories+=("prog/scsc/fil-rouge git@github.com:a2n-s/fil-rouge.git git@github.com:iScsc/fil-rouge.git")
-repositories+=("prog/scsc/fgk git@github.com:a2n-s/fgk.git ")
-repositories+=("prog/swarm-rescue-g1 git@github.com:a2n-s/swarm-rescue-g1.git git@github.com:atxr/swarm-rescue-g1.git")
-repositories+=("sup/tatami https://github.com/a2n-s/tatami.git ")
-repositories+=("sup/machine-learning git@github.com:a2n-s/machine-learning.git git@github.com:SupaeroDataScience/machine-learning.git")
-repositories+=("sup/imgDesc git@github.com:a2n-s/imgDesc.git ")
-repositories+=("sup/flatland-project git@github.com:abfariah/flatland-project.git https://github.com/SupaeroDataScience/flatland-project")
-repositories+=("sup/deep-learning git@github.com:a2n-s/deep-learning.git git@github.com:SupaeroDataScience/deep-learning.git")
-repositories+=("sup/stochastic git@github.com:a2n-s/stochastic.git https://github.com/SupaeroDataScience/stochastic.git")
-repositories+=("sup/mcdm git@github.com:a2n-s/mcdm.git ")
-repositories+=("surf git@github.com:a2n-s/surf.git git://git.suckless.org/surf")
-repositories+=("yay-git https://aur.archlinux.org/yay-git.git ")
-repositories+=("polybar git@github.com:a2n-s/polybar-themes.git git@github.com:adi1090x/polybar-themes.git")
-repositories+=("lazycli git@github.com:jesseduffield/lazycli.git ")
-repositories+=("dmscripts git@github.com:a2n-s/dmscripts.git https://gitlab.com/dwt1/dmscripts.git")
-repositories+=("dmenu git@github.com:a2n-s/dmenu.git git://git.suckless.org/dmenu")
-repositories+=("tabbed git@github.com:a2n-s/tabbed.git git://git.suckless.org/tabbed")
-repositories+=("slock git@github.com:a2n-s/slock.git https://git.suckless.org/slock")
-repositories+=("bash-insulter git@github.com:a2n-s/bash-insulter.git ")
-repositories+=("kitty git@github.com:a2n-s/kitty.git git@github.com:kovidgoyal/kitty.git")
-repositories+=("Neovim-from-scratch git@github.com:LunarVim/Neovim-from-scratch.git ")
-repositories+=("oh-my-bash git@github.com:a2n-s/oh-my-bash.git git@github.com:ohmybash/oh-my-bash.git")
-repositories+=("uzbl git://github.com/uzbl/uzbl.git ")
-repositories+=("oh-my-fish git@github.com:a2n-s/oh-my-fish.git git@github.com:oh-my-fish/oh-my-fish.git")
-repositories+=("a2n-s git@github.com:a2n-s/a2n-s.git ")
-repositories+=("wallpapers git@github.com:a2n-s/wallpapers.git ")
-repositories+=("oh-my-zsh git@github.com:a2n-s/ohmyzsh.git git@github.com:ohmyzsh/ohmyzsh.git")
-repositories+=("sites/nereuxofficial.github.io git@github.com:Nereuxofficial/nereuxofficial.github.io.git ")
-repositories+=("sites/a2n-s.github.io/themes/hugo-theme-terminal git@github.com:a2n-s/hugo-theme-terminal.git git@github.com:panr/hugo-theme-terminal.git")
-repositories+=("sites/a2n-s.github.io git@github.com:a2n-s/a2n-s.github.io.git ")
-repositories+=("dotfiles/atxr_dotfiles https://github.com/atxr/dotfiles.git ")
-repositories+=("research/playground_env git@github.com:flowersteam/playground_env.git ")
-repositories+=("research/Imagine https://github.com/flowersteam/Imagine.git ")
-repositories+=("research/imagineXdial https://github.com/SuReLI/imagineXdial.git ")
-repositories+=("research/gym_ma_toy https://github.com/MehdiZouitine/gym_ma_toy ")
-repositories+=("research/learning-to-communicate-pytorch https://github.com/minqi/learning-to-communicate-pytorch.git ")
+declare -A repositories
+repositories["prog/sketchbook/FastLED-basics"]="git@github.com:s-marley/FastLED-basics.git "
+repositories["prog/scsc/fil-rouge"]="git@github.com:a2n-s/fil-rouge.git git@github.com:iScsc/fil-rouge.git"
+repositories["prog/scsc/fgk"]="git@github.com:a2n-s/fgk.git "
+repositories["prog/swarm-rescue-g1"]="git@github.com:a2n-s/swarm-rescue-g1.git git@github.com:atxr/swarm-rescue-g1.git"
+repositories["sup/tatami"]="https://github.com/a2n-s/tatami.git "
+repositories["sup/machine-learning"]="git@github.com:a2n-s/machine-learning.git git@github.com:SupaeroDataScience/machine-learning.git"
+repositories["sup/imgDesc"]="git@github.com:a2n-s/imgDesc.git "
+repositories["sup/flatland-project"]="git@github.com:abfariah/flatland-project.git https://github.com/SupaeroDataScience/flatland-project"
+repositories["sup/deep-learning"]="git@github.com:a2n-s/deep-learning.git git@github.com:SupaeroDataScience/deep-learning.git"
+repositories["sup/stochastic"]="git@github.com:a2n-s/stochastic.git https://github.com/SupaeroDataScience/stochastic.git"
+repositories["sup/mcdm"]="git@github.com:a2n-s/mcdm.git "
+repositories["surf"]="git@github.com:a2n-s/surf.git git://git.suckless.org/surf"
+repositories["yay-git"]="https://aur.archlinux.org/yay-git.git "
+repositories["polybar"]="git@github.com:a2n-s/polybar-themes.git git@github.com:adi1090x/polybar-themes.git"
+repositories["lazycli"]="git@github.com:jesseduffield/lazycli.git "
+repositories["dmscripts"]="git@github.com:a2n-s/dmscripts.git https://gitlab.com/dwt1/dmscripts.git"
+repositories["dmenu"]="git@github.com:a2n-s/dmenu.git git://git.suckless.org/dmenu"
+repositories["tabbed"]="git@github.com:a2n-s/tabbed.git git://git.suckless.org/tabbed"
+repositories["slock"]="git@github.com:a2n-s/slock.git https://git.suckless.org/slock"
+repositories["bash-insulter"]="git@github.com:a2n-s/bash-insulter.git "
+repositories["kitty"]="git@github.com:a2n-s/kitty.git git@github.com:kovidgoyal/kitty.git"
+repositories["Neovim-from-scratch"]="git@github.com:LunarVim/Neovim-from-scratch.git "
+repositories["oh-my-bash"]="git@github.com:a2n-s/oh-my-bash.git git@github.com:ohmybash/oh-my-bash.git"
+repositories["uzbl"]="git://github.com/uzbl/uzbl.git "
+repositories["oh-my-fish"]="git@github.com:a2n-s/oh-my-fish.git git@github.com:oh-my-fish/oh-my-fish.git"
+repositories["a2n-s"]="git@github.com:a2n-s/a2n-s.git "
+repositories["wallpapers"]="git@github.com:a2n-s/wallpapers.git "
+repositories["oh-my-zsh"]="git@github.com:a2n-s/ohmyzsh.git git@github.com:ohmyzsh/ohmyzsh.git"
+repositories["sites/nereuxofficial.github.io"]="git@github.com:Nereuxofficial/nereuxofficial.github.io.git "
+repositories["sites/a2n-s.github.io/themes/hugo-theme-terminal"]="git@github.com:a2n-s/hugo-theme-terminal.git git@github.com:panr/hugo-theme-terminal.git"
+repositories["sites/a2n-s.github.io"]="git@github.com:a2n-s/a2n-s.github.io.git "
+repositories["dotfiles/atxr_dotfiles"]="https://github.com/atxr/dotfiles.git "
+repositories["research/playground_env"]="git@github.com:flowersteam/playground_env.git "
+repositories["research/Imagine"]="https://github.com/flowersteam/Imagine.git "
+repositories["research/imagineXdial"]="https://github.com/SuReLI/imagineXdial.git "
+repositories["research/gym_ma_toy"]="https://github.com/MehdiZouitine/gym_ma_toy "
+repositories["research/learning-to-communicate-pytorch"]="https://github.com/minqi/learning-to-communicate-pytorch.git "
 
 ###############
 # my scripts. #
@@ -613,20 +613,23 @@ install_zsh() {
 ## standalone repos installation functions #####################################################
 ################################################################################################
 install_repo() {
-  if [[ -d $HDIR/$RDIR/$1 ]]; then
-    echo "${Wrn}$HDIR/$RDIR/$1 already exists${Off}"
-    echo "${Wrn}please backup $HDIR/$RDIR/$1 before trying again${Off}"
+  r_path=$1
+  r_origin=$(echo ${repositories[$1]} | awk '{print $1}')
+  r_upstream=$(echo ${repositories[$1]} | awk '{print $2}')
+  if [[ -d $HDIR/$RDIR/$r_path ]]; then
+    echo "${Wrn}$HDIR/$RDIR/$r_path already exists${Off}"
+    echo "${Wrn}please backup $HDIR/$RDIR/$r_path before trying again${Off}"
   else
-    echo "${Crt}$HDIR/$RDIR/$1 does not exist${Off}"
-    echo "${Wrn}mkdir -p $HDIR/$RDIR/$(dirname $1)${Off}"
-    mkdir -p $HDIR/$RDIR/$(dirname $1)
-    echo -e "${Cmd}git clone ${Src}$2 ${Dst}$HDIR/$RDIR/$1${Off}"
-    git clone $2 $HDIR/$RDIR/$1
-    if [[ ! $3 == "" ]]; then
-      echo -e "${Cmd}git -C ${Dst}$HDIR/$RDIR/$1 ${Cmd}remote add upstream ${Src}$3${Off}"
-      git -C $HDIR/$RDIR/$1 remote add upstream $3
-      echo -e "${Cmd}git -C ${Dst}$HDIR/$RDIR/$1 ${Cmd}fetch upstream --prune${Off}"
-      git -C $HDIR/$RDIR/$1 fetch upstream --prune
+    echo "${Crt}$HDIR/$RDIR/$r_path does not exist${Off}"
+    echo "${Wrn}mkdir -p $HDIR/$RDIR/$(dirname $r_path)${Off}"
+    mkdir -p $HDIR/$RDIR/$(dirname $r_path)
+    echo -e "${Cmd}git clone ${Src}$r_origin ${Dst}$HDIR/$RDIR/$r_path${Off}"
+    git clone $r_origin $HDIR/$RDIR/$r_path
+    if [[ ! $r_upstream == "" ]]; then
+      echo -e "${Cmd}git -C ${Dst}$HDIR/$RDIR/$r_path ${Cmd}remote add upstream ${Src}$r_upstream${Off}"
+      git -C $HDIR/$RDIR/$r_path remote add upstream $r_upstream
+      echo -e "${Cmd}git -C ${Dst}$HDIR/$RDIR/$r_path ${Cmd}fetch upstream --prune${Off}"
+      git -C $HDIR/$RDIR/$r_path fetch upstream --prune
     fi
   fi
 }
@@ -776,6 +779,7 @@ $Normal Installing config...${Src}
 
 EOF
 
+  echo "$Warning Prepairing backup:"
   if [[ ! -d "$DIR/old" ]]; then
     echo "${Wrn}mkdir -p $DIR/old${Off}"
     mkdir -p $DIR/old
@@ -785,7 +789,6 @@ EOF
     mkdir -p $DIR/old/.config
   fi
 	if [[ -d "$HDIR/$SDIR" ]]; then
-		echo "${Wrn}$HDIR/$SDIR exists, prepairing backup${Off}"
 		echo "${Wrn}mkdir -p $DIR/old/$SDIR${Off}"
 		mkdir -p $DIR/old/$SDIR
 	else
