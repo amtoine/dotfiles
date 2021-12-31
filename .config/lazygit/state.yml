@@ -1,13 +1,13 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/sup/imgDesc
+- /home/ants/sup/neuraltalk2-tensorflow
 - /home/ants/.config/nvim
 - /home/ants/repos/dotfiles/dotfiles
 - /home/ants/repos/surf
-- /home/ants/repos/oh-my-bash
 - /home/ants/repos/sites/a2n-s.github.io
 - /home/ants/sup/neuraltalk2
 - /home/ants/.dotfiles
-- /home/ants/sup/imgDesc
 startuppopupversion: 5
 customcommandshistory: []
 hidecommandlog: false

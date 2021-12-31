@@ -11,9 +11,6 @@ to give an idea of the final rendering of the config.
 
 If you want a quick brief of what dotfiles really are, I recommend [this video][fireship-dotfiles] of *FireShip*.
 
-**AN INSTALLATION SCRIPT IS AVAILABLE AS A DRAFT**  
-Check the [inst branch](https://github.com/a2n-s/dotfiles/tree/inst) if you are interested.
-
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## Table Of Content.
 - **1** [**Overview and architecture.**](#1-overview-and-architecture-toc)
