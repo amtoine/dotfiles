@@ -43,6 +43,7 @@ kolourpaint
 lazygit
 librsync
 lolcat
+mathomatic
 mpd
 mpv
 nethack

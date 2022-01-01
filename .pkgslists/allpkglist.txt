@@ -48,6 +48,7 @@ gcc
 gimp
 git
 github-cli
+gnuplot
 grub
 gst-libav
 gst-plugins-good
@@ -65,6 +66,7 @@ linux-firmware
 lolcat
 m4
 make
+mathomatic
 mpd
 mpv
 mtools

@@ -181,6 +181,12 @@ HDIR="$HOME"
 CDIR=".config"
 SDIR="scripts"
 RDIR="repos"
+DDIR="dl"
+BDIR=".local/bin"
+
+# the relase to use to install lazycli
+# see https://github.com/jesseduffield/lazycli/releases/ for updates of this release.
+LAZYCLI_RELEASE="https://github.com/jesseduffield/lazycli/releases/download/v0.1.15/lazycli-linux-x64.tar.gz"
 
 ################################################################################################
 
@@ -561,6 +567,16 @@ install_lazygit() {
   sudo pacman -Syu lazygit
   echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/lazygit ${Off}(${Red}NOT AVAILABLE FOR NOW${Off})"
 }
+install_lazycli() {
+  install_dir ".config/lazycli"
+  echo "${Cmd}curl -fLo ${Dst}$HDIR/$DDIR/lazycli.tar.gz ${Src}$LAZYCLI_RELEASE${Off}"
+  curl -fLo $HDIR/$DDIR/lazycli.tar.gz $LAZYCLI_RELEASE
+  echo "${Cmd}tar xf ${Src}$HDIR/$DDIR/lazycli.tar.gz${Off} --directory ${Dst}$HDIR/$BDIR${Off}"
+  tar xf $HDIR/$DDIR/lazycli.tar.gz --directory $HDIR/$BDIR
+  echo "${Cmd}rm ${Pkg}$HDIR/$DDIR/lazycli.tar.gz${Off}"
+  rm $HDIR/$DDIR/lazycli.tar.gz
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/lazycli ${Off}(${Red}NOT AVAILABLE FOR NOW${Off})"
+}
 install_lf() {
   install_dir ".config/lf"
   echo "${Cmd}yay -S ${Pkg}lf${Off}"
@@ -746,6 +762,7 @@ init_CFG() {
   CFG["CONFIG:dmenu"]="none"
   CFG["CONFIG:dmscripts"]="none"
   CFG["CONFIG:lazygit"]="none"
+  CFG["CONFIG:lazycli"]="none"
   CFG["CONFIG:tigrc"]="none"
   CFG["CONFIG:tmux"]="none"
   CFG["CONFIG:mpd"]="none"
@@ -820,8 +837,8 @@ while [[ $# -gt 0 ]]; do
     -prog/sketchbook/FastLED-basics|-prog/scsc/fil-rouge|-prog/scsc/fgk|-prog/swarm-rescue-g1|-sup/tatami|-sup/machine-learning|-sup/imgDesc|-sup/flatland-project|-sup/deep-learning|-sup/stochastic|-sup/mcdm|-surf|-yay-git|-polybar|-lazycli|-dmscripts|-dmenu|-tabbed|-slock|-bash-insulter|-kitty|-Neovim-from-scratch|-oh-my-bash|-uzbl|-oh-my-fish|-a2n-s|-wallpapers|-oh-my-zsh|-sites/nereuxofficial.github.io|-sites/a2n-s.github.io/themes/hugo-theme-terminal|-sites/a2n-s.github.io|-dotfiles/atxr_dotfiles|-research/playground_env|-research/Imagine|-research/imagineXdial|-research/gym_ma_toy|-research/learning-to-communicate-pytorch) CFG["REPO:$(echo $1 | sed 's/^-//')"]="restore";;
     +_countdown.sh|+_parse_git_info.sh|+_shortwd.sh|+_stopwatch.sh|+dmrun.sh|+lfrun.sh|+list.git-repos.diagnostic.sh|+misc.nvim-renaming.sh|+prompt.sh|+repo.info.sh|+screenshot.sh|+slock-cst.sh|+spectrWM-baraction.sh|+togkb.sh|+tr2md.sh|+upl.sh|+wvenv.sh|+xtcl.sh|+ytdl.sh) CFG["SCRIPT:$(echo $1 | sed 's/^+//')"]="install";;
     -_countdown.sh|-_parse_git_info.sh|-_shortwd.sh|-_stopwatch.sh|-dmrun.sh|-lfrun.sh|-list.git-repos.diagnostic.sh|-misc.nvim-renaming.sh|-prompt.sh|-repo.info.sh|-screenshot.sh|-slock-cst.sh|-spectrWM-baraction.sh|-togkb.sh|-tr2md.sh|-upl.sh|-wvenv.sh|-xtcl.sh|-ytdl.sh) CFG["SCRIPT:$(echo $1 | sed 's/^-//')"]="restore";;
-    +git|+htop|+bash|+fish|+zsh|+starship|+neofetch|+vim|+neovim|+x|+bspwm|+spectrwm|+alacritty|+kitty|+nitrogen|+slock|+xscreensaver|+polybar|+vifm|+lf|+surf|+tabbed|+wallpapers|+dmenu|+dmscripts|+lazygit|+tigrc|+tmux|+mpd|+mpv|+ncmpcpp) CFG["CONFIG:$(echo $1 | sed 's/^+//')"]="install";;
-    -git|-htop|-bash|-fish|-zsh|-starship|-neofetch|-vim|-neovim|-x|-bspwm|-spectrwm|-alacritty|-kitty|-nitrogen|-slock|-xscreensaver|-polybar|-vifm|-lf|-surf|-tabbed|-wallpapers|-dmenu|-dmscripts|-lazygit|-tigrc|-tmux|-mpd|-mpv|-ncmpcpp) CFG["CONFIG:$(echo $1 | sed 's/^-//')"]="restore";;
+    +git|+htop|+bash|+fish|+zsh|+starship|+neofetch|+vim|+neovim|+x|+bspwm|+spectrwm|+alacritty|+kitty|+nitrogen|+slock|+xscreensaver|+polybar|+vifm|+lf|+surf|+tabbed|+wallpapers|+dmenu|+dmscripts|+lazygit|+lazycli|+tigrc|+tmux|+mpd|+mpv|+ncmpcpp) CFG["CONFIG:$(echo $1 | sed 's/^+//')"]="install";;
+    -git|-htop|-bash|-fish|-zsh|-starship|-neofetch|-vim|-neovim|-x|-bspwm|-spectrwm|-alacritty|-kitty|-nitrogen|-slock|-xscreensaver|-polybar|-vifm|-lf|-surf|-tabbed|-wallpapers|-dmenu|-dmscripts|-lazygit|-lazycli|-tigrc|-tmux|-mpd|-mpv|-ncmpcpp) CFG["CONFIG:$(echo $1 | sed 's/^-//')"]="restore";;
     -h|--help)
 cat -e | less <<- EOF
 NAME
@@ -944,6 +961,7 @@ OPTIONS
           +/-dmenu
           +/-dmscripts
           +/-lazygit
+          +/-lazycli
           +/-tigrc
           +/-tmux
           +/-mpd
@@ -955,10 +973,12 @@ OPTIONS
 
 ENVIRONMENT
        DIR  = directory where the config has been pulled, computed with pwd by install.sh
-       HDIR = \$HOME
-       CDIR = .config
-       SDIR = scripts
-       RDIR = repos
+       HDIR = \$HOME         - the Home DIRectory (HDIR)
+       CDIR = .config        - the Configuration DIRectory (CDIR)
+       SDIR = scripts        - the Scripts DIRectory (SDIR)
+       RDIR = repos          - the Repositories DIRectory (RDIR)
+       DDIR = dl             - the Download DIRectory (DDIR)
+       BDIR = .local/bin     - the Binaries DIRectory (BDIR)
 
 EXAMPLES
        \`./install.sh +bash -fish +bspwm +neovim +git\` will install \`bash\`, \`bspwm\`, \`neovim\` and \`git\` and remove \`fish\` to and from your config.

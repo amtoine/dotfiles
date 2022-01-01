@@ -1,0 +1,83 @@
+---
+profiles:
+  - name: ls
+    registered_commands:
+      - ls -1
+      - ls -a
+      - ls
+    key_bindings:
+      - key: d
+        command: rm -rf $0
+        confirm: true
+      - key: o
+        command: open $0
+      - key: u
+        command: cd $0
+  - name: ls -l
+    registered_commands:
+      - ls -l
+    key_bindings:
+      - key: d
+        command: rm -rf $8
+        confirm: true
+      - key: o
+        command: open $8
+      - key: u
+        command: cd $8
+    lines_to_skip: 1
+  - name: git status --short
+    registered_commands:
+      - git status --short
+    key_bindings:
+      - key: A
+        command: git add $1
+      - key: a
+        command: git reset $1
+      - key: d
+        command: rm -rf $1
+        confirm: true
+  - name: git status
+    registered_commands:
+      - git status
+    key_bindings:
+      - key: A
+        command: git add $0
+      - key: a
+        command: git reset $1
+        confirm: true
+        regex: ".*:\\s+([^\\s]+)"
+      - key: d
+        command: rm -rf $1
+        confirm: true
+  - name: docker ps
+    registered_commands:
+      - docker ps
+    key_bindings:
+      - key: s
+        command: docker stop $0
+        confirm: true
+      - key: r
+        command: docker restart $0
+      - key: d
+        command: docker kill $0
+        confirm: true
+  - name: git branch
+    registered_commands:
+      - git branch
+    key_bindings:
+      - key: c
+        command: git checkout $1
+  - name: git log
+    registered_commands:
+      - git log --oneline
+    key_bindings:
+      - key: c
+        command: git checkout $0
+  - name: lsof -iTCP | grep LISTEN
+    registered_commands:
+      - lsof -iTCP | grep LISTEN
+      - lsof -iTCP
+    key_bindings:
+      - key: d
+        command: kill -9 $1
+        confirm: true
