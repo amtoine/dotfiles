@@ -638,6 +638,23 @@ install_qtile() {
   sudo pacman -Syu qtile
   echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/qtile ${Off}(${Red}NOT AVAILABLE FOR NOW${Off})"
 }
+install_doom_emacs() {
+  install_dir ".doom.d"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}emacs${Off}"
+  sudo pacman -Syu emacs
+  if [[ -d $HDIR/.emacs.d ]]; then
+    echo "${Wrn}$HDIR/.emacs.d already exists${Off}"
+    echo "${Wrn}please backup $HDIR/.emacs.d before trying again${Off}"
+  else
+    echo "${Cmd}git clone --depth 1 https://github.com/hlissner/doom-emacs $HDIR/.emacs.d${Off}"
+    git clone --depth 1 https://github.com/hlissner/doom-emacs $HDIR/.emacs.d
+    echo "${Cmd}$HOME/.emacs.d/bin/doom install${Off}"
+    $HOME/.emacs.d/bin/doom install
+    echo "${Cmd}$HOME/.emacs.d/bin/doom sync${Off}"
+    $HOME/.emacs.d/bin/doom sync
+  fi
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/doom_emacs ${Off}(${Red}NOT AVAILABLE FOR NOW${Off})"
+}
 
 ################################################################################################
 ## standalone repos installation functions #####################################################
@@ -792,6 +809,7 @@ init_CFG() {
   CFG["CONFIG:ncmpcpp"]="none"
   CFG["CONFIG:dmenufm"]="none"
   CFG["CONFIG:qtile"]="none"
+  CFG["CONFIG:doom_emacs"]="none"
 }
 
 
@@ -861,8 +879,8 @@ while [[ $# -gt 0 ]]; do
     -prog/sketchbook/FastLED-basics|-prog/scsc/fil-rouge|-prog/scsc/fgk|-prog/swarm-rescue-g1|-sup/tatami|-sup/machine-learning|-sup/imgDesc|-sup/flatland-project|-sup/deep-learning|-sup/stochastic|-sup/mcdm|-surf-src|-yay-git|-polybar-src|-lazycli-src|-dmscripts-src|-dmenu-src|-tabbed|-slock|-bash-insulter|-kitty-src|-Neovim-from-scratch|-oh-my-bash|-uzbl|-oh-my-fish|-a2n-s|-wallpapers|-oh-my-zsh|-sites/nereuxofficial.github.io|-sites/a2n-s.github.io/themes/hugo-theme-terminal|-sites/a2n-s.github.io|-dotfiles/atxr_dotfiles|-research/playground_env|-research/Imagine|-research/imagineXdial|-research/gym_ma_toy|-research/learning-to-communicate-pytorch) CFG["REPO:$(echo $1 | sed 's/^-//')"]="restore";;
     +_countdown.sh|+_parse_git_info.sh|+_shortwd.sh|+_stopwatch.sh|+dmrun.sh|+hdmi.brightness.sh|+lfrun.sh|+list.git-repos.diagnostic.sh|+misc.nvim-renaming.sh|+open.sh|+prompt.sh|+repo.info.sh|+repo.rename.default.branch.sh|+screenshot.sh|+slock-cst.sh|+spectrWM-baraction.sh|+surf-open.sh|+togkb.sh|+tr2md.sh|+upl.sh|+wvenv.sh|+xtcl.sh|+ytdl.sh) CFG["SCRIPT:$(echo $1 | sed 's/^+//')"]="install";;
     -_countdown.sh|-_parse_git_info.sh|-_shortwd.sh|-_stopwatch.sh|-dmrun.sh|-hdmi.brightness.sh|-lfrun.sh|-list.git-repos.diagnostic.sh|-misc.nvim-renaming.sh|-open.sh|-prompt.sh|-repo.info.sh|-repo.rename.default.branch.sh|-screenshot.sh|-slock-cst.sh|-spectrWM-baraction.sh|-surf-open.sh|-togkb.sh|-tr2md.sh|-upl.sh|-wvenv.sh|-xtcl.sh|-ytdl.sh) CFG["SCRIPT:$(echo $1 | sed 's/^-//')"]="restore";;
-    +git|+htop|+bash|+fish|+zsh|+starship|+neofetch|+vim|+neovim|+x|+bspwm|+spectrwm|+alacritty|+kitty|+nitrogen|+slock|+xscreensaver|+polybar|+vifm|+lf|+surf|+tabbed|+wallpapers|+dmenu|+dmscripts|+lazygit|+lazycli|+tigrc|+tmux|+mpd|+mpv|+ncmpcpp|+dmenufm|+qtile) CFG["CONFIG:$(echo $1 | sed 's/^+//')"]="install";;
-    -git|-htop|-bash|-fish|-zsh|-starship|-neofetch|-vim|-neovim|-x|-bspwm|-spectrwm|-alacritty|-kitty|-nitrogen|-slock|-xscreensaver|-polybar|-vifm|-lf|-surf|-tabbed|-wallpapers|-dmenu|-dmscripts|-lazygit|-lazycli|-tigrc|-tmux|-mpd|-mpv|-ncmpcpp|-dmenufm|-qtile) CFG["CONFIG:$(echo $1 | sed 's/^-//')"]="restore";;
+    +git|+htop|+bash|+fish|+zsh|+starship|+neofetch|+vim|+neovim|+x|+bspwm|+spectrwm|+alacritty|+kitty|+nitrogen|+slock|+xscreensaver|+polybar|+vifm|+lf|+surf|+tabbed|+wallpapers|+dmenu|+dmscripts|+lazygit|+lazycli|+tigrc|+tmux|+mpd|+mpv|+ncmpcpp|+doom_emacs|+dmenufm|+qtile) CFG["CONFIG:$(echo $1 | sed 's/^+//')"]="install";;
+    -git|-htop|-bash|-fish|-zsh|-starship|-neofetch|-vim|-neovim|-x|-bspwm|-spectrwm|-alacritty|-kitty|-nitrogen|-slock|-xscreensaver|-polybar|-vifm|-lf|-surf|-tabbed|-wallpapers|-dmenu|-dmscripts|-lazygit|-lazycli|-tigrc|-tmux|-mpd|-mpv|-ncmpcpp|-doom_emacs|-dmenufm|-qtile) CFG["CONFIG:$(echo $1 | sed 's/^-//')"]="restore";;
     -m|--man)
       man ~/install.1
       exit 0
