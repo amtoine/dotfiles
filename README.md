@@ -59,7 +59,7 @@ $HOME
 |   |-- [d]  surf                                      -- the suckless web browser.
 |   |-- [-]  sxhkd/sxhkdrc                             -- the simple x hot key daemon.
 |   |-- [d]  vifm                                      -- a file manager.
-|   |-- [-]  tigrc                                     -- shows git diffs in a pretty way.
+|   |-- [d]  tig/config                                -- shows git diffs in a pretty way, and many more!
 |   `-- [-]  starship.toml                             -- a fast and customizable terminal prompt.
 |-- [d]  .pkgslists                                  -- packages.
 |   |-- [-]  README.md
@@ -271,7 +271,7 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [`sxhkd`]:                 .config/sxhkd/sxhkdrc
 [`starship`]:              .config/starship.toml
 [`surf`]:                  .config/surf
-[`tig`]:                   .config/tigrc
+[`tig`]:                   .config/tig/config
 [`tmux`]:                  .tmux.conf
 [`vifm`]:                  .config/vifm
 [`vim`]:                   .vimrc

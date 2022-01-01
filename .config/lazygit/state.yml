@@ -1,8 +1,8 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/.config/nvim
 - /home/ants/repos/surf
 - /home/ants/repos/soap
-- /home/ants/.config/nvim
 - /home/ants/repos/oh-my-bash
 - /home/ants/sup/imgDesc
 - /home/ants/sup/neuraltalk2-tensorflow
