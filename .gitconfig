@@ -45,7 +45,7 @@
   cl      = clone
   a       = add
   au      = add -u
-  st      = status
+  st      = status --short
   cm      = commit
   cmm     = commit -m
   cma     = commit --amend

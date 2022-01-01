@@ -48,6 +48,7 @@ $HOME
 |   |-- [-]  htop/htoprc                               -- my process monitor.
 |   |-- [-]  kitty/kitty.conf                          -- terminal emulator.
 |   |-- [d]  lazygit                                   -- the lazy git tui tool.
+|   |-- [d]  lazycli                                   -- the lazy cli tui tool.
 |   |-- [-]  lf/lfrc                                   -- file explorer.
 |   |-- [-]  mpd/mpd.conf                              -- music server deamon, crashes for some reason...
 |   |-- [d]  mpv
@@ -136,6 +137,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [`kitty`]        (\*) ([\*\*][mydoc-kitty])
 - [x] [`lf`]                ([\*\*][mydoc-lf])
 - [x] [`lazygit`]           ([\*\*][mydoc-lazygit])
+- [x] [`lazycli`]           ([\*\*][mydoc-lazycli])
 - [ ] [`mpd`]               ([\*\*][mydoc-mpd])
 - [x] [`mpv`]               ([\*\*][mydoc-mpv])
 - [ ] [`ncmcpp`]            ([\*\*][mydoc-ncmcpp])
@@ -259,6 +261,7 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [`kitty`]:                 .config/kitty/kitty.conf
 [`lf`]:                    .config/lf/lfrc
 [`lazygit`]:               .config/lazygit
+[`lazycli`]:               .config/lazycli
 [`mpd`]:                   .config/mpd/mpd.conf
 [`mpv`]:                   .config/mpv
 [`ncmcpp`]:                .config/ncmcpp/config
@@ -294,6 +297,7 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [mydoc-htop]:                  https://a2n-s.github.io/public/doc/config/dotfiles/htop
 [mydoc-lf]:                    https://a2n-s.github.io/public/doc/config/dotfiles/lf
 [mydoc-lazygit]:               https://a2n-s.github.io/public/doc/config/dotfiles/lazygit
+[mydoc-lazycli]:               https://a2n-s.github.io/public/doc/config/dotfiles/lazycli
 [mydoc-mpd]:                   https://a2n-s.github.io/public/doc/config/dotfiles/mpd
 [mydoc-mpv]:                   https://a2n-s.github.io/public/doc/config/dotfiles/mpv
 [mydoc-ncmcpp]:                https://a2n-s.github.io/public/doc/config/dotfiles/ncmcpp

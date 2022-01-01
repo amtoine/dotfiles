@@ -10,24 +10,29 @@ profiles:
         command: rm -rf $0
         confirm: true
       - key: o
-        command: open $0
+        command: $HOME/scripts/open.sh $0
       - key: u
         command: cd $0
+
   - name: ls -l
     registered_commands:
       - ls -l
+      - ls -la
+      - ls -al
     key_bindings:
       - key: d
         command: rm -rf $8
         confirm: true
       - key: o
-        command: open $8
+        command: $HOME/scripts/open.sh $8
       - key: u
         command: cd $8
     lines_to_skip: 1
+
   - name: git status --short
     registered_commands:
       - git status --short
+      - git st
     key_bindings:
       - key: A
         command: git add $1
@@ -36,6 +41,7 @@ profiles:
       - key: d
         command: rm -rf $1
         confirm: true
+
   - name: git status
     registered_commands:
       - git status
@@ -49,6 +55,7 @@ profiles:
       - key: d
         command: rm -rf $1
         confirm: true
+
   - name: docker ps
     registered_commands:
       - docker ps
@@ -61,18 +68,23 @@ profiles:
       - key: d
         command: docker kill $0
         confirm: true
+
   - name: git branch
     registered_commands:
       - git branch
     key_bindings:
       - key: c
         command: git checkout $1
+
   - name: git log
     registered_commands:
-      - git log --oneline
+      - git log --pretty=oneline
     key_bindings:
       - key: c
         command: git checkout $0
+      - key: o
+        command: $HOME/scripts/open.sh $(git config --get remote.origin.url | sed 's/.git$//; s/git@github.com:/https:\/\/github.com\//')/commit/$0
+
   - name: lsof -iTCP | grep LISTEN
     registered_commands:
       - lsof -iTCP | grep LISTEN
