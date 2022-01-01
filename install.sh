@@ -174,7 +174,6 @@ scripts+=("xtcl.sh")
 scripts+=("ytdl.sh")
 
 ##########################
-# installation constants #
 # installation variables #
 ##########################
 DIR=`pwd`
@@ -840,162 +839,34 @@ while [[ $# -gt 0 ]]; do
     -_countdown.sh|-_parse_git_info.sh|-_shortwd.sh|-_stopwatch.sh|-dmrun.sh|-lfrun.sh|-list.git-repos.diagnostic.sh|-misc.nvim-renaming.sh|-prompt.sh|-repo.info.sh|-screenshot.sh|-slock-cst.sh|-spectrWM-baraction.sh|-togkb.sh|-tr2md.sh|-upl.sh|-wvenv.sh|-xtcl.sh|-ytdl.sh) CFG["SCRIPT:$(echo $1 | sed 's/^-//')"]="restore";;
     +git|+htop|+bash|+fish|+zsh|+starship|+neofetch|+vim|+neovim|+x|+bspwm|+spectrwm|+alacritty|+kitty|+nitrogen|+slock|+xscreensaver|+polybar|+vifm|+lf|+surf|+tabbed|+wallpapers|+dmenu|+dmscripts|+lazygit|+lazycli|+tigrc|+tmux|+mpd|+mpv|+ncmpcpp) CFG["CONFIG:$(echo $1 | sed 's/^+//')"]="install";;
     -git|-htop|-bash|-fish|-zsh|-starship|-neofetch|-vim|-neovim|-x|-bspwm|-spectrwm|-alacritty|-kitty|-nitrogen|-slock|-xscreensaver|-polybar|-vifm|-lf|-surf|-tabbed|-wallpapers|-dmenu|-dmscripts|-lazygit|-lazycli|-tigrc|-tmux|-mpd|-mpv|-ncmpcpp) CFG["CONFIG:$(echo $1 | sed 's/^-//')"]="restore";;
+    -m|--man)
+      man ~/install.1
+      exit 0
+      ;;
     -h|--help)
-cat -e | less <<- EOF
-NAME
-       ./install.sh - installs/removes interactively the config of a2n-s on your arch machine.
+cat <<- EOF
+install.sh 0.1
+Antoine Stevan <https://github.com/a2n-s>
+Installs/removes interactively the config of a2n-s on your arch machine.
 
-SYNOPSIS
-       ./install.sh -cfgToRemove_1 -cfgToRemove_2 +cfgToInstall_1 +cfgToInstall_2 -cfgToRemove_3 ...
+USAGE:
+       ./install.sh [OPTIONS] -[remove] +[add] [...]
 
-DESCRIPTION
-       This is my install script.
-       One installs a snippet of my config with '+name-of-config-to-install' or removes one with '-name-of-config-to-remove'.
-       Note the use of '-' to remove stuff and '+' to indicate that the config should be installed.
-       Flags are here as preselections only. A popup editor will always open and let you modify the preferences for the installation process. The script tries to open \$VISUAL, then \$EDITOR and finally falls back to \`vi\` in case any of the previous two has been found.
+FLAGS:
+    -h, --help    Display this help message and exits without installing nor removing anything.
+    -m, --man     Opens the pseudo man page of my install.sh script.
+    +config       Install the specified 'config'. See the man (install.1) page for more details.
+    -config       Restore the specified 'config' to what was backed up. See the man (install.1) page for more details.
 
-       There are four categories of config that one might find in my config files, with their particularities:
-         - REPOS:
-              They get installed, i.e. cloned in the \`\$HDIR/\$RDIR\` directory. The path is given in the flag name, e.g. the repo for my personal website in located at \`~/repos/sites\` under the name of \`a2n-s.github.io\`, thus the path is \`sites/a2n-s.github.io\`. Finally once the repo has been pulled, the origin should point towards my github account and the upstream is also set to reflect original forks.
-              If the repo already exists on your machine, the install will prompt you to backup it and then retry.
-  
-         - SCRIPTS:
-              All the scripts I use, the chosen ones will be installed under \`\$HDIR/\$SDIR\`.
-              Your scripts, if in conflict with mine, will be backed up in \`\$DIR/old/\$SDIR\` to be recovered later.
 
-         - CONFIG FILES:
-              The config files I use. They will be installed either under \`\$HDIR\` or \`\$HDIR/\$CDIR\`.
-              Your config files, if in conflict with mine, will be backed up in \`\$DIR/old\` or \`\$DIR/old/\$CDIR\` to be recovered later.
-
-         - FONTS:
-              coming soon...
-
-OPTIONS
-       -h, --help
-           Display this help message and exits without installing nor removing anything.
-
-      Below one can find the list of all the config one can install:
-        REPOS:
-          +/-prog/sketchbook/FastLED-basics
-          +/-prog/scsc/fil-rouge
-          +/-prog/scsc/fgk
-          +/-prog/swarm-rescue-g1
-          +/-sup/tatami
-          +/-sup/machine-learning
-          +/-sup/imgDesc
-          +/-sup/flatland-project
-          +/-sup/deep-learning
-          +/-sup/stochastic
-          +/-sup/mcdm
-          +/-surf
-          +/-yay-git
-          +/-polybar
-          +/-lazycli
-          +/-dmscripts
-          +/-dmenu
-          +/-tabbed
-          +/-slock
-          +/-bash-insulter
-          +/-kitty
-          +/-Neovim-from-scratch
-          +/-oh-my-bash
-          +/-uzbl
-          +/-oh-my-fish
-          +/-a2n-s
-          +/-wallpapers
-          +/-oh-my-zsh
-          +/-sites/nereuxofficial.github.io
-          +/-sites/a2n-s.github.io/themes/hugo-theme-terminal
-          +/-sites/a2n-s.github.io
-          +/-dotfiles/atxr_dotfiles
-          +/-research/playground_env
-          +/-research/Imagine
-          +/-research/imagineXdial
-          +/-research/gym_ma_toy
-          +/-research/learning-to-communicate-pytorch
-
-        SCRIPTS:
-          +/-_countdown.sh
-          +/-_parse_git_info.sh
-          +/-_shortwd.sh
-          +/-_stopwatch.sh
-          +/-dmrun.sh
-          +/-lfrun.sh
-          +/-list.git-repos.diagnostic.sh
-          +/-misc.nvim-renaming.sh
-          +/-prompt.sh
-          +/-repo.info.sh
-          +/-screenshot.sh
-          +/-slock-cst.sh
-          +/-spectrWM-baraction.sh
-          +/-togkb.sh
-          +/-tr2md.sh
-          +/-upl.sh
-          +/-wvenv.sh
-          +/-xtcl.sh
-          +/-ytdl.sh
-
-        MISCELLANEOUS CONFIG FILES:
-          +/-git
-          +/-htop
-          +/-bash
-          +/-fish
-          +/-zsh
-          +/-starship
-          +/-neofetch
-          +/-vim
-          +/-neovim
-          +/-x
-          +/-bspwm
-          +/-spectrwm
-          +/-alacritty
-          +/-kitty
-          +/-nitrogen
-          +/-slock
-          +/-xscreensaver
-          +/-polybar
-          +/-vifm
-          +/-lf
-          +/-surf
-          +/-tabbed
-          +/-wallpapers
-          +/-dmenu
-          +/-dmscripts
-          +/-lazygit
-          +/-lazycli
-          +/-tigrc
-          +/-tmux
-          +/-mpd
-          +/-mpv
-          +/-ncmpcpp
-
-        FONTS:
-          coming soon...
-
-ENVIRONMENT
-       DIR  = directory where the config has been pulled, computed with pwd by install.sh
-       HDIR = \$HOME         - the Home DIRectory (HDIR)
-       CDIR = .config        - the Configuration DIRectory (CDIR)
-       SDIR = scripts        - the Scripts DIRectory (SDIR)
-       RDIR = repos          - the Repositories DIRectory (RDIR)
-       DDIR = dl             - the Download DIRectory (DDIR)
-       BDIR = .local/bin     - the Binaries DIRectory (BDIR)
-
-EXAMPLES
-       \`./install.sh +bash -fish +bspwm +neovim +git\` will install \`bash\`, \`bspwm\`, \`neovim\` and \`git\` and remove \`fish\` to and from your config.
-       An editor will always popup to let you change the behaviour, but the config snippets above will be already preselected.
-
-AUTHOR
-       More about me and my config below:
-       
-         my personal page: https://a2n-s.github.io/
-         my github   page: https://github.com/a2n-s
-         my      dotfiles: https://github.com/a2n-s/dotfiles
-
-REPORTING BUGS
-       For bug reports, use the issue tracker at https://github.com/a2n-s/dotfiles/issues.
-
-                                         $(display_center 2021-12-30)
+OPTIONS:
+    -H=, --home=,  --home-dir= <HOME_DIRECTORY>                Changes the home directory. Defaults to \`\$HOME\`.
+    -C=, --cfg=,   --config-dir= <CONFIGURATION_DIRECTORY>     Changes the config directory, i.e. where most of the dotfiles are installed . Defaults to \`.config\`.
+    -S=, --src=,   --scripts-dir= <SCRIPTS_DIRECTORY>          Changes the scripts directory, i.e. where the scripts are installed. Defaults to \`scripts\`, implicitely \`\$HOME/scripts\`
+    -R=, --repos=, --repos-dir= <REPOSITORIES_DIRECTORY>       Changes the repos directory, i.e. where the repositories are cloned. Defaults to \`repos\`, implicitely \`\$HOME/repos\`
+    -D=, --dl=,    --download-dir= <DOWNLOAD_DIRECTORY>        Changes the download directory, i.e. where things are downloaded. Defaults to \`dl\`, implicitely \`\$HOME/dl\`
+    -B=, --bin=,   --binaries-dir= <BINARIES_DIRECTORY>        Changes the binaries directory, i.e. where the binaries are installed. Defaults to \`.local/bin\`, implicitely \`\$HOME/.local/bin\`
+    -L=, --lcr=,   --lazycli-release= <LAZYCLI_RELEASE>        Changes the lazycli release. Defaults to https://github.com/jesseduffield/lazycli/releases/download/v0.1.15/lazycli-linux-x64.tar.gz as it is the latest release it the time.
 EOF
 exit
       ;;
