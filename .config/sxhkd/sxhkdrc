@@ -56,6 +56,12 @@ super + F5
 # brightness of the main screen up.
 super + F6
   brightnessctl s 8+
+# brightness of the second screen down.
+super + shift + F5
+  ~/scripts/hdmi.brightness.sh -
+# brightness of the second screen up.
+super + shift + F6
+  ~/scripts/hdmi.brightness.sh +
 # take a screenshot of everything or chose a window.
 super + {_, shift +}F7
   ~/scripts/screenshot.sh {full, window}
