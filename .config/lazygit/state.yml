@@ -1,5 +1,6 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/repos/dmscripts
 - /home/ants/.config/nvim
 - /home/ants/repos/surf
 - /home/ants/repos/soap
@@ -14,4 +15,5 @@ startuppopupversion: 5
 customcommandshistory:
 - 'rm #surf.c#'
 - git add ~/scripts/open.sh
+- upl.sh
 hidecommandlog: false

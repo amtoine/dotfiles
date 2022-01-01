@@ -23,7 +23,6 @@ ctags
 docker
 dstat
 dwarffortress
-emacs
 eog
 fd
 feh
@@ -44,13 +43,12 @@ lazygit
 librsync
 lolcat
 mathomatic
-mpd
-mpv
 nethack
 network-manager-applet
 nmap
 okular
 pacman-contrib
+pandoc
 patch
 pavucontrol
 picom
@@ -123,6 +121,5 @@ xorg-xwayland
 xorg-xwd
 xorg-xwud
 xscreensaver
-yad
 zenity
 zip

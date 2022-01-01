@@ -40,10 +40,12 @@ super + Escape
 
 # open the hub of dmenu with dmscripts.
 super + F1
-  ~/repos/dmscripts/scripts/dm-hub
+  /usr/bin/dm-hub
+  # ~/repos/dmscripts/scripts/dm-hub
 # pop a list of all config files to edit them.
 super + F2
-  ~/repos/dmscripts/scripts/dm-confedit
+  /usr/bin/dm-confedit
+  # ~/repos/dmscripts/scripts/dm-confedit
 # restart all instances of polybar.
 super + F3
   bash ~/.config/polybar/launch.sh --forest

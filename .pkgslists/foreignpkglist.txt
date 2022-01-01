@@ -1,5 +1,6 @@
 arduino-mk
 cava
+dmscripts-git
 lf
 myman
 nerd-fonts-mononoki

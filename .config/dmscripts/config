@@ -24,7 +24,7 @@
 # -p is needed as we use prompts, alternative programs have to handle prompts well.
 
 # DMENU="dmenu -i -l 20 -p"
-DMWIDTH=700
+DMWIDTH=1500
 DMHEIGHT=10
 DMCOLUMNS=2
 DMLINES=9

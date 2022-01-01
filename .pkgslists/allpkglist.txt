@@ -9,6 +9,7 @@ automake
 base
 bat
 bc
+bind
 binutils
 bison
 blueman
@@ -26,6 +27,7 @@ cmus
 cowsay
 cronie
 ctags
+dmscripts-git
 docker
 dosfstools
 dstat
@@ -82,6 +84,7 @@ ntfs-3g
 okular
 os-prober
 pacman-contrib
+pandoc
 paru
 pass
 pass-import
