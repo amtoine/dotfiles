@@ -175,6 +175,7 @@ scripts+=("ytdl.sh")
 
 ##########################
 # installation constants #
+# installation variables #
 ##########################
 DIR=`pwd`
 HDIR="$HOME"
@@ -998,12 +999,33 @@ REPORTING BUGS
 EOF
 exit
       ;;
+    -H=*|--home=*|--home-dir=*)
+      HDIR="$(echo $1 | sed 's/.*=//')"
+      ;;
+    -C=*|--cfg=*|--config-dir=*)
+      CDIR="$(echo $1 | sed 's/.*=//')"
+      ;;
+    -S=*|--src=*|--scripts-dir=*)
+      SDIR="$(echo $1 | sed 's/.*=//')"
+      ;;
+    -R=*|--repos=*|--repos-dir=*)
+      RDIR="$(echo $1 | sed 's/.*=//')"
+      ;;
+    -D=*|--dl=*|--download-dir=*)
+      DDIR="$(echo $1 | sed 's/.*=//')"
+      ;;
+    -B=*|--bin=*|--binaries-dir=*)
+      BDIR="$(echo $1 | sed 's/.*=//')"
+      ;;
+    -L=*|--lcr=*|--lazycli-release=*)
+      LAZYCLI_RELEASE="$(echo $1 | sed 's/.*=//')"
+      ;;
     -*|+*)
-      echo -e "$Error Unknown flag ${Pkg}$1${Off}"
+      echo -e "$Error Unknown flag ${Pkg}$(echo $1 | sed 's/=.*//')${Off}"
       exit 2
       ;;
     *)
-      echo -e "$Error Not even a flag (${Pkg}$1${Off})"
+      echo -e "$Error Not even a flag (${Pkg}$(echo $1 | sed 's/=.*//')${Off})"
       exit 2
       ;;
   esac
