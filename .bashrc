@@ -180,6 +180,8 @@ export WORKON_HOME=$HOME/.venvs
 if [[ ! -d $WORKON_HOME ]]; then mkdir -p $WORKON_HOME; fi
 source $HOME/.local/bin/virtualenvwrapper.sh
 
+xtcl.sh -d -q
+
 #if [[ -f ~/.config/neofetch/.neofetchrc ]]; then
 #	. ~/.config/neofetch/.neofetchrc;
 #else
