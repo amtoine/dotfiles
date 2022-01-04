@@ -28,9 +28,8 @@
 #
 # open the terminal emulator
 super + Return
-  alacritty
-super + shift + Return
   kitty
+#  alacritty
 super + n
   kitty nvim
 # run a program launcher
