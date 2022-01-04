@@ -31,6 +31,8 @@ super + Return
   alacritty
 super + shift + Return
   kitty
+super + n
+  kitty nvim
 # run a program launcher
 super + @space
   sh ~/scripts/dmrun.sh

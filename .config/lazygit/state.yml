@@ -1,7 +1,10 @@
 lastupdatecheck: 0
 recentrepos:
-- /home/ants/repos/dmscripts
 - /home/ants/.config/nvim
+- /home/ants/prog/scsc/fil-rouge
+- /home/ants/repos/polybar
+- /home/ants/repos/dmscripts
+- /home/ants/repos/dmscripts
 - /home/ants/repos/surf
 - /home/ants/repos/soap
 - /home/ants/repos/oh-my-bash
@@ -16,4 +19,5 @@ customcommandshistory:
 - 'rm #surf.c#'
 - git add ~/scripts/open.sh
 - upl.sh
+- cfg add ~/.config/
 hidecommandlog: false

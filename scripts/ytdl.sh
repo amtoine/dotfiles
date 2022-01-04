@@ -25,8 +25,8 @@ youtube-dl \
      --extract-audio \
      --audio-format mp3 \
      --no-overwrites \
-     --download-archive ~/Music/progress.txt \
-     --output '~/Music/%(playlist)s - %(playlist_index)s - %(title)s.%(ext)s' \
+     --download-archive "$2" \
+     --output '~/music/%(playlist)s - %(playlist_index)s - %(title)s.%(ext)s' \
      --add-metadata \
      --metadata-from-title "%(artist)s - %(title)s" \
      $1
