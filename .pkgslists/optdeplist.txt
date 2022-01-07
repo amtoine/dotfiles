@@ -1,4 +1,3 @@
-boost-libs
 hunspell
 i3-wm
 kio-extras

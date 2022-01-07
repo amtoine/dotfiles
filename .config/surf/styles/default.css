@@ -1,0 +1,80 @@
+/*       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/  */
+/*      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s  */
+/*     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles  */
+/*     \__,_/____/_/ /_/           /____/ */
+/*                               _____             __                   ____      __        __        __                __       __     ____            ____*/
+/*             _________  ____  / __(_)___ _     _/_/  _______  _______/ __/    _/_/  _____/ /___  __/ /__  _____     _/_/  ____/ /__  / __/___ ___  __/ / /_         _______________*/
+/*            / ___/ __ \/ __ \/ /_/ / __ `/   _/_/   / ___/ / / / ___/ /_    _/_/   / ___/ __/ / / / / _ \/ ___/   _/_/   / __  / _ \/ /_/ __ `/ / / / / __/        / ___/ ___/ ___/*/
+/*      _    / /__/ /_/ / / / / __/ / /_/ /  _/_/    (__  ) /_/ / /  / __/  _/_/    (__  ) /_/ /_/ / /  __(__  )  _/_/    / /_/ /  __/ __/ /_/ / /_/ / / /_    _    / /__(__  |__  )*/
+/*     (_)   \___/\____/_/ /_/_/ /_/\__, /  /_/     /____/\__,_/_/  /_/    /_/     /____/\__/\__, /_/\___/____/  /_/      \__,_/\___/_/  \__,_/\__,_/_/\__/   (_)   \___/____/____/*/
+/*                                 /____/                                                   /____/ */
+/**/
+/* Description:  TODO */
+/* Dependencies: TODO */
+/* License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE  */
+/* Contributors: Stevan Antoine */
+
+body {
+	font-size: 13px;
+  background-color: #282a36 !important;
+  color: #d0d0d0 !important;
+}
+
+pre {  /* the code preview */
+	font-size: 13px;
+  background-color: #686a66 !important;
+  color: #d0d0d0 !important;
+}
+
+.highlight .nb {  /* map */
+  color: #d0d0d0 !important;
+}
+
+.highlight .n {  /* key */
+  color: #d0d0d0 !important;
+}
+
+.highlight .o {  /* + */
+  color: #d0d0d0 !important;
+}
+
+.highlight .c1 {  /* comment */
+  color: #d0d0d0 !important;
+}
+
+input {  /* the search bar on the left */
+	font-size: 13px;
+  background-color: #282a36 !important;
+  color: #d0d0d0 !important;
+}
+
+aside {  /* the whole left side of the page */
+	font-size: 13px;
+  background-color: #282a36 !important;
+  color: #d0d0d0 !important;
+}
+
+p {  /* any paragraph of text */
+	color: #82aaff !important;
+}
+
+a {  /* some sections of text, inside tables or menu for instance */
+  background-color: #282a36 !important;
+	color: #82aaff !important;
+}
+
+th {  /* the table head */
+  background-color: #282a96 !important;
+	color: #82aaff !important;
+}
+
+/* #th a { */
+/*   background-color: #282a96 !important; */
+/* 	color: #82aaff !important; */
+/*   --color-background-color: #282a96 !important; */
+/* } */
+
+h1, h2, h3 {  /* the titles */
+	color: #f07178 !important;
+}
+

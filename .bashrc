@@ -36,7 +36,7 @@ OSH_THEME="random" # (...please let it be pie... please be some pie..)
 # OSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -123,7 +123,7 @@ aliases=(
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
+  # git
   bashmarks
 )
 
@@ -168,7 +168,7 @@ source $OSH/oh-my-bash.sh
 #      ____/ /_ / __/_    / / / / / / (__  ) /__
 #     /_____/(_)____(_)  /_/ /_/ /_/_/____/\___/
 
-export PATH=$PATH:$HOME/scripts:$HOME/.local/bin
+export PATH=$PATH:$HOME/scripts:$HOME/.local/bin:$HOME/.cargo/bin
 
 # changes the editor in the terminal, to edit long commands.
 export EDITOR='nvim'
@@ -194,7 +194,7 @@ xtcl.sh -d -q
 # fortune -c | cowthink -f $(find /usr/share/cows -type f | shuf -n 1)
 fortune -c | ponysay --pony
 
-# eval "$(starship init bash)"
+eval "$(starship init bash)"
 
 if [ -f /etc/bash.command-not-found ]; then
     . /etc/bash.command-not-found

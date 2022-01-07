@@ -187,8 +187,8 @@ nnoremap <S-j> :m .+1<CR>
 nnoremap <S-k> :m .-2<CR>
 vnoremap <S-j> :m '>+1<CR>gv=gv
 vnoremap <S-k> :m '<-2<CR>gv=gv
-" Type jj to exit insert mode quickly.
-inoremap jj <Esc>
+" Type jk to exit insert mode quickly.
+inoremap jk <Esc>
 " Press the space bar to type the : character in command mode.
 nnoremap <space> :
 " Pressing the letter o will open a new line below the current one.

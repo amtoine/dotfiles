@@ -24,4 +24,6 @@ echo "updating dependencies list..."
   comm -13 <(pacman -Qqdt | sort) <(pacman -Qqdtt | sort) > $dir/optdeplist.txt
 echo "updating foreign packages list..."
   pacman -Qqem > $dir/foreignpkglist.txt
+echo "updating cargo commands list..."
+  cargo --list > $dir/cargocmdlist.txt
 echo "all done!"

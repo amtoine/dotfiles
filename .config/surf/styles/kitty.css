@@ -1,0 +1,88 @@
+/*       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/  */
+/*      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s  */
+/*     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles  */
+/*     \__,_/____/_/ /_/           /____/ */
+/*                               _____             __                   ____      __        __        __                __   __   _ __  __ */
+/*             _________  ____  / __(_)___ _     _/_/  _______  _______/ __/    _/_/  _____/ /___  __/ /__  _____     _/_/  / /__(_) /_/ /___  __         _______________ */
+/*            / ___/ __ \/ __ \/ /_/ / __ `/   _/_/   / ___/ / / / ___/ /_    _/_/   / ___/ __/ / / / / _ \/ ___/   _/_/   / //_/ / __/ __/ / / /        / ___/ ___/ ___/ */
+/*      _    / /__/ /_/ / / / / __/ / /_/ /  _/_/    (__  ) /_/ / /  / __/  _/_/    (__  ) /_/ /_/ / /  __(__  )  _/_/    / ,< / / /_/ /_/ /_/ /   _    / /__(__  |__  ) */
+/*     (_)   \___/\____/_/ /_/_/ /_/\__, /  /_/     /____/\__,_/_/  /_/    /_/     /____/\__/\__, /_/\___/____/  /_/     /_/|_/_/\__/\__/\__, /   (_)   \___/____/____/ */
+/*                                 /____/                                                   /____/                                      /____/ */
+/**/
+/* Description:  TODO */
+/* Dependencies: TODO */
+/* License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE  */
+/* Contributors: Stevan Antoine */
+
+body {
+  background-color: #282a36 !important;
+  color: #d0d0d0 !important;
+}
+
+header {
+  background-color: #282a46 !important;
+  color: #d0d0d0 !important;
+}
+
+pre {  /* the code preview */
+  background-color: #686a66 !important;
+  color: #d0d0d0 !important;
+}
+
+.highlight .nb {  /* map */
+  color: #d0d0d0 !important;
+}
+
+.highlight .n {  /* key */
+  color: #d0d0d0 !important;
+}
+
+.highlight .o {  /* + */
+  color: #d0d0d0 !important;
+}
+
+.highlight .c1 {  /* comment */
+  color: #d0d0d0 !important;
+}
+
+.highlight .nf {  /* command */
+  color: #ffd0d0 !important;
+}
+
+.highlight .l {  /* args */
+  color: #d0ffd0 !important;
+}
+
+code.literal {  /* the code preview */
+  background-color: #282a46 !important;
+  color: #f07178 !important;
+}
+
+input {  /* the search bar on the left */
+  background-color: #282a36 !important;
+  color: #d0d0d0 !important;
+}
+
+aside {  /* the whole left side of the page */
+  background-color: #282a36 !important;
+  color: #d0d0d0 !important;
+}
+
+p {  /* any paragraph of text */
+	color: #82aaff !important;
+}
+
+a {  /* some sections of text, inside tables or menu for instance */
+  background-color: #282a36 !important;
+	color: #82aaff !important;
+}
+
+th {  /* the table head */
+  background-color: #282a96 !important;
+	color: #82aaff !important;
+}
+
+h1, h2, h3 {  /* the titles */
+	color: #f07178 !important;
+}
+

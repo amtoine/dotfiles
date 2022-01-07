@@ -21,6 +21,7 @@ catimg
 cava
 chafa
 chromium
+clang
 cmake
 cmatrix
 cmus
@@ -47,6 +48,7 @@ flex
 fortune-mod
 fzf
 gcc
+gdb
 gimp
 git
 github-cli
@@ -73,6 +75,7 @@ mpd
 mpv
 mtools
 myman
+ncdu
 neovim
 nerd-fonts-mononoki
 nethack
@@ -97,10 +100,12 @@ pixterm
 pkgconf
 polybar
 ponysay
+prettier
 protobuf
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
+python-black
 python-mpi4py
 python-opengl
 python-pip
@@ -132,6 +137,7 @@ tig
 tk
 tldr
 tmux
+tomb
 tree
 ueberzug
 unzip

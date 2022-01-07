@@ -1,14 +1,17 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/sup/imgDesc
 - /home/ants/.config/nvim
+- /home/ants/research/ma_playground_env
+- /home/ants/research/playground_env
 - /home/ants/prog/scsc/fil-rouge
+- /home/ants/repos/surf
+- /home/ants/repos/oh-my-bash
+- /home/ants/sup/rlclass
 - /home/ants/repos/polybar
 - /home/ants/repos/dmscripts
 - /home/ants/repos/dmscripts
-- /home/ants/repos/surf
 - /home/ants/repos/soap
-- /home/ants/repos/oh-my-bash
-- /home/ants/sup/imgDesc
 - /home/ants/sup/neuraltalk2-tensorflow
 - /home/ants/repos/dotfiles/dotfiles
 - /home/ants/repos/sites/a2n-s.github.io
@@ -20,4 +23,6 @@ customcommandshistory:
 - git add ~/scripts/open.sh
 - upl.sh
 - cfg add ~/.config/
+- cfg add ~/scripts/*.sh
+- git rebase --abort
 hidecommandlog: false

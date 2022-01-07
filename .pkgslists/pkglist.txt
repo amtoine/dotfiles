@@ -14,6 +14,7 @@ brightnessctl
 bspwm
 catimg
 chromium
+clang
 cmake
 cmatrix
 cmus
@@ -43,6 +44,7 @@ lazygit
 librsync
 lolcat
 mathomatic
+ncdu
 nethack
 network-manager-applet
 nmap
@@ -54,7 +56,9 @@ pavucontrol
 picom
 pkgconf
 ponysay
+prettier
 protobuf
+python-black
 python-mpi4py
 python-opengl
 python-tqdm
