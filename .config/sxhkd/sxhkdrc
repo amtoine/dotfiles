@@ -32,6 +32,8 @@ super + Return
 #  alacritty
 super + n
   kitty nvim
+super + e
+  emacsclient -c -a 'emacs'
 # run a program launcher
 super + @space
   sh ~/scripts/dmrun.sh

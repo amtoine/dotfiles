@@ -28,6 +28,7 @@ cmus
 cowsay
 cronie
 ctags
+dmenufm
 dmscripts-git
 docker
 dosfstools
@@ -91,6 +92,7 @@ pandoc
 paru
 pass
 pass-import
+pass-tomb
 patch
 pavucontrol
 perl-file-mimeinfo
@@ -114,6 +116,7 @@ python-virtualenv
 python2
 python35
 python38
+qtile
 read-edid
 reddio
 ripgrep
@@ -152,6 +155,8 @@ xautolock
 xclip
 xdotool
 xf86-video-vesa
+xmonad
+xmonad-contrib
 xorg-bdftopcf
 xorg-docs
 xorg-font-util
@@ -202,6 +207,7 @@ xorg-xwininfo
 xorg-xwud
 xscreensaver
 xsnow
+xterm
 yad
 yay-git
 youtube-dl

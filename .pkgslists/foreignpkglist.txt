@@ -1,11 +1,13 @@
 arduino-mk
 cava
+dmenufm
 dmscripts-git
 lf
 myman
 nerd-fonts-mononoki
 paru
 pass-import
+pass-tomb
 pfetch
 pixterm
 polybar

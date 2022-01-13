@@ -68,8 +68,9 @@
   ga      = log --graph --all          
   tr      = log --graph --all --oneline --decorate
   trs     = log --graph --all --oneline --decorate        -10
-  trs     = log --graph --all --oneline --decorate --stat
-  trss    = log --graph --all --oneline --decorate --stat -10
+  trm     = log --graph --all --oneline --decorate --stat
+  trms    = log --graph --all --oneline --decorate --stat -10
+  trb     = log --graph --all --oneline --decorate --simplify-by-decoration
 
 ; to inspect the tracked files.
   lf      = ls-files                                            # list tracked files.

@@ -42,8 +42,9 @@ If you want more information about *bare* `git` repositories, you can check one 
 $HOME
 |-- [d]  .config                                     -- main config directory
 |   |-- [-]  alacritty/alacritty.yml                   --  the alacritty terminal emulator.
-|   |-- [-]  bspwm/bspwmrc
-|   |-- [-]  dmscripts/config
+|   |-- [-]  bspwm/bspwmrc                             -- a tilling window manager.
+|   |-- [-]  dmscripts/config                          -- configuration for some dmenu life hacks.
+|   |-- [-]  dmenufm/dmenufm.conf                      -- a file explorer and manager.
 |   |-- [d]  fish                                      -- the fish shell
 |   |-- [-]  htop/htoprc                               -- my process monitor.
 |   |-- [-]  kitty/kitty.conf                          -- terminal emulator.
@@ -51,10 +52,11 @@ $HOME
 |   |-- [d]  lazycli                                   -- the lazy cli tui tool.
 |   |-- [-]  lf/lfrc                                   -- file explorer.
 |   |-- [-]  mpd/mpd.conf                              -- music server deamon, crashes for some reason...
-|   |-- [d]  mpv
+|   |-- [d]  mpv                                       -- video and music player.
 |   |-- [-]  ncmpcpp/config                            -- music client.
 |   |-- [d]  neofetch                                  -- a logo printer.
 |   |-- [-]  nitrogen/nitrogen.cfg                     -- a wallpaper manager.
+|   |-- [-]  qtile/config.py                           -- a tilling window manager.
 |   |-- [d]  spectrwm                                  -- the spectrWM tilling window manager.
 |   |-- [d]  surf                                      -- the suckless web browser.
 |   |-- [-]  sxhkd/sxhkdrc                             -- the simple x hot key daemon.
@@ -64,25 +66,11 @@ $HOME
 |-- [d]  .pkgslists                                  -- packages.
 |   |-- [-]  README.md
 |   |-- [-]  allpkglist.txt                            -- the list of all installed packages.
+|   |-- [-]  cargocmdlist.txt                          -- the list of cargo commands.
 |   |-- [-]  foreignpkglist.txt                        -- the list of AUR packages.
 |   |-- [-]  optdeplist.txt                            -- the list of optional packages.
 |   `-- [-]  pkglist.txt                               -- the list of arch packages.
 |-- [d]  scripts                                     -- my scripts.
-|   |-- [-]  _countdown.sh                             -- a countdown with alarm (deprecated).
-|   |-- [-]  _parse_git_info.sh                        -- parses the repo information if available.
-|   |-- [-]  _shortwd.sh                               -- gives a short directory name for prompt.
-|   |-- [-]  _stopwatch.sh                             -- a stopwatch (deprecated)
-|   |-- [-]  dmrun.sh                                  -- a wrapper around dmenu.
-|   |-- [-]  prompt.sh                                 -- a binary prompt that executes commands.
-|   |-- [-]  screenshot.sh                             -- takes screeshots with scrot.
-|   |-- [-]  slock-cst.sh                              -- a wrapper around slock.
-|   |-- [-]  spectrWM-baraction.sh                     -- controls the spectrWM bar.
-|   |-- [-]  togkb.sh                                  -- toggles the keyboard layout.
-|   |-- [-]  tr2md.sh                                  -- transforms a directory into a tree for .md files.
-|   |-- [-]  upl.sh                                    -- updates the list of installed packages.
-|   |-- [-]  wvenv.sh                                  -- shows current python environment.
-|   |-- [-]  xtcl.sh                                   -- disables my broken caps lock key.
-|   `-- [-]  ytdl.sh
 |-- [-]  .bash_logout                                -- what bash should do on logout.
 |-- [-]  .bash_profile                               -- runs bash and starts the WM on startup.
 |-- [-]  .bashrc                                     -- runs config stuff to make the experience what it is.
@@ -131,11 +119,12 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [`bspwm`]             ([\*\*][mydoc-bspwm])
 - [x] [`bash`]              ([\*\*][mydoc-bash])
 - [x] [`dmscripts`]
+- [ ] [`dmenufm`]           ([\*\*][mydoc-dmenufm])
 - [ ] [`fish`]              ([\*\*][mydoc-fish])
 - [x] [`git`]               ([\*\*][mydoc-git])
 - [x] [`htop`]              ([\*\*][mydoc-htop])
 - [x] [`kitty`]        (\*) ([\*\*][mydoc-kitty])
-- [x] [`lf`]                ([\*\*][mydoc-lf])
+- [ ] [`lf`]                ([\*\*][mydoc-lf])
 - [x] [`lazygit`]           ([\*\*][mydoc-lazygit])
 - [x] [`lazycli`]           ([\*\*][mydoc-lazycli])
 - [ ] [`mpd`]               ([\*\*][mydoc-mpd])
@@ -143,6 +132,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [ ] [`ncmcpp`]            ([\*\*][mydoc-ncmcpp])
 - [ ] [`neofetch`]          ([\*\*][mydoc-neofetch])
 - [ ] [`nitrogen`]          ([\*\*][mydoc-nitrogen])
+- [ ] [`qtile`]             ([\*\*][mydoc-qtile])
 - [ ] [`spectrWM`]          ([\*\*][mydoc-spectrWM])
 - [x] [`starship`]          ([\*\*][mydoc-starship])
 - [x] [`sxhkd`]             ([\*\*][mydoc-sxhkd])
@@ -255,6 +245,7 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [`bspwm`]:                 .config/bspwm/bspwmrc
 [`bash`]:                  .bashrc
 [`dmscripts`]:             .config/dmscripts/config
+[`dmenufm`]:               .config/dmenufm/dmenufm.conf
 [`fish`]:                  .config/fish
 [`git`]:                   .gitconfig
 [`htop`]:                  .config/htop/htoprc
@@ -267,6 +258,7 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [`ncmcpp`]:                .config/ncmcpp/config
 [`neofetch`]:              .config/neofetch
 [`nitrogen`]:              .config/nitrogen/nitrogen.cfg
+[`qtile`]:                 .config/qtile/config.py
 [`spectrWM`]:              .config/spectrwm
 [`sxhkd`]:                 .config/sxhkd/sxhkdrc
 [`starship`]:              .config/starship.toml
@@ -292,6 +284,7 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [mydoc-alacritty]:             https://a2n-s.github.io/public/doc/config/dotfiles/alacritty
 [mydoc-bspwm]:                 https://a2n-s.github.io/public/doc/config/dotfiles/bspwm
 [mydoc-bash]:                  https://a2n-s.github.io/public/doc/config/dotfiles/bash
+[mydoc-dmenufm]:               https://a2n-s.github.io/public/doc/config/dotfiles/dmenufm
 [mydoc-fish]:                  https://a2n-s.github.io/public/doc/config/dotfiles/fish
 [mydoc-git]:                   https://a2n-s.github.io/public/doc/config/dotfiles/git
 [mydoc-htop]:                  https://a2n-s.github.io/public/doc/config/dotfiles/htop
@@ -303,6 +296,7 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [mydoc-ncmcpp]:                https://a2n-s.github.io/public/doc/config/dotfiles/ncmcpp
 [mydoc-neofetch]:              https://a2n-s.github.io/public/doc/config/dotfiles/neofetch
 [mydoc-nitrogen]:              https://a2n-s.github.io/public/doc/config/dotfiles/nitrogen
+[mydoc-qtile]:                 https://a2n-s.github.io/public/doc/config/dotfiles/qtile
 [mydoc-spectrwm]:              https://a2n-s.github.io/public/doc/config/dotfiles/spectrwm
 [mydoc-sxhkd]:                 https://a2n-s.github.io/public/doc/config/dotfiles/sxhkd
 [mydoc-starship]:              https://a2n-s.github.io/public/doc/config/dotfiles/starship

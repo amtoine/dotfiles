@@ -1,13 +1,20 @@
 lastupdatecheck: 0
 recentrepos:
-- /home/ants/sup/imgDesc
-- /home/ants/research/ma_playground_env
 - /home/ants/.config/nvim
-- /home/ants/research/playground_env
+- /home/ants/research/Imagine
+- /home/ants/repos/a2n-s
+- /home/ants/research/ma_playground_env
+- /home/ants/research/imagineXdial
 - /home/ants/prog/scsc/fil-rouge
-- /home/ants/repos/surf
+- /home/ants/prog/scsc/fgk
 - /home/ants/repos/oh-my-bash
 - /home/ants/sup/rlclass
+- /home/ants/repos/dmenu
+- /home/ants/repos/amazons
+- /home/ants/.password-store
+- /home/ants/sup/imgDesc
+- /home/ants/research/playground_env
+- /home/ants/repos/surf
 - /home/ants/repos/polybar
 - /home/ants/repos/dmscripts
 - /home/ants/repos/dmscripts

@@ -68,16 +68,11 @@ fi
 ### window manager launching:
 # the compositor.
 picom &
-# the wallpaper.
-#~/.fehbg &
-feh --bg-fill --randomize ~/repos/wallpapers/wallpapers/
-# the screen saver.
-# xscreensaver --no-splash > /dev/null &
 
 # the window manager itself.
 # exec spectrwm
 exec bspwm
+# exec xmonad
 # exec i3
 # exec awesome
 # exec qtile start
-# exec spectrwm

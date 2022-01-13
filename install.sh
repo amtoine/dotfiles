@@ -158,14 +158,18 @@ scripts+=("_parse_git_info.sh")
 scripts+=("_shortwd.sh")
 scripts+=("_stopwatch.sh")
 scripts+=("dmrun.sh")
+scripts+=("hdmi.brightness.sh")
 scripts+=("lfrun.sh")
 scripts+=("list.git-repos.diagnostic.sh")
 scripts+=("misc.nvim-renaming.sh")
+scripts+=("open.sh")
 scripts+=("prompt.sh")
 scripts+=("repo.info.sh")
+scripts+=("repo.rename.default.branch.sh")
 scripts+=("screenshot.sh")
 scripts+=("slock-cst.sh")
 scripts+=("spectrWM-baraction.sh")
+scripts+=("surf-open.sh")
 scripts+=("togkb.sh")
 scripts+=("tr2md.sh")
 scripts+=("upl.sh")
@@ -416,6 +420,8 @@ install_kitty() {
   make
   echo "${Cmd}ln -s ./kitty/launcher/kitty /usr/bin/kitty${Off}"
   ln -s ./kitty/launcher/kitty /usr/bin/kitty
+  echo "${Cmd}ln -s ./kitty/launcher/kitty $BDIR/kitty${Off}"
+  ln -s ./kitty/launcher/kitty $BDIR/kitty
   echo "${Tip}[!!] Be sure to restart the right terminal emulator for the config to take full effect.${Off}"
   echo "${Tip}[!!] You might need to tell youre wm to use kitty as default, or just run kitty in your previous terminal.${Off}"
   echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/kitty ${Off}"
@@ -620,6 +626,18 @@ install_zsh() {
   fi
   echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/zsh ${Off}"
 }
+install_dmenufm() {
+  install_dir ".config/dmenufm/dmenufm.conf"
+  echo "${Cmd}yay ${Pkg}dmenufm${Off}"
+  yay -S dmenufm
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/dmenufm ${Off}(${Red}NOT AVAILABLE FOR NOW${Off})"
+}
+install_qtile() {
+  install_dir ".config/qtile/config.py"
+  echo "${Cmd}sudo pacman -Syu ${Pkg}qtile${Off}"
+  sudo pacman -Syu qtile
+  echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dotfiles/qtile ${Off}(${Red}NOT AVAILABLE FOR NOW${Off})"
+}
 
 ################################################################################################
 ## standalone repos installation functions #####################################################
@@ -721,14 +739,18 @@ init_CFG() {
   CFG["SCRIPT:_shortwd.sh"]="none"
   CFG["SCRIPT:_stopwatch.sh"]="none"
   CFG["SCRIPT:dmrun.sh"]="none"
+  CFG["SCRIPT:hdmi.brightness.sh"]="none"
   CFG["SCRIPT:lfrun.sh"]="none"
   CFG["SCRIPT:list.git-repos.diagnostic.sh"]="none"
   CFG["SCRIPT:misc.nvim-renaming.sh"]="none"
+  CFG["SCRIPT:open.sh"]="none"
   CFG["SCRIPT:prompt.sh"]="none"
   CFG["SCRIPT:repo.info.sh"]="none"
+  CFG["SCRIPT:repo.rename.default.branch.sh"]="none"
   CFG["SCRIPT:screenshot.sh"]="none"
   CFG["SCRIPT:slock-cst.sh"]="none"
   CFG["SCRIPT:spectrWM-baraction.sh"]="none"
+  CFG["SCRIPT:surf-open.sh"]="none"
   CFG["SCRIPT:togkb.sh"]="none"
   CFG["SCRIPT:tr2md.sh"]="none"
   CFG["SCRIPT:upl.sh"]="none"
@@ -768,6 +790,8 @@ init_CFG() {
   CFG["CONFIG:mpd"]="none"
   CFG["CONFIG:mpv"]="none"
   CFG["CONFIG:ncmpcpp"]="none"
+  CFG["CONFIG:dmenufm"]="none"
+  CFG["CONFIG:qtile"]="none"
 }
 
 
@@ -833,12 +857,12 @@ declare -A CFG
 init_CFG
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    +prog/sketchbook/FastLED-basics|+prog/scsc/fil-rouge|+prog/scsc/fgk|+prog/swarm-rescue-g1|+sup/tatami|+sup/machine-learning|+sup/imgDesc|+sup/flatland-project|+sup/deep-learning|+sup/stochastic|+sup/mcdm|+surf|+yay-git|+polybar|+lazycli|+dmscripts|+dmenu|+tabbed|+slock|+bash-insulter|+kitty|+Neovim-from-scratch|+oh-my-bash|+uzbl|+oh-my-fish|+a2n-s|+wallpapers|+oh-my-zsh|+sites/nereuxofficial.github.io|+sites/a2n-s.github.io/themes/hugo-theme-terminal|+sites/a2n-s.github.io|+dotfiles/atxr_dotfiles|+research/playground_env|+research/Imagine|+research/imagineXdial|+research/gym_ma_toy|+research/learning-to-communicate-pytorch) CFG["REPO:$(echo $1 | sed 's/^+//')"]="install";;
-    -prog/sketchbook/FastLED-basics|-prog/scsc/fil-rouge|-prog/scsc/fgk|-prog/swarm-rescue-g1|-sup/tatami|-sup/machine-learning|-sup/imgDesc|-sup/flatland-project|-sup/deep-learning|-sup/stochastic|-sup/mcdm|-surf|-yay-git|-polybar|-lazycli|-dmscripts|-dmenu|-tabbed|-slock|-bash-insulter|-kitty|-Neovim-from-scratch|-oh-my-bash|-uzbl|-oh-my-fish|-a2n-s|-wallpapers|-oh-my-zsh|-sites/nereuxofficial.github.io|-sites/a2n-s.github.io/themes/hugo-theme-terminal|-sites/a2n-s.github.io|-dotfiles/atxr_dotfiles|-research/playground_env|-research/Imagine|-research/imagineXdial|-research/gym_ma_toy|-research/learning-to-communicate-pytorch) CFG["REPO:$(echo $1 | sed 's/^-//')"]="restore";;
-    +_countdown.sh|+_parse_git_info.sh|+_shortwd.sh|+_stopwatch.sh|+dmrun.sh|+lfrun.sh|+list.git-repos.diagnostic.sh|+misc.nvim-renaming.sh|+prompt.sh|+repo.info.sh|+screenshot.sh|+slock-cst.sh|+spectrWM-baraction.sh|+togkb.sh|+tr2md.sh|+upl.sh|+wvenv.sh|+xtcl.sh|+ytdl.sh) CFG["SCRIPT:$(echo $1 | sed 's/^+//')"]="install";;
-    -_countdown.sh|-_parse_git_info.sh|-_shortwd.sh|-_stopwatch.sh|-dmrun.sh|-lfrun.sh|-list.git-repos.diagnostic.sh|-misc.nvim-renaming.sh|-prompt.sh|-repo.info.sh|-screenshot.sh|-slock-cst.sh|-spectrWM-baraction.sh|-togkb.sh|-tr2md.sh|-upl.sh|-wvenv.sh|-xtcl.sh|-ytdl.sh) CFG["SCRIPT:$(echo $1 | sed 's/^-//')"]="restore";;
-    +git|+htop|+bash|+fish|+zsh|+starship|+neofetch|+vim|+neovim|+x|+bspwm|+spectrwm|+alacritty|+kitty|+nitrogen|+slock|+xscreensaver|+polybar|+vifm|+lf|+surf|+tabbed|+wallpapers|+dmenu|+dmscripts|+lazygit|+lazycli|+tigrc|+tmux|+mpd|+mpv|+ncmpcpp) CFG["CONFIG:$(echo $1 | sed 's/^+//')"]="install";;
-    -git|-htop|-bash|-fish|-zsh|-starship|-neofetch|-vim|-neovim|-x|-bspwm|-spectrwm|-alacritty|-kitty|-nitrogen|-slock|-xscreensaver|-polybar|-vifm|-lf|-surf|-tabbed|-wallpapers|-dmenu|-dmscripts|-lazygit|-lazycli|-tigrc|-tmux|-mpd|-mpv|-ncmpcpp) CFG["CONFIG:$(echo $1 | sed 's/^-//')"]="restore";;
+    +prog/sketchbook/FastLED-basics|+prog/scsc/fil-rouge|+prog/scsc/fgk|+prog/swarm-rescue-g1|+sup/tatami|+sup/machine-learning|+sup/imgDesc|+sup/flatland-project|+sup/deep-learning|+sup/stochastic|+sup/mcdm|+surf-src|+yay-git|+polybar-src|+lazycli-src|+dmscripts-src|+dmenu-src|+tabbed|+slock|+bash-insulter|+kitty-src|+Neovim-from-scratch|+oh-my-bash|+uzbl|+oh-my-fish|+a2n-s|+wallpapers|+oh-my-zsh|+sites/nereuxofficial.github.io|+sites/a2n-s.github.io/themes/hugo-theme-terminal|+sites/a2n-s.github.io|+dotfiles/atxr_dotfiles|+research/playground_env|+research/Imagine|+research/imagineXdial|+research/gym_ma_toy|+research/learning-to-communicate-pytorch) CFG["REPO:$(echo $1 | sed 's/^+//')"]="install";;
+    -prog/sketchbook/FastLED-basics|-prog/scsc/fil-rouge|-prog/scsc/fgk|-prog/swarm-rescue-g1|-sup/tatami|-sup/machine-learning|-sup/imgDesc|-sup/flatland-project|-sup/deep-learning|-sup/stochastic|-sup/mcdm|-surf-src|-yay-git|-polybar-src|-lazycli-src|-dmscripts-src|-dmenu-src|-tabbed|-slock|-bash-insulter|-kitty-src|-Neovim-from-scratch|-oh-my-bash|-uzbl|-oh-my-fish|-a2n-s|-wallpapers|-oh-my-zsh|-sites/nereuxofficial.github.io|-sites/a2n-s.github.io/themes/hugo-theme-terminal|-sites/a2n-s.github.io|-dotfiles/atxr_dotfiles|-research/playground_env|-research/Imagine|-research/imagineXdial|-research/gym_ma_toy|-research/learning-to-communicate-pytorch) CFG["REPO:$(echo $1 | sed 's/^-//')"]="restore";;
+    +_countdown.sh|+_parse_git_info.sh|+_shortwd.sh|+_stopwatch.sh|+dmrun.sh|+hdmi.brightness.sh|+lfrun.sh|+list.git-repos.diagnostic.sh|+misc.nvim-renaming.sh|+open.sh|+prompt.sh|+repo.info.sh|+repo.rename.default.branch.sh|+screenshot.sh|+slock-cst.sh|+spectrWM-baraction.sh|+surf-open.sh|+togkb.sh|+tr2md.sh|+upl.sh|+wvenv.sh|+xtcl.sh|+ytdl.sh) CFG["SCRIPT:$(echo $1 | sed 's/^+//')"]="install";;
+    -_countdown.sh|-_parse_git_info.sh|-_shortwd.sh|-_stopwatch.sh|-dmrun.sh|-hdmi.brightness.sh|-lfrun.sh|-list.git-repos.diagnostic.sh|-misc.nvim-renaming.sh|-open.sh|-prompt.sh|-repo.info.sh|-repo.rename.default.branch.sh|-screenshot.sh|-slock-cst.sh|-spectrWM-baraction.sh|-surf-open.sh|-togkb.sh|-tr2md.sh|-upl.sh|-wvenv.sh|-xtcl.sh|-ytdl.sh) CFG["SCRIPT:$(echo $1 | sed 's/^-//')"]="restore";;
+    +git|+htop|+bash|+fish|+zsh|+starship|+neofetch|+vim|+neovim|+x|+bspwm|+spectrwm|+alacritty|+kitty|+nitrogen|+slock|+xscreensaver|+polybar|+vifm|+lf|+surf|+tabbed|+wallpapers|+dmenu|+dmscripts|+lazygit|+lazycli|+tigrc|+tmux|+mpd|+mpv|+ncmpcpp|+dmenufm|+qtile) CFG["CONFIG:$(echo $1 | sed 's/^+//')"]="install";;
+    -git|-htop|-bash|-fish|-zsh|-starship|-neofetch|-vim|-neovim|-x|-bspwm|-spectrwm|-alacritty|-kitty|-nitrogen|-slock|-xscreensaver|-polybar|-vifm|-lf|-surf|-tabbed|-wallpapers|-dmenu|-dmscripts|-lazygit|-lazycli|-tigrc|-tmux|-mpd|-mpv|-ncmpcpp|-dmenufm|-qtile) CFG["CONFIG:$(echo $1 | sed 's/^-//')"]="restore";;
     -m|--man)
       man ~/install.1
       exit 0
