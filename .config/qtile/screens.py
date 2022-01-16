@@ -15,66 +15,26 @@
 # Contributors: Stevan Antoine
 
 from libqtile import bar
-from libqtile import widget
 from libqtile.config import Screen
 
+from widgets import init_widgets_list
+from widgets import init_widgets_screen1
+from widgets import init_widgets_screen2
+from themes import bar_theme
 
-def init_fake_screens():
+
+def init_screens(terminal):
     return [
-        Screen(
-            top=bar.Bar(
-                [
-                    widget.CurrentLayout(),
-                    widget.GroupBox(),
-                    widget.Prompt(),
-                    widget.WindowName(),
-                    widget.Chord(
-                        chords_colors={
-                            'launch': ("#ff0000", "#ffffff"),
-                        },
-                        name_transform=lambda name: name.upper(),
-                    ),
-                    widget.TextBox("default config", name="default"),
-                    widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                    widget.Systray(),
-                    widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-                    widget.QuickExit(),
-                ],
-                24,
-                # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-                # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-            ),
-            x=0,
-            y=0,
-            width=1920,
-            height=1080
-        ),
-        Screen(
-            top=bar.Bar(
-                [
-                    widget.CurrentLayout(),
-                    widget.GroupBox(),
-                    widget.Prompt(),
-                    widget.WindowName(),
-                    widget.Chord(
-                        chords_colors={
-                            'launch': ("#ff0000", "#ffffff"),
-                        },
-                        name_transform=lambda name: name.upper(),
-                    ),
-                    widget.TextBox("default config", name="default"),
-                    widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                    widget.Systray(),
-                    widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-                    widget.QuickExit(),
-                ],
-                24,
-                # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-                # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-            ),
-            x=1920,
-            y=0,
-            width=1920,
-            height=1080
-        ),
+        Screen(top=bar.Bar(widgets=init_widgets_screen1(terminal), opacity=1.0, size=20)),
+        Screen(top=bar.Bar(widgets=init_widgets_screen2(terminal), opacity=1.0, size=20)),
+        Screen(top=bar.Bar(widgets=init_widgets_screen1(terminal), opacity=1.0, size=20))
+    ]
+
+
+def init_fake_screens(terminal):
+    screen1 = dict(x=0,    y=0, width=1920, height=1080)
+    screen2 = dict(x=1920, y=0, width=1920, height=1080)
+    return [
+        Screen(top=bar.Bar(widgets=init_widgets_list(terminal), **bar_theme), **screen1),
+        Screen(top=bar.Bar(widgets=init_widgets_list(terminal), **bar_theme), **screen2),
     ]
