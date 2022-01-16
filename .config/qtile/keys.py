@@ -99,7 +99,7 @@ def init_keymap(mod, terminal):
         # Key([mod], "space",            lazy.layout.next(),                                                 desc='Switch window focus to other pane(s) of stack'),
         # Key([mod, "shift"], "space",   lazy.layout.toggle_split(),                                         desc='Toggle between split and unsplit sides of stack'),
         # Emacs programs chord.
-        KeyChord(["control"], "e", [
+        KeyChord([mod], "e", [
             Key([], "e",               lazy.spawn("emacsclient -c -a 'emacs'"),                            desc='Launch Emacs'),
             Key([], "b",               lazy.spawn("emacsclient -c -a 'emacs' --eval '(ibuffer)'"),         desc='Launch ibuffer inside Emacs'),
             Key([], "d",               lazy.spawn("emacsclient -c -a 'emacs' --eval '(dired nil)'"),       desc='Launch dired inside Emacs'),

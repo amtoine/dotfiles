@@ -17,7 +17,6 @@
 from libqtile import bar
 from libqtile.config import Screen
 
-from widgets import init_widgets_list
 from widgets import init_widgets_screen1
 from widgets import init_widgets_screen2
 from themes import bar_theme
@@ -35,6 +34,6 @@ def init_fake_screens(terminal):
     screen1 = dict(x=0,    y=0, width=1920, height=1080)
     screen2 = dict(x=1920, y=0, width=1920, height=1080)
     return [
-        Screen(top=bar.Bar(widgets=init_widgets_list(terminal), **bar_theme), **screen1),
-        Screen(top=bar.Bar(widgets=init_widgets_list(terminal), **bar_theme), **screen2),
+        Screen(top=bar.Bar(widgets=init_widgets_screen1(terminal), **bar_theme), **screen1),
+        Screen(top=bar.Bar(widgets=init_widgets_screen2(terminal), **bar_theme), **screen2),
     ]

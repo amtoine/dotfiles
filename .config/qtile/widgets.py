@@ -600,7 +600,7 @@ def _text_box(text='', bg="#000000", fg="#ffffff"):
     )
 
 
-def systray(bg="#000000"):
+def _systray(bg="#000000"):
     """
         class libqtile.widget.Systray(**config)[source]
         A widget that manages system tray.
@@ -754,9 +754,20 @@ def _quick_exit(bg="#000000", fg="#ffffff", font=wt.font, size=wt.size):
     )
 
 
-def _powerline_arrow(bg="#000000", fg="#ffffff"):
+def _powerline_left_arrow(bg="#000000", fg="#ffffff"):
     return widget.TextBox(
-        text='',
+        text='\uf0d9',  # '' character
+        font="sans",
+        background=bg,
+        foreground=fg,
+        padding=0,
+        fontsize=37
+    )
+
+
+def _powerline_right_arrow(bg="#000000", fg="#ffffff"):
+    return widget.TextBox(
+        text='\uf0da',  # inverse '' character
         font="sans",
         background=bg,
         foreground=fg,
@@ -776,8 +787,8 @@ def _vertical_sep(bg="#000000", fg="#ffffff"):
     )
 
 
-def init_widgets_list(terminal):
-    widgets_list = [
+def init_widgets_(terminal):
+    widgets = [
         # _current_layout_icon(),
         _current_layout(fg=wt.white, bg=wt.grey),
         _vertical_sep(bg=wt.black),
@@ -793,53 +804,111 @@ def init_widgets_list(terminal):
         _sep(fg=wt.white, bg=wt.black),
         # _image(bg=wt.black),
         # _thermal_sensor(fg=wt.white, bg=wt.black),
-        _powerline_arrow(fg=wt.blue, bg=wt.black),
+        _powerline_left_arrow(fg=wt.blue, bg=wt.black),
         _bluetooth(fg=wt.white, bg=wt.blue),
-        _powerline_arrow(fg=wt.red, bg=wt.blue),
+        _powerline_left_arrow(fg=wt.red, bg=wt.blue),
         _volume(fg=wt.white, bg=wt.red),
-        _powerline_arrow(fg=wt.blue, bg=wt.red),
+        _powerline_left_arrow(fg=wt.blue, bg=wt.red),
         _keyboard_layout(fg=wt.white, bg=wt.blue),
-        _powerline_arrow(fg=wt.red, bg=wt.blue),
+        _powerline_left_arrow(fg=wt.red, bg=wt.blue),
         _backlight(fg=wt.white, bg=wt.red),
-        _powerline_arrow(fg=wt.blue, bg=wt.red),
-        _memory(terminal, fg=wt.white, bg=wt.blue),
-        _powerline_arrow(fg=wt.red, bg=wt.blue),
+        _powerline_left_arrow(fg=wt.blue, bg=wt.red),
+        _memory(terminal=terminal, fg=wt.white, bg=wt.blue),
+        _powerline_left_arrow(fg=wt.red, bg=wt.blue),
         _cpu(fg=wt.white, bg=wt.red),
-        _powerline_arrow(fg=wt.black, bg=wt.red),
+        _powerline_left_arrow(fg=wt.black, bg=wt.red),
         _hdd(bg=wt.black),
-        _powerline_arrow(fg=wt.blue, bg=wt.black),
+        _powerline_left_arrow(fg=wt.blue, bg=wt.black),
         _wallpaper(fg=wt.white, bg=wt.blue),
-        _powerline_arrow(fg=wt.red, bg=wt.blue),
-        _check_updates(terminal, fg=wt.white, bg=wt.red),
-        _powerline_arrow(fg=wt.blue, bg=wt.red),
+        _powerline_left_arrow(fg=wt.red, bg=wt.blue),
+        _check_updates(terminal=terminal, fg=wt.white, bg=wt.red),
+        _powerline_left_arrow(fg=wt.blue, bg=wt.red),
         _chord(fg=wt.white, bg=wt.green),
-        _powerline_arrow(fg=wt.red, bg=wt.blue),
+        _powerline_left_arrow(fg=wt.red, bg=wt.blue),
         _net(fg=wt.white, bg=wt.red),
-        _powerline_arrow(fg=wt.blue, bg=wt.red),
-        _text_box("Press &lt;M-r&gt; to spawn", fg=wt.white, bg=wt.blue),
-        _powerline_arrow(fg=wt.red, bg=wt.blue),
+        _powerline_left_arrow(fg=wt.blue, bg=wt.red),
+        _text_box(text="Press &lt;M-r&gt; to spawn", fg=wt.white, bg=wt.blue),
+        _powerline_left_arrow(fg=wt.red, bg=wt.blue),
         _clock(format="%A, %B %d - %H:%M ", fg=wt.white, bg=wt.red),
-        _powerline_arrow(fg=wt.blue, bg=wt.red),
+        _powerline_left_arrow(fg=wt.blue, bg=wt.red),
         _battery_icon(bg=wt.blue),
         _battery(fg=wt.white, bg=wt.blue),
-        _powerline_arrow(fg=wt.green, bg=wt.blue),
+        _powerline_left_arrow(fg=wt.green, bg=wt.blue),
         _quick_exit(fg=wt.white, bg=wt.green),
     ]
-    return widgets_list
+    return widgets
+
+
+def list_left_widgets():
+    return [
+        # _current_layout_icon(),
+        [_current_layout, {"fg": wt.white, "bg": wt.grey}],
+        [_current_screen, {"fg": wt.white, "bg": wt.black}],
+        [_group_box,      {"fg": wt.white, "bg": wt.grey}],
+        [_prompt,         {"fg": wt.white, "bg": wt.black}],
+        [_window_name,    {"fg": wt.white, "bg": wt.grey}],
+    ]
+
+
+def list_right_widgets(terminal):
+    return [
+        # [_image,           {"bg": wt.blue}],
+        # [_thermal_sensor,  {"bg": wt.blue,   "fg": wt.white}],
+        # [_bluetooth,       {"bg": wt.blue,   "fg": wt.white}],
+        [_chord,           {"bg": wt.green,  "fg": wt.white}],
+        [_systray,         {"bg": wt.purple}],
+        # [_memory,          {"bg": wt.blue,   "fg": wt.white,  "terminal": terminal}],
+        # [_cpu,             {"bg": wt.red,    "fg": wt.white}],
+        [_net,             {"bg": wt.red,    "fg": wt.white}],
+        [_volume,          {"bg": wt.red,    "fg": wt.white}],
+        # [_keyboard_layout, {"bg": wt.blue,   "fg": wt.white}],
+        [_backlight,       {"bg": wt.red,    "fg": wt.white}],
+        # [_hdd,             {"bg": wt.black}],
+        [_wallpaper,       {"bg": wt.blue,   "fg": wt.white}],
+        [_check_updates,   {"bg": wt.red,    "fg": wt.white,  "terminal": terminal}],
+        # [_text_box,        {"bg": wt.blue,   "fg": wt.white,  "text": "Press &lt;M-r&gt; to spawn"}],
+        [_clock,           {"bg": wt.red,    "fg": wt.white,  "format": "%A, %B %d - %H:%M "}],
+        [_battery_icon,    {"bg": wt.blue}],
+        [_battery,         {"bg": wt.blue,   "fg": wt.white}],
+        [_quick_exit,      {"bg": wt.orange, "fg": wt.white}],
+    ]
+
+
+def _init_widgets(left, right):
+    widgets = []
+    bg = wt.black
+    for func, kwargs in left[::-1]:
+        _bg = kwargs["bg"]
+        widgets.extend([_powerline_right_arrow(fg=_bg, bg=bg), func(**kwargs)])
+        bg = _bg
+    widgets = widgets[::-1]
+
+    widgets.append(_sep(fg=wt.white, bg=wt.black))
+
+    bg = wt.black
+    for func, kwargs in right:
+        _bg = kwargs["bg"]
+        widgets.extend([_powerline_left_arrow(fg=_bg, bg=bg), func(**kwargs)])
+        bg = _bg
+
+    return widgets
 
 
 def init_widgets_screen1(terminal):
     """
         Slicing removes unwanted widgets (systray) on Monitors 1,3
     """
-    widgets_screen1 = init_widgets_list(terminal)
-    del widgets_screen1[9:10]
-    return widgets_screen1
+    left = list_left_widgets()
+    right = list_right_widgets(terminal)
+    widgets = _init_widgets(left, right)
+    return widgets
 
 
 def init_widgets_screen2(terminal):
     """
         Monitor 2 will display all widgets in widgets_list
     """
-    widgets_screen2 = init_widgets_list(terminal)
-    return widgets_screen2
+    left = list_left_widgets()
+    right = list_right_widgets(terminal)
+    widgets = _init_widgets(left, right)
+    return widgets
