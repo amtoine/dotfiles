@@ -28,16 +28,17 @@ dgroups_app_rules = []  # type: List
 follow_mouse_focus = False
 bring_front_click = False
 cursor_warp = False
-floating_layout = layout.Floating(float_rules=[
-    # Run the utility of `xprop` to see the wm class and name of an X client.
-    *layout.Floating.default_float_rules,
-    Match(wm_class='confirmreset'),  # gitk
-    Match(wm_class='makebranch'),  # gitk
-    Match(wm_class='maketag'),  # gitk
-    Match(wm_class='ssh-askpass'),  # ssh-askpass
-    Match(title='branchdialog'),  # gitk
-    Match(title='pinentry'),  # GPG key password entry
-])
+floating_layout = layout.Floating(
+    float_rules=[
+        # Run the utility of `xprop` to see the wm class and name of an X client.
+        *layout.Floating.default_float_rules,
+        Match(wm_class='confirmreset'),  # gitk
+        Match(wm_class='makebranch'),  # gitk
+        Match(wm_class='maketag'),  # gitk
+        Match(wm_class='ssh-askpass'),  # ssh-askpass
+        Match(title='branchdialog'),  # gitk
+        Match(title='pinentry'),  # GPG key password entry
+    ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
@@ -62,3 +63,37 @@ def autostart():
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
+
+# if __name__ in ["config", "__main__"]:
+#     screens = init_screens()
+#     widgets_list = init_widgets_list()
+#     widgets_screen1 = init_widgets_screen1()
+#     widgets_screen2 = init_widgets_screen2()
+#
+# def window_to_prev_group(qtile):
+#     if qtile.currentwindow is not none:
+#         i = qtile.groups.index(qtile.currentgroup)
+#         qtile.currentwindow.togroup(qtile.groups[i - 1].name)
+#
+# def window_to_next_group(qtile):
+#     if qtile.currentwindow is not none:
+#         i = qtile.groups.index(qtile.currentgroup)
+#         qtile.currentwindow.togroup(qtile.groups[i + 1].name)
+#
+# def window_to_previous_screen(qtile):
+#     i = qtile.screens.index(qtile.current_screen)
+#     if i != 0:
+#         group = qtile.screens[i - 1].group.name
+#         qtile.current_window.togroup(group)
+#
+# def window_to_next_screen(qtile):
+#     i = qtile.screens.index(qtile.current_screen)
+#     if i + 1 != len(qtile.screens):
+#         group = qtile.screens[i + 1].group.name
+#         qtile.current_window.togroup(group)
+#
+# def switch_screens(qtile):
+#     i = qtile.screens.index(qtile.current_screen)
+#     group = qtile.screens[i - 1].group
+#     qtile.current_screen.set_group(group)
