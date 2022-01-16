@@ -103,8 +103,8 @@ def _check_updates(terminal, bg="#000000", fg="#ffffff"):
     """
     return widget.CheckUpdates(
         background=bg,                                                                         # Widget background color
-        colour_have_updates='ffffff',                                                          # Colour when there are updates.
-        colour_no_updates='ffffff',                                                            # Colour when there's no updates.
+        colour_have_updates=fg,                                                                # Colour when there are updates.
+        colour_no_updates=fg,                                                                  # Colour when there's no updates.
         custom_command=None,                                                                   # Custom shell command for checking updates (counts the lines of the output)
         custom_command_modify=None,                                                            # Lambda function to modify line count from custom_command
         display_format='Updates: {updates}',                                                   # Display format if updates available
@@ -648,7 +648,7 @@ def _clock(format='%H:%M', bg="#000000", fg="#ffffff"):
     )
 
 
-def _battery(bg="#000000", fg="#ffffff"):
+def _battery(format, bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.Battery(**config)[source]
         A text-based battery monitoring widget currently supporting FreeBSD
@@ -656,30 +656,30 @@ def _battery(bg="#000000", fg="#ffffff"):
         Supported bar orientations: horizontal and vertical
     """
     return widget.Battery(
-        background=bg,                                                   # Widget background color
-        battery=0,                                                       # Which battery should be monitored (battery number or name)
-        charge_char='^',                                                 # Character to indicate the battery is charging
-        discharge_char='v',                                              # Character to indicate the battery is discharging
-        empty_char='x',                                                  # Character to indicate the battery is empty
-        fmt='{}',                                                        # How to format the text
-        font='sans',                                                     # Default font
-        fontshadow=None,                                                 # font shadow color, default is None(no shadow)
-        fontsize=None,                                                   # Font size. Calculated if None.
-        foreground=fg,                                                   # Foreground colour
-        format='{char} {percent:2.0%} {hour:d}:{min:02d} {watt:.2f} W',  # Display format
-        full_char='=',                                                   # Character to indicate the battery is full
-        hide_threshold=None,                                             # Hide the text when there is enough energy 0 <= x < 1
-        low_background=bg,                                               # Background color on low battery
-        low_foreground='FF0000',                                         # Font color on low battery
-        low_percentage=0.1,                                              # Indicates when to use the low_foreground color 0 < x < 1
-        markup=True,                                                     # Whether or not to use pango markup
-        max_chars=0,                                                     # Maximum number of characters to display in widget.
-        mouse_callbacks={},                                              # Dict of mouse button press callback functions. Accepts functions and lazy calls.
-        notify_below=None,                                               # Send a notification below this battery level.
-        padding=None,                                                    # Padding. Calculated if None.
-        show_short_text=True,                                            # Show "Full" or "Empty" rather than formated text
-        unknown_char='?',                                                # Character to indicate the battery status is unknown
-        update_interval=60,                                              # Seconds between status updates
+        background=bg,            # Widget background color
+        battery=0,                # Which battery should be monitored (battery number or name)
+        charge_char='\uf0d8',     # Character to indicate the battery is charging
+        discharge_char='\uf0d7',  # Character to indicate the battery is discharging
+        empty_char='x',           # Character to indicate the battery is empty
+        fmt='{}',                 # How to format the text
+        font='sans',              # Default font
+        fontshadow=None,          # font shadow color, default is None(no shadow)
+        fontsize=None,            # Font size. Calculated if None.
+        foreground=fg,            # Foreground colour
+        format=format,            # Display format
+        full_char='=',            # Character to indicate the battery is full
+        hide_threshold=None,      # Hide the text when there is enough energy 0 <= x < 1
+        low_background=bg,        # Background color on low battery
+        low_foreground='FF0000',  # Font color on low battery
+        low_percentage=0.1,       # Indicates when to use the low_foreground color 0 < x < 1
+        markup=True,              # Whether or not to use pango markup
+        max_chars=0,              # Maximum number of characters to display in widget.
+        mouse_callbacks={},       # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        notify_below=None,        # Send a notification below this battery level.
+        padding=None,             # Padding. Calculated if None.
+        show_short_text=True,     # Show "Full" or "Empty" rather than formated text
+        unknown_char='?',         # Character to indicate the battery status is unknown
+        update_interval=60,       # Seconds between status updates
     )
 
 
@@ -694,7 +694,7 @@ def _battery_icon(bg="#000000"):
         background=bg,       # Widget background color
         battery=0,           # Which battery should be monitored
         mouse_callbacks={},  # Dict of mouse button press callback functions. Accepts functions and lazy calls.
-        update_interval=60,  # Seconds between status updates
+        update_interval=5,   # Seconds between status updates
         # theme_path='/home/docs/checkouts/readthedocs.org/user_builds/qtile/checkouts/stable/libqtile/resources/battery-icons',  # Path of the icons
     )
 
@@ -852,25 +852,17 @@ def list_left_widgets():
 
 def list_right_widgets(terminal):
     return [
-#       [_image,           {"bg": wt.blue}],
-#       [_thermal_sensor,  {"bg": wt.blue,   "fg": wt.white}],
-#       [_bluetooth,       {"bg": wt.blue,   "fg": wt.white}],
-        [_chord,           {"bg": wt.green,  "fg": wt.white}],
+        [_chord,           {"bg": wt.blue,     "fg": wt.white}],
         [_systray,         {"bg": wt.purple}],
-#       [_memory,          {"bg": wt.blue,   "fg": wt.white,  "terminal": terminal}],
-#       [_cpu,             {"bg": wt.red,    "fg": wt.white}],
-        [_net,             {"bg": wt.blue,   "fg": wt.white}],
-        [_volume,          {"bg": wt.red,    "fg": wt.white}],
-#       [_keyboard_layout, {"bg": wt.blue,   "fg": wt.white}],
-        [_backlight,       {"bg": wt.blue,   "fg": wt.white}],
-#       [_hdd,             {"bg": wt.black}],
-        [_check_updates,   {"bg": wt.red,    "fg": wt.white,  "terminal": terminal}],
-        [_wallpaper,       {"bg": wt.blue,   "fg": wt.white}],
-#       [_text_box,        {"bg": wt.blue,   "fg": wt.white,  "text": "Press &lt;M-r&gt; to spawn"}],
-        [_clock,           {"bg": wt.red,    "fg": wt.white,  "format": "%A, %B %d - %H:%M "}],
-        [_battery_icon,    {"bg": wt.blue}],
-        [_battery,         {"bg": wt.blue,   "fg": wt.white}],
-        [_quick_exit,      {"bg": wt.orange, "fg": wt.white}],
+        [_net,             {"bg": wt.lila,     "fg": wt.black}],
+        [_volume,          {"bg": wt.purple,   "fg": wt.black}],
+        [_backlight,       {"bg": wt.blue,     "fg": wt.black}],
+        [_check_updates,   {"bg": wt.cyan,     "fg": wt.black,  "terminal": terminal}],
+        [_wallpaper,       {"bg": wt.green,    "fg": wt.black}],
+        [_clock,           {"bg": wt.yellow,   "fg": wt.black,  "format": "%a, %m/%d/%y - %H:%M "}],
+        [_battery_icon,    {"bg": wt.grey}],
+        [_battery,         {"bg": wt.orange,   "fg": wt.black, "format": '{char} {percent:2.0%} {hour:d}:{min:02d}'}],
+        [_quick_exit,      {"bg": wt.red,      "fg": wt.black}],
     ]
 
 
@@ -910,5 +902,7 @@ def init_widgets_screen2(terminal):
     """
     left = list_left_widgets()
     right = list_right_widgets(terminal)
+    del right[5]
+    del right[0:2]
     widgets = _init_widgets(left, right)
     return widgets
