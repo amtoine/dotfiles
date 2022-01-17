@@ -44,6 +44,34 @@ WidgetTheme = namedtuple(
     ]
 )
 
+Layout = namedtuple(
+    "Layout",
+    [
+        "focus",
+        "normal",
+        "focus_stack",
+        "normal_stack",
+    ]
+)
+
+LayoutTheme = namedtuple(
+    "LayoutTheme",
+    [
+        "floating",
+        "bsp",
+        "columns",
+        "matrix",
+        "monad_tall",
+        "monad_wide",
+        "ratio",
+        "stack",
+        "tile",
+        "vertical",
+        "border_width",
+        "margin",
+    ]
+)
+
 colors = Colors(
     black="#282c34",
     grey="#1c1f24",
@@ -81,6 +109,21 @@ widget_theme = WidgetTheme(
     battery_icon=dict(bg=colors.grey),
     battery=dict(bg=colors.orange, fg=colors.black),
     quick_exit=dict(bg=colors.red, fg=colors.black),
+)
+
+layout_theme = LayoutTheme(
+    floating=Layout(focus='#0000ff', normal='#000000', focus_stack=None, normal_stack=None),
+    bsp=Layout(focus=colors.yellow, normal=colors.green, focus_stack=None, normal_stack=None),
+    columns=Layout(focus=colors.red, normal=colors.white, focus_stack=colors.red, normal_stack=colors.orange),
+    matrix=Layout(focus='#0000ff', normal='#000000', focus_stack=None, normal_stack=None),
+    monad_tall=Layout(focus=colors.green, normal=colors.lila, focus_stack=None, normal_stack=None),
+    monad_wide=Layout(focus=colors.green, normal=colors.lila, focus_stack=None, normal_stack=None),
+    ratio=Layout(focus=colors.cyan, normal=colors.marine, focus_stack=None, normal_stack=None),
+    stack=Layout(focus=colors.cyan, normal=colors.white, focus_stack=None, normal_stack=None),
+    tile=Layout(focus=colors.cyan, normal=colors.marine, focus_stack=None, normal_stack=None),
+    vertical=Layout(focus='#FF0000', normal='#FFFFFF', focus_stack=None, normal_stack=None),
+    border_width=4,
+    margin=4,
 )
 
 bar_theme = dict(

@@ -16,7 +16,7 @@
 
 from libqtile import layout
 
-from themes import colors
+from themes import layout_theme as lt
 
 
 def _floating():
@@ -26,11 +26,11 @@ def _floating():
         order
     """
     return layout.Floating(
-        border_focus='#0000ff',     # Border colour(s) for the focused window.
-        border_normal='#000000',    # Border colour(s) for un-focused windows.
-        border_width=1,             # Border width.
-        fullscreen_border_width=0,  # Border width for fullscreen.
-        max_border_width=0,         # Border width for maximize.
+        border_focus=lt.floating.focus,    # Border colour(s) for the focused window.
+        border_normal=lt.floating.normal,  # Border colour(s) for un-focused windows.
+        border_width=lt.border_width,      # Border width.
+        fullscreen_border_width=0,         # Border width for fullscreen.
+        max_border_width=0,                # Border width for maximize.
     )
 
 
@@ -75,14 +75,14 @@ def _bsp():
         Key([mod], "Return", lazy.layout.toggle_split()),
     """
     return layout.Bsp(
-        border_focus=colors.yellow,  # Border colour(s) for the focused window.
-        border_normal=colors.green,  # Border colour(s) for un-focused windows.
-        border_width=4,              # Border width.
-        fair=True,                   # New clients are inserted in the shortest branch.
-        grow_amount=10,              # Amount by which to grow a window/column.
-        lower_right=True,            # New client occupies lower or right subspace.
-        margin=4,                    # Margin of the layout (int or list of ints [N E S W]).
-        ratio=1.6,                   # Width/height ratio that defines the partition direction.
+        border_focus=lt.bsp.focus,     # Border colour(s) for the focused window.
+        border_normal=lt.bsp.normal,   # Border colour(s) for un-focused windows.
+        border_width=lt.border_width,  # Border width.
+        fair=True,                     # New clients are inserted in the shortest branch.
+        grow_amount=10,                # Amount by which to grow a window/column.
+        lower_right=True,              # New client occupies lower or right subspace.
+        margin=lt.margin,              # Margin of the layout (int or list of ints [N E S W]).
+        ratio=1.6,                     # Width/height ratio that defines the partition direction.
     )
 
 
@@ -124,22 +124,22 @@ def _columns():
         Key([mod], "n", lazy.layout.normalize()),
     """
     return layout.Columns(
-        border_focus=colors.cyan,           # Border colour(s) for the focused window.
-        border_focus_stack=colors.red,      # Border colour(s) for the focused window in stacked columns.
-        border_normal=colors.white,         # Border colour(s) for un-focused windows.
-        border_normal_stack=colors.orange,  # Border colour(s) for un-focused windows in stacked columns.
-        border_on_single=False,             # Draw a border when there is one only window.
-        border_width=4,                     # Border width.
-        fair=False,                         # Add new windows to the column with least windows.
-        grow_amount=10,                     # Amount by which to grow a window/column.
-        insert_position=0,                  # Position relative to the current window where new ones are inserted (0 means right above the current window, 1 means right after).
-        margin=4,                           # Margin of the layout (int or list of ints [N E S W]).
-        margin_on_single=None,              # Margin when only one window. (int or list of ints [N E S W])
-        num_columns=2,                      # Preferred number of columns.
-        split=True,                         # New columns presentation mode.
-        wrap_focus_columns=True,            # Wrap the screen when moving focus across columns.
-        wrap_focus_rows=True,               # Wrap the screen when moving focus across rows.
-        wrap_focus_stacks=True,             # Wrap the screen when moving focus across stacked.
+        border_focus=lt.columns.focus,               # Border colour(s) for the focused window.
+        border_focus_stack=lt.columns.focus_stack,   # Border colour(s) for the focused window in stacked columns.
+        border_normal=lt.columns.normal,             # Border colour(s) for un-focused windows.
+        border_normal_stack=lt.columns.focus_stack,  # Border colour(s) for un-focused windows in stacked columns.
+        border_on_single=False,                      # Draw a border when there is one only window.
+        border_width=lt.border_width,                # Border width.
+        fair=False,                                  # Add new windows to the column with least windows.
+        grow_amount=10,                              # Amount by which to grow a window/column.
+        insert_position=0,                           # Position relative to the current window where new ones are inserted (0 means right above the current window, 1 means right after).
+        margin=lt.margin,                            # Margin of the layout (int or list of ints [N E S W]).
+        margin_on_single=None,                       # Margin when only one window. (int or list of ints [N E S W])
+        num_columns=2,                               # Preferred number of columns.
+        split=True,                                  # New columns presentation mode.
+        wrap_focus_columns=True,                     # Wrap the screen when moving focus across columns.
+        wrap_focus_rows=True,                        # Wrap the screen when moving focus across rows.
+        wrap_focus_stacks=True,                      # Wrap the screen when moving focus across stacked.
     )
 
 
@@ -151,10 +151,10 @@ def _matrix():
         and can also be changed interactively.
     """
     return layout.Matrix(
-        border_focus='#0000ff',   # Border colour(s) for the focused window.
-        border_normal='#000000',  # Border colour(s) for un-focused windows.
-        border_width=1,           # Border width.
-        margin=0,                 # Margin of the layout (int or list of ints [N E S W])
+        border_focus=lt.matrix.focus,    # Border colour(s) for the focused window.
+        border_normal=lt.matrix.normal,  # Border colour(s) for un-focused windows.
+        border_width=lt.border_width,    # Border width.
+        margin=lt.margin,                # Margin of the layout (int or list of ints [N E S W])
     )
 
 
@@ -263,12 +263,12 @@ def _monad_tall():
     """
     return layout.MonadTall(
         align=0,                              # Which side master plane will be placed (one of MonadTall._left or MonadTall._right)
-        border_focus=colors.green,            # Border colour(s) for the focused window.
-        border_normal=colors.lila,            # Border colour(s) for un-focused windows.
-        border_width=4,                       # Border width.
+        border_focus=lt.monad_tall.focus,     # Border colour(s) for the focused window.
+        border_normal=lt.monad_tall.normal,   # Border colour(s) for un-focused windows.
+        border_width=lt.border_width,         # Border width.
         change_ratio=0.05,                    # Resize ratio
         change_size=20,                       # Resize change in pixels
-        margin=4,                             # Margin of the layout
+        margin=lt.margin,                     # Margin of the layout
         max_ratio=0.75,                       # The percent of the screen-space the master pane should occupy at maximum.
         min_ratio=0.25,                       # The percent of the screen-space the master pane should occupy at minimum.
         min_secondary_size=85,                # minimum size in pixel for a secondary pane window
@@ -373,13 +373,13 @@ def _monad_wide():
         Key([modkey, "shift"], "space", lazy.layout.flip()),
     """
     return layout.MonadWide(
-        align=0,  # Which side master plane will be placed (one of MonadTall._left or MonadTall._right)
-        border_focus=colors.green,            # Border colour(s) for the focused window.
-        border_normal=colors.lila,            # Border colour(s) for un-focused windows.
-        border_width=4,                       # Border width.
+        align=0,                              # Which side master plane will be placed (one of MonadTall._left or MonadTall._right)
+        border_focus=lt.monad_wide.focus,     # Border colour(s) for the focused window.
+        border_normal=lt.monad_wide.normal,   # Border colour(s) for un-focused windows.
+        border_width=lt.border_width,         # Border width.
         change_ratio=0.05,                    # Resize ratio
         change_size=20,                       # Resize change in pixels
-        margin=4,                             # Margin of the layout
+        margin=lt.margin,                     # Margin of the layout
         max_ratio=0.75,                       # The percent of the screen-space the master pane should occupy at maximum.
         min_ratio=0.25,                       # The percent of the screen-space the master pane should occupy at minimum.
         min_secondary_size=85,                # minimum size in pixel for a secondary pane window
@@ -396,13 +396,13 @@ def _ratio_tile():
         Tries to tile all windows in the width/height ratio passed in
     """
     return layout.RatioTile(
-        border_focus=colors.cyan,     # Border colour(s) for the focused window.
-        border_normal=colors.marine,  # Border colour(s) for un-focused windows.
-        border_width=4,               # Border width.
-        fancy=False,                  # Use a different method to calculate window sizes.
-        margin=4,                     # Margin of the layout (int or list of ints [N E S W])
-        ratio=1.618,                  # Ratio of the tiles
-        ratio_increment=0.1,          # Amount to increment per ratio increment
+        border_focus=lt.ratio.focus,    # Border colour(s) for the focused window.
+        border_normal=lt.ratio.normal,  # Border colour(s) for un-focused windows.
+        border_width=lt.border_width,   # Border width.
+        fancy=False,                    # Use a different method to calculate window sizes.
+        margin=lt.margin,               # Margin of the layout (int or list of ints [N E S W])
+        ratio=1.618,                    # Ratio of the tiles
+        ratio_increment=0.1,            # Amount to increment per ratio increment
     )
 
 
@@ -435,13 +435,13 @@ def _stack():
         Unlike the columns layout the number of stacks is fixed.
     """
     return layout.Stack(
-        autosplit=False,             # Auto split all new stacks.
-        border_focus=colors.cyan,    # Border colour(s) for the focused window.
-        border_normal=colors.white,  # Border colour(s) for un-focused windows.
-        border_width=4,              # Border width.
-        fair=False,                  # Add new windows to the stacks in a round robin way.
-        margin=4,                    # Margin of the layout (int or list of ints [N E S W])
-        num_stacks=3,                # Number of stacks.
+        autosplit=False,                # Auto split all new stacks.
+        border_focus=lt.stack.focus,    # Border colour(s) for the focused window.
+        border_normal=lt.stack.normal,  # Border colour(s) for un-focused windows.
+        border_width=lt.border_width,   # Border width.
+        fair=False,                     # Add new windows to the stacks in a round robin way.
+        margin=lt.margin,               # Margin of the layout (int or list of ints [N E S W])
+        num_stacks=3,                   # Number of stacks.
     )
 
 
@@ -458,22 +458,22 @@ def _tile():
         shift_windows is set to True, individually.
     """
     return layout.Tile(
-        add_after_last=False,         # Add new clients after all the others. If this is True, it overrides add_on_top.
-        add_on_top=True,              # Add new clients before all the others, potentially pushing other windows into slave stack.
-        border_focus=colors.cyan,     # Border colour(s) for the focused window.
-        border_normal=colors.marine,  # Border colour(s) for un-focused windows.
-        border_on_single=True,        # Whether to draw border if there is only one window.
-        border_width=4,               # Border width.
-        expand=True,                  # Expand the master windows to the full screen width if no slaves are present.
-        margin=4,                     # Margin of the layout (int or list of ints [N E S W])
-        margin_on_single=True,        # Whether to draw margin if there is only one window.
-        master_length=1,              # Amount of windows displayed in the master stack. Surplus windows will be moved to the slave stack.
-        master_match=None,            # A Match object defining which window(s) should be kept masters.
-        max_ratio=0.85,               # Maximum width of master windows
-        min_ratio=0.15,               # Minimum width of master windows
-        ratio=0.618,                  # Width-percentage of screen size reserved for master windows.
-        ratio_increment=0.05,         # By which amount to change ratio when cmd_decrease_ratio or cmd_increase_ratio are called.
-        shift_windows=False,          # Allow to shift windows within the layout. If False, the layout will be rotated instead.
+        add_after_last=False,          # Add new clients after all the others. If this is True, it overrides add_on_top.
+        add_on_top=True,               # Add new clients before all the others, potentially pushing other windows into slave stack.
+        border_focus=lt.tile.focus,    # Border colour(s) for the focused window.
+        border_normal=lt.tile.normal,  # Border colour(s) for un-focused windows.
+        border_on_single=True,         # Whether to draw border if there is only one window.
+        border_width=lt.border_width,  # Border width.
+        expand=True,                   # Expand the master windows to the full screen width if no slaves are present.
+        margin=lt.margin,              # Margin of the layout (int or list of ints [N E S W])
+        margin_on_single=True,         # Whether to draw margin if there is only one window.
+        master_length=1,               # Amount of windows displayed in the master stack. Surplus windows will be moved to the slave stack.
+        master_match=None,             # A Match object defining which window(s) should be kept masters.
+        max_ratio=0.85,                # Maximum width of master windows
+        min_ratio=0.15,                # Minimum width of master windows
+        ratio=0.618,                   # Width-percentage of screen size reserved for master windows.
+        ratio_increment=0.05,          # By which amount to change ratio when cmd_decrease_ratio or cmd_increase_ratio are called.
+        shift_windows=False,           # Allow to shift windows within the layout. If False, the layout will be rotated instead.
     )
 
 
@@ -520,33 +520,33 @@ def _treetab():
         +------------+
     """
     return layout.TreeTab(
-        active_bg='000080',    # Background color of active tab
-        active_fg='ffffff',    # Foreground color of active tab
-        bg_color='000000',     # Background color of tabs
-        border_width=2,        # Width of the border
-        font='sans',           # Font
-        fontshadow=None,       # font shadow color, default is None (no shadow)
-        fontsize=14,           # Font pixel size.
-        inactive_bg='606060',  # Background color of inactive tab
-        inactive_fg='ffffff',  # Foreground color of inactive tab
-        level_shift=8,         # Shift for children tabs
-        margin_left=6,         # Left margin of tab panel
-        margin_y=6,            # Vertical margin of tab panel
-        padding_left=6,        # Left padding for tabs
-        padding_x=6,           # Left padding for tab label
-        padding_y=2,           # Top padding for tab label
-        panel_width=150,       # Width of the left panel
-        previous_on_rm=False,  # Focus previous window on close instead of first.
-        section_bottom=6,      # Bottom margin of section
-        section_fg='ffffff',   # Color of section label
-        section_fontsize=11,   # Font pixel size of section label
-        section_left=4,        # Left margin of section label
-        section_padding=4,     # Bottom of margin section label
-        section_top=4,         # Top margin of section label
-        sections=['Default'],  # Foreground color of inactive tab
-        urgent_bg='ff0000',    # Background color of urgent tab
-        urgent_fg='ffffff',    # Foreground color of urgent tab
-        vspace=2,              # Space between tabs
+        active_bg='000080',            # Background color of active tab
+        active_fg='ffffff',            # Foreground color of active tab
+        bg_color='000000',             # Background color of tabs
+        border_width=lt.border_width,  # Width of the border
+        font='sans',                   # Font
+        fontshadow=None,               # font shadow color, default is None (no shadow)
+        fontsize=14,                   # Font pixel size.
+        inactive_bg='606060',          # Background color of inactive tab
+        inactive_fg='ffffff',          # Foreground color of inactive tab
+        level_shift=8,                 # Shift for children tabs
+        margin_left=6,                 # Left margin of tab panel
+        margin_y=6,                    # Vertical margin of tab panel
+        padding_left=6,                # Left padding for tabs
+        padding_x=6,                   # Left padding for tab label
+        padding_y=2,                   # Top padding for tab label
+        panel_width=150,               # Width of the left panel
+        previous_on_rm=False,          # Focus previous window on close instead of first.
+        section_bottom=6,              # Bottom margin of section
+        section_fg='ffffff',           # Color of section label
+        section_fontsize=11,           # Font pixel size of section label
+        section_left=4,                # Left margin of section label
+        section_padding=4,             # Bottom of margin section label
+        section_top=4,                 # Top margin of section label
+        sections=['Default'],          # Foreground color of inactive tab
+        urgent_bg='ff0000',            # Background color of urgent tab
+        urgent_fg='ffffff',            # Foreground color of urgent tab
+        vspace=2,                      # Space between tabs
     )
 
 
@@ -603,10 +603,10 @@ def _vertical_tile():
         Key([modkey], 'n', lazy.layout.normalize()),
     """
     return layout.VerticalTile(
-        border_focus='#FF0000',   # Border color(s) for the focused window.
-        border_normal='#FFFFFF',  # Border color(s) for un-focused windows.
-        border_width=1,           # Border width.
-        margin=0,                 # Border margin (int or list of ints [N E S W]).
+        border_focus=lt.vertical.focus,    # Border color(s) for the focused window.
+        border_normal=lt.vertical.normal,  # Border color(s) for un-focused windows.
+        border_width=lt.border_width,      # Border width.
+        margin=lt.margin,                  # Border margin (int or list of ints [N E S W]).
     )
 
 
@@ -615,9 +615,9 @@ def _zoomy():
         class libqtile.layout.zoomy.Zoomy(**config)[source]
         A layout with single active windows, and few other previews at the right
     """
-    return layout.Zoomy(       
+    return layout.Zoomy(
         columnwidth=150,       # Width of the right column
-        margin=0,              # Margin of the layout (int or list of ints [N E S W])
+        margin=lt.margin,      # Margin of the layout (int or list of ints [N E S W])
         property_big='1.0',    # Property value to set on normal window (X11 only)
         property_name='ZOOM',  # Property to set on zoomed window (X11 only)
         property_small='0.1',  # Property value to set on zoomed window (X11 only)
