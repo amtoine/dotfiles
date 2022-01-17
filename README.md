@@ -56,7 +56,7 @@ $HOME
 |   |-- [-]  ncmpcpp/config                            -- music client.
 |   |-- [d]  neofetch                                  -- a logo printer.
 |   |-- [-]  nitrogen/nitrogen.cfg                     -- a wallpaper manager.
-|   |-- [-]  qtile/config.py                           -- a tilling window manager.
+|   |-- [d]  qtile                                     -- a tilling window manager.
 |   |-- [d]  spectrwm                                  -- the spectrWM tilling window manager.
 |   |-- [d]  surf                                      -- the suckless web browser.
 |   |-- [-]  sxhkd/sxhkdrc                             -- the simple x hot key daemon.
@@ -258,7 +258,7 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [`ncmcpp`]:                .config/ncmcpp/config
 [`neofetch`]:              .config/neofetch
 [`nitrogen`]:              .config/nitrogen/nitrogen.cfg
-[`qtile`]:                 .config/qtile/config.py
+[`qtile`]:                 .config/qtile
 [`spectrWM`]:              .config/spectrwm
 [`sxhkd`]:                 .config/sxhkd/sxhkdrc
 [`starship`]:              .config/starship.toml
