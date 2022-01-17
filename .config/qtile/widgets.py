@@ -14,6 +14,7 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
+from libqtile import qtile
 from libqtile import widget
 from libqtile.lazy import lazy
 
@@ -45,7 +46,7 @@ def _sep(bg="#000000", fg="#ffffff"):
     )
 
 
-def _image(bg="#000000"):
+def _image(terminal, bg="#000000", filename=None):
     """
         class libqtile.widget.Image(length=CALCULATED, **config)[source]
         Display a PNG image on the bar
@@ -53,12 +54,11 @@ def _image(bg="#000000"):
     """
     return widget.Image(
         background=bg,                                                 # Widget background color
-        filename=None,                                                 # Image filename. Can contain '~'
-        # filename="~/.config/qtile/icons/python-white.png",
+        filename=filename,                                             # Image filename. Can contain '~'
         margin=3,                                                      # Margin inside the box
         margin_x=None,                                                 # X Margin. Overrides 'margin' if set
         margin_y=None,                                                 # Y Margin. Overrides 'margin' if set
-        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(myTerm)},  # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(terminal)},# Dict of mouse button press callback functions. Accepts functions and lazy calls.
         rotate=0.0,                                                    # rotate the image in degrees counter-clockwise
         scale=True,                                                    # Enable/Disable image scaling
     )
@@ -109,7 +109,7 @@ def _check_updates(terminal, bg="#000000", fg="#ffffff"):
         custom_command_modify=None,                                                            # Lambda function to modify line count from custom_command
         display_format='Updates: {updates}',                                                   # Display format if updates available
         distro='Arch_checkupdates',                                                            # Name of your distribution
-        execute=terminal + " bash -c \"sudo pacman -Syu\"",                                                # Command to execute on click
+        execute="",                                                                            # Command to execute on click
         fmt='{}',                                                                              # How to format the text
         font='sans',                                                                           # Default font
         fontshadow=None,                                                                       # font shadow color, default is None(no shadow)
@@ -117,12 +117,11 @@ def _check_updates(terminal, bg="#000000", fg="#ffffff"):
         foreground=fg,                                                                         # Foreground colour
         markup=True,                                                                           # Whether or not to use pango markup
         max_chars=0,                                                                           # Maximum number of characters to display in widget.
-        # mouse_callbacks={'Button1': lambda: lazy.spawn(terminal + ' sudo pacman -Syu')},  # Dict of mouse button press callback functions. Accepts functions and lazy calls.
-        mouse_callbacks={'Button1': lambda: lazy.spawn('kitty bash -c "sudo pacman -Syu"')},  # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(terminal + " sudo pacman -Syu")},  # Dict of mouse button press callback functions. Accepts functions and lazy calls.
         no_update_string='',                                                                   # String to display if no updates available
         padding=None,                                                                          # Padding. Calculated if None.
         restart_indicator='',                                                                  # Indicator to represent reboot is required. (Ubuntu only)
-        update_interval=1800,                                                                  # Update interval in seconds.
+        update_interval=600,                                                                   # Update interval in seconds.
     )
 
 
@@ -152,12 +151,13 @@ def _memory(terminal, bg="#000000", fg="#ffffff"):
         fontshadow=None,                                                            # font shadow color, default is None(no shadow)
         fontsize=None,                                                              # Font size. Calculated if None.
         foreground=fg,                                                              # Foreground colour
-        format='{MemUsed: .0f}{mm}/{MemTotal: .0f}{mm}',                            # Formatting for field names.
+        # format='{MemUsed: .0f}{mm}/{MemTotal: .0f}{mm}',                            # Formatting for field names.
+        format='RAM {MemPercent: .0f}%',                            # Formatting for field names.
         markup=True,                                                                # Whether or not to use pango markup
         max_chars=0,                                                                # Maximum number of characters to display in widget.
         measure_mem='M',                                                            # Measurement for Memory (G, M, K, B)
         measure_swap='M',                                                           # Measurement for Swap (G, M, K, B)
-        mouse_callbacks={'Button1': lambda: lazy.spawn(terminal + ' htop')},        # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(terminal + ' htop')},   # Dict of mouse button press callback functions. Accepts functions and lazy calls.
         padding=None,                                                               # Padding. Calculated if None.
         update_interval=1.0,                                                        # Update interval for the Memory
     )
@@ -289,7 +289,7 @@ def _bluetooth(bg="#000000", fg="#ffffff"):
     )
 
 
-def _cpu(bg="#000000", fg="#ffffff"):
+def _cpu(terminal, bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.CPU(**config)[source]
         A simple widget to display CPU load and frequency.
@@ -303,10 +303,10 @@ def _cpu(bg="#000000", fg="#ffffff"):
         fontshadow=None,                                 # font shadow color, default is None(no shadow)
         fontsize=None,                                   # Font size. Calculated if None.
         foreground=fg,                                   # Foreground colour
-        format='CPU {freq_current}GHz {load_percent}%',  # CPU display format
+        format='CPU {load_percent}%',  # CPU display format
         markup=True,                                     # Whether or not to use pango markup
         max_chars=0,                                     # Maximum number of characters to display in widget.
-        mouse_callbacks={},                              # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(terminal + ' htop')},   # Dict of mouse button press callback functions. Accepts functions and lazy calls.
         padding=None,                                    # Padding. Calculated if None.
         update_interval=1.0,                             # Update interval for the CPU widget
     )
@@ -641,7 +641,7 @@ def _clock(format='%H:%M', bg="#000000", fg="#ffffff"):
         format=format,        # A Python datetime format string
         markup=True,          # Whether or not to use pango markup
         max_chars=0,          # Maximum number of characters to display in widget.
-        mouse_callbacks={"Button1": lambda: lazy.spawn("dmenu_run")},   # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("dmenu_run")},   # Dict of mouse button press callback functions. Accepts functions and lazy calls.
         padding=None,         # Padding. Calculated if None.
         timezone=None,        # The timezone to use for this clock, either as string if pytz or dateutil is installed (e.g. "US/Central" or anything in /usr/share/zoneinfo), or as tzinfo (e.g. datetime.timezone.utc). None means the system local timezone and is the default.
         update_interval=1.0,  # Update interval for the clock
@@ -754,6 +754,33 @@ def _quick_exit(bg="#000000", fg="#ffffff", font=wt.font, size=wt.size):
     )
 
 
+def _wlan(bg="#000000", fg="#ffffff"):
+    """
+        class libqtile.widget.Wlan(**config)[source]
+        Displays Wifi SSID and quality.
+
+        Widget requirements: iwlib.
+
+        Supported bar orientations: horizontal only
+    """
+    return widget.Wlan(
+        background=bg,                        # Widget background color
+        disconnected_message='Disconnected',  # String to show when the wlan is diconnected.
+        fmt='{}',                             # How to format the text
+        font='sans',                          # Default font
+        fontshadow=None,                      # font shadow color, default is None(no shadow)
+        fontsize=None,                        # Font size. Calculated if None.
+        foreground=fg,                        # Foreground colour
+        format='{essid} {quality}/70',        # Display format. For percents you can use "{essid} {percent:2.0%}"
+        interface='wlp2s0',                   # The interface to monitor
+        markup=True,                          # Whether or not to use pango markup
+        max_chars=0,                          # Maximum number of characters to display in widget.
+        mouse_callbacks={},                   # Dict of mouse button press callback functions. Acceps functions and lazy calls.
+        padding=None,                         # Padding. Calculated if None.
+        update_interval=1,                    # The update interval.
+    )
+
+
 def _powerline_left_arrow(bg="#000000", fg="#ffffff"):
     return widget.TextBox(
         text='\uf0d9',  # '' character
@@ -832,16 +859,16 @@ def init_widgets_(terminal):
         _clock(format="%A, %B %d - %H:%M ", fg=wt.white, bg=wt.red),
         _powerline_left_arrow(fg=wt.blue, bg=wt.red),
         _battery_icon(bg=wt.blue),
-        _battery(fg=wt.white, bg=wt.blue),
+        _battery('{char} {percent:2.0%} {hour:d}:{min:02d}', fg=wt.white, bg=wt.blue),
         _powerline_left_arrow(fg=wt.green, bg=wt.blue),
         _quick_exit(fg=wt.white, bg=wt.green),
     ]
     return widgets
 
 
-def list_left_widgets():
+def list_left_widgets(terminal):
     return [
-        # _current_layout_icon(),
+        [_image,          {"bg": wt.grey, "terminal": terminal, "filename": "~/.config/qtile/icons/python-white.png"}],
         [_current_layout, {"fg": wt.white, "bg": wt.grey}],
         [_current_screen, {"fg": wt.white, "bg": wt.black}],
         [_group_box,      {"fg": wt.white, "bg": wt.grey}],
@@ -852,16 +879,19 @@ def list_left_widgets():
 
 def list_right_widgets(terminal):
     return [
-        [_chord,           {"bg": wt.blue,     "fg": wt.white}],
-        [_systray,         {"bg": wt.purple}],
-        [_net,             {"bg": wt.lila,     "fg": wt.black}],
-        [_volume,          {"bg": wt.purple,   "fg": wt.black}],
-        [_backlight,       {"bg": wt.blue,     "fg": wt.black}],
-        [_check_updates,   {"bg": wt.cyan,     "fg": wt.black,  "terminal": terminal}],
+        [_chord,           {"bg": wt.yellow,   "fg": wt.black}],
+        [_systray,         {"bg": wt.green}],
+        [_memory,          {"bg": wt.cyan,     "fg": wt.black,   "terminal": terminal}],
+        [_cpu,             {"bg": wt.blue,     "fg": wt.black,   "terminal": terminal}],
+        [_net,             {"bg": wt.purple,   "fg": wt.black}],
+        [_wlan,            {"bg": wt.lila,     "fg": wt.black}],
+        [_check_updates,   {"bg": wt.purple,   "fg": wt.black,   "terminal": terminal}],
+        [_volume,          {"bg": wt.blue,     "fg": wt.black}],
+        [_backlight,       {"bg": wt.cyan,     "fg": wt.black}],
         [_wallpaper,       {"bg": wt.green,    "fg": wt.black}],
-        [_clock,           {"bg": wt.yellow,   "fg": wt.black,  "format": "%a, %m/%d/%y - %H:%M "}],
+        [_clock,           {"bg": wt.yellow,   "fg": wt.black,   "format": "%a, %m/%d/%y - %H:%M "}],
         [_battery_icon,    {"bg": wt.grey}],
-        [_battery,         {"bg": wt.orange,   "fg": wt.black, "format": '{char} {percent:2.0%} {hour:d}:{min:02d}'}],
+        [_battery,         {"bg": wt.orange,   "fg": wt.black,   "format": '{char} {percent:2.0%} {hour:d}:{min:02d}'}],
         [_quick_exit,      {"bg": wt.red,      "fg": wt.black}],
     ]
 
@@ -890,7 +920,7 @@ def init_widgets_screen1(terminal):
     """
         Slicing removes unwanted widgets (systray) on Monitors 1,3
     """
-    left = list_left_widgets()
+    left = list_left_widgets(terminal)
     right = list_right_widgets(terminal)
     widgets = _init_widgets(left, right)
     return widgets
@@ -900,7 +930,7 @@ def init_widgets_screen2(terminal):
     """
         Monitor 2 will display all widgets in widgets_list
     """
-    left = list_left_widgets()
+    left = list_left_widgets(terminal)
     right = list_right_widgets(terminal)
     del right[5]
     del right[0:2]
