@@ -16,12 +16,14 @@
 
 from libqtile import qtile
 from libqtile import widget
-from libqtile.lazy import lazy
 
 from themes import widget_theme as wt
 
 
 def init_widget_defaults():
+    """
+        TODO
+    """
     return dict(
         font='sans',
         fontsize=12,
@@ -782,6 +784,9 @@ def _wlan(bg="#000000", fg="#ffffff"):
 
 
 def _powerline_left_arrow(bg="#000000", fg="#ffffff"):
+    """
+        TODO
+    """
     return widget.TextBox(
         text='\uf0d9',  # '' character
         font="sans",
@@ -793,6 +798,9 @@ def _powerline_left_arrow(bg="#000000", fg="#ffffff"):
 
 
 def _powerline_right_arrow(bg="#000000", fg="#ffffff"):
+    """
+        TODO
+    """
     return widget.TextBox(
         text='\uf0da',  # inverse '' character
         font="sans",
@@ -804,6 +812,9 @@ def _powerline_right_arrow(bg="#000000", fg="#ffffff"):
 
 
 def _vertical_sep(bg="#000000", fg="#ffffff"):
+    """
+        TODO
+    """
     return widget.TextBox(
         text='|',
         font="sans",
@@ -815,6 +826,9 @@ def _vertical_sep(bg="#000000", fg="#ffffff"):
 
 
 def init_widgets_(terminal):
+    """
+        TODO
+    """
     widgets = [
         # _current_layout_icon(),
         _current_layout(fg=wt.white, bg=wt.grey),
@@ -842,7 +856,7 @@ def init_widgets_(terminal):
         _powerline_left_arrow(fg=wt.blue, bg=wt.red),
         _memory(terminal=terminal, fg=wt.white, bg=wt.blue),
         _powerline_left_arrow(fg=wt.red, bg=wt.blue),
-        _cpu(fg=wt.white, bg=wt.red),
+        _cpu(terminal=terminal, fg=wt.white, bg=wt.red),
         _powerline_left_arrow(fg=wt.black, bg=wt.red),
         _hdd(bg=wt.black),
         _powerline_left_arrow(fg=wt.blue, bg=wt.black),
@@ -867,6 +881,9 @@ def init_widgets_(terminal):
 
 
 def list_left_widgets(terminal):
+    """
+        TODO
+    """
     return [
         [_image,          {"bg": wt.grey, "terminal": terminal, "filename": "~/.config/qtile/icons/python-white.png"}],
         [_current_layout, {"fg": wt.white, "bg": wt.grey}],
@@ -878,6 +895,9 @@ def list_left_widgets(terminal):
 
 
 def list_right_widgets(terminal):
+    """
+        TODO
+    """
     return [
         [_chord,           {"bg": wt.yellow,   "fg": wt.black}],
         [_systray,         {"bg": wt.green}],
@@ -897,6 +917,9 @@ def list_right_widgets(terminal):
 
 
 def _init_widgets(left, right):
+    """
+        TODO
+    """
     widgets = []
     bg = wt.black
     for func, kwargs in left[::-1]:
@@ -918,7 +941,7 @@ def _init_widgets(left, right):
 
 def init_widgets_screen1(terminal):
     """
-        Slicing removes unwanted widgets (systray) on Monitors 1,3
+        TODO
     """
     left = list_left_widgets(terminal)
     right = list_right_widgets(terminal)
@@ -928,7 +951,7 @@ def init_widgets_screen1(terminal):
 
 def init_widgets_screen2(terminal):
     """
-        Monitor 2 will display all widgets in widgets_list
+        TODO
     """
     left = list_left_widgets(terminal)
     right = list_right_widgets(terminal)

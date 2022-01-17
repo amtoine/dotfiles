@@ -14,25 +14,42 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
-from libqtile.lazy import lazy
 from libqtile.config import Group
 from libqtile.config import Key
+from libqtile.dgroups import simple_key_binder
+from libqtile.lazy import lazy
 
 
 def init_groups():
-    return [Group(i) for i in "123456789"]
+    """
+        TODO
+    """
+    groups = [
+        Group("D",  layout='monadtall'),
+        Group("I",  layout='monadtall'),
+        Group("S",  layout='monadtall'),
+        Group("W",  layout='monadtall'),
+        Group("C",  layout='monadtall'),
+        Group("M",  layout='monadtall'),
+        Group("V",  layout='monadtall'),
+    ]
+    # groups = [Group(i) for i in "123456789"]
+    return groups
 
 
 def link_groups_to_keys(groups, keys, mod):
-    for i in groups:
+    """
+        TODO
+    """
+    for i, group in enumerate(groups):
         keys.extend([
-            # mod1 + letter of group = switch to group
-            Key([mod], i.name, lazy.group[i.name].toscreen(), desc="Switch to group {}".format(i.name)),
-
-            # mod1 + shift + letter of group = switch to & move focused window to group
-            Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True), desc="Switch to & move focused window to group {}".format(i.name)),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
+            Key([mod],          str(i+1), lazy.group[group.name].toscreen(),                  desc="Switch to group {}".format(group.name)),
+            Key([mod, "shift"], str(i+1), lazy.window.togroup(group.name, switch_group=True), desc="Switch to (& move if true) focused window to group {}".format(group.name)),
         ])
+
+
+# # Allow MODKEY+[0 through 9] to bind to groups,
+# see https://docs.qtile.org/en/stable/manual/config/groups.html
+# # MOD4 + index Number : Switch to Group[index]
+# # MOD4 + shift + index Number : Send active window to another Group
+dgroups_key_binder = simple_key_binder("mod4")

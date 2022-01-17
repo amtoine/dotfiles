@@ -23,14 +23,9 @@ from themes import bar_theme
 
 
 def init_screens(terminal):
-    return [
-        Screen(top=bar.Bar(widgets=init_widgets_screen1(terminal), opacity=1.0, size=20)),
-        Screen(top=bar.Bar(widgets=init_widgets_screen2(terminal), opacity=1.0, size=20)),
-        Screen(top=bar.Bar(widgets=init_widgets_screen1(terminal), opacity=1.0, size=20))
-    ]
-
-
-def init_fake_screens(terminal):
+    """
+        TODO
+    """
     screen1 = dict(x=0,    y=0, width=1920, height=1080)
     screen2 = dict(x=1920, y=0, width=1920, height=1080)
     return [

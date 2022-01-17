@@ -36,6 +36,9 @@ PASSMENU = "passmenu -l 10 -c"
 
 
 def _emacs(eval=None):
+    """
+        TODO
+    """
     res = "emacsclient -c -a 'emacs'"
     if eval is not None:
         res += f" --eval '({eval})'"
@@ -44,7 +47,7 @@ def _emacs(eval=None):
 
 def _ls_scr(script, terminal=None):
     """
-        Dummy desc.
+        TODO
     """
     script = os.path.expanduser(os.path.join('~', "scripts", script))
     if terminal is not None:

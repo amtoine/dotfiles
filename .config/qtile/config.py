@@ -22,8 +22,7 @@ from keys import init_keymap
 from layouts import init_layouts
 from mouse import init_mouse
 from misc import *
-from screens import init_fake_screens
-# from widgets.main import init_widget_defaults
+from screens import init_screens
 from widgets import init_widget_defaults
 
 mod = "mod4"
@@ -39,7 +38,7 @@ layouts = init_layouts()
 widget_defaults = init_widget_defaults()
 extension_defaults = widget_defaults.copy()
 
-fake_screens = init_fake_screens(terminal)
+fake_screens = init_screens(terminal)
 
 # Drag floating layouts.
 mouse = init_mouse(mod)

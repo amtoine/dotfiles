@@ -20,6 +20,9 @@ from libqtile.lazy import lazy
 
 
 def init_mouse(mod):
+    """
+        TODO
+    """
     return [
         Drag([mod], "Button1", lazy.window.set_position_floating(),
              start=lazy.window.get_position()),
