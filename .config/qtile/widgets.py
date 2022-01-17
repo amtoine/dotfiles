@@ -25,8 +25,8 @@ def init_widget_defaults():
         TODO
     """
     return dict(
-        font='sans',
-        fontsize=12,
+        font='monospace',
+        fontsize=40,
         padding=3,
     )
 
@@ -80,7 +80,7 @@ def _thermal_sensor(bg="#000000", fg="#ffffff"):
     return widget.ThermalSensor(
         background=bg,              # Widget background color
         fmt='{}',                   # How to format the text
-        font='sans',                # Default font
+        font="monospace",           # Default font
         fontshadow=None,            # font shadow color, default is None(no shadow)
         fontsize=None,              # Font size. Calculated if None.
         foreground=fg,              # Foreground colour
@@ -113,7 +113,7 @@ def _check_updates(terminal, bg="#000000", fg="#ffffff"):
         distro='Arch_checkupdates',                                                            # Name of your distribution
         execute="",                                                                            # Command to execute on click
         fmt='{}',                                                                              # How to format the text
-        font='sans',                                                                           # Default font
+        font="monospace",                                                                      # Default font
         fontshadow=None,                                                                       # font shadow color, default is None(no shadow)
         fontsize=None,                                                                         # Font size. Calculated if None.
         foreground=fg,                                                                         # Foreground colour
@@ -149,12 +149,12 @@ def _memory(terminal, bg="#000000", fg="#ffffff"):
     return widget.Memory(
         background=bg,                                                              # Widget background color
         fmt='{}',                                                                   # How to format the text
-        font='sans',                                                                # Default font
+        font="monospace",                                                           # Default font
         fontshadow=None,                                                            # font shadow color, default is None(no shadow)
         fontsize=None,                                                              # Font size. Calculated if None.
         foreground=fg,                                                              # Foreground colour
-        # format='{MemUsed: .0f}{mm}/{MemTotal: .0f}{mm}',                            # Formatting for field names.
-        format='RAM {MemPercent: .0f}%',                            # Formatting for field names.
+        # format='{MemUsed: .0f}{mm}/{MemTotal: .0f}{mm}',                          # Formatting for field names.
+        format='RAM {MemPercent:02.0f}%',                                           # Formatting for field names.
         markup=True,                                                                # Whether or not to use pango markup
         max_chars=0,                                                                # Maximum number of characters to display in widget.
         measure_mem='M',                                                            # Measurement for Memory (G, M, K, B)
@@ -182,7 +182,7 @@ def _volume(bg="#000000", fg="#ffffff"):
         device='default',          # Device Name
         emoji=False,               # Use emoji to display volume states, only if theme_path is not set.The specified font needs to contain the correct unicode characters.
         fmt='{}',                  # How to format the text
-        font='sans',               # Default font
+        font="monospace",          # Default font
         fontshadow=None,           # font shadow color, default is None(no shadow)
         fontsize=None,             # Font size. Calculated if None.
         foreground=fg,             # Foreground colour
@@ -219,7 +219,7 @@ def _keyboard_layout(bg="#000000", fg="#ffffff"):
         configured_keyboards=['us'],  # A list of predefined keyboard layouts represented as strings. For example: ['us', 'us colemak', 'es', 'fr'].
         display_map={},               # Custom display of layout. Key should be in format 'layout variant'. For example: {'us': 'us', 'lt sgs': 'sgs', 'ru phonetic': 'ru'}
         fmt='{}',                     # How to format the text
-        font='sans',                  # Default font
+        font="monospace",             # Default font
         fontshadow=None,              # font shadow color, default is None(no shadow)
         fontsize=None,                # Font size. Calculated if None.
         foreground=fg,                # Foreground colour
@@ -253,11 +253,11 @@ def _backlight(bg="#000000", fg="#ffffff"):
         brightness_file='brightness',          # Name of file with the current brightness in /sys/class/backlight/backlight_name
         change_command='xbacklight -set {0}',  # Execute command to change value
         fmt='{}',                              # How to format the text
-        font='sans',                           # Default font
+        font="monospace",                      # Default font
         fontshadow=None,                       # font shadow color, default is None(no shadow)
         fontsize=None,                         # Font size. Calculated if None.
         foreground=fg,                         # Foreground colour
-        format='{percent:2.0%}',               # Display format
+        format='B{percent:2.0%}',               # Display format
         markup=True,                           # Whether or not to use pango markup
         max_brightness_file='max_brightness',  # Name of file with the maximum brightness in /sys/class/backlight/backlight_name
         max_chars=0,                           # Maximum number of characters to display in widget.
@@ -279,7 +279,7 @@ def _bluetooth(bg="#000000", fg="#ffffff"):
     return widget.Bluetooth(
         background=bg,                 # Widget background color
         fmt='{}',                      # How to format the text
-        font='sans',                   # Default font
+        font="monospace",              # Default font
         fontshadow=None,               # font shadow color, default is None(no shadow)
         fontsize=None,                 # Font size. Calculated if None.
         foreground=fg,                 # Foreground colour
@@ -301,11 +301,11 @@ def _cpu(terminal, bg="#000000", fg="#ffffff"):
     return widget.CPU(
         background=bg,                                   # Widget background color
         fmt='{}',                                        # How to format the text
-        font='sans',                                     # Default font
+        font="monospace",                                # Default font
         fontshadow=None,                                 # font shadow color, default is None(no shadow)
         fontsize=None,                                   # Font size. Calculated if None.
         foreground=fg,                                   # Foreground colour
-        format='CPU {load_percent}%',  # CPU display format
+        format='CPU {load_percent:04.1f}%',  # CPU display format
         markup=True,                                     # Whether or not to use pango markup
         max_chars=0,                                     # Maximum number of characters to display in widget.
         mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(terminal + ' htop')},   # Dict of mouse button press callback functions. Accepts functions and lazy calls.
@@ -321,20 +321,20 @@ def _current_screen(bg="#000000", fg="#ffffff"):
         Supported bar orientations: horizontal and vertical
     """
     return widget.CurrentScreen(
-        active_color='00ff00',    # Color when screen is active
-        active_text='A',          # Text displayed when the screen is active
-        background=bg,            # Widget background color
-        fmt='{}',                 # How to format the text
-        font='sans',              # Default font
-        fontshadow=None,          # font shadow color, default is None(no shadow)
-        fontsize=None,            # Font size. Calculated if None.
-        foreground=fg,            # Foreground colour
-        inactive_color='ff0000',  # Color when screen is inactive
-        inactive_text='I',        # Text displayed when the screen is inactive
-        markup=True,              # Whether or not to use pango markup
-        max_chars=0,              # Maximum number of characters to display in widget.
-        mouse_callbacks={},       # Dict of mouse button press callback functions. Accepts functions and lazy calls.
-        padding=None,             # Padding. Calculated if None.
+        active_color='66ff66',            # Color when screen is active
+        active_text='\uf0d9@@@\uf0da',    # Text displayed when the screen is active
+        background=bg,                    # Widget background color
+        fmt='{}',                         # How to format the text
+        font="monospace",                 # Default font
+        fontshadow=None,                  # font shadow color, default is None(no shadow)
+        fontsize=None,                      # Font size. Calculated if None.
+        foreground=fg,                    # Foreground colour
+        inactive_color='ff6666',          # Color when screen is inactive
+        inactive_text='\uf0d9@@@\uf0da',  # Text displayed when the screen is inactive
+        markup=True,                      # Whether or not to use pango markup
+        max_chars=0,                      # Maximum number of characters to display in widget.
+        mouse_callbacks={},               # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        padding=None,                     # Padding. Calculated if None.
     )
 
 
@@ -372,7 +372,7 @@ def _wallpaper(bg="#000000", fg="#ffffff"):
         background=bg,                               # Widget background color
         directory='~/repos/wallpapers/wallpapers/',  # Wallpaper Directory
         fmt='{}',                                    # How to format the text
-        font='sans',                                 # Default font
+        font="monospace",                            # Default font
         fontshadow=None,                             # font shadow color, default is None(no shadow)
         fontsize=None,                               # Font size. Calculated if None.
         foreground=fg,                               # Foreground colour
@@ -399,7 +399,7 @@ def _current_layout(bg="#000000", fg="#ffffff"):
     return widget.CurrentLayout(
         background=bg,        # Widget background color
         fmt='{}',             # How to format the text
-        font='sans',          # Default font
+        font="monospace",     # Default font
         fontshadow=None,      # font shadow color, default is None(no shadow)
         fontsize=None,        # Font size. Calculated if None.
         foreground=fg,        # Foreground colour
@@ -437,7 +437,7 @@ def _current_layout_icon(bg="#000000", fg="#ffffff"):
         background=bg,         # Widget background color
         custom_icon_paths=[],  # List of folders where to search icons beforeusing built-in icons or icons in ~/.icons dir. This can also be used to providemissing icons for custom layouts. Defaults to empty list.
         fmt='{}',              # How to format the text
-        font='sans',           # Default font
+        font="monospace",      # Default font
         fontshadow=None,       # font shadow color, default is None(no shadow)
         fontsize=None,         # Font size. Calculated if None.
         foreground=fg,         # Foreground colour
@@ -466,9 +466,9 @@ def _group_box(bg="#000000", fg="#ffffff"):
         center_aligned=True,                   # center-aligned group box
         disable_drag=False,                    # Disable dragging and dropping of group names on widget
         fmt='{}',                              # How to format the text
-        font='sans',                           # Default font
+        font='monospace',                      # Default font
         fontshadow=None,                       # font shadow color, default is None(no shadow)
-        fontsize=15,                           # Font size. Calculated if None.
+        fontsize=10,                           # Font size. Calculated if None.
         foreground=fg,                         # Foreground colour
         hide_unused=False,                     # Hide groups that have no windows and that are not displayed on any screen.
         highlight_color=['000000', '282828'],  # Active group highlight color when using 'line' highlight method.
@@ -514,7 +514,7 @@ def _prompt(bg="#000000", fg="#ffffff"):
         cursor_color='bef098',       # Color for the cursor and text over it.
         cursorblink=0.5,             # Cursor blink rate. 0 to disable.
         fmt='{}',                    # How to format the text
-        font='sans',                 # Default font
+        font="monospace",            # Default font
         fontshadow=None,             # font shadow color, default is None(no shadow)
         fontsize=None,               # Font size. Calculated if None.
         foreground=fg,               # Foreground colour
@@ -542,7 +542,7 @@ def _window_name(bg="#000000", fg="#ffffff"):
         background=bg,             # Widget background color
         empty_group_string=' ',    # string to display when no windows are focused on current group
         fmt='{}',                  # How to format the text
-        font='sans',               # Default font
+        font='monospace',          # Default font
         fontshadow=None,           # font shadow color, default is None(no shadow)
         fontsize=None,             # Font size. Calculated if None.
         for_current_screen=False,  # instead of this bars screen use currently active screen
@@ -567,7 +567,7 @@ def _chord(bg="#000000", fg="#ffffff"):
         background=bg,                                     # Widget background color
         chords_colors={'launch': ("#ff0000", "#ffffff")},  # colors per chord in form of tuple ('bg', 'fg').
         fmt='{}',                                          # How to format the text
-        font='sans',                                       # Default font
+        font="monospace",                                  # Default font
         fontshadow=None,                                   # font shadow color, default is None(no shadow)
         fontsize=None,                                     # Font size. Calculated if None.
         foreground=fg,                                     # Foreground colour
@@ -591,7 +591,7 @@ def _text_box(text='', bg="#000000", fg="#ffffff"):
         text,
         background=bg,          # Widget background color
         fmt='{}',               # How to format the text
-        font='sans',            # Text font
+        font="monospace",       # Text font
         fontshadow=None,        # font shadow color, default is None(no shadow)
         fontsize=None,          # Font pixel size. Calculated if None.
         foreground=fg,          # Foreground colour.
@@ -636,7 +636,7 @@ def _clock(format='%H:%M', bg="#000000", fg="#ffffff"):
     return widget.Clock(
         background=bg,        # Widget background color
         fmt='{}',             # How to format the text
-        font='sans',          # Default font
+        font="monospace",     # Default font
         fontshadow=None,      # font shadow color, default is None(no shadow)
         fontsize=None,        # Font size. Calculated if None.
         foreground=fg,        # Foreground colour
@@ -664,7 +664,7 @@ def _battery(format, bg="#000000", fg="#ffffff"):
         discharge_char='\uf0d7',  # Character to indicate the battery is discharging
         empty_char='x',           # Character to indicate the battery is empty
         fmt='{}',                 # How to format the text
-        font='sans',              # Default font
+        font="monospace",         # Default font
         fontshadow=None,          # font shadow color, default is None(no shadow)
         fontsize=None,            # Font size. Calculated if None.
         foreground=fg,            # Foreground colour
@@ -711,21 +711,21 @@ def _net(bg="#000000", fg="#ffffff"):
         Supported bar orientations: horizontal and vertical
     """
     return widget.Net(
-        background=bg,                         # Widget background color
-        fmt='{}',                              # How to format the text
-        font='sans',                           # Default font
-        fontshadow=None,                       # font shadow color, default is None(no shadow)
-        fontsize=None,                         # Font size. Calculated if None.
-        foreground=fg,                         # Foreground colour
-        format='{interface}: {down}↓ {up}↑',   # Display format of down/upload/total speed of given interfaces
-        interface="wlp2s0",                    # List of interfaces or single NIC as string to monitor, None to display all active NICs combined
-        markup=True,                           # Whether or not to use pango markup
-        max_chars=0,                           # Maximum number of characters to display in widget.
-        mouse_callbacks={},                    # Dict of mouse button press callback functions. Accepts functions and lazy calls.
-        padding=None,                          # Padding. Calculated if None.
-        prefix=None,                           # Use a specific prefix for the unit of the speed.
-        update_interval=1,                     # The update interval.
-        use_bits=False,                        # Use bits instead of bytes per second?
+        background=bg,                        # Widget background color
+        fmt='{}',                             # How to format the text
+        font="monospace",                     # Default font
+        fontshadow=None,                      # font shadow color, default is None(no shadow)
+        fontsize=None,                        # Font size. Calculated if None.
+        foreground=fg,                        # Foreground colour
+        format='{interface}: {down}↓ {up}↑',  # Display format of down/upload/total speed of given interfaces
+        interface="wlp2s0",                   # List of interfaces or single NIC as string to monitor, None to display all active NICs combined
+        markup=True,                          # Whether or not to use pango markup
+        max_chars=0,                          # Maximum number of characters to display in widget.
+        mouse_callbacks={},                   # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        padding=None,                         # Padding. Calculated if None.
+        prefix=None,                          # Use a specific prefix for the unit of the speed.
+        update_interval=1,                    # The update interval.
+        use_bits=False,                       # Use bits instead of bytes per second?
     )
 
 
@@ -744,9 +744,9 @@ def _quick_exit(bg="#000000", fg="#ffffff", font=wt.font, size=wt.size):
         countdown_start=5,                  # Time to accept the second pushing.
         default_text='[ shutdown ]',        # A text displayed as a button
         fmt='{}',                           # How to format the text
-        font=font,                          # Default font
+        font="monospace",                   # Default font
         fontshadow=None,                    # font shadow color, default is None(no shadow)
-        fontsize=size,                      # Font size. Calculated if None.
+        fontsize=None,                      # Font size. Calculated if None.
         foreground=fg,                      # Foreground colour
         markup=True,                        # Whether or not to use pango markup
         max_chars=0,                        # Maximum number of characters to display in widget.
@@ -769,11 +769,11 @@ def _wlan(bg="#000000", fg="#ffffff"):
         background=bg,                        # Widget background color
         disconnected_message='Disconnected',  # String to show when the wlan is diconnected.
         fmt='{}',                             # How to format the text
-        font='sans',                          # Default font
+        font="monospace",                     # Default font
         fontshadow=None,                      # font shadow color, default is None(no shadow)
         fontsize=None,                        # Font size. Calculated if None.
         foreground=fg,                        # Foreground colour
-        format='{essid} {quality}/70',        # Display format. For percents you can use "{essid} {percent:2.0%}"
+        format='{essid} {quality:02d}/70',        # Display format. For percents you can use "{essid} {percent:2.0%}"
         interface='wlp2s0',                   # The interface to monitor
         markup=True,                          # Whether or not to use pango markup
         max_chars=0,                          # Maximum number of characters to display in widget.
@@ -789,7 +789,7 @@ def _powerline_left_arrow(bg="#000000", fg="#ffffff"):
     """
     return widget.TextBox(
         text='\uf0d9',  # '' character
-        font="sans",
+        font="monospace",
         background=bg,
         foreground=fg,
         padding=0,
@@ -803,7 +803,7 @@ def _powerline_right_arrow(bg="#000000", fg="#ffffff"):
     """
     return widget.TextBox(
         text='\uf0da',  # inverse '' character
-        font="sans",
+        font="monospace",
         background=bg,
         foreground=fg,
         padding=0,
@@ -817,7 +817,7 @@ def _vertical_sep(bg="#000000", fg="#ffffff"):
     """
     return widget.TextBox(
         text='|',
-        font="sans",
+        font="monospace",
         background=bg,
         foreground=fg,
         padding=2,
@@ -899,20 +899,20 @@ def list_right_widgets(terminal):
         TODO
     """
     return [
-        [_chord,           {"bg": wt.yellow,   "fg": wt.black}],
-        [_systray,         {"bg": wt.green}],
-        [_memory,          {"bg": wt.cyan,     "fg": wt.black,   "terminal": terminal}],
-        [_cpu,             {"bg": wt.blue,     "fg": wt.black,   "terminal": terminal}],
-        [_net,             {"bg": wt.purple,   "fg": wt.black}],
-        [_wlan,            {"bg": wt.lila,     "fg": wt.black}],
-        [_check_updates,   {"bg": wt.purple,   "fg": wt.black,   "terminal": terminal}],
-        [_volume,          {"bg": wt.blue,     "fg": wt.black}],
-        [_backlight,       {"bg": wt.cyan,     "fg": wt.black}],
-        [_wallpaper,       {"bg": wt.green,    "fg": wt.black}],
-        [_clock,           {"bg": wt.yellow,   "fg": wt.black,   "format": "%a, %m/%d/%y - %H:%M "}],
-        [_battery_icon,    {"bg": wt.grey}],
-        [_battery,         {"bg": wt.orange,   "fg": wt.black,   "format": '{char} {percent:2.0%} {hour:d}:{min:02d}'}],
-        [_quick_exit,      {"bg": wt.red,      "fg": wt.black}],
+        [_net,           {"bg": wt.yellow, "fg": wt.black}],
+        [_wlan,          {"bg": wt.green,  "fg": wt.black}],
+        [_chord,         {"bg": wt.cyan,   "fg": wt.black}],
+        [_systray,       {"bg": wt.blue}],
+        [_memory,        {"bg": wt.purple, "fg": wt.black,   "terminal": terminal}],
+        [_cpu,           {"bg": wt.lila,   "fg": wt.black,   "terminal": terminal}],
+        [_check_updates, {"bg": wt.purple, "fg": wt.black,   "terminal": terminal}],
+        [_volume,        {"bg": wt.blue,   "fg": wt.black}],
+        [_backlight,     {"bg": wt.cyan,   "fg": wt.black}],
+        [_wallpaper,     {"bg": wt.green,  "fg": wt.black}],
+        [_clock,         {"bg": wt.yellow, "fg": wt.black,   "format": "%a, %m/%d/%y - %H:%M "}],
+        [_battery_icon,  {"bg": wt.grey}],
+        [_battery,       {"bg": wt.orange, "fg": wt.black,   "format": '{char} {percent:2.0%} {hour:d}:{min:02d}'}],
+        [_quick_exit,    {"bg": wt.red,    "fg": wt.black}],
     ]
 
 

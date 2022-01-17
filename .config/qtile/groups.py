@@ -14,6 +14,8 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
+from typing import List  # noqa: F401
+
 from libqtile.config import Group
 from libqtile.config import Key
 from libqtile.dgroups import simple_key_binder
@@ -25,13 +27,13 @@ def init_groups():
         TODO
     """
     groups = [
-        Group("D",  layout='monadtall'),
-        Group("I",  layout='monadtall'),
-        Group("S",  layout='monadtall'),
-        Group("W",  layout='monadtall'),
-        Group("C",  layout='monadtall'),
-        Group("M",  layout='monadtall'),
-        Group("V",  layout='monadtall'),
+        Group("D1",  layout='monadtall'),
+        Group("I2",  layout='monadtall'),
+        Group("S3",  layout='monadtall'),
+        Group("W4",  layout='monadtall'),
+        Group("C5",  layout='monadtall'),
+        Group("M6",  layout='monadtall'),
+        Group("V7",  layout='monadtall'),
     ]
     # groups = [Group(i) for i in "123456789"]
     return groups
@@ -53,3 +55,4 @@ def link_groups_to_keys(groups, keys, mod):
 # # MOD4 + index Number : Switch to Group[index]
 # # MOD4 + shift + index Number : Send active window to another Group
 dgroups_key_binder = simple_key_binder("mod4")
+dgroups_app_rules = []  # type: List
