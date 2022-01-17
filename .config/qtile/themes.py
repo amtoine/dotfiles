@@ -14,25 +14,33 @@ Colors = namedtuple(
         "purple",
         "cyan",
         "lila",
+        "marine",
     ]
 )
 
-Theme = namedtuple(
-    "Theme",
+WidgetTheme = namedtuple(
+    "WidgetTheme",
     [
-        "black",
-        "grey",
-        "white",
-        "red",
-        "green",
-        "orange",
-        "yellow",
-        "blue",
-        "purple",
-        "cyan",
-        "lila",
-        "font",
-        "size",
+        "image",
+        "current_layout",
+        "current_screen",
+        "group_box",
+        "prompt",
+        "window_name",
+        "net",
+        "wlan",
+        "chord",
+        "systray",
+        "memory",
+        "cpu",
+        "check_updates",
+        "volume",
+        "backlight",
+        "wallpaper",
+        "clock",
+        "battery_icon",
+        "battery",
+        "quick_exit",
     ]
 )
 
@@ -48,31 +56,40 @@ colors = Colors(
     purple="#c678dd",
     cyan="#46d9ff",
     lila="#a9a1e1",
+    marine="#5555ff",
 )
 
-widget_theme = Theme(
-    black=[colors.black, colors.black],
-    grey=[colors.grey, colors.grey],
-    white=[colors.white, colors.white],
-    red=[colors.red, colors.red],
-    green=[colors.green, colors.green],
-    orange=[colors.orange, colors.orange],
-    yellow=[colors.yellow, colors.yellow],
-    blue=[colors.blue, colors.blue],
-    purple=[colors.purple, colors.purple],
-    cyan=[colors.cyan, colors.cyan],
-    lila=[colors.lila, colors.lila],
-    font="mononoki",
-    size=None,
+widget_theme = WidgetTheme(
+    image=dict(bg=colors.grey),
+    current_layout=dict(bg=colors.grey, fg=colors.white),
+    current_screen=dict(bg=colors.black, fg=colors.white),
+    group_box=dict(bg=colors.grey, fg=colors.white),
+    prompt=dict(bg=colors.black, fg=colors.white),
+    window_name=dict(bg=colors.grey, fg=colors.white),
+
+    net=dict(bg=colors.yellow, fg=colors.black),
+    wlan=dict(bg=colors.green, fg=colors.black),
+    chord=dict(bg=colors.cyan, fg=colors.black),
+    systray=dict(bg=colors.blue),
+    memory=dict(bg=colors.purple, fg=colors.black),
+    cpu=dict(bg=colors.lila, fg=colors.black),
+    check_updates=dict(bg=colors.purple, fg=colors.black),
+    volume=dict(bg=colors.blue, fg=colors.black),
+    backlight=dict(bg=colors.cyan, fg=colors.black),
+    wallpaper=dict(bg=colors.green, fg=colors.black),
+    clock=dict(bg=colors.yellow, fg=colors.black),
+    battery_icon=dict(bg=colors.grey),
+    battery=dict(bg=colors.orange, fg=colors.black),
+    quick_exit=dict(bg=colors.red, fg=colors.black),
 )
 
 bar_theme = dict(
+    # N E S W
     size=16,
     opacity=1.,
     background="#ff3333",
+    margin=[0, 0, 0, 0],
     # border_width=[2, 2, 2, 2],
-    border_width=[0, 0, 2, 0],
+    border_width=[0, 0, 1, 0],
     border_color=[colors.orange, colors.orange, colors.white, colors.orange]
 )
-
-# prompt = "{0}@{1}: ".format(os.environ=["USER"], socket.gethostname())

@@ -18,6 +18,7 @@ from libqtile import qtile
 from libqtile import widget
 
 from themes import widget_theme as wt
+from themes import colors
 
 
 def init_widget_defaults():
@@ -729,7 +730,7 @@ def _net(bg="#000000", fg="#ffffff"):
     )
 
 
-def _quick_exit(bg="#000000", fg="#ffffff", font=wt.font, size=wt.size):
+def _quick_exit(bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.QuickExit(widget=CALCULATED, **config)[source]
         A button of exiting the running qtile easily. When clicked this button,
@@ -825,72 +826,17 @@ def _vertical_sep(bg="#000000", fg="#ffffff"):
     )
 
 
-def init_widgets_(terminal):
-    """
-        TODO
-    """
-    widgets = [
-        # _current_layout_icon(),
-        _current_layout(fg=wt.white, bg=wt.grey),
-        _vertical_sep(bg=wt.black),
-        _current_screen(fg=wt.white, bg=wt.black),
-        _vertical_sep(bg=wt.black),
-        _group_box(fg=wt.white, bg=wt.black),
-        _vertical_sep(bg=wt.black),
-        _prompt(fg=wt.white, bg=wt.black),
-        _vertical_sep(bg=wt.black),
-        _window_name(fg=wt.white, bg=wt.black),
-        _vertical_sep(bg=wt.black),
-
-        _sep(fg=wt.white, bg=wt.black),
-        # _image(bg=wt.black),
-        # _thermal_sensor(fg=wt.white, bg=wt.black),
-        _powerline_left_arrow(fg=wt.blue, bg=wt.black),
-        _bluetooth(fg=wt.white, bg=wt.blue),
-        _powerline_left_arrow(fg=wt.red, bg=wt.blue),
-        _volume(fg=wt.white, bg=wt.red),
-        _powerline_left_arrow(fg=wt.blue, bg=wt.red),
-        _keyboard_layout(fg=wt.white, bg=wt.blue),
-        _powerline_left_arrow(fg=wt.red, bg=wt.blue),
-        _backlight(fg=wt.white, bg=wt.red),
-        _powerline_left_arrow(fg=wt.blue, bg=wt.red),
-        _memory(terminal=terminal, fg=wt.white, bg=wt.blue),
-        _powerline_left_arrow(fg=wt.red, bg=wt.blue),
-        _cpu(terminal=terminal, fg=wt.white, bg=wt.red),
-        _powerline_left_arrow(fg=wt.black, bg=wt.red),
-        _hdd(bg=wt.black),
-        _powerline_left_arrow(fg=wt.blue, bg=wt.black),
-        _wallpaper(fg=wt.white, bg=wt.blue),
-        _powerline_left_arrow(fg=wt.red, bg=wt.blue),
-        _check_updates(terminal=terminal, fg=wt.white, bg=wt.red),
-        _powerline_left_arrow(fg=wt.blue, bg=wt.red),
-        _chord(fg=wt.white, bg=wt.green),
-        _powerline_left_arrow(fg=wt.red, bg=wt.blue),
-        _net(fg=wt.white, bg=wt.red),
-        _powerline_left_arrow(fg=wt.blue, bg=wt.red),
-        _text_box(text="Press &lt;M-r&gt; to spawn", fg=wt.white, bg=wt.blue),
-        _powerline_left_arrow(fg=wt.red, bg=wt.blue),
-        _clock(format="%A, %B %d - %H:%M ", fg=wt.white, bg=wt.red),
-        _powerline_left_arrow(fg=wt.blue, bg=wt.red),
-        _battery_icon(bg=wt.blue),
-        _battery('{char} {percent:2.0%} {hour:d}:{min:02d}', fg=wt.white, bg=wt.blue),
-        _powerline_left_arrow(fg=wt.green, bg=wt.blue),
-        _quick_exit(fg=wt.white, bg=wt.green),
-    ]
-    return widgets
-
-
 def list_left_widgets(terminal):
     """
         TODO
     """
     return [
-        [_image,          {"bg": wt.grey, "terminal": terminal, "filename": "~/.config/qtile/icons/python-white.png"}],
-        [_current_layout, {"fg": wt.white, "bg": wt.grey}],
-        [_current_screen, {"fg": wt.white, "bg": wt.black}],
-        [_group_box,      {"fg": wt.white, "bg": wt.grey}],
-        [_prompt,         {"fg": wt.white, "bg": wt.black}],
-        [_window_name,    {"fg": wt.white, "bg": wt.grey}],
+        [_image,          dict(**wt.image, terminal=terminal, filename="~/.config/qtile/icons/python-white.png")],
+        [_current_layout, dict(**wt.current_layout)],
+        [_current_screen, dict(**wt.current_screen)],
+        [_group_box,      dict(**wt.group_box)],
+        [_prompt,         dict(**wt.prompt)],
+        [_window_name,    dict(**wt.window_name)],
     ]
 
 
@@ -899,20 +845,20 @@ def list_right_widgets(terminal):
         TODO
     """
     return [
-        [_net,           {"bg": wt.yellow, "fg": wt.black}],
-        [_wlan,          {"bg": wt.green,  "fg": wt.black}],
-        [_chord,         {"bg": wt.cyan,   "fg": wt.black}],
-        [_systray,       {"bg": wt.blue}],
-        [_memory,        {"bg": wt.purple, "fg": wt.black,   "terminal": terminal}],
-        [_cpu,           {"bg": wt.lila,   "fg": wt.black,   "terminal": terminal}],
-        [_check_updates, {"bg": wt.purple, "fg": wt.black,   "terminal": terminal}],
-        [_volume,        {"bg": wt.blue,   "fg": wt.black}],
-        [_backlight,     {"bg": wt.cyan,   "fg": wt.black}],
-        [_wallpaper,     {"bg": wt.green,  "fg": wt.black}],
-        [_clock,         {"bg": wt.yellow, "fg": wt.black,   "format": "%a, %m/%d/%y - %H:%M "}],
-        [_battery_icon,  {"bg": wt.grey}],
-        [_battery,       {"bg": wt.orange, "fg": wt.black,   "format": '{char} {percent:2.0%} {hour:d}:{min:02d}'}],
-        [_quick_exit,    {"bg": wt.red,    "fg": wt.black}],
+        [_net,           dict(**wt.net)],
+        [_wlan,          dict(**wt.wlan)],
+        [_chord,         dict(**wt.chord)],
+        [_systray,       dict(**wt.systray)],
+        [_memory,        dict(**wt.memory,         terminal=terminal)],
+        [_cpu,           dict(**wt.cpu,            terminal=terminal)],
+        [_check_updates, dict(**wt.check_updates,  terminal=terminal)],
+        [_volume,        dict(**wt.volume)],
+        [_backlight,     dict(**wt.backlight)],
+        [_wallpaper,     dict(**wt.wallpaper)],
+        [_clock,         dict(**wt.clock,          format="%a, %m/%d/%y - %H:%M ")],
+        [_battery_icon,  dict(**wt.battery_icon)],
+        [_battery,       dict(**wt.battery,        format='{char} {percent:2.0%} {hour:d}:{min:02d}')],
+        [_quick_exit,    dict(**wt.quick_exit)],
     ]
 
 
@@ -921,16 +867,16 @@ def _init_widgets(left, right):
         TODO
     """
     widgets = []
-    bg = wt.black
+    bg = colors.black
     for func, kwargs in left[::-1]:
         _bg = kwargs["bg"]
         widgets.extend([_powerline_right_arrow(fg=_bg, bg=bg), func(**kwargs)])
         bg = _bg
     widgets = widgets[::-1]
 
-    widgets.append(_sep(fg=wt.white, bg=wt.black))
+    widgets.append(_sep(fg=colors.white, bg=colors.black))
 
-    bg = wt.black
+    bg = colors.black
     for func, kwargs in right:
         _bg = kwargs["bg"]
         widgets.extend([_powerline_left_arrow(fg=_bg, bg=bg), func(**kwargs)])
