@@ -49,10 +49,17 @@ def _emacs(eval=None):
     res = "emacsclient -c -a 'emacs'"
     if eval is not None:
         res += f" --eval '({eval})'"
-    return res
+    return lazy.spawn(res), lazy.ungrab_chord()
 
 
-def _ls_scr(script, terminal=None):
+def _dmenu(command):
+    """
+        TODO
+    """
+    return lazy.spawn(command), lazy.ungrab_chord()
+
+
+def _script(script, terminal=None):
     """
         TODO
     """
@@ -60,6 +67,13 @@ def _ls_scr(script, terminal=None):
     if terminal is not None:
         script = terminal + ' ' + script
     return lazy.spawn(script)
+
+
+def _cmd(command):
+    """
+        TODO
+    """
+    return lazy.spawn(command)
 
 
 def init_keymap(mod, terminal):
@@ -72,26 +86,70 @@ def init_keymap(mod, terminal):
     MOD = [mod]
     km.extend(
         [
-            Key(MOD, "b", lazy.spawn(BROWSER),             desc="my web browser."),
-            Key(MOD, "r", lazy.spawn(DMENU_RUN),           desc="Spawn a command using a dmenu prompt"),
-            Key(MOD, "h", lazy.layout.left(),              desc="Move focus to left"),
-            Key(MOD, "j", lazy.layout.down(),              desc="Move focus down"),
-            Key(MOD, "k", lazy.layout.up(),                desc="Move focus up"),
-            Key(MOD, "l", lazy.layout.right(),             desc="Move focus to right"),
-            Key(MOD, "n", lazy.layout.normalize(),         desc="Reset all window sizes"),
-            Key(MOD, "s", lazy.to_screen(0),               desc='Keyboard focus to monitor 1'),
-            Key(MOD, "d", lazy.to_screen(1),               desc='Keyboard focus to monitor 2'),
-            Key(MOD, "f", lazy.to_screen(2),               desc='Keyboard focus to monitor 3'),
-            Key(MOD, "f", lazy.window.toggle_fullscreen(), desc='toggle fullscreen'),
-            Key(MOD, SPC, lazy.layout.next(),              desc="Move window focus to other window"),
-            Key(MOD, RET, lazy.spawn(terminal),            desc="Launch terminal"),
-            Key(MOD, TAB, lazy.next_layout(),              desc="Toggle between layouts"),
-            Key(MOD, PER, lazy.next_screen(),              desc='Move focus to next monitor'),
-            Key(MOD, COM, lazy.prev_screen(),              desc='Move focus to prev monitor'),
-            Key(MOD, BCL, lazy.screen.prev_group(),        desc='TODO'),
-            Key(MOD, BCR, lazy.screen.next_group(),        desc='TODO'),
-            Key(MOD, SLH, lazy.screen.toggle_group(),      desc='TODO'),
-            Key(MOD, 'w', lazy.run_extension(window_list())),
+            Key(MOD, 'b', _cmd(BROWSER),                      desc="my web browser."),
+            Key(MOD, 'r', _cmd(DMENU_RUN),                    desc="Spawn a command using a dmenu prompt"),
+            Key(MOD, 'h', lazy.layout.left(),                 desc="Move focus to left"),
+            Key(MOD, 'j', lazy.layout.down(),                 desc="Move focus down"),
+            Key(MOD, 'k', lazy.layout.up(),                   desc="Move focus up"),
+            Key(MOD, 'l', lazy.layout.right(),                desc="Move focus to right"),
+            Key(MOD, 'n', lazy.layout.normalize(),            desc="Reset all window sizes"),
+            Key(MOD, 's', lazy.to_screen(0),                  desc='Keyboard focus to monitor 1'),
+            Key(MOD, 'd', lazy.to_screen(1),                  desc='Keyboard focus to monitor 2'),
+            Key(MOD, 'f', lazy.to_screen(2),                  desc='Keyboard focus to monitor 3'),
+            Key(MOD, 'f', lazy.window.toggle_fullscreen(),    desc='toggle fullscreen'),
+            Key(MOD, 'w', lazy.run_extension(window_list()),  desc="TODO"),
+            KeyChord(MOD, 'z', [
+                Key([], 'h', lazy.layout.grow(),              desc="TODO"),
+                Key([], 'j', lazy.layout.normalize(),         desc="TODO"),
+                Key([], 'k', lazy.layout.maximize(),          desc="TODO"),
+                Key([], 'l', lazy.layout.shrink(),            desc="TODO"),
+                ],
+                mode="Windows"
+            ),
+            KeyChord(MOD, 'e', [
+                Key([], 'e', *_emacs(),                       desc='Launch Emacs'),
+                Key([], 'b', *_emacs("ibuffer"),              desc='Launch ibuffer inside Emacs'),
+                Key([], 'd', *_emacs("dired nil"),            desc='Launch dired inside Emacs'),
+                Key([], 'i', *_emacs("erc"),                  desc='Launch erc inside Emacs'),
+                Key([], 'm', *_emacs("mu4e"),                 desc='Launch mu4e inside Emacs'),
+                Key([], 'n', *_emacs("elfeed"),               desc='Launch elfeed inside Emacs'),
+                Key([], 's', *_emacs("eshell"),               desc='Launch the eshell inside Emacs'),
+                Key([], 'v', *_emacs("+vterm/here nil"),      desc='Launch vterm inside Emacs')
+                ],
+                mode="EMACS"
+            ),
+            KeyChord(MOD, 'p', [
+                Key([], 'h', *_dmenu("dm-hub"),               desc='TODO'),
+                Key([], 'e', *_dmenu("dm-confedit"),          desc='Choose a config file to edit'),
+                Key([], 'i', *_dmenu("dm-maim"),              desc='Take screenshots via dmenu'),
+                Key([], 'k', *_dmenu("dm-kill"),              desc='Kill processes via dmenu'),
+                Key([], 'l', *_dmenu("dm-logout"),            desc='A logout menu'),
+                Key([], 'm', *_dmenu("dm-man"),               desc='Search manpages in dmenu'),
+                Key([], 'o', *_dmenu("dm-bookman"),           desc='Search your qutebrowser bookmarks and quickmarks'),
+                Key([], 'r', *_dmenu("dm-reddit"),            desc='Search reddit via dmenu'),
+                Key([], 's', *_dmenu("dm-websearch"),         desc='Search various search engines via dmenu'),
+                Key([], 'p', *_dmenu(PASSMENU),               desc='Retrieve passwords with dmenu')
+                ],
+                mode="DMENU"
+            ),
+            Key(MOD, SPC, lazy.layout.next(),                 desc="Move window focus to other window"),
+            Key(MOD, RET, _cmd(terminal),                     desc="Launch terminal"),
+            Key(MOD, TAB, lazy.next_layout(),                 desc="Toggle between layouts"),
+            Key(MOD, PER, lazy.next_screen(),                 desc='Move focus to next monitor'),
+            Key(MOD, COM, lazy.prev_screen(),                 desc='Move focus to prev monitor'),
+            Key(MOD, BCL, lazy.screen.prev_group(),           desc='TODO'),
+            Key(MOD, BCR, lazy.screen.next_group(),           desc='TODO'),
+            Key(MOD, SLH, lazy.screen.toggle_group(),         desc='TODO'),
+            Key(MOD, F1,  _cmd("brightnessctl s 8-"),         desc="brightness of the main screen down."),
+            Key(MOD, F2,  _cmd("brightnessctl s 8+"),         desc="brightness of the main screen up."),
+            Key(MOD, F3,  _script("hdmi.brightness.sh -"),    desc="brightness of the second screen down."),
+            Key(MOD, F4,  _script("hdmi.brightness.sh +"),    desc="brightness of the second screen up."),
+            Key(MOD, F5,  _script("screenshot.sh window"),    desc="take a screenshot of everything or chose a window."),
+            Key(MOD, F6,  _script("screenshot.sh full"),      desc="take a screenshot of everything or chose a window."),
+            Key(MOD, F7,  _script("slock-cst.sh"),            desc="lock the computer."),
+            Key(MOD, F8,  _script("lfrun.sh", terminal),      desc="my file explorer."),
+            Key(MOD, F9,  _cmd(KILL_XAUTOLOCK),               desc="TODO"),
+            Key(MOD, F10, _cmd(AUTOSTART),                    desc="TODO"),
         ]
     )
     MOD = [mod, CON]
@@ -122,58 +180,6 @@ def init_keymap(mod, terminal):
 
             Key(MOD, RET, lazy.layout.toggle_split(),      desc="Toggle between split and unsplit sides of stack"),
             Key(MOD, TAB, lazy.prev_layout(),              desc="Toggle between layouts"),
-        ]
-    )
-    MOD = [mod]
-    km.extend(
-        [
-            Key(MOD, F1,  lazy.spawn("brightnessctl s 8-"), desc="brightness of the main screen down."),
-            Key(MOD, F2,  lazy.spawn("brightnessctl s 8+"), desc="brightness of the main screen up."),
-            Key(MOD, F3,  _ls_scr("hdmi.brightness.sh -"),  desc="brightness of the second screen down."),
-            Key(MOD, F4,  _ls_scr("hdmi.brightness.sh +"),  desc="brightness of the second screen up."),
-            Key(MOD, F5,  _ls_scr("screenshot.sh window"),  desc="take a screenshot of everything or chose a window."),
-            Key(MOD, F6,  _ls_scr("screenshot.sh full"),    desc="take a screenshot of everything or chose a window."),
-            Key(MOD, F7,  _ls_scr("slock-cst.sh"),          desc="lock the computer."),
-            Key(MOD, F8,  _ls_scr("lfrun.sh", terminal),    desc="my file explorer."),
-            Key(MOD, F9,  lazy.spawn(KILL_XAUTOLOCK),       desc="TODO"),
-            Key(MOD, F10, lazy.spawn(AUTOSTART),            desc="TODO"),
-        ]
-    )
-
-    MOD = [mod]
-    km.extend(
-        [
-            KeyChord([mod], "z", [
-                Key([], "g", lazy.layout.grow()),
-                Key([], "s", lazy.layout.shrink()),
-                Key([], "n", lazy.layout.normalize()),
-                Key([], "m", lazy.layout.maximize())],
-                mode="Windows"
-            ),
-            KeyChord([mod], "e", [
-                Key([], "e", lazy.spawn(_emacs()),                  desc='Launch Emacs'),
-                Key([], "b", lazy.spawn(_emacs("ibuffer")),         desc='Launch ibuffer inside Emacs'),
-                Key([], "d", lazy.spawn(_emacs("dired nil")),       desc='Launch dired inside Emacs'),
-                Key([], "i", lazy.spawn(_emacs("erc")),             desc='Launch erc inside Emacs'),
-                Key([], "m", lazy.spawn(_emacs("mu4e")),            desc='Launch mu4e inside Emacs'),
-                Key([], "n", lazy.spawn(_emacs("elfeed")),          desc='Launch elfeed inside Emacs'),
-                Key([], "s", lazy.spawn(_emacs("eshell")),          desc='Launch the eshell inside Emacs'),
-                Key([], "v", lazy.spawn(_emacs("+vterm/here nil")), desc='Launch vterm inside Emacs')],
-                # mode="emacs"
-            ),
-            KeyChord([mod], "p", [
-                Key([], "h", lazy.spawn("dm-hub"),       desc='TODO'),
-                Key([], "e", lazy.spawn("dm-confedit"),  desc='Choose a config file to edit'),
-                Key([], "i", lazy.spawn("dm-maim"),      desc='Take screenshots via dmenu'),
-                Key([], "k", lazy.spawn("dm-kill"),      desc='Kill processes via dmenu'),
-                Key([], "l", lazy.spawn("dm-logout"),    desc='A logout menu'),
-                Key([], "m", lazy.spawn("dm-man"),       desc='Search manpages in dmenu'),
-                Key([], "o", lazy.spawn("dm-bookman"),   desc='Search your qutebrowser bookmarks and quickmarks'),
-                Key([], "r", lazy.spawn("dm-reddit"),    desc='Search reddit via dmenu'),
-                Key([], "s", lazy.spawn("dm-websearch"), desc='Search various search engines via dmenu'),
-                Key([], "p", lazy.spawn(PASSMENU),       desc='Retrieve passwords with dmenu')],
-                # mode="dmenu"
-            )
         ]
     )
     return km

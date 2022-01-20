@@ -31,6 +31,7 @@ def _floating():
         border_width=lt.border_width,      # Border width.
         fullscreen_border_width=0,         # Border width for fullscreen.
         max_border_width=0,                # Border width for maximize.
+        name="FLOAT",
     )
 
 
@@ -82,6 +83,7 @@ def _bsp():
         grow_amount=10,                # Amount by which to grow a window/column.
         lower_right=True,              # New client occupies lower or right subspace.
         margin=lt.margin,              # Margin of the layout (int or list of ints [N E S W]).
+        name=" BSP",
         ratio=1.6,                     # Width/height ratio that defines the partition direction.
     )
 
@@ -135,6 +137,7 @@ def _columns():
         insert_position=0,                           # Position relative to the current window where new ones are inserted (0 means right above the current window, 1 means right after).
         margin=lt.margin,                            # Margin of the layout (int or list of ints [N E S W]).
         margin_on_single=None,                       # Margin when only one window. (int or list of ints [N E S W])
+        name="COLS",
         num_columns=2,                               # Preferred number of columns.
         split=True,                                  # New columns presentation mode.
         wrap_focus_columns=True,                     # Wrap the screen when moving focus across columns.
@@ -155,6 +158,7 @@ def _matrix():
         border_normal=lt.matrix.normal,  # Border colour(s) for un-focused windows.
         border_width=lt.border_width,    # Border width.
         margin=lt.margin,                # Margin of the layout (int or list of ints [N E S W])
+        name="MATX",
     )
 
 
@@ -168,7 +172,7 @@ def _max_tile():
         small screens. Conceptually, the windows are managed as a stack, with
         commands to switch to next and previous windows in the stack.
     """
-    return layout.Max()
+    return layout.Max(name=" MAX")
 
 
 def _monad_tall():
@@ -272,6 +276,7 @@ def _monad_tall():
         max_ratio=0.75,                       # The percent of the screen-space the master pane should occupy at maximum.
         min_ratio=0.25,                       # The percent of the screen-space the master pane should occupy at minimum.
         min_secondary_size=85,                # minimum size in pixel for a secondary pane window
+        name="TALL",
         new_client_position='after_current',  # Place new windows: after_current - after the active window. before_current - before the active window, top - at the top of the stack, bottom - at the bottom of the stack,
         ratio=0.5,                            # The percent of the screen-space the master pane should occupy by default.
         single_border_width=None,             # Border width for single window
@@ -383,6 +388,7 @@ def _monad_wide():
         max_ratio=0.75,                       # The percent of the screen-space the master pane should occupy at maximum.
         min_ratio=0.25,                       # The percent of the screen-space the master pane should occupy at minimum.
         min_secondary_size=85,                # minimum size in pixel for a secondary pane window
+        name="WIDE",
         new_client_position='after_current',  # Place new windows: after_current - after the active window. before_current - before the active window, top - at the top of the stack, bottom - at the bottom of the stack,
         ratio=0.5,                            # The percent of the screen-space the master pane should occupy by default.
         single_border_width=None,             # Border width for single window
@@ -401,6 +407,7 @@ def _ratio_tile():
         border_width=lt.border_width,   # Border width.
         fancy=False,                    # Use a different method to calculate window sizes.
         margin=lt.margin,               # Margin of the layout (int or list of ints [N E S W])
+        name="RTIO",
         ratio=1.618,                    # Ratio of the tiles
         ratio_increment=0.1,            # Amount to increment per ratio increment
     )
@@ -417,6 +424,7 @@ def _slice_tile():
     return layout.Slice(
         fallback=layout.Max,  # Layout to be used for the non-slice area.
         match=None,           # Match-object describing which window(s) to move to the slice.
+        name="SLCE",
         side='left',          # Position of the slice (left, right, top, bottom).
         width=256,            # Slice width.
     )
@@ -441,6 +449,7 @@ def _stack():
         border_width=lt.border_width,   # Border width.
         fair=False,                     # Add new windows to the stacks in a round robin way.
         margin=lt.margin,               # Margin of the layout (int or list of ints [N E S W])
+        name="STCK",
         num_stacks=3,                   # Number of stacks.
     )
 
@@ -471,6 +480,7 @@ def _tile():
         master_match=None,             # A Match object defining which window(s) should be kept masters.
         max_ratio=0.85,                # Maximum width of master windows
         min_ratio=0.15,                # Minimum width of master windows
+        name="TILE",
         ratio=0.618,                   # Width-percentage of screen size reserved for master windows.
         ratio_increment=0.05,          # By which amount to change ratio when cmd_decrease_ratio or cmd_increase_ratio are called.
         shift_windows=False,           # Allow to shift windows within the layout. If False, the layout will be rotated instead.
@@ -532,6 +542,7 @@ def _treetab():
         level_shift=8,                 # Shift for children tabs
         margin_left=6,                 # Left margin of tab panel
         margin_y=6,                    # Vertical margin of tab panel
+        name="TREE",
         padding_left=6,                # Left padding for tabs
         padding_x=6,                   # Left padding for tab label
         padding_y=2,                   # Top padding for tab label
@@ -607,6 +618,7 @@ def _vertical_tile():
         border_normal=lt.vertical.normal,  # Border color(s) for un-focused windows.
         border_width=lt.border_width,      # Border width.
         margin=lt.margin,                  # Border margin (int or list of ints [N E S W]).
+        name="VTIL",
     )
 
 
@@ -618,6 +630,7 @@ def _zoomy():
     return layout.Zoomy(
         columnwidth=150,       # Width of the right column
         margin=lt.margin,      # Margin of the layout (int or list of ints [N E S W])
+        name="ZOOM",
         property_big='1.0',    # Property value to set on normal window (X11 only)
         property_name='ZOOM',  # Property to set on zoomed window (X11 only)
         property_small='0.1',  # Property value to set on zoomed window (X11 only)
