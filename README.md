@@ -75,6 +75,7 @@ $HOME
 |-- [-]  .bash_profile                               -- runs bash and starts the WM on startup.
 |-- [-]  .bashrc                                     -- runs config stuff to make the experience what it is.
 |-- [-]  .gitconfig                                  -- all my git config.
+|-- [-]  .moc/config                                 -- a music player.
 |-- [-]  .profile                                    -- profile script.
 |-- [-]  .tmux.conf                                  -- my tmux config file.
 |-- [-]  .vimrc                                      -- all needed configuration for a pretty vim.
@@ -128,6 +129,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [x] [`lazygit`]           ([\*\*][mydoc-lazygit])
 - [x] [`lazycli`]           ([\*\*][mydoc-lazycli])
 - [ ] [`mpd`]               ([\*\*][mydoc-mpd])
+- [x] [`moc`]               ([\*\*][mydoc-moc])
 - [x] [`mpv`]               ([\*\*][mydoc-mpv])
 - [ ] [`ncmcpp`]            ([\*\*][mydoc-ncmcpp])
 - [ ] [`neofetch`]          ([\*\*][mydoc-neofetch])
@@ -254,6 +256,7 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [`lazygit`]:               .config/lazygit
 [`lazycli`]:               .config/lazycli
 [`mpd`]:                   .config/mpd/mpd.conf
+[`moc`]:                   .moc/config
 [`mpv`]:                   .config/mpv
 [`ncmcpp`]:                .config/ncmcpp/config
 [`neofetch`]:              .config/neofetch
@@ -292,6 +295,7 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [mydoc-lazygit]:               https://a2n-s.github.io/public/doc/config/dotfiles/lazygit
 [mydoc-lazycli]:               https://a2n-s.github.io/public/doc/config/dotfiles/lazycli
 [mydoc-mpd]:                   https://a2n-s.github.io/public/doc/config/dotfiles/mpd
+[mydoc-moc]:                   https://a2n-s.github.io/public/doc/config/dotfiles/moc
 [mydoc-mpv]:                   https://a2n-s.github.io/public/doc/config/dotfiles/mpv
 [mydoc-ncmcpp]:                https://a2n-s.github.io/public/doc/config/dotfiles/ncmcpp
 [mydoc-neofetch]:              https://a2n-s.github.io/public/doc/config/dotfiles/neofetch

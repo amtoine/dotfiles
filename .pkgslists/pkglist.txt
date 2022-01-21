@@ -50,7 +50,6 @@ network-manager-applet
 nmap
 okular
 pacman-contrib
-pandoc
 patch
 pavucontrol
 picom

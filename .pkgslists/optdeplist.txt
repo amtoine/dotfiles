@@ -1,6 +1,7 @@
 hunspell
 i3-wm
 kio-extras
+llvm
 mpdecimal
 pipewire-media-session
 python-pyxdg
