@@ -18,17 +18,20 @@ from libqtile import bar
 from libqtile.config import Screen
 
 from widgets import init_widgets_screen1
-from widgets import init_widgets_screen2
 from themes import bar_theme
+from utils import fetch_monitors
 
 
 def init_screens(terminal):
     """
         TODO
     """
-    screen1 = dict(x=0,    y=0, width=1920, height=1080)
-    screen2 = dict(x=1920, y=0, width=1920, height=1080)
+    monitors = fetch_monitors()
+    geometries = [
+        dict(zip(["x", "y", "width", "height"], monitor[1:]))
+        for monitor in monitors
+    ]
     return [
-        Screen(top=bar.Bar(widgets=init_widgets_screen1(terminal), **bar_theme), **screen1),
-        Screen(top=bar.Bar(widgets=init_widgets_screen1(terminal), **bar_theme), **screen2),
+        Screen(top=bar.Bar(widgets=init_widgets_screen1(terminal), **bar_theme), **geometry)
+        for geometry in geometries
     ]

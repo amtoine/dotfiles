@@ -1,20 +1,29 @@
 from collections import namedtuple
 
-Colors = namedtuple(
-    "Colors",
+ColorScheme = namedtuple(
+    "ColorScheme",
     [
-        "black",
-        "grey",
-        "white",
-        "red",
-        "green",
-        "orange",
-        "yellow",
-        "blue",
-        "purple",
-        "cyan",
-        "lila",
-        "marine",
+        "bg",
+        "fg",
+        "cursor",
+        "sel_bg",
+        "sel_fg",
+        "color0",
+        "color8",
+        "color1",
+        "color9",
+        "color2",
+        "color10",
+        "color3",
+        "color11",
+        "color4",
+        "color12",
+        "color5",
+        "color13",
+        "color6",
+        "color14",
+        "color7",
+        "color15",
     ]
 )
 
@@ -51,7 +60,8 @@ Layout = namedtuple(
         "normal",
         "focus_stack",
         "normal_stack",
-    ]
+    ],
+    defaults=(None, None, None, None)
 )
 
 LayoutTheme = namedtuple(
@@ -72,67 +82,99 @@ LayoutTheme = namedtuple(
     ]
 )
 
-colors = Colors(
-    black="#282c34",
-    grey="#1c1f24",
-    white="#dfdfdf",
-    red="#ff6c6b",
-    green="#98be65",
-    orange="#da8548",
-    yellow="#dada22",
-    blue="#51afef",
-    purple="#c678dd",
-    cyan="#46d9ff",
-    lila="#a9a1e1",
-    marine="#5555ff",
-)
+vibrant_ink = ColorScheme(**{
+    "bg":      "#000000",
+    "fg":      "#ffffff",
+    "cursor":  "#ffffff",
+    "sel_bg":  "#b4d5ff",
+    "sel_fg":  "#000000",
+    "color0":  "#868686",  # grey
+    "color8":  "#545454",
+    "color1":  "#ff6600",  # red
+    "color9":  "#ff0000",
+    "color2":  "#ccff04",  # green
+    "color10": "#00ff00",
+    "color3":  "#ffcc00",  # yellow
+    "color11": "#ffff00",
+    "color4":  "#44b3cc",  # blue
+    "color12": "#0000ff",
+    "color5":  "#9933cc",  # magenta
+    "color13": "#ff00ff",
+    "color6":  "#44b3cc",  # cyan
+    "color14": "#00ffff",
+    "color7":  "#f4f4f4",  # white
+    "color15": "#e5e5e5",
+})
 
-widget_theme = WidgetTheme(
-    image=dict(bg=colors.grey),
-    current_layout=dict(bg=colors.grey, fg=colors.white),
-    current_screen=dict(bg=colors.black, fg=colors.white),
-    group_box=dict(bg=colors.grey, fg=colors.white),
-    prompt=dict(bg=colors.black, fg=colors.white),
-    window_name=dict(bg=colors.grey, fg=colors.white),
+theme = vibrant_ink
 
-    net=dict(bg=colors.yellow, fg=colors.black),
-    wlan=dict(bg=colors.green, fg=colors.black),
-    chord=dict(bg=colors.cyan, fg=colors.black),
-    systray=dict(bg=colors.blue),
-    memory=dict(bg=colors.purple, fg=colors.black),
-    cpu=dict(bg=colors.lila, fg=colors.black),
-    check_updates=dict(bg=colors.purple, fg=colors.black),
-    volume=dict(bg=colors.blue, fg=colors.black),
-    backlight=dict(bg=colors.cyan, fg=colors.black),
-    wallpaper=dict(bg=colors.green, fg=colors.black),
-    clock=dict(bg=colors.yellow, fg=colors.black),
-    battery_icon=dict(bg=colors.grey),
-    battery=dict(bg=colors.orange, fg=colors.black),
-    quick_exit=dict(bg=colors.red, fg=colors.black),
-)
+clock_format = "%a, %m/%d/%y - %H:%M "
+clock_format = "✨ %m/%d - %H:%M"
+battery_format = "{char} {percent:2.0%} {hour:d}:{min:02d}"
+battery_format = "{char}{percent:2.0%}"
+
+group_box_misc_colors = {
+    "active":        theme.sel_bg,
+    "inactive":      theme.bg,
+    "select":        theme.sel_fg,
+    "line":         [theme.color4, theme.color4],
+    "other_focus":   theme.color8,
+    "other_unfocus": theme.color8,
+    "this_focus":    theme.sel_bg,
+    "this_unfocus":  theme.sel_bg,
+    "urgent_border": theme.color9,
+    "urgent_text":   theme.color9
+}
+widget_theme = WidgetTheme(**{
+    "current_layout": {"bg": theme.sel_bg,  "fg": theme.sel_fg},
+    "current_screen": {"bg": theme.bg,      "fg": theme.fg,      "active": theme.color10, "inactive": theme.color9},
+    "group_box":      {"bg": theme.bg,      "fg": theme.fg,      **group_box_misc_colors},
+    "window_name":    {"bg": theme.sel_bg,  "fg": theme.sel_fg},
+
+    "chord":          {"bg": theme.bg,      "fg": theme.color0},
+    "check_updates":  {"bg": theme.bg,      "fg": theme.color8},
+    "wlan":           {"bg": theme.bg,      "fg": theme.color2},
+    "net":            {"bg": theme.bg,      "fg": theme.color3},
+    "cpu":            {"bg": theme.bg,      "fg": theme.color7},
+    "clock":          {"bg": theme.bg,      "fg": theme.color13,  "format": clock_format},
+    "battery":        {"bg": theme.bg,      "fg": theme.color6,   "format": battery_format},
+    "quick_exit":     {"bg": theme.bg,      "fg": theme.color0,   "text": "[x]", "countdown": "[{}]"},
+
+    "image":          {"bg": theme.bg},
+    "prompt":         {"bg": theme.bg,      "fg": theme.fg},
+    "systray":        {"bg": theme.color2},
+    "memory":         {"bg": theme.bg,      "fg": theme.color10},
+    "volume":         {"bg": theme.bg,      "fg": theme.color11},
+    "backlight":      {"bg": theme.bg,      "fg": theme.color4},
+    "wallpaper":      {"bg": theme.bg,      "fg": theme.color12},
+    "battery_icon":   {"bg": theme.bg},
+})
+
+layouts = {
+    "bsp":        {"focus": theme.color12, "normal": theme.color2},
+    "columns":    {"focus": theme.color12, "normal": theme.color2, "focus_stack": theme.color1, "normal_stack": theme.color8},
+    "monad_tall": {"focus": theme.color1,  "normal": theme.color2},
+    "monad_wide": {"focus": theme.color1,  "normal": theme.color2},
+
+    "ratio":      {"focus": theme.color1, "normal": theme.color2},
+    "stack":      {"focus": theme.color1, "normal": theme.color2},
+    "tile":       {"focus": theme.color1, "normal": theme.color2},
+    "vertical":   {"focus": theme.color1, "normal": theme.color2},
+    "floating":   {"focus": theme.color1, "normal": theme.color2},
+    "matrix":     {"focus": theme.color1, "normal": theme.color2},
+}
 
 layout_theme = LayoutTheme(
-    floating=Layout(focus='#0000ff', normal='#000000', focus_stack=None, normal_stack=None),
-    bsp=Layout(focus=colors.yellow, normal=colors.green, focus_stack=None, normal_stack=None),
-    columns=Layout(focus=colors.red, normal=colors.white, focus_stack=colors.red, normal_stack=colors.orange),
-    matrix=Layout(focus='#0000ff', normal='#000000', focus_stack=None, normal_stack=None),
-    monad_tall=Layout(focus=colors.green, normal=colors.lila, focus_stack=None, normal_stack=None),
-    monad_wide=Layout(focus=colors.green, normal=colors.lila, focus_stack=None, normal_stack=None),
-    ratio=Layout(focus=colors.cyan, normal=colors.marine, focus_stack=None, normal_stack=None),
-    stack=Layout(focus=colors.cyan, normal=colors.white, focus_stack=None, normal_stack=None),
-    tile=Layout(focus=colors.cyan, normal=colors.marine, focus_stack=None, normal_stack=None),
-    vertical=Layout(focus='#FF0000', normal='#FFFFFF', focus_stack=None, normal_stack=None),
-    border_width=4,
-    margin=4,
+    **dict(zip(layouts.keys(), [Layout(**args) for args in layouts.values()])),
+    border_width=8,
+    margin=8,
 )
 
 bar_theme = dict(
-    # N E S W
-    size=16,
-    opacity=1.,
-    background="#ff3333",
-    margin=[0, 0, 0, 0],
-    # border_width=[2, 2, 2, 2],
-    border_width=[0, 0, 1, 0],
-    border_color=[colors.orange, colors.orange, colors.white, colors.orange]
+    size=24,
+    opacity=.8,
+    background=theme.bg,
+    margin=[0, 0, 0, 0],         # N E S W
+    # border_width=[0, 0, layout_theme.border_width // 2, 0],
+    border_color=[theme.color6, theme.color6, theme.color6, theme.color6]
 )

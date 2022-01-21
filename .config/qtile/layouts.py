@@ -126,23 +126,23 @@ def _columns():
         Key([mod], "n", lazy.layout.normalize()),
     """
     return layout.Columns(
-        border_focus=lt.columns.focus,               # Border colour(s) for the focused window.
-        border_focus_stack=lt.columns.focus_stack,   # Border colour(s) for the focused window in stacked columns.
-        border_normal=lt.columns.normal,             # Border colour(s) for un-focused windows.
-        border_normal_stack=lt.columns.focus_stack,  # Border colour(s) for un-focused windows in stacked columns.
-        border_on_single=False,                      # Draw a border when there is one only window.
-        border_width=lt.border_width,                # Border width.
-        fair=False,                                  # Add new windows to the column with least windows.
-        grow_amount=10,                              # Amount by which to grow a window/column.
-        insert_position=0,                           # Position relative to the current window where new ones are inserted (0 means right above the current window, 1 means right after).
-        margin=lt.margin,                            # Margin of the layout (int or list of ints [N E S W]).
-        margin_on_single=None,                       # Margin when only one window. (int or list of ints [N E S W])
+        border_focus=lt.columns.focus,                # Border colour(s) for the focused window.
+        border_focus_stack=lt.columns.focus_stack,    # Border colour(s) for the focused window in stacked columns.
+        border_normal=lt.columns.normal,              # Border colour(s) for un-focused windows.
+        border_normal_stack=lt.columns.normal_stack,  # Border colour(s) for un-focused windows in stacked columns.
+        border_on_single=False,                       # Draw a border when there is one only window.
+        border_width=lt.border_width,                 # Border width.
+        fair=False,                                   # Add new windows to the column with least windows.
+        grow_amount=10,                               # Amount by which to grow a window/column.
+        insert_position=0,                            # Position relative to the current window where new ones are inserted (0 means right above the current window, 1 means right after).
+        margin=lt.margin,                             # Margin of the layout (int or list of ints [N E S W]).
+        margin_on_single=None,                        # Margin when only one window. (int or list of ints [N E S W])
         name="COLS",
-        num_columns=2,                               # Preferred number of columns.
-        split=True,                                  # New columns presentation mode.
-        wrap_focus_columns=True,                     # Wrap the screen when moving focus across columns.
-        wrap_focus_rows=True,                        # Wrap the screen when moving focus across rows.
-        wrap_focus_stacks=True,                      # Wrap the screen when moving focus across stacked.
+        num_columns=2,                                # Preferred number of columns.
+        split=True,                                   # New columns presentation mode.
+        wrap_focus_columns=True,                      # Wrap the screen when moving focus across columns.
+        wrap_focus_rows=True,                         # Wrap the screen when moving focus across rows.
+        wrap_focus_stacks=True,                       # Wrap the screen when moving focus across stacked.
     )
 
 
@@ -278,7 +278,7 @@ def _monad_tall():
         min_secondary_size=85,                # minimum size in pixel for a secondary pane window
         name="TALL",
         new_client_position='after_current',  # Place new windows: after_current - after the active window. before_current - before the active window, top - at the top of the stack, bottom - at the bottom of the stack,
-        ratio=0.5,                            # The percent of the screen-space the master pane should occupy by default.
+        ratio=0.6,                            # The percent of the screen-space the master pane should occupy by default.
         single_border_width=None,             # Border width for single window
         single_margin=None,                   # Margin size for single window
     )
@@ -476,7 +476,7 @@ def _tile():
         expand=True,                   # Expand the master windows to the full screen width if no slaves are present.
         margin=lt.margin,              # Margin of the layout (int or list of ints [N E S W])
         margin_on_single=True,         # Whether to draw margin if there is only one window.
-        master_length=1,               # Amount of windows displayed in the master stack. Surplus windows will be moved to the slave stack.
+        master_length=2,               # Amount of windows displayed in the master stack. Surplus windows will be moved to the slave stack.
         master_match=None,             # A Match object defining which window(s) should be kept masters.
         max_ratio=0.85,                # Maximum width of master windows
         min_ratio=0.15,                # Minimum width of master windows
@@ -642,18 +642,18 @@ def init_layouts():
         TODO
     """
     return [
-        _columns(),
-        _stack(),
-        # _floating(),
-        # _matrix(),
+        _bsp(),
         _monad_tall(),
         _monad_wide(),
         _max_tile(),
-        _ratio_tile(),
-        _tile(),
+        _columns(),
+        # _treetab(),
+        # _tile(),
+        # _ratio_tile(),
+        # _stack(),
+        # _floating(),
+        # _matrix(),
         # _slice_tile(),  # does not work.
-        _treetab(),
-        _bsp(),
         # _vertical_tile(),
         # _zoomy(),
     ]

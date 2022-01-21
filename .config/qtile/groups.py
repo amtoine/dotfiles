@@ -27,13 +27,13 @@ def init_groups():
         TODO
     """
     groups = [
-        Group("D1",  layout='monadtall'),
-        Group("I2",  layout='monadtall'),
-        Group("S3",  layout='monadtall'),
-        Group("W4",  layout='monadtall'),
-        Group("C5",  layout='monadtall'),
-        Group("M6",  layout='monadtall'),
-        Group("V7",  layout='monadtall'),
+        Group("D1",  layout="TALL"),
+        Group("I2",  layout="TALL"),
+        Group("S3",  layout="TALL"),
+        Group("W4",  layout="TALL"),
+        Group("C5",  layout="TALL"),
+        Group("M6",  layout="TALL"),
+        Group("V7",  layout="TALL"),
     ]
     # groups = [Group(i) for i in "123456789"]
     return groups
