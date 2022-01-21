@@ -20,11 +20,11 @@
 # Contributors: Stevan Antoine
 
 if [[ "$1" == *"playlist"* ]]; then
-  quality=$(echo -e "144\n240\n360\n480\n720\n1080" | dmenu -l 10 -p "Video quality (press escape at any time to abort)"); [[ "$quality" == "" ]] && exit 1
-  shuffle=$(echo -e "Yes\nNo\n" | dmenu -p "Shuffle?"); [[ "$shuffle" == "" ]] && exit 1
+  quality=$(echo -e "480\n360\n240\n144\n720\n1080" | dmenu -l 10 -p "Video quality (press escape at any time to abort)"); [[ "$quality" == "" ]] && exit 1
+  shuffle=$(echo -e "No\nYes\n" | dmenu -p "Shuffle?"); [[ "$shuffle" == "" ]] && exit 1
   loop=$(echo -e "inf\nno\nforce" | dmenu -p "Loop? (option | number of loops)"); [[ "$loop" == "" ]] && exit 1
   index=$(echo -e "auto" | dmenu -p "Start video (auto | index)"); [[ "$index" == "" ]] && exit 1
-  video=$(echo -e "No\nYes\n" | dmenu -p "Video?"); [[ "$video" == "" ]] && exit 1
+  video=$(echo -e "Yes\nNo\n" | dmenu -p "Video?"); [[ "$video" == "" ]] && exit 1
   if [[ $video == "Yes" ]]; then
     CMD="mpv --really-quiet"
   else

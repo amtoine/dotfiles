@@ -19,12 +19,14 @@ cmatrix
 cowsay
 cronie
 ctags
+dictd
 docker
 dstat
 dwarffortress
 eog
 fd
 feh
+festival
 figlet
 firefox
 flake8
@@ -61,6 +63,7 @@ python-mpi4py
 python-opengl
 python-tqdm
 python-virtualenv
+python2
 qtile
 read-edid
 ripgrep
@@ -85,7 +88,6 @@ w3m
 wget
 xautolock
 xf86-video-vesa
-xmonad-contrib
 xorg-bdftopcf
 xorg-docs
 xorg-font-util

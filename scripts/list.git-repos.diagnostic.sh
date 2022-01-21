@@ -17,8 +17,11 @@
 # Contributors: Stevan Antoine
 
 RES="Repos: remote@branch:staged,unstaged,untracked,stashed";
-RES=$RES\\n"-----------------------: -----------------------@------:------,--------,---------,-------";
+RES="$RES\\n-----------------------: -----------------------@------:------,--------,---------,-------";
+
+echo "Fetching repos from $pwd..."
 for repo in $(find $pwd -type d | grep "\.git\$" | sed 's/\/\.git//' | grep -v ".local" | grep -v "^./.cache" | grep -v "^./.vim" | grep -v "^./torch" | grep -v "^./.cargo"); do
+  echo -ne "treating: $repo                                         \r"
   tmp=$(repo.info.sh $repo)
   RES=$RES\\n$tmp
 done;

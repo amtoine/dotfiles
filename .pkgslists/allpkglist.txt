@@ -28,6 +28,7 @@ cmus
 cowsay
 cronie
 ctags
+dictd
 dmenufm
 dmscripts-git
 docker
@@ -41,6 +42,7 @@ eog
 fakeroot
 fd
 feh
+festival
 figlet
 firefox
 fish
@@ -108,6 +110,7 @@ pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
 python-black
+python-iwlib
 python-mpi4py
 python-opengl
 python-pip
@@ -155,8 +158,6 @@ xautolock
 xclip
 xdotool
 xf86-video-vesa
-xmonad
-xmonad-contrib
 xorg-bdftopcf
 xorg-docs
 xorg-font-util

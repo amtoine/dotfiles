@@ -1,12 +1,53 @@
--- | -- | -- | github.com/mhinz/neovim-remote
--- | -- | -- | xmodulo.com/key-value-dictionary-bash.html
--- | -- | -- | dustymabe.com/2013/05/17/easy-getopt-for-a-bash-script/
--- | -- | -- | stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
--- | -- | -- | torch.ch/docs/getting-started.html#_
--- | -- | -- | github.com/karpathy/neuraltalk2
--- | -- | -- | youtube.com/results?search_query=raspberry%20pi%200%20install%20arch
--- | -- | -- | archlinuxarm.org/platforms/armv6/raspberry-pi
--- | -- | -- | github.com/rcarriga/nvim-notify
+--   | --                      | --                               | https://codelabs.developers.google.com/codelabs/cloud-compute-engine#1
+--   | --                      | --                               | https://wallpaperflare.com/
+--   | --                      | --                               | https://coolors.co/generate
+--   | --                      | --                               | https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+--   | --                      | --                               | https://github.com/neovim/nvim-lspconfig
+--   | --                      | --                               | https://python-packaging-tutorial.readthedocs.io/en/latest/setup_py.html
+--   | --                      | --                               | https://packaging.python.org/en/latest/tutorials/packaging-projects/
+--   | --                      | --                               | https://bright-tide.co.uk/data4wildlifechallenge
+--   | --                      | --                               | https://gitlab.com/dwt1
+--   | --                      | --                               | https://distro.tube/index.html
+
+mha2 | --                      | --                               | https://vostfree.tv/167-boku-no-hero-academia-2-vostfr-ddl-streaming-1fichier-uptobox.html
+vfre | --                      | --                               | https://vostfree.tv/
+
+--   | --                      | --                               | https://jobteaser.com/en
+
+--   | --                      | --                               | https://github.com/roddhjav/pass-tomb
+--   | --                      | --                               | https://github.com/dyne/Tomb
+
+--   | --                      | --                               | https://colab.research.google.com/?utm_source=scs-index
+--   | --                      | --                               | https://openreview.net/
+
+qtile| --                      | --                               | http://qtile.org/
+--   | --                      | --                               | https://xmonad.org/
+--   | --                      | --                               | https://stumpwm.github.io/git/stumpwm-git_1.html#Introduction
+
+--   | --                      | --                               | https://kaggle.com/dennisgwilson/flowers-finetuning-and-pruning-mixers#
+--   | --                      | --                               | https://kaggle.com/antoinestevan/flowers-finetuning-and-pruning-mixers/edit
+
+--   | --                      | --                               | https://calendar.google.com/calendar/u/1/r?pli=1
+--   | --                      | --                               | https://askubuntu.com/questions/1150339/increment-brightness-by-value-using-xrandr
+--   | --                      | --                               | https://specifications.freedesktop.org/desktop-entry-spec/latest/apa.html
+
+--   | --                      | --                               | https://desmos.com/?lang=fr
+
+--   | --                      | --                               | https://github.com/rockerBOO/awesome-neovim
+--   | --                      | --                               | https://github.com/mhinz/neovim-remote
+--   | --                      | --                               | https://github.com/rcarriga/nvim-notify
+
+--   | --                      | --                               | https://xmodulo.com/key-value-dictionary-bash.html
+--   | --                      | --                               | https://dustymabe.com/2013/05/17/easy-getopt-for-a-bash-script/
+--   | --                      | --                               | https://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
+--   | --                      | --                               | https://explainshell.com/
+
+--   | --                      | --                               | https://torch.ch/docs/getting-started.html#_
+--   | --                      | --                               | https://github.com/karpathy/neuraltalk2
+
+--   | --                      | --                               | https://youtube.com/results?search_query=raspberry%20pi%200%20install%20arch
+--   | --                      | --                               | https://archlinuxarm.org/platforms/armv6/raspberry-pi
+
      | code                    | Date and time in Python?         | https://www.programiz.com/python-programming/datetime/current-datetime
      | code                    | Panda3D Beginner's Tutorial      | https://arsthaumaturgis.github.io/Panda3DTutorial.io/about/
      | code sdl2               | CategoryAPI - SDL Wiki           | https://wiki.libsdl.org/CategoryAPI
@@ -70,7 +111,7 @@ ghs  | github                  | my github stars                  | https://gith
      | linux                   | Start X after fish login         | https://bbs.archlinux.org/viewtopic.php?id=186943
      | linux                   | suckless.org                     | http://suckless.org/
      | linux                   | surf                             | http://troubleshooters.com/linux/surf.htm
-     | linux                   | Surf Demystified                 | http://troubleshooters.com/linux/surf.htm#linkhints
+     | linux                   | Surf Demystified                 | http://troubleshooters.com/linux/surf.htm
      | linux                   | Top 5 Command Line Music Players | https://www.tecmint.com/command-line-music-players-for-linux/
      | linux                   | Undo possibilities in Git        | https://docs.gitlab.com/ee/topics/git/numerous_undo_possibilities_in_git/
      | linux                   | xinit - ArchWiki                 | https://wiki.archlinux.org/title/Xinit#Autostart_X_at_login

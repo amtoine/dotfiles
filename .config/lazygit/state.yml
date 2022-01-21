@@ -1,9 +1,12 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/repos/wallpapers
 - /home/ants/.config/nvim
-- /home/ants/research/Imagine
-- /home/ants/repos/a2n-s
 - /home/ants/research/ma_playground_env
+- /home/ants/repos/a2n-s
+- /home/ants/prog/dqn
+- /home/ants/research/learning-to-communicate-pytorch
+- /home/ants/research/Imagine
 - /home/ants/research/imagineXdial
 - /home/ants/prog/scsc/fil-rouge
 - /home/ants/prog/scsc/fgk

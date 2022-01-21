@@ -70,9 +70,9 @@ fi
 picom &
 
 # the window manager itself.
+# exec bspwm
+exec qtile start
 # exec spectrwm
-exec bspwm
 # exec xmonad
 # exec i3
 # exec awesome
-# exec qtile start

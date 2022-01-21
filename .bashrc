@@ -202,6 +202,16 @@ if [ -f /etc/bash.command-not-found ]; then
 fi
 
 
+
+
+CLOUDSDK_PYTHON="/usr/bin/python3.5"
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/ants/google-cloud-sdk/path.bash.inc' ]; then . '/home/ants/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/ants/google-cloud-sdk/completion.bash.inc' ]; then . '/home/ants/google-cloud-sdk/completion.bash.inc'; fi
+
+
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION

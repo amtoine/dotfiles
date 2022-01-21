@@ -39,6 +39,7 @@
 #      https://starship.rs/config 
 # Use custom format
 format = """
+\n\
 $username\
 $hostname\
 $directory\
