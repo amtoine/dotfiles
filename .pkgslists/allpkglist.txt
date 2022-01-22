@@ -22,6 +22,7 @@ cava
 chafa
 chromium
 clang
+clipmenu
 cmake
 cmatrix
 cmus
@@ -123,12 +124,15 @@ qtile
 read-edid
 reddio
 ripgrep
+rofi
 rogue
 rust
+sauerbraten
 sc
 scrot
 sfml
 shell-color-scripts
+shellcheck
 sl
 sox
 spectrwm

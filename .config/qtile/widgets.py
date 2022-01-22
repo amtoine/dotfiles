@@ -314,7 +314,7 @@ def _cpu(terminal, bg="#000000", fg="#ffffff"):
         fontshadow=None,                   # font shadow color, default is None(no shadow)
         fontsize=None,                     # Font size. Calculated if None.
         foreground=fg,                     # Foreground colour
-        format=' {load_percent:04.1f}%',  # CPU display format
+        format=' {load_percent:>4.1f}%',  # CPU display format
         markup=True,                       # Whether or not to use pango markup
         max_chars=0,                       # Maximum number of characters to display in widget.
         mouse_callbacks={
@@ -697,7 +697,7 @@ def _battery(format, bg="#000000", fg="#ffffff"):
         markup=True,                  # Whether or not to use pango markup
         max_chars=0,                  # Maximum number of characters to display in widget.
         mouse_callbacks={},           # Dict of mouse button press callback functions. Accepts functions and lazy calls.
-        notify_below=None,            # Send a notification below this battery level.
+        notify_below=20,              # Send a notification below this battery level.
         padding=None,                 # Padding. Calculated if None.
         show_short_text=True,         # Show "Full" or "Empty" rather than formated text
         unknown_char='?',             # Character to indicate the battery status is unknown
@@ -871,6 +871,7 @@ def list_right_widgets(terminal):
         TODO
     """
     return [
+        [_prompt,        dict(**wt.prompt)],
         [_chord,         dict(**wt.chord)],
         [_check_updates, dict(**wt.check_updates,  terminal=terminal)],
         [_wlan,          dict(**wt.wlan,           terminal=terminal)],

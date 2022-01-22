@@ -1,5 +1,6 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/repos/dmenu
 - /home/ants/repos/wallpapers
 - /home/ants/.config/nvim
 - /home/ants/research/ma_playground_env
@@ -12,7 +13,6 @@ recentrepos:
 - /home/ants/prog/scsc/fgk
 - /home/ants/repos/oh-my-bash
 - /home/ants/sup/rlclass
-- /home/ants/repos/dmenu
 - /home/ants/repos/amazons
 - /home/ants/.password-store
 - /home/ants/sup/imgDesc

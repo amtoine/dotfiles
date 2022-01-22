@@ -14,6 +14,7 @@ bspwm
 catimg
 chromium
 clang
+clipmenu
 cmake
 cmatrix
 cowsay
@@ -32,7 +33,6 @@ firefox
 flake8
 flex
 fortune-mod
-fzf
 gimp
 github-cli
 grub
@@ -68,8 +68,10 @@ read-edid
 ripgrep
 rogue
 rust
+sauerbraten
 sc
 sfml
+shellcheck
 sl
 sox
 spectrwm

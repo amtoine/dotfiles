@@ -640,8 +640,8 @@ install_qtile() {
 }
 install_doom_emacs() {
   install_dir ".doom.d"
-  echo "${Cmd}sudo pacman -Syu ${Pkg}emacs${Off}"
-  sudo pacman -Syu emacs
+  echo "${Cmd}sudo pacman -Syu ${Pkg}emacs git ripgrep fd${Off}"
+  sudo pacman -Syu emacs git ripgrep fd
   if [[ -d $HDIR/.emacs.d ]]; then
     echo "${Wrn}$HDIR/.emacs.d already exists${Off}"
     echo "${Wrn}please backup $HDIR/.emacs.d before trying again${Off}"

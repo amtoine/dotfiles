@@ -22,9 +22,9 @@ from libqtile.lazy import lazy
 
 from extensions import window_list
 from extensions import command_set
+from themes import bar_theme
 
-HOME = "/home/ants"
-SCRIPTS = HOME + "/scripts"
+SCRIPTS = "scripts"
 SPC = "space"
 SHI = "shift"
 CON = "control"
@@ -36,21 +36,30 @@ BCL = "bracketleft"
 BCR = "bracketright"
 SLH = "slash"
 F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12 = [f"F{i}" for i in range(1, 13)]
-DMENU_RUN = "dmenu_run -c -l 10 -g 4 -p 'Run: '"
-BROWSER = "tabbed -c surf -N -e"
+DMENU_RUN = "dmenu_run -l 10 -p 'Run: '"
+DMENU_RUN = f"dmenu_run -h {bar_theme['size']} -p 'Run: '"
+EDITOR = " nvim"
+SURF = "tabbed -c surf -N -e"
+EMACS = "emacsclient -c -a 'emacs'"
 PASSMENU = "passmenu -l 10 -c"
 AUTOSTART = os.path.expanduser("~/.config/qtile/autostart.sh")
 KILL_XAUTOLOCK = "killall -q xautolock"
+CHECK = " --hold checkupdates"
+PACMAN = " sudo pacman -syu"
+NCDU = " ncdu -x /"
+DF = " --hold df -h"
+HTOP = " htop"
+CAL = " --hold cal -Y"
+NMCLI = " --hold nmcli connection show"
 
 
 def _emacs(eval=None):
     """
         TODO
     """
-    res = "emacsclient -c -a 'emacs'"
-    if eval is not None:
-        res += f" --eval '({eval})'"
-    return lazy.spawn(res), lazy.ungrab_chord()
+    return (
+        lazy.spawn(EMACS if eval is None else EMACS + f" --eval '({eval})'"),
+        lazy.ungrab_chord())
 
 
 def _dmenu(command):
@@ -64,7 +73,7 @@ def _script(script, terminal=None):
     """
         TODO
     """
-    script = os.path.expanduser(os.path.join('~', "scripts", script))
+    script = os.path.expanduser(os.path.join('~', SCRIPTS, script))
     if terminal is not None:
         script = terminal + ' ' + script
     return lazy.spawn(script)
@@ -82,19 +91,33 @@ def _mocp(terminal):
         TODO
     """
     cmds = {
-        # 'play/pause': '[ $(mocp -i | wc -l) -lt 2 ] && mocp -p || mocp -G',
-        'play/pause': 'mocp -G',
-        'next': 'mocp -f',
-        'previous': 'mocp -r',
-        'quit': 'mocp -x',
-        'start': 'mocp -S',
-        'open': terminal + ' mocp',
-        'shuffle': 'mocp -t shuffle',
-        'repeat': 'mocp -t repeat',
+        # "play/pause": "[ $(mocp -i | wc -l) -lt 2 ] && mocp -p || mocp -G",
+        "play/pause": "mocp -G",
+        "next":       "mocp -f",
+        "previous":   "mocp -r",
+        "quit":       "mocp -x",
+        "start":      "mocp -S",
+        "open":        terminal + " mocp",
+        "shuffle":    "mocp -t shuffle",
+        "repeat":     "mocp -t repeat",
     }
-    pre_cmds = ['[ $(mocp -i | wc -l) -lt 1 ] && mocp -S']
-    # pre_cmds = ['mocp -S']
+    pre_cmds = ["[ $(mocp -i | wc -l) -lt 1 ] && mocp -S"]
+    # pre_cmds = ["mocp -S"]
     return lazy.run_extension(command_set(commands=cmds, pre_commands=pre_cmds))
+
+
+def _sys(command):
+    """
+        TODO
+    """
+    return lazy.spawn(command), lazy.ungrab_chord()
+
+
+def _browser(browser):
+    """
+        TODO
+    """
+    return lazy.spawn(browser), lazy.ungrab_chord()
 
 
 def init_keymap(mod, terminal):
@@ -107,30 +130,38 @@ def init_keymap(mod, terminal):
     MOD = [mod]
     km.extend(
         [
-            Key(MOD, 'b', _cmd(BROWSER),                      desc="my web browser."),
-            Key(MOD, 'r', _cmd(DMENU_RUN),                    desc="Spawn a command using a dmenu prompt"),
+            Key(MOD, 'r', lazy.spawncmd(),                    desc="TODO"),
+            Key(MOD, 'd', _cmd(DMENU_RUN),                    desc="Spawn a command using a dmenu prompt"),
             Key(MOD, 'h', lazy.layout.left(),                 desc="Move focus to left"),
             Key(MOD, 'j', lazy.layout.down(),                 desc="Move focus down"),
             Key(MOD, 'k', lazy.layout.up(),                   desc="Move focus up"),
             Key(MOD, 'l', lazy.layout.right(),                desc="Move focus to right"),
-            Key(MOD, 's', lazy.to_screen(0),                  desc='Keyboard focus to monitor 1'),
-            Key(MOD, 'd', lazy.to_screen(1),                  desc='Keyboard focus to monitor 2'),
-            Key(MOD, 'f', lazy.to_screen(2),                  desc='Keyboard focus to monitor 3'),
+            Key(MOD, 'u', lazy.to_screen(0),                  desc='Keyboard focus to monitor 1'),
+            Key(MOD, 'i', lazy.to_screen(1),                  desc='Keyboard focus to monitor 2'),
+            Key(MOD, 'o', lazy.to_screen(2),                  desc='Keyboard focus to monitor 3'),
             Key(MOD, 'f', lazy.window.toggle_fullscreen(),    desc='toggle fullscreen'),
             Key(MOD, 'w', lazy.run_extension(window_list()),  desc="TODO"),
+            Key(MOD, 'n', _cmd(terminal + EDITOR),            desc="TODO"),
             Key(MOD, 'm', _mocp(terminal),                    desc="TODO"),
-            KeyChord(MOD, 'z', [
-                Key([], 'h', lazy.layout.grow_left().when(layout=["COLS", " BSP"]),  lazy.layout.grow().when(layout="WIDE"),        lazy.layout.shrink_main().when(layout="TALL"),              desc="TODO"),
-                Key([], 'j', lazy.layout.grow_down().when(layout=["COLS", " BSP"]),  lazy.layout.grow_main().when(layout="WIDE"),   lazy.layout.grow().when(layout="TALL"),         desc="TODO"),
-                Key([], 'k', lazy.layout.grow_up().when(layout=["COLS", " BSP"]),    lazy.layout.shrink_main().when(layout="WIDE"), lazy.layout.shrink().when(layout="TALL"),       desc="TODO"),
-                Key([], 'l', lazy.layout.grow_right().when(layout=["COLS", " BSP"]), lazy.layout.shrink().when(layout="WIDE"),      lazy.layout.grow_main().when(layout="TALL"),            desc="TODO"),
-                Key([], 'n', lazy.layout.normalize(),         desc="TODO"),
-                Key([], 'm', lazy.layout.maximize(),          desc="TODO"),
-                Key([], 'r', lazy.layout.reset(),             desc="TODO"),
-                Key([], 'z', lazy.ungrab_chord(),             desc="TODO"),
-                Key([], RET, lazy.ungrab_chord(),             desc="TODO"),
+            KeyChord(MOD, 'b', [
+                Key([], 's', *_browser(SURF),                 desc="TODO"),
+                Key([], 'f', *_browser("firefox"),            desc="TODO"),
+                Key([], 'c', *_browser("chromium"),           desc="TODO"),
                 ],
-                mode="RESIZE"
+                mode="BROWSER"
+            ),
+            KeyChord(MOD, 's', [
+                Key([], 't', *_sys(terminal),                 desc="TODO"),
+                Key([], 'c', *_sys(terminal + CHECK),         desc="TODO"),
+                Key([], 'u', *_sys(terminal + PACMAN),        desc="TODO"),
+                Key([], 'd', *_sys(terminal + NCDU),          desc="TODO"),
+                Key([], 'f', *_sys(terminal + DF),            desc="TODO"),
+                Key([], 'h', *_sys(terminal + HTOP),          desc="TODO"),
+                Key([], 'y', *_sys(terminal + CAL),           desc="TODO"),
+                Key([], 'n', *_sys(terminal + NMCLI),         desc="TODO"),
+                Key([], 'b', *_sys("blueman-manager"),        desc="TODO"),
+                ],
+                mode="SYSTEM"
             ),
             KeyChord(MOD, 'e', [
                 Key([], 'e', *_emacs(),                       desc='Launch Emacs'),
@@ -156,7 +187,7 @@ def init_keymap(mod, terminal):
                 Key([], 's', *_dmenu("dm-websearch"),         desc='Search various search engines via dmenu'),
                 Key([], 'p', *_dmenu(PASSMENU),               desc='Retrieve passwords with dmenu')
                 ],
-                mode="DMENU"
+                mode="PROMPT"
             ),
             Key(MOD, SPC, lazy.layout.next(),                 desc="Move window focus to other window"),
             Key(MOD, RET, _cmd(terminal),                     desc="Launch terminal"),
@@ -176,32 +207,70 @@ def init_keymap(mod, terminal):
             Key(MOD, F8,  _script("lfrun.sh", terminal),      desc="my file explorer."),
             Key(MOD, F9,  _cmd(KILL_XAUTOLOCK),               desc="TODO"),
             Key(MOD, F10, _cmd(AUTOSTART),                    desc="TODO"),
+            KeyChord(MOD, 'z', [
+                Key([], 'h',
+                    lazy.layout.grow_left().when(layout=["COLS", " BSP"]),
+                    lazy.layout.grow().when(layout="WIDE"),
+                    lazy.layout.shrink_main().when(layout="TALL"),          desc="TODO"),
+                Key([], 'j',
+                    lazy.layout.grow_down().when(layout=["COLS", " BSP"]),
+                    lazy.layout.grow_main().when(layout="WIDE"),
+                    lazy.layout.grow().when(layout="TALL"),                 desc="TODO"),
+                Key([], 'k',
+                    lazy.layout.grow_up().when(layout=["COLS", " BSP"]),
+                    lazy.layout.shrink_main().when(layout="WIDE"),
+                    lazy.layout.shrink().when(layout="TALL"),               desc="TODO"),
+                Key([], 'l',
+                    lazy.layout.grow_right().when(layout=["COLS", " BSP"]),
+                    lazy.layout.shrink().when(layout="WIDE"),
+                    lazy.layout.grow_main().when(layout="TALL"),            desc="TODO"),
+                Key([], 'n', lazy.layout.normalize(),                       desc="TODO"),
+                Key([], 'm', lazy.layout.maximize(),                        desc="TODO"),
+                Key([], 'r', lazy.layout.reset(),                           desc="TODO"),
+                Key([], 'z', lazy.ungrab_chord(),                           desc="TODO"),
+                Key([], RET, lazy.ungrab_chord(),                           desc="TODO"),
+                ],
+                mode="RESIZE"
+            ),
         ]
     )
     MOD = [mod, CON]
     km.extend(
         [
-            Key(MOD, 'h', lazy.layout.increase_ratio().when(layout="RTIO"), lazy.layout.swap_column_left().when(layout=["COLS"]),               desc="TODO"),
-            Key(MOD, 'l', lazy.layout.decrease_ratio().when(layout="RTIO"), lazy.layout.swap_column_right().when(layout=["COLS"]),               desc="TODO"),
-            Key(MOD, "r", lazy.reload_config(),            desc="Reload the config"),
-            Key(MOD, "q", lazy.shutdown(),                 desc="Shutdown Qtile"),
+            Key(MOD, 'h',
+                lazy.layout.increase_ratio().when(layout="RTIO"),
+                lazy.layout.swap_column_left().when(layout=["COLS"]),     desc="TODO"),
+            Key(MOD, 'l',
+                lazy.layout.decrease_ratio().when(layout="RTIO"),
+                lazy.layout.swap_column_right().when(layout=["COLS"]),    desc="TODO"),
+            Key(MOD, "r", lazy.reload_config(),                           desc="Reload the config"),
+            Key(MOD, "q", lazy.shutdown(),                                desc="Shutdown Qtile"),
             Key(MOD, RET,
                 lazy.layout.toggle_split().when(layout=["COLS", " BSP"]),
-                lazy.layout.flip().when(layout=["TALL", "WIDE"]),                         desc='TODO, Toggle between split and unsplit sides of stack'),
+                lazy.layout.flip().when(layout=["TALL", "WIDE"]),         desc='TODO, Toggle between split and unsplit sides of stack'),
         ]
     )
     MOD = [mod, SHI]
     km.extend(
         [
-            Key(MOD, "h", lazy.layout.shuffle_left().when(layout=["COLS", " BSP"]), lazy.layout.shuffle_up().when(layout="WIDE"), lazy.layout.swap_left().when(layout="TALL"), desc="TODO"),
-            Key(MOD, "j", lazy.layout.shuffle_down().when(layout=["COLS", " BSP", "TALL"]), lazy.layout.swap_left().when(layout="WIDE"),      desc="Move window down"),
-            Key(MOD, "k", lazy.layout.shuffle_up().when(layout=["COLS", " BSP", "TALL"]), lazy.layout.swap_right().when(layout="WIDE"),        desc="Move window up"),
-            Key(MOD, "l", lazy.layout.shuffle_right().when(layout=["COLS", " BSP"]), lazy.layout.shuffle_down().when(layout="WIDE"), lazy.layout.swap_right().when(layout="TALL"),     desc="TODO"),
-            Key(MOD, "c", lazy.window.kill(),              desc="Kill focused window"),
-            Key(MOD, "r", lazy.restart(),                  desc="Restarting Qtile"),
-            Key(MOD, "f", lazy.window.toggle_floating(),   desc='toggle floating'),
-
-            Key(MOD, TAB, lazy.prev_layout(),              desc="Toggle between layouts"),
+            Key(MOD, "h",
+                lazy.layout.shuffle_left().when(layout=["COLS", " BSP"]),
+                lazy.layout.shuffle_up().when(layout="WIDE"),
+                lazy.layout.swap_left().when(layout="TALL"),                      desc="TODO"),
+            Key(MOD, "j",
+                lazy.layout.shuffle_down().when(layout=["COLS", " BSP", "TALL"]),
+                lazy.layout.swap_left().when(layout="WIDE"),                      desc="Move window down"),
+            Key(MOD, "k",
+                lazy.layout.shuffle_up().when(layout=["COLS", " BSP", "TALL"]),
+                lazy.layout.swap_right().when(layout="WIDE"),                     desc="Move window up"),
+            Key(MOD, "l",
+                lazy.layout.shuffle_right().when(layout=["COLS", " BSP"]),
+                lazy.layout.shuffle_down().when(layout="WIDE"),
+                lazy.layout.swap_right().when(layout="TALL"),                     desc="TODO"),
+            Key(MOD, "c", lazy.window.kill(),                                     desc="Kill focused window"),
+            Key(MOD, "r", lazy.restart(),                                         desc="Restarting Qtile"),
+            Key(MOD, "f", lazy.window.toggle_floating(),                          desc='toggle floating'),
+            Key(MOD, TAB, lazy.prev_layout(),                                     desc="Toggle between layouts"),
         ]
     )
     return km
