@@ -57,6 +57,7 @@ $HOME
 |   |-- [d]  neofetch                                  -- a logo printer.
 |   |-- [-]  nitrogen/nitrogen.cfg                     -- a wallpaper manager.
 |   |-- [d]  qtile                                     -- a tilling window manager.
+|   |-- [-]  rofi/config.rasi                          -- app/command launcher/switcher.
 |   |-- [d]  spectrwm                                  -- the spectrWM tilling window manager.
 |   |-- [d]  surf                                      -- the suckless web browser.
 |   |-- [-]  sxhkd/sxhkdrc                             -- the simple x hot key daemon.
@@ -135,6 +136,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [ ] [`neofetch`]          ([\*\*][mydoc-neofetch])
 - [ ] [`nitrogen`]          ([\*\*][mydoc-nitrogen])
 - [ ] [`qtile`]             ([\*\*][mydoc-qtile])
+- [ ] [`rofi`]              ([\*\*][mydoc-rofi])
 - [ ] [`spectrWM`]          ([\*\*][mydoc-spectrWM])
 - [x] [`starship`]          ([\*\*][mydoc-starship])
 - [x] [`sxhkd`]             ([\*\*][mydoc-sxhkd])
@@ -262,6 +264,7 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [`neofetch`]:              .config/neofetch
 [`nitrogen`]:              .config/nitrogen/nitrogen.cfg
 [`qtile`]:                 .config/qtile
+[`rofi`]:                  .config/rofi/config.rasi
 [`spectrWM`]:              .config/spectrwm
 [`sxhkd`]:                 .config/sxhkd/sxhkdrc
 [`starship`]:              .config/starship.toml
@@ -301,6 +304,7 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [mydoc-neofetch]:              https://a2n-s.github.io/public/doc/config/dotfiles/neofetch
 [mydoc-nitrogen]:              https://a2n-s.github.io/public/doc/config/dotfiles/nitrogen
 [mydoc-qtile]:                 https://a2n-s.github.io/public/doc/config/dotfiles/qtile
+[mydoc-rofi]:                  https://a2n-s.github.io/public/doc/config/dotfiles/rofi
 [mydoc-spectrwm]:              https://a2n-s.github.io/public/doc/config/dotfiles/spectrwm
 [mydoc-sxhkd]:                 https://a2n-s.github.io/public/doc/config/dotfiles/sxhkd
 [mydoc-starship]:              https://a2n-s.github.io/public/doc/config/dotfiles/starship

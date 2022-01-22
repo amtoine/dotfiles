@@ -120,6 +120,13 @@ def _browser(browser):
     return lazy.spawn(browser), lazy.ungrab_chord()
 
 
+def _rofi(modi):
+    """
+        TODO
+    """
+    return lazy.spawn("rofi -show " + modi), lazy.ungrab_chord()
+
+
 def init_keymap(mod, terminal):
     """
         A list of available commands that can be bound to keys can be found
@@ -130,7 +137,7 @@ def init_keymap(mod, terminal):
     MOD = [mod]
     km.extend(
         [
-            Key(MOD, 'r', lazy.spawncmd(),                    desc="TODO"),
+            Key(MOD, 't', lazy.spawncmd(),                    desc="TODO"),
             Key(MOD, 'd', _cmd(DMENU_RUN),                    desc="Spawn a command using a dmenu prompt"),
             Key(MOD, 'h', lazy.layout.left(),                 desc="Move focus to left"),
             Key(MOD, 'j', lazy.layout.down(),                 desc="Move focus down"),
@@ -143,6 +150,17 @@ def init_keymap(mod, terminal):
             Key(MOD, 'w', lazy.run_extension(window_list()),  desc="TODO"),
             Key(MOD, 'n', _cmd(terminal + EDITOR),            desc="TODO"),
             Key(MOD, 'm', _mocp(terminal),                    desc="TODO"),
+            KeyChord(MOD, 'r', [
+                Key([], 'w', *_rofi("window"),                desc="TODO"),
+                Key([], 'r', *_rofi("run"),                   desc="TODO"),
+                Key([], 's', *_rofi("ssh"),                   desc="TODO"),
+                Key([], 'd', *_rofi("drun"),                  desc="TODO"),
+                Key([], 'c', *_rofi("combi"),                 desc="TODO"),
+                Key([], 'k', *_rofi("keys"),                  desc="TODO"),
+                Key([], 'f', *_rofi("filebrowser"),           desc="TODO"),
+                ],
+                mode="ROFI"
+            ),
             KeyChord(MOD, 'b', [
                 Key([], 's', *_browser(SURF),                 desc="TODO"),
                 Key([], 'f', *_browser("firefox"),            desc="TODO"),
