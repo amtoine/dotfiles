@@ -45,7 +45,7 @@ PASSMENU = "passmenu -l 10 -c"
 AUTOSTART = os.path.expanduser("~/.config/qtile/autostart.sh")
 KILL_XAUTOLOCK = "killall -q xautolock"
 CHECK = " --hold checkupdates"
-PACMAN = " sudo pacman -syu"
+PACMAN = " sudo pacman -Syu"
 NCDU = " ncdu -x /"
 DF = " --hold df -h"
 HTOP = " htop"
@@ -159,14 +159,14 @@ def init_keymap(mod, terminal):
                 Key([], 'k', *_rofi("keys"),                  desc="TODO"),
                 Key([], 'f', *_rofi("filebrowser"),           desc="TODO"),
                 ],
-                mode="ROFI"
+                mode=" ROFI"
             ),
             KeyChord(MOD, 'b', [
                 Key([], 's', *_browser(SURF),                 desc="TODO"),
                 Key([], 'f', *_browser("firefox"),            desc="TODO"),
                 Key([], 'c', *_browser("chromium"),           desc="TODO"),
                 ],
-                mode="BROWSER"
+                mode=" BROWSER"
             ),
             KeyChord(MOD, 's', [
                 Key([], 't', *_sys(terminal),                 desc="TODO"),
@@ -179,7 +179,7 @@ def init_keymap(mod, terminal):
                 Key([], 'n', *_sys(terminal + NMCLI),         desc="TODO"),
                 Key([], 'b', *_sys("blueman-manager"),        desc="TODO"),
                 ],
-                mode="SYSTEM"
+                mode=" SYSTEM"
             ),
             KeyChord(MOD, 'e', [
                 Key([], 'e', *_emacs(),                       desc='Launch Emacs'),
@@ -191,7 +191,7 @@ def init_keymap(mod, terminal):
                 Key([], 's', *_emacs("eshell"),               desc='Launch the eshell inside Emacs'),
                 Key([], 'v', *_emacs("+vterm/here nil"),      desc='Launch vterm inside Emacs')
                 ],
-                mode="EMACS"
+                mode=" EMACS"
             ),
             KeyChord(MOD, 'p', [
                 Key([], 'h', *_dmenu("dm-hub"),               desc='TODO'),
@@ -205,26 +205,8 @@ def init_keymap(mod, terminal):
                 Key([], 's', *_dmenu("dm-websearch"),         desc='Search various search engines via dmenu'),
                 Key([], 'p', *_dmenu(PASSMENU),               desc='Retrieve passwords with dmenu')
                 ],
-                mode="PROMPT"
+                mode=" PROMPT"
             ),
-            Key(MOD, SPC, lazy.layout.next(),                 desc="Move window focus to other window"),
-            Key(MOD, RET, _cmd(terminal),                     desc="Launch terminal"),
-            Key(MOD, TAB, lazy.next_layout(),                 desc="Toggle between layouts"),
-            Key(MOD, PER, lazy.next_screen(),                 desc='Move focus to next monitor'),
-            Key(MOD, COM, lazy.prev_screen(),                 desc='Move focus to prev monitor'),
-            Key(MOD, BCL, lazy.screen.prev_group(),           desc='TODO'),
-            Key(MOD, BCR, lazy.screen.next_group(),           desc='TODO'),
-            Key(MOD, SLH, lazy.screen.toggle_group(),         desc='TODO'),
-            Key(MOD, F1,  _cmd("brightnessctl s 8-"),         desc="brightness of the main screen down."),
-            Key(MOD, F2,  _cmd("brightnessctl s 8+"),         desc="brightness of the main screen up."),
-            Key(MOD, F3,  _script("hdmi.brightness.sh -"),    desc="brightness of the second screen down."),
-            Key(MOD, F4,  _script("hdmi.brightness.sh +"),    desc="brightness of the second screen up."),
-            Key(MOD, F5,  _script("screenshot.sh window"),    desc="take a screenshot of everything or chose a window."),
-            Key(MOD, F6,  _script("screenshot.sh full"),      desc="take a screenshot of everything or chose a window."),
-            Key(MOD, F7,  _script("slock-cst.sh"),            desc="lock the computer."),
-            Key(MOD, F8,  _script("lfrun.sh", terminal),      desc="my file explorer."),
-            Key(MOD, F9,  _cmd(KILL_XAUTOLOCK),               desc="TODO"),
-            Key(MOD, F10, _cmd(AUTOSTART),                    desc="TODO"),
             KeyChord(MOD, 'z', [
                 Key([], 'h',
                     lazy.layout.grow_left().when(layout=["COLS", " BSP"]),
@@ -248,8 +230,26 @@ def init_keymap(mod, terminal):
                 Key([], 'z', lazy.ungrab_chord(),                           desc="TODO"),
                 Key([], RET, lazy.ungrab_chord(),                           desc="TODO"),
                 ],
-                mode="RESIZE"
+                mode=" RESIZE"
             ),
+            Key(MOD, SPC, lazy.layout.next(),                 desc="Move window focus to other window"),
+            Key(MOD, RET, _cmd(terminal),                     desc="Launch terminal"),
+            Key(MOD, TAB, lazy.next_layout(),                 desc="Toggle between layouts"),
+            Key(MOD, PER, lazy.next_screen(),                 desc='Move focus to next monitor'),
+            Key(MOD, COM, lazy.prev_screen(),                 desc='Move focus to prev monitor'),
+            Key(MOD, BCL, lazy.screen.prev_group(),           desc='TODO'),
+            Key(MOD, BCR, lazy.screen.next_group(),           desc='TODO'),
+            Key(MOD, SLH, lazy.screen.toggle_group(),         desc='TODO'),
+            Key(MOD, F1,  _cmd("brightnessctl s 8-"),         desc="brightness of the main screen down."),
+            Key(MOD, F2,  _cmd("brightnessctl s 8+"),         desc="brightness of the main screen up."),
+            Key(MOD, F3,  _script("hdmi.brightness.sh -"),    desc="brightness of the second screen down."),
+            Key(MOD, F4,  _script("hdmi.brightness.sh +"),    desc="brightness of the second screen up."),
+            Key(MOD, F5,  _script("screenshot.sh window"),    desc="take a screenshot of everything or chose a window."),
+            Key(MOD, F6,  _script("screenshot.sh full"),      desc="take a screenshot of everything or chose a window."),
+            Key(MOD, F7,  _script("slock-cst.sh"),            desc="lock the computer."),
+            Key(MOD, F8,  _script("lfrun.sh", terminal),      desc="my file explorer."),
+            Key(MOD, F9,  _cmd(KILL_XAUTOLOCK),               desc="TODO"),
+            Key(MOD, F10, _cmd(AUTOSTART),                    desc="TODO"),
         ]
     )
     MOD = [mod, CON]

@@ -37,6 +37,7 @@ WidgetTheme = namedtuple(
         "prompt",
         "window_name",
         "net",
+        "df",
         "wlan",
         "chord",
         "systray",
@@ -156,8 +157,8 @@ chalk = ColorScheme(**{
 
 theme = chalk
 
-clock_format = "%a, %m/%d/%y - %H:%M "
-clock_format = "✨ %m/%d - %H:%M"
+clock_format = " %a, %m/%d/%y - %H:%M "
+clock_format = " %m/%d  %H:%M"
 battery_format = "{char} {percent:2.0%} {hour:d}:{min:02d}"
 battery_format = "{char}{percent:2.0%}"
 
@@ -184,10 +185,12 @@ widget_theme = WidgetTheme(**{
     "check_updates":  {"bg": theme.bg,      "fg": theme.color8},
     "wlan":           {"bg": theme.bg,      "fg": theme.color2},
     "net":            {"bg": theme.bg,      "fg": theme.color3},
+    "df":             {"bg": theme.bg,      "fg": theme.color7},
     "cpu":            {"bg": theme.bg,      "fg": theme.color7},
     "clock":          {"bg": theme.bg,      "fg": theme.color13,  "format": clock_format},
     "battery":        {"bg": theme.bg,      "fg": theme.color6,   "format": battery_format},
-    "quick_exit":     {"bg": theme.bg,      "fg": theme.color0,   "text": "[x]", "countdown": "[{}]"},
+    "quick_exit":     {"bg": theme.bg,      "fg": theme.color0,   "text": "襤", "countdown": "{}"},
+
 
     "image":          {"bg": theme.bg},
     "systray":        {"bg": theme.color2},
@@ -218,8 +221,11 @@ layout_theme = LayoutTheme(
     margin=8,
 )
 
+FONT = "mononoki Nerd Font"
+ARROW_SIZE = 24
+
 bar_theme = dict(
-    size=24,
+    size=20,
     opacity=.8,
     background=theme.bg,
     margin=[0, 0, 0, 0],         # N E S W

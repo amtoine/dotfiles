@@ -4,6 +4,7 @@ dmenufm
 dmscripts-git
 lf
 myman
+nerd-fonts-complete
 nerd-fonts-mononoki
 paru
 pass-import

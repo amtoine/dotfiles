@@ -1,6 +1,6 @@
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles
 #     \__,_/____/_/ /_/           /____/
 #                              _____             __         __  _ __           __            _     __           __
 #            _________  ____  / __(_)___ _     _/_/  ____ _/ /_(_) /__       _/_/  _      __(_)___/ /___ ____  / /______         ____  __  __
@@ -11,7 +11,7 @@
 #
 # Description:  TODO
 # Dependencies: TODO
-# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
 from libqtile import qtile
@@ -20,6 +20,8 @@ from libqtile import widget
 from utils import fetch_monitors
 from themes import widget_theme as wt
 from themes import theme
+from themes import FONT
+from themes import ARROW_SIZE
 
 
 def init_widget_defaults():
@@ -27,9 +29,42 @@ def init_widget_defaults():
         TODO
     """
     return dict(
-        font='monospace',
+        font=FONT,
         fontsize=40,
         padding=3,
+    )
+
+
+def _df(terminal, bg="#000000", fg="#ffffff"):
+    """
+        class libqtile.widget.DF(**config)[source]
+        Disk Free Widget
+
+        By default the widget only displays if the space is less than
+        warn_space.
+
+        Supported bar orientations: horizontal and vertical
+    """
+    return widget.DF(
+        background=bg,                    # Widget background color
+        fmt='{}',                         # How to format the text
+        font=FONT,                        # Default font
+        fontshadow=None,                  # font shadow color, default is None(no shadow)
+        fontsize=None,                    # Font size. Calculated if None.
+        foreground=fg,                    # Foreground colour
+        format='{p} ({uf}{m}|{r:.0f}%)',  # String format (p: partition, s: size, f: free space, uf: user free space, m: measure, r: ratio (uf/s))
+        markup=True,                      # Whether or not to use pango markup
+        max_chars=0,                      # Maximum number of characters to display in widget.
+        measure='G',                      # Measurement (G, M, B)
+        mouse_callbacks={
+            'Button1': lambda: qtile.cmd_spawn(terminal + " ncdu -x /"),
+        },                                # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        padding=None,                     # Padding. Calculated if None.
+        partition='/',                    # the partition to check space
+        update_interval=60,               # The update interval.
+        visible_on_warn=False,            # Only display if warning
+        warn_color='ff0000',              # Warning color
+        warn_space=2,                     # Warning space in scale defined by the measure option.
     )
 
 
@@ -84,7 +119,7 @@ def _thermal_sensor(bg="#000000", fg="#ffffff"):
     return widget.ThermalSensor(
         background=bg,              # Widget background color
         fmt='{}',                   # How to format the text
-        font="monospace",           # Default font
+        font=FONT,                  # Default font
         fontshadow=None,            # font shadow color, default is None(no shadow)
         fontsize=None,              # Font size. Calculated if None.
         foreground=fg,              # Foreground colour
@@ -113,22 +148,22 @@ def _check_updates(terminal, bg="#000000", fg="#ffffff"):
         colour_no_updates=fg,          # Colour when there's no updates.
         custom_command=None,           # Custom shell command for checking updates (counts the lines of the output)
         custom_command_modify=None,    # Lambda function to modify line count from custom_command
-        display_format=' {updates}',  # Display format if updates available
+        display_format=' {updates}',  # Display format if updates available
         distro='Arch_checkupdates',    # Name of your distribution
         execute="",                    # Command to execute on click
         fmt='{}',                      # How to format the text
-        font="monospace",              # Default font
+        font=FONT,                     # Default font
         fontshadow=None,               # font shadow color, default is None(no shadow)
         fontsize=None,                 # Font size. Calculated if None.
         foreground=fg,                 # Foreground colour
         markup=True,                   # Whether or not to use pango markup
         max_chars=0,                   # Maximum number of characters to display in widget.
         mouse_callbacks={
-            'Button1': lambda: qtile.cmd_spawn(terminal + " sudo pacman -syu"),
+            'Button1': lambda: qtile.cmd_spawn(terminal + " sudo pacman -Syu"),
             'Button2': lambda: qtile.cmd_spawn(terminal + " ncdu -x /"),
             'Button3': lambda: qtile.cmd_spawn(terminal + " --hold checkupdates"),
         },                             # dict of mouse button press callback functions. accepts functions and lazy calls.
-        no_update_string='UtD',        # String to display if no updates available
+        no_update_string=' ',         # String to display if no updates available
         padding=None,                  # Padding. Calculated if None.
         restart_indicator='',          # Indicator to represent reboot is required. (Ubuntu only)
         update_interval=3600,          # Update interval in seconds.
@@ -157,7 +192,7 @@ def _memory(terminal, bg="#000000", fg="#ffffff"):
     return widget.Memory(
         background=bg,                   # Widget background color
         fmt='{}',                        # How to format the text
-        font="monospace",                # Default font
+        font=FONT,                       # Default font
         fontshadow=None,                 # font shadow color, default is None(no shadow)
         fontsize=None,                   # Font size. Calculated if None.
         foreground=fg,                   # Foreground colour
@@ -191,7 +226,7 @@ def _volume(bg="#000000", fg="#ffffff"):
         device='default',          # Device Name
         emoji=False,               # Use emoji to display volume states, only if theme_path is not set.The specified font needs to contain the correct unicode characters.
         fmt=' {}',                # How to format the text
-        font="monospace",          # Default font
+        font=FONT,                 # Default font
         fontshadow=None,           # font shadow color, default is None(no shadow)
         fontsize=None,             # Font size. Calculated if None.
         foreground=fg,             # Foreground colour
@@ -228,7 +263,7 @@ def _keyboard_layout(bg="#000000", fg="#ffffff"):
         configured_keyboards=['us'],  # A list of predefined keyboard layouts represented as strings. For example: ['us', 'us colemak', 'es', 'fr'].
         display_map={},               # Custom display of layout. Key should be in format 'layout variant'. For example: {'us': 'us', 'lt sgs': 'sgs', 'ru phonetic': 'ru'}
         fmt='{}',                     # How to format the text
-        font="monospace",             # Default font
+        font=FONT,                    # Default font
         fontshadow=None,              # font shadow color, default is None(no shadow)
         fontsize=None,                # Font size. Calculated if None.
         foreground=fg,                # Foreground colour
@@ -262,7 +297,7 @@ def _backlight(bg="#000000", fg="#ffffff"):
         brightness_file='brightness',          # Name of file with the current brightness in /sys/class/backlight/backlight_name
         change_command='xbacklight -set {0}',  # Execute command to change value
         fmt='{}',                              # How to format the text
-        font="monospace",                      # Default font
+        font=FONT,                             # Default font
         fontshadow=None,                       # font shadow color, default is None(no shadow)
         fontsize=None,                         # Font size. Calculated if None.
         foreground=fg,                         # Foreground colour
@@ -288,7 +323,7 @@ def _bluetooth(bg="#000000", fg="#ffffff"):
     return widget.Bluetooth(
         background=bg,                 # Widget background color
         fmt='{}',                      # How to format the text
-        font="monospace",              # Default font
+        font=FONT,                     # Default font
         fontshadow=None,               # font shadow color, default is None(no shadow)
         fontsize=None,                 # Font size. Calculated if None.
         foreground=fg,                 # Foreground colour
@@ -310,11 +345,11 @@ def _cpu(terminal, bg="#000000", fg="#ffffff"):
     return widget.CPU(
         background=bg,                     # Widget background color
         fmt='{}',                          # How to format the text
-        font="monospace",                  # Default font
+        font=FONT,                         # Default font
         fontshadow=None,                   # font shadow color, default is None(no shadow)
         fontsize=None,                     # Font size. Calculated if None.
         foreground=fg,                     # Foreground colour
-        format=' {load_percent:>4.1f}%',  # CPU display format
+        format=' {load_percent:>4.1f}%',  # CPU display format
         markup=True,                       # Whether or not to use pango markup
         max_chars=0,                       # Maximum number of characters to display in widget.
         mouse_callbacks={
@@ -333,20 +368,20 @@ def _current_screen(bg="#000000", fg="#ffffff", active="66ff66", inactive="#ff66
         Supported bar orientations: horizontal and vertical
     """
     return widget.CurrentScreen(
-        active_color=active,           # Color when screen is active
-        active_text='\uf0d9\uf0da',    # Text displayed when the screen is active
-        background=bg,                 # Widget background color
-        fmt='{}',                      # How to format the text
-        font="monospace",              # Default font
-        fontshadow=None,               # font shadow color, default is None(no shadow)
-        fontsize=None,                 # Font size. Calculated if None.
-        foreground=fg,                 # Foreground colour
-        inactive_color=inactive,       # Color when screen is inactive
-        inactive_text='\uf0d9\uf0da',  # Text displayed when the screen is inactive
-        markup=True,                   # Whether or not to use pango markup
-        max_chars=0,                   # Maximum number of characters to display in widget.
-        mouse_callbacks={},            # Dict of mouse button press callback functions. Accepts functions and lazy calls.
-        padding=None,                  # Padding. Calculated if None.
+        active_color=active,      # Color when screen is active
+        active_text='',          # Text displayed when the screen is active
+        background=bg,            # Widget background color
+        fmt='{}',                 # How to format the text
+        font=FONT,                # Default font
+        fontshadow=None,          # font shadow color, default is None(no shadow)
+        fontsize=None,            # Font size. Calculated if None.
+        foreground=fg,            # Foreground colour
+        inactive_color=inactive,  # Color when screen is inactive
+        inactive_text='',        # Text displayed when the screen is inactive
+        markup=True,              # Whether or not to use pango markup
+        max_chars=0,              # Maximum number of characters to display in widget.
+        mouse_callbacks={},       # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        padding=None,             # Padding. Calculated if None.
     )
 
 
@@ -363,15 +398,15 @@ def _hdd(bg="#000000"):
         fill_color='1667EB.3',  # Fill color for linefill graph
         frequency=1,            # Update frequency in seconds
         graph_color='ffBAEB',   # Graph color
-        line_width=3,           # Line width
-        margin_x=3,             # Margin X
-        margin_y=3,             # Margin Y
+        line_width=1,           # Line width
+        margin_x=0,             # Margin X
+        margin_y=0,             # Margin Y
         mouse_callbacks={},     # Dict of mouse button press callback functions. Accepts functions and lazy calls.
         path='/',               # Partition mount point.
         samples=100,            # Count of graph samples.
-        space_type='free',      # free/used
+        space_type='used',      # free/used
         start_pos='bottom',     # Drawer starting position ('bottom'/'top')
-        type='box',        # 'box', 'line', 'linefill'
+        type='box',             # 'box', 'line', 'linefill'
     )
 
 
@@ -384,7 +419,7 @@ def _wallpaper(bg="#000000", fg="#ffffff"):
         background=bg,                               # Widget background color
         directory='~/repos/wallpapers/wallpapers/',  # Wallpaper Directory
         fmt='{}',                                    # How to format the text
-        font="monospace",                            # Default font
+        font=FONT,                                   # Default font
         fontshadow=None,                             # font shadow color, default is None(no shadow)
         fontsize=None,                               # Font size. Calculated if None.
         foreground=fg,                               # Foreground colour
@@ -410,8 +445,8 @@ def _current_layout(bg="#000000", fg="#ffffff"):
     """
     return widget.CurrentLayout(
         background=bg,        # Widget background color
-        fmt='{}',             # How to format the text
-        font="monospace",     # Default font
+        fmt=' {}',             # How to format the text
+        font=FONT,            # Default font
         fontshadow=None,      # font shadow color, default is None(no shadow)
         fontsize=None,        # Font size. Calculated if None.
         foreground=fg,        # Foreground colour
@@ -449,7 +484,7 @@ def _current_layout_icon(bg="#000000", fg="#ffffff"):
         background=bg,         # Widget background color
         custom_icon_paths=[],  # List of folders where to search icons beforeusing built-in icons or icons in ~/.icons dir. This can also be used to providemissing icons for custom layouts. Defaults to empty list.
         fmt='{}',              # How to format the text
-        font="monospace",      # Default font
+        font=FONT,             # Default font
         fontshadow=None,       # font shadow color, default is None(no shadow)
         fontsize=None,         # Font size. Calculated if None.
         foreground=fg,         # Foreground colour
@@ -482,9 +517,9 @@ def _group_box(
         block_highlight_text_color=select,        # Selected group font colour
         borderwidth=2,                            # Current group border width
         center_aligned=True,                      # center-aligned group box
-        disable_drag=False,                       # Disable dragging and dropping of group names on widget
+        disable_drag=True,                        # Disable dragging and dropping of group names on widget
         fmt='{}',                                 # How to format the text
-        font='monospace',                         # Default font
+        font=FONT,                                # Default font
         fontshadow=None,                          # font shadow color, default is None(no shadow)
         fontsize=15,                              # Font size. Calculated if None.
         foreground=fg,                            # Foreground colour
@@ -511,7 +546,7 @@ def _group_box(
         urgent_alert_method="border",             # Method for alerting you of WM urgent hints (one of 'border', 'text', 'block', or 'line')
         urgent_border=urgent_border,              # Urgent border or line color
         urgent_text=urgent_text,                  # Urgent group font color
-        use_mouse_wheel=True,                     # Whether to use mouse wheel events
+        use_mouse_wheel=False,                    # Whether to use mouse wheel events
         visible_groups=None,                      # Groups that will be visible. If set to None or [], all groups will be visible.Visible groups are identified by name not by their displayed label.
     )
 
@@ -532,7 +567,7 @@ def _prompt(bg="#000000", fg="#ffffff"):
         cursor_color='bef098',       # Color for the cursor and text over it.
         cursorblink=0.5,             # Cursor blink rate. 0 to disable.
         fmt='{}',                    # How to format the text
-        font="monospace",            # Default font
+        font=FONT,                   # Default font
         fontshadow=None,             # font shadow color, default is None(no shadow)
         fontsize=None,               # Font size. Calculated if None.
         foreground=fg,               # Foreground colour
@@ -542,7 +577,7 @@ def _prompt(bg="#000000", fg="#ffffff"):
         max_history=100,             # Commands to keep in history. 0 for no limit.
         mouse_callbacks={},          # Dict of mouse button press callback functions. Accepts functions and lazy calls.
         padding=None,                # Padding. Calculated if None.
-        prompt='{prompt}: ',         # Text displayed at the prompt
+        prompt=' : ',               # Text displayed at the prompt. Default: '{prompt}: '
         record_history=True,         # Keep a record of executed commands
         visual_bell_color='ff0000',  # Color for the visual bell (changes prompt background).
         visual_bell_time=0.2,        # Visual bell duration (in seconds).
@@ -557,20 +592,20 @@ def _window_name(bg="#000000", fg="#ffffff"):
         Supported bar orientations: horizontal and vertical
     """
     return widget.WindowName(
-        background=bg,             # Widget background color
-        empty_group_string=' ',    # string to display when no windows are focused on current group
-        fmt='{}',                  # How to format the text
-        font='monospace',          # Default font
-        fontshadow=None,           # font shadow color, default is None(no shadow)
-        fontsize=None,             # Font size. Calculated if None.
-        for_current_screen=False,  # instead of this bars screen use currently active screen
-        foreground=fg,             # Foreground colour
-        format='{state}{name}',    # format of the text
-        markup=True,               # Whether or not to use pango markup
-        max_chars=0,               # Maximum number of characters to display in widget.
-        mouse_callbacks={},        # Dict of mouse button press callback functions. Accepts functions and lazy calls.
-        padding=None,              # Padding. Calculated if None.
-        parse_text=None,           # Function to parse and modify window names. e.g. function in config that removes excess strings from window name: def my_func(text) for string in [" - Chromium", " - Firefox"]: text=text.replace(string, "") return textthen set option parse_text=my_func
+        background=bg,              # Widget background color
+        empty_group_string='',     # string to display when no windows are focused on current group
+        fmt='{}',                   # How to format the text
+        font=FONT,                  # Default font
+        fontshadow=None,            # font shadow color, default is None(no shadow)
+        fontsize=None,              # Font size. Calculated if None.
+        for_current_screen=False,   # instead of this bars screen use currently active screen
+        foreground=fg,              # Foreground colour
+        format='  {state}{name}',  # format of the text
+        markup=True,                # Whether or not to use pango markup
+        max_chars=0,                # Maximum number of characters to display in widget.
+        mouse_callbacks={},         # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        padding=None,               # Padding. Calculated if None.
+        parse_text=None,            # Function to parse and modify window names. e.g. function in config that removes excess strings from window name: def my_func(text) for string in [" - Chromium", " - Firefox"]: text=text.replace(string, "") return textthen set option parse_text=my_func
     )
 
 
@@ -585,7 +620,7 @@ def _chord(bg="#000000", fg="#ffffff"):
         background=bg,                                     # Widget background color
         chords_colors={'launch': ("#ff0000", "#ffffff")},  # colors per chord in form of tuple ('bg', 'fg').
         fmt='{}',                                          # How to format the text
-        font="monospace",                                  # Default font
+        font=FONT,                                         # Default font
         fontshadow=None,                                   # font shadow color, default is None(no shadow)
         fontsize=None,                                     # Font size. Calculated if None.
         foreground=fg,                                     # Foreground colour
@@ -609,7 +644,7 @@ def _text_box(text='', bg="#000000", fg="#ffffff"):
         text,
         background=bg,          # Widget background color
         fmt='{}',               # How to format the text
-        font="monospace",       # Text font
+        font=FONT,              # Text font
         fontshadow=None,        # font shadow color, default is None(no shadow)
         fontsize=None,          # Font pixel size. Calculated if None.
         foreground=fg,          # Foreground colour.
@@ -654,7 +689,7 @@ def _clock(terminal, format='%H:%M', bg="#000000", fg="#ffffff"):
     return widget.Clock(
         background=bg,        # Widget background color
         fmt='{}',             # How to format the text
-        font="monospace",     # Default font
+        font=FONT,            # Default font
         fontshadow=None,      # font shadow color, default is None(no shadow)
         fontsize=None,        # Font size. Calculated if None.
         foreground=fg,        # Foreground colour
@@ -663,7 +698,7 @@ def _clock(terminal, format='%H:%M', bg="#000000", fg="#ffffff"):
         max_chars=0,          # Maximum number of characters to display in widget.
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn(terminal + " --hold cal -Y"),
-        },                                                                      # dict of mouse button press callback functions. accepts functions and lazy calls.
+        },                    # dict of mouse button press callback functions. accepts functions and lazy calls.
         padding=None,         # Padding. Calculated if None.
         timezone=None,        # The timezone to use for this clock, either as string if pytz or dateutil is installed (e.g. "US/Central" or anything in /usr/share/zoneinfo), or as tzinfo (e.g. datetime.timezone.utc). None means the system local timezone and is the default.
         update_interval=1.0,  # Update interval for the clock
@@ -680,16 +715,16 @@ def _battery(format, bg="#000000", fg="#ffffff"):
     return widget.Battery(
         background=bg,                # Widget background color
         battery=0,                    # Which battery should be monitored (battery number or name)
-        charge_char='\uf0d8',         # Character to indicate the battery is charging
-        discharge_char='\uf0d7',      # Character to indicate the battery is discharging
-        empty_char='x',               # Character to indicate the battery is empty
+        charge_char=' ',             # Character to indicate the battery is charging
+        discharge_char=' ',          # Character to indicate the battery is discharging
+        empty_char=' ',              # Character to indicate the battery is empty
         fmt='{}',                     # How to format the text
-        font="monospace",             # Default font
+        font=FONT,                    # Default font
         fontshadow=None,              # font shadow color, default is None(no shadow)
         fontsize=None,                # Font size. Calculated if None.
         foreground=fg,                # Foreground colour
         format=format,                # Display format
-        full_char='=',                # Character to indicate the battery is full
+        full_char=' ',               # Character to indicate the battery is full
         hide_threshold=None,          # Hide the text when there is enough energy 0 <= x < 1
         low_background="#ff0000",     # Background color on low battery
         low_foreground=theme.color7,  # Font color on low battery
@@ -733,11 +768,11 @@ def _net(bg="#000000", fg="#ffffff"):
     return widget.Net(
         background=bg,       # Widget background color
         fmt='{}',            # How to format the text
-        font="monospace",    # Default font
+        font=FONT,           # Default font
         fontshadow=None,     # font shadow color, default is None(no shadow)
         fontsize=None,       # Font size. Calculated if None.
         foreground=fg,       # Foreground colour
-        format='↓{down}',    # Display format of down/upload/total speed of given interfaces
+        format=' {down}',   # Display format of down/upload/total speed of given interfaces
         interface="wlp2s0",  # List of interfaces or single NIC as string to monitor, None to display all active NICs combined
         markup=True,         # Whether or not to use pango markup
         max_chars=0,         # Maximum number of characters to display in widget.
@@ -764,7 +799,7 @@ def _quick_exit(bg="#000000", fg="#ffffff", countdown="[ {} seconds ]", text="[ 
         countdown_start=5,           # Time to accept the second pushing.
         default_text=text,           # A text displayed as a button
         fmt='{}',                    # How to format the text
-        font="monospace",            # Default font
+        font=FONT,                   # Default font
         fontshadow=None,             # font shadow color, default is None(no shadow)
         fontsize=None,               # Font size. Calculated if None.
         foreground=fg,               # Foreground colour
@@ -789,23 +824,23 @@ def _wlan(terminal, bg="#000000", fg="#ffffff"):
         Supported bar orientations: horizontal only
     """
     return widget.Wlan(
-        background=bg,                       # Widget background color
-        disconnected_message='睊',           # String to show when the wlan is diconnected.
-        fmt='{}',                            # How to format the text
-        font="monospace",                    # Default font
-        fontshadow=None,                     # font shadow color, default is None(no shadow)
-        fontsize=None,                       # Font size. Calculated if None.
-        foreground=fg,                       # Foreground colour
-        format='{essid} {quality:02d}/70',   # Display format. For percents you can use "{essid} {percent:2.0%}"
-        interface='wlp2s0',                  # The interface to monitor
-        markup=True,                         # Whether or not to use pango markup
-        max_chars=0,                         # Maximum number of characters to display in widget.
+        background=bg,                        # Widget background color
+        disconnected_message='睊',            # String to show when the wlan is diconnected.
+        fmt='{}',                             # How to format the text
+        font=FONT,                            # Default font
+        fontshadow=None,                      # font shadow color, default is None(no shadow)
+        fontsize=None,                        # Font size. Calculated if None.
+        foreground=fg,                        # Foreground colour
+        format=' {essid} {quality:02d}/70',  # Display format. For percents you can use "{essid} {percent:2.0%}"
+        interface='wlp2s0',                   # The interface to monitor
+        markup=True,                          # Whether or not to use pango markup
+        max_chars=0,                          # Maximum number of characters to display in widget.
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn(terminal + " --hold nmcli connection show"),
             'Button3': lambda: qtile.cmd_spawn("blueman-manager"),
-        },                                   # dict of mouse button press callback functions. accepts functions and lazy calls.
-        padding=None,                        # Padding. Calculated if None.
-        update_interval=1,                   # The update interval.
+        },                                    # dict of mouse button press callback functions. accepts functions and lazy calls.
+        padding=None,                         # Padding. Calculated if None.
+        update_interval=1,                    # The update interval.
     )
 
 
@@ -815,11 +850,11 @@ def _powerline_left_arrow(bg="#000000", fg="#ffffff"):
     """
     return widget.TextBox(
         text='\uf0d9',  # '' character
-        font="monospace",
+        font="Ubuntu Mono",
         background=bg,
         foreground=fg,
         padding=0,
-        fontsize=45,
+        fontsize=ARROW_SIZE,
     )
 
 
@@ -828,12 +863,12 @@ def _powerline_right_arrow(bg="#000000", fg="#ffffff"):
         TODO
     """
     return widget.TextBox(
-        text='\uf0da',  # inverse '' character
-        font="monospace",
+        text='',
+        font="Ubuntu Mono",
         background=bg,
         foreground=fg,
         padding=0,
-        fontsize=45,
+        fontsize=ARROW_SIZE,
     )
 
 
@@ -843,7 +878,7 @@ def _vertical_sep(bg="#000000", fg="#ffffff"):
     """
     return widget.TextBox(
         text='|',
-        font="monospace",
+        font=FONT,
         background=bg,
         foreground=fg,
         padding=2,
@@ -876,6 +911,7 @@ def list_right_widgets(terminal):
         [_check_updates, dict(**wt.check_updates,  terminal=terminal)],
         [_wlan,          dict(**wt.wlan,           terminal=terminal)],
         [_net,           dict(**wt.net)],
+        [_df,            dict(**wt.df,             terminal=terminal)],
         [_cpu,           dict(**wt.cpu,            terminal=terminal)],
         [_clock,         dict(**wt.clock,          terminal=terminal)],
         [_battery,       dict(**wt.battery)],

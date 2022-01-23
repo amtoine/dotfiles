@@ -1,5 +1,6 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/repos/oh-my-bash
 - /home/ants/repos/dmenu
 - /home/ants/repos/wallpapers
 - /home/ants/.config/nvim
@@ -11,7 +12,6 @@ recentrepos:
 - /home/ants/research/imagineXdial
 - /home/ants/prog/scsc/fil-rouge
 - /home/ants/prog/scsc/fgk
-- /home/ants/repos/oh-my-bash
 - /home/ants/sup/rlclass
 - /home/ants/repos/amazons
 - /home/ants/.password-store

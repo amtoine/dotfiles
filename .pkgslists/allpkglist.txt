@@ -82,6 +82,7 @@ mtools
 myman
 ncdu
 neovim
+nerd-fonts-complete
 nerd-fonts-mononoki
 nethack
 network-manager-applet
