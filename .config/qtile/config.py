@@ -64,6 +64,7 @@ floating_layout = layout.Floating(
         Match(title='pinentry'),           # GPG key password entry
         Match(wm_class='pinentry-gtk-2'),  # gitk
         Match(wm_class='mpv'),             # mpv
+        Match(title="mocp"),               # mocp
     ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"

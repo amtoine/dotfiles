@@ -46,25 +46,25 @@ def _df(terminal, bg="#000000", fg="#ffffff"):
         Supported bar orientations: horizontal and vertical
     """
     return widget.DF(
-        background=bg,                    # Widget background color
-        fmt='{}',                         # How to format the text
-        font=FONT,                        # Default font
-        fontshadow=None,                  # font shadow color, default is None(no shadow)
-        fontsize=None,                    # Font size. Calculated if None.
-        foreground=fg,                    # Foreground colour
-        format='{p} ({uf}{m}|{r:.0f}%)',  # String format (p: partition, s: size, f: free space, uf: user free space, m: measure, r: ratio (uf/s))
-        markup=True,                      # Whether or not to use pango markup
-        max_chars=0,                      # Maximum number of characters to display in widget.
-        measure='G',                      # Measurement (G, M, B)
+        background=bg,                       # Widget background color
+        fmt='{}',                            # How to format the text
+        font=FONT,                           # Default font
+        fontshadow=None,                     # font shadow color, default is None(no shadow)
+        fontsize=None,                       # Font size. Calculated if None.
+        foreground=fg,                       # Foreground colour
+        format='  {p} ({uf}{m}|{r:.0f}%)',  # String format (p: partition, s: size, f: free space, uf: user free space, m: measure, r: ratio (uf/s))
+        markup=True,                         # Whether or not to use pango markup
+        max_chars=0,                         # Maximum number of characters to display in widget.
+        measure='G',                         # Measurement (G, M, B)
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn(terminal + " ncdu -x /"),
-        },                                # Dict of mouse button press callback functions. Accepts functions and lazy calls.
-        padding=None,                     # Padding. Calculated if None.
-        partition='/',                    # the partition to check space
-        update_interval=60,               # The update interval.
-        visible_on_warn=False,            # Only display if warning
-        warn_color='ff0000',              # Warning color
-        warn_space=2,                     # Warning space in scale defined by the measure option.
+        },                                   # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        padding=None,                        # Padding. Calculated if None.
+        partition='/',                       # the partition to check space
+        update_interval=600,                 # The update interval.
+        visible_on_warn=False,               # Only display if warning
+        warn_color='ff0000',                 # Warning color
+        warn_space=2,                        # Warning space in scale defined by the measure option.
     )
 
 
@@ -909,9 +909,9 @@ def list_right_widgets(terminal):
         [_prompt,        dict(**wt.prompt)],
         [_chord,         dict(**wt.chord)],
         [_check_updates, dict(**wt.check_updates,  terminal=terminal)],
+        [_df,            dict(**wt.df,             terminal=terminal)],
         [_wlan,          dict(**wt.wlan,           terminal=terminal)],
         [_net,           dict(**wt.net)],
-        [_df,            dict(**wt.df,             terminal=terminal)],
         [_cpu,           dict(**wt.cpu,            terminal=terminal)],
         [_clock,         dict(**wt.clock,          terminal=terminal)],
         [_battery,       dict(**wt.battery)],
