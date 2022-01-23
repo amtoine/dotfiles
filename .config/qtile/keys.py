@@ -42,7 +42,7 @@ EDITOR = " nvim"
 SURF = "tabbed -c surf -N -e"
 EMACS = "emacsclient -c -a 'emacs'"
 PASSMENU = "passmenu -l 10 -c"
-AUTOSTART = os.path.expanduser("~/.config/qtile/autostart.sh")
+AUTOSTART = os.path.expanduser("~/.config/qtile/scripts/qtile-autostart.sh")
 KILL_XAUTOLOCK = "killall -q xautolock"
 CHECK = " --hold checkupdates"
 PACMAN = " sudo pacman -Syu"
@@ -69,11 +69,11 @@ def _dmenu(command):
     return lazy.spawn(command), lazy.ungrab_chord()
 
 
-def _script(script, terminal=None):
+def _script(script, terminal=None, path=SCRIPTS):
     """
         TODO
     """
-    script = os.path.expanduser(os.path.join('~', SCRIPTS, script))
+    script = os.path.expanduser(os.path.join('~', path, script))
     if terminal is not None:
         script = terminal + ' ' + script
     return lazy.spawn(script)
@@ -250,6 +250,10 @@ def init_keymap(mod, terminal):
             Key(MOD, F8,  _script("lfrun.sh", terminal),      desc="my file explorer."),
             Key(MOD, F9,  _cmd(KILL_XAUTOLOCK),               desc="TODO"),
             Key(MOD, F10, _cmd(AUTOSTART),                    desc="TODO"),
+            Key(MOD, F11, _script(
+                "qtile-change-theme.sh",
+                terminal + " --hold",
+                ".config/qtile/scripts"),                     desc="TODO"),
         ]
     )
     MOD = [mod, CON]

@@ -2,7 +2,7 @@ from utils import WidgetTheme
 from utils import Layout
 from utils import LayoutTheme
 
-from schemes import batman as theme
+from current_scheme import theme
 
 clock_format = " %a, %m/%d/%y - %H:%M "
 clock_format = " %m/%d  %H:%M"
