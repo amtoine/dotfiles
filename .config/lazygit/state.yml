@@ -1,5 +1,6 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/repos/surf
 - /home/ants/repos/oh-my-bash
 - /home/ants/repos/dmenu
 - /home/ants/repos/wallpapers
@@ -17,7 +18,6 @@ recentrepos:
 - /home/ants/.password-store
 - /home/ants/sup/imgDesc
 - /home/ants/research/playground_env
-- /home/ants/repos/surf
 - /home/ants/repos/polybar
 - /home/ants/repos/dmscripts
 - /home/ants/repos/dmscripts
