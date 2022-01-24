@@ -96,7 +96,7 @@ if [ "$theme" == "" ]; then
   exit 1
 fi
 
-qtile_current="$HOME/.config/qtile/current_scheme.py"
+qtile_current="$HOME/.config/qtile/theme.py"
 
 # download the theme itself.
 tmpfile=$(mktemp /tmp/qtile-theme.XXXXXX)

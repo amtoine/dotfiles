@@ -16,7 +16,7 @@
 
 from libqtile import layout
 
-from themes import layout_theme as lt
+from style import LAYOUTS as lt
 
 
 def _floating():

@@ -18,10 +18,10 @@ from libqtile import qtile
 from libqtile import widget
 
 from utils import fetch_monitors
-from themes import widget_theme as wt
-from themes import theme
-from themes import FONT
-from themes import ARROW_SIZE
+from style import WIDGETS as wt
+from style import theme
+from style import FONT
+from style import ARROW_SIZE
 
 
 def init_widget_defaults():

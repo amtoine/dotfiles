@@ -27,7 +27,6 @@ from groups import link_groups_to_keys
 from keys import init_keymap
 from layouts import init_layouts
 from mouse import init_mouse
-from misc import *
 from screens import init_screens
 from widgets import init_widget_defaults
 

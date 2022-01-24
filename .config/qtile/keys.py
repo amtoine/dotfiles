@@ -22,7 +22,7 @@ from libqtile.lazy import lazy
 
 from extensions import window_list
 from extensions import command_set
-from themes import bar_theme
+from style import BAR
 
 SCRIPTS = "scripts"
 SPC = "space"
@@ -37,7 +37,7 @@ BCR = "bracketright"
 SLH = "slash"
 F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12 = [f"F{i}" for i in range(1, 13)]
 DMENU_RUN = "dmenu_run -l 10 -p 'Run: '"
-DMENU_RUN = f"dmenu_run -h {bar_theme['size']} -p 'Run: '"
+DMENU_RUN = f"dmenu_run -h {BAR['size']} -p 'Run: '"
 EDITOR = " nvim"
 SURF = "tabbed -c surf -N -e"
 EMACS = "emacsclient -c -a 'emacs'"
