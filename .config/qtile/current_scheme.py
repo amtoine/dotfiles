@@ -40,4 +40,5 @@ theme = ColorScheme(**{
     "color15":  "#d2d8d9",
     "sel_fg":   "#2b2c2e",
 })
-# themes/Chalk.conf
+# remote:  https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master
+# current: themes/Chalk.conf
