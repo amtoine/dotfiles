@@ -2,7 +2,10 @@ arduino-mk
 cava
 dmenufm
 dmscripts-git
+irony-mode
 lf
+mbsync-git
+mu
 myman
 nerd-fonts-complete
 nerd-fonts-mononoki

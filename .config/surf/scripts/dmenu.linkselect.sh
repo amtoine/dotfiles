@@ -22,6 +22,7 @@
 
 SURF_WINDOW="${1:-$(xprop -root | sed -n '/^_NET_ACTIVE_WINDOW/ s/.* //p')}"
 DMENU_PROMPT="${2:-Link}"
+DMFONT="mononoki Nerd Font-15"
 
 dump_links_with_titles() {
   awk '{
@@ -81,7 +82,7 @@ link_select() {
     dump_links_with_titles |
     awk '!x[$0]++' |
     # sort | uniq
-    dmenu -p "$DMENU_PROMPT" -l 10 -i -w $SURF_WINDOW |
+    dmenu -p "$DMENU_PROMPT" -fn "$DMFONT" -l 10 -i -w $SURF_WINDOW |
     awk -F' ' '{print $NF}' |
     link_normalize $(xprop -id $SURF_WINDOW _SURF_URI | cut -d '"' -f 2)
 }

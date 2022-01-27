@@ -23,6 +23,7 @@ from libqtile.lazy import lazy
 from extensions import window_list
 from extensions import command_set
 from style import BAR
+from style import DMFONT
 
 SCRIPTS = "scripts"
 SPC = "space"
@@ -35,38 +36,58 @@ COM = "comma"
 BCL = "bracketleft"
 BCR = "bracketright"
 SLH = "slash"
-F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12 = [f"F{i}" for i in range(1, 13)]
-DMENU_RUN = "dmenu_run -l 10 -p 'Run: '"
-DMENU_RUN = f"dmenu_run -h {BAR['size']} -p 'Run: '"
-EDITOR = " nvim"
+F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12 = (
+    f"F{i}" for i in range(1, 13)
+    )
+
+DMRUN = f"dmenu_run -h {BAR['size']} -p 'Run: ' -fn '{DMFONT}'"
+PASS = f"passmenu -l 10 -c -fn '{DMFONT}'"
+NVIM = " nvim"
 SURF = "tabbed -c surf -N -e"
 EMACS = "emacsclient -c -a 'emacs'"
-PASSMENU = "passmenu -l 10 -c"
-AUTOSTART = os.path.expanduser("~/.config/qtile/scripts/qtile-autostart.sh")
-KILL_XAUTOLOCK = "killall -q xautolock"
+START = os.path.expanduser("~/.config/qtile/scripts/qtile-autostart.sh")
+KLOCK = "killall -q xautolock"
 CHECK = " --hold checkupdates"
-PACMAN = " sudo pacman -Syu"
-NCDU = " ncdu -x /"
-DF = " --hold df -h"
-HTOP = " htop"
+UPDT = " sudo pacman -Syu"
+TREE = " ncdu -x /"
+DISK = " --hold df -h"
+PROC = " htop"
 CAL = " --hold cal -Y"
-NMCLI = " --hold nmcli connection show"
+NET = " nmcli connection show"
+LOG = " bat " + os.path.expanduser("~/.local/share/qtile/qtile.log")
+_DISCORD = "~/Discord/Discord"
+CHAT = os.path.expanduser(_DISCORD)
+MIXER = " alsamixer"
+MACHO = ' ' + os.path.expanduser("~/scripts/macho.sh")
+WTLDR = ' ' + os.path.expanduser("~/scripts/wtldr.sh")
+
+
+def _cmd(command):
+    """
+        TODO
+    """
+    return lazy.spawn(command)
+
+
+def _ucmd(command):
+    """
+        TODO
+    """
+    return lazy.spawn(command), lazy.ungrab_chord()
+
+
+def _rofi(modi):
+    """
+        TODO
+    """
+    return _ucmd("rofi -show " + modi)
 
 
 def _emacs(eval=None):
     """
         TODO
     """
-    return (
-        lazy.spawn(EMACS if eval is None else EMACS + f" --eval '({eval})'"),
-        lazy.ungrab_chord())
-
-
-def _dmenu(command):
-    """
-        TODO
-    """
-    return lazy.spawn(command), lazy.ungrab_chord()
+    return _ucmd(EMACS if eval is None else f"{EMACS} --eval '({eval})'")
 
 
 def _script(script, terminal=None, path=SCRIPTS):
@@ -76,14 +97,7 @@ def _script(script, terminal=None, path=SCRIPTS):
     script = os.path.expanduser(os.path.join('~', path, script))
     if terminal is not None:
         script = terminal + ' ' + script
-    return lazy.spawn(script)
-
-
-def _cmd(command):
-    """
-        TODO
-    """
-    return lazy.spawn(command)
+    return _cmd(script)
 
 
 def _mocp(terminal):
@@ -106,27 +120,6 @@ def _mocp(terminal):
     return lazy.run_extension(command_set(commands=cmds, pre_commands=pre_cmds))
 
 
-def _sys(command):
-    """
-        TODO
-    """
-    return lazy.spawn(command), lazy.ungrab_chord()
-
-
-def _browser(browser):
-    """
-        TODO
-    """
-    return lazy.spawn(browser), lazy.ungrab_chord()
-
-
-def _rofi(modi):
-    """
-        TODO
-    """
-    return lazy.spawn("rofi -show " + modi), lazy.ungrab_chord()
-
-
 def init_keymap(mod, terminal):
     """
         A list of available commands that can be bound to keys can be found
@@ -137,8 +130,6 @@ def init_keymap(mod, terminal):
     MOD = [mod]
     km.extend(
         [
-            Key(MOD, 't', lazy.spawncmd(),                    desc="TODO"),
-            Key(MOD, 'd', _cmd(DMENU_RUN),                    desc="Spawn a command using a dmenu prompt"),
             Key(MOD, 'h', lazy.layout.left(),                 desc="Move focus to left"),
             Key(MOD, 'j', lazy.layout.down(),                 desc="Move focus down"),
             Key(MOD, 'k', lazy.layout.up(),                   desc="Move focus up"),
@@ -146,67 +137,78 @@ def init_keymap(mod, terminal):
             Key(MOD, 'u', lazy.to_screen(0),                  desc='Keyboard focus to monitor 1'),
             Key(MOD, 'i', lazy.to_screen(1),                  desc='Keyboard focus to monitor 2'),
             Key(MOD, 'o', lazy.to_screen(2),                  desc='Keyboard focus to monitor 3'),
-            Key(MOD, 'f', lazy.window.toggle_fullscreen(),    desc='toggle fullscreen'),
-            Key(MOD, 'w', lazy.run_extension(window_list()),  desc="TODO"),
-            Key(MOD, 'n', _cmd(terminal + EDITOR),            desc="TODO"),
-            Key(MOD, 'm', _mocp(terminal),                    desc="TODO"),
-            KeyChord(MOD, 'r', [
-                Key([], 'w', *_rofi("window"),                desc="TODO"),
-                Key([], 'r', *_rofi("run"),                   desc="TODO"),
-                Key([], 's', *_rofi("ssh"),                   desc="TODO"),
-                Key([], 'd', *_rofi("drun"),                  desc="TODO"),
-                Key([], 'c', *_rofi("combi"),                 desc="TODO"),
-                Key([], 'k', *_rofi("keys"),                  desc="TODO"),
-                Key([], 'f', *_rofi("filebrowser"),           desc="TODO"),
-                ],
-                mode=" ROFI"
-            ),
+
             KeyChord(MOD, 'b', [
-                Key([], 's', *_browser(SURF),                 desc="TODO"),
-                Key([], 'f', *_browser("firefox"),            desc="TODO"),
-                Key([], 'c', *_browser("chromium"),           desc="TODO"),
+                Key([], 'c', *_ucmd("chromium"),              desc="TODO"),
+                Key([], 'f', *_ucmd("firefox"),               desc="TODO"),
+                Key([], 's', *_ucmd(SURF),                    desc="TODO"),
                 ],
                 mode=" BROWSER"
             ),
-            KeyChord(MOD, 's', [
-                Key([], 't', *_sys(terminal),                 desc="TODO"),
-                Key([], 'c', *_sys(terminal + CHECK),         desc="TODO"),
-                Key([], 'u', *_sys(terminal + PACMAN),        desc="TODO"),
-                Key([], 'd', *_sys(terminal + NCDU),          desc="TODO"),
-                Key([], 'f', *_sys(terminal + DF),            desc="TODO"),
-                Key([], 'h', *_sys(terminal + HTOP),          desc="TODO"),
-                Key([], 'y', *_sys(terminal + CAL),           desc="TODO"),
-                Key([], 'n', *_sys(terminal + NMCLI),         desc="TODO"),
-                Key([], 'b', *_sys("blueman-manager"),        desc="TODO"),
-                ],
-                mode=" SYSTEM"
-            ),
+            Key(MOD, 'c', _cmd(CHAT),                         desc="TODO"),
+            Key(MOD, 'd', _cmd(DMRUN),                        desc="TODO"),
             KeyChord(MOD, 'e', [
-                Key([], 'e', *_emacs(),                       desc='Launch Emacs'),
+                Key([], 'a', *_emacs("org-agenda"),           desc='TODO'),
                 Key([], 'b', *_emacs("ibuffer"),              desc='Launch ibuffer inside Emacs'),
                 Key([], 'd', *_emacs("dired nil"),            desc='Launch dired inside Emacs'),
+                Key([], 'e', *_emacs(),                       desc='Launch Emacs'),
                 Key([], 'i', *_emacs("erc"),                  desc='Launch erc inside Emacs'),
                 Key([], 'm', *_emacs("mu4e"),                 desc='Launch mu4e inside Emacs'),
                 Key([], 'n', *_emacs("elfeed"),               desc='Launch elfeed inside Emacs'),
                 Key([], 's', *_emacs("eshell"),               desc='Launch the eshell inside Emacs'),
-                Key([], 'v', *_emacs("+vterm/here nil"),      desc='Launch vterm inside Emacs')
+                Key([], 'v', *_emacs("+vterm/here nil"),      desc='Launch vterm inside Emacs'),
                 ],
                 mode=" EMACS"
             ),
+            Key(MOD, 'f', lazy.window.toggle_fullscreen(),    desc='toggle fullscreen'),
+            Key(MOD, 'n', _cmd(terminal + NVIM),              desc="TODO"),
+            Key(MOD, 'm', _mocp(terminal),                    desc="TODO"),
             KeyChord(MOD, 'p', [
-                Key([], 'h', *_dmenu("dm-hub"),               desc='TODO'),
-                Key([], 'e', *_dmenu("dm-confedit"),          desc='Choose a config file to edit'),
-                Key([], 'i', *_dmenu("dm-maim"),              desc='Take screenshots via dmenu'),
-                Key([], 'k', *_dmenu("dm-kill"),              desc='Kill processes via dmenu'),
-                Key([], 'l', *_dmenu("dm-logout"),            desc='A logout menu'),
-                Key([], 'm', *_dmenu("dm-man"),               desc='Search manpages in dmenu'),
-                Key([], 'o', *_dmenu("dm-bookman"),           desc='Search your qutebrowser bookmarks and quickmarks'),
-                Key([], 'r', *_dmenu("dm-reddit"),            desc='Search reddit via dmenu'),
-                Key([], 's', *_dmenu("dm-websearch"),         desc='Search various search engines via dmenu'),
-                Key([], 'p', *_dmenu(PASSMENU),               desc='Retrieve passwords with dmenu')
+                Key([], 'c', *_ucmd(terminal + MACHO),        desc="TODO"),
+                Key([], 'e', *_ucmd("dm-confedit"),           desc='Choose a config file to edit'),
+                Key([], 'i', *_ucmd("dm-maim"),               desc='Take screenshots via dmenu'),
+                Key([], 'h', *_ucmd("dm-hub"),                desc='TODO'),
+                Key([], 'k', *_ucmd("dm-kill"),               desc='Kill processes via dmenu'),
+                Key([], 'l', *_ucmd("dm-logout"),             desc='A logout menu'),
+                Key([], 'm', *_ucmd("dm-man"),                desc='Search manpages in dmenu'),
+                Key([], 'o', *_ucmd("dm-bookman"),            desc='Search your qutebrowser bookmarks and quickmarks'),
+                Key([], 'p', *_ucmd(PASS),                    desc='Retrieve passwords with dmenu'),
+                Key([], 'r', *_ucmd("dm-reddit"),             desc='Search reddit via dmenu'),
+                Key([], 's', *_ucmd("dm-websearch"),          desc='Search various search engines via dmenu'),
+                Key([], 't', *_ucmd(terminal + WTLDR),        desc="TODO"),
                 ],
                 mode=" PROMPT"
             ),
+            KeyChord(MOD, 'r', [
+                Key([], 'c', *_rofi(modi="combi"),            desc="TODO"),
+                Key([], 'd', *_rofi(modi="drun"),             desc="TODO"),
+                Key([], 'f', *_rofi(modi="filebrowser"),      desc="TODO"),
+                Key([], 'k', *_rofi(modi="keys"),             desc="TODO"),
+                Key([], 'r', *_rofi(modi="run"),              desc="TODO"),
+                Key([], 's', *_rofi(modi="ssh"),              desc="TODO"),
+                Key([], 'w', *_rofi(modi="window"),           desc="TODO"),
+                ],
+                mode=" ROFI"
+            ),
+            KeyChord(MOD, 's', [
+                Key([], 'a', *_ucmd("alacritty"),             desc="TODO"),
+                Key([], 'b', *_ucmd("blueman-manager"),       desc="TODO"),
+                Key([], 'c', *_ucmd(terminal + CHECK),        desc="TODO"),
+                Key([], 'd', *_ucmd(terminal + TREE),         desc="TODO"),
+                Key([], 'f', *_ucmd(terminal + DISK),         desc="TODO"),
+                Key([], 'h', *_ucmd(terminal + PROC),         desc="TODO"),
+                Key([], 'k', *_ucmd("kitty"),                 desc="TODO"),
+                Key([], 'l', *_ucmd(terminal + LOG),          desc="TODO"),
+                Key([], 'm', *_ucmd(terminal + MIXER),        desc="TODO"),
+                Key([], 'n', *_ucmd(terminal + NET),          desc="TODO"),
+                Key([], 't', *_ucmd(terminal),                desc="TODO"),
+                Key([], 'u', *_ucmd(terminal + UPDT),         desc="TODO"),
+                Key([], 'y', *_ucmd(terminal + CAL),          desc="TODO"),
+                ],
+                mode=" SYSTEM"
+            ),
+            Key(MOD, 't', lazy.spawncmd(),                    desc="TODO"),
+            Key(MOD, 'w', lazy.run_extension(window_list()),  desc="TODO"),
             KeyChord(MOD, 'z', [
                 Key([], 'h',
                     lazy.layout.grow_left().when(layout=["COLS", " BSP"]),
@@ -232,28 +234,28 @@ def init_keymap(mod, terminal):
                 ],
                 mode=" RESIZE"
             ),
-            Key(MOD, SPC, lazy.layout.next(),                 desc="Move window focus to other window"),
-            Key(MOD, RET, _cmd(terminal),                     desc="Launch terminal"),
-            Key(MOD, TAB, lazy.next_layout(),                 desc="Toggle between layouts"),
-            Key(MOD, PER, lazy.next_screen(),                 desc='Move focus to next monitor'),
-            Key(MOD, COM, lazy.prev_screen(),                 desc='Move focus to prev monitor'),
-            Key(MOD, BCL, lazy.screen.prev_group(),           desc='TODO'),
-            Key(MOD, BCR, lazy.screen.next_group(),           desc='TODO'),
-            Key(MOD, SLH, lazy.screen.toggle_group(),         desc='TODO'),
-            Key(MOD, F1,  _cmd("brightnessctl s 8-"),         desc="brightness of the main screen down."),
-            Key(MOD, F2,  _cmd("brightnessctl s 8+"),         desc="brightness of the main screen up."),
-            Key(MOD, F3,  _script("hdmi.brightness.sh -"),    desc="brightness of the second screen down."),
-            Key(MOD, F4,  _script("hdmi.brightness.sh +"),    desc="brightness of the second screen up."),
-            Key(MOD, F5,  _script("screenshot.sh window"),    desc="take a screenshot of everything or chose a window."),
-            Key(MOD, F6,  _script("screenshot.sh full"),      desc="take a screenshot of everything or chose a window."),
-            Key(MOD, F7,  _script("slock-cst.sh"),            desc="lock the computer."),
-            Key(MOD, F8,  _script("lfrun.sh", terminal),      desc="my file explorer."),
-            Key(MOD, F9,  _cmd(KILL_XAUTOLOCK),               desc="TODO"),
-            Key(MOD, F10, _cmd(AUTOSTART),                    desc="TODO"),
+            Key(MOD, SPC, lazy.layout.next(),               desc="Move window focus to other window"),
+            Key(MOD, RET, _cmd(terminal),                   desc="Launch terminal"),
+            Key(MOD, TAB, lazy.next_layout(),               desc="Toggle between layouts"),
+            Key(MOD, PER, lazy.next_screen(),               desc='Move focus to next monitor'),
+            Key(MOD, COM, lazy.prev_screen(),               desc='Move focus to prev monitor'),
+            Key(MOD, BCL, lazy.screen.prev_group(),         desc='TODO'),
+            Key(MOD, BCR, lazy.screen.next_group(),         desc='TODO'),
+            Key(MOD, SLH, lazy.screen.toggle_group(),       desc='TODO'),
+            Key(MOD, F1,  _cmd("brightnessctl s 8-"),       desc="brightness of the main screen down."),
+            Key(MOD, F2,  _cmd("brightnessctl s 8+"),       desc="brightness of the main screen up."),
+            Key(MOD, F3,  _script("hdmi.brightness.sh -"),  desc="brightness of the second screen down."),
+            Key(MOD, F4,  _script("hdmi.brightness.sh +"),  desc="brightness of the second screen up."),
+            Key(MOD, F5,  _script("screenshot.sh window"),  desc="take a screenshot of everything or chose a window."),
+            Key(MOD, F6,  _script("screenshot.sh full"),    desc="take a screenshot of everything or chose a window."),
+            Key(MOD, F7,  _script("slock-cst.sh"),          desc="lock the computer."),
+            Key(MOD, F8,  _script("lfrun.sh", terminal),    desc="my file explorer."),
+            Key(MOD, F9,  _cmd(KLOCK),                      desc="TODO"),
+            Key(MOD, F10, _cmd(START),                      desc="TODO"),
             Key(MOD, F11, _script(
-                "qtile-change-theme.sh",
-                terminal + " --hold",
-                ".config/qtile/scripts"),                     desc="TODO"),
+                script="qtile-change-theme.sh",
+                terminal=terminal + " --hold",
+                path=".config/qtile/scripts"),              desc="TODO"),
         ]
     )
     MOD = [mod, CON]
@@ -290,8 +292,8 @@ def init_keymap(mod, terminal):
                 lazy.layout.shuffle_down().when(layout="WIDE"),
                 lazy.layout.swap_right().when(layout="TALL"),                     desc="TODO"),
             Key(MOD, "c", lazy.window.kill(),                                     desc="Kill focused window"),
-            Key(MOD, "r", lazy.restart(),                                         desc="Restarting Qtile"),
             Key(MOD, "f", lazy.window.toggle_floating(),                          desc='toggle floating'),
+            Key(MOD, "r", lazy.restart(),                                         desc="Restarting Qtile"),
             Key(MOD, TAB, lazy.prev_layout(),                                     desc="Toggle between layouts"),
         ]
     )

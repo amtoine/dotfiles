@@ -13,7 +13,6 @@ brightnessctl
 bspwm
 catimg
 chromium
-clang
 clipmenu
 cmake
 cmatrix
@@ -37,6 +36,7 @@ gimp
 github-cli
 grub
 gtk4
+helm
 htop
 hugo
 kolourpaint
@@ -58,10 +58,13 @@ ponysay
 prettier
 protobuf
 python-black
+python-isort
 python-mpi4py
+python-nose
 python-opengl
+python-pipenv
+python-pytest
 python-tqdm
-python-virtualenv
 python2
 qtile
 read-edid

@@ -906,8 +906,8 @@ def list_right_widgets(terminal):
         TODO
     """
     return [
-        [_prompt,        dict(**wt.prompt)],
         [_chord,         dict(**wt.chord)],
+        [_prompt,        dict(**wt.prompt)],
         [_check_updates, dict(**wt.check_updates,  terminal=terminal)],
         [_df,            dict(**wt.df,             terminal=terminal)],
         [_wlan,          dict(**wt.wlan,           terminal=terminal)],

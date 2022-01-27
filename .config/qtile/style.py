@@ -6,11 +6,6 @@ from utils import font_sizes
 from theme import theme
 
 
-_clock_format = " %a, %m/%d/%y - %H:%M "
-_clock_format = " %m/%d  %H:%M"
-_battery_format = "{char} {percent:2.0%} {hour:d}:{min:02d}"
-_battery_format = "{char}{percent:2.0%}"
-
 _group_box_misc_colors = {
     "active":        theme.sel_bg,
     "inactive":      theme.bg,
@@ -23,22 +18,28 @@ _group_box_misc_colors = {
     "urgent_border": theme.color9,
     "urgent_text":   theme.color9
 }
+_battery_fmt = "{char} {percent:2.0%} {hour:d}:{min:02d}"
+_battery_fmt = "{char}{percent:2.0%}"
+_clock_fmt = " %a, %m/%d/%y - %H:%M "
+_clock_fmt = " %m/%d  %H:%M"
+_count_fmt = "{}"
+_qexit_fmt = "襤"
 WIDGETS = WidgetTheme(**{
     "current_layout": {"bg": theme.sel_bg,  "fg": theme.sel_fg},
     "current_screen": {"bg": theme.bg,      "fg": theme.fg,      "active": theme.color10, "inactive": theme.color9},
     "group_box":      {"bg": theme.bg,      "fg": theme.fg,      **_group_box_misc_colors},
     "window_name":    {"bg": theme.sel_bg,  "fg": theme.sel_fg},
 
+    "chord":          {"bg": theme.bg,      "fg": theme.color1},
     "prompt":         {"bg": theme.bg,      "fg": theme.color0},
-    "chord":          {"bg": theme.bg,      "fg": theme.color0},
     "check_updates":  {"bg": theme.bg,      "fg": theme.color8},
     "df":             {"bg": theme.bg,      "fg": theme.color7},
     "wlan":           {"bg": theme.bg,      "fg": theme.color2},
     "net":            {"bg": theme.bg,      "fg": theme.color3},
     "cpu":            {"bg": theme.bg,      "fg": theme.color7},
-    "clock":          {"bg": theme.bg,      "fg": theme.color13,  "format": _clock_format},
-    "battery":        {"bg": theme.bg,      "fg": theme.color6,   "format": _battery_format},
-    "quick_exit":     {"bg": theme.bg,      "fg": theme.color0,   "text": "襤", "countdown": "{}"},
+    "clock":          {"bg": theme.bg,      "fg": theme.color13,  "format": _clock_fmt},
+    "battery":        {"bg": theme.bg,      "fg": theme.color6,   "format": _battery_fmt},
+    "quick_exit":     {"bg": theme.bg,      "fg": theme.color0,   "text": _qexit_fmt, "countdown": _count_fmt},
 
     "image":          {"bg": theme.bg},
     "systray":        {"bg": theme.color2},
@@ -70,13 +71,14 @@ LAYOUTS = LayoutTheme(
 )
 
 FONT = "mononoki Nerd Font"
+DMFONT = "mononoki Nerd Font-20"
 ARROW_SIZE, SIZE = font_sizes.medium
 
 _bar_width = LAYOUTS.border_width // 2
 _border = (0, 0, 1, 0)
 BAR = dict(
     size=SIZE,
-    opacity=.8,
+    opacity=1,
     background=theme.bg,
     margin=[0, 0, 0, 0],         # N E S W
     border_width=list(map(lambda x: x * _bar_width, _border)),

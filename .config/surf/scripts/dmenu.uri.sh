@@ -16,4 +16,6 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
-tac ~/.config/surf/history.txt | dmenu -l 10 -b -i | awk '{ print $2 }'
+DMFONT="mononoki Nerd Font-15"
+
+tac ~/.config/surf/history.txt | dmenu -fn "$DMFONT" -l 10 -b -i | awk '{ print $2 }'
