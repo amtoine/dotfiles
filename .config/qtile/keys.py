@@ -60,6 +60,7 @@ CHAT = os.path.expanduser(_DISCORD)
 MIXER = " alsamixer"
 MACHO = ' ' + os.path.expanduser("~/scripts/macho.sh")
 WTLDR = ' ' + os.path.expanduser("~/scripts/wtldr.sh")
+KB = ' ' + os.path.expanduser("~/.config/qtile/scripts/qtile-kb.sh")
 
 
 def _cmd(command):
@@ -137,7 +138,6 @@ def init_keymap(mod, terminal):
             Key(MOD, 'u', lazy.to_screen(0),                  desc='Keyboard focus to monitor 1'),
             Key(MOD, 'i', lazy.to_screen(1),                  desc='Keyboard focus to monitor 2'),
             Key(MOD, 'o', lazy.to_screen(2),                  desc='Keyboard focus to monitor 3'),
-
             KeyChord(MOD, 'b', [
                 Key([], 'c', *_ucmd("chromium"),              desc="TODO"),
                 Key([], 'f', *_ucmd("firefox"),               desc="TODO"),
@@ -164,6 +164,7 @@ def init_keymap(mod, terminal):
             Key(MOD, 'n', _cmd(terminal + NVIM),              desc="TODO"),
             Key(MOD, 'm', _mocp(terminal),                    desc="TODO"),
             KeyChord(MOD, 'p', [
+                Key([], 'b', *_ucmd(terminal + KB),           desc="TODO"),
                 Key([], 'c', *_ucmd(terminal + MACHO),        desc="TODO"),
                 Key([], 'e', *_ucmd("dm-confedit"),           desc='Choose a config file to edit'),
                 Key([], 'i', *_ucmd("dm-maim"),               desc='Take screenshots via dmenu'),

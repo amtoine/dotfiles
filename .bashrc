@@ -169,7 +169,7 @@ source $OSH/oh-my-bash.sh
 #      ____/ /_ / __/_    / / / / / / (__  ) /__
 #     /_____/(_)____(_)  /_/ /_/ /_/_/____/\___/
 
-export PATH=$HOME/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.cargo/bin:$HOME/.config/qtile/scripts:$PATH
+export PATH=$HOME/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.cargo/bin:$PATH
 
 # changes the editor in the terminal, to edit long commands.
 export EDITOR='nvim'
