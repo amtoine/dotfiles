@@ -18,27 +18,25 @@
 
 from utils import ColorScheme
 theme = ColorScheme(**{
-    "bg":       "#2b2c2e",
-    "fg":       "#d2d8d9",
-    "cursor":   "#708183",
-    "sel_bg":   "#e3e8ed",
-    "color0":   "#7c8a8f",  # grey
-    "color8":   "#888888",
-    "color1":   "#b23a51",  # red
-    "color9":   "#f24840",
-    "color2":   "#789a69",  # green
-    "color10":  "#80c46f",
-    "color3":   "#b9ab4a",  # yellow
-    "color11":  "#ffeb62",
-    "color4":   "#2a7fac",  # blue
-    "color12":  "#4095ff",
-    "color5":   "#bc4f5a",  # magenta
-    "color13":  "#fb5175",
-    "color6":   "#44a799",  # cyan
-    "color14":  "#52ccbd",
-    "color7":   "#d2d8d9",  # white
-    "color15":  "#d2d8d9",
-    "sel_fg":   "#2b2c2e",
+    "bg": "#000000",
+    "fg": "#ffffff",
+    "sel_bg": "#b4d5ff",
+    "color0": "#868686",
+    "color8": "#545454",
+    "color1": "#ff6600",
+    "color9": "#ff0000",
+    "color2": "#ccff04",
+    "color10": "#00ff00",
+    "color3": "#ffcc00",
+    "color11": "#ffff00",
+    "color4": "#44b3cc",
+    "color12": "#0000ff",
+    "color5": "#9933cc",
+    "color13": "#ff00ff",
+    "color6": "#44b3cc",
+    "color14": "#00ffff",
+    "color7": "#f4f4f4",
+    "color15": "#e5e5e5",
+    "sel_fg": "#000000",
 })
-# remote:  https://raw.githubusercontent.com/kovidgoyal/kitty-themes/master
-# current: themes/Chalk.conf
+# current: VibrantInk.conf

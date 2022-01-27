@@ -1,6 +1,10 @@
+dbus-python
+ebook-tools
 hunspell
 i3-wm
 kio-extras
 mpdecimal
 pipewire-media-session
+python-docutils
+python-pygments
 python-pyxdg

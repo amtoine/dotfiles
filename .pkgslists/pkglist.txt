@@ -126,7 +126,6 @@ xorg-xpr
 xorg-xrefresh
 xorg-xsetroot
 xorg-xvinfo
-xorg-xwayland
 xorg-xwd
 xorg-xwud
 xscreensaver

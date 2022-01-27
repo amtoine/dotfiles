@@ -2,4 +2,4 @@
 
 qtile_current="$HOME/.config/qtile/theme.py"
 
-tail -n2 $qtile_current
+tail -n1 $qtile_current | sed 's/# current: \(.*\).conf/\1/'
