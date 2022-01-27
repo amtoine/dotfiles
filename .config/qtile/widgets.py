@@ -14,6 +14,9 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
+import os
+import subprocess
+
 from libqtile import qtile
 from libqtile import widget
 
@@ -32,6 +35,213 @@ def init_widget_defaults():
         font=FONT,
         fontsize=40,
         padding=3,
+    )
+
+
+class Entropy(widget.base.ThreadPoolText):
+    """
+    A simple widget to display the entropy of the system.
+
+    Widget requirements: subprocess
+
+    """
+    defaults = [
+        ("update_interval", 1.0, "Update interval for the Entropy widget"),
+        (
+            "format", "ENTROPY {entropy}", "Entropy display format",
+        ),
+    ]
+
+    def __init__(self, **config):
+        super().__init__("", **config)
+        self.add_defaults(Entropy.defaults)
+
+    def poll(self):
+        variables = dict()
+
+        entropy = subprocess.check_output(["cat", "/proc/sys/kernel/random/entropy_avail"])
+        # variables["entropy"] = str(entropy).strip()
+        variables["entropy"] = int(entropy.decode("utf-8").strip())
+
+        return self.format.format(**variables)
+
+
+def _entropy(bg="#000000", fg="#ffffff"):
+    """
+        A simple widget to display the entropy of the system.
+
+        Widget requirements: subprocess
+    """
+    return Entropy(
+        background=bg,        # Widget background color
+        fmt="{}",             # How to format the text
+        font=FONT,            # Default font
+        fontsize=None,        # Font size. Calculated if None.
+        foreground=fg,        # Foreground colour
+        format=" {entropy:>4d}",  # How to format the text
+        fontshadow=None,      # font shadow color, default is None(no shadow)
+        markup=True,          # Whether or not to use pango markup
+        max_chars=0,          # Maximum number of characters to display in widget.
+        mouse_callbacks={},   # Dict of mouse button press callback functions. Accepts functions and ``lazy`` calls.
+        padding=None,         # Padding. Calculated if None.
+    )
+
+
+class MOC(widget.base.ThreadPoolText):
+    """
+    A simple widget to interact with the moc music player.
+
+    Widget requirements: the moc music player, subprocess
+
+    """
+    defaults = [
+        ("update_interval", 1.0, "Update interval for the MOC widget"),
+        (
+            "format", "{state} {title} {ct}", "MOC display format",
+        ),
+    ]
+
+    def __init__(self, **config):
+        super().__init__("", **config)
+        self.add_defaults(MOC.defaults)
+
+    def poll(self):
+        sep = "__SEP__"
+        fmt = sep.join(["%state", "%file", "%title", "%artist", "%song", "%album", "%tt", "%tl", "%ts", "%ct", "%cs", "%b", "%r"])
+        try:
+            moc_state = subprocess.check_output(["mocp", f"-Q {fmt}"]).decode("utf-8").strip()
+        except subprocess.CalledProcessError:
+            moc_state = "FATAL_ERROR"
+
+        if moc_state == "FATAL_ERROR":
+            return ""
+
+        variables = dict()
+        state, file, title, artist, song, album, tt, tl, ts, ct, cs, b, r = moc_state.split(sep)
+        variables["state"] = "" if state == "PAUSE" else "" if state == "PLAY" else "?"
+        variables["file"] = file
+        variables["title"] = title
+        variables["artist"] = artist
+        variables["song"] = song
+        variables["album"] = album
+        variables["tt"] = tt
+        variables["tl"] = tl
+        variables["ts"] = ts
+        variables["ct"] = ct
+        variables["cs"] = cs
+        variables["b"] = b
+        variables["r"] = r
+
+        return self.format.format(**variables)
+
+
+def _moc(terminal, bg="#000000", fg="#ffffff"):
+    """
+    """
+    return MOC(
+        background=bg,          # Widget background color
+        fmt="{}",               # How to format the text
+        font=FONT,              # Default font
+        fontsize=None,          # Font size. Calculated if None.
+        foreground=fg,          # Foreground colour
+        format="{state} {ct}",  # How to format the text
+        fontshadow=None,        # font shadow color, default is None(no shadow)
+        markup=True,            # Whether or not to use pango markup
+        max_chars=10,           # Maximum number of characters to display in widget.
+        mouse_callbacks={
+            'Button1': lambda: qtile.cmd_spawn("mocp -G"),
+            'Button2': lambda: qtile.cmd_spawn(terminal + " mocp"),
+            'Button3': lambda: qtile.cmd_spawn(terminal + " -d " + os.path.expanduser("~/music")),
+            'Button4': lambda: qtile.cmd_spawn("mocp -f"),
+            'Button5': lambda: qtile.cmd_spawn("mocp -r"),
+        },                      # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        padding=None,           # Padding. Calculated if None.
+    )
+
+
+def _notify(bg="#000000", fg="#ffffff"):
+    """
+        class libqtile.widget.Notify(width=CALCULATED, **config)[source]
+        A notify widget
+
+        This widget can handle actions provided by notification clients.
+        However, only the default action is supported, so if a client provides
+        multiple actions then only the default (first) action can be invoked.
+        Some programs will provide their own notification windows if the
+        notification server does not support actions, so if you want your
+        notifications to handle more than one action then specify False for the
+        action option to disable all action handling. Unfortunately we cannot
+        specify the capability for exactly one action.
+        Supported bar orientations: horizontal and vertical
+    """
+    return widget.Notify(
+        action=True,                 # Enable handling of default action upon right click
+        audiofile=None,              # Audiofile played during notifications
+        background=bg,               # Widget background color
+        default_timeout=None,        # Default timeout (seconds) for notifications
+        fmt='{}',                    # How to format the text
+        font=FONT,                   # Default font
+        fontshadow=None,             # font shadow color, default is None(no shadow)
+        fontsize=None,               # Font size. Calculated if None.
+        foreground=fg,               # Foreground colour
+        foreground_low='dddddd',     # Foreground low priority colour
+        foreground_urgent='ff0000',  # Foreground urgent priority colour
+        markup=True,                 # Whether or not to use pango markup
+        max_chars=0,                 # Maximum number of characters to display in widget.
+        mouse_callbacks={},          # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        padding=None,                # Padding. Calculated if None.
+        parse_text=None,             # Function to parse and modify notifications. e.g. function in config that removes line returns:def my_func(text) return text.replace('n', '')then set option parse_text=my_func
+    )
+
+
+def _genpolltext(bg="#000000", fg="#ffffff"):
+    """
+        class libqtile.widget.GenPollText(**config)[source]
+        A generic text widget that polls using poll function to get the text
+        Supported bar orientations: horizontal and vertical
+    """
+    return widget.GenPollText(
+        background=bg,        # Widget background color
+        fmt='{}',             # How to format the text
+        font=FONT,            # Default font
+        fontshadow=None,      # font shadow color, default is None(no shadow)
+        fontsize=None,        # Font size. Calculated if None.
+        foreground=fg,        # Foreground colour
+        func=None,            # Poll Function
+        markup=True,          # Whether or not to use pango markup
+        max_chars=0,          # Maximum number of characters to display in widget.
+        mouse_callbacks={},   # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        padding=None,         # Padding. Calculated if None.
+        update_interval=600,  # Update interval in seconds, if none, the widget updates whenever it's done.
+    )
+
+
+def _genpollurl(bg="#000000", fg="#ffffff"):
+    """
+        class libqtile.widget.GenPollUrl(**config)[source]
+        A generic text widget that polls an url and parses it using parse
+        function
+        Supported bar orientations: horizontal and vertical
+    """
+    return widget.GenPollUrl(
+        background=bg,        # Widget background color
+        data=None,            # Post Data
+        fmt='{}',             # How to format the text
+        font=FONT,            # Default font
+        fontshadow=None,      # font shadow color, default is None(no shadow)
+        fontsize=None,        # Font size. Calculated if None.
+        foreground=fg,        # Foreground colour
+        headers={},           # Extra Headers
+        json=True,            # Is Json?
+        markup=True,          # Whether or not to use pango markup
+        max_chars=0,          # Maximum number of characters to display in widget.
+        mouse_callbacks={},   # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        padding=None,         # Padding. Calculated if None.
+        parse=None,           # Parse Function
+        update_interval=600,  # Update interval in seconds, if none, the widget updates whenever it's done.
+        url=None,             # Url
+        user_agent='Qtile',   # Set the user agent
+        xml=False,            # Is XML?
     )
 
 
@@ -225,7 +435,7 @@ def _volume(bg="#000000", fg="#ffffff"):
         channel='Master',          # Channel
         device='default',          # Device Name
         emoji=False,               # Use emoji to display volume states, only if theme_path is not set.The specified font needs to contain the correct unicode characters.
-        fmt=' {}',                # How to format the text
+        fmt=' {:>3s}',            # How to format the text
         font=FONT,                 # Default font
         fontshadow=None,           # font shadow color, default is None(no shadow)
         fontsize=None,             # Font size. Calculated if None.
@@ -910,9 +1120,12 @@ def list_right_widgets(terminal):
         [_prompt,        dict(**wt.prompt)],
         [_check_updates, dict(**wt.check_updates,  terminal=terminal)],
         [_df,            dict(**wt.df,             terminal=terminal)],
+        [_volume,        dict(**wt.volume)],
+        [_moc,           dict(**wt.moc,            terminal=terminal)],
         [_wlan,          dict(**wt.wlan,           terminal=terminal)],
         [_net,           dict(**wt.net)],
         [_cpu,           dict(**wt.cpu,            terminal=terminal)],
+        [_entropy,       dict(**wt.entropy)],
         [_clock,         dict(**wt.clock,          terminal=terminal)],
         [_battery,       dict(**wt.battery)],
         [_quick_exit,    dict(**wt.quick_exit)],
