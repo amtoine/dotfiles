@@ -34,9 +34,11 @@ if [[ -f "$cache" ]]; then
     sed "s/^<root> /<root>:/g;" | \
     sed "s/^BROWSER /BROWSER:/g;" | \
     sed "s/^EMACS /EMACS:/g;" | \
+    sed "s/^MUSIC /MUSIC:/g;" | \
     sed "s/^PROMPT /PROMPT:/g;" | \
-    sed "s/^ROFI /ROFI:/g;" | \
+    sed "s/^QTILE /QTILE:/g;" | \
     sed "s/^RESIZE /RESIZE:/g;" | \
+    sed "s/^ROFI /ROFI:/g;" | \
     sed "s/^SYSTEM /SYSTEM:/g;" | \
 
     sed "s/@/@     /g;" | \

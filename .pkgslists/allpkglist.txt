@@ -91,6 +91,7 @@ nerd-fonts-mononoki
 nethack
 network-manager-applet
 networkmanager
+ngrok
 nmap
 npm
 ntfs-3g

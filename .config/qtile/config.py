@@ -28,6 +28,7 @@ from keys import init_keymap
 from layouts import init_layouts
 from mouse import init_mouse
 from screens import init_screens
+from style import LAYOUTS as lt
 from widgets import init_widget_defaults
 
 mod = "mod4"
@@ -64,7 +65,11 @@ floating_layout = layout.Floating(
         Match(wm_class='pinentry-gtk-2'),  # gitk
         Match(wm_class='mpv'),             # mpv
         Match(title="mocp"),               # mocp
-    ])
+    ],
+    border_focus=lt.floating.focus,    # Border colour(s) for the focused window.
+    border_normal=lt.floating.normal,  # Border colour(s) for un-focused windows.
+    border_width=lt.border_width,      # Border width.
+    )
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True

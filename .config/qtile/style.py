@@ -57,13 +57,13 @@ _layouts = {
     "columns":    {"focus": theme.color12, "normal": theme.color2, "focus_stack": theme.color1, "normal_stack": theme.color8},
     "monad_tall": {"focus": theme.color1,  "normal": theme.color2},
     "monad_wide": {"focus": theme.color1,  "normal": theme.color2},
+    "floating":   {"focus": theme.color12, "normal": theme.color2},
 
-    "ratio":      {"focus": theme.color1, "normal": theme.color2},
-    "stack":      {"focus": theme.color1, "normal": theme.color2},
-    "tile":       {"focus": theme.color1, "normal": theme.color2},
-    "vertical":   {"focus": theme.color1, "normal": theme.color2},
-    "floating":   {"focus": theme.color1, "normal": theme.color2},
-    "matrix":     {"focus": theme.color1, "normal": theme.color2},
+    "ratio":      {"focus": theme.color1,  "normal": theme.color2},
+    "stack":      {"focus": theme.color1,  "normal": theme.color2},
+    "tile":       {"focus": theme.color1,  "normal": theme.color2},
+    "vertical":   {"focus": theme.color1,  "normal": theme.color2},
+    "matrix":     {"focus": theme.color1,  "normal": theme.color2},
 }
 
 LAYOUTS = LayoutTheme(

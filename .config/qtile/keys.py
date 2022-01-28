@@ -21,7 +21,6 @@ from libqtile.config import KeyChord
 from libqtile.lazy import lazy
 
 from extensions import window_list
-from extensions import command_set
 from style import BAR
 from style import DMFONT
 
@@ -61,6 +60,9 @@ MIXER = " alsamixer"
 MACHO = ' ' + os.path.expanduser("~/scripts/macho.sh")
 WTLDR = ' ' + os.path.expanduser("~/scripts/wtldr.sh")
 KB = ' ' + os.path.expanduser("~/.config/qtile/scripts/qtile-kb.sh")
+SOUNDUP = "amixer -c 0 set Master 1db+ -q"
+SOUNDDOWN = "amixer -c 0 set Master 1db- -q"
+MUTE = "pactl -- set-sink-mute 0 toggle"
 
 
 def _cmd(command):
@@ -99,26 +101,6 @@ def _script(script, terminal=None, path=SCRIPTS):
     if terminal is not None:
         script = terminal + ' ' + script
     return _cmd(script)
-
-
-def _mocp(terminal):
-    """
-        TODO
-    """
-    cmds = {
-        # "play/pause": "[ $(mocp -i | wc -l) -lt 2 ] && mocp -p || mocp -G",
-        "play/pause": "mocp -G",
-        "next":       "mocp -f",
-        "previous":   "mocp -r",
-        "quit":       "mocp -x",
-        "start":      "mocp -S",
-        "open":        terminal + " mocp",
-        "shuffle":    "mocp -t shuffle",
-        "repeat":     "mocp -t repeat",
-    }
-    pre_cmds = ["[ $(mocp -i | wc -l) -lt 1 ] && mocp -S"]
-    # pre_cmds = ["mocp -S"]
-    return lazy.run_extension(command_set(commands=cmds, pre_commands=pre_cmds))
 
 
 def init_keymap(mod, terminal):
@@ -162,9 +144,19 @@ def init_keymap(mod, terminal):
             ),
             Key(MOD, 'f', lazy.window.toggle_fullscreen(),    desc='toggle fullscreen'),
             Key(MOD, 'n', _cmd(terminal + NVIM),              desc="TODO"),
-            Key(MOD, 'm', _mocp(terminal),                    desc="TODO"),
+            KeyChord(MOD, 'm', [
+                Key([], 'p', *_ucmd("mocp -G"),               desc="TODO"),
+                Key([], 'n', *_ucmd("mocp -f"),               desc="TODO"),
+                Key([], 'b', *_ucmd("mocp -r"),               desc="TODO"),
+                Key([], 'q', *_ucmd("mocp -x"),               desc="TODO"),
+                Key([], 'u', *_ucmd("mocp -S"),               desc="TODO"),
+                Key([], 'o', *_ucmd(terminal + " mocp"),      desc="TODO"),
+                Key([], 's', *_ucmd("mocp -t shuffle"),       desc="TODO"),
+                Key([], 'r', *_ucmd("mocp -t repeat"),        desc="TODO"),
+                ],
+                mode=" MUSIC"
+            ),
             KeyChord(MOD, 'p', [
-                Key([], 'b', *_ucmd(terminal + KB),           desc="TODO"),
                 Key([], 'c', *_ucmd(terminal + MACHO),        desc="TODO"),
                 Key([], 'e', *_ucmd("dm-confedit"),           desc='Choose a config file to edit'),
                 Key([], 'i', *_ucmd("dm-maim"),               desc='Take screenshots via dmenu'),
@@ -179,6 +171,19 @@ def init_keymap(mod, terminal):
                 Key([], 't', *_ucmd(terminal + WTLDR),        desc="TODO"),
                 ],
                 mode=" PROMPT"
+            ),
+            KeyChord(MOD, 'q', [
+                Key([], 'k', *_ucmd(terminal + KB),           desc="TODO"),
+                Key([], 'l', *_ucmd(terminal + LOG),          desc="TODO"),
+                Key([], 's', *_ucmd(START),                   desc="TODO"),
+                Key([], 't', _script(
+                    script="qtile-change-theme.sh",
+                    terminal=terminal + " --hold",
+                    path=".config/qtile/scripts"),
+                    lazy.ungrab_chord(),                      desc="TODO"),
+                Key([], 'x', *_ucmd(KLOCK),                   desc="TODO"),
+                ],
+                mode="  QTILE"
             ),
             KeyChord(MOD, 'r', [
                 Key([], 'c', *_rofi(modi="combi"),            desc="TODO"),
@@ -199,7 +204,6 @@ def init_keymap(mod, terminal):
                 Key([], 'f', *_ucmd(terminal + DISK),         desc="TODO"),
                 Key([], 'h', *_ucmd(terminal + PROC),         desc="TODO"),
                 Key([], 'k', *_ucmd("kitty"),                 desc="TODO"),
-                Key([], 'l', *_ucmd(terminal + LOG),          desc="TODO"),
                 Key([], 'm', *_ucmd(terminal + MIXER),        desc="TODO"),
                 Key([], 'n', *_ucmd(terminal + NET),          desc="TODO"),
                 Key([], 't', *_ucmd(terminal),                desc="TODO"),
@@ -249,14 +253,12 @@ def init_keymap(mod, terminal):
             Key(MOD, F4,  _script("hdmi.brightness.sh +"),  desc="brightness of the second screen up."),
             Key(MOD, F5,  _script("screenshot.sh window"),  desc="take a screenshot of everything or chose a window."),
             Key(MOD, F6,  _script("screenshot.sh full"),    desc="take a screenshot of everything or chose a window."),
-            Key(MOD, F7,  _script("slock-cst.sh"),          desc="lock the computer."),
-            Key(MOD, F8,  _script("lfrun.sh", terminal),    desc="my file explorer."),
-            Key(MOD, F9,  _cmd(KLOCK),                      desc="TODO"),
-            Key(MOD, F10, _cmd(START),                      desc="TODO"),
-            Key(MOD, F11, _script(
-                script="qtile-change-theme.sh",
-                terminal=terminal + " --hold",
-                path=".config/qtile/scripts"),              desc="TODO"),
+            Key(MOD, F7,  _cmd(SOUNDDOWN),                  desc="TODO"),
+            Key(MOD, F8,  _cmd(MUTE),                       desc="TODO"),
+            Key(MOD, F9,  _cmd(SOUNDUP),                    desc="TODO"),
+
+            Key(MOD, F11,  _script("lfrun.sh", terminal),   desc="my file explorer."),
+            Key(MOD, F12, _script("slock-cst.sh"),          desc="lock the computer."),
         ]
     )
     MOD = [mod, CON]

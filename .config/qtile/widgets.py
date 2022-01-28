@@ -20,6 +20,7 @@ import subprocess
 from libqtile import qtile
 from libqtile import widget
 
+from keys import MIXER
 from utils import fetch_monitors
 from style import WIDGETS as wt
 from style import theme
@@ -73,17 +74,17 @@ def _entropy(bg="#000000", fg="#ffffff"):
         Widget requirements: subprocess
     """
     return Entropy(
-        background=bg,        # Widget background color
-        fmt="{}",             # How to format the text
-        font=FONT,            # Default font
-        fontsize=None,        # Font size. Calculated if None.
-        foreground=fg,        # Foreground colour
+        background=bg,             # Widget background color
+        fmt="{}",                  # How to format the text
+        font=FONT,                 # Default font
+        fontsize=None,             # Font size. Calculated if None.
+        foreground=fg,             # Foreground colour
         format=" {entropy:>4d}",  # How to format the text
-        fontshadow=None,      # font shadow color, default is None(no shadow)
-        markup=True,          # Whether or not to use pango markup
-        max_chars=0,          # Maximum number of characters to display in widget.
-        mouse_callbacks={},   # Dict of mouse button press callback functions. Accepts functions and ``lazy`` calls.
-        padding=None,         # Padding. Calculated if None.
+        fontshadow=None,           # font shadow color, default is None(no shadow)
+        markup=True,               # Whether or not to use pango markup
+        max_chars=0,               # Maximum number of characters to display in widget.
+        mouse_callbacks={},        # Dict of mouse button press callback functions. Accepts functions and ``lazy`` calls.
+        padding=None,              # Padding. Calculated if None.
     )
 
 
@@ -108,17 +109,18 @@ class MOC(widget.base.ThreadPoolText):
     def poll(self):
         sep = "__SEP__"
         fmt = sep.join(["%state", "%file", "%title", "%artist", "%song", "%album", "%tt", "%tl", "%ts", "%ct", "%cs", "%b", "%r"])
+        states = {"PAUSE": '', "PLAY": '', "STOP": ''}
         try:
             moc_state = subprocess.check_output(["mocp", f"-Q {fmt}"]).decode("utf-8").strip()
         except subprocess.CalledProcessError:
             moc_state = "FATAL_ERROR"
 
         if moc_state == "FATAL_ERROR":
-            return ""
+            return ''
 
         variables = dict()
         state, file, title, artist, song, album, tt, tl, ts, ct, cs, b, r = moc_state.split(sep)
-        variables["state"] = "" if state == "PAUSE" else "" if state == "PLAY" else "?"
+        variables["state"] = states[state] if state in states else '?'
         variables["file"] = file
         variables["title"] = title
         variables["artist"] = artist
@@ -154,6 +156,8 @@ def _moc(terminal, bg="#000000", fg="#ffffff"):
             'Button3': lambda: qtile.cmd_spawn(terminal + " -d " + os.path.expanduser("~/music")),
             'Button4': lambda: qtile.cmd_spawn("mocp -f"),
             'Button5': lambda: qtile.cmd_spawn("mocp -r"),
+            'Button6': lambda: qtile.cmd_spawn("mocp -k -10"),
+            'Button7': lambda: qtile.cmd_spawn("mocp -k +10"),
         },                      # Dict of mouse button press callback functions. Accepts functions and lazy calls.
         padding=None,           # Padding. Calculated if None.
     )
@@ -419,7 +423,7 @@ def _memory(terminal, bg="#000000", fg="#ffffff"):
     )
 
 
-def _volume(bg="#000000", fg="#ffffff"):
+def _volume(terminal, bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.Volume(**config)[source]
         Widget that display and change volume
@@ -443,7 +447,9 @@ def _volume(bg="#000000", fg="#ffffff"):
         get_volume_command=None,   # Command to get the current volume
         markup=True,               # Whether or not to use pango markup
         max_chars=0,               # Maximum number of characters to display in widget.
-        mouse_callbacks={},        # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        mouse_callbacks={
+            'Button2': lambda: qtile.cmd_spawn(terminal + MIXER)
+        },                                 # Dict of mouse button press callback functions. Accepts functions and lazy calls.
         mute_command=None,         # Mute command
         padding=3,                 # Padding left and right. Calculated if None.
         step=2,                    # Volume change for up an down commands in percentage.Only used if volume_up_command and volume_down_command are not set.
@@ -1120,7 +1126,7 @@ def list_right_widgets(terminal):
         [_prompt,        dict(**wt.prompt)],
         [_check_updates, dict(**wt.check_updates,  terminal=terminal)],
         [_df,            dict(**wt.df,             terminal=terminal)],
-        [_volume,        dict(**wt.volume)],
+        [_volume,        dict(**wt.volume,         terminal=terminal)],
         [_moc,           dict(**wt.moc,            terminal=terminal)],
         [_wlan,          dict(**wt.wlan,           terminal=terminal)],
         [_net,           dict(**wt.net)],

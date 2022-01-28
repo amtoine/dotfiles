@@ -64,7 +64,7 @@ ReadTags		= yes
 # Directory in which you store music files. If you specify it you will be able
 # to quickly go to this directory with the '-m' parameter or the 'm' command.
 # This can also point to a playlist.
-#MusicDir		= "/home/joe/music"
+MusicDir		= "${HOME}/music"
 
 # How to sort? FileName is the only option for now.
 Sort			= FileName
@@ -81,7 +81,7 @@ Mp3IgnoreCRCErrors	= yes
 Repeat			= no
 
 # Turn on shuffle.
-Shuffle			= no
+Shuffle			= yes
 
 # Turn on AutoNext.
 AutoNext		= yes
@@ -173,7 +173,7 @@ ShowHiddenFiles		= no
 
 # Start in the music directory if no arguments are given. If set to no, start
 # in the current directory.
-StartInMusicDir		= no
+StartInMusicDir		= yes
 
 # Hide file name extensions.
 HideFileExtension	= no
@@ -210,7 +210,7 @@ Theme			= nightly_theme
 
 # MOC directory - where pid file, socket, and state files are stored.
 # You can use ~ at the beginning.
-# MOCDir		= ~/.moc
+MOCDir		= ~/.moc
 
 # Use mmap() to read files. mmap() is much slower on NFS.
 UseMmap			= no
@@ -390,7 +390,7 @@ ASCIILines		= no
 TagsCacheSize		= 256
 
 # Number items in the playlist.
-#PlaylistNumbering	= yes
+PlaylistNumbering	= yes
 
 # Main window layouts can be configured.  You can change the position and
 # size of the menus (directory and playlist).  You have three layouts and

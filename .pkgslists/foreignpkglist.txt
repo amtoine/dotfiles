@@ -9,6 +9,7 @@ mu
 myman
 nerd-fonts-complete
 nerd-fonts-mononoki
+ngrok
 paru
 pass-import
 pass-tomb
