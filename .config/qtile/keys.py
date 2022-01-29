@@ -137,16 +137,16 @@ def init_keymap(mod, terminal):
                 Key([], 'b', *_emacs("ibuffer"),              desc="Launch ibuffer inside Emacs"),
                 Key([], 'd', *_emacs("dired nil"),            desc="Launch dired inside Emacs"),
                 Key([], 'e', *_emacs(),                       desc="Launch Emacs"),
+                Key([], 'f', *_emacs("elfeed"),               desc="Launch elfeed inside Emacs"),
                 Key([], 'i', *_emacs("erc"),                  desc="Launch erc inside Emacs"),
                 Key([], 'm', *_emacs("mu4e"),                 desc="Launch mu4e inside Emacs"),
-                Key([], 'n', *_emacs("elfeed"),               desc="Launch elfeed inside Emacs"),
+                Key([], 'n', *_ucmd(terminal + NVIM),         desc="TODO"),
                 Key([], 's', *_emacs("eshell"),               desc="Launch the eshell inside Emacs"),
                 Key([], 'v', *_emacs("+vterm/here nil"),      desc="Launch vterm inside Emacs"),
                 ],
-                mode=" EMACS"
+                mode=" EDITOR"
             ),
             Key(MOD, 'f', lazy.window.toggle_fullscreen(),    desc="toggle fullscreen"),
-            Key(MOD, 'n', _cmd(terminal + NVIM),              desc="TODO"),
             KeyChord(MOD, 'm', [
                 Key([], 'p', *_ucmd("mocp -G"),               desc="TODO"),
                 Key([], 'n', *_ucmd("mocp -f"),               desc="TODO"),

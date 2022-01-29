@@ -108,7 +108,7 @@ aliases=(
   general
   chmod
   ls
-  example
+  a2ns.aliases
 )
 
 
@@ -126,6 +126,7 @@ aliases=(
 plugins=(
   # git
   bashmarks
+  a2ns.pacman
 )
 
 source $OSH/oh-my-bash.sh
@@ -193,16 +194,14 @@ xtcl.sh -d -q
 # colorscript -e elfman
 # cal -3
 # fortune -c | cowthink -f $(find /usr/share/cows -type f | shuf -n 1)
-fortune -c | ponysay --pony
+# fortune -c | ponysay --pony
+fortune -c | ponysay --ponyonly
 
 eval "$(starship init bash)"
 
 if [ -f /etc/bash.command-not-found ]; then
     . /etc/bash.command-not-found
 fi
-
-
-
 
 CLOUDSDK_PYTHON="/usr/bin/python3.5"
 # The next line updates PATH for the Google Cloud SDK.

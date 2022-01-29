@@ -24,6 +24,7 @@ docker
 dstat
 dwarffortress
 eog
+expac
 fd
 feh
 festival
@@ -49,6 +50,7 @@ nethack
 network-manager-applet
 nmap
 okular
+pacgraph
 pacman-contrib
 patch
 pavucontrol

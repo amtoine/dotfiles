@@ -1,0 +1,37 @@
+/*       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/  */
+/*      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s  */
+/*     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles  */
+/*     \__,_/____/_/ /_/           /____/ */
+/**/
+/* Description:  TODO */
+/* Dependencies: TODO */
+/* License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE  */
+/* Contributors: Stevan Antoine */
+
+body {
+  background-color: #282a36 !important;
+  color: #d0d0d0 !important;
+}
+
+header {
+  background-color: #282a46 !important;
+  color: #d0d0d0 !important;
+}
+
+div.inside-article {
+  background-color: #282a56 !important;
+  color: #d0d0d0 !important;
+}
+
+p {  /* any paragraph of text */
+    color: #82aaff !important;
+}
+
+a {  /* some sections of text, inside tables or menu for instance */
+  background-color: #282a36 !important;
+  color: #82aaff !important;
+}
+
+h1, h2.entry-title, h3 {  /* the titles */
+  color: #f07178 !important;
+}

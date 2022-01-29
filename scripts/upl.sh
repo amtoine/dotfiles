@@ -26,4 +26,6 @@ echo "updating foreign packages list..."
   pacman -Qqem > $dir/foreignpkglist.txt
 echo "updating cargo commands list..."
   cargo --list > $dir/cargocmdlist.txt
+echo "updating python packages list..."
+  /usr/bin/pip list > $dir/pippkglist.txt
 echo "all done!"

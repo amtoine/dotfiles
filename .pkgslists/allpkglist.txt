@@ -40,6 +40,7 @@ ed
 efibootmgr
 emacs
 eog
+expac
 fakeroot
 fd
 feh
@@ -97,6 +98,7 @@ npm
 ntfs-3g
 okular
 os-prober
+pacgraph
 pacman-contrib
 paru
 pass
