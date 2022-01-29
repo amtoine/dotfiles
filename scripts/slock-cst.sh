@@ -16,4 +16,6 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
-slock -m "$(cowsay $(fortune -c) | lolcat -ft)"
+# slock -m "$(cowsay $(fortune -c) | lolcat -ft)"
+slock -m "$(figlet -tcf slant "Screen Is Locked. Type Your Password To Unlock." -w 100)"
+# slock -m "$(figlet -tcf slant "Screen Is Locked. Type Your Password To Unlock." -w 100 | lolcat -ft)"

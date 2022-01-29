@@ -20,6 +20,7 @@ python35
 python38
 reddio
 shell-color-scripts
+toilet
 tomb
 xsnow
 yay-git

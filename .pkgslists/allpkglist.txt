@@ -157,6 +157,7 @@ tig
 tk
 tldr
 tmux
+toilet
 tomb
 tree
 ueberzug
