@@ -26,7 +26,7 @@ youtube-dl \
      --audio-format mp3 \
      --no-overwrites \
      --download-archive "$2" \
-     --output '~/music/%(playlist)s - %(playlist_index)s - %(title)s.%(ext)s' \
+     --output './%(playlist)s - %(playlist_index)s - %(title)s.%(ext)s' \
      --add-metadata \
      --metadata-from-title "%(artist)s - %(title)s" \
      $1

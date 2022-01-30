@@ -66,6 +66,7 @@ SOUNDUP = "amixer -q sset Master {}%+"
 SOUNDDOWN = "amixer -q sset Master {}%-"
 MUTE = "amixer -q sset Master toggle"
 BLUETOGG = "bluetooth.toggle.sh -t"
+WALLPAPER = "wallpaper.fzf.sh"
 
 
 def _cmd(command):
@@ -183,6 +184,10 @@ def init_keymap(mod, terminal):
                     script="qtile-change-theme.sh",
                     terminal=terminal + " --hold",
                     path=".config/qtile/scripts"),
+                    lazy.ungrab_chord(),                      desc="TODO"),
+                Key([], 'w', _script(
+                    script=WALLPAPER,
+                    terminal=terminal),
                     lazy.ungrab_chord(),                      desc="TODO"),
                 Key([], 'x', *_ucmd(KLOCK),                   desc="TODO"),
                 ],

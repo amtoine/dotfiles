@@ -195,7 +195,7 @@ xtcl.sh -d -q
 # cal -3
 # fortune -c | cowthink -f $(find /usr/share/cows -type f | shuf -n 1)
 # fortune -c | ponysay --pony
-fortune -c | ponysay --ponyonly
+# fortune -c | ponysay --ponyonly
 
 eval "$(starship init bash)"
 

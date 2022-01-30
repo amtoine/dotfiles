@@ -28,6 +28,7 @@ cmatrix
 cmus
 cowsay
 cronie
+csvkit
 ctags
 dictd
 dmenufm
@@ -62,6 +63,7 @@ grub
 gst-libav
 gst-plugins-good
 gtk4
+gulp
 helm
 htop
 hugo
@@ -89,6 +91,7 @@ ncdu
 neovim
 nerd-fonts-complete
 nerd-fonts-mononoki
+net-tools
 nethack
 network-manager-applet
 networkmanager

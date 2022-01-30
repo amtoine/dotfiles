@@ -16,20 +16,15 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
-RES="Repos: remote@branch:staged,unstaged,untracked,stashed";
-RES="$RES\\n-----------------------: -----------------------@------:------,--------,---------,-------";
+tmpfile=$(mktemp /tmp/repo.diag.XXXXXX)
+trap  'rm "$tmpfile"' 0 1 15
 
-echo "Fetching repos from $pwd..."
+echo "repo,remote,branch,staged,unstaged,untracked,stashed" > $tmpfile
+
+echo "Fetching repos from $(pwd) ..."
 for repo in $(find $pwd -type d | grep "\.git\$" | sed 's/\/\.git//' | grep -v ".local" | grep -v "^./.cache" | grep -v "^./.vim" | grep -v "^./torch" | grep -v "^./.cargo"); do
   echo -ne "treating: $repo                                         \r"
-  tmp=$(repo.info.sh $repo)
-  RES=$RES\\n$tmp
-done;
-echo -e $RES | grep -v ":0,0,0,0)" | sed 's/://; s/(//g; s/)//g;' \
-             | sed 's/ /\&| /' | column -t -s '&' \
-             | sed 's/@/\&| /' | column -t -s '&' \
-             | sed 's/:/\&| /' | column -t -s '&' \
-             | sed 's/,/\&| /' | column -t -s '&' \
-             | sed 's/,/\&| /' | column -t -s '&' \
-             | sed 's/,/\&| /' | column -t -s '&' \
-             | sed 's/  | / | /g'
+  repo.info.sh $repo >> $tmpfile
+done
+sed -i 's/@/,/g; s/: */,/g; s/(//g; s/)//g;' $tmpfile
+csvcut $tmpfile | csvlook -I | less -S

@@ -18,6 +18,7 @@ cmake
 cmatrix
 cowsay
 cronie
+csvkit
 ctags
 dictd
 docker
@@ -37,6 +38,7 @@ gimp
 github-cli
 grub
 gtk4
+gulp
 helm
 htop
 hugo
@@ -46,6 +48,7 @@ librsync
 lolcat
 mathomatic
 ncdu
+net-tools
 nethack
 network-manager-applet
 nmap
