@@ -18,6 +18,7 @@ bluez
 bluez-utils
 brightnessctl
 bspwm
+caprine
 catimg
 cava
 chafa
@@ -149,7 +150,9 @@ scrot
 sfml
 shell-color-scripts
 shellcheck
+signal-desktop
 sl
+slack-desktop
 sox
 spectrwm
 starship
@@ -159,6 +162,7 @@ sxhkd
 sysstat
 termdown
 texinfo
+thunderbird
 tig
 tk
 tldr

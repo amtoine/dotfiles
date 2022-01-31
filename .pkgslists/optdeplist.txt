@@ -1,6 +1,5 @@
 dbus-python
 ebook-tools
-hunspell
 i3-wm
 kio-extras
 mpdecimal

@@ -11,6 +11,7 @@ blueman
 bluez-utils
 brightnessctl
 bspwm
+caprine
 catimg
 chromium
 clipmenu
@@ -80,6 +81,7 @@ sauerbraten
 sc
 sfml
 shellcheck
+signal-desktop
 sl
 sox
 spectrwm
@@ -87,6 +89,7 @@ starship
 swig
 sysstat
 termdown
+thunderbird
 tig
 tldr
 ueberzug

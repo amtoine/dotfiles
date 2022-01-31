@@ -55,8 +55,11 @@ PROC = " htop"
 CAL = " --hold cal -Y"
 NET = " nmcli connection show"
 LOG = " bat " + os.path.expanduser("~/.local/share/qtile/qtile.log")
-_DISCORD = "~/Discord/Discord"
-CHAT = os.path.expanduser(_DISCORD)
+DISCORD = os.path.expanduser("~/Discord/Discord")
+SLACK = "slack"
+CAPRINE = "caprine"
+SIGNAL = "signal-desktop"
+THUNDERBIRD = "thunderbird"
 MIXER = " alsamixer"
 MACHO = ' ' + os.path.expanduser("~/scripts/macho.sh")
 WTLDR = " --hold bash " + os.path.expanduser("~/scripts/wtldr.sh")
@@ -149,9 +152,13 @@ def init_keymap(mod, terminal):
                 mode=" BROWSER"
             ),
             KeyChord(MOD, 'c', [
-                Key([], 'c', *_ucmd(CHAT),                    desc="TODO"),
+                Key([], 'c', *_ucmd(CAPRINE),                 desc="TODO"),
+                Key([], 'd', *_ucmd(DISCORD),                 desc="TODO"),
+                Key([], 'g', *_ucmd(SIGNAL),                  desc="TODO"),
                 Key([], 'm', *_ucmd(terminal + MACHO),        desc="TODO"),
-                Key([], 't', *_ucmd(terminal + WTLDR),        desc="TODO"),
+                Key([], 's', *_ucmd(SLACK),                   desc="TODO"),
+                Key([], 't', *_ucmd(THUNDERBIRD),             desc="TODO"),
+                Key([], 'w', *_ucmd(terminal + WTLDR),        desc="TODO"),
                 ],
                 mode=" MISCELLANEOUS"
             ),
