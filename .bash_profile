@@ -17,6 +17,7 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
+echo "$HOME/.bash_profile"
 [ ! -s ~/.config/mpd/pid ] && mpd
 if [[ $(fgconsole 2> /dev/null) == 1 ]]; then
     echo "Starting x..."

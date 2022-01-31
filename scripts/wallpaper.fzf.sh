@@ -18,6 +18,8 @@ export FZF_DEFAULT_OPTS="
 --preview-window=\"down,75%\"
 --preview=\"catimg $WALLPAPERS/{1} -H 100 -r 2\""
 
+num_monitors=$(xrandr --query | grep -e "connected" | grep -v "disconnected" -c)
+
 wallpaper1=$(
   ls "$WALLPAPERS" | \
   fzf --prompt="First monitor: "
@@ -25,14 +27,17 @@ wallpaper1=$(
 [ -z "$wallpaper1" ] && exit 0
 wallpaper1="$WALLPAPERS/$wallpaper1"
 
-wallpaper2=$(
-  ls "$WALLPAPERS" | \
-  fzf --prompt="First monitor: "
-)
-if [[ -z "$wallpaper2" ]]; then
-  wallpaper2="$wallpaper1"
+if [ "$num_monitors" -eq "2" ]; then
+  wallpaper2=$(
+    ls "$WALLPAPERS" | \
+    fzf --prompt="Second monitor: "
+  )
+  if [[ -z "$wallpaper2" ]]; then
+    wallpaper2="$wallpaper1"
+  else
+    wallpaper2="$WALLPAPERS/$wallpaper2"
+  fi;
+  feh --bg-fill "$wallpaper1" "$wallpaper2"
 else
-  wallpaper2="$WALLPAPERS/$wallpaper2"
+  feh --bg-fill "$wallpaper1"
 fi;
-
-feh --bg-fill "$wallpaper1" "$wallpaper2"

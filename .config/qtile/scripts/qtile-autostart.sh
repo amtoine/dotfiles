@@ -1,6 +1,6 @@
 #! /usr/bin/bash
 
-feh --bg-fill --randomize ~/repos/wallpapers/wallpapers/
+feh --no-fehbg --bg-fill --randomize ~/repos/wallpapers/wallpapers/*
 
 emacs --daemon
 

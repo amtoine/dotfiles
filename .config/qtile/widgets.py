@@ -260,25 +260,25 @@ def _df(terminal, bg="#000000", fg="#ffffff"):
         Supported bar orientations: horizontal and vertical
     """
     return widget.DF(
-        background=bg,                       # Widget background color
-        fmt='{}',                            # How to format the text
-        font=FONT,                           # Default font
-        fontshadow=None,                     # font shadow color, default is None(no shadow)
-        fontsize=None,                       # Font size. Calculated if None.
-        foreground=fg,                       # Foreground colour
-        format='  {p} ({uf}{m}|{r:.0f}%)',  # String format (p: partition, s: size, f: free space, uf: user free space, m: measure, r: ratio (uf/s))
-        markup=True,                         # Whether or not to use pango markup
-        max_chars=0,                         # Maximum number of characters to display in widget.
-        measure='G',                         # Measurement (G, M, B)
+        background=bg,             # Widget background color
+        fmt='{}',                  # How to format the text
+        font=FONT,                 # Default font
+        fontshadow=None,           # font shadow color, default is None(no shadow)
+        fontsize=None,             # Font size. Calculated if None.
+        foreground=fg,             # Foreground colour
+        format="  {p} {uf}{m}",    # String format (p: partition, s: size, f: free space, uf: user free space, m: measure, r: ratio (uf/s))
+        markup=True,               # Whether or not to use pango markup
+        max_chars=0,               # Maximum number of characters to display in widget.
+        measure='G',               # Measurement (G, M, B)
         mouse_callbacks={
-            'Button1': lambda: qtile.cmd_spawn(terminal + " ncdu -x /"),
-        },                                   # Dict of mouse button press callback functions. Accepts functions and lazy calls.
-        padding=None,                        # Padding. Calculated if None.
-        partition='/',                       # the partition to check space
-        update_interval=600,                 # The update interval.
-        visible_on_warn=False,               # Only display if warning
-        warn_color='ff0000',                 # Warning color
-        warn_space=2,                        # Warning space in scale defined by the measure option.
+            "Button": lambda: qtile.cmd_spawn(terminal + " ncdu -x /"),
+        },                         # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        padding=None,              # Padding. Calculated if None.
+        partition='/',             # the partition to check space
+        update_interval=600,       # The update interval.
+        visible_on_warn=False,     # Only display if warning
+        warn_color='ff0000',       # Warning color
+        warn_space=2,              # Warning space in scale defined by the measure option.
     )
 
 
@@ -1047,7 +1047,7 @@ def _wlan(terminal, bg="#000000", fg="#ffffff"):
         fontshadow=None,                      # font shadow color, default is None(no shadow)
         fontsize=None,                        # Font size. Calculated if None.
         foreground=fg,                        # Foreground colour
-        format=' {essid} {quality:02d}/70',  # Display format. For percents you can use "{essid} {percent:2.0%}"
+        format=' {essid} {quality:02d}/70',  # Display format. For percents you can use "{essid} {percent:2.0%}" or "{essid} {quality:02d}/70"
         interface='wlp2s0',                   # The interface to monitor
         markup=True,                          # Whether or not to use pango markup
         max_chars=0,                          # Maximum number of characters to display in widget.
@@ -1112,8 +1112,6 @@ def list_left_widgets(terminal):
         [_group_box,      dict(**wt.group_box)],
         [_window_name,    dict(**wt.window_name)],
     ]
-    if len(fetch_monitors()) == 1:
-        del widgets[0]
     return widgets
 
 

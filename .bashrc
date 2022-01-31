@@ -19,6 +19,7 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
+echo "$HOME/.bashrc"
 
 #        ___                                       __         __                                __               __                 __  __  _
 #       <  /     ____ ____  ____  ___  _________ _/ /  ____  / /_        ____ ___  __  __      / /_  ____ ______/ /_     ________  / /_/ /_(_)___  ____ ______
@@ -44,7 +45,7 @@ CASE_SENSITIVE="true"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_OSH_DAYS=13
@@ -59,7 +60,7 @@ CASE_SENSITIVE="true"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -170,6 +171,7 @@ source $OSH/oh-my-bash.sh
 #      ____/ /_ / __/_    / / / / / / (__  ) /__
 #     /_____/(_)____(_)  /_/ /_/ /_/_/____/\___/
 
+echo "$PATH"
 export PATH=$HOME/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.cargo/bin:$PATH
 
 # changes the editor in the terminal, to edit long commands.
@@ -183,6 +185,32 @@ if [[ ! -d $WORKON_HOME ]]; then mkdir -p $WORKON_HOME; fi
 source $HOME/.local/bin/virtualenvwrapper.sh
 
 xtcl.sh -d -q
+
+# # usage: extr <file>
+extr ()
+{
+  if [ -f "$1" ] ; then
+    case "$1" in
+      *.tar.bz2)   tar xjf "$1"    ;;
+      *.tar.gz)    tar xzf "$1"    ;;
+      *.bz2)       bunzip2 "$1"    ;;
+      *.rar)       unrar x "$1"    ;;
+      *.gz)        gunzip "$1"     ;;
+      *.tar)       tar xf "$1"     ;;
+      *.tbz2)      tar xjf "$1"    ;;
+      *.tgz)       tar xzf "$1"    ;;
+      *.zip)       unzip "$1"      ;;
+      *.Z)         uncompress "$1" ;;
+      *.7z)        7z x "$1"       ;;
+      *.deb)       ar x "$1"       ;;
+      *.tar.xz)    tar xf "$1"     ;;
+      *.tar.zst)   tar xf "$1"     ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
 
 #if [[ -f ~/.config/neofetch/.neofetchrc ]]; then
 #	. ~/.config/neofetch/.neofetchrc;

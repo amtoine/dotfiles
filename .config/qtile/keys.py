@@ -41,10 +41,11 @@ F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12 = (
 
 DMRUN = f"dmenu_run -h {BAR['size']} -p 'Run: ' -fn '{DMFONT}'"
 PASS = f"passmenu -l 10 -c -fn '{DMFONT}'"
+PASSEDIT = "passedit.sh"
 NVIM = " nvim"
 SURF = "tabbed -c surf -N -e"
 EMACS = "emacsclient -c -a 'emacs'"
-RESTART = os.path.expanduser("~/.config/qtile/scripts/qtile-autostart.sh")
+AUTOSTART = os.path.expanduser("~/.config/qtile/scripts/qtile-autostart.sh")
 KLOCK = "killall -q xautolock"
 CHECK = " --hold checkupdates"
 UPDT = " sudo pacman -Syu"
@@ -60,13 +61,16 @@ MIXER = " alsamixer"
 MACHO = ' ' + os.path.expanduser("~/scripts/macho.sh")
 WTLDR = " --hold bash " + os.path.expanduser("~/scripts/wtldr.sh")
 KB = ' ' + os.path.expanduser("~/.config/qtile/scripts/qtile-kb.sh")
-SOUNDSMALL = 1
-SOUNDLARGE = 5
+SOUNDS = 1
+SOUNDL = 5
 SOUNDUP = "amixer -q sset Master {}%+"
 SOUNDDOWN = "amixer -q sset Master {}%-"
 MUTE = "amixer -q sset Master toggle"
 BLUETOGG = "bluetooth.toggle.sh -t"
 WALLPAPER = "wallpaper.fzf.sh"
+URELOAD = lazy.reload_config(), lazy.ungrab_chord()
+URESTART = lazy.restart(), lazy.ungrab_chord()
+USHUTDOWN = lazy.shutdown(), lazy.ungrab_chord()
 
 
 def _cmd(command):
@@ -107,11 +111,24 @@ def _script(script, terminal=None, path=SCRIPTS):
     return _cmd(script)
 
 
+def _uscript(script, terminal=None, path=SCRIPTS):
+    """
+        TODO
+    """
+    return _script(script, terminal=terminal, path=path), lazy.ungrab_chord()
+
+
 def init_keymap(mod, terminal):
     """
         A list of available commands that can be bound to keys can be found
         at https://docs.qtile.org/en/latest/manual/config/lazy.html
     """
+    THEME = dict(
+        script="qtile-change-theme.sh",
+        terminal=terminal + " --hold",
+        path=".config/qtile/scripts",
+    )
+
     km = []
 
     MOD = [mod]
@@ -131,8 +148,27 @@ def init_keymap(mod, terminal):
                 ],
                 mode=" BROWSER"
             ),
-            Key(MOD, 'c', _cmd(CHAT),                         desc="TODO"),
-            Key(MOD, 'd', _cmd(DMRUN),                        desc="TODO"),
+            KeyChord(MOD, 'c', [
+                Key([], 'c', *_ucmd(CHAT),                    desc="TODO"),
+                Key([], 'm', *_ucmd(terminal + MACHO),        desc="TODO"),
+                Key([], 't', *_ucmd(terminal + WTLDR),        desc="TODO"),
+                ],
+                mode=" MISCELLANEOUS"
+            ),
+            KeyChord(MOD, 'd', [
+                Key([], 'd', *_ucmd(DMRUN),                   desc="TODO"),
+                Key([], 'e', *_ucmd("dm-confedit"),           desc="Choose a config file to edit"),
+                Key([], 'i', *_ucmd("dm-maim"),               desc="Take screenshots via dmenu"),
+                Key([], 'h', *_ucmd("dm-hub"),                desc="TODO"),
+                Key([], 'k', *_ucmd("dm-kill"),               desc="Kill processes via dmenu"),
+                Key([], 'l', *_ucmd("dm-logout"),             desc="A logout menu"),
+                Key([], 'm', *_ucmd("dm-man"),                desc="Search manpages in dmenu"),
+                Key([], 'o', *_ucmd("dm-bookman"),            desc="Search your qutebrowser bookmarks and quickmarks"),
+                Key([], 'r', *_ucmd("dm-reddit"),             desc="Search reddit via dmenu"),
+                Key([], 's', *_ucmd("dm-websearch"),          desc="Search various search engines via dmenu"),
+                ],
+                mode=" DMENU"
+            ),
             KeyChord(MOD, 'e', [
                 Key([], 'a', *_emacs("org-agenda"),           desc="TODO"),
                 Key([], 'b', *_emacs("ibuffer"),              desc="Launch ibuffer inside Emacs"),
@@ -149,46 +185,41 @@ def init_keymap(mod, terminal):
             ),
             Key(MOD, 'f', lazy.window.toggle_fullscreen(),    desc="toggle fullscreen"),
             KeyChord(MOD, 'm', [
-                Key([], 'p', *_ucmd("mocp -G"),               desc="TODO"),
-                Key([], 'n', *_ucmd("mocp -f"),               desc="TODO"),
+                Key([], 'h', _cmd("mocp -k -10"),             desc="TODO"),
+                Key([], 'j', _cmd("mocp -f"),                 desc="TODO"),
+                Key([], 'k', _cmd("mocp -r"),                 desc="TODO"),
+                Key([], 'l', _cmd("mocp -k +10"),             desc="TODO"),
                 Key([], 'b', *_ucmd("mocp -r"),               desc="TODO"),
-                Key([], 'q', *_ucmd("mocp -x"),               desc="TODO"),
-                Key([], 'u', *_ucmd("mocp -S"),               desc="TODO"),
+                Key([], 'm', *_ucmd("mocp -G"),               desc="TODO"),
+                Key([], 'n', *_ucmd("mocp -f"),               desc="TODO"),
                 Key([], 'o', *_ucmd(terminal + " mocp"),      desc="TODO"),
-                Key([], 's', *_ucmd("mocp -t shuffle"),       desc="TODO"),
+                Key([], 'p', *_ucmd("mocp -G"),               desc="TODO"),
+                Key([], 'q', *_ucmd("mocp -x"),               desc="TODO"),
                 Key([], 'r', *_ucmd("mocp -t repeat"),        desc="TODO"),
+                Key([], 's', *_ucmd("mocp -t shuffle"),       desc="TODO"),
+                Key([], 'u', *_ucmd("mocp -S"),               desc="TODO"),
+                Key([], SPC, _cmd("mocp -G"),                 desc="TODO"),
+                Key([], F7,  _cmd(SOUNDDOWN.format(SOUNDL)),  desc="TODO"),
+                Key([], F8,  _cmd(MUTE),                      desc="TODO"),
+                Key([], F9,  _cmd(SOUNDUP.format(SOUNDL)),    desc="TODO"),
                 ],
                 mode=" MUSIC"
             ),
             KeyChord(MOD, 'p', [
-                Key([], 'c', *_ucmd(terminal + MACHO),        desc="TODO"),
-                Key([], 'e', *_ucmd("dm-confedit"),           desc="Choose a config file to edit"),
-                Key([], 'i', *_ucmd("dm-maim"),               desc="Take screenshots via dmenu"),
-                Key([], 'h', *_ucmd("dm-hub"),                desc="TODO"),
-                Key([], 'k', *_ucmd("dm-kill"),               desc="Kill processes via dmenu"),
-                Key([], 'l', *_ucmd("dm-logout"),             desc="A logout menu"),
-                Key([], 'm', *_ucmd("dm-man"),                desc="Search manpages in dmenu"),
-                Key([], 'o', *_ucmd("dm-bookman"),            desc="Search your qutebrowser bookmarks and quickmarks"),
+                Key([], 'e', *_uscript(PASSEDIT, terminal),   desc="TODO"),
                 Key([], 'p', *_ucmd(PASS),                    desc="Retrieve passwords with dmenu"),
-                Key([], 'r', *_ucmd("dm-reddit"),             desc="Search reddit via dmenu"),
-                Key([], 's', *_ucmd("dm-websearch"),          desc="Search various search engines via dmenu"),
-                Key([], 't', *_ucmd(terminal + WTLDR),        desc="TODO"),
                 ],
-                mode=" PROMPT"
+                mode="ﳳ PASS"
             ),
             KeyChord(MOD, 'q', [
+                Key([], 'a', *_ucmd(AUTOSTART),               desc="TODO"),
+                Key([], "c", *URELOAD,                        desc="Reload the config"),
                 Key([], 'k', *_ucmd(terminal + KB),           desc="TODO"),
                 Key([], 'l', *_ucmd(terminal + LOG),          desc="TODO"),
-                Key([], 'r', *_ucmd(RESTART),                 desc="TODO"),
-                Key([], 't', _script(
-                    script="qtile-change-theme.sh",
-                    terminal=terminal + " --hold",
-                    path=".config/qtile/scripts"),
-                    lazy.ungrab_chord(),                      desc="TODO"),
-                Key([], 'w', _script(
-                    script=WALLPAPER,
-                    terminal=terminal),
-                    lazy.ungrab_chord(),                      desc="TODO"),
+                Key([], "r", *URESTART,                       desc="Restarting Qtile"),
+                Key([], "s", *USHUTDOWN,                      desc="Shutdown Qtile"),
+                Key([], 't', *_uscript(**THEME),              desc="TODO"),
+                Key([], 'w', *_uscript(WALLPAPER, terminal),  desc="TODO"),
                 Key([], 'x', *_ucmd(KLOCK),                   desc="TODO"),
                 ],
                 mode="  QTILE"
@@ -202,7 +233,7 @@ def init_keymap(mod, terminal):
                 Key([], 's', *_rofi(modi="ssh"),              desc="TODO"),
                 Key([], 'w', *_rofi(modi="window"),           desc="TODO"),
                 ],
-                mode=" ROFI"
+                mode=" ROFI"
             ),
             KeyChord(MOD, 's', [
                 Key([], 'a', *_ucmd("alacritty"),             desc="TODO"),
@@ -255,13 +286,14 @@ def init_keymap(mod, terminal):
             Key(MOD, BCL, lazy.screen.prev_group(),            desc="TODO"),
             Key(MOD, BCR, lazy.screen.next_group(),            desc="TODO"),
             Key(MOD, SLH, lazy.screen.toggle_group(),          desc="TODO"),
+
             Key(MOD, F1,  _cmd("brightnessctl s 8-"),          desc="brightness of the main screen down."),
             Key(MOD, F2,  _cmd("brightnessctl s 8+"),          desc="brightness of the main screen up."),
             Key(MOD, F5,  _script("screenshot.sh window"),     desc="take a screenshot of everything or chose a window."),
             Key(MOD, F6,  _script("screenshot.sh full"),       desc="take a screenshot of everything or chose a window."),
-            Key(MOD, F7,  _cmd(SOUNDDOWN.format(SOUNDLARGE)),  desc="TODO"),
+            Key(MOD, F7,  _cmd(SOUNDDOWN.format(SOUNDL)),      desc="TODO"),
             Key(MOD, F8,  _cmd(MUTE),                          desc="TODO"),
-            Key(MOD, F9,  _cmd(SOUNDUP.format(SOUNDLARGE)),    desc="TODO"),
+            Key(MOD, F9,  _cmd(SOUNDUP.format(SOUNDL)),        desc="TODO"),
             Key(MOD, F10, _script(BLUETOGG),                   desc="TODO"),
 
             Key(MOD, F11, _script("lfrun.sh", terminal),       desc="my file explorer."),
@@ -277,13 +309,11 @@ def init_keymap(mod, terminal):
             Key(MOD, 'l',
                 lazy.layout.decrease_ratio().when(layout="RTIO"),
                 lazy.layout.swap_column_right().when(layout=["COLS"]),    desc="TODO"),
-            Key(MOD, "r", lazy.reload_config(),                           desc="Reload the config"),
-            Key(MOD, "q", lazy.shutdown(),                                desc="Shutdown Qtile"),
             Key(MOD, RET,
                 lazy.layout.toggle_split().when(layout=["COLS", " BSP"]),
                 lazy.layout.flip().when(layout=["TALL", "WIDE"]),         desc="TODO, Toggle between split and unsplit sides of stack"),
-            Key(MOD, F7,  _cmd(SOUNDDOWN.format(SOUNDSMALL)),             desc="TODO"),
-            Key(MOD, F9,  _cmd(SOUNDUP.format(SOUNDSMALL)),               desc="TODO"),
+            Key(MOD, F7,  _cmd(SOUNDDOWN.format(SOUNDS)),                 desc="TODO"),
+            Key(MOD, F9,  _cmd(SOUNDUP.format(SOUNDS)),                   desc="TODO"),
         ]
     )
     MOD = [mod, SHI]
@@ -305,7 +335,6 @@ def init_keymap(mod, terminal):
                 lazy.layout.swap_right().when(layout="TALL"),                     desc="TODO"),
             Key(MOD, "c", lazy.window.kill(),                                     desc="Kill focused window"),
             Key(MOD, "f", lazy.window.toggle_floating(),                          desc="toggle floating"),
-            Key(MOD, "r", lazy.restart(),                                         desc="Restarting Qtile"),
             Key(MOD, TAB, lazy.prev_layout(),                                     desc="Toggle between layouts"),
             Key(MOD, F1,  _script("hdmi.brightness.sh -"),                        desc="brightness of the second screen down."),
             Key(MOD, F2,  _script("hdmi.brightness.sh +"),                        desc="brightness of the second screen up."),

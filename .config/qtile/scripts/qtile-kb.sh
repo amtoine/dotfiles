@@ -32,14 +32,16 @@ if [[ -f "$cache" ]]; then
     sed "s/+\(.*\)+control/+control+\1/g;" | \
 
     sed "s/^<root> /<root>:/g;" | \
-    sed "s/^BROWSER /BROWSER:/g;" | \
-    sed "s/^EDITOR /EDITOR:/g;" | \
-    sed "s/^MUSIC /MUSIC:/g;" | \
-    sed "s/^PROMPT /PROMPT:/g;" | \
-    sed "s/^QTILE /QTILE:/g;" | \
-    sed "s/^RESIZE /RESIZE:/g;" | \
-    sed "s/^ROFI /ROFI:/g;" | \
-    sed "s/^SYSTEM /SYSTEM:/g;" | \
+    sed "s/^BROWSER /BROWSER:/g" | \
+    sed "s/^DMENU /DMENU:/g" | \
+    sed "s/^EDITOR /EDITOR:/g" | \
+    sed "s/^MUSIC /MUSIC:/g" | \
+    sed "s/^MISCELLANEOUS /MISCELLANEOUS:/g" | \
+    sed "s/^PASS /PASS:/g" | \
+    sed "s/^QTILE /QTILE:/g" | \
+    sed "s/^ROFI /ROFI:/g" | \
+    sed "s/^SYSTEM /SYSTEM:/g" | \
+    sed "s/^RESIZE /RESIZE:/g" | \
 
     sed "s/@/@     /g;" | \
     sed "s/$/@/g;" | \
@@ -58,3 +60,5 @@ export FZF_DEFAULT_OPTS="
 
 cmd=$(cat $cache | grep -v "^$\|^ " | awk -F@ '{print $1}' | uniq | sort | fzf)
 cat $cache | grep $cmd -A2
+
+

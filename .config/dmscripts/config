@@ -41,8 +41,8 @@ DMBROWSER="surf"
 # DMTERM="alacritty -e"
 DMTERM="kitty"
 
-# DMEDITOR="emacsclient -c -a emacs"
-DMEDITOR="${DMTERM} nvim"
+DMEDITOR="emacsclient -c -a emacs"
+# DMEDITOR="${DMTERM} nvim"
 
 # TODO: Rename this variable to something more traditional
 # logout_locker='slock'
@@ -83,7 +83,7 @@ confedit_list[alacritty]="$HOME/.config/alacritty/alacritty.yml"
 confedit_list[bashrc]="$HOME/.bashrc"
 confedit_list[bash_profile]="$HOME/.bash_profile"
 confedit_list[bash_logout]="$HOME/.bash_logout"
-confedit_list[aliases]="$HOME/repos/oh-my-bash/custom/aliases/example.aliases.sh"
+confedit_list[aliases]="$HOME/repos/oh-my-bash/custom/aliases/a2ns.aliases.aliases.sh"
 confedit_list[bspwm]="$HOME/.config/bspwm"
 confedit_list[bspwmrc]="$HOME/.config/bspwm/bspwmrc"
 confedit_list[confedit]="$HOME/.config/dmscripts/config"
