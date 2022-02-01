@@ -1112,6 +1112,8 @@ def list_left_widgets(terminal):
         [_group_box,      dict(**wt.group_box)],
         [_window_name,    dict(**wt.window_name)],
     ]
+    if len(fetch_monitors()) == 1:
+        del widgets[0]
     return widgets
 
 
