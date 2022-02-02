@@ -65,6 +65,7 @@ floating_layout = layout.Floating(
         Match(wm_class='pinentry-gtk-2'),  # gitk
         Match(wm_class='mpv'),             # mpv
         Match(title="mocp"),               # mocp
+        Match(wm_class="Conky"),           # Conky
     ],
     border_focus=lt.floating.focus,    # Border colour(s) for the focused window.
     border_normal=lt.floating.normal,  # Border colour(s) for un-focused windows.

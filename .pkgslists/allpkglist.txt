@@ -28,6 +28,7 @@ clipmenu
 cmake
 cmatrix
 cmus
+conky
 cowsay
 cronie
 csvkit

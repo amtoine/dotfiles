@@ -17,6 +17,7 @@ chromium
 clipmenu
 cmake
 cmatrix
+conky
 cowsay
 cronie
 csvkit

@@ -18,5 +18,5 @@
 
 # slock -m "$(cowsay $(fortune -c) | lolcat -ft)"
 # slock -m "$(figlet -tcf slant "Screen Is Locked. Type Your Password To Unlock." -w 100)"
-slock -m "$(figlet -tf slant "Bet you can't crak it open.")"
+slock -m "$(figlet -tf slant "Bet you can't crack it open.")"
 # slock -m "$(figlet -tcf slant "Screen Is Locked. Type Your Password To Unlock." -w 100 | lolcat -ft)"

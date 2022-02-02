@@ -231,7 +231,7 @@ if [ -f /etc/bash.command-not-found ]; then
     . /etc/bash.command-not-found
 fi
 
-CLOUDSDK_PYTHON="/usr/bin/python3.5"
+CLOUDSDK_PYTHON="/usr/bin/python3"
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/google-cloud-sdk/path.bash.inc"; fi
 
