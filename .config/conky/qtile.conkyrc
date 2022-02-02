@@ -69,7 +69,6 @@ ${hr}
 ${color1}Up${color}${color2}${alignr}${uptime_short}${color}
 ${color1}Date${color2}${alignr}${time %x}${color}
 ${color1}Time${color2}${alignr}${time %X}${color}
-${color1}OS${color2}${alignr}arcolinux${color}
 ${color1}Host${color2}${alignr}${nodename}${color}
 ${color1}Kernel${color2}${alignr}${kernel}${color}
 ${color1}Machine${color2}${alignr}${machine}${color}
