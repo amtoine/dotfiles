@@ -74,6 +74,8 @@ WALLPAPER = "wallpaper.fzf.sh"
 URELOAD = lazy.reload_config(), lazy.ungrab_chord()
 URESTART = lazy.restart(), lazy.ungrab_chord()
 USHUTDOWN = lazy.shutdown(), lazy.ungrab_chord()
+_QTILE_CONKY = os.path.expanduser('~/.config/conky/qtile.conkyrc')
+CONKY = f"conky --config={_QTILE_CONKY}"
 
 
 def _cmd(command):
@@ -221,6 +223,7 @@ def init_keymap(mod, terminal):
             KeyChord(MOD, 'q', [
                 Key([], 'a', *_ucmd(AUTOSTART),               desc="TODO"),
                 Key([], "c", *URELOAD,                        desc="Reload the config"),
+                Key([], 'h', *_ucmd(CONKY),                   desc="TODO"),
                 Key([], 'k', *_ucmd(terminal + KB),           desc="TODO"),
                 Key([], 'l', *_ucmd(terminal + LOG),          desc="TODO"),
                 Key([], "r", *URESTART,                       desc="Restarting Qtile"),
