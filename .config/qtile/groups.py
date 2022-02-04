@@ -31,7 +31,7 @@ def init_groups():
         Group("I2",  layout="TALL"),
         Group("S3",  layout="TALL"),
         Group("W4",  layout="TALL"),
-        Group("C5",  layout="TALL"),
+        Group("C5",  layout="TREE"),
         Group("M6",  layout="TALL"),
         Group("V7",  layout="TALL"),
     ]

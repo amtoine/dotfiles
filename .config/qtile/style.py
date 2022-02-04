@@ -43,31 +43,19 @@ WIDGETS = WidgetTheme(**{
     "clock":          {"bg": theme.bg,      "fg": theme.color13,  "format": _clock_fmt},
     "battery":        {"bg": theme.bg,      "fg": theme.color6,   "format": _battery_fmt},
     "quick_exit":     {"bg": theme.bg,      "fg": theme.color0,   "text": _qexit_fmt, "countdown": _count_fmt},
-
-    "image":          {"bg": theme.bg},
-    "systray":        {"bg": theme.color2},
-    "memory":         {"bg": theme.bg,      "fg": theme.color10},
-    "backlight":      {"bg": theme.bg,      "fg": theme.color4},
-    "wallpaper":      {"bg": theme.bg,      "fg": theme.color12},
-    "battery_icon":   {"bg": theme.bg},
 })
 
-_layouts = {
+_layout_themes = {
     "bsp":        {"focus": theme.color12, "normal": theme.color2},
     "columns":    {"focus": theme.color12, "normal": theme.color2, "focus_stack": theme.color1, "normal_stack": theme.color8},
     "monad_tall": {"focus": theme.color1,  "normal": theme.color2},
     "monad_wide": {"focus": theme.color1,  "normal": theme.color2},
     "floating":   {"focus": theme.color12, "normal": theme.color2},
-
-    "ratio":      {"focus": theme.color1,  "normal": theme.color2},
-    "stack":      {"focus": theme.color1,  "normal": theme.color2},
-    "tile":       {"focus": theme.color1,  "normal": theme.color2},
-    "vertical":   {"focus": theme.color1,  "normal": theme.color2},
-    "matrix":     {"focus": theme.color1,  "normal": theme.color2},
+    "tree":       {"focus": theme.color1,  "normal": theme.color2},
 }
 
 LAYOUTS = LayoutTheme(
-    **dict(zip(_layouts.keys(), [Layout(**args) for args in _layouts.values()])),
+    **dict(zip(_layout_themes.keys(), [Layout(**args) for args in _layout_themes.values()])),
     border_width=8,
     margin=8,
 )

@@ -16,7 +16,9 @@
 
 from libqtile import layout
 
+from style import FONT
 from style import LAYOUTS as lt
+from theme import theme
 
 
 def _floating():
@@ -530,34 +532,34 @@ def _treetab():
         +------------+
     """
     return layout.TreeTab(
-        active_bg='000080',            # Background color of active tab
-        active_fg='ffffff',            # Foreground color of active tab
-        bg_color='000000',             # Background color of tabs
-        border_width=lt.border_width,  # Width of the border
-        font='sans',                   # Font
-        fontshadow=None,               # font shadow color, default is None (no shadow)
-        fontsize=14,                   # Font pixel size.
-        inactive_bg='606060',          # Background color of inactive tab
-        inactive_fg='ffffff',          # Foreground color of inactive tab
-        level_shift=8,                 # Shift for children tabs
-        margin_left=6,                 # Left margin of tab panel
-        margin_y=6,                    # Vertical margin of tab panel
+        active_bg=theme.sel_bg,         # Background color of active tab
+        active_fg=theme.sel_fg,         # Foreground color of active tab
+        bg_color=theme.bg,              # Background color of tabs
+        border_width=lt.border_width,   # Width of the border
+        font=FONT,                      # Font
+        fontshadow=None,                # font shadow color, default is None (no shadow)
+        fontsize=15,                    # Font pixel size.
+        inactive_bg=theme.bg,           # Background color of inactive tab
+        inactive_fg=theme.fg,           # Foreground color of inactive tab
+        level_shift=8,                  # Shift for children tabs
+        margin_left=6,                  # Left margin of tab panel
+        margin_y=20,                     # Vertical margin of tab panel
         name="TREE",
-        padding_left=6,                # Left padding for tabs
-        padding_x=6,                   # Left padding for tab label
-        padding_y=2,                   # Top padding for tab label
-        panel_width=150,               # Width of the left panel
-        previous_on_rm=False,          # Focus previous window on close instead of first.
-        section_bottom=6,              # Bottom margin of section
-        section_fg='ffffff',           # Color of section label
-        section_fontsize=11,           # Font pixel size of section label
-        section_left=4,                # Left margin of section label
-        section_padding=4,             # Bottom of margin section label
-        section_top=4,                 # Top margin of section label
-        sections=['Default'],          # Foreground color of inactive tab
-        urgent_bg='ff0000',            # Background color of urgent tab
-        urgent_fg='ffffff',            # Foreground color of urgent tab
-        vspace=2,                      # Space between tabs
+        padding_left=6,                 # Left padding for tabs
+        padding_x=6,                    # Left padding for tab label
+        padding_y=2,                    # Top padding for tab label
+        panel_width=150,                # Width of the left panel
+        previous_on_rm=False,           # Focus previous window on close instead of first.
+        section_bottom=6,               # Bottom margin of section
+        section_fg=theme.color9,        # Color of section label
+        section_fontsize=25,            # Font pixel size of section label
+        section_left=4,                 # Left margin of section label
+        section_padding=4,              # Bottom of margin section label
+        section_top=4,                  # Top margin of section label
+        sections=["WINDOWS"],           # Foreground color of inactive tab
+        urgent_bg=theme.color2,         # Background color of urgent tab
+        urgent_fg=theme.color12,        # Foreground color of urgent tab
+        vspace=2,                       # Space between tabs
     )
 
 
@@ -647,7 +649,7 @@ def init_layouts():
         _monad_wide(),
         _max_tile(),
         _columns(),
-        # _treetab(),
+        _treetab(),
         # _tile(),
         # _ratio_tile(),
         # _stack(),

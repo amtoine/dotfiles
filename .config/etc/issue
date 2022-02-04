@@ -1,0 +1,26 @@
+Welcome to \e{cyan}\S\e{reset} on \e{green}\n\e{reset} (\e{green}\r\e{reset}) (\e{yellow}\l\e{reset})
+
++---------------------------------+
+| It is \e{magenta}\t\e{reset}, \e{red}\d\e{reset} |
++---------------------------------+
+
+\e{cyan}                   -`
+                  .o+`
+                 `ooo/
+                `+oooo:
+               `+oooooo:
+               -+oooooo+:
+             `/:-:++oooo+:
+            `/++++/+++++++:
+           `/++++++++++++++:
+          `/+++o\e{blue}oooooooo\e{cyan}oooo/`
+\e{blue}         \e{cyan}./\e{blue}ooosssso++osssssso\e{cyan}+`
+\e{blue}        .oossssso-````/ossssss+`
+       -osssssso.      :ssssssso.
+      :osssssss/        osssso+++.
+     /ossssssss/        +ssssooo/-
+   `/ossssso+/:-        -:/+osssso+-
+  `+sso+:-`                 `.-/+oso:
+ `++:.                           `-/+/
+ .`                                 `/
+\e{reset}
