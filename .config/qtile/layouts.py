@@ -539,16 +539,16 @@ def _treetab():
         font=FONT,                      # Font
         fontshadow=None,                # font shadow color, default is None (no shadow)
         fontsize=15,                    # Font pixel size.
-        inactive_bg=theme.bg,           # Background color of inactive tab
+        inactive_bg=theme.color0,           # Background color of inactive tab
         inactive_fg=theme.fg,           # Foreground color of inactive tab
-        level_shift=8,                  # Shift for children tabs
+        level_shift=2,                  # Shift for children tabs
         margin_left=6,                  # Left margin of tab panel
-        margin_y=20,                     # Vertical margin of tab panel
+        margin_y=2,                     # Vertical margin of tab panel
         name="TREE",
-        padding_left=6,                 # Left padding for tabs
-        padding_x=6,                    # Left padding for tab label
-        padding_y=2,                    # Top padding for tab label
-        panel_width=150,                # Width of the left panel
+        padding_left=2,                 # Left padding for tabs
+        padding_x=2,                    # Left padding for tab label
+        padding_y=15,                   # Top padding for tab label
+        panel_width=200,                # Width of the left panel
         previous_on_rm=False,           # Focus previous window on close instead of first.
         section_bottom=6,               # Bottom margin of section
         section_fg=theme.color9,        # Color of section label
@@ -557,9 +557,9 @@ def _treetab():
         section_padding=4,              # Bottom of margin section label
         section_top=4,                  # Top margin of section label
         sections=["WINDOWS"],           # Foreground color of inactive tab
-        urgent_bg=theme.color2,         # Background color of urgent tab
-        urgent_fg=theme.color12,        # Foreground color of urgent tab
-        vspace=2,                       # Space between tabs
+        urgent_bg=theme.color9,         # Background color of urgent tab
+        urgent_fg=theme.color13,        # Foreground color of urgent tab
+        vspace=1,                       # Space between tabs
     )
 
 
@@ -650,12 +650,4 @@ def init_layouts():
         _max_tile(),
         _columns(),
         _treetab(),
-        # _tile(),
-        # _ratio_tile(),
-        # _stack(),
-        # _floating(),
-        # _matrix(),
-        # _slice_tile(),  # does not work.
-        # _vertical_tile(),
-        # _zoomy(),
     ]

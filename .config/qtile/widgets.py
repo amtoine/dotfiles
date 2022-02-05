@@ -116,7 +116,7 @@ class MOC(widget.base.ThreadPoolText):
             moc_state = "FATAL_ERROR"
 
         if moc_state == "FATAL_ERROR":
-            return ''
+            return " --:--"
 
         variables = dict()
         state, file, title, artist, song, album, tt, tl, ts, ct, cs, b, r = moc_state.split(sep)
@@ -932,7 +932,7 @@ def _battery(format, bg="#000000", fg="#ffffff"):
         background=bg,             # Widget background color
         battery=0,                 # Which battery should be monitored (battery number or name)
         charge_char=' ',          # Character to indicate the battery is charging
-        discharge_char=' ',       # Character to indicate the battery is discharging
+        discharge_char=' ',       # Character to indicate the battery is discharging
         empty_char=' ',           # Character to indicate the battery is empty
         fmt='{}',                  # How to format the text
         font=FONT,                 # Default font
@@ -1041,7 +1041,7 @@ def _wlan(terminal, bg="#000000", fg="#ffffff"):
     """
     return widget.Wlan(
         background=bg,                        # Widget background color
-        disconnected_message='睊',            # String to show when the wlan is diconnected.
+        disconnected_message="睊 --/--",      # String to show when the wlan is diconnected.
         fmt='{}',                             # How to format the text
         font=FONT,                            # Default font
         fontshadow=None,                      # font shadow color, default is None(no shadow)
@@ -1128,10 +1128,10 @@ def list_right_widgets(terminal):
         [_df,            dict(**wt.df,             terminal=terminal)],
         [_volume,        dict(**wt.volume,         terminal=terminal)],
         [_moc,           dict(**wt.moc,            terminal=terminal)],
+        [_entropy,       dict(**wt.entropy)],
         [_wlan,          dict(**wt.wlan,           terminal=terminal)],
         [_net,           dict(**wt.net)],
         [_cpu,           dict(**wt.cpu,            terminal=terminal)],
-        [_entropy,       dict(**wt.entropy)],
         [_clock,         dict(**wt.clock,          terminal=terminal)],
         [_battery,       dict(**wt.battery)],
         [_quick_exit,    dict(**wt.quick_exit)],

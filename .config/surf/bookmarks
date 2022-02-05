@@ -1,3 +1,30 @@
+--   | --                      | --                               | https://superuser.com/questions/1091698/how-to-block-ip-in-ssh
+--   | --                      | --                               | https://guru99.com/file-permissions.html
+--   | --                      | --                               | https://root-me.org/?page=newslang=fr
+--   | --                      | --                               | https://linuxfr.org/news/socat-un-outil-en-ligne-de-commande-pour-maitriser-vos-sockets
+--   | --                      | --                               | https://apply.workable.com/huggingface/j/E859CC2C69/
+--   | --                      | --                               | https://huggingface.co/blog/snowball-fight
+--   | --                      | --                               | https://stefaanlippens.net/pretty-csv.html
+--   | --                      | --                               | https://revealjs.com/
+--   | --                      | --                               | https://tecmint.com/
+--   | --                      | --                               | https://tecmint.com/restrict-ssh-user-to-directory-using-chrooted-jail/
+--   | --                      | --                               | https://youtube.com/playlist?list=WL
+--   | --                      | --                               | https://tecmint.com/test-local-websites-on-internet-using-ngrok/
+--   | --                      | --                               | https://ostechnix.com/quick-tip-how-to-find-out-which-groups-a-user-belongs-to/
+--   | --                      | --                               | https://vultr.com/docs/change-hostname-on-arch-linux/
+--   | --                      | --                               | https://en.proft.me/2015/08/25/how-format-usb-arch-linuxubuntu-command-line/
+--   | --                      | --                               | https://gitlab.com/dwt1/dmscripts
+--   | --                      | --                               | https://gitlab.com/dwt1/dotfiles/-/blob/master/macho.sh
+--   | --                      | --                               | https://hiphish.github.io/blog/2020/05/31/macho-man-command-on-steroids/
+--   | --                      | --                               | https://youtube.com/playlist?list=WL
+--   | --                      | --                               | https://orgmode.org/worg/org-tutorials/org-google-sync.html
+--   | --                      | --                               | https://youtube.com/playlist?list=WL
+--   | --                      | --                               | https://github.com/kovidgoyal/kitty-themes
+--   | --                      | --                               | https://nerdfonts.com/
+--   | --                      | --                               | https://allocine.fr/
+--   | --                      | --                               | https://github.com/hlissner/doom-emacs
+--   | --                      | --                               | https://naghdbishi.ir/Doom-Emacs-Cheat-Sheet/README.html
+--   | --                      | --                               | https://superuser.com/questions/275502/how-to-get-information-about-an-image-picture-from-the-linux-command-line/275507
 --   | --                      | --                               | https://codelabs.developers.google.com/codelabs/cloud-compute-engine#1
 --   | --                      | --                               | https://wallpaperflare.com/
 --   | --                      | --                               | https://coolors.co/generate
@@ -17,7 +44,7 @@ vfre | --                      | --                               | https://vost
 --   | --                      | --                               | https://github.com/roddhjav/pass-tomb
 --   | --                      | --                               | https://github.com/dyne/Tomb
 
---   | --                      | --                               | https://colab.research.google.com/?utm_source=scs-index
+colab| --                      | --                               | https://colab.research.google.com/?utm_source=scs-index
 --   | --                      | --                               | https://openreview.net/
 
 qtile| --                      | --                               | http://qtile.org/
@@ -243,9 +270,9 @@ oryx | misc                    | Oryx                             | https://conf
      | research ml rl          | Video Tutorials - PerceptiLabs   | https://www.perceptilabs.com/docs/video_tutorials
 srl  | research supaer sureli  | Slack - SuReLI                   | https://app.slack.com/client/TC16ATWRH/unreads
      | research supaer sureli  | SuReLib                          | https://sureli.github.io/surelib/
-sdd  | research supaero sdd    | Slack - SDD 21-22                | https://app.slack.com/client/T02DR5CN7PW/C02DFU5KUDB
-sdd  | research supaero sdd    | SDD                              | https://lms.isae.fr/course/index.php?categoryid=282
 sdd  | research supaero sdd    | SDD                              | https://supaerodatascience.github.io/
+sdds | research supaero sdd    | Slack - SDD 21-22                | https://app.slack.com/client/T02DR5CN7PW/C02DFU5KUDB
+sddl | research supaero sdd    | SDD                              | https://lms.isae.fr/course/index.php?categoryid=282
      | research supaero sdd    | Xavier Olive                     | https://www.xoolive.org/
 
      | tools                   | Signer un PDF                    | https://smallpdf.com/fr/signer-un-pdf
@@ -676,9 +703,12 @@ yt   | youtube                 | youtube                          | https://www.
      | youtube playlist        | linux-code                       | https://www.youtube.com/playlist?list=PLex3MS8x-JtogR3n63HQUVY3VA3XskVAl
      | youtube playlist        | Maps                             | https://www.youtube.com/playlist?list=PLex3MS8x-Jtrq1bK_xdTAdoBkwtN1E2xx
      | youtube playlist        | Origami_s                        | https://www.youtube.com/playlist?list=PLex3MS8x-JtpWv6fLyf9jaJtVZKEPWgwJ
-     | youtube playlist        | Summer of Maths exposition       | https://www.youtube.com/playlist?list=PLnQX-jgAF5pTkwtUuVpqS5tuWmJ-6ZM-Z
+some | youtube playlist        | Summer of Maths exposition       | https://www.youtube.com/playlist?list=PLnQX-jgAF5pTkwtUuVpqS5tuWmJ-6ZM-Z
      | youtube playlist        | tech                             | https://www.youtube.com/playlist?list=PLex3MS8x-JtpF4m1E_scHBAEMN56m3xmW
      | youtube playlist        | Warhammer                        | https://www.youtube.com/playlist?list=PLex3MS8x-JtpisPvbBcXILk2QxHlwCcHu
+     | youtube playlist        | Neovim from Scratch              | https://www.youtube.com/playlist?list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ
+     | youtube playlist        | The Qtile Window Manager         | https://www.youtube.com/playlist?list=PL5--8gKSku15-C4mBKRpQVcaat4zwe4Gu
+     | youtube playlist        | The Church of Emacs              | https://www.youtube.com/playlist?list=PL5--8gKSku15uYCnmxWPO17Dq6hVabAB4
 wl   | youtube playlist        | Watch later                      | https://www.youtube.com/playlist?list=WL
 dl2  | youtube playlist music  | DL2                              | https://www.youtube.com/playlist?list=PLex3MS8x-JtpeaLNqJ4SyN6DdqlZkWvLs
 dl3  | youtube playlist music  | DL3                              | https://www.youtube.com/playlist?list=PLex3MS8x-JtrtqViuqibOsEeo_DX3Aq6g
@@ -712,6 +742,7 @@ dl30 | youtube playlist music  | DL30                             | https://www.
 dl31 | youtube playlist music  | DL31                             | https://www.youtube.com/playlist?list=PLex3MS8x-JtrYKRKkr4hMLYZS_Mo4tB67
 dl32 | youtube playlist music  | DL32                             | https://www.youtube.com/playlist?list=PLex3MS8x-JtqE2KmymN0mXv9yMKN1B6Ql
 dl33 | youtube playlist music  | DL33                             | https://www.youtube.com/playlist?list=PLex3MS8x-Jtrw8goQuLnFgktTxopDIaNZ
+dl34 | youtube playlist music  | DL34                             | https://www.youtube.com/playlist?list=PLex3MS8x-JtpwUbhvlh4RvnWGPQIt-SPP
      | youtube playlist music  | Misik                            | https://www.youtube.com/playlist?list=PLex3MS8x-Jtrekld0Kcl0ZNPk6rOYPxr_
      | youtube playlist music  | Dubstep                          | https://www.youtube.com/playlist?list=PLex3MS8x-Jtod0NgsNnLluYfpQtewFUwC
      | youtube playlist music  | Alkpote                | Monument               | https://www.youtube.com/playlist?list=OLAK5uy_mXtRCMVpovmNBXK_u-tugixR6UmNrl-4g
@@ -761,5 +792,4 @@ dl33 | youtube playlist music  | DL33                             | https://www.
      | youtube playlist music  | Vald                   | XEU                    | https://www.youtube.com/playlist?list=PLz5xhaTJpehNmjjKhSGZqgWzwiv0IHP94
      | youtube playlist music  | Youv Dee               | La vie de luxe         | https://www.youtube.com/playlist?list=PLSBWvYm8t6uadh3LHjh_zicZs_9LNTKfc
      | youtube playlist music  | Youv Dee               | Planete Mars           | https://www.youtube.com/playlist?list=PLGai6Q-FNdSZweFVHbV4OiOhgKC8QGOrd
-     | youtube video rl        | Policy Gradient (RLVS 1/3)                      | https://www.y.com/watch?v=R7ULMBXOQtE
-
+     | youtube video rl rlvs   | Policy Gradient        |                        | https://www.y.com/watch?v=R7ULMBXOQtE

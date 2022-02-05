@@ -33,16 +33,16 @@ WIDGETS = WidgetTheme(**{
     "chord":          {"bg": theme.bg,      "fg": theme.color1},
     "prompt":         {"bg": theme.bg,      "fg": theme.color0},
     "check_updates":  {"bg": theme.bg,      "fg": theme.color8},
+    "df":             {"bg": theme.bg,      "fg": theme.color7},
     "volume":         {"bg": theme.bg,      "fg": theme.color3},
     "moc":            {"bg": theme.bg,      "fg": theme.color11},
-    "df":             {"bg": theme.bg,      "fg": theme.color7},
+    "entropy":        {"bg": theme.bg,      "fg": theme.color7},
     "wlan":           {"bg": theme.bg,      "fg": theme.color2},
     "net":            {"bg": theme.bg,      "fg": theme.color10},
     "cpu":            {"bg": theme.bg,      "fg": theme.color7},
-    "entropy":        {"bg": theme.bg,      "fg": theme.color9},
-    "clock":          {"bg": theme.bg,      "fg": theme.color13,  "format": _clock_fmt},
-    "battery":        {"bg": theme.bg,      "fg": theme.color6,   "format": _battery_fmt},
-    "quick_exit":     {"bg": theme.bg,      "fg": theme.color0,   "text": _qexit_fmt, "countdown": _count_fmt},
+    "clock":          {"bg": theme.bg,      "fg": theme.color6,   "format": _clock_fmt},
+    "battery":        {"bg": theme.bg,      "fg": theme.color14,  "format": _battery_fmt},
+    "quick_exit":     {"bg": theme.bg,      "fg": theme.color7,   "text": _qexit_fmt, "countdown": _count_fmt},
 })
 
 _layout_themes = {
@@ -64,13 +64,13 @@ FONT = "mononoki Nerd Font"
 DMFONT = "mononoki Nerd Font-20"
 ARROW_SIZE, SIZE = font_sizes.medium
 
-_bar_width = LAYOUTS.border_width // 2
+_border_width = LAYOUTS.border_width // 2
 _border = (0, 0, 1, 0)
 BAR = dict(
     size=SIZE,
     opacity=1,
     background=theme.bg,
     margin=[0, 0, 0, 0],         # N E S W
-    border_width=list(map(lambda x: x * _bar_width, _border)),
+    border_width=list(map(lambda x: x * _border_width, _border)),
     border_color=[theme.sel_bg, theme.sel_bg, theme.sel_bg, theme.sel_bg]
 )
