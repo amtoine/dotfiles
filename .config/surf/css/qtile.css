@@ -1,0 +1,77 @@
+/*       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/  */
+/*      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s  */
+/*     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles  */
+/*     \__,_/____/_/ /_/           /____/ */
+/**/
+/* Description:  TODO */
+/* Dependencies: TODO */
+/* License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE  */
+/* Contributors: Stevan Antoine */
+
+body {
+  background-color: #282a36 !important;
+  color: #d0d0d0 !important;
+}
+
+header {
+  background-color: #282a46 !important;
+  color: #d0d0d0 !important;
+}
+
+p {  /* any paragraph of text */
+    color: #82aaff !important;
+}
+
+ div.wy-nav-content {  /* the code preview */
+  background-color: #282a36 !important;
+   color: #f07178 !important;
+ }
+
+ a {  /* some sections of text, inside tables or menu for instance */
+   background-color: #282a36 !important;
+   color: #71c078 !important;
+ }
+
+ a.reference.internal {  /* some sections of text, inside tables or menu for instance */
+   background: #282a36 !important;
+   color: #71c078 !important;
+ }
+
+ a.reference.internal.current {  /* some sections of text, inside tables or menu for instance */
+   background: #484a56 !important;
+   color: #71c078 !important;
+ }
+
+ div.panel-heading {  /* the code preview */
+   background-color: #282a96 !important;
+   color: #f07178 !important;
+ }
+
+ div.panel-body {  /* the code preview */
+   background-color: #282a36 !important;
+   color: #f07178 !important;
+ }
+
+ div.screenshot.thumbnail {  /* the code preview */
+   background-color: #282a36 !important;
+   color: #f07178 !important;
+ }
+
+ th {  /* the table head */
+   background-color: #282a96 !important;
+   color: #82aaff !important;
+ }
+
+ td {  /* the table head */
+   background-color: #282a36 !important;
+   color: #82aaff !important;
+ }
+
+ code {  /* the code preview */
+   background-color: #282a46 !important;
+   color: #f07178 !important;
+ }
+
+ h1, h2, h3 {  /* the titles */
+   color: #f07178 !important;
+ }

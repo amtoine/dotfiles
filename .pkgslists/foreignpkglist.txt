@@ -7,7 +7,6 @@ lf
 mbsync-git
 mu
 myman
-nerd-fonts-complete
 nerd-fonts-mononoki
 ngrok
 paru

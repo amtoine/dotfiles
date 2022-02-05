@@ -42,7 +42,7 @@ WIDGETS = WidgetTheme(**{
     "cpu":            {"bg": theme.bg,      "fg": theme.color7},
     "clock":          {"bg": theme.bg,      "fg": theme.color6,   "format": _clock_fmt},
     "battery":        {"bg": theme.bg,      "fg": theme.color14,  "format": _battery_fmt},
-    "quick_exit":     {"bg": theme.bg,      "fg": theme.color7,   "text": _qexit_fmt, "countdown": _count_fmt},
+    "quick_exit":     {"bg": theme.bg,      "fg": theme.color1,   "text": _qexit_fmt, "countdown": _count_fmt},
 })
 
 _layout_themes = {

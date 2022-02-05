@@ -8,6 +8,7 @@ autoconf
 automake
 base
 bash-completion
+bashtop
 bat
 bc
 bind
@@ -16,8 +17,10 @@ bison
 blueman
 bluez
 bluez-utils
+bpytop
 brightnessctl
 bspwm
+btop
 caprine
 catimg
 cava
@@ -61,6 +64,7 @@ gdb
 gimp
 git
 github-cli
+gnu-netcat
 gnuplot
 grub
 gst-libav
@@ -92,7 +96,6 @@ mu
 myman
 ncdu
 neovim
-nerd-fonts-complete
 nerd-fonts-mononoki
 net-tools
 nethack
@@ -171,6 +174,7 @@ tmux
 toilet
 tomb
 tree
+ttf-iosevka-nerd
 ueberzug
 unzip
 vi

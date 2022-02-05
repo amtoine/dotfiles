@@ -42,11 +42,14 @@ If you want more information about *bare* `git` repositories, you can check one 
 $HOME
 |-- [d]  .config                                     -- main config directory
 |   |-- [-]  alacritty/alacritty.yml                   --  the alacritty terminal emulator.
+|   |-- [-]  bashtop/bashtop.cfg                       -- a process monitor.
+|   |-- [-]  bpytop/bpytop.conf                        -- another process monitor.
 |   |-- [-]  bspwm/bspwmrc                             -- a tilling window manager.
+|   |-- [-]  btop/btop.conf                            -- another process monitor.
 |   |-- [-]  dmscripts/config                          -- configuration for some dmenu life hacks.
 |   |-- [-]  dmenufm/dmenufm.conf                      -- a file explorer and manager.
 |   |-- [d]  fish                                      -- the fish shell
-|   |-- [-]  htop/htoprc                               -- my process monitor.
+|   |-- [-]  htop/htoprc                               -- another process monitor.
 |   |-- [-]  kitty/kitty.conf                          -- terminal emulator.
 |   |-- [d]  lazygit                                   -- the lazy git tui tool.
 |   |-- [d]  lazycli                                   -- the lazy cli tui tool.
@@ -118,8 +121,11 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 
 #### List of programs:
 - [ ] [`alacritty`]         ([\*\*][mydoc-alacritty])
-- [x] [`bspwm`]             ([\*\*][mydoc-bspwm])
 - [x] [`bash`]              ([\*\*][mydoc-bash])
+- [~] [`bashtop`]           ([\*\*][mydoc-bashtop])
+- [~] [`bpytop`]            ([\*\*][mydoc-bpytop])
+- [x] [`bspwm`]             ([\*\*][mydoc-bspwm])
+- [~] [`btop`]              ([\*\*][mydoc-btop])
 - [x] [`dmscripts`]
 - [ ] [`dmenufm`]           ([\*\*][mydoc-dmenufm])
 - [ ] [`fish`]              ([\*\*][mydoc-fish])
@@ -246,8 +252,11 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 <!-- my files -->
 [`pkgslists`]:             .pkgslists
 [`alacritty`]:             .config/alacritty/alacritty.yml
-[`bspwm`]:                 .config/bspwm/bspwmrc
 [`bash`]:                  .bashrc
+[`bashtop`]:               .config/bashtop/bashtop.cfg
+[`bpytop`]:                .config/bpytop/bpytop.conf
+[`bspwm`]:                 .config/bspwm/bspwmrc
+[`btop`]:                  .config/btop/btop.conf
 [`dmscripts`]:             .config/dmscripts/config
 [`dmenufm`]:               .config/dmenufm/dmenufm.conf
 [`fish`]:                  .config/fish
@@ -288,8 +297,11 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 
 <!-- programs -->
 [mydoc-alacritty]:             https://a2n-s.github.io/public/doc/config/dotfiles/alacritty
-[mydoc-bspwm]:                 https://a2n-s.github.io/public/doc/config/dotfiles/bspwm
 [mydoc-bash]:                  https://a2n-s.github.io/public/doc/config/dotfiles/bash
+[mydoc-bspwm]:                 https://a2n-s.github.io/public/doc/config/dotfiles/bspwm
+[`my-docbashtop`]:             https://a2n-s.github.io/public/doc/config/dotfiles/bashtop
+[`my-docbpytop`]:              https://a2n-s.github.io/public/doc/config/dotfiles/bpytop
+[`my-docbtop`]:                https://a2n-s.github.io/public/doc/config/dotfiles/btop
 [mydoc-dmenufm]:               https://a2n-s.github.io/public/doc/config/dotfiles/dmenufm
 [mydoc-fish]:                  https://a2n-s.github.io/public/doc/config/dotfiles/fish
 [mydoc-git]:                   https://a2n-s.github.io/public/doc/config/dotfiles/git

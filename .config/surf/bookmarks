@@ -1,79 +1,77 @@
---   | --                      | --                               | https://superuser.com/questions/1091698/how-to-block-ip-in-ssh
---   | --                      | --                               | https://guru99.com/file-permissions.html
---   | --                      | --                               | https://root-me.org/?page=newslang=fr
---   | --                      | --                               | https://linuxfr.org/news/socat-un-outil-en-ligne-de-commande-pour-maitriser-vos-sockets
---   | --                      | --                               | https://apply.workable.com/huggingface/j/E859CC2C69/
---   | --                      | --                               | https://huggingface.co/blog/snowball-fight
---   | --                      | --                               | https://stefaanlippens.net/pretty-csv.html
---   | --                      | --                               | https://revealjs.com/
---   | --                      | --                               | https://tecmint.com/
---   | --                      | --                               | https://tecmint.com/restrict-ssh-user-to-directory-using-chrooted-jail/
---   | --                      | --                               | https://youtube.com/playlist?list=WL
---   | --                      | --                               | https://tecmint.com/test-local-websites-on-internet-using-ngrok/
---   | --                      | --                               | https://ostechnix.com/quick-tip-how-to-find-out-which-groups-a-user-belongs-to/
---   | --                      | --                               | https://vultr.com/docs/change-hostname-on-arch-linux/
---   | --                      | --                               | https://en.proft.me/2015/08/25/how-format-usb-arch-linuxubuntu-command-line/
---   | --                      | --                               | https://gitlab.com/dwt1/dmscripts
---   | --                      | --                               | https://gitlab.com/dwt1/dotfiles/-/blob/master/macho.sh
---   | --                      | --                               | https://hiphish.github.io/blog/2020/05/31/macho-man-command-on-steroids/
---   | --                      | --                               | https://youtube.com/playlist?list=WL
---   | --                      | --                               | https://orgmode.org/worg/org-tutorials/org-google-sync.html
---   | --                      | --                               | https://youtube.com/playlist?list=WL
---   | --                      | --                               | https://github.com/kovidgoyal/kitty-themes
---   | --                      | --                               | https://nerdfonts.com/
---   | --                      | --                               | https://allocine.fr/
---   | --                      | --                               | https://github.com/hlissner/doom-emacs
---   | --                      | --                               | https://naghdbishi.ir/Doom-Emacs-Cheat-Sheet/README.html
---   | --                      | --                               | https://superuser.com/questions/275502/how-to-get-information-about-an-image-picture-from-the-linux-command-line/275507
---   | --                      | --                               | https://codelabs.developers.google.com/codelabs/cloud-compute-engine#1
---   | --                      | --                               | https://wallpaperflare.com/
---   | --                      | --                               | https://coolors.co/generate
---   | --                      | --                               | https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
---   | --                      | --                               | https://github.com/neovim/nvim-lspconfig
---   | --                      | --                               | https://python-packaging-tutorial.readthedocs.io/en/latest/setup_py.html
---   | --                      | --                               | https://packaging.python.org/en/latest/tutorials/packaging-projects/
---   | --                      | --                               | https://bright-tide.co.uk/data4wildlifechallenge
---   | --                      | --                               | https://gitlab.com/dwt1
---   | --                      | --                               | https://distro.tube/index.html
+     |                         |                                  | https://hub.docker.com/
+     |                         |                                  | https://superuser.com/questions/1091698/how-to-block-ip-in-ssh
+     |                         |                                  | https://guru99.com/file-permissions.html
+     |                         |                                  | https://root-me.org/?page=newslang=fr
+     |                         |                                  | https://linuxfr.org/news/socat-un-outil-en-ligne-de-commande-pour-maitriser-vos-sockets
+     |                         |                                  | https://apply.workable.com/huggingface/j/E859CC2C69/
+     |                         |                                  | https://huggingface.co/blog/snowball-fight
+     |                         |                                  | https://stefaanlippens.net/pretty-csv.html
+     |                         |                                  | https://revealjs.com/
+     |                         |                                  | https://tecmint.com/
+     |                         |                                  | https://tecmint.com/restrict-ssh-user-to-directory-using-chrooted-jail/
+     |                         |                                  | https://tecmint.com/test-local-websites-on-internet-using-ngrok/
+     |                         |                                  | https://ostechnix.com/quick-tip-how-to-find-out-which-groups-a-user-belongs-to/
+     |                         |                                  | https://vultr.com/docs/change-hostname-on-arch-linux/
+     |                         |                                  | https://en.proft.me/2015/08/25/how-format-usb-arch-linuxubuntu-command-line/
+     |                         |                                  | https://gitlab.com/dwt1/dmscripts
+     |                         |                                  | https://gitlab.com/dwt1/dotfiles/-/blob/master/macho.sh
+     |                         |                                  | https://hiphish.github.io/blog/2020/05/31/macho-man-command-on-steroids/
+     |                         |                                  | https://orgmode.org/worg/org-tutorials/org-google-sync.html
+     |                         |                                  | https://github.com/kovidgoyal/kitty-themes
+     |                         |                                  | https://nerdfonts.com/
+     |                         |                                  | https://allocine.fr/
+     |                         |                                  | https://github.com/hlissner/doom-emacs
+     |                         |                                  | https://naghdbishi.ir/Doom-Emacs-Cheat-Sheet/README.html
+     |                         |                                  | https://superuser.com/questions/275502/how-to-get-information-about-an-image-picture-from-the-linux-command-line/275507
+     |                         |                                  | https://codelabs.developers.google.com/codelabs/cloud-compute-engine#1
+     |                         |                                  | https://wallpaperflare.com/
+     |                         |                                  | https://coolors.co/generate
+     |                         |                                  | https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+     |                         |                                  | https://github.com/neovim/nvim-lspconfig
+     |                         |                                  | https://python-packaging-tutorial.readthedocs.io/en/latest/setup_py.html
+     |                         |                                  | https://packaging.python.org/en/latest/tutorials/packaging-projects/
+     |                         |                                  | https://bright-tide.co.uk/data4wildlifechallenge
+     |                         |                                  | https://gitlab.com/dwt1
+     |                         |                                  | https://distro.tube/index.html
 
-mha2 | --                      | --                               | https://vostfree.tv/167-boku-no-hero-academia-2-vostfr-ddl-streaming-1fichier-uptobox.html
-vfre | --                      | --                               | https://vostfree.tv/
+mha2 |                         |                                  | https://vostfree.tv/167-boku-no-hero-academia-2-vostfr-ddl-streaming-1fichier-uptobox.html
+vfre |                         |                                  | https://vostfree.tv/
 
---   | --                      | --                               | https://jobteaser.com/en
+     |                         |                                  | https://jobteaser.com/en
 
---   | --                      | --                               | https://github.com/roddhjav/pass-tomb
---   | --                      | --                               | https://github.com/dyne/Tomb
+     |                         |                                  | https://github.com/roddhjav/pass-tomb
+     |                         |                                  | https://github.com/dyne/Tomb
 
-colab| --                      | --                               | https://colab.research.google.com/?utm_source=scs-index
---   | --                      | --                               | https://openreview.net/
+colab|                         |                                  | https://colab.research.google.com/?utm_source=scs-index
+     |                         |                                  | https://openreview.net/
 
-qtile| --                      | --                               | http://qtile.org/
---   | --                      | --                               | https://xmonad.org/
---   | --                      | --                               | https://stumpwm.github.io/git/stumpwm-git_1.html#Introduction
+qtile|                         |                                  | http://qtile.org/
+     |                         |                                  | https://xmonad.org/
+     |                         |                                  | https://stumpwm.github.io/git/stumpwm-git_1.html#Introduction
 
---   | --                      | --                               | https://kaggle.com/dennisgwilson/flowers-finetuning-and-pruning-mixers#
---   | --                      | --                               | https://kaggle.com/antoinestevan/flowers-finetuning-and-pruning-mixers/edit
+     |                         |                                  | https://kaggle.com/dennisgwilson/flowers-finetuning-and-pruning-mixers#
+     |                         |                                  | https://kaggle.com/antoinestevan/flowers-finetuning-and-pruning-mixers/edit
 
---   | --                      | --                               | https://calendar.google.com/calendar/u/1/r?pli=1
---   | --                      | --                               | https://askubuntu.com/questions/1150339/increment-brightness-by-value-using-xrandr
---   | --                      | --                               | https://specifications.freedesktop.org/desktop-entry-spec/latest/apa.html
+     |                         |                                  | https://calendar.google.com/calendar/u/1/r?pli=1
+     |                         |                                  | https://askubuntu.com/questions/1150339/increment-brightness-by-value-using-xrandr
+     |                         |                                  | https://specifications.freedesktop.org/desktop-entry-spec/latest/apa.html
 
---   | --                      | --                               | https://desmos.com/?lang=fr
+     |                         |                                  | https://desmos.com/?lang=fr
 
---   | --                      | --                               | https://github.com/rockerBOO/awesome-neovim
---   | --                      | --                               | https://github.com/mhinz/neovim-remote
---   | --                      | --                               | https://github.com/rcarriga/nvim-notify
+     |                         |                                  | https://github.com/rockerBOO/awesome-neovim
+     |                         |                                  | https://github.com/mhinz/neovim-remote
+     |                         |                                  | https://github.com/rcarriga/nvim-notify
 
---   | --                      | --                               | https://xmodulo.com/key-value-dictionary-bash.html
---   | --                      | --                               | https://dustymabe.com/2013/05/17/easy-getopt-for-a-bash-script/
---   | --                      | --                               | https://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
---   | --                      | --                               | https://explainshell.com/
+     |                         |                                  | https://xmodulo.com/key-value-dictionary-bash.html
+     |                         |                                  | https://dustymabe.com/2013/05/17/easy-getopt-for-a-bash-script/
+     |                         |                                  | https://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
+     |                         |                                  | https://explainshell.com/
 
---   | --                      | --                               | https://torch.ch/docs/getting-started.html#_
---   | --                      | --                               | https://github.com/karpathy/neuraltalk2
+     |                         |                                  | https://torch.ch/docs/getting-started.html#_
+     |                         |                                  | https://github.com/karpathy/neuraltalk2
 
---   | --                      | --                               | https://youtube.com/results?search_query=raspberry%20pi%200%20install%20arch
---   | --                      | --                               | https://archlinuxarm.org/platforms/armv6/raspberry-pi
+     |                         |                                  | https://youtube.com/results?search_query=raspberry%20pi%200%20install%20arch
+     |                         |                                  | https://archlinuxarm.org/platforms/armv6/raspberry-pi
 
      | code                    | Date and time in Python?         | https://www.programiz.com/python-programming/datetime/current-datetime
      | code                    | Panda3D Beginner's Tutorial      | https://arsthaumaturgis.github.io/Panda3DTutorial.io/about/

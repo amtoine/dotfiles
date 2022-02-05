@@ -5,12 +5,15 @@ arduino
 autoconf
 automake
 base
+bashtop
 bc
 bison
 blueman
 bluez-utils
+bpytop
 brightnessctl
 bspwm
+btop
 caprine
 catimg
 chromium
@@ -88,7 +91,6 @@ sox
 spectrwm
 starship
 swig
-sysstat
 termdown
 thunderbird
 tig
