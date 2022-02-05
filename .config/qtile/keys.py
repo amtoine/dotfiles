@@ -26,6 +26,7 @@ from style import DMFONT
 
 SCRIPTS = "scripts"
 SPC = "space"
+ESC = "Escape"
 SHI = "shift"
 CON = "control"
 TAB = "Tab"
@@ -76,6 +77,11 @@ URESTART = lazy.restart(), lazy.ungrab_chord()
 USHUTDOWN = lazy.shutdown(), lazy.ungrab_chord()
 _QTILE_CONKY = os.path.expanduser('~/.config/conky/qtile.conkyrc')
 CONKY = f"conky --config={_QTILE_CONKY}"
+PYTHON = " python"
+LGIT = " lazygit --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+TIGA = " GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME tig --all"
+BTOP = " btop --utf-force"
+HTOP = " htop"
 
 
 def _cmd(command):
@@ -90,6 +96,13 @@ def _ucmd(command):
         TODO
     """
     return lazy.spawn(command), lazy.ungrab_chord()
+
+
+def _uacmd(command):
+    """
+        TODO
+    """
+    return lazy.spawn(command), lazy.ungrab_all_chords()
 
 
 def _rofi(modi):
@@ -194,10 +207,6 @@ def init_keymap(mod, terminal):
             ),
             Key(MOD, 'f', lazy.window.toggle_fullscreen(),    desc="toggle fullscreen"),
             KeyChord(MOD, 'm', [
-                Key([], 'h', _cmd("mocp -k -10"),             desc="TODO"),
-                Key([], 'j', _cmd("mocp -f"),                 desc="TODO"),
-                Key([], 'k', _cmd("mocp -r"),                 desc="TODO"),
-                Key([], 'l', _cmd("mocp -k +10"),             desc="TODO"),
                 Key([], 'b', *_ucmd("mocp -r"),               desc="TODO"),
                 Key([], 'm', *_ucmd("mocp -G"),               desc="TODO"),
                 Key([], 'n', *_ucmd("mocp -f"),               desc="TODO"),
@@ -207,6 +216,10 @@ def init_keymap(mod, terminal):
                 Key([], 'r', *_ucmd("mocp -t repeat"),        desc="TODO"),
                 Key([], 's', *_ucmd("mocp -t shuffle"),       desc="TODO"),
                 Key([], 'u', *_ucmd("mocp -S"),               desc="TODO"),
+                Key([], 'h', _cmd("mocp -k -10"),             desc="TODO"),
+                Key([], 'j', _cmd("mocp -f"),                 desc="TODO"),
+                Key([], 'k', _cmd("mocp -r"),                 desc="TODO"),
+                Key([], 'l', _cmd("mocp -k +10"),             desc="TODO"),
                 Key([], SPC, _cmd("mocp -G"),                 desc="TODO"),
                 Key([], F7,  _cmd(SOUNDDOWN.format(SOUNDL)),  desc="TODO"),
                 Key([], F8,  _cmd(MUTE),                      desc="TODO"),
@@ -246,17 +259,47 @@ def init_keymap(mod, terminal):
                 mode=" ROFI"
             ),
             KeyChord(MOD, 's', [
-                Key([], 'a', *_ucmd("alacritty"),             desc="TODO"),
                 Key([], 'b', *_ucmd("blueman-manager"),       desc="TODO"),
-                Key([], 'c', *_ucmd(terminal + CHECK),        desc="TODO"),
-                Key([], 'd', *_ucmd(terminal + TREE),         desc="TODO"),
-                Key([], 'f', *_ucmd(terminal + DISK),         desc="TODO"),
-                Key([], 'h', *_ucmd(terminal + PROC),         desc="TODO"),
-                Key([], 'k', *_ucmd("kitty"),                 desc="TODO"),
+                KeyChord([], 'c', [
+                    Key([], 'l', *_uacmd(terminal + LGIT),    desc="TODO"),
+                    Key([], 'q', lazy.ungrab_all_chords(),    desc="TODO"),
+                    Key([], 't', *_uacmd(terminal + TIGA),    desc="TODO"),
+                    ],
+                    mode=" CONFIG"
+                ),
+                KeyChord([], 'd', [
+                    Key([], 'q', lazy.ungrab_all_chords(),    desc="TODO"),
+                    Key([], 's', *_uacmd(terminal + TREE),    desc="TODO"),
+                    Key([], 'u', *_uacmd(terminal + DISK),    desc="TODO"),
+                    ],
+                    mode=" DISK"
+                ),
+                Key([], 'f', _script("lfrun.sh", terminal),   desc="my file explorer."),
+                KeyChord([], 'h', [
+                    Key([], 'b', *_uacmd(terminal + BTOP),    desc="TODO"),
+                    Key([], 'h', *_uacmd(terminal + HTOP),    desc="TODO"),
+                    Key([], 'q', lazy.ungrab_all_chords(),    desc="TODO"),
+                    ],
+                    mode=" MONITOR"
+                ),
                 Key([], 'm', *_ucmd(terminal + MIXER),        desc="TODO"),
                 Key([], 'n', *_ucmd(terminal + NET),          desc="TODO"),
-                Key([], 't', *_ucmd(terminal),                desc="TODO"),
-                Key([], 'u', *_ucmd(terminal + UPDT),         desc="TODO"),
+                KeyChord([], 't', [
+                    Key([], 'a', *_uacmd("alacritty"),        desc="TODO"),
+                    Key([], 'k', *_uacmd("kitty"),            desc="TODO"),
+                    Key([], 'p', *_uacmd(terminal + PYTHON),  desc="TODO"),
+                    Key([], 'q', lazy.ungrab_all_chords(),    desc="TODO"),
+                    Key([], 't', *_uacmd(terminal),           desc="TODO"),
+                    ],
+                    mode=" TERMINAL"
+                ),
+                KeyChord([], 'u', [
+                    Key([], 'c', *_uacmd(terminal + CHECK),   desc="TODO"),
+                    Key([], 'u', *_uacmd(terminal + UPDT),    desc="TODO"),
+                    Key([], 'q', lazy.ungrab_all_chords(),    desc="TODO"),
+                    ],
+                    mode=" UPDATES"
+                ),
                 Key([], 'y', *_ucmd(terminal + CAL),          desc="TODO"),
                 ],
                 mode=" SYSTEM"
@@ -306,7 +349,6 @@ def init_keymap(mod, terminal):
             Key(MOD, F9,  _cmd(SOUNDUP.format(SOUNDL)),        desc="TODO"),
             Key(MOD, F10, _script(BLUETOGG),                   desc="TODO"),
 
-            Key(MOD, F11, _script("lfrun.sh", terminal),       desc="my file explorer."),
             Key(MOD, F12, _script("slock-cst.sh"),             desc="lock the computer."),
         ]
     )

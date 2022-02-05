@@ -32,16 +32,21 @@ if [[ -f "$cache" ]]; then
     sed "s/+\(.*\)+control/+control+\1/g;" | \
 
     sed "s/^<root> /<root>:/g;" | \
-    sed "s/^BROWSER /BROWSER:/g" | \
-    sed "s/^DMENU /DMENU:/g" | \
-    sed "s/^EDITOR /EDITOR:/g" | \
-    sed "s/^MUSIC /MUSIC:/g" | \
-    sed "s/^MISCELLANEOUS /MISCELLANEOUS:/g" | \
-    sed "s/^PASS /PASS:/g" | \
-    sed "s/^QTILE /QTILE:/g" | \
-    sed "s/^ROFI /ROFI:/g" | \
-    sed "s/^SYSTEM /SYSTEM:/g" | \
-    sed "s/^RESIZE /RESIZE:/g" | \
+    sed "s/^BROWSER /BROWSER:mod4+b,/g" | \
+    sed "s/^DMENU /DMENU:mod4+d,/g" | \
+    sed "s/^EDITOR /EDITOR:mod4+e,/g" | \
+    sed "s/^MUSIC /MUSIC:mod4+m,/g" | \
+    sed "s/^MISCELLANEOUS /MISCELLANEOUS:mod4+c,/g" | \
+    sed "s/^PASS /PASS:mod4+p,/g" | \
+    sed "s/^QTILE /QTILE:mod4+q,/g" | \
+    sed "s/^ROFI /ROFI:mod4+r,/g" | \
+    sed "s/^SYSTEM> CONFIG /SYSTEM,CONFIG:mod4+s,c,/g" | \
+    sed "s/^SYSTEM> DISK /SYSTEM,DISK:mod4+s,d,/g" | \
+    sed "s/^SYSTEM> MONITOR /SYSTEM,MONITOR:mod4+s,h,/g" | \
+    sed "s/^SYSTEM> TERMINAL /SYSTEM,TERMINAL:mod4+s,t,/g" | \
+    sed "s/^SYSTEM> UPDATES /SYSTEM,UPDATES:mod4+s,u,/g" | \
+    sed "s/^SYSTEM /SYSTEM:mod4+s,/g" | \
+    sed "s/^RESIZE /RESIZE:mod4+z,/g" | \
 
     sed "s/@/@     /g;" | \
     sed "s/$/@/g;" | \
