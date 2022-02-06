@@ -40,6 +40,7 @@ F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12 = (
     f"F{i}" for i in range(1, 13)
     )
 
+HOME = os.path.expanduser("~")
 DMRUN = f"dmenu_run -h {BAR['size']} -p 'Run: ' -fn '{DMFONT}'"
 PASS = f"passmenu -l 10 -c -fn '{DMFONT}'"
 PASSEDIT = "passedit.sh"
@@ -75,11 +76,13 @@ WALLPAPER = "wallpaper.fzf.sh"
 URELOAD = lazy.reload_config(), lazy.ungrab_chord()
 URESTART = lazy.restart(), lazy.ungrab_chord()
 USHUTDOWN = lazy.shutdown(), lazy.ungrab_chord()
-_QTILE_CONKY = os.path.expanduser('~/.config/conky/qtile.conkyrc')
-CONKY = f"conky --config={_QTILE_CONKY}"
+_CONKY = os.path.expanduser('~/.config/qtile/conky/beginner.conkyrc')
+CONKY = f"conky --config={_CONKY}"
+_HELP = os.path.expanduser('~/.config/qtile/conky/help.conkyrc')
+HELP = f"conky --config={_HELP}"
 PYTHON = " python"
-LGIT = " lazygit --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-TIGA = " GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME tig --all"
+LGIT = f" lazygit --git-dir={HOME}/.dotfiles --work-tree={HOME}"
+TIGA = "config.tiga.sh"
 BTOP = " btop --utf-force"
 HTOP = " htop"
 
@@ -134,6 +137,14 @@ def _uscript(script, terminal=None, path=SCRIPTS):
         TODO
     """
     return _script(script, terminal=terminal, path=path), lazy.ungrab_chord()
+
+
+def _uascript(script, terminal=None, path=SCRIPTS):
+    """
+        TODO
+    """
+    script_ = _script(script, terminal=terminal, path=path)
+    return script_, lazy.ungrab_all_chords()
 
 
 def init_keymap(mod, terminal):
@@ -236,8 +247,14 @@ def init_keymap(mod, terminal):
             KeyChord(MOD, 'q', [
                 Key([], 'a', *_ucmd(AUTOSTART),               desc="TODO"),
                 Key([], "c", *URELOAD,                        desc="Reload the config"),
-                Key([], 'h', *_ucmd(CONKY),                   desc="TODO"),
-                Key([], 'k', *_ucmd(terminal + KB),           desc="TODO"),
+                KeyChord([], 'h', [
+                    Key([], 'b', *_uacmd(CONKY),              desc="TODO"),
+                    Key([], 'h', *_uacmd(HELP),               desc="TODO"),
+                    Key([], 'k', *_uacmd(terminal + KB),      desc="TODO"),
+                    Key([], 'q', lazy.ungrab_all_chords(),    desc="TODO"),
+                    ],
+                    mode=" HELP"
+                ),
                 Key([], 'l', *_ucmd(terminal + LOG),          desc="TODO"),
                 Key([], "r", *URESTART,                       desc="Restarting Qtile"),
                 Key([], "s", *USHUTDOWN,                      desc="Shutdown Qtile"),
@@ -261,9 +278,10 @@ def init_keymap(mod, terminal):
             KeyChord(MOD, 's', [
                 Key([], 'b', *_ucmd("blueman-manager"),       desc="TODO"),
                 KeyChord([], 'c', [
+                    Key([], 'e', *_uacmd("dm-confedit"),      desc="Choose a config file to edit"),
                     Key([], 'l', *_uacmd(terminal + LGIT),    desc="TODO"),
                     Key([], 'q', lazy.ungrab_all_chords(),    desc="TODO"),
-                    Key([], 't', *_uacmd(terminal + TIGA),    desc="TODO"),
+                    Key([], 't', *_uascript(TIGA, terminal),  desc="TODO"),
                     ],
                     mode=" CONFIG"
                 ),
@@ -274,7 +292,7 @@ def init_keymap(mod, terminal):
                     ],
                     mode=" DISK"
                 ),
-                Key([], 'f', _script("lfrun.sh", terminal),   desc="my file explorer."),
+                Key([], 'f', *_uscript("lfrun.sh", terminal), desc="my file explorer."),
                 KeyChord([], 'h', [
                     Key([], 'b', *_uacmd(terminal + BTOP),    desc="TODO"),
                     Key([], 'h', *_uacmd(terminal + HTOP),    desc="TODO"),

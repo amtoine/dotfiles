@@ -26,11 +26,11 @@ conky.config = {
   draw_outline = false,
   draw_shades = false,
   extra_newline = false,
-  font = 'mononoki Nerd Font Regular:size=15',
+  font = 'mononoki Nerd Font Regular:size=12',
   gap_x = 60,
   gap_y = 60,
   minimum_height = 5,
-  minimum_width = 5,
+  minimum_width = 400,
   net_avg_samples = 2,
   no_buffers = true,
   out_to_console = false,
@@ -63,7 +63,6 @@ conky.config = {
 }
 
 conky.text = [[
-
 ${color3}${alignc}S Y S T E M    I N F O${color}
 ${hr}
 ${color1}Up${color}${color2}${alignr}${uptime_short}${color}
@@ -72,10 +71,11 @@ ${color1}Time${color2}${alignr}${time %X}${color}
 ${color1}Host${color2}${alignr}${nodename}${color}
 ${color1}Kernel${color2}${alignr}${kernel}${color}
 ${color1}Machine${color2}${alignr}${machine}${color}
-
+${color1}${hr}${color}
+${color1}${hr}${color}
 ${color3}${alignc}S H O R T C U T    K E Y S${color}
 ${color1}${hr}${color}
-${color2}a+b${alignr}${color1} press a and b${color}
+${color2}a+b${alignr}${color1} press a and b at the same time${color}
 ${color2}a, b${alignr}${color1} press a then b${color}
 ${color1}${hr}${color}
 ${color1}[S]+t${alignr}${color2} command prompt${color}
@@ -94,7 +94,7 @@ ${color1}[S]+e, n${alignr}${color2}open neovim${color}
 ${color1}${hr}${color}
 ${color1}[S]+q, a${alignr}${color2}autostart${color}
 ${color1}[S]+q, c${alignr}${color2}reload config${color}
-${color1}[S]+q, h${alignr}${color2}open help${color}
+${color1}[S]+q, h${alignr}${color2}open this help${color}
 ${color1}[S]+q, k${alignr}${color2}key bindings${color}
 ${color1}[S]+q, l${alignr}${color2}log file${color}
 ${color1}[S]+q, r${alignr}${color2}restart${color}
@@ -102,7 +102,6 @@ ${color1}[S]+q, s${alignr}${color2}quit${color}
 ${color1}[S]+q, t${alignr}${color2}change theme${color}
 ${color1}[S]+q, w${alignr}${color2}change wallpaper${color}
 ${color1}${hr}${color}
-${color1}[S]+[F11]${alignr}${color2} lf file explorer${color}
 ${color1}[S]+[F12]${alignr}${color2} lock the machine${color}
 ${color1}${hr}${color}
 ]];

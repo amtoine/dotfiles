@@ -1,7 +1,7 @@
 #! /usr/bin/bash
 
 feh --no-fehbg --bg-fill --randomize ~/repos/wallpapers/wallpapers/*
-conky --config ~/.config/conky/qtile.conkyrc --daemonize #--pause=5
+conky --config ~/.config/qtile/conky/beginner.conkyrc --daemonize #--pause=5
 
 emacs --daemon
 

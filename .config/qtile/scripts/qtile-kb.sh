@@ -38,6 +38,7 @@ if [[ -f "$cache" ]]; then
     sed "s/^MUSIC /MUSIC:mod4+m,/g" | \
     sed "s/^MISCELLANEOUS /MISCELLANEOUS:mod4+c,/g" | \
     sed "s/^PASS /PASS:mod4+p,/g" | \
+    sed "s/^QTILE> HELP /QTILE,HELP:mod4+q,h,/g" | \
     sed "s/^QTILE /QTILE:mod4+q,/g" | \
     sed "s/^ROFI /ROFI:mod4+r,/g" | \
     sed "s/^SYSTEM> CONFIG /SYSTEM,CONFIG:mod4+s,c,/g" | \
@@ -52,7 +53,7 @@ if [[ -f "$cache" ]]; then
     sed "s/$/@/g;" | \
     tr '@' '\n' | \
 
-    sed 's/dawd//' > $cache
+    sed 's/dawd//' > "$cache"
 fi
 # cat $cache
 # exit 0
@@ -64,6 +65,4 @@ export FZF_DEFAULT_OPTS="
 --preview='cat $cache | grep -w {1} -A2 | grep -w {2} -A2'"
 
 cmd=$(cat $cache | grep -v "^$\|^ " | awk -F@ '{print $1}' | uniq | sort | fzf)
-cat $cache | grep $cmd -A2
-
-
+cat "$cache" | grep "$cmd" -A2
