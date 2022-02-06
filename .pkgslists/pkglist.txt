@@ -27,6 +27,7 @@ csvkit
 ctags
 dictd
 docker
+docker-compose
 dstat
 dwarffortress
 eog

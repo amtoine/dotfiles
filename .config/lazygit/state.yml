@@ -1,5 +1,8 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/prog/docker/scsc/docker
+- /home/ants/repos/oh-my-fish
+- /home/ants/.config/nvim
 - /home/ants/repos/oh-my-bash
 - /home/ants/repos/wallpapers
 - /home/ants/prog/docker/pwn_docker_example
@@ -10,7 +13,6 @@ recentrepos:
 - /home/ants/repos/slock
 - /home/ants/research/Imagine
 - /home/ants/repos/dmenu
-- /home/ants/.config/nvim
 - /home/ants/research/ma_playground_env
 - /home/ants/repos/a2n-s
 - /home/ants/prog/dqn
