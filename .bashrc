@@ -139,6 +139,12 @@ source $OSH/oh-my-bash.sh
 #      ____/ /_    / /_/ (__  )  __/ /     / /__/ /_/ / / / / __/ / /_/ / /_/ / /  / /_/ / /_/ / /_/ / / / /
 #     /_____/(_)   \__,_/____/\___/_/      \___/\____/_/ /_/_/ /_/\__, /\__,_/_/   \__,_/\__/_/\____/_/ /_/
 #                                                                /____/
+## colors ###
+NC="\[\e[0m\]"
+BK="\[\e[30;1m\]"
+RD="\[\e[31;1m\]"
+GR="\[\e[32;40m\]"
+YL="\[\e[33;31m\]"
 #         ______  ___                                       __
 #        / ____/ <  /     ____ ____  ____  ___  _________ _/ /
 #       /___ \   / /     / __ `/ _ \/ __ \/ _ \/ ___/ __ `/ /
@@ -171,7 +177,7 @@ source $OSH/oh-my-bash.sh
 #      ____/ /_ / __/_    / / / / / / (__  ) /__
 #     /_____/(_)____(_)  /_/ /_/ /_/_/____/\___/
 
-echo "$PATH"
+echo -e "base path: $PATH"
 export PATH=$HOME/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.cargo/bin:$PATH
 
 # changes the editor in the terminal, to edit long commands.
@@ -186,7 +192,7 @@ source $HOME/.local/bin/virtualenvwrapper.sh
 
 xtcl.sh -d -q
 
-# # usage: extr <file>
+# usage: extr <file>
 extr ()
 {
   if [ -f "$1" ] ; then
@@ -212,12 +218,12 @@ extr ()
   fi
 }
 
+## before prompt ###
 #if [[ -f ~/.config/neofetch/.neofetchrc ]]; then
 #	. ~/.config/neofetch/.neofetchrc;
 #else
 #	neofetch;
 #fi
-
 # figlet -tf slant "welcome in BASH"
 # colorscript -e elfman
 # cal -3
@@ -225,8 +231,12 @@ extr ()
 # fortune -c | ponysay --pony
 # fortune -c | ponysay --ponyonly
 
-eval "$(starship init bash)"
+## the prompt ###
+# eval "$(starship init bash)"
+# export PS1="$RD[\#] $NC\u@\h:$YL\w$NC $GR>$NC "
+export PS1="$RD[\#]$NC $YL\w$NC \$($HOME/scripts/_parse_git_info.sh)$GR>$NC "
 
+## after prompt ###
 if [ -f /etc/bash.command-not-found ]; then
     . /etc/bash.command-not-found
 fi

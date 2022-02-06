@@ -29,5 +29,6 @@ if [ $? -eq 0 ]; then
   uf=$(git status 2> /dev/null | awk '/^Untracked files/,/^$/' | grep -e $'^\t' | wc -l)                                                     # the numbers of untracked files (uf).
   sl=$(git stash list 2> /dev/null | wc -l)                                                                                                  # the number of stashes.
   repo=$(git remote -v 2> /dev/null | grep -e "origin.*fetch"  | rev | cut -d'/' -f1 | rev | sed "s/ (fetch)//g; s/ (push)//g; s/\.git$//")  # the repo name.
-  echo -e "\e[39m(\e[36m$repo\e[96m@\e[36m$branch\e[39m:\e[92m$tbc\e[39m,\e[93m$nsfc\e[39m,\e[91m$uf\e[39m,\e[95m$sl\e[39m)"
+  # echo -e "\e[39m(\e[36m$repo\e[96m@\e[36m$branch\e[39m:\e[92m$tbc\e[39m,\e[93m$nsfc\e[39m,\e[91m$uf\e[39m,\e[95m$sl\e[39m)"
+  echo -e "($repo@$branch:$tbc,$nsfc,$uf,$sl)"
 fi
