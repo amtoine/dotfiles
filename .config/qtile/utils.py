@@ -85,6 +85,45 @@ WidgetTheme = namedtuple(
     defaults=({},) * len(_widgets)
 )
 
+
+def build_widgets(theme, battery_fmt, clock_fmt, count_fmt, qexit_fmt):
+    """
+        TODO
+    """
+    _group_box_misc_colors = {
+        "active":        theme.sel_bg,
+        "inactive":      theme.bg,
+        "select":        theme.sel_fg,
+        "line":         [theme.color4, theme.color4],
+        "other_focus":   theme.color8,
+        "other_unfocus": theme.color8,
+        "this_focus":    theme.sel_bg,
+        "this_unfocus":  theme.sel_bg,
+        "urgent_border": theme.color9,
+        "urgent_text":   theme.color9
+    }
+    return WidgetTheme(**{
+        "current_layout": {"bg": theme.sel_bg,  "fg": theme.sel_fg},
+        "current_screen": {"bg": theme.bg,      "fg": theme.fg,      "active": theme.color10, "inactive": theme.color9},
+        "group_box":      {"bg": theme.bg,      "fg": theme.fg,      **_group_box_misc_colors},
+        "window_name":    {"bg": theme.sel_bg,  "fg": theme.sel_fg},
+
+        "chord":          {"bg": theme.bg,      "fg": theme.color1},
+        "prompt":         {"bg": theme.bg,      "fg": theme.color0},
+        "check_updates":  {"bg": theme.bg,      "fg": theme.color8},
+        "df":             {"bg": theme.bg,      "fg": theme.color7},
+        "volume":         {"bg": theme.bg,      "fg": theme.color3},
+        "moc":            {"bg": theme.bg,      "fg": theme.color11},
+        "entropy":        {"bg": theme.bg,      "fg": theme.color7},
+        "wlan":           {"bg": theme.bg,      "fg": theme.color2},
+        "net":            {"bg": theme.bg,      "fg": theme.color10},
+        "cpu":            {"bg": theme.bg,      "fg": theme.color7},
+        "clock":          {"bg": theme.bg,      "fg": theme.color6,   "format": clock_fmt},
+        "battery":        {"bg": theme.bg,      "fg": theme.color14,  "format": battery_fmt},
+        "quick_exit":     {"bg": theme.bg,      "fg": theme.color1,   "text": qexit_fmt, "countdown": count_fmt},
+    })
+
+
 _layout_opts = [
         "focus",
         "normal",
@@ -118,6 +157,27 @@ LayoutTheme = namedtuple(
     defaults=({},) * len(_layouts)
 )
 
+
+def build_layouts(theme, border_width, margin):
+    """
+        TODO
+    """
+    _layout_themes = {
+        "bsp":        {"focus": theme.color12, "normal": theme.color2},
+        "columns":    {"focus": theme.color12, "normal": theme.color2, "focus_stack": theme.color1, "normal_stack": theme.color8},
+        "monad_tall": {"focus": theme.color1,  "normal": theme.color2},
+        "monad_wide": {"focus": theme.color1,  "normal": theme.color2},
+        "floating":   {"focus": theme.color12, "normal": theme.color2},
+        "tree":       {"focus": theme.color1,  "normal": theme.color2},
+    }
+
+    return LayoutTheme(
+        **dict(zip(_layout_themes.keys(), [Layout(**args) for args in _layout_themes.values()])),
+        border_width=8,
+        margin=8,
+    )
+
+
 FontSizes = namedtuple(
     "FontSized",
     [
@@ -130,4 +190,20 @@ font_sizes = FontSizes(
     small=(19, 16),
     medium=(27, 24),
     large=(36, 32)
+    )
+
+Bars = namedtuple(
+    "Bars",
+    [
+        "minimal",
+        "simple",
+        "normal",
+        "full",
+    ]
+)
+bars = Bars(
+    minimal=0,
+    simple=1,
+    normal=2,
+    full=3,
     )

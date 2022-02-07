@@ -21,9 +21,6 @@ from libqtile import qtile
 from libqtile import widget
 
 from keys import MIXER
-from utils import fetch_monitors
-from style import WIDGETS as wt
-from style import theme
 from style import FONT
 from style import ARROW_SIZE
 
@@ -67,7 +64,7 @@ class Entropy(widget.base.ThreadPoolText):
         return self.format.format(**variables)
 
 
-def _entropy(bg="#000000", fg="#ffffff"):
+def entropy(bg="#000000", fg="#ffffff"):
     """
         A simple widget to display the entropy of the system.
 
@@ -137,7 +134,7 @@ class MOC(widget.base.ThreadPoolText):
         return self.format.format(**variables)
 
 
-def _moc(terminal, bg="#000000", fg="#ffffff"):
+def moc(terminal, bg="#000000", fg="#ffffff"):
     """
     """
     return MOC(
@@ -163,7 +160,7 @@ def _moc(terminal, bg="#000000", fg="#ffffff"):
     )
 
 
-def _notify(bg="#000000", fg="#ffffff"):
+def notify(bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.Notify(width=CALCULATED, **config)[source]
         A notify widget
@@ -198,7 +195,7 @@ def _notify(bg="#000000", fg="#ffffff"):
     )
 
 
-def _genpolltext(bg="#000000", fg="#ffffff"):
+def genpolltext(bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.GenPollText(**config)[source]
         A generic text widget that polls using poll function to get the text
@@ -220,7 +217,7 @@ def _genpolltext(bg="#000000", fg="#ffffff"):
     )
 
 
-def _genpollurl(bg="#000000", fg="#ffffff"):
+def genpollurl(bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.GenPollUrl(**config)[source]
         A generic text widget that polls an url and parses it using parse
@@ -249,7 +246,7 @@ def _genpollurl(bg="#000000", fg="#ffffff"):
     )
 
 
-def _df(terminal, bg="#000000", fg="#ffffff"):
+def df(terminal, bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.DF(**config)[source]
         Disk Free Widget
@@ -282,7 +279,7 @@ def _df(terminal, bg="#000000", fg="#ffffff"):
     )
 
 
-def _sep(bg="#000000", fg="#ffffff", width=10, size=20):
+def sep(bg="#000000", fg="#ffffff", width=10, size=20):
     """
         class libqtile.widget.Sep(**config)[source]
         A visible widget separator
@@ -299,7 +296,7 @@ def _sep(bg="#000000", fg="#ffffff", width=10, size=20):
     )
 
 
-def _image(terminal, bg="#000000", filename=None):
+def image(terminal, bg="#000000", filename=None):
     """
         class libqtile.widget.Image(length=CALCULATED, **config)[source]
         Display a PNG image on the bar
@@ -319,7 +316,7 @@ def _image(terminal, bg="#000000", filename=None):
     )
 
 
-def _thermal_sensor(bg="#000000", fg="#ffffff"):
+def thermal_sensor(bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.ThermalSensor(**config)[source]
         Widget to display temperature sensor information
@@ -350,7 +347,7 @@ def _thermal_sensor(bg="#000000", fg="#ffffff"):
     )
 
 
-def _check_updates(terminal, bg="#000000", fg="#ffffff"):
+def check_updates(terminal, bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.CheckUpdates(**config)[source]
         Shows number of pending updates in different unix systems
@@ -384,7 +381,7 @@ def _check_updates(terminal, bg="#000000", fg="#ffffff"):
     )
 
 
-def _memory(terminal, bg="#000000", fg="#ffffff"):
+def memory(terminal, bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.Memory(**config)[source]
         Displays memory/swap usage
@@ -423,7 +420,7 @@ def _memory(terminal, bg="#000000", fg="#ffffff"):
     )
 
 
-def _volume(terminal, bg="#000000", fg="#ffffff"):
+def volume(terminal, bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.Volume(**config)[source]
         Widget that display and change volume
@@ -461,7 +458,7 @@ def _volume(terminal, bg="#000000", fg="#ffffff"):
     )
 
 
-def _keyboard_layout(bg="#000000", fg="#ffffff"):
+def keyboard_layout(bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.KeyboardLayout(**config)[source]
         Widget for changing and displaying the current keyboard layout
@@ -492,7 +489,7 @@ def _keyboard_layout(bg="#000000", fg="#ffffff"):
     )
 
 
-def _backlight(bg="#000000", fg="#ffffff"):
+def backlight(bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.Backlight(**config)[source]
         A simple widget to show the current brightness of a monitor.
@@ -528,7 +525,7 @@ def _backlight(bg="#000000", fg="#ffffff"):
     )
 
 
-def _bluetooth(bg="#000000", fg="#ffffff"):
+def bluetooth(bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.Bluetooth(**config)[source]
         Displays bluetooth status or connected device.
@@ -551,7 +548,7 @@ def _bluetooth(bg="#000000", fg="#ffffff"):
     )
 
 
-def _cpu(terminal, bg="#000000", fg="#ffffff"):
+def cpu(terminal, bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.CPU(**config)[source]
         A simple widget to display CPU load and frequency.
@@ -576,7 +573,7 @@ def _cpu(terminal, bg="#000000", fg="#ffffff"):
     )
 
 
-def _current_screen(bg="#000000", fg="#ffffff", active="66ff66", inactive="#ff6666"):
+def current_screen(bg="#000000", fg="#ffffff", active="66ff66", inactive="#ff6666"):
     """
         class libqtile.widget.CurrentScreen(width=CALCULATED, **config)[source]
         Indicates whether the screen this widget is on is currently active or
@@ -601,7 +598,7 @@ def _current_screen(bg="#000000", fg="#ffffff", active="66ff66", inactive="#ff66
     )
 
 
-def _hdd(bg="#000000"):
+def hdd(bg="#000000"):
     """
         class libqtile.widget.HDDGraph(**config)[source]
         Display HDD free or used space graph
@@ -626,7 +623,7 @@ def _hdd(bg="#000000"):
     )
 
 
-def _wallpaper(bg="#000000", fg="#ffffff"):
+def wallpaper(bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.Wallpaper(**config)[source]
         Supported bar orientations: horizontal and vertical
@@ -651,7 +648,7 @@ def _wallpaper(bg="#000000", fg="#ffffff"):
     )
 
 
-def _current_layout(bg="#000000", fg="#ffffff"):
+def current_layout(bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.CurrentLayout(width=CALCULATED, **config)[source]
         Display the name of the current layout of the current group of the
@@ -673,7 +670,7 @@ def _current_layout(bg="#000000", fg="#ffffff"):
     )
 
 
-def _current_layout_icon(bg="#000000", fg="#ffffff"):
+def current_layout_icon(bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.CurrentLayoutIcon(**config)[source]
         Display the icon representing the current layout of the current group
@@ -712,7 +709,7 @@ def _current_layout_icon(bg="#000000", fg="#ffffff"):
     )
 
 
-def _group_box(
+def group_box(
     bg="#000000", fg="#ffffff",
     active="#ff0000", select="#00ff00", line=['000000', '2828ff'],
     inactive="4040ff", other_focus="404040",
@@ -767,7 +764,7 @@ def _group_box(
     )
 
 
-def _prompt(bg="#000000", fg="#ffffff"):
+def prompt(bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.Prompt(name='prompt', **config)[source]
         A widget that prompts for user input
@@ -800,7 +797,7 @@ def _prompt(bg="#000000", fg="#ffffff"):
     )
 
 
-def _window_name(bg="#000000", fg="#ffffff"):
+def window_name(bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.WindowName(width=STRETCH, **config)[source]
         Displays the name of the window that currently has focus
@@ -825,7 +822,7 @@ def _window_name(bg="#000000", fg="#ffffff"):
     )
 
 
-def _chord(bg="#000000", fg="#ffffff"):
+def chord(bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.Chord(width=CALCULATED, **config)[source]
         Display current key chord
@@ -848,7 +845,7 @@ def _chord(bg="#000000", fg="#ffffff"):
     )
 
 
-def _text_box(text='', bg="#000000", fg="#ffffff"):
+def text_box(text='', bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.TextBox(text=' ', width=CALCULATED, **config)[source]
         A flexible textbox that can be updated from bound keys, scripts, and
@@ -871,7 +868,7 @@ def _text_box(text='', bg="#000000", fg="#ffffff"):
     )
 
 
-def _systray(bg="#000000"):
+def systray(bg="#000000"):
     """
         class libqtile.widget.Systray(**config)[source]
         A widget that manages system tray.
@@ -895,7 +892,7 @@ def _systray(bg="#000000"):
     )
 
 
-def _clock(terminal, format='%H:%M', bg="#000000", fg="#ffffff"):
+def clock(terminal, format='%H:%M', bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.Clock(**config)[source]
         A simple but flexible text-based clock
@@ -921,7 +918,7 @@ def _clock(terminal, format='%H:%M', bg="#000000", fg="#ffffff"):
     )
 
 
-def _battery(format, bg="#000000", fg="#ffffff"):
+def battery(format, bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.Battery(**config)[source]
         A text-based battery monitoring widget currently supporting FreeBSD
@@ -956,7 +953,7 @@ def _battery(format, bg="#000000", fg="#ffffff"):
     )
 
 
-def _battery_icon(bg="#000000"):
+def battery_icon(bg="#000000"):
     """
         class libqtile.widget.BatteryIcon(**config)[source]
         Battery life indicator widget.
@@ -972,7 +969,7 @@ def _battery_icon(bg="#000000"):
     )
 
 
-def _net(bg="#000000", fg="#ffffff"):
+def net(bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.Net(**config)[source]
         Displays interface down and up speed
@@ -1000,7 +997,7 @@ def _net(bg="#000000", fg="#ffffff"):
     )
 
 
-def _quick_exit(bg="#000000", fg="#ffffff", countdown="[ {} seconds ]", text="[ shutdown ]"):
+def quick_exit(bg="#000000", fg="#ffffff", countdown="[ {} seconds ]", text="[ shutdown ]"):
     """
         class libqtile.widget.QuickExit(widget=CALCULATED, **config)[source]
         A button of exiting the running qtile easily. When clicked this button,
@@ -1030,7 +1027,7 @@ def _quick_exit(bg="#000000", fg="#ffffff", countdown="[ {} seconds ]", text="[ 
     )
 
 
-def _wlan(terminal, bg="#000000", fg="#ffffff"):
+def wlan(terminal, bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.Wlan(**config)[source]
         Displays Wifi SSID and quality.
@@ -1060,7 +1057,7 @@ def _wlan(terminal, bg="#000000", fg="#ffffff"):
     )
 
 
-def _powerline_left_arrow(bg="#000000", fg="#ffffff"):
+def powerline_left_arrow(bg="#000000", fg="#ffffff"):
     """
         TODO
     """
@@ -1074,7 +1071,7 @@ def _powerline_left_arrow(bg="#000000", fg="#ffffff"):
     )
 
 
-def _powerline_right_arrow(bg="#000000", fg="#ffffff"):
+def powerline_right_arrow(bg="#000000", fg="#ffffff"):
     """
         TODO
     """
@@ -1088,7 +1085,7 @@ def _powerline_right_arrow(bg="#000000", fg="#ffffff"):
     )
 
 
-def _vertical_sep(bg="#000000", fg="#ffffff"):
+def vertical_sep(bg="#000000", fg="#ffffff"):
     """
         TODO
     """
@@ -1100,79 +1097,3 @@ def _vertical_sep(bg="#000000", fg="#ffffff"):
         padding=2,
         fontsize=14
     )
-
-
-def list_left_widgets(terminal):
-    """
-        TODO
-    """
-    widgets = [
-        [_current_screen, dict(**wt.current_screen)],
-        [_current_layout, dict(**wt.current_layout)],
-        [_group_box,      dict(**wt.group_box)],
-        [_window_name,    dict(**wt.window_name)],
-    ]
-    if len(fetch_monitors()) == 1:
-        del widgets[0]
-    return widgets
-
-
-def list_right_widgets(terminal):
-    """
-        TODO
-    """
-    return [
-        [_chord,         dict(**wt.chord)],
-        [_prompt,        dict(**wt.prompt)],
-        [_check_updates, dict(**wt.check_updates,  terminal=terminal)],
-        [_df,            dict(**wt.df,             terminal=terminal)],
-        [_volume,        dict(**wt.volume,         terminal=terminal)],
-        [_moc,           dict(**wt.moc,            terminal=terminal)],
-        [_entropy,       dict(**wt.entropy)],
-        [_wlan,          dict(**wt.wlan,           terminal=terminal)],
-        [_net,           dict(**wt.net)],
-        [_cpu,           dict(**wt.cpu,            terminal=terminal)],
-        [_clock,         dict(**wt.clock,          terminal=terminal)],
-        [_battery,       dict(**wt.battery)],
-        [_quick_exit,    dict(**wt.quick_exit)],
-    ]
-
-
-def _init_widgets(left, right):
-    """
-        TODO
-    """
-    widgets = []
-    bg = theme.bg
-    for func, kwargs in left[::-1]:
-        _bg = kwargs["bg"]
-        widgets.extend([_powerline_right_arrow(fg=_bg, bg=bg), func(**kwargs)])
-        bg = _bg
-    widgets = widgets[::-1]
-
-    for func, kwargs in right:
-        fg = kwargs["fg"] if "fg" in kwargs else theme.bg
-        sep = _sep(fg=fg, bg=theme.bg, width=5, size=100)
-        widgets.extend([sep, func(**kwargs)])
-
-    return widgets
-
-
-def init_widgets_screen1(terminal):
-    """
-        TODO
-    """
-    left = list_left_widgets(terminal)
-    right = list_right_widgets(terminal)
-    widgets = _init_widgets(left, right)
-    return widgets
-
-
-def init_widgets_screen2(terminal):
-    """
-        TODO
-    """
-    left = list_left_widgets(terminal)
-    right = list_right_widgets(terminal)
-    widgets = _init_widgets(left, right)
-    return widgets

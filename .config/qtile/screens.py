@@ -17,7 +17,7 @@
 from libqtile import bar
 from libqtile.config import Screen
 
-from widgets import init_widgets_screen1
+from bar import init_widgets_screen1
 from style import BAR
 from utils import fetch_monitors
 
