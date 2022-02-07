@@ -1,50 +1,117 @@
-#             ___
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
-#     \__,_/____/_/ /_/           /____/
-#                               _____             __   _____      __          __                    _____                _____      __
-#             _________  ____  / __(_)___ _     _/_/  / __(_)____/ /_       _/_/  _________  ____  / __(_)___ _         / __(_)____/ /_
-#            / ___/ __ \/ __ \/ /_/ / __ `/   _/_/   / /_/ / ___/ __ \    _/_/   / ___/ __ \/ __ \/ /_/ / __ `/        / /_/ / ___/ __ \
-#      _    / /__/ /_/ / / / / __/ / /_/ /  _/_/    / __/ (__  ) / / /  _/_/    / /__/ /_/ / / / / __/ / /_/ /   _    / __/ (__  ) / / /
-#     (_)   \___/\____/_/ /_/_/ /_/\__, /  /_/     /_/ /_/____/_/ /_/  /_/      \___/\____/_/ /_/_/ /_/\__, /   (_)  /_/ /_/____/_/ /_/
-#                                 /____/                                                              /____/
-#
-# Description:  TODO
-# Dependencies: this is up to you.
-# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
-# Contributors: Stevan Antoine
-
 if status is-interactive
-    fish_add_path -mP $HOME/.local/bin
-    fish_add_path -mP $HOME/scripts
+  fish_add_path -mP $HOME/.cargo/bin
+  fish_add_path -mP $HOME/.emacs.d/bin
+  fish_add_path -mP $HOME/.local/bin
+  fish_add_path -mP $HOME/scripts
 
+  #       _ _
+  #  __ _| (_)__ _ ___ ___ ___
+  # / _` | | / _` (_-</ -_|_-<
+  # \__,_|_|_\__,_/__/\___/__/
+  set ALIASES $HOME/.aliases
+  [ -f $ALIASES ] && source $ALIASES
 
-    source $HOME/.aliases
+  # shows all the media devices connected.
+  alias dfm='df -h | grep media | sed "s/\s\+/ /g" | cut -d" " -f6,1'
+  # automatically connects to an HDMI-2 monitor on the right of the main laptop screen.
+  set MAIN_DISPLAY "eDP-1"
+  set SECOND_MONITOR "HDMI-2"
+  alias hdmic='xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --mode 1920x1080 --rate 60 --right-of $MAIN_DISPLAY'
+  alias hdmim='xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --mode 1920x1080 --rate 60 --same-as  $MAIN_DISPLAY'
+  alias hdmib='xrandr --output $SECOND_MONITOR --brightness'
+  alias hdmid='xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --off'
+  # automatic copy from terminal output with xclip.
+  alias xcc='xclip -selection c'
+  # list the packages that match the pattern given after the alias.
+  alias pkgl='tail -n +1 .pkgslists/* | grep -e "==>.*<==" -e'
+  # a way to manage bluetooth devices.
+  alias bmm='blueman-manager'
+  # allows to see any csv file directly in the terminal.
+  alias seecsv='perl -pe "s/((?<=,)|(?<=^)),/ ,/g;" "$argv" | column -t -s, | less  -F -S -X -K ;'
+  # wrapper around lf to support file preview.
+  alias lf='~/scripts/lfrun.sh'
+  # a complete diagnostic of the current directory.
+  alias diag='du -hs (ls (pwd) -A) | sort -h'
+  # replacement of vim by nvim.
+  alias nv='/usr/bin/nvim'
+  # alias to get directly to discord app.
+  alias discord="$HOME/Discord/Discord > /dev/null 2> /dev/null &"
+  # the lazycli tool.
+  alias lac="$HOME/.local/bin/lazycli"
+  # to source this quicker.
+  alias sbrc="source $HOME/.bashrc"
+  # prettier ncdu.
+  alias ncdu="ncdu --color dark"
+  # generate a random sequence of characters.
+  alias rand="tr -dc A-Za-z0-9 < /dev/urandom  | head -c"
+  # wrapper of docker with rights.
+  alias docker="sudo docker"
+  # wrapper around btop to bypass lack of locale.
+  alias btop="btop --utf-force"
 
-    # disables the caps lock key.
-    xtcl.sh -d -q
+  # to list all the git repositiories inside the home directory or gives a full diagnostic with the extra d.
+  alias lgr='find $pwd -type d | grep "\.git\$" | sed "s/\/\.git//"'
+  alias lgrd='~/scripts/list.git-repos.diagnostic.sh'
+  alias lgrs='lgrd | grep "^./" | sort --field-separator="|" -nrk'
+  # launches lazygit.
+  alias lg='/usr/bin/lazygit'
+  # interacts with my config's git bare repository.
+  alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+  alias lcfg='/usr/bin/lazygit --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+  alias tcfg="GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME tig --all"
+  alias tiga='/usr/bin/tig --all'
 
-# # activates virtualenvwrapper to manage python virtual environments.
-# export WORKON_HOME=$HOME/.venvs
-# if [[ ! -d $WORKON_HOME ]]; then mkdir -p $WORKON_HOME; fi
-# source $HOME/.local/bin/virtualenvwrapper.sh
-# # <<<
+  alias tls='tmux ls'               # list the sessions.
+  alias tns='tmux new -s'           # creates a new session with name given after the alias.
+  alias tat='tmux attach -t'        # attaches to the session given after the alias.
+  alias tkt='tmux kill-session -t'  # kills the session with name given after the alias.
 
+  alias ncua='nmcli c up "a2n-s"'    # connects to my 4g, change to what you want.
+  alias ncue='nmcli c up "eduroam"'  # connects to the network of my school.
 
-    set EDITOR vim
-    set VISUAL vim
+  alias jpy='jupyter'
+  alias jnb='jupyter-notebook'
 
+  alias sdn='shutdown now -h'
+  alias sdnr='shutdown now -h -r'
 
-#   clear
-#   figlet -tf slant "welcome in FISH"
-#   colorscript -e elfman
-#   cal -3
+  alias cp='cp -i'
+  alias ln='ln -i'
+  alias rm='rm -i'
+  alias rmv='rm -v'
+  alias rmr='rm -r'
+  alias rmrf='rm -rf'
 
+  alias reboot='sudo reboot'
+  alias sctl='sudo systemctl'
 
-    starship init fish --print-full-init | source
+  # enable color support of ls and also add handy aliases
+  alias ls='ls --color=auto'
+  alias dir='dir --color=auto'
+  alias vdir='vdir --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+  alias ll='ls -l'
 
-    function on_exit --on-event fish_exit
-        ponysay "Bye bye!!"
-    end
+  alias kicat="kitty +kitten icat"
+  alias kthemes="kitty +kitten themes"
+
+  alias qtheme="$HOME/.config/qtile/scripts/qtile-change-theme.sh"
+  alias qrestart="qtile cmd-obj -o cmd -f restart"
+  alias qcmd="qtile cmd-obj -o cmd -f spawncmd"
+  # alias qlog="cat $HOME/.local/share/qtile/qtile.log | less"
+  alias qlog="bat $HOME/.local/share/qtile/qtile.log"
+
+  #        _
+  #  _ __ (_)___ __
+  # | '  \| (_-</ _|
+  # |_|_|_|_/__/\__|
+  # disables the caps lock key.
+  xtcl.sh -d -q
+
+  # starship init fish | source
+  source ~/.local/share/omf/pkg/colorman/init.fish
+
+  fish_vi_key_bindings
 end

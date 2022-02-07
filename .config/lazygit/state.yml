@@ -1,5 +1,6 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/.local/share/omf
 - /home/ants/prog/docker/scsc/docker
 - /home/ants/repos/oh-my-fish
 - /home/ants/.config/nvim

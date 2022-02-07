@@ -1,24 +1,6 @@
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
-#     \__,_/____/_/ /_/           /____/
-#                               _____             __   _____      __          __   _____      __                                 _       __    __
-#             _________  ____  / __(_)___ _     _/_/  / __(_)____/ /_       _/_/  / __(_)____/ /_              _   ______ ______(_)___ _/ /_  / /__  _____
-#            / ___/ __ \/ __ \/ /_/ / __ `/   _/_/   / /_/ / ___/ __ \    _/_/   / /_/ / ___/ __ \            | | / / __ `/ ___/ / __ `/ __ \/ / _ \/ ___/
-#      _    / /__/ /_/ / / / / __/ / /_/ /  _/_/    / __/ (__  ) / / /  _/_/    / __/ (__  ) / / /            | |/ / /_/ / /  / / /_/ / /_/ / /  __(__  )
-#     (_)   \___/\____/_/ /_/_/ /_/\__, /  /_/     /_/ /_/____/_/ /_/  /_/     /_/ /_/____/_/ /_/  ______     |___/\__,_/_/  /_/\__,_/_.___/_/\___/____/
-#                                 /____/                                                          /_____/
-#
-# Description:  TODO
-# Dependencies: this is up to you.
-# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
-# Contributors: Stevan Antoine
-
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR SHELL:/bin/bash
-SETUVAR STARSHIP_CONFIG:/home/ants/\x2econfig/starship/config\x2etoml
-SETUVAR SXHKD_SHELL:/bin/bash
+SETUVAR THEME_EDEN_PROMPT_CHAR:\u00bb
 SETUVAR __fish_initialized:3100
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
@@ -32,7 +14,6 @@ SETUVAR fish_color_escape:00a6b2
 SETUVAR fish_color_history_current:\x2d\x2dbold
 SETUVAR fish_color_host:normal
 SETUVAR fish_color_host_remote:yellow
-SETUVAR fish_color_match:\x2d\x2dbackground\x3dbrblue
 SETUVAR fish_color_normal:normal
 SETUVAR fish_color_operator:00a6b2
 SETUVAR fish_color_param:00afff
@@ -44,7 +25,7 @@ SETUVAR fish_color_status:red
 SETUVAR fish_color_user:brgreen
 SETUVAR fish_color_valid_path:\x2d\x2dunderline
 SETUVAR fish_key_bindings:fish_vi_key_bindings
-SETUVAR fish_pager_color_completion:normal
+SETUVAR fish_pager_color_completion:\x1d
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan

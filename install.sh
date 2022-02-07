@@ -555,16 +555,18 @@ install_dmscripts() {
   echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/dmscripts ${Off}"
 }
 install_fish() {
-  install_dir ".config/fish"
   echo "${Cmd}sudo pacman -Syu ${Pkg}fish${Off}"
   sudo pacman -Syu fish
-  if [[ -d $HDIR/$RDIR/oh-my-fish ]]; then
-    echo "${Wrn}$HDIR/$RDIR/oh-my-fish already exists${Off}"
-    echo "${Wrn}please backup $HDIR/$RDIR/oh-my-fish before trying again${Off}"
-  else
-    echo "${Cmd}git clone git://github.com/a2n-s/oh-my-fish.git $HDIR/$RDIR/oh-my-fish${Off}"
-    git clone git://github.com/a2n-s/oh-my-fish.git $HDIR/$RDIR/oh-my-fish
-  fi
+  echo "${Cmd}git clone ${Src}https://github.com/oh-my-fish/oh-my-fish ${Dst}/tmp/omf${Off}"
+  git clone https://github.com/oh-my-fish/oh-my-fish /tmp/omf
+  echo "${Cmd}/tmp/omf/bin/install${Off} --offline"
+  /tmp/omf/bin/install --offline
+  install_file ".config/fish/config.fish"
+  install_dir ".config/omf"
+  echo "${Cmd}python -m pip install ${Pkg}virtualfish${Off}"
+  python -m pip install virtualfish
+  echo "${Cmd}vf install${Off}"
+  vf install
   echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/fish ${Off}"
 }
 install_lazygit() {
