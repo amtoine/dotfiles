@@ -929,16 +929,16 @@ def battery(format, bg="#000000", fg="#ffffff"):
     return widget.Battery(
         background=bg,             # Widget background color
         battery=0,                 # Which battery should be monitored (battery number or name)
-        charge_char=' ',          # Character to indicate the battery is charging
-        discharge_char=' ',       # Character to indicate the battery is discharging
-        empty_char=' ',           # Character to indicate the battery is empty
+        charge_char='',           # Character to indicate the battery is charging
+        discharge_char='',        # Character to indicate the battery is discharging
+        empty_char='',            # Character to indicate the battery is empty
         fmt='{}',                  # How to format the text
         font=FONT,                 # Default font
         fontshadow=None,           # font shadow color, default is None(no shadow)
         fontsize=None,             # Font size. Calculated if None.
         foreground=fg,             # Foreground colour
         format=format,             # Display format
-        full_char=' ',            # Character to indicate the battery is full
+        full_char='',             # Character to indicate the battery is full
         hide_threshold=None,       # Hide the text when there is enough energy 0 <= x < 1
         low_background="#ff0000",  # Background color on low battery
         low_foreground="#ffffff",  # Font color on low battery

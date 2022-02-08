@@ -8,14 +8,14 @@ from theme import theme
 
 FONT = "mononoki Nerd Font"
 DMFONT = "mononoki Nerd Font-20"
-ARROW_SIZE, SIZE = font_sizes.small
+ARROW_SIZE, SIZE = font_sizes.small   # from small, medium, large
 
-BAR = bars.minimal
+BAR = bars.minimal  # from minimal, normal
 
 WIDGETS = build_widgets(
     theme,
-    battery_fmt="{char}{percent:2.0%}",
-    clock_fmt=" %m/%d  %H:%M",
+    battery_fmt="{char}" if BAR == bars.minimal else "{char} {percent:2.0%}",
+    clock_fmt=" %H:%M" if BAR == bars.minimal else " %m/%d  %H:%M",
     count_fmt="{}",
     qexit_fmt="襤",
 )

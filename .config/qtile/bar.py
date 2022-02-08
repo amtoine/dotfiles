@@ -49,8 +49,8 @@ def _create_widgets_table(terminal):
 
 _bar_styles = [
     [
-        ["current_screen", "group_box", "spacer"],
-        ["chord", "prompt", "battery", "quick_exit"],
+        ["current_screen", "group_box"],
+        ["chord", "prompt", "clock", "battery", "quick_exit"],
     ],
     [
         ["current_screen", "current_layout", "group_box", "window_name"],
@@ -76,6 +76,8 @@ def _init_widgets(terminal):
         widgets.extend([powerline_right_arrow(fg=_bg, bg=bg), func(**kwargs)])
         bg = _bg
     widgets = widgets[::-1]
+
+    widgets.append(spacer(**wt.spacer))
 
     for rg in right:
         func, kwargs = table[rg]
