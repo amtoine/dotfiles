@@ -18,7 +18,7 @@ from libqtile import bar
 from libqtile.config import Screen
 
 from bar import init_widgets_screen1
-from style import BAR
+from style import BAR_GEOMETRY
 from utils import fetch_monitors
 
 
@@ -32,6 +32,6 @@ def init_screens(terminal):
         for monitor in monitors
     ]
     return [
-        Screen(top=bar.Bar(widgets=init_widgets_screen1(terminal), **BAR), **geometry)
+        Screen(top=bar.Bar(widgets=init_widgets_screen1(terminal), **BAR_GEOMETRY), **geometry)
         for geometry in geometries
     ]

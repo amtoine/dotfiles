@@ -21,6 +21,7 @@ from widgets import battery
 from widgets import quick_exit
 from widgets import powerline_right_arrow
 from widgets import sep
+from widgets import spacer
 
 
 def _create_widgets_table(terminal):
@@ -42,80 +43,42 @@ def _create_widgets_table(terminal):
         "clock": [clock, dict(**wt.clock, terminal=terminal)],
         "battery": [battery, dict(**wt.battery)],
         "quick_exit": [quick_exit, dict(**wt.quick_exit)],
+        "spacer": [spacer, dict(**wt.spacer)],
     }
 
 
-styles = [
+_bar_styles = [
     [
-        "current_screen", "group_box",
-        "chord", "prompt", "quick_exit"
+        ["current_screen", "group_box", "spacer"],
+        ["chord", "prompt", "quick_exit"],
     ],
     [
-        "current_screen", "current_layout", "group_box", "window_name",
-        "chord", "prompt", "check_updates", "df", "volume", "moc", "entropy", "wlan", "net", "cpu", "clock", "battery", "quick_exit"
-    ],
-    [
-        "current_screen", "current_layout", "group_box", "window_name",
-        "chord", "prompt", "check_updates", "df", "volume", "moc", "entropy", "wlan", "net", "cpu", "clock", "battery", "quick_exit"
-    ],
-    [
-        "current_screen", "current_layout", "group_box", "window_name",
-        "chord", "prompt", "check_updates", "df", "volume", "moc", "entropy", "wlan", "net", "cpu", "clock", "battery", "quick_exit"
+        ["current_screen", "current_layout", "group_box", "window_name"],
+        ["chord", "prompt", "check_updates", "df", "volume", "moc", "entropy", "wlan", "net", "cpu", "clock", "battery", "quick_exit"],
     ]
 ]
 
-style = styles[1]
 
-
-def list_left_widgets():
+def _init_widgets(terminal):
     """
         TODO
     """
-    widgets = [
-        [current_screen, dict(**wt.current_screen)],
-        [current_layout, dict(**wt.current_layout)],
-        [group_box,      dict(**wt.group_box)],
-        [window_name,    dict(**wt.window_name)],
-    ]
-    if len(fetch_monitors()) == 1:
-        del widgets[0]
-    return widgets
+    left, right = _bar_styles[BAR]
+    if len(fetch_monitors()) == 1 and len(left) > 0:
+        del left[0]
 
-
-def list_right_widgets(terminal):
-    """
-        TODO
-    """
-    return [
-        [chord,         dict(**wt.chord)],
-        [prompt,        dict(**wt.prompt)],
-        [check_updates, dict(**wt.check_updates,  terminal=terminal)],
-        [df,            dict(**wt.df,             terminal=terminal)],
-        [volume,        dict(**wt.volume,         terminal=terminal)],
-        [moc,           dict(**wt.moc,            terminal=terminal)],
-        [entropy,       dict(**wt.entropy)],
-        [wlan,          dict(**wt.wlan,           terminal=terminal)],
-        [net,           dict(**wt.net)],
-        [cpu,           dict(**wt.cpu,            terminal=terminal)],
-        [clock,         dict(**wt.clock,          terminal=terminal)],
-        [battery,       dict(**wt.battery)],
-        [quick_exit,    dict(**wt.quick_exit)],
-    ]
-
-
-def _init_widgets(left, right):
-    """
-        TODO
-    """
+    table = _create_widgets_table(terminal)
     widgets = []
     bg = theme.bg
-    for func, kwargs in left[::-1]:
+    for lf in left[::-1]:
+        func, kwargs = table[lf]
         _bg = kwargs["bg"]
         widgets.extend([powerline_right_arrow(fg=_bg, bg=bg), func(**kwargs)])
         bg = _bg
     widgets = widgets[::-1]
 
-    for func, kwargs in right:
+    for rg in right:
+        func, kwargs = table[rg]
         fg = kwargs["fg"] if "fg" in kwargs else theme.bg
         _sep = sep(fg=fg, bg=theme.bg, width=5, size=100)
         widgets.extend([_sep, func(**kwargs)])
@@ -127,9 +90,7 @@ def init_widgets_screen1(terminal):
     """
         TODO
     """
-    left = list_left_widgets()
-    right = list_right_widgets(terminal)
-    widgets = _init_widgets(left, right)
+    widgets = _init_widgets(terminal)
     return widgets
 
 
@@ -137,7 +98,5 @@ def init_widgets_screen2(terminal):
     """
         TODO
     """
-    left = list_left_widgets()
-    right = list_right_widgets(terminal)
-    widgets = _init_widgets(left, right)
+    widgets = _init_widgets(terminal)
     return widgets

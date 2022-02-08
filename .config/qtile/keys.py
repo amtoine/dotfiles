@@ -21,7 +21,7 @@ from libqtile.config import KeyChord
 from libqtile.lazy import lazy
 
 from extensions import window_list
-from style import BAR
+from style import BAR_GEOMETRY
 from style import DMFONT
 
 SCRIPTS = "scripts"
@@ -41,7 +41,7 @@ F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12 = (
     )
 
 HOME = os.path.expanduser("~")
-DMRUN = f"dmenu_run -h {BAR['size']} -p 'Run: ' -fn '{DMFONT}'"
+DMRUN = f"dmenu_run -h {BAR_GEOMETRY['size']} -p 'Run: ' -fn '{DMFONT}'"
 PASS = f"passmenu -l 10 -c -fn '{DMFONT}'"
 PASSEDIT = "passedit.sh"
 NVIM = " nvim"

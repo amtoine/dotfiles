@@ -78,6 +78,7 @@ _widgets = [
         "quick_exit",
         "entropy",
         "moc",
+        "spacer"
 ]
 WidgetTheme = namedtuple(
     "WidgetTheme",
@@ -108,6 +109,7 @@ def build_widgets(theme, battery_fmt, clock_fmt, count_fmt, qexit_fmt):
         "group_box":      {"bg": theme.bg,      "fg": theme.fg,      **_group_box_misc_colors},
         "window_name":    {"bg": theme.sel_bg,  "fg": theme.sel_fg},
 
+        "spacer":         {"bg": theme.bg},
         "chord":          {"bg": theme.bg,      "fg": theme.color1},
         "prompt":         {"bg": theme.bg,      "fg": theme.color0},
         "check_updates":  {"bg": theme.bg,      "fg": theme.color8},
@@ -196,14 +198,10 @@ Bars = namedtuple(
     "Bars",
     [
         "minimal",
-        "simple",
         "normal",
-        "full",
     ]
 )
 bars = Bars(
     minimal=0,
-    simple=1,
-    normal=2,
-    full=3,
+    normal=1,
     )

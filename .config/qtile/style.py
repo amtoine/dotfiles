@@ -8,9 +8,9 @@ from theme import theme
 
 FONT = "mononoki Nerd Font"
 DMFONT = "mononoki Nerd Font-20"
-ARROW_SIZE, SIZE = font_sizes.medium
+ARROW_SIZE, SIZE = font_sizes.small
 
-BAR = bars.normal
+BAR = bars.minimal
 
 WIDGETS = build_widgets(
     theme,
@@ -27,11 +27,12 @@ LAYOUTS = build_layouts(
 
 _border_width = LAYOUTS.border_width // 2
 _border = (0, 0, 1, 0)
-BAR = dict(
+_border_color = theme.sel_bg
+BAR_GEOMETRY = dict(
     size=SIZE,
     opacity=1,
     background=theme.bg,
     margin=[0, 0, 0, 0],         # N E S W
     border_width=list(map(lambda x: x * _border_width, _border)),
-    border_color=[theme.sel_bg, theme.sel_bg, theme.sel_bg, theme.sel_bg]
+    border_color=[_border_color] * 4
 )

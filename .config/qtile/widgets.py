@@ -17,6 +17,7 @@
 import os
 import subprocess
 
+from libqtile import bar
 from libqtile import qtile
 from libqtile import widget
 
@@ -1096,4 +1097,28 @@ def vertical_sep(bg="#000000", fg="#ffffff"):
         foreground=fg,
         padding=2,
         fontsize=14
+    )
+
+
+def spacer(bg="#000000", length=bar.STRETCH):
+    """
+        class libqtile.widget.Spacer(length=STRETCH, **config)[source]
+        Just an empty space on the bar
+
+        Often used with length equal to bar.STRETCH to push bar widgets to the
+        right or bottom edge of the screen.
+
+        Parameters
+        length :
+        Length of the widget. Can be either bar.STRETCH or a length in pixels.
+
+        width :
+        DEPRECATED, same as length.
+
+        Supported bar orientations: horizontal and vertical
+    """
+    return widget.Spacer(
+        background=bg,       # Widget background color
+        length=length,       # Length of the widget. Can be either bar.STRETCH or a length in pixels.
+        mouse_callbacks={},  # Dict of mouse button press callback functions. Accepts functions and lazy calls.
     )
