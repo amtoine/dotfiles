@@ -80,6 +80,8 @@ _CONKY = os.path.expanduser('~/.config/qtile/conky/beginner.conkyrc')
 CONKY = f"conky --config={_CONKY}"
 _HELP = os.path.expanduser('~/.config/qtile/conky/help.conkyrc')
 HELP = f"conky --config={_HELP}"
+_CLOCK = os.path.expanduser('~/.config/conky/vision/Z333-vision.conkyrc')
+CLOCK = f"conky --config {_CLOCK}"
 PYTHON = " python"
 LGIT = f" lazygit --git-dir={HOME}/.dotfiles --work-tree={HOME}"
 TIGA = "config.tiga.sh"
@@ -249,6 +251,7 @@ def init_keymap(mod, terminal):
                 Key([], "c", *URELOAD,                        desc="Reload the config"),
                 KeyChord([], 'h', [
                     Key([], 'b', *_uacmd(CONKY),              desc="TODO"),
+                    Key([], 'c', *_uacmd(CLOCK),              desc="TODO"),
                     Key([], 'h', *_uacmd(HELP),               desc="TODO"),
                     Key([], 'k', *_uacmd(terminal + KB),      desc="TODO"),
                     Key([], 'q', lazy.ungrab_all_chords(),    desc="TODO"),

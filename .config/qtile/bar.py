@@ -50,7 +50,7 @@ def _create_widgets_table(terminal):
 _bar_styles = [
     [
         ["current_screen", "group_box", "spacer"],
-        ["chord", "prompt", "quick_exit"],
+        ["chord", "prompt", "battery", "quick_exit"],
     ],
     [
         ["current_screen", "current_layout", "group_box", "window_name"],

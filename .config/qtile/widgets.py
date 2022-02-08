@@ -735,7 +735,7 @@ def group_box(
         fmt='{}',                                 # How to format the text
         font=FONT,                                # Default font
         fontshadow=None,                          # font shadow color, default is None(no shadow)
-        fontsize=15,                              # Font size. Calculated if None.
+        fontsize=12,                              # Font size. Calculated if None.
         foreground=fg,                            # Foreground colour
         hide_unused=False,                        # Hide groups that have no windows and that are not displayed on any screen.
         highlight_color=line,                     # Active group highlight color when using 'line' highlight method.

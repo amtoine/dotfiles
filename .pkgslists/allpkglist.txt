@@ -1,6 +1,7 @@
 acpi
 alacritty
 alsa-utils
+ani-cli
 arandr
 arduino
 arduino-mk
@@ -31,7 +32,7 @@ clipmenu
 cmake
 cmatrix
 cmus
-conky
+conky-lua-nv
 cowsay
 cronie
 csvkit

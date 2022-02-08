@@ -1,5 +1,7 @@
+ani-cli
 arduino-mk
 cava
+conky-lua-nv
 dmenufm
 dmscripts-git
 irony-mode

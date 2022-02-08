@@ -38,7 +38,7 @@ conky.config = {
   out_to_stderr = false,
   out_to_x = true,
   own_window = true,
-  own_window_class = 'Conky',
+  own_window_class = 'conky',
   own_window_type = 'desktop',
   show_graph_range = false,
   show_graph_scale = false,
@@ -63,7 +63,7 @@ conky.config = {
 }
 
 conky.text = [[
-${color3}${alignc}S Y S T E M    I N F O${color}
+${color3}${alignc}W E L C O M E    T O    Q T I L E${color}
 ${hr}
 ${color1}Up${color}${color2}${alignr}${uptime_short}${color}
 ${color1}Date${color2}${alignr}${time %x}${color}
