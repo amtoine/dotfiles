@@ -87,7 +87,7 @@ WidgetTheme = namedtuple(
 )
 
 
-def build_widgets(theme, battery_fmt, clock_fmt, count_fmt, qexit_fmt):
+def build_widgets(group_size, theme, battery_fmt, clock_fmt, count_fmt, qexit_fmt):
     """
         TODO
     """
@@ -101,7 +101,8 @@ def build_widgets(theme, battery_fmt, clock_fmt, count_fmt, qexit_fmt):
         "this_focus":    theme.sel_bg,
         "this_unfocus":  theme.sel_bg,
         "urgent_border": theme.color9,
-        "urgent_text":   theme.color9
+        "urgent_text":   theme.color9,
+        "fontsize":      group_size,
     }
     return WidgetTheme(**{
         "current_layout": {"bg": theme.sel_bg,  "fg": theme.sel_fg},
@@ -183,25 +184,32 @@ def build_layouts(theme, border_width, margin):
 FontSizes = namedtuple(
     "FontSized",
     [
+        "tiny",
         "small",
         "medium",
         "large",
+        "huge",
     ]
 )
 font_sizes = FontSizes(
-    small=(19, 16),
-    medium=(27, 24),
-    large=(36, 32)
-    )
+    tiny=(17, 12, 5),
+    small=(19, 16, 9),
+    medium=(27, 24, 16),
+    large=(36, 32, 23),
+    huge=(58, 50, 37),
+)
 
 Bars = namedtuple(
     "Bars",
     [
         "minimal",
+        "decreased",
         "normal",
     ]
 )
 bars = Bars(
+    # these are arbitrary indices.
     minimal=0,
-    normal=1,
+    decreased=1,
+    normal=2,
     )

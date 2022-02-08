@@ -50,7 +50,11 @@ def _create_widgets_table(terminal):
 _bar_styles = [
     [
         ["current_screen", "group_box"],
-        ["chord", "prompt", "clock", "battery", "quick_exit"],
+        ["chord", "prompt", "battery", "quick_exit"],
+    ],
+    [
+        ["current_screen", "group_box", "window_name"],
+        ["chord", "prompt", "volume", "clock", "cpu", "battery", "quick_exit"],
     ],
     [
         ["current_screen", "current_layout", "group_box", "window_name"],
@@ -64,8 +68,9 @@ def _init_widgets(terminal):
         TODO
     """
     left, right = _bar_styles[BAR]
-    if len(fetch_monitors()) == 1 and len(left) > 0:
-        del left[0]
+    if len(fetch_monitors()) == 1:
+        left = list(filter(lambda s: s != "current_screen", left))
+        right = list(filter(lambda s: s != "current_screen", right))
 
     table = _create_widgets_table(terminal)
     widgets = []
@@ -77,7 +82,8 @@ def _init_widgets(terminal):
         bg = _bg
     widgets = widgets[::-1]
 
-    widgets.append(spacer(**wt.spacer))
+    if left[-1] != "window_name":
+        widgets.append(spacer(**wt.spacer))
 
     for rg in right:
         func, kwargs = table[rg]

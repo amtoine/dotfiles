@@ -711,6 +711,7 @@ def current_layout_icon(bg="#000000", fg="#ffffff"):
 
 
 def group_box(
+    fontsize,
     bg="#000000", fg="#ffffff",
     active="#ff0000", select="#00ff00", line=['000000', '2828ff'],
     inactive="4040ff", other_focus="404040",
@@ -735,7 +736,7 @@ def group_box(
         fmt='{}',                                 # How to format the text
         font=FONT,                                # Default font
         fontshadow=None,                          # font shadow color, default is None(no shadow)
-        fontsize=12,                              # Font size. Calculated if None.
+        fontsize=fontsize,                        # Font size. Calculated if None.
         foreground=fg,                            # Foreground colour
         hide_unused=False,                        # Hide groups that have no windows and that are not displayed on any screen.
         highlight_color=line,                     # Active group highlight color when using 'line' highlight method.
