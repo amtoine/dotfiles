@@ -26,7 +26,7 @@ conky.config = {
   draw_outline = false,
   draw_shades = false,
   extra_newline = false,
-  font = 'mononoki Nerd Font Regular:size=12',
+  font = 'mononoki Nerd Font Regular:size=15',
   gap_x = 60,
   gap_y = 60,
   minimum_height = 5,
@@ -48,60 +48,56 @@ conky.config = {
   use_spacer = 'none',
   use_xft = true,
 --Colours
-  default_color = '#AAAAAA',             -- default color and border color
-  color0 = '#B0E0E6',
-  color1 = '#AAAAAA',
-  color2 = '#D27109',
-  color3 = '#B23A22',
-  color4 = '#BDBDBD',
-  color5 = '#CCCCCC',
-  color6 = '#aa0000',
---Signal Colours
-  color7 = '#1F7411',                    --green
-  color8 = '#FFA726',                    --orange
-  color9 = '#F1544B',                    --firebrick
+  default_color = '#2B2B2F',   -- default color and border color
+  color0 = '#2B2B2F',          -- grey
+  color8 = '#697375',
+  color1 = '#ef6787',          -- red
+  color9 = '#BA667D',
+  color2 = '#47ba99',          -- green
+  color10 = '#74B09A',
+  color3 = '#eed891',          -- yellow
+  color11 = '#f5c791',
+  color4 = '#4EB8CA',          -- blue
+  color12 = '#91b9c7',
+  color5 = '#fbaed2',          -- magenta
+  color13 = '#c791aa',
+  color6 = '#49bdb0',          -- cyan
+  color14 = '#4FA8A3',
+  color7 = '#EEDCC1',          -- white
+  color15 = '#bebec4',
 }
 
 conky.text = [[
 ${color3}${alignc}W E L C O M E    T O    Q T I L E${color}
 ${hr}
-${color1}Up${color}${color2}${alignr}${uptime_short}${color}
-${color1}Date${color2}${alignr}${time %x}${color}
-${color1}Time${color2}${alignr}${time %X}${color}
-${color1}Host${color2}${alignr}${nodename}${color}
-${color1}Kernel${color2}${alignr}${kernel}${color}
-${color1}Machine${color2}${alignr}${machine}${color}
-${color1}${hr}${color}
-${color1}${hr}${color}
+${color9}Up${color4}${alignr}${uptime_short}${color}
+${color1}Date${color4}${alignr}${time %x} ${time %X}${color}
+${color1}Host${color4}${alignr}${nodename}${color}
+${color1}Kernel${color4}${alignr}${kernel} ${machine}${color}
+${color0}${hr}${color}
+${color0}${hr}${color}
 ${color3}${alignc}S H O R T C U T    K E Y S${color}
-${color1}${hr}${color}
-${color2}a+b${alignr}${color1} press a and b at the same time${color}
-${color2}a, b${alignr}${color1} press a then b${color}
-${color1}${hr}${color}
+${color0}${hr}${color}
+${color1}a+b${goto 100}${color2}c${alignr}${color7}press a and b to do c${color}
+${color1}a, b${goto 100}${color2}c${alignr}${color7}press a then b to do c${color}
+${color1}{a,b}${goto 100}${color2}{c,d}${alignr}${color7}a does c and b does d${color}
+${color0}${hr}${color}
 ${color1}[S]+t${alignr}${color2} command prompt${color}
 ${color1}[S]+[Ret]${alignr}${color2} open a terminal${color}
 ${color1}[S]+[Shift]+c${alignr}${color2} kill window${color}
-${color1}${hr}${color}
-${color1}[S]+b, c${alignr}${color2}launch chromium${color}
-${color1}[S]+b, f${alignr}${color2}launch firefox${color}
-${color1}[S]+b, s${alignr}${color2}launch surf${color}
-${color1}${hr}${color}
-${color1}[S]+r, r${alignr}${color2}open rofi${color}
+${color0}${hr}${color}
+${color1}[S]+b, {c,f,s}${alignr}${color2}{chromium,firefox,surf}${color}
+${color0}${hr}${color}
 ${color1}[S]+d, d${alignr}${color2}open dmenu${color}
-${color1}${hr}${color}
-${color1}[S]+e, e${alignr}${color2}open emacs${color}
-${color1}[S]+e, n${alignr}${color2}open neovim${color}
-${color1}${hr}${color}
-${color1}[S]+q, a${alignr}${color2}autostart${color}
+${color0}${hr}${color}
+${color1}[S]+e, {e,n}${alignr}${color2}open {emacs,neovim}${color}
+${color0}${hr}${color}
 ${color1}[S]+q, c${alignr}${color2}reload config${color}
-${color1}[S]+q, h${alignr}${color2}open this help${color}
-${color1}[S]+q, k${alignr}${color2}key bindings${color}
+${color1}[S]+q, h, {h, k}${alignr}${color2}{the help, the keymap}${color}
 ${color1}[S]+q, l${alignr}${color2}log file${color}
 ${color1}[S]+q, r${alignr}${color2}restart${color}
 ${color1}[S]+q, s${alignr}${color2}quit${color}
-${color1}[S]+q, t${alignr}${color2}change theme${color}
-${color1}[S]+q, w${alignr}${color2}change wallpaper${color}
-${color1}${hr}${color}
+${color0}${hr}${color}
 ${color1}[S]+[F12]${alignr}${color2} lock the machine${color}
-${color1}${hr}${color}
+${color0}${hr}${color}
 ]];

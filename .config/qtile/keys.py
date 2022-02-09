@@ -73,6 +73,7 @@ SOUNDDOWN = "amixer -q sset Master {}%-"
 MUTE = "amixer -q sset Master toggle"
 BLUETOGG = "bluetooth.toggle.sh -t"
 WALLPAPER = "wallpaper.fzf.sh"
+BAR = dict(script="qtile-bar.sh", path=".config/qtile/scripts")
 URELOAD = lazy.reload_config(), lazy.ungrab_chord()
 URESTART = lazy.restart(), lazy.ungrab_chord()
 USHUTDOWN = lazy.shutdown(), lazy.ungrab_chord()
@@ -248,13 +249,13 @@ def init_keymap(mod, terminal):
             ),
             KeyChord(MOD, 'q', [
                 Key([], 'a', *_ucmd(AUTOSTART),               desc="TODO"),
+                Key([], 'b', *_uscript(**BAR),                desc="TODO"),
                 Key([], "c", *URELOAD,                        desc="Reload the config"),
                 KeyChord([], 'h', [
                     Key([], 'b', *_uacmd(CONKY),              desc="TODO"),
                     Key([], 'c', *_uacmd(CLOCK),              desc="TODO"),
                     Key([], 'h', *_uacmd(HELP),               desc="TODO"),
                     Key([], 'k', *_uacmd(terminal + KB),      desc="TODO"),
-                    Key([], 'q', lazy.ungrab_all_chords(),    desc="TODO"),
                     ],
                     mode=" HELP"
                 ),
@@ -283,13 +284,11 @@ def init_keymap(mod, terminal):
                 KeyChord([], 'c', [
                     Key([], 'e', *_uacmd("dm-confedit"),      desc="Choose a config file to edit"),
                     Key([], 'l', *_uacmd(terminal + LGIT),    desc="TODO"),
-                    Key([], 'q', lazy.ungrab_all_chords(),    desc="TODO"),
                     Key([], 't', *_uascript(TIGA, terminal),  desc="TODO"),
                     ],
                     mode=" CONFIG"
                 ),
                 KeyChord([], 'd', [
-                    Key([], 'q', lazy.ungrab_all_chords(),    desc="TODO"),
                     Key([], 's', *_uacmd(terminal + TREE),    desc="TODO"),
                     Key([], 'u', *_uacmd(terminal + DISK),    desc="TODO"),
                     ],
@@ -299,7 +298,6 @@ def init_keymap(mod, terminal):
                 KeyChord([], 'h', [
                     Key([], 'b', *_uacmd(terminal + BTOP),    desc="TODO"),
                     Key([], 'h', *_uacmd(terminal + HTOP),    desc="TODO"),
-                    Key([], 'q', lazy.ungrab_all_chords(),    desc="TODO"),
                     ],
                     mode=" MONITOR"
                 ),
@@ -309,7 +307,6 @@ def init_keymap(mod, terminal):
                     Key([], 'a', *_uacmd("alacritty"),        desc="TODO"),
                     Key([], 'k', *_uacmd("kitty"),            desc="TODO"),
                     Key([], 'p', *_uacmd(terminal + PYTHON),  desc="TODO"),
-                    Key([], 'q', lazy.ungrab_all_chords(),    desc="TODO"),
                     Key([], 't', *_uacmd(terminal),           desc="TODO"),
                     ],
                     mode=" TERMINAL"
@@ -317,7 +314,6 @@ def init_keymap(mod, terminal):
                 KeyChord([], 'u', [
                     Key([], 'c', *_uacmd(terminal + CHECK),   desc="TODO"),
                     Key([], 'u', *_uacmd(terminal + UPDT),    desc="TODO"),
-                    Key([], 'q', lazy.ungrab_all_chords(),    desc="TODO"),
                     ],
                     mode=" UPDATES"
                 ),

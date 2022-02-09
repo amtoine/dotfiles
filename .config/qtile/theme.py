@@ -19,38 +19,27 @@
 from utils import ColorScheme
 theme = ColorScheme(**{
 
+    "fg": "#ffffff",
+    "bg": "#0d0f31",
+    "sel_fg": "#000000",
+    "sel_bg": "#00d5eb",
+    "color0": "#000000",
+    "color1": "#ff16b0",
+    "color2": "#b3f361",
+    "color3": "#ffea16",
+    "color4": "#46bdff",
+    "color5": "#f806fa",
+    "color6": "#59e1e3",
+    "color7": "#feffff",
+    "color8": "#000000",
+    "color9": "#ff16b0",
+    "color10": "#b3f361",
+    "color11": "#ffea16",
+    "color12": "#46bdff",
+    "color13": "#f806fa",
+    "color14": "#6be4e6",
+    "color15": "#feffff",
 
 
-    "fg": "#EEDCC1",
-    "bg": "#2B2B2F",
-    "sel_fg": "#2B2B2F",
-    "sel_bg": "#EEDCC1",
-
-
-
-
-    "color0": "#2B2B2F",
-    "color8": "#697375",
-
-    "color1": "#ef6787",
-    "color9": "#BA667D",
-
-    "color2": "#47ba99",
-    "color10": "#74B09A",
-
-    "color3": "#eed891",
-    "color11": "#f5c791",
-
-    "color4": "#4EB8CA",
-    "color12": "#91b9c7",
-
-    "color5": "#fbaed2",
-    "color13": "#c791aa",
-
-    "color6": "#49bdb0",
-    "color14": "#4FA8A3",
-
-    "color7": "#EEDCC1",
-    "color15": "#bebec4",
 })
-# current: Kaolin_Temple.conf
+# current: 1984_dark.conf

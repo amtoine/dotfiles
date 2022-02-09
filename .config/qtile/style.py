@@ -8,9 +8,13 @@ from theme import theme
 
 FONT = "mononoki Nerd Font"
 DMFONT = "mononoki Nerd Font-20"
-ARROW_SIZE, SIZE, GROUP_SIZE = font_sizes.small  # from tiny, small, medium, large, huge
-
-BAR = bars.minimal  # from minimal, decreased, normal
+# BEGIN_QTILE_BAR_THEME
+# this might be automatically edited by ~/.config/qtile/scripts/qtile-bar.sh
+# choose from tiny, small, medium, large, huge
+ARROW_SIZE, SIZE, GROUP_SIZE = font_sizes.small
+# choose from minimal, decreased, normal
+BAR = bars.minimal
+# END_QTILE_BAR_THEME
 
 WIDGETS = build_widgets(
     theme=theme,
