@@ -91,7 +91,8 @@ trap  'rm "$tmpbody"' 0 1 15
 { echo "from utils import ColorScheme"; echo "theme = ColorScheme(**{"; } > "$tmpbody"
 grep -Ev 'cursor|active|^\$|^#|url' "$cache/themes/$theme" | \
   sed 's/background/bg/; s/foreground/fg/; s/selection/sel/; s/\s\+/ /' | \
-  sed 's/\([a-z_0-9]*\)/    "\1":/; s/\(#......\)/"\1",/;' >> "$tmpbody"
+  sed 's/\([a-z_0-9]*\)/    "\1":/; s/\(#......\)/"\1",/;' | \
+  sed 's/\s\+"":\s*$//' >> "$tmpbody"
 echo "})" >> "$tmpbody"
 
 # preview the theme file before installing.

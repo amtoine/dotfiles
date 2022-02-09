@@ -1,15 +1,15 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/repos/surf
+- /home/ants/repos/wallpapers
 - /home/ants/.local/share/omf
 - /home/ants/prog/docker/scsc/docker
 - /home/ants/repos/oh-my-fish
 - /home/ants/.config/nvim
 - /home/ants/repos/oh-my-bash
-- /home/ants/repos/wallpapers
 - /home/ants/prog/docker/pwn_docker_example
 - /home/ants/.emacs.d
 - /home/ants/repos/linux-slides
-- /home/ants/repos/surf
 - /tmp/reveal.js
 - /home/ants/repos/slock
 - /home/ants/research/Imagine

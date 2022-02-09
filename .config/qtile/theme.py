@@ -18,25 +18,39 @@
 
 from utils import ColorScheme
 theme = ColorScheme(**{
-    "bg": "#1e1e1e",
-    "fg": "#b8bcb9",
-    "sel_bg": "#efcc00",
-    "color0": "#3a3c43",
-    "color8": "#888987",
-    "color1": "#be3e48",
-    "color9": "#fb001e",
-    "color2": "#869a3a",
-    "color10": "#0e712e",
-    "color3": "#c4a535",
-    "color11": "#c37033",
-    "color4": "#4e76a1",
-    "color12": "#176ce3",
-    "color5": "#855b8d",
-    "color13": "#fb0067",
-    "color6": "#568ea3",
-    "color14": "#2d6f6c",
-    "color7": "#b8bcb9",
-    "color15": "#fcffb8",
-    "sel_fg": "#1e1e1e",
+
+
+
+    "fg": "#EEDCC1",
+    "bg": "#2B2B2F",
+    "sel_fg": "#2B2B2F",
+    "sel_bg": "#EEDCC1",
+
+
+
+
+    "color0": "#2B2B2F",
+    "color8": "#697375",
+
+    "color1": "#ef6787",
+    "color9": "#BA667D",
+
+    "color2": "#47ba99",
+    "color10": "#74B09A",
+
+    "color3": "#eed891",
+    "color11": "#f5c791",
+
+    "color4": "#4EB8CA",
+    "color12": "#91b9c7",
+
+    "color5": "#fbaed2",
+    "color13": "#c791aa",
+
+    "color6": "#49bdb0",
+    "color14": "#4FA8A3",
+
+    "color7": "#EEDCC1",
+    "color15": "#bebec4",
 })
-# current: DimmedMonokai.conf
+# current: Kaolin_Temple.conf

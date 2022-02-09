@@ -43,9 +43,9 @@ if status is-interactive
   # prettier ncdu.
   alias ncdu="ncdu --color dark"
   # generate a random sequence of characters.
-  alias rand="tr -dc A-Za-z0-9 < /dev/urandom  | head -c"
+  alias rand="tr -dc 'A-Za-z0-9!@#\$%^&*()' < /dev/urandom  | head -c"
   # wrapper of docker with rights.
-  alias docker="sudo docker"
+  # alias docker="sudo docker"
   # wrapper around btop to bypass lack of locale.
   alias btop="btop --utf-force"
 
@@ -82,8 +82,8 @@ if status is-interactive
   alias rmr='rm -r'
   alias rmrf='rm -rf'
 
-  alias reboot='sudo reboot'
-  alias sctl='sudo systemctl'
+  # alias reboot='sudo reboot'
+  # alias sctl='sudo systemctl'
 
   # enable color support of ls and also add handy aliases
   alias ls='ls --color=auto'
@@ -99,9 +99,11 @@ if status is-interactive
 
   alias qtheme="$HOME/.config/qtile/scripts/qtile-change-theme.sh"
   alias qrestart="qtile cmd-obj -o cmd -f restart"
-  alias qcmd="qtile cmd-obj -o cmd -f spawncmd"
+  alias qcmd="qtile cmd-obj -o cmd -f"
+  alias qprompt="qtile cmd-obj -o cmd -f spawncmd"
   # alias qlog="cat $HOME/.local/share/qtile/qtile.log | less"
   alias qlog="bat $HOME/.local/share/qtile/qtile.log"
+  alias qstop="qtile cmd-obj -o cmd -f shutdown"
 
   #        _
   #  _ __ (_)___ __
@@ -113,5 +115,15 @@ if status is-interactive
   # starship init fish | source
   source ~/.local/share/omf/pkg/colorman/init.fish
 
+  set CLOUDSDK_PYTHON "/usr/bin/python3"
+  if test -f "$HOME/google-cloud-sdk/path.fish.inc"
+    . "$HOME/google-cloud-sdk/path.fish.inc"
+  end
+
   fish_vi_key_bindings
+
+  function fish_greeting
+      # fish_logo
+  end
+  funcsave fish_greeting
 end
