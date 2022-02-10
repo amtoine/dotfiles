@@ -98,6 +98,7 @@ if status is-interactive
   alias kthemes="kitty +kitten themes"
 
   alias qtheme="$HOME/.config/qtile/scripts/qtile-change-theme.sh"
+  alias qbar="$HOME/.config/qtile/scripts/qtile-bar.sh"
   alias qrestart="qtile cmd-obj -o cmd -f restart"
   alias qcmd="qtile cmd-obj -o cmd -f"
   alias qprompt="qtile cmd-obj -o cmd -f spawncmd"

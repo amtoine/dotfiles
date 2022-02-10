@@ -59,6 +59,7 @@ $HOME
 |   |-- [-]  ncmpcpp/config                            -- music client.
 |   |-- [d]  neofetch                                  -- a logo printer.
 |   |-- [-]  nitrogen/nitrogen.cfg                     -- a wallpaper manager.
+|   |-- [d]  omf                                       -- the fish plugin / theme manager.
 |   |-- [d]  qtile                                     -- a tilling window manager.
 |   |-- [-]  rofi/config.rasi                          -- app/command launcher/switcher.
 |   |-- [d]  spectrwm                                  -- the spectrWM tilling window manager.
@@ -68,11 +69,11 @@ $HOME
 |   |-- [d]  tig/config                                -- shows git diffs in a pretty way, and many more!
 |   `-- [-]  starship.toml                             -- a fast and customizable terminal prompt.
 |-- [d]  .pkgslists                                  -- packages.
-|   |-- [-]  README.md
 |   |-- [-]  allpkglist.txt                            -- the list of all installed packages.
 |   |-- [-]  cargocmdlist.txt                          -- the list of cargo commands.
 |   |-- [-]  foreignpkglist.txt                        -- the list of AUR packages.
 |   |-- [-]  optdeplist.txt                            -- the list of optional packages.
+|   `-- [-]  pippkglist.txt                            -- the list of python packages.
 |   `-- [-]  pkglist.txt                               -- the list of arch packages.
 |-- [d]  scripts                                     -- my scripts.
 |-- [-]  .bash_logout                                -- what bash should do on logout.
@@ -128,7 +129,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [~] [`btop`]              ([\*\*][mydoc-btop])
 - [x] [`dmscripts`]
 - [ ] [`dmenufm`]           ([\*\*][mydoc-dmenufm])
-- [ ] [`fish`]              ([\*\*][mydoc-fish])
+- [x] [`fish`]              ([\*\*][mydoc-fish])
 - [x] [`git`]               ([\*\*][mydoc-git])
 - [x] [`htop`]              ([\*\*][mydoc-htop])
 - [x] [`kitty`]        (\*) ([\*\*][mydoc-kitty])
@@ -141,6 +142,7 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - [ ] [`ncmcpp`]            ([\*\*][mydoc-ncmcpp])
 - [ ] [`neofetch`]          ([\*\*][mydoc-neofetch])
 - [ ] [`nitrogen`]          ([\*\*][mydoc-nitrogen])
+- [x] [`omf`]
 - [ ] [`qtile`]             ([\*\*][mydoc-qtile])
 - [ ] [`rofi`]              ([\*\*][mydoc-rofi])
 - [ ] [`spectrWM`]          ([\*\*][mydoc-spectrWM])
@@ -272,6 +274,7 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [`ncmcpp`]:                .config/ncmcpp/config
 [`neofetch`]:              .config/neofetch
 [`nitrogen`]:              .config/nitrogen/nitrogen.cfg
+[`omf`]:                   .config/omf
 [`qtile`]:                 .config/qtile
 [`rofi`]:                  .config/rofi/config.rasi
 [`spectrWM`]:              .config/spectrwm

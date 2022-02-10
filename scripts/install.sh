@@ -884,7 +884,7 @@ while [[ $# -gt 0 ]]; do
     +git|+htop|+bash|+fish|+zsh|+starship|+neofetch|+vim|+neovim|+x|+bspwm|+spectrwm|+alacritty|+kitty|+nitrogen|+slock|+xscreensaver|+polybar|+vifm|+lf|+surf|+tabbed|+wallpapers|+dmenu|+dmscripts|+lazygit|+lazycli|+tigrc|+tmux|+mpd|+mpv|+ncmpcpp|+doom_emacs|+dmenufm|+qtile) CFG["CONFIG:$(echo $1 | sed 's/^+//')"]="install";;
     -git|-htop|-bash|-fish|-zsh|-starship|-neofetch|-vim|-neovim|-x|-bspwm|-spectrwm|-alacritty|-kitty|-nitrogen|-slock|-xscreensaver|-polybar|-vifm|-lf|-surf|-tabbed|-wallpapers|-dmenu|-dmscripts|-lazygit|-lazycli|-tigrc|-tmux|-mpd|-mpv|-ncmpcpp|-doom_emacs|-dmenufm|-qtile) CFG["CONFIG:$(echo $1 | sed 's/^-//')"]="restore";;
     -m|--man)
-      man ~/install.1
+      man ~/scripts/.install.1
       exit 0
       ;;
     -h|--help)
