@@ -186,7 +186,7 @@ export VISUAL='nvim'
 set -o vi
 
 # activates virtualenvwrapper to manage python virtual environments.
-export WORKON_HOME=$HOME/.venvs
+export WORKON_HOME=$HOME/.virtualenvs
 if [[ ! -d $WORKON_HOME ]]; then mkdir -p $WORKON_HOME; fi
 source $HOME/.local/bin/virtualenvwrapper.sh
 

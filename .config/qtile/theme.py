@@ -18,28 +18,25 @@
 
 from utils import ColorScheme
 theme = ColorScheme(**{
-
-    "fg": "#ffffff",
-    "bg": "#0d0f31",
-    "sel_fg": "#000000",
-    "sel_bg": "#00d5eb",
-    "color0": "#000000",
-    "color1": "#ff16b0",
-    "color2": "#b3f361",
-    "color3": "#ffea16",
-    "color4": "#46bdff",
-    "color5": "#f806fa",
-    "color6": "#59e1e3",
-    "color7": "#feffff",
-    "color8": "#000000",
-    "color9": "#ff16b0",
-    "color10": "#b3f361",
-    "color11": "#ffea16",
-    "color12": "#46bdff",
-    "color13": "#f806fa",
-    "color14": "#6be4e6",
-    "color15": "#feffff",
-
-
+    "bg": "#1e1c44",
+    "fg": "#f8dbc0",
+    "sel_bg": "#6f6a4e",
+    "color0": "#050404",
+    "color8": "#4e7bbf",
+    "color1": "#bc0013",
+    "color9": "#fc5e59",
+    "color2": "#49b117",
+    "color10": "#9dff6e",
+    "color3": "#e6741d",
+    "color11": "#efc11a",
+    "color4": "#0f49c6",
+    "color12": "#1896c6",
+    "color5": "#665992",
+    "color13": "#9a5952",
+    "color6": "#6fa497",
+    "color14": "#c8f9f3",
+    "color7": "#f8dbc0",
+    "color15": "#f5f4fb",
+    "sel_fg": "#1e1c44",
 })
-# current: 1984_dark.conf
+# current: AdventureTime.conf

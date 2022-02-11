@@ -418,10 +418,8 @@ install_kitty() {
   git checkout main
   echo "${Cmd}make${Off}"
   make
-  echo "${Cmd}ln -s ./kitty/launcher/kitty /usr/bin/kitty${Off}"
-  ln -s ./kitty/launcher/kitty /usr/bin/kitty
-  echo "${Cmd}ln -s ./kitty/launcher/kitty $BDIR/kitty${Off}"
-  ln -s ./kitty/launcher/kitty $BDIR/kitty
+  echo "${Cmd}ln -s ./kitty/launcher/kitty $HOME/$BDIR/kitty${Off}"
+  ln -s ./kitty/launcher/kitty $HOME/$BDIR/kitty
   echo "${Tip}[!!] Be sure to restart the right terminal emulator for the config to take full effect.${Off}"
   echo "${Tip}[!!] You might need to tell youre wm to use kitty as default, or just run kitty in your previous terminal.${Off}"
   echo "${Tip}[!!] Doc for this particular config is available at ${Url}https://a2n-s.github.io/public/doc/config/kitty ${Off}"

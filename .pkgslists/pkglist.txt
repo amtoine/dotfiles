@@ -47,6 +47,8 @@ gulp
 helm
 htop
 hugo
+jgmenu
+kitty
 kolourpaint
 lazygit
 librsync

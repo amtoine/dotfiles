@@ -48,8 +48,10 @@ $HOME
 |   |-- [-]  btop/btop.conf                            -- another process monitor.
 |   |-- [-]  dmscripts/config                          -- configuration for some dmenu life hacks.
 |   |-- [-]  dmenufm/dmenufm.conf                      -- a file explorer and manager.
+|   |-- [d]  etc                                       -- config files from the /etc dir.
 |   |-- [d]  fish                                      -- the fish shell
 |   |-- [-]  htop/htoprc                               -- another process monitor.
+|   |-- [-]  jgmenu.csv                                -- a graphical menu.
 |   |-- [-]  kitty/kitty.conf                          -- terminal emulator.
 |   |-- [d]  lazygit                                   -- the lazy git tui tool.
 |   |-- [d]  lazycli                                   -- the lazy cli tui tool.
