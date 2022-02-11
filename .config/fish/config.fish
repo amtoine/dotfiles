@@ -122,9 +122,4 @@ if status is-interactive
   end
 
   fish_vi_key_bindings
-
-  function fish_greeting
-      # fish_logo
-  end
-  funcsave fish_greeting
 end
