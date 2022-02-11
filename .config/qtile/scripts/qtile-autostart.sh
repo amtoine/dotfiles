@@ -1,8 +1,12 @@
 #! /usr/bin/bash
 
-feh --no-fehbg --bg-fill --randomize ~/repos/wallpapers/wallpapers/*
 conky --config ~/.config/qtile/conky/beginner.conkyrc --daemonize #--pause=5
 conky --config ~/.config/conky/vision/Z333-vision.conkyrc --daemonize #--pause=5
+feh --randomize \
+  ~/repos/wallpapers/wallpapers/* \
+  ~/repos/catppucin/wallpapers/minimalistic/* \
+  ~/repos/catppucin/wallpapers/mandelbrot/* \
+  --no-fehbg --bg-fill
 
 emacs --daemon
 

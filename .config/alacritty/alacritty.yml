@@ -271,81 +271,118 @@ draw_bold_text_with_bright_colors: true
 #
 #
 colors:
+  # # Default colors
+  # primary:
+  #   background: '0x282c34'  # dark blue
+  #   foreground: '0xbbc2cf'  # mid dark blue
+  #
+  #   # Bright and dim foreground colors
+  #   #
+  #   # The dimmed foreground color is calculated automatically if it is not present.
+  #   # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
+  #   # is `false`, the normal foreground color will be used.
+  #   dim_foreground:    '0x9a9a9a'  # light gray
+  #   bright_foreground: '0xffffff'  # white
+  #
+  # # Cursor colors
+  # #
+  # # Colors which should be used to draw the terminal cursor. If these are unset,
+  # # the cursor color will be the inverse of the cell color.
+  # cursor:
+  #   text:   '0x000000'  # black
+  #   cursor: '0x00cccc'  # white
+  #
+  # # Selection colors
+  # #
+  # # Colors which should be used to draw the selection area. If selection
+  # # background is unset, selection color will be the inverse of the cell colors.
+  # # If only text is unset the cell text color will remain the same.
+  # selection:
+  #   text: '0xbbc2cf'      # dark blue
+  #
+  # # Normal colors
+  # normal:
+  #   black:   '0x1c1f24'
+  #   red:     '0xff6c6b'
+  #   green:   '0x98be65'
+  #   yellow:  '0xda8548'
+  #   blue:    '0x51afef'
+  #   magenta: '0xc678dd'
+  #   cyan:    '0x5699af'
+  #   white:   '0x202328'
+  #
+  # # Bright colors
+  # bright:
+  #   black:   '0x5b6268'
+  #   red:     '0xda8548'
+  #   green:   '0x4dfbbd'
+  #   yellow:  '0xecbe7b'
+  #   blue:    '0x3071db'   # This is 2257a0 in Doom Emacs but I lightened it.
+  #   magenta: '0xa9a1e1'
+  #   cyan:    '0x46d9ff'
+  #   white:   '0xdfdfdf'
+  #
+  # # Dim colors
+  # #
+  # # If the dim colors are not set, they will be calculated automatically based
+  # # on the `normal` colors.
+  # # dim:
+  # #   black:   '0x000000'
+  # #   red:     '0x8c3336'
+  # #   green:   '0x7a8530'
+  # #   yellow:  '0x97822e'
+  # #   blue:    '0x506d8f'
+  # #   magenta: '0x80638e'
+  # #   cyan:    '0x497e7a'
+  # #   white:   '0x9a9a9a'
+  #
+  # # Indexed Colors
+  # #
+  # # The indexed colors include all colors from 16 to 256.
+  # # When these are not set, they're filled with sensible defaults.
+  # #
+  # # Example:
+  # #   `- { index: 16, color: '0xff00ff' }`
+  # #
+  # #indexed_colors: []
+
+# Catppuccin!
+colors:
   # Default colors
   primary:
-    background: '0x282c34'  # dark blue
-    foreground: '0xbbc2cf'  # mid dark blue
+    background: '0x1E1D2F'
+    foreground: '0xD9E0EE'
 
-    # Bright and dim foreground colors
-    #
-    # The dimmed foreground color is calculated automatically if it is not present.
-    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-    # is `false`, the normal foreground color will be used.
-    dim_foreground:    '0x9a9a9a'  # light gray
-    bright_foreground: '0xffffff'  # white
-
-  # Cursor colors
-  #
-  # Colors which should be used to draw the terminal cursor. If these are unset,
-  # the cursor color will be the inverse of the cell color.
+  # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text:   '0x000000'  # black
-    cursor: '0x00cccc'  # white
-
-  # Selection colors
-  #
-  # Colors which should be used to draw the selection area. If selection
-  # background is unset, selection color will be the inverse of the cell colors.
-  # If only text is unset the cell text color will remain the same.
-  selection:
-    text: '0xbbc2cf'      # dark blue
+    text: '0x1E1D2F'
+    cursor: '0xF5E0DC'
 
   # Normal colors
   normal:
-    black:   '0x1c1f24'
-    red:     '0xff6c6b'
-    green:   '0x98be65'
-    yellow:  '0xda8548'
-    blue:    '0x51afef'
-    magenta: '0xc678dd'
-    cyan:    '0x5699af'
-    white:   '0x202328'
+    black:   '0x6E6C7E'
+    red:     '0xF28FAD'
+    green:   '0xABE9B3'
+    yellow:  '0xFAE3B0'
+    blue:    '0x96CDFB'
+    magenta: '0xF5C2E7'
+    cyan:    '0x89DCEB'
+    white:   '0xD9E0EE'
 
   # Bright colors
   bright:
-    black:   '0x5b6268'
-    red:     '0xda8548'
-    green:   '0x4dfbbd'
-    yellow:  '0xecbe7b'
-    blue:    '0x3071db'   # This is 2257a0 in Doom Emacs but I lightened it.
-    magenta: '0xa9a1e1'
-    cyan:    '0x46d9ff'
-    white:   '0xdfdfdf'
+    black:   '0x988BA2'
+    red:     '0xF28FAD'
+    green:   '0xABE9B3'
+    yellow:  '0xFAE3B0'
+    blue:    '0x96CDFB'
+    magenta: '0xF5C2E7'
+    cyan:    '0x89DCEB'
+    white:   '0xD9E0EE'
 
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  # dim:
-  #   black:   '0x000000'
-  #   red:     '0x8c3336'
-  #   green:   '0x7a8530'
-  #   yellow:  '0x97822e'
-  #   blue:    '0x506d8f'
-  #   magenta: '0x80638e'
-  #   cyan:    '0x497e7a'
-  #   white:   '0x9a9a9a'
-
-  # Indexed Colors
-  #
-  # The indexed colors include all colors from 16 to 256.
-  # When these are not set, they're filled with sensible defaults.
-  #
-  # Example:
-  #   `- { index: 16, color: '0xff00ff' }`
-  #
-  #indexed_colors: []
-
+  indexed_colors:
+    - { index: 16, color: '0xF8BD96' }
+    - { index: 17, color: '0xF5E0DC' }
 #
 # >>> Visual Bell.
 #

@@ -1,11 +1,14 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/research/imagineXdial
+- /home/ants/research/ma_playground_env
+- /home/ants/research/gym-basic
+- /home/ants/.config/nvim
 - /home/ants/repos/wallpapers
 - /home/ants/repos/surf
 - /home/ants/.local/share/omf
 - /home/ants/prog/docker/scsc/docker
 - /home/ants/repos/oh-my-fish
-- /home/ants/.config/nvim
 - /home/ants/repos/oh-my-bash
 - /home/ants/prog/docker/pwn_docker_example
 - /home/ants/.emacs.d
@@ -14,11 +17,9 @@ recentrepos:
 - /home/ants/repos/slock
 - /home/ants/research/Imagine
 - /home/ants/repos/dmenu
-- /home/ants/research/ma_playground_env
 - /home/ants/repos/a2n-s
 - /home/ants/prog/dqn
 - /home/ants/research/learning-to-communicate-pytorch
-- /home/ants/research/imagineXdial
 - /home/ants/prog/scsc/fil-rouge
 - /home/ants/prog/scsc/fgk
 - /home/ants/sup/rlclass

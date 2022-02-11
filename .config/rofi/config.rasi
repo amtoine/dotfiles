@@ -146,4 +146,6 @@ combi-modi: "window,run,ssh";
       sorting-method:    "name";
   }
 }
-@theme "monokai"
+//@theme "monokai"
+//@theme "/home/ants/.local/share/rofi/themes/catppuccin.rasi"
+@theme "/usr/share/rofi/themes/Monokai.rasi"

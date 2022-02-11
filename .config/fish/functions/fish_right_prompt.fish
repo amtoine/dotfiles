@@ -1,6 +1,7 @@
 function fish_right_prompt
     if set -q VIRTUAL_ENV
-        echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
+        # echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
+        echo -n -s (set_color yellow) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
     end
     set -l cmd_status $status
     if test $cmd_status -ne 0
@@ -157,7 +158,7 @@ function fish_right_prompt
         echo -n ' '(set_color yellow)'═'
     end
     if test $status_untracked -ne 0
-        echo -n ' '(set_color white)'◼'
+        echo -n ' '(set_color white)'?'
     end
 
     set_color normal
