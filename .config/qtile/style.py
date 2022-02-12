@@ -13,7 +13,7 @@ DMFONT = "mononoki Nerd Font-20"
 # choose from tiny, small, medium, large, huge
 ARROW_SIZE, SIZE, GROUP_SIZE = font_sizes.small
 # choose from minimal, decreased, normal
-BAR = bars.minimal
+BAR = bars.decreased
 # END_QTILE_BAR_THEME
 
 WIDGETS = build_widgets(

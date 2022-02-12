@@ -2,6 +2,7 @@ package archlinux
 package argu
 package balias
 package bang-bang
+package bass
 package cd
 package colorman
 package expand

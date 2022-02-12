@@ -112,7 +112,7 @@ def build_widgets(group_size, theme, battery_fmt, clock_fmt, count_fmt, qexit_fm
 
         "spacer":         {"bg": theme.bg},
         "chord":          {"bg": theme.bg,      "fg": theme.color1},
-        "prompt":         {"bg": theme.bg,      "fg": theme.color0},
+        "prompt":         {"bg": theme.bg,      "fg": theme.fg},
         "check_updates":  {"bg": theme.bg,      "fg": theme.color8},
         "df":             {"bg": theme.bg,      "fg": theme.color7},
         "volume":         {"bg": theme.bg,      "fg": theme.color3},
