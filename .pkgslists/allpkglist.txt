@@ -72,6 +72,7 @@ grub
 gst-libav
 gst-plugins-good
 gtk4
+guake
 gulp
 helm
 htop
@@ -146,6 +147,7 @@ python2
 python35
 python38
 qtile
+ranger
 read-edid
 reddio
 ripgrep
@@ -192,6 +194,7 @@ xautolock
 xclip
 xdotool
 xf86-video-vesa
+xonsh
 xorg-bdftopcf
 xorg-docs
 xorg-font-util

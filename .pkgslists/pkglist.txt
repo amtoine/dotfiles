@@ -43,6 +43,7 @@ gimp
 github-cli
 grub
 gtk4
+guake
 gulp
 helm
 htop
@@ -77,8 +78,8 @@ python-opengl
 python-pipenv
 python-pytest
 python-tqdm
-python2
 qtile
+ranger
 read-edid
 ripgrep
 rogue
@@ -97,14 +98,13 @@ termdown
 thunderbird
 tig
 tldr
-ueberzug
 vi
 vnstat
 vulkan-tools
-w3m
 wget
 xautolock
 xf86-video-vesa
+xonsh
 xorg-bdftopcf
 xorg-docs
 xorg-font-util

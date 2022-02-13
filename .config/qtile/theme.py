@@ -18,25 +18,35 @@
 
 from utils import ColorScheme
 theme = ColorScheme(**{
-    "bg": "#1e1c44",
-    "fg": "#f8dbc0",
-    "sel_bg": "#6f6a4e",
-    "color0": "#050404",
-    "color8": "#4e7bbf",
-    "color1": "#bc0013",
-    "color9": "#fc5e59",
-    "color2": "#49b117",
-    "color10": "#9dff6e",
-    "color3": "#e6741d",
-    "color11": "#efc11a",
-    "color4": "#0f49c6",
-    "color12": "#1896c6",
-    "color5": "#665992",
-    "color13": "#9a5952",
-    "color6": "#6fa497",
-    "color14": "#c8f9f3",
-    "color7": "#f8dbc0",
-    "color15": "#f5f4fb",
-    "sel_fg": "#1e1c44",
+
+
+    "fg": "#D8DEE9",
+    "bg": "#2E3440",
+    "sel_fg": "#000000",
+    "sel_bg": "#FFFACD",
+
+    "color0": "#3B4252",
+    "color8": "#4C566A",
+
+    "color1": "#BF616A",
+    "color9": "#BF616A",
+
+    "color2": "#A3BE8C",
+    "color10": "#A3BE8C",
+
+    "color3": "#EBCB8B",
+    "color11": "#EBCB8B",
+
+    "color4": "#81A1C1",
+    "color12": "#81A1C1",
+
+    "color5": "#B48EAD",
+    "color13": "#B48EAD",
+
+    "color6": "#88C0D0",
+    "color14": "#8FBCBB",
+
+    "color7": "#E5E9F0",
+    "color15": "#ECEFF4",
 })
-# current: AdventureTime.conf
+# current: Nord.conf

@@ -62,9 +62,7 @@ floating_layout = layout.Floating(
         Match(wm_class='ssh-askpass'),     # ssh-askpass
         Match(title='branchdialog'),       # gitk
         Match(title='pinentry'),           # GPG key password entry
-        Match(wm_class='pinentry-gtk-2'),  # gitk
-        Match(wm_class='mpv'),             # mpv
-        Match(title="mocp"),               # mocp
+        Match(wm_class='pinentry-gtk-2'),  # gtk
         Match(wm_class="conky"),           # conky
     ],
     border_focus=lt.floating.focus,    # Border colour(s) for the focused window.
