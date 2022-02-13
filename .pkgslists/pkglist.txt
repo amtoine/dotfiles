@@ -112,7 +112,6 @@ xorg-fonts-100dpi
 xorg-fonts-75dpi
 xorg-iceauth
 xorg-mkfontscale
-xorg-server
 xorg-server-devel
 xorg-server-xephyr
 xorg-server-xnest

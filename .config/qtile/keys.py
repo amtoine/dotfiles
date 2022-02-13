@@ -199,6 +199,7 @@ def init_keymap(mod, terminal):
                 Key([], 'k', *_ucmd("dm-kill"),               desc="Kill processes via dmenu"),
                 Key([], 'l', *_ucmd("dm-logout"),             desc="A logout menu"),
                 Key([], 'm', *_ucmd("dm-man"),                desc="Search manpages in dmenu"),
+                Key([], 'n', *_ucmd("dm-note"),               desc="TODO"),
                 Key([], 'o', *_ucmd("dm-bookman"),            desc="Search your qutebrowser bookmarks and quickmarks"),
                 Key([], 'r', *_ucmd("dm-reddit"),             desc="Search reddit via dmenu"),
                 Key([], 's', *_ucmd("dm-websearch"),          desc="Search various search engines via dmenu"),

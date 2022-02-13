@@ -3,6 +3,7 @@ alacritty
 alsa-utils
 ani-cli
 arandr
+archlinux-themes-sddm
 arduino
 arduino-mk
 autoconf
@@ -157,6 +158,8 @@ rust
 sauerbraten
 sc
 scrot
+sddm
+sddm-archlinux-theme-git
 sfml
 shell-color-scripts
 shellcheck

@@ -1,4 +1,5 @@
 ani-cli
+archlinux-themes-sddm
 arduino-mk
 cava
 conky-lua-nv
@@ -20,6 +21,7 @@ polybar
 python35
 python38
 reddio
+sddm-archlinux-theme-git
 shell-color-scripts
 slack-desktop
 toilet
