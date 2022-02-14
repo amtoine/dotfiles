@@ -1,5 +1,6 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/repos/a2n-s
 - /home/ants/repos/server
 - /home/ants/.config/nvim
 - /home/ants/research/imagineXdial
@@ -18,7 +19,6 @@ recentrepos:
 - /home/ants/repos/slock
 - /home/ants/research/Imagine
 - /home/ants/repos/dmenu
-- /home/ants/repos/a2n-s
 - /home/ants/prog/dqn
 - /home/ants/research/learning-to-communicate-pytorch
 - /home/ants/prog/scsc/fil-rouge
