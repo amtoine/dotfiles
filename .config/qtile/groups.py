@@ -33,7 +33,7 @@ def init_groups():
         Group("W4",  layout="TALL"),
         Group("C5",  layout="TREE"),
         Group("M6",  layout="TALL"),
-        Group("V7",  layout="TALL"),
+        Group("V7",  layout="WIDE"),
     ]
     # groups = [Group(i) for i in "123456789"]
     return groups

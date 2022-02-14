@@ -1,5 +1,4 @@
 ebook-tools
-i3-wm
 kio-extras
 mpdecimal
 pipewire-media-session
