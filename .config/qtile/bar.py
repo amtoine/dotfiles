@@ -54,7 +54,7 @@ _bar_styles = [
     ],
     [
         ["current_screen", "group_box", "window_name"],
-        ["chord", "prompt", "volume", "clock", "cpu", "battery", "quick_exit"],
+        ["chord", "prompt", "volume", "wlan", "clock", "cpu", "battery", "quick_exit"],
     ],
     [
         ["current_screen", "current_layout", "group_box", "window_name"],

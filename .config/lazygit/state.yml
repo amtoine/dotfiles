@@ -1,8 +1,11 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/.config/nvim
+- /home/ants/repos/tetris-couleur
+- /home/ants/repos/projet-ipt
+- /home/ants/repos/amazons
 - /home/ants/repos/a2n-s
 - /home/ants/repos/server
-- /home/ants/.config/nvim
 - /home/ants/research/imagineXdial
 - /home/ants/research/ma_playground_env
 - /home/ants/research/gym-basic
@@ -24,7 +27,6 @@ recentrepos:
 - /home/ants/prog/scsc/fil-rouge
 - /home/ants/prog/scsc/fgk
 - /home/ants/sup/rlclass
-- /home/ants/repos/amazons
 - /home/ants/.password-store
 - /home/ants/sup/imgDesc
 - /home/ants/research/playground_env

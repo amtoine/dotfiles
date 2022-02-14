@@ -87,7 +87,7 @@ WidgetTheme = namedtuple(
 )
 
 
-def build_widgets(group_size, theme, battery_fmt, clock_fmt, count_fmt, qexit_fmt):
+def build_widgets(group_size, theme, battery_fmt, clock_fmt, count_fmt, qexit_fmt, wlan_co_fmt, wlan_dis_fmt):
     """
         TODO
     """
@@ -118,7 +118,7 @@ def build_widgets(group_size, theme, battery_fmt, clock_fmt, count_fmt, qexit_fm
         "volume":         {"bg": theme.bg,      "fg": theme.color3},
         "moc":            {"bg": theme.bg,      "fg": theme.color11},
         "entropy":        {"bg": theme.bg,      "fg": theme.color7},
-        "wlan":           {"bg": theme.bg,      "fg": theme.color2},
+        "wlan":           {"bg": theme.bg,      "fg": theme.color2, "co_fmt": wlan_co_fmt, "dis_fmt": wlan_dis_fmt},
         "net":            {"bg": theme.bg,      "fg": theme.color10},
         "cpu":            {"bg": theme.bg,      "fg": theme.color7},
         "clock":          {"bg": theme.bg,      "fg": theme.color6,   "format": clock_fmt},

@@ -20,6 +20,8 @@ WIDGETS = build_widgets(
     theme=theme,
     battery_fmt="{char}" if BAR in [bars.minimal, bars.decreased] else "{char} {percent:2.0%}",
     clock_fmt=" %H:%M" if BAR == bars.decreased else " %m/%d  %H:%M",
+    wlan_co_fmt=" " if BAR == bars.decreased else " {essid} {quality:02d}/70",
+    wlan_dis_fmt="睊 " if BAR == bars.decreased else "睊 --/--",
     count_fmt="{}",
     qexit_fmt="襤",
     group_size=GROUP_SIZE,

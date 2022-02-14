@@ -29,6 +29,7 @@ SPC = "space"
 ESC = "Escape"
 SHI = "shift"
 CON = "control"
+ALT = "mod1"
 TAB = "Tab"
 RET = "Return"
 PER = "period"
@@ -166,13 +167,11 @@ def init_keymap(mod, terminal):
     MOD = [mod]
     km.extend(
         [
+            # reserved keys for movement.
             Key(MOD, 'h', lazy.layout.left(),                 desc="Move focus to left"),
             Key(MOD, 'j', lazy.layout.down(),                 desc="Move focus down"),
             Key(MOD, 'k', lazy.layout.up(),                   desc="Move focus up"),
             Key(MOD, 'l', lazy.layout.right(),                desc="Move focus to right"),
-            Key(MOD, 'u', lazy.to_screen(0),                  desc="Keyboard focus to monitor 1"),
-            Key(MOD, 'i', lazy.to_screen(1),                  desc="Keyboard focus to monitor 2"),
-            Key(MOD, 'o', lazy.to_screen(2),                  desc="Keyboard focus to monitor 3"),
             KeyChord(MOD, 'b', [
                 Key([], 'c', *_ucmd("chromium"),              desc="TODO"),
                 Key([], 'f', *_ucmd("firefox"),               desc="TODO"),
@@ -349,25 +348,18 @@ def init_keymap(mod, terminal):
                 ],
                 mode=" RESIZE"
             ),
-            Key(MOD, SPC, lazy.layout.next(),                  desc="Move window focus to other window"),
-            Key(MOD, RET, _cmd(terminal),                      desc="Launch terminal"),
-            Key(MOD, TAB, lazy.next_layout(),                  desc="Toggle between layouts"),
-            Key(MOD, PER, lazy.next_screen(),                  desc="Move focus to next monitor"),
-            Key(MOD, COM, lazy.prev_screen(),                  desc="Move focus to prev monitor"),
-            Key(MOD, BCL, lazy.screen.prev_group(),            desc="TODO"),
-            Key(MOD, BCR, lazy.screen.next_group(),            desc="TODO"),
-            Key(MOD, SLH, lazy.screen.toggle_group(),          desc="TODO"),
+            Key(MOD, SPC, lazy.layout.next(),              desc="Move window focus to other window"),
+            Key(MOD, RET, _cmd(terminal),                  desc="Launch terminal"),
 
-            Key(MOD, F1,  _cmd("brightnessctl s 8-"),          desc="brightness of the main screen down."),
-            Key(MOD, F2,  _cmd("brightnessctl s 8+"),          desc="brightness of the main screen up."),
-            Key(MOD, F5,  _script("screenshot.sh window"),     desc="take a screenshot of everything or chose a window."),
-            Key(MOD, F6,  _script("screenshot.sh full"),       desc="take a screenshot of everything or chose a window."),
-            Key(MOD, F7,  _cmd(SOUNDDOWN.format(SOUNDL)),      desc="TODO"),
-            Key(MOD, F8,  _cmd(MUTE),                          desc="TODO"),
-            Key(MOD, F9,  _cmd(SOUNDUP.format(SOUNDL)),        desc="TODO"),
-            Key(MOD, F10, _script(BLUETOGG),                   desc="TODO"),
-
-            Key(MOD, F12, _script("slock-cst.sh"),             desc="lock the computer."),
+            Key(MOD, F1,  _cmd("brightnessctl s 8-"),      desc="brightness of the main screen down."),
+            Key(MOD, F2,  _cmd("brightnessctl s 8+"),      desc="brightness of the main screen up."),
+            Key(MOD, F5,  _script("screenshot.sh window"), desc="take a screenshot of everything or chose a window."),
+            Key(MOD, F6,  _script("screenshot.sh full"),   desc="take a screenshot of everything or chose a window."),
+            Key(MOD, F7,  _cmd(SOUNDDOWN.format(SOUNDL)),  desc="TODO"),
+            Key(MOD, F8,  _cmd(MUTE),                      desc="TODO"),
+            Key(MOD, F9,  _cmd(SOUNDUP.format(SOUNDL)),    desc="TODO"),
+            Key(MOD, F10, _script(BLUETOGG),               desc="TODO"),
+            Key(MOD, F12, _script("slock-cst.sh"),         desc="lock the computer."),
         ]
     )
     MOD = [mod, CON]
@@ -384,6 +376,22 @@ def init_keymap(mod, terminal):
                 lazy.layout.flip().when(layout=["TALL", "WIDE"]),         desc="TODO, Toggle between split and unsplit sides of stack"),
             Key(MOD, F7,  _cmd(SOUNDDOWN.format(SOUNDS)),                 desc="TODO"),
             Key(MOD, F9,  _cmd(SOUNDUP.format(SOUNDS)),                   desc="TODO"),
+        ]
+    )
+    MOD = [mod, ALT]
+    km.extend(
+        [
+            Key(MOD, "h", lazy.screen.prev_group(),      desc="TODO"),
+            Key(MOD, "j", lazy.prev_screen(),            desc="Move focus to prev monitor"),
+            Key(MOD, "k", lazy.next_screen(),            desc="Move focus to next monitor"),
+            Key(MOD, "l", lazy.screen.next_group(),      desc="TODO"),
+            Key(MOD, 'u', lazy.to_screen(0),             desc="Keyboard focus to monitor 1"),
+            Key(MOD, 'i', lazy.to_screen(1),             desc="Keyboard focus to monitor 2"),
+            Key(MOD, 'o', lazy.to_screen(2),             desc="Keyboard focus to monitor 3"),
+            Key(MOD, "n", lazy.prev_layout(),            desc="Toggle between layouts"),
+            Key(MOD, "m", lazy.next_layout(),            desc="Toggle between layouts"),
+            Key(MOD, "f", lazy.window.toggle_floating(), desc="toggle floating"),
+            Key(MOD, "t", lazy.screen.toggle_group(),    desc="TODO"),
         ]
     )
     MOD = [mod, SHI]
@@ -404,8 +412,6 @@ def init_keymap(mod, terminal):
                 lazy.layout.shuffle_down().when(layout="WIDE"),
                 lazy.layout.swap_right().when(layout="TALL"),                     desc="TODO"),
             Key(MOD, "c", lazy.window.kill(),                                     desc="Kill focused window"),
-            Key(MOD, "f", lazy.window.toggle_floating(),                          desc="toggle floating"),
-            Key(MOD, TAB, lazy.prev_layout(),                                     desc="Toggle between layouts"),
             Key(MOD, F1,  _script("hdmi.brightness.sh -"),                        desc="brightness of the second screen down."),
             Key(MOD, F2,  _script("hdmi.brightness.sh +"),                        desc="brightness of the second screen up."),
         ]

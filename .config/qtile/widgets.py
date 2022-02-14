@@ -1029,7 +1029,7 @@ def quick_exit(bg="#000000", fg="#ffffff", countdown="[ {} seconds ]", text="[ s
     )
 
 
-def wlan(terminal, bg="#000000", fg="#ffffff"):
+def wlan(terminal, co_fmt=' {essid} {quality:02d}/70', dis_fmt="睊 --/--", bg="#000000", fg="#ffffff"):
     """
         class libqtile.widget.Wlan(**config)[source]
         Displays Wifi SSID and quality.
@@ -1039,23 +1039,23 @@ def wlan(terminal, bg="#000000", fg="#ffffff"):
         Supported bar orientations: horizontal only
     """
     return widget.Wlan(
-        background=bg,                        # Widget background color
-        disconnected_message="睊 --/--",      # String to show when the wlan is diconnected.
-        fmt='{}',                             # How to format the text
-        font=FONT,                            # Default font
-        fontshadow=None,                      # font shadow color, default is None(no shadow)
-        fontsize=None,                        # Font size. Calculated if None.
-        foreground=fg,                        # Foreground colour
-        format=' {essid} {quality:02d}/70',  # Display format. For percents you can use "{essid} {percent:2.0%}" or "{essid} {quality:02d}/70"
-        interface='wlp2s0',                   # The interface to monitor
-        markup=True,                          # Whether or not to use pango markup
-        max_chars=0,                          # Maximum number of characters to display in widget.
+        background=bg,                 # Widget background color
+        disconnected_message=dis_fmt,  # String to show when the wlan is diconnected.
+        fmt='{}',                      # How to format the text
+        font=FONT,                     # Default font
+        fontshadow=None,               # font shadow color, default is None(no shadow)
+        fontsize=None,                 # Font size. Calculated if None.
+        foreground=fg,                 # Foreground colour
+        format=co_fmt,                 # Display format. For percents you can use "{essid} {percent:2.0%}" or "{essid} {quality:02d}/70"
+        interface='wlp2s0',            # The interface to monitor
+        markup=True,                   # Whether or not to use pango markup
+        max_chars=0,                   # Maximum number of characters to display in widget.
         mouse_callbacks={
             'Button1': lambda: qtile.cmd_spawn(terminal + " --hold nmcli connection show"),
             'Button3': lambda: qtile.cmd_spawn("blueman-manager"),
-        },                                    # dict of mouse button press callback functions. accepts functions and lazy calls.
-        padding=None,                         # Padding. Calculated if None.
-        update_interval=1,                    # The update interval.
+        },                             # dict of mouse button press callback functions. accepts functions and lazy calls.
+        padding=None,                  # Padding. Calculated if None.
+        update_interval=1,             # The update interval.
     )
 
 
