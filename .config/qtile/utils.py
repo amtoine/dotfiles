@@ -26,6 +26,7 @@ def fetch_monitors():
     return allmonitors
 
 
+# TODO
 _colors = [
         "bg",
         "fg",
@@ -54,6 +55,7 @@ ColorScheme = namedtuple(
     defaults=("#ff0000",) * len(_colors)
 )
 
+# TODO
 _widgets = [
         "image",
         "current_layout",
@@ -127,6 +129,7 @@ def build_widgets(group_size, theme, battery_fmt, clock_fmt, count_fmt, qexit_fm
     })
 
 
+# TODO
 _layout_opts = [
         "focus",
         "normal",
@@ -139,6 +142,7 @@ Layout = namedtuple(
     defaults=(None,) * len(_layout_opts)
 )
 
+# TODO
 _layouts = [
         "floating",
         "bsp",
@@ -181,6 +185,7 @@ def build_layouts(theme, border_width, margin):
     )
 
 
+# TODO
 FontSizes = namedtuple(
     "FontSized",
     [
@@ -199,6 +204,7 @@ font_sizes = FontSizes(
     huge=(58, 50, 37),
 )
 
+# TODO
 Bars = namedtuple(
     "Bars",
     [

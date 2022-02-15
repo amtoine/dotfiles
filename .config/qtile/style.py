@@ -6,6 +6,7 @@ from utils import bars
 from theme import theme
 
 
+# TODO
 FONT = "mononoki Nerd Font"
 DMFONT = "mononoki Nerd Font-20"
 # BEGIN_QTILE_BAR_THEME

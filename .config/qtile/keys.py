@@ -26,6 +26,7 @@ from style import DMFONT
 from utils import window_to_next_screen
 from utils import window_to_previous_screen
 
+# TODO
 SCRIPTS = "scripts"
 SPC = "space"
 ESC = "Escape"
@@ -43,6 +44,7 @@ F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12 = (
     f"F{i}" for i in range(1, 13)
     )
 
+# TODO
 HOME = os.path.expanduser("~")
 DMRUN = f"dmenu_run -h {BAR_GEOMETRY['size']} -p 'Run: ' -fn '{DMFONT}'"
 PASS = f"passmenu -l 10 -c -fn '{DMFONT}'"
@@ -168,6 +170,7 @@ def init_keymap(mod, terminal, groups):
 
     km = []
 
+    # TODO
     for i, group in enumerate(groups):
         km.extend([
             Key([mod],      str(i+1), lazy.group[group.name].toscreen(),                   desc="Switch to group {}".format(group.name)),

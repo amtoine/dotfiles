@@ -25,6 +25,9 @@ from widgets import spacer
 
 
 def _create_widgets_table(terminal):
+    """
+        TODO
+    """
     return {
         "current_screen": [current_screen, dict(**wt.current_screen)],
         "current_layout": [current_layout, dict(**wt.current_layout)],
@@ -47,6 +50,7 @@ def _create_widgets_table(terminal):
     }
 
 
+# TODO
 _bar_styles = [
     [
         ["current_screen", "group_box"],

@@ -137,6 +137,10 @@ class MOC(widget.base.ThreadPoolText):
 
 def moc(terminal, bg="#000000", fg="#ffffff"):
     """
+    A simple widget to interact with the moc music player.
+
+    Widget requirements: the moc music player, subprocess
+
     """
     return MOC(
         background=bg,          # Widget background color

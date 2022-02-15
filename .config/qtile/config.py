@@ -30,25 +30,24 @@ from screens import init_screens
 from style import LAYOUTS as lt
 from widgets import init_widget_defaults
 
+# TODO
 mod = "mod4"
 terminal = guess_terminal(preference=["kitty", "alacritty"])
 
 groups = init_groups()
 keys = init_keymap(mod, terminal, groups)
-
 layouts = init_layouts()
-
 widget_defaults = init_widget_defaults()
 extension_defaults = widget_defaults.copy()
-
 fake_screens = init_screens(terminal)
 
 # Drag floating layouts.
 mouse = init_mouse(mod)
-
 follow_mouse_focus = False
 bring_front_click = False
 cursor_warp = False
+
+# TODO
 floating_layout = layout.Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
@@ -75,14 +74,21 @@ reconfigure_screens = True
 auto_minimize = True
 
 
+# TODO
 @hook.subscribe.startup_once
 def autostart():
+    """
+        TODO
+    """
     home = os.path.expanduser('~/.config/qtile/scripts/qtile-autostart.sh')
     subprocess.run([home])
 
 
 @hook.subscribe.client_new
 def func(client):
+    """
+        TODO
+    """
     if "mpv" in client._wm_class:
         client.cmd_togroup("V7")
 
