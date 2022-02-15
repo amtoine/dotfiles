@@ -23,6 +23,8 @@ from libqtile.lazy import lazy
 from extensions import window_list
 from style import BAR_GEOMETRY
 from style import DMFONT
+from utils import window_to_next_screen
+from utils import window_to_previous_screen
 
 SCRIPTS = "scripts"
 SPC = "space"
@@ -151,10 +153,12 @@ def _uascript(script, terminal=None, path=SCRIPTS):
     return script_, lazy.ungrab_all_chords()
 
 
-def init_keymap(mod, terminal):
+def init_keymap(mod, terminal, groups):
     """
         A list of available commands that can be bound to keys can be found
         at https://docs.qtile.org/en/latest/manual/config/lazy.html
+
+        TODO
     """
     THEME = dict(
         script="qtile-change-theme.sh",
@@ -163,6 +167,13 @@ def init_keymap(mod, terminal):
     )
 
     km = []
+
+    for i, group in enumerate(groups):
+        km.extend([
+            Key([mod],      str(i+1), lazy.group[group.name].toscreen(),                   desc="Switch to group {}".format(group.name)),
+            Key([mod, SHI], str(i+1), lazy.window.togroup(group.name, switch_group=False), desc="Move focused window to group {}".format(group.name)),
+            Key([mod, CON], str(i+1), lazy.window.togroup(group.name, switch_group=True),  desc="Switch to & move focused window to group {}".format(group.name)),
+        ])
 
     MOD = [mod]
     km.extend(
@@ -374,6 +385,8 @@ def init_keymap(mod, terminal):
             Key(MOD, RET,
                 lazy.layout.toggle_split().when(layout=["COLS", " BSP"]),
                 lazy.layout.flip().when(layout=["TALL", "WIDE"]),         desc="TODO, Toggle between split and unsplit sides of stack"),
+            Key(MOD, PER, lazy.function(window_to_next_screen,     switch_screen=True), desc="TODO"),
+            Key(MOD, COM, lazy.function(window_to_previous_screen, switch_screen=True), desc="TODO"),
             Key(MOD, F7,  _cmd(SOUNDDOWN.format(SOUNDS)),                 desc="TODO"),
             Key(MOD, F9,  _cmd(SOUNDUP.format(SOUNDS)),                   desc="TODO"),
         ]
@@ -412,6 +425,8 @@ def init_keymap(mod, terminal):
                 lazy.layout.shuffle_down().when(layout="WIDE"),
                 lazy.layout.swap_right().when(layout="TALL"),                     desc="TODO"),
             Key(MOD, "c", lazy.window.kill(),                                     desc="Kill focused window"),
+            Key(MOD, PER, lazy.function(window_to_next_screen),                   desc="TODO"),
+            Key(MOD, COM, lazy.function(window_to_previous_screen),               desc="TODO"),
             Key(MOD, F1,  _script("hdmi.brightness.sh -"),                        desc="brightness of the second screen down."),
             Key(MOD, F2,  _script("hdmi.brightness.sh +"),                        desc="brightness of the second screen up."),
         ]

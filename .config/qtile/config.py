@@ -23,7 +23,6 @@ from libqtile.config import Match
 from libqtile.utils import guess_terminal
 
 from groups import init_groups
-from groups import link_groups_to_keys
 from keys import init_keymap
 from layouts import init_layouts
 from mouse import init_mouse
@@ -34,10 +33,8 @@ from widgets import init_widget_defaults
 mod = "mod4"
 terminal = guess_terminal(preference=["kitty", "alacritty"])
 
-keys = init_keymap(mod, terminal)
-
 groups = init_groups()
-link_groups_to_keys(groups, keys, mod)
+keys = init_keymap(mod, terminal, groups)
 
 layouts = init_layouts()
 
@@ -83,6 +80,11 @@ def autostart():
     home = os.path.expanduser('~/.config/qtile/scripts/qtile-autostart.sh')
     subprocess.run([home])
 
+
+@hook.subscribe.client_new
+def func(client):
+    if "mpv" in client._wm_class:
+        client.cmd_togroup("V7")
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
