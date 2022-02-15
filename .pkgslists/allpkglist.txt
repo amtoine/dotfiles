@@ -39,6 +39,7 @@ cronie
 csvkit
 ctags
 dictd
+discord
 dmenufm
 dmscripts-git
 docker
@@ -109,6 +110,7 @@ network-manager-applet
 networkmanager
 ngrok
 nmap
+noto-fonts-emoji
 npm
 ntfs-3g
 okular

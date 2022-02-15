@@ -34,8 +34,6 @@ if status is-interactive
   alias diag='du -hs (ls (pwd) -A) | sort -h'
   # replacement of vim by nvim.
   alias nv='/usr/bin/nvim'
-  # alias to get directly to discord app.
-  alias discord="$HOME/Discord/Discord > /dev/null 2> /dev/null &"
   # the lazycli tool.
   alias lac="$HOME/.local/bin/lazycli"
   # to source this quicker.

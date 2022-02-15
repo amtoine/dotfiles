@@ -25,6 +25,7 @@ cronie
 csvkit
 ctags
 dictd
+discord
 docker
 docker-compose
 dstat
@@ -60,6 +61,7 @@ net-tools
 nethack
 network-manager-applet
 nmap
+noto-fonts-emoji
 okular
 pacgraph
 pacman-contrib
