@@ -31,6 +31,7 @@ docker-compose
 dstat
 dwarffortress
 eog
+exa
 expac
 fd
 feh
@@ -67,6 +68,7 @@ pacgraph
 pacman-contrib
 patch
 pavucontrol
+peco
 picom
 pkgconf
 ponysay

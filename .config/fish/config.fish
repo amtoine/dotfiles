@@ -80,17 +80,27 @@ if status is-interactive
   alias rmr='rm -r'
   alias rmrf='rm -rf'
 
+
   # alias reboot='sudo reboot'
   # alias sctl='sudo systemctl'
 
   # enable color support of ls and also add handy aliases
-  alias ls='ls --color=auto'
+  if type -q exa
+    alias ls 'exa -g --icons'
+    alias ll "exa -l -g --icons"
+    alias lla "exa -l -g -a --icons"
+    alias tr "exa -g --icons --tree"
+  else
+    alias ls 'ls --color=auto'
+    alias ll 'ls -l --color=auto'
+    alias lla 'ls -la --color=auto'
+    alias tr 'tree'
+  end
   alias dir='dir --color=auto'
   alias vdir='vdir --color=auto'
   alias grep='grep --color=auto'
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
-  alias ll='ls -l'
 
   alias kicat="kitty +kitten icat"
   alias kthemes="kitty +kitten themes"

@@ -51,6 +51,7 @@ ed
 efibootmgr
 emacs
 eog
+exa
 expac
 fakeroot
 fd
@@ -123,6 +124,7 @@ pass-import
 pass-tomb
 patch
 pavucontrol
+peco
 perl-file-mimeinfo
 pfetch
 picom

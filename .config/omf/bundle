@@ -9,9 +9,11 @@ package expand
 package extract
 package fish_logo
 package fuck
+package peco
 package python
 package vcs
 package virtualfish
+package z
 theme agnoster
 theme aight
 theme batman
