@@ -145,5 +145,6 @@ xorg-xvinfo
 xorg-xwd
 xorg-xwud
 xscreensaver
+z
 zenity
 zip

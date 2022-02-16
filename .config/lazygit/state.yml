@@ -1,5 +1,6 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/repos/server
 - /home/ants/.config/nvim
 - /home/ants/research/imagineXdial
 - /tmp/dqn-pytorch
@@ -8,7 +9,6 @@ recentrepos:
 - /home/ants/repos/projet-ipt
 - /home/ants/repos/amazons
 - /home/ants/repos/a2n-s
-- /home/ants/repos/server
 - /home/ants/research/ma_playground_env
 - /home/ants/research/gym-basic
 - /home/ants/repos/wallpapers

@@ -5,6 +5,7 @@ cava
 conky-lua-nv
 dmenufm
 dmscripts-git
+ghq
 irony-mode
 lf
 mbsync-git

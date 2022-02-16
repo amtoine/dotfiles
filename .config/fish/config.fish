@@ -13,13 +13,6 @@ if status is-interactive
 
   # shows all the media devices connected.
   alias dfm='df -h | grep media | sed "s/\s\+/ /g" | cut -d" " -f6,1'
-  # automatically connects to an HDMI-2 monitor on the right of the main laptop screen.
-  set MAIN_DISPLAY "eDP-1"
-  set SECOND_MONITOR "HDMI-2"
-  alias hdmic='xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --mode 1920x1080 --rate 60 --right-of $MAIN_DISPLAY'
-  alias hdmim='xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --mode 1920x1080 --rate 60 --same-as  $MAIN_DISPLAY'
-  alias hdmib='xrandr --output $SECOND_MONITOR --brightness'
-  alias hdmid='xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --off'
   # automatic copy from terminal output with xclip.
   alias xcc='xclip -selection c'
   # list the packages that match the pattern given after the alias.
@@ -72,6 +65,8 @@ if status is-interactive
 
   alias sdn='shutdown now -h'
   alias sdnr='shutdown now -h -r'
+  # alias reboot='sudo reboot'
+  # alias sctl='sudo systemctl'
 
   alias cp='cp -i'
   alias ln='ln -i'
@@ -79,10 +74,6 @@ if status is-interactive
   alias rmv='rm -v'
   alias rmr='rm -r'
   alias rmrf='rm -rf'
-
-
-  # alias reboot='sudo reboot'
-  # alias sctl='sudo systemctl'
 
   # enable color support of ls and also add handy aliases
   if type -q exa
@@ -110,8 +101,11 @@ if status is-interactive
   alias qrestart="qtile cmd-obj -o cmd -f restart"
   alias qcmd="qtile cmd-obj -o cmd -f"
   alias qprompt="qtile cmd-obj -o cmd -f spawncmd"
-  # alias qlog="cat $HOME/.local/share/qtile/qtile.log | less"
-  alias qlog="bat $HOME/.local/share/qtile/qtile.log"
+  if type -q bat
+    alias qlog="bat $HOME/.local/share/qtile/qtile.log"
+  else
+    alias qlog="cat $HOME/.local/share/qtile/qtile.log | less"
+  end
   alias qstop="qtile cmd-obj -o cmd -f shutdown"
 
   #        _

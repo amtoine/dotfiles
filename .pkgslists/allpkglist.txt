@@ -66,6 +66,7 @@ fortune-mod
 fzf
 gcc
 gdb
+ghq
 gimp
 git
 github-cli
@@ -256,6 +257,7 @@ xterm
 yad
 yay-git
 youtube-dl
+z
 zenity
 zip
 zsh

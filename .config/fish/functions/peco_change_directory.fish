@@ -17,7 +17,7 @@ function peco_change_directory
   begin
     echo $HOME/.config
     /usr/bin/ls -ad $HOME/.config/*/ | grep -v \.git
-    # ls -ad ".*/" | perl -pe "s#^#$PWD/#" | grep -v \.git
+    ghq list -p
     /usr/bin/ls -ad */ | perl -pe "s#^#$PWD/#" | grep -v \.git
   end | sed -e 's/\/$//' | awk '!a[$0]++' | _peco_change_directory $argv
 end
