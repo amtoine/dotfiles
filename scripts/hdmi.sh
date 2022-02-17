@@ -28,12 +28,12 @@ eval set -- "$OPTIONS"
 [[ ! -v SECOND ]] && SECOND="HDMI-2"
 
 change_brightness () {
-  STEP="$3" # Step Up/Down brightness by: 5 = ".05", 10 = ".10", etc.
   SIDE="$2"
+  STEP="$3" # Step Up/Down brightness by: 5 = ".05", 10 = ".10", etc.
 
   if [[ ! "$SIDE" == +* ]] && [[ ! "$SIDE" == -* ]]; then
     xrandr --output "$1" --brightness "$SIDE"
-    exit 0;
+    return
   fi
 
   CurrBright=$( xrandr --verbose --current | grep ^"$1" -A5 | tail -n1 )
@@ -68,12 +68,20 @@ change_brightness () {
   xrandr --output "$1" --brightness "$CurrBright"   # Set new brightness
 }
 
+connect () {
+  MAIN="$1"
+  SECOND="$2"
+  METHOD="$3"
+  xrandr 1> /dev/null
+  xrandr --output "$MAIN" --auto --output "$SECOND" --mode 1920x1080 --rate 60 --"$METHOD"  "$MAIN"
+  change_brightness "$SECOND" .2
+}
+
 while [[ $# -gt 0 ]]; do
   case "$1" in
     -M | --main )   MONITOR="$MAIN"; shift 1 ;;
     -S | --second ) MONITOR="$SECOND"; shift 1 ;;
     -b | --brightness )
-      echo "brightness"
       if [ "$MONITOR" = "$MAIN" ]; then
         brightnessctl s "$2"
       elif [ "$MONITOR" = "$SECOND" ]; then
@@ -84,9 +92,9 @@ while [[ $# -gt 0 ]]; do
       exit 0
       ;;
     -d | --disconnect ) xrandr --output "$MAIN" --auto --output "$SECOND" --off; exit 0 ;;
-    -l | --left )       xrandr --output "$MAIN" --auto --output "$SECOND" --mode 1920x1080 --rate 60 --left-of  "$MAIN"; exit 0 ;;
-    -m | --mirror )     xrandr --output "$MAIN" --auto --output "$SECOND" --mode 1920x1080 --rate 60 --same-as  "$MAIN"; exit 0 ;;
-    -r | --right )      xrandr --output "$MAIN" --auto --output "$SECOND" --mode 1920x1080 --rate 60 --right-of "$MAIN"; exit 0 ;;
+    -l | --left )       connect "$MAIN" "$SECOND" "left-of"; exit 0 ;;
+    -m | --mirror )     connect "$MAIN" "$SECOND" "same-as"; exit 0 ;;
+    -r | --right )      connect "$MAIN" "$SECOND" "right-of"; exit 0 ;;
     -- ) shift; break ;;
     * ) break ;;
   esac
