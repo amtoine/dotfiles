@@ -80,12 +80,11 @@ if status is-interactive
     alias ls 'exa -g --icons'
     alias ll "exa -l -g --icons"
     alias lla "exa -l -g -a --icons"
-    alias tr "exa -g --icons --tree"
+    alias tree "exa -g --icons --tree"
   else
     alias ls 'ls --color=auto'
     alias ll 'ls -l --color=auto'
     alias lla 'ls -la --color=auto'
-    alias tr 'tree'
   end
   alias dir='dir --color=auto'
   alias vdir='vdir --color=auto'
