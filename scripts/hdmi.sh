@@ -1,21 +1,92 @@
 #! /usr/bin/bash
-TEMP=$(getopt -o b:dlmr --long brightness:,disconnect,left,mirror,right \
+#             ___
+#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+#     \__,_/____/_/ /_/           /____/
+#                        _       __             __   __        __          _               __
+#        _______________(_)___  / /______     _/_/  / /_  ____/ /___ ___  (_)        _____/ /_
+#       / ___/ ___/ ___/ / __ \/ __/ ___/   _/_/   / __ \/ __  / __ `__ \/ /        / ___/ __ \
+#      (__  ) /__/ /  / / /_/ / /_(__  )  _/_/    / / / / /_/ / / / / / / /   _    (__  ) / / /
+#     /____/\___/_/  /_/ .___/\__/____/  /_/     /_/ /_/\__,_/_/ /_/ /_/_/   (_)  /____/_/ /_/
+#                     /_/
+#
+# Description:  manages hdmi monitors, increases or decreases the brightness of the screen by giving + or - to the script.
+# Dependencies: xrandr
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
+# Contributors: WinEunuuchs2Unix at https://askubuntu.com/questions/1150339/increment-brightness-by-value-using-xrandr (original idea)
+#               Stevan Antoine (adaptations)
+
+OPTIONS=$(getopt -o b:dlmrMS --long brightness:,disconnect,left,mirror,right,main,second \
               -n 'hdmi.sh' -- "$@")
 
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
 
-eval set -- "$TEMP"
+eval set -- "$OPTIONS"
 
-[[ ! -v MAIN_DISPLAY ]] && MAIN_DISPLAY="eDP-1"
-[[ ! -v SECOND_MONITOR ]] && SECOND_MONITOR="HDMI-2"
+[[ ! -v MAIN ]] && MAIN="eDP-1"
+[[ ! -v SECOND ]] && SECOND="HDMI-2"
+
+change_brightness () {
+  STEP="$3" # Step Up/Down brightness by: 5 = ".05", 10 = ".10", etc.
+  SIDE="$2"
+
+  if [[ ! "$SIDE" == +* ]] && [[ ! "$SIDE" == -* ]]; then
+    xrandr --output "$1" --brightness "$SIDE"
+    exit 0;
+  fi
+
+  CurrBright=$( xrandr --verbose --current | grep ^"$1" -A5 | tail -n1 )
+  CurrBright="${CurrBright##* }"  # Get brightness level with decimal place
+
+  Left=${CurrBright%%"."*}        # Extract left of decimal point
+  Right=${CurrBright#*"."}        # Extract right of decimal point
+
+  MathBright="0"
+  [[ "$Left" != 0 && "$STEP" -lt 10 ]] && STEP=10     # > 1.0, only .1 works
+  [[ "$Left" != 0 ]] && MathBright="$Left"00          # 1.0 becomes "100"
+  [[ "${#Right}" -eq 1 ]] && Right="$Right"0          # 0.5 becomes "50"
+  MathBright=$(( MathBright + Right ))
+
+  [[ "$SIDE" == "Up" || "$SIDE" == "+" ]] && MathBright=$(( MathBright + STEP ))
+  [[ "$SIDE" == "Down" || "$SIDE" == "-" ]] && MathBright=$(( MathBright - STEP ))
+  [[ "${MathBright:0:1}" == "-" ]] && MathBright=0    # Negative not allowed
+  [[ "$MathBright" -gt 110  ]] && MathBright=110      # Can't go over 1.10
+
+  case "${#MathBright}" in
+    3) MathBright="$MathBright"
+       CurrBright="${MathBright:0:1}.${MathBright:1:2}"
+    ;;
+    1) MathBright=0"$MathBright"
+       CurrBright=".${MathBright:0:2}"
+    ;;
+    *) MathBright="$MathBright"
+       CurrBright=".${MathBright:0:2}"
+    ;;
+  esac
+
+  xrandr --output "$1" --brightness "$CurrBright"   # Set new brightness
+}
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    -b | --brightness ) xrandr --output $SECOND_MONITOR --brightness "$2"; exit 0 ;;
-    -d | --disconnect ) xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --off; exit 0 ;;
-    -l | --left )       xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --mode 1920x1080 --rate 60 --left-of  $MAIN_DISPLAY; exit 0 ;;
-    -m | --mirror )     xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --mode 1920x1080 --rate 60 --same-as  $MAIN_DISPLAY; exit 0 ;;
-    -r | --right )      xrandr --output $MAIN_DISPLAY --auto --output $SECOND_MONITOR --mode 1920x1080 --rate 60 --right-of $MAIN_DISPLAY; exit 0 ;;
+    -M | --main )   MONITOR="$MAIN"; shift 1 ;;
+    -S | --second ) MONITOR="$SECOND"; shift 1 ;;
+    -b | --brightness )
+      echo "brightness"
+      if [ "$MONITOR" = "$MAIN" ]; then
+        brightnessctl s "$2"
+      elif [ "$MONITOR" = "$SECOND" ]; then
+        change_brightness "$MONITOR" "$2" 2; exit 0
+      else
+        echo "no monitor"
+      fi
+      exit 0
+      ;;
+    -d | --disconnect ) xrandr --output "$MAIN" --auto --output "$SECOND" --off; exit 0 ;;
+    -l | --left )       xrandr --output "$MAIN" --auto --output "$SECOND" --mode 1920x1080 --rate 60 --left-of  "$MAIN"; exit 0 ;;
+    -m | --mirror )     xrandr --output "$MAIN" --auto --output "$SECOND" --mode 1920x1080 --rate 60 --same-as  "$MAIN"; exit 0 ;;
+    -r | --right )      xrandr --output "$MAIN" --auto --output "$SECOND" --mode 1920x1080 --rate 60 --right-of "$MAIN"; exit 0 ;;
     -- ) shift; break ;;
     * ) break ;;
   esac
