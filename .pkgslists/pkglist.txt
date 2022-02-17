@@ -25,10 +25,10 @@ cronie
 csvkit
 ctags
 dictd
-discord
 docker
 docker-compose
 dstat
+dunst
 dwarffortress
 eog
 exa

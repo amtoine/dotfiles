@@ -1,7 +1,7 @@
-from utils import fetch_monitors
+from theme import theme
 from style import BAR
-from style import theme
 from style import WIDGETS as wt
+from utils import fetch_monitors
 from widgets import current_screen
 from widgets import current_layout
 from widgets import group_box
@@ -22,6 +22,7 @@ from widgets import quick_exit
 from widgets import powerline_right_arrow
 from widgets import sep
 from widgets import spacer
+from widgets import notify
 
 
 def _create_widgets_table(terminal):
@@ -47,6 +48,7 @@ def _create_widgets_table(terminal):
         "battery": [battery, dict(**wt.battery)],
         "quick_exit": [quick_exit, dict(**wt.quick_exit)],
         "spacer": [spacer, dict(**wt.spacer)],
+        "notify": [notify, dict(**wt.notify)],
     }
 
 

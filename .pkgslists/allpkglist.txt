@@ -39,13 +39,13 @@ cronie
 csvkit
 ctags
 dictd
-discord
 dmenufm
 dmscripts-git
 docker
 docker-compose
 dosfstools
 dstat
+dunst
 dwarffortress
 ed
 efibootmgr

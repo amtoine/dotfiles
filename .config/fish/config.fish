@@ -39,6 +39,7 @@ if status is-interactive
   # alias docker="sudo docker"
   # wrapper around btop to bypass lack of locale.
   alias btop="btop --utf-force"
+  alias discord="$HOME/Discord/Discord 1>/dev/null 2>/dev/null &"
 
   # to list all the git repositiories inside the home directory or gives a full diagnostic with the extra d.
   alias lgr='find $pwd -type d | grep "\.git\$" | sed "s/\/\.git//"'

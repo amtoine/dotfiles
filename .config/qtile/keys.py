@@ -23,6 +23,7 @@ from libqtile.lazy import lazy
 from extensions import window_list
 from style import BAR_GEOMETRY
 from style import DMFONT
+from utils import float_to_front
 from utils import window_to_next_screen
 from utils import window_to_previous_screen
 
@@ -62,7 +63,8 @@ PROC = " htop"
 CAL = " --hold cal -Y"
 NET = " nmcli connection show"
 LOG = " bat " + os.path.expanduser("~/.local/share/qtile/qtile.log")
-DISCORD = "discord > /dev/null 2> /dev/null"
+DISCORD = os.path.expanduser("~/Discord/Discord")
+# DISCORD = "discord > /dev/null 2> /dev/null"
 SLACK = "slack"
 CAPRINE = "caprine"
 SIGNAL = "signal-desktop"
@@ -428,6 +430,7 @@ def init_keymap(mod, terminal, groups):
                 lazy.layout.shuffle_down().when(layout="WIDE"),
                 lazy.layout.swap_right().when(layout="TALL"),                     desc="TODO"),
             Key(MOD, "c", lazy.window.kill(),                                     desc="Kill focused window"),
+            Key(MOD, "f", float_to_front,                                         desc="toggle floating"),
             Key(MOD, PER, lazy.function(window_to_next_screen),                   desc="TODO"),
             Key(MOD, COM, lazy.function(window_to_previous_screen),               desc="TODO"),
             Key(MOD, F1,  _script("hdmi.sh -S -b -"),                             desc="brightness of the second screen down."),

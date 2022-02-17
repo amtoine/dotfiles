@@ -1,3 +1,5 @@
+from libqtile.lazy import lazy
+
 from collections import namedtuple
 
 import gi
@@ -80,7 +82,8 @@ _widgets = [
         "quick_exit",
         "entropy",
         "moc",
-        "spacer"
+        "spacer",
+        "notify",
 ]
 WidgetTheme = namedtuple(
     "WidgetTheme",
@@ -126,6 +129,7 @@ def build_widgets(group_size, theme, battery_fmt, clock_fmt, count_fmt, qexit_fm
         "clock":          {"bg": theme.bg,      "fg": theme.color6,   "format": clock_fmt},
         "battery":        {"bg": theme.bg,      "fg": theme.color14,  "format": battery_fmt},
         "quick_exit":     {"bg": theme.bg,      "fg": theme.color1,   "text": qexit_fmt, "countdown": count_fmt},
+        "notify":         {"bg": theme.bg,      "fg": theme.color14},
     })
 
 
@@ -243,3 +247,14 @@ def window_to_next_screen(qtile, switch_group=False, switch_screen=False):
         qtile.current_window.togroup(group, switch_group=switch_group)
         if switch_screen:
             qtile.cmd_to_screen(i + 1)
+
+
+@lazy.function
+def float_to_front(qtile):
+    """
+        TODO
+    """
+    for group in qtile.groups:
+        for window in group.windows:
+            if window.floating:
+                window.cmd_bring_to_front()

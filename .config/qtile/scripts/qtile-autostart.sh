@@ -12,5 +12,7 @@ emacs --daemon
 
 killall -q xautolock
 xautolock -time 10 -locker ~/scripts/slock-cst.sh &
+dunst -conf ~/.config/dunst/dunstrc &
+
 xset s 0
 xset -dpms
