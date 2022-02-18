@@ -25,6 +25,7 @@ cronie
 csvkit
 ctags
 dictd
+discord
 docker
 docker-compose
 dstat

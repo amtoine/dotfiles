@@ -39,6 +39,7 @@ cronie
 csvkit
 ctags
 dictd
+discord
 dmenufm
 dmscripts-git
 docker
