@@ -74,10 +74,10 @@ WTLDR = " --hold bash " + os.path.expanduser("~/scripts/wtldr.sh")
 KB = ' ' + os.path.expanduser("~/.config/qtile/scripts/qtile-kb.sh")
 SOUNDS = 1
 SOUNDL = 5
-SOUNDUP = "amixer -q sset Master {}%+"
-SOUNDDOWN = "amixer -q sset Master {}%-"
-MUTE = "amixer -q sset Master toggle"
-BLUETOGG = "bluetooth.toggle.sh -t"
+SOUNDUP = "sound.sh --up --channel Master --step {} --notify"
+SOUNDDOWN = "sound.sh --down --channel Master --step {} --notify"
+MUTE = "sound.sh --toggle --channel Master --notify"
+BLUETOGG = "sound.sh --bluetooth --notify"
 WALLPAPER = "wallpaper.fzf.sh"
 BAR = dict(script="qtile-bar.sh", path=".config/qtile/scripts")
 URELOAD = lazy.reload_config(), lazy.ungrab_chord()
@@ -238,23 +238,23 @@ def init_keymap(mod, terminal, groups):
             ),
             Key(MOD, 'f', lazy.window.toggle_fullscreen(),    desc="toggle fullscreen"),
             KeyChord(MOD, 'm', [
-                Key([], 'b', *_ucmd("mocp -r"),               desc="TODO"),
-                Key([], 'm', *_ucmd("mocp -G"),               desc="TODO"),
-                Key([], 'n', *_ucmd("mocp -f"),               desc="TODO"),
-                Key([], 'o', *_ucmd(terminal + " mocp"),      desc="TODO"),
-                Key([], 'p', *_ucmd("mocp -G"),               desc="TODO"),
-                Key([], 'q', *_ucmd("mocp -x"),               desc="TODO"),
-                Key([], 'r', *_ucmd("mocp -t repeat"),        desc="TODO"),
-                Key([], 's', *_ucmd("mocp -t shuffle"),       desc="TODO"),
-                Key([], 'u', *_ucmd("mocp -S"),               desc="TODO"),
-                Key([], 'h', _cmd("mocp -k -10"),             desc="TODO"),
-                Key([], 'j', _cmd("mocp -f"),                 desc="TODO"),
-                Key([], 'k', _cmd("mocp -r"),                 desc="TODO"),
-                Key([], 'l', _cmd("mocp -k +10"),             desc="TODO"),
-                Key([], SPC, _cmd("mocp -G"),                 desc="TODO"),
-                Key([], F7,  _cmd(SOUNDDOWN.format(SOUNDL)),  desc="TODO"),
-                Key([], F8,  _cmd(MUTE),                      desc="TODO"),
-                Key([], F9,  _cmd(SOUNDUP.format(SOUNDL)),    desc="TODO"),
+                Key([], 'b', *_ucmd("mocp -r"),                 desc="TODO"),
+                Key([], 'm', *_ucmd("mocp -G"),                 desc="TODO"),
+                Key([], 'n', *_ucmd("mocp -f"),                 desc="TODO"),
+                Key([], 'o', *_ucmd(terminal + " mocp"),        desc="TODO"),
+                Key([], 'p', *_ucmd("mocp -G"),                 desc="TODO"),
+                Key([], 'q', *_ucmd("mocp -x"),                 desc="TODO"),
+                Key([], 'r', *_ucmd("mocp -t repeat"),          desc="TODO"),
+                Key([], 's', *_ucmd("mocp -t shuffle"),         desc="TODO"),
+                Key([], 'u', *_ucmd("mocp -S"),                 desc="TODO"),
+                Key([], 'h', _cmd("mocp -k -10"),               desc="TODO"),
+                Key([], 'j', _cmd("mocp -f"),                   desc="TODO"),
+                Key([], 'k', _cmd("mocp -r"),                   desc="TODO"),
+                Key([], 'l', _cmd("mocp -k +10"),               desc="TODO"),
+                Key([], SPC, _cmd("mocp -G"),                   desc="TODO"),
+                Key([], F7,  _script(SOUNDDOWN.format(SOUNDL)), desc="TODO"),
+                Key([], F8,  _script(MUTE),                     desc="TODO"),
+                Key([], F9,  _script(SOUNDUP.format(SOUNDL)),   desc="TODO"),
                 ],
                 mode=" MUSIC"
             ),
@@ -365,18 +365,18 @@ def init_keymap(mod, terminal, groups):
                 ],
                 mode=" RESIZE"
             ),
-            Key(MOD, SPC, lazy.layout.next(),              desc="Move window focus to other window"),
-            Key(MOD, RET, _cmd(terminal),                  desc="Launch terminal"),
+            Key(MOD, SPC, lazy.layout.next(),                desc="Move window focus to other window"),
+            Key(MOD, RET, _cmd(terminal),                    desc="Launch terminal"),
 
-            Key(MOD, F1,  _cmd("hdmi.sh -M -b 8-"),        desc="brightness of the main screen down."),
-            Key(MOD, F2,  _cmd("hdmi.sh -M -b 8+"),        desc="brightness of the main screen up."),
-            Key(MOD, F5,  _script("screenshot.sh window"), desc="take a screenshot of everything or chose a window."),
-            Key(MOD, F6,  _script("screenshot.sh full"),   desc="take a screenshot of everything or chose a window."),
-            Key(MOD, F7,  _cmd(SOUNDDOWN.format(SOUNDL)),  desc="TODO"),
-            Key(MOD, F8,  _cmd(MUTE),                      desc="TODO"),
-            Key(MOD, F9,  _cmd(SOUNDUP.format(SOUNDL)),    desc="TODO"),
-            Key(MOD, F10, _script(BLUETOGG),               desc="TODO"),
-            Key(MOD, F12, _script("slock-cst.sh"),         desc="lock the computer."),
+            Key(MOD, F1,  _cmd("hdmi.sh -M -b 8-"),          desc="brightness of the main screen down."),
+            Key(MOD, F2,  _cmd("hdmi.sh -M -b 8+"),          desc="brightness of the main screen up."),
+            Key(MOD, F5,  _script("screenshot.sh window"),   desc="take a screenshot of everything or chose a window."),
+            Key(MOD, F6,  _script("screenshot.sh full"),     desc="take a screenshot of everything or chose a window."),
+            Key(MOD, F7,  _script(SOUNDDOWN.format(SOUNDL)), desc="TODO"),
+            Key(MOD, F8,  _script(MUTE),                     desc="TODO"),
+            Key(MOD, F9,  _script(SOUNDUP.format(SOUNDL)),   desc="TODO"),
+            Key(MOD, F10, _script(BLUETOGG),                 desc="TODO"),
+            Key(MOD, F12, _script("slock-cst.sh"),           desc="lock the computer."),
         ]
     )
     MOD = [mod, CON]
@@ -393,8 +393,8 @@ def init_keymap(mod, terminal, groups):
                 lazy.layout.flip().when(layout=["TALL", "WIDE"]),         desc="TODO, Toggle between split and unsplit sides of stack"),
             Key(MOD, PER, lazy.function(window_to_next_screen,     switch_screen=True), desc="TODO"),
             Key(MOD, COM, lazy.function(window_to_previous_screen, switch_screen=True), desc="TODO"),
-            Key(MOD, F7,  _cmd(SOUNDDOWN.format(SOUNDS)),                 desc="TODO"),
-            Key(MOD, F9,  _cmd(SOUNDUP.format(SOUNDS)),                   desc="TODO"),
+            Key(MOD, F7,  _script(SOUNDDOWN.format(SOUNDS)),              desc="TODO"),
+            Key(MOD, F9,  _script(SOUNDUP.format(SOUNDS)),                desc="TODO"),
         ]
     )
     MOD = [mod, ALT]
