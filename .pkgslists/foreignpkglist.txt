@@ -13,6 +13,7 @@ mu
 myman
 nerd-fonts-mononoki
 ngrok
+nsxiv
 paru
 pass-import
 pass-tomb

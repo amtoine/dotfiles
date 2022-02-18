@@ -115,6 +115,7 @@ ngrok
 nmap
 noto-fonts-emoji
 npm
+nsxiv
 ntfs-3g
 okular
 os-prober
@@ -197,6 +198,7 @@ vim
 vnstat
 vulkan-tools
 w3m
+weechat
 wget
 which
 xautolock

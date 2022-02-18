@@ -79,7 +79,7 @@ connect () {
 }
 
 notify_brightness () {
-  dunstify "Brightness ($1)" -h "int:value:$2"
+  dunstify "Brightness ($1)" -h "int:value:$2" -u low
 }
 
 main () {

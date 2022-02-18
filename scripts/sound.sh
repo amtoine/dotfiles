@@ -53,7 +53,7 @@ bluetooth_toggle () {
 
 notify () {
   _volume=$(amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }' | sed 's/%//')
-  dunstify volume -h "int:value:$_volume"
+  dunstify "volume" -h "int:value:$_volume" -u low
 }
 mute_notify () {
   if amixer sget "$1" | grep "\[on\]" > /dev/null; then
