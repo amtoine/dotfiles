@@ -94,6 +94,7 @@ LGIT = f" lazygit --git-dir={HOME}/.dotfiles --work-tree={HOME}"
 TIGA = "config.tiga.sh"
 BTOP = " btop --utf-force"
 HTOP = " htop"
+DUNST_CLOSE = "dunstctl close-all"
 
 
 def _cmd(command):
@@ -199,6 +200,7 @@ def init_keymap(mod, terminal, groups):
                 Key([], 'd', *_ucmd(DISCORD),                 desc="TODO"),
                 Key([], 'g', *_ucmd(SIGNAL),                  desc="TODO"),
                 Key([], 'm', *_ucmd(terminal + MACHO),        desc="TODO"),
+                Key([], 'n', *_ucmd(DUNST_CLOSE),             desc="TODO"),
                 Key([], 's', *_ucmd(SLACK),                   desc="TODO"),
                 Key([], 't', *_ucmd(THUNDERBIRD),             desc="TODO"),
                 Key([], 'w', *_ucmd(terminal + WTLDR),        desc="TODO"),
