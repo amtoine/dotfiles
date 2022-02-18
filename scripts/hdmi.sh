@@ -12,12 +12,13 @@
 #                     /_/
 #
 # Description:  manages hdmi monitors, increases or decreases the brightness of the screen by giving + or - to the script.
+#               one can use multiple flags, only the last one will be used.
 # Dependencies: xrandr
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: WinEunuuchs2Unix at https://askubuntu.com/questions/1150339/increment-brightness-by-value-using-xrandr (original idea)
 #               Stevan Antoine (adaptations)
 
-OPTIONS=$(getopt -o b:dlmrMS --long brightness:,disconnect,left,mirror,right,main,second \
+OPTIONS=$(getopt -o b:dlmrMSn --long brightness:,disconnect,left,mirror,right,main,second,notify \
               -n 'hdmi.sh' -- "$@")
 
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
@@ -36,7 +37,7 @@ change_brightness () {
     return
   fi
 
-  CurrBright=$( xrandr --verbose --current | grep ^"$1" -A5 | tail -n1 )
+  CurrBright=$(xrandr --verbose --current | grep ^"$1" -A5 | tail -n1 )
   CurrBright="${CurrBright##* }"  # Get brightness level with decimal place
 
   Left=${CurrBright%%"."*}        # Extract left of decimal point
@@ -77,25 +78,46 @@ connect () {
   change_brightness "$SECOND" .2
 }
 
-while [[ $# -gt 0 ]]; do
-  case "$1" in
-    -M | --main )   MONITOR="$MAIN"; shift 1 ;;
-    -S | --second ) MONITOR="$SECOND"; shift 1 ;;
-    -b | --brightness )
+notify_brightness () {
+  dunstify "Brightness ($1)" -h "int:value:$2"
+}
+
+main () {
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -b | --brightness ) ACTION="brightness"; BRIGHTNESS="$2"; shift 2 ;;
+      -d | --disconnect ) ACTION="disconnect"; shift 1 ;;
+      -l | --left )       ACTION="left"; shift 1 ;;
+      -m | --mirror )     ACTION="mirror"; shift 1 ;;
+      -r | --right )      ACTION="right"; shift 1 ;;
+      -M | --main )       MONITOR="$MAIN"; shift 1 ;;
+      -S | --second )     MONITOR="$SECOND"; shift 1 ;;
+      -n | --notify )     NOTIFY="yes"; shift 1 ;;
+      -- ) shift; break ;;
+      * ) break ;;
+    esac
+  done
+  case "$ACTION" in
+    brightness )
       if [ "$MONITOR" = "$MAIN" ]; then
-        brightnessctl s "$2"
+        brightnessctl s "$BRIGHTNESS"
+        [[ "$NOTIFY" == "yes" ]] && notify_brightness "$MONITOR" $(brightnessctl | grep Current | sed 's/.*Current.*(\(.*\)%)/\1/')
       elif [ "$MONITOR" = "$SECOND" ]; then
-        change_brightness "$MONITOR" "$2" 2; exit 0
+        change_brightness "$MONITOR" "$BRIGHTNESS" 2
+        CurrBright=$(xrandr --verbose --current | grep ^"$MONITOR" -A5 | tail -n1 | sed 's/.*Brightness: \(.*\)/\1/' )
+        CurrBright=$(awk -vb="$CurrBright" 'BEGIN{printf "%.2f" ,b * 100}')
+        [[ "$NOTIFY" == "yes" ]] && notify_brightness "$MONITOR" "$CurrBright"
       else
         echo "no monitor"
       fi
       exit 0
       ;;
-    -d | --disconnect ) xrandr --output "$MAIN" --auto --output "$SECOND" --off; exit 0 ;;
-    -l | --left )       connect "$MAIN" "$SECOND" "left-of"; exit 0 ;;
-    -m | --mirror )     connect "$MAIN" "$SECOND" "same-as"; exit 0 ;;
-    -r | --right )      connect "$MAIN" "$SECOND" "right-of"; exit 0 ;;
-    -- ) shift; break ;;
-    * ) break ;;
+    disconnect ) xrandr --output "$MAIN" --auto --output "$SECOND" --off; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "$SECOND disconnected" ;;
+    left )       connect "$MAIN" "$SECOND" "left-of"; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "$SECOND is now on the left of $MAIN" ;;
+    mirror )     connect "$MAIN" "$SECOND" "same-as"; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "$SECOND is now the same as $MAIN" ;;
+    right )      connect "$MAIN" "$SECOND" "right-of"; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "$SECOND is now on the right of $MAIN" ;;
+    * ) echo "an error occured (got unexpected '$ACTION')"; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "an error occured (got unexpected '$ACTION')"; break ;;
   esac
-done
+}
+
+main "$@"

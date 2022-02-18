@@ -368,8 +368,8 @@ def init_keymap(mod, terminal, groups):
             Key(MOD, SPC, lazy.layout.next(),                desc="Move window focus to other window"),
             Key(MOD, RET, _cmd(terminal),                    desc="Launch terminal"),
 
-            Key(MOD, F1,  _cmd("hdmi.sh -M -b 8-"),          desc="brightness of the main screen down."),
-            Key(MOD, F2,  _cmd("hdmi.sh -M -b 8+"),          desc="brightness of the main screen up."),
+            Key(MOD, F1,  _cmd("hdmi.sh -M -b 8- -n"),       desc="brightness of the main screen down."),
+            Key(MOD, F2,  _cmd("hdmi.sh -M -b 8+ -n"),       desc="brightness of the main screen up."),
             Key(MOD, F5,  _script("screenshot.sh window"),   desc="take a screenshot of everything or chose a window."),
             Key(MOD, F6,  _script("screenshot.sh full"),     desc="take a screenshot of everything or chose a window."),
             Key(MOD, F7,  _script(SOUNDDOWN.format(SOUNDL)), desc="TODO"),
@@ -434,8 +434,8 @@ def init_keymap(mod, terminal, groups):
             Key(MOD, "f", float_to_front,                                         desc="toggle floating"),
             Key(MOD, PER, lazy.function(window_to_next_screen),                   desc="TODO"),
             Key(MOD, COM, lazy.function(window_to_previous_screen),               desc="TODO"),
-            Key(MOD, F1,  _script("hdmi.sh -S -b -"),                             desc="brightness of the second screen down."),
-            Key(MOD, F2,  _script("hdmi.sh -S -b +"),                             desc="brightness of the second screen up."),
+            Key(MOD, F1,  _script("hdmi.sh -S -b - -n"),                          desc="brightness of the second screen down."),
+            Key(MOD, F2,  _script("hdmi.sh -S -b + -n"),                          desc="brightness of the second screen up."),
         ]
     )
     return km
