@@ -16,7 +16,7 @@ Babel                         2.9.1
 backcall                      0.2.0
 black                         22.1.0
 bleach                        4.1.0
-btrfsutil                     5.16
+btrfsutil                     5.16.2
 CacheControl                  0.12.6
 cachetools                    4.2.4
 cairocffi                     1.3.0
@@ -41,7 +41,7 @@ docutils                      0.16
 entrypoints                   0.4
 et-xmlfile                    1.1.0
 executing                     0.8.2
-filelock                      3.4.0
+filelock                      3.4.1
 flake8                        4.0.1
 Flask                         2.0.2
 future                        0.18.2
@@ -53,7 +53,7 @@ google-auth-httplib2          0.1.0
 googleapis-common-protos      1.54.0
 greenlet                      1.1.2
 grip                          4.5.2
-guake                         3.8.1
+guake                         3.8.6.dev0
 html5lib                      1.1
 httplib2                      0.20.2
 idna                          3.3
@@ -75,15 +75,15 @@ Jinja2                        3.0.3
 jsonschema                    4.3.3
 leather                       0.3.4
 lensfun                       0.3.95
-lit                           13.0.0.dev0
+lit                           13.0.1.dev0
 Markdown                      3.3.6
 MarkupSafe                    2.0.1
 matplotlib-inline             0.1.3
 mccabe                        0.6.1
-meson                         0.61.1
+meson                         0.61.2
 mistune                       0.8.4
 more-itertools                8.10.0
-mpi4py                        3.1.1
+mpi4py                        3.1.3
 msgpack                       1.0.3
 mypy-extensions               0.4.3
 nbclient                      0.5.10
@@ -123,7 +123,7 @@ psutil                        5.9.0
 ptyprocess                    0.7.0
 pure-eval                     0.2.1
 py                            1.11.0
-pyaml                         21.8.3
+pyaml                         21.10.1
 pyasn1                        0.4.8
 pyasn1-modules                0.2.8
 pycairo                       1.20.1
@@ -153,12 +153,14 @@ pyzmq                         22.3.0
 qtconsole                     5.2.2
 qtile                         0.20.0
 QtPy                          2.0.0
-requests                      2.26.0
+ranger-fm                     1.9.3
+requests                      2.27.1
 resolvelib                    0.5.5
 retrying                      1.3.3
 rsa                           4.8
 Send2Trash                    1.8.0
-setuptools                    59.1.1
+setproctitle                  1.2.2
+setuptools                    59.3.0
 shtab                         1.5.3
 six                           1.16.0
 snowballstemmer               2.2.0
@@ -185,7 +187,7 @@ tomli                         2.0.0
 tornado                       6.1
 tqdm                          4.62.3
 traitlets                     5.1.1
-typing-extensions             4.0.1
+typing-extensions             4.1.0
 ueberzug                      18.1.9
 uritemplate                   4.1.1
 urllib3                       1.26.8
@@ -199,5 +201,6 @@ Werkzeug                      2.0.2
 widgetsnbextension            3.5.2
 xcffib                        0.11.1
 xlrd                          2.0.1
+xonsh                         0.11.0
 youtube-dl                    2021.12.17
 zipp                          3.7.0

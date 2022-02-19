@@ -2,6 +2,8 @@
 
 conky --config ~/.config/qtile/conky/beginner.conkyrc --daemonize #--pause=5
 conky --config ~/.config/conky/vision/Z333-vision.conkyrc --daemonize #--pause=5
+picom &
+
 feh --randomize \
   ~/repos/wallpapers/wallpapers/* \
   ~/repos/catppucin/wallpapers/minimalistic/* \

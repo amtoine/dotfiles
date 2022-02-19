@@ -67,7 +67,6 @@ noto-fonts-emoji
 okular
 pacgraph
 pacman-contrib
-patch
 pavucontrol
 peco
 picom
@@ -104,6 +103,7 @@ thunderbird
 tig
 tldr
 vi
+virtualbox
 vnstat
 vulkan-tools
 weechat

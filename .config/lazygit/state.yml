@@ -1,9 +1,9 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/.config/nvim
 - /home/ants/research/imagineXdial
 - /home/ants/research/ma_playground_env
 - /home/ants/repos/server
-- /home/ants/.config/nvim
 - /tmp/dqn-pytorch
 - /home/ants/sup/rlclass
 - /home/ants/repos/tetris-couleur
