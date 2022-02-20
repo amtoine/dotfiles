@@ -1,14 +1,89 @@
 # Qtile config written in Python.
 
-**WORK IN PROGRESS**
+The `config.py` script is first called by `qtile` on startup.  
+Then the code runs and calls every other script to fully load
+the config.
 
-The code is not fully documented yet.  
+# Gallery
+**COMING SOON**
 
-It should however be easily useable by:
-- making a backup of your `qtile` config, e.g. `mv ~/.config/qtile ~/.config/qtile.old`
-- replacing with my config, e.g. `cp -r /path/to/my/dotfiles/.config/qtile ~/config/qtile`
-- restarting `qtile`
+# Install
+see the [`qtile` doc](http://docs.qtile.org/en/stable/manual/install/index.html) and this [arch guide](https://www.youtube.com/watch?v=pouX5VvX0_Q):
+```bash
+sudo pacman -S base-devel <video driver> xorg xorg-xinit qtile
+yay -S nerd-fonts-mononoki
+sudo pacman -S python-gobject gtk3
+sudo pacman -S python python-pip gdk
+pip install psutil dbus-next iwlib
+cp -r /path/to/dotfiles/.config/qtile ~/.config
+```
+<!-- https://pygobject.readthedocs.io/en/latest/getting_started.html#arch-getting-started -->
 
-`qtile` might not be fully functional right away:
-- install `feh` and wallpapers at `~/repos/wallpapers/wallpapers` or edit `~/.config/qtile/scripts/qtile-autostart.sh` to suit your wallpapers and wallpaper manager.
-- *coming soon*...
+See this [**list**](https://wiki.archlinux.org/title/xorg#Driver_installation) to choose an appropriate video driver.
+
+Some "*lazy*" dependencies, which can be installed automatically with the `install.sh` script:  
+- dmenu_run
+- passmenu
+- nvim
+- emacsclient
+- tabbed
+- killall
+- xautolock,
+- checkupdates
+- pacman
+- ncdu
+- df
+- htop
+- cal
+- nmcli
+- bat
+- conky
+- discord,
+- slack
+- caprine
+- signal-desktop
+- thunderbird
+- alsamixer
+- python
+- btop,
+- htop
+- dunstctl
+- lazygit
+- scripts
+- blueman-manager
+- chromium
+- firefox,
+- dmscripts
+- emacs
+- moc
+- my scripts
+- neovim
+
+# A diagram of the whole project architecture.
+```
+      ┌─────────┐    ┌─────────┐    ┌────────┐
+      │groups.py│◄───┤config.py├───►│mouse.py│
+      └─────────┘    └┬───┬──┬─┘    └────────┘
+                      │   │  │
+         ┌────────────┘   │  └────────────────────┐
+         ▼                ▼                       ▼
+    ┌───────┐       ┌──────────┐             ┌──────────┐
+ ┌─►│keys.py├────┐  │layouts.py│             │screens.py│
+ │  └────┬──┘    │  └┬───────┬─┘             └────┬─────┘
+ │       ▼       │   │       │                    │
+ │┌─────────────┐│   │       │                    │
+ ││extensions.py├┼───┼────┐  │                    │
+ │└─────────────┘│   │    │  │        ┌──────┐    │
+ │               │   │    │  │        │bar.py│◄───*
+┌┴─────────┐     │   │    │  │        └┬──┬──┘    │
+│widgets.py│◄────┼─*─┼────┼──┼──*──────┘  │       │
+└────────┬─┘     │ │ │    │  │  │         │       │
+         │       └─┼─┼────┼*─┼──┼──────┐  │       │
+         │         │ │    ││ │  │      │  │       │
+         │         ▼ ▼    ▼▼ ▼  ▼      ▼  ▼       │
+         │   ┌────────┐  ┌────────┐  ┌────────┐   │
+         │   │theme.py│◄─┤style.py├─►│utils.py│◄──*
+         │   └────────┘  └────────┘  └────────┘   │
+         │                 ▲    ▲                 │
+         └─────────────────┘    └─────────────────┘
+```

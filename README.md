@@ -159,10 +159,6 @@ In this section, some general ideas are given and the lists of the programs, scr
 - [x] `bitwarden` on `firefox`
 - [x] `pass` everywhere else
 
-#### Python virtual environment managers [[list](#the-list-of-all-the-entries)]
-- [x] `vf` in `fish`
-- [x] `virtualenvwrapper` in `bash`: tutorials [in english][virtualenvs-en] and [in french][virtualenvs-fr].
-
 #### Miscellaneous [[list](#the-list-of-all-the-entries)]
 - [x] [`git`] ([\*\*][mydoc-git])
 - [x] [`lazygit`] ([\*\*][mydoc-lazygit])
@@ -332,7 +328,7 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [`/etc/issue`]:   .config/etc/sddm.conf
 
 [`doom emacs`]:   .doom.d
-[`nxsiv`]:        .config/nsxiv/
+[`nsxiv`]:        .config/nsxiv/
 [`dunst`]:        .config/dunst/
 
 [`conky`]:        .config/conky/

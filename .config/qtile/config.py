@@ -82,7 +82,7 @@ def autostart():
         The script mainly loads wallpapers, starts daemons such as `emacs` or
         the `dunst` notification server, etc.
     """
-    home = os.path.expanduser('~/.config/qtile/scripts/qtile-autostart.sh')
+    home = os.path.expanduser('~/.config/qtile/scripts/autostart.sh')
     subprocess.run([home])
 
 
