@@ -19,8 +19,6 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
-echo "$HOME/.bashrc"
-
 #        ___                                       __         __                                __               __                 __  __  _
 #       <  /     ____ ____  ____  ___  _________ _/ /  ____  / /_        ____ ___  __  __      / /_  ____ ______/ /_     ________  / /_/ /_(_)___  ____ ______
 #       / /     / __ `/ _ \/ __ \/ _ \/ ___/ __ `/ /  / __ \/ __ \______/ __ `__ \/ / / /_____/ __ \/ __ `/ ___/ __ \   / ___/ _ \/ __/ __/ / __ \/ __ `/ ___/
@@ -29,11 +27,11 @@ echo "$HOME/.bashrc"
 #             /____/                                                            /____/                                                          /____/
 
 # Path to your oh-my-bash installation.
-export OSH=$HOME/repos/oh-my-bash
+# export OSH=$HOME/repos/oh-my-bash
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
-# OSH_THEME="random" # (...please let it be pie... please be some pie..)
+OSH_THEME="random" # (...please let it be pie... please be some pie..)
 # OSH_THEME="agnoster"
 # OSH_THEME="powerline"
 
@@ -126,7 +124,6 @@ aliases=(
 plugins=(
   # git
   bashmarks
-  a2ns.pacman
 )
 
 source $OSH/oh-my-bash.sh
@@ -178,7 +175,6 @@ YL="\[\e[33;31m\]"
 #      ____/ /_ / __/_    / / / / / / (__  ) /__
 #     /_____/(_)____(_)  /_/ /_/ /_/_/____/\___/
 
-echo -e "base path: $PATH"
 export PATH=$HOME/scripts:$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.cargo/bin:$PATH
 
 # changes the editor in the terminal, to edit long commands.
