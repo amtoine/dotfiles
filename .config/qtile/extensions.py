@@ -1,3 +1,6 @@
+# a collection of the built-in extensions of qtile
+# with all their arguments inside useable wrappers.
+
 from libqtile import extension
 
 from style import DMFONT

@@ -57,8 +57,8 @@ Install:
 ```bash
 sudo pacman -S sddm
 tar -xzvf /path/to/a2n-s/dotfiles/.config/etc/sddm-catppuccin.tar.gz
-sudo cp -r sddm-catppuccin /usr/share/sddm/themes
-sudo cp -r /path/to/a2n-s/dotfiles/.config/etc/sddm.conf /etc/sddm.conf
+sudo mv sddm-catppuccin /usr/share/sddm/themes/catppuccin
+sudo cp /path/to/a2n-s/dotfiles/.config/etc/sddm.conf /etc/sddm.conf
 sudo systemctl enable sddm
 sudo systemctl start sddm
 ```

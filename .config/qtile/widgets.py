@@ -1,16 +1,16 @@
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles
-#     \__,_/____/_/ /_/           /____/
-#                              _____             __         __  _ __           __            _     __           __
-#            _________  ____  / __(_)___ _     _/_/  ____ _/ /_(_) /__       _/_/  _      __(_)___/ /___ ____  / /______         ____  __  __
-#           / ___/ __ \/ __ \/ /_/ / __ `/   _/_/   / __ `/ __/ / / _ \    _/_/   | | /| / / / __  / __ `/ _ \/ __/ ___/        / __ \/ / / /
-#      _   / /__/ /_/ / / / / __/ / /_/ /  _/_/    / /_/ / /_/ / /  __/  _/_/     | |/ |/ / / /_/ / /_/ /  __/ /_(__  )   _    / /_/ / /_/ /
-#     (_)  \___/\____/_/ /_/_/ /_/\__, /  /_/      \__, /\__/_/_/\___/  /_/       |__/|__/_/\__,_/\__, /\___/\__/____/   (_)  / .___/\__, /
-#                                /____/              /_/                                         /____/                      /_/    /____/
+#           ___                       personal page: https://a2n-s.github.io/ 
+#      __ _|_  )_ _    ___   ___      github   page: https://github.com/a2n-s 
+#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/a2n-s/dotfiles 
+#     \__,_/___|_||_|       /__/
+#                 __           __         _    _          _
+#          __    / /  __ _    / / __ __ _(_)__| |__ _ ___| |_ ___  _ __ _  _
+#      _  / _|  / /  / _` |  / /  \ V  V / / _` / _` / -_)  _(_-<_| '_ \ || |
+#     (_) \__| /_/   \__, | /_/    \_/\_/|_\__,_\__, \___|\__/__(_) .__/\_, |
+#                       |_|                     |___/             |_|   |__/
 #
-# Description:  TODO
-# Dependencies: TODO
+# Description:  a collection of custom widgets and wrappers around built-in
+#               widgets.
+# Dependencies: psutil, dbus-next, iwlib, subprocess, moc
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
@@ -26,9 +26,9 @@ from style import FONT
 from style import ARROW_SIZE
 
 
-def init_widget_defaults():
+def init_widget_defaults() -> dict:
     """
-        TODO
+        Gives the widget defaults.
     """
     return dict(
         font=FONT,

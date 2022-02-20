@@ -109,7 +109,6 @@ aliases=(
   general
   chmod
   ls
-  a2ns.aliases
 )
 
 
@@ -151,6 +150,8 @@ YL="\[\e[33;31m\]"
 #      ____/ /_ / /_    / /_/ /  __/ / / /  __/ /  / /_/ / /
 #     /_____/(_)_/(_)   \__, /\___/_/ /_/\___/_/   \__,_/_/
 #                      /____/
+
+[ -f ~/.bash_aliases ] && source ~/.bash_aliases
 
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"

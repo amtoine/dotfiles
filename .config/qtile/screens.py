@@ -1,17 +1,16 @@
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
-#     \__,_/____/_/ /_/           /____/
-#                              _____             __         __  _ __           __
-#            _________  ____  / __(_)___ _     _/_/  ____ _/ /_(_) /__       _/_/  __________________  ___  ____  _____         ____  __  __
-#           / ___/ __ \/ __ \/ /_/ / __ `/   _/_/   / __ `/ __/ / / _ \    _/_/   / ___/ ___/ ___/ _ \/ _ \/ __ \/ ___/        / __ \/ / / /
-#      _   / /__/ /_/ / / / / __/ / /_/ /  _/_/    / /_/ / /_/ / /  __/  _/_/    (__  ) /__/ /  /  __/  __/ / / (__  )   _    / /_/ / /_/ /
-#     (_)  \___/\____/_/ /_/_/ /_/\__, /  /_/      \__, /\__/_/_/\___/  /_/     /____/\___/_/   \___/\___/_/ /_/____/   (_)  / .___/\__, /
-#                                /____/              /_/                                                                    /_/    /____/
+#           ___                       personal page: https://a2n-s.github.io/ 
+#      __ _|_  )_ _    ___   ___      github   page: https://github.com/a2n-s 
+#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/a2n-s/dotfiles 
+#     \__,_/___|_||_|       /__/
+#                 __           __
+#          __    / /  __ _    / /  ___ __ _ _ ___ ___ _ _  ___  _ __ _  _
+#      _  / _|  / /  / _` |  / /  (_-</ _| '_/ -_) -_) ' \(_-<_| '_ \ || |
+#     (_) \__| /_/   \__, | /_/   /__/\__|_| \___\___|_||_/__(_) .__/\_, |
+#                       |_|                                    |_|   |__/
 #
-# Description:  TODO
-# Dependencies: TODO
-# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
+# Description:  configure the virtual screens used byt qtile
+# Dependencies: none
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
 from libqtile import bar
@@ -22,16 +21,23 @@ from style import BAR_GEOMETRY
 from utils import fetch_monitors
 
 
-def init_screens(terminal):
+def init_screens(terminal: str) -> list:
     """
-        TODO
+        Builds the list of Screen to use for the session.
     """
+    # compute the list of monitors
     monitors = fetch_monitors()
+    # extract their geometries
     geometries = [
         dict(zip(["x", "y", "width", "height"], monitor[1:]))
         for monitor in monitors
     ]
+    # return one Screen object per monitor detected
+    # and adapt its position and size to the geometry
     return [
-        Screen(top=bar.Bar(widgets=init_widgets_screen1(terminal), **BAR_GEOMETRY), **geometry)
-        for geometry in geometries
+        Screen(
+            top=bar.Bar(widgets=init_widgets_screen1(terminal),
+                        **BAR_GEOMETRY),
+            **geometry
+        ) for geometry in geometries
     ]

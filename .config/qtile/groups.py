@@ -1,17 +1,16 @@
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
-#     \__,_/____/_/ /_/           /____/
-#                              _____             __         __  _ __           __
-#            _________  ____  / __(_)___ _     _/_/  ____ _/ /_(_) /__       _/_/  ____ __________  __  ______  _____         ____  __  __
-#           / ___/ __ \/ __ \/ /_/ / __ `/   _/_/   / __ `/ __/ / / _ \    _/_/   / __ `/ ___/ __ \/ / / / __ \/ ___/        / __ \/ / / /
-#      _   / /__/ /_/ / / / / __/ / /_/ /  _/_/    / /_/ / /_/ / /  __/  _/_/    / /_/ / /  / /_/ / /_/ / /_/ (__  )   _    / /_/ / /_/ /
-#     (_)  \___/\____/_/ /_/_/ /_/\__, /  /_/      \__, /\__/_/_/\___/  /_/      \__, /_/   \____/\__,_/ .___/____/   (_)  / .___/\__, /
-#                                /____/              /_/                        /____/                /_/                 /_/    /____/
+#           ___                       personal page: https://a2n-s.github.io/ 
+#      __ _|_  )_ _    ___   ___      github   page: https://github.com/a2n-s 
+#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/a2n-s/dotfiles 
+#     \__,_/___|_||_|       /__/
+#                 __           __
+#          __    / /  __ _    / /  __ _ _ _ ___ _  _ _ __ ___  _ __ _  _
+#      _  / _|  / /  / _` |  / /  / _` | '_/ _ \ || | '_ (_-<_| '_ \ || |
+#     (_) \__| /_/   \__, | /_/   \__, |_| \___/\_,_| .__/__(_) .__/\_, |
+#                       |_|       |___/             |_|       |_|   |__/
 #
-# Description:  TODO
-# Dependencies: TODO
-# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
+# Description:  initializes all the groups used in the config.
+# Dependencies: none
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
 from typing import List  # noqa: F401
@@ -22,16 +21,16 @@ from libqtile.dgroups import simple_key_binder
 
 def init_groups():
     """
-        TODO
+        Initializes somes groups to sort windows easier.
     """
     groups = [
-        Group("D1",  layout="TALL"),
-        Group("I2",  layout="TALL"),
-        Group("S3",  layout="TALL"),
-        Group("W4",  layout="TALL"),
-        Group("C5",  layout="TREE"),
-        Group("M6",  layout="TALL"),
-        Group("V7",  layout="WIDE"),
+        Group("D1",  layout="TALL"),  # development
+        Group("I2",  layout="TALL"),  # internet
+        Group("S3",  layout="TALL"),  # system
+        Group("W4",  layout="TALL"),  # wiki
+        Group("C5",  layout="TREE"),  # chat
+        Group("M6",  layout="TALL"),  # music
+        Group("V7",  layout="WIDE"),  # video
     ]
     # groups = [Group(i) for i in "123456789"]
     return groups

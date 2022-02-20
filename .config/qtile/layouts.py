@@ -1,16 +1,15 @@
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
-#     \__,_/____/_/ /_/           /____/
-#                              _____             __         __  _ __           __   __                        __
-#            _________  ____  / __(_)___ _     _/_/  ____ _/ /_(_) /__       _/_/  / /___ ___  ______  __  __/ /______         ____  __  __
-#           / ___/ __ \/ __ \/ /_/ / __ `/   _/_/   / __ `/ __/ / / _ \    _/_/   / / __ `/ / / / __ \/ / / / __/ ___/        / __ \/ / / /
-#      _   / /__/ /_/ / / / / __/ / /_/ /  _/_/    / /_/ / /_/ / /  __/  _/_/    / / /_/ / /_/ / /_/ / /_/ / /_(__  )   _    / /_/ / /_/ /
-#     (_)  \___/\____/_/ /_/_/ /_/\__, /  /_/      \__, /\__/_/_/\___/  /_/     /_/\__,_/\__, /\____/\__,_/\__/____/   (_)  / .___/\__, /
-#                                /____/              /_/                                /____/                             /_/    /____/
+#           ___                       personal page: https://a2n-s.github.io/ 
+#      __ _|_  )_ _    ___   ___      github   page: https://github.com/a2n-s 
+#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/a2n-s/dotfiles 
+#     \__,_/___|_||_|       /__/
+#                 __           __  _                    _
+#          __    / /  __ _    / / | |__ _ _  _ ___ _  _| |_ ___  _ __ _  _
+#      _  / _|  / /  / _` |  / /  | / _` | || / _ \ || |  _(_-<_| '_ \ || |
+#     (_) \__| /_/   \__, | /_/   |_\__,_|\_, \___/\_,_|\__/__(_) .__/\_, |
+#                       |_|               |__/                  |_|   |__/
 #
-# Description:  TODO
-# Dependencies: TODO
+# Description:  a collection of wrappers around the layouts of qtile
+# Dependencies: none
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
@@ -639,9 +638,9 @@ def _zoomy():
     )
 
 
-def init_layouts():
+def init_layouts() -> list:
     """
-        TODO
+        Returns a list of all the useable layouts.
     """
     return [
         _bsp(),

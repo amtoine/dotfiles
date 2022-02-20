@@ -1,3 +1,4 @@
+# config **NOT USED** right now
 ```
 [d]  spectrwm
 |-- [-]  spectrwm.conf

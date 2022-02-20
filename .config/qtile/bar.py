@@ -1,3 +1,18 @@
+#           ___                       personal page: https://a2n-s.github.io/ 
+#      __ _|_  )_ _    ___   ___      github   page: https://github.com/a2n-s 
+#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/a2n-s/dotfiles 
+#     \__,_/___|_||_|       /__/
+#                 __           __  _
+#          __    / /  __ _    / / | |__  __ _ _ _  _ __ _  _
+#      _  / _|  / /  / _` |  / /  | '_ \/ _` | '_|| '_ \ || |
+#     (_) \__| /_/   \__, | /_/   |_.__/\__,_|_|(_) .__/\_, |
+#                       |_|                       |_|   |__/
+#
+# Description:  constructs the bar based on widgets and geometry
+# Dependencies: none
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
+# Contributors: Stevan Antoine
+
 from theme import theme
 from style import BAR
 from style import WIDGETS as wt
@@ -25,10 +40,13 @@ from widgets import spacer
 from widgets import notify
 
 
-def _create_widgets_table(terminal):
+def _create_widgets_table(terminal: str) -> dict:
     """
-        TODO
+        Returns the table of all implemented widget wrappers,
+        with the arguments from the WidgetTheme to use for as
+        the style.
     """
+    # dict of the form {"key": [wrapper, args]}
     return {
         "current_screen": [current_screen, dict(**wt.current_screen)],
         "current_layout": [current_layout, dict(**wt.current_layout)],
@@ -52,16 +70,25 @@ def _create_widgets_table(terminal):
     }
 
 
-# TODO
+# the widgets to include inside each predefined bar
 _bar_styles = [
+    # a bar is of the form:
+    # [
+    #     ["left-widget-1", "left-widget-2"],
+    #     ["right-widget-1", "right-widget-2", "right-widget-3"],
+    # ],
+
+    # minimal
     [
         ["current_screen", "group_box"],
         ["chord", "prompt", "battery", "quick_exit"],
     ],
+    # decreased
     [
         ["current_screen", "group_box", "window_name"],
         ["chord", "prompt", "volume", "wlan", "clock", "cpu", "battery", "quick_exit"],
     ],
+    # normal
     [
         ["current_screen", "current_layout", "group_box", "window_name"],
         ["chord", "prompt", "check_updates", "df", "volume", "moc", "entropy", "wlan", "net", "cpu", "clock", "battery", "quick_exit"],
@@ -69,48 +96,63 @@ _bar_styles = [
 ]
 
 
-def _init_widgets(terminal):
+def _init_widgets(terminal: str) -> list:
     """
-        TODO
+        Builds the widgets using the left and right
+        widget lists from _bar_styles
     """
+    # isolate left from right
     left, right = _bar_styles[BAR]
+    # remove the current_screen widget when there is only
+    # one monitor
     if len(fetch_monitors()) == 1:
         left = list(filter(lambda s: s != "current_screen", left))
         right = list(filter(lambda s: s != "current_screen", right))
 
     table = _create_widgets_table(terminal)
     widgets = []
+
+    # build the left widgets
+    # on the left, widget are separated by a powerline like arrow
     bg = theme.bg
+    # go in reverse to get the colors in order for the arrow.
     for lf in left[::-1]:
         func, kwargs = table[lf]
         _bg = kwargs["bg"]
+        # add the arrow and the widget with appropriate colors
         widgets.extend([powerline_right_arrow(fg=_bg, bg=bg), func(**kwargs)])
         bg = _bg
+    # reverse the list
     widgets = widgets[::-1]
 
+    # add a spacer if the window_name widget is missing
     if left[-1] != "window_name":
         widgets.append(spacer(**wt.spacer))
 
+    # build the right widgets
+    # they are separated by vertical lines
+    # no need for a fancy reverse color computation
     for rg in right:
         func, kwargs = table[rg]
         fg = kwargs["fg"] if "fg" in kwargs else theme.bg
+        # add a vertical separator and the widget
         _sep = sep(fg=fg, bg=theme.bg, width=5, size=100)
         widgets.extend([_sep, func(**kwargs)])
 
     return widgets
 
 
-def init_widgets_screen1(terminal):
+def init_widgets_screen1(terminal: str) -> list:
     """
-        TODO
+        Select the widgets for screen 1
     """
     widgets = _init_widgets(terminal)
     return widgets
 
 
-def init_widgets_screen2(terminal):
+def init_widgets_screen2(terminal: str) -> list:
     """
-        TODO
+        Select the widgets for screen 2
     """
     widgets = _init_widgets(terminal)
     return widgets

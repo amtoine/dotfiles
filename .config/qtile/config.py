@@ -1,17 +1,16 @@
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
-#     \__,_/____/_/ /_/           /____/
-#                              _____             __         __  _ __           __                    _____
-#            _________  ____  / __(_)___ _     _/_/  ____ _/ /_(_) /__       _/_/  _________  ____  / __(_)___ _         ____  __  __
-#           / ___/ __ \/ __ \/ /_/ / __ `/   _/_/   / __ `/ __/ / / _ \    _/_/   / ___/ __ \/ __ \/ /_/ / __ `/        / __ \/ / / /
-#      _   / /__/ /_/ / / / / __/ / /_/ /  _/_/    / /_/ / /_/ / /  __/  _/_/    / /__/ /_/ / / / / __/ / /_/ /   _    / /_/ / /_/ /
-#     (_)  \___/\____/_/ /_/_/ /_/\__, /  /_/      \__, /\__/_/_/\___/  /_/      \___/\____/_/ /_/_/ /_/\__, /   (_)  / .___/\__, /
-#                                /____/              /_/                                               /____/        /_/    /____/
+#           ___                       personal page: https://a2n-s.github.io/ 
+#      __ _|_  )_ _    ___   ___      github   page: https://github.com/a2n-s 
+#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/a2n-s/dotfiles 
+#     \__,_/___|_||_|       /__/
+#                 __           __               __ _
+#          __    / /  __ _    / /  __ ___ _ _  / _(_)__ _   _ __ _  _
+#      _  / _|  / /  / _` |  / /  / _/ _ \ ' \|  _| / _` |_| '_ \ || |
+#     (_) \__| /_/   \__, | /_/   \__\___/_||_|_| |_\__, (_) .__/\_, |
+#                       |_|                         |___/  |_|   |__/
 #
-# Description:  TODO
-# Dependencies: TODO
-# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
+# Description:  this is the script called by `qtile` when it starts.
+# Dependencies: all `qtile` dependencies.
+# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
 import os
@@ -30,10 +29,11 @@ from screens import init_screens
 from style import LAYOUTS as lt
 from widgets import init_widget_defaults
 
-# TODO
-mod = "mod4"
+
+mod = "mod4"  # the super (windows or mac) key controls `qtile`
 terminal = guess_terminal(preference=["kitty", "alacritty"])
 
+# initialize everything.
 groups = init_groups()
 keys = init_keymap(mod, terminal, groups)
 layouts = init_layouts()
@@ -41,14 +41,15 @@ widget_defaults = init_widget_defaults()
 extension_defaults = widget_defaults.copy()
 fake_screens = init_screens(terminal)
 
-# Drag floating layouts.
+# some mouse related stuff.
 mouse = init_mouse(mod)
 follow_mouse_focus = False
 bring_front_click = False
 cursor_warp = False
 
-# TODO
+# special floating config.
 floating_layout = layout.Floating(
+    # all the window listed below will always float.
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
@@ -74,11 +75,12 @@ reconfigure_screens = True
 auto_minimize = True
 
 
-# TODO
 @hook.subscribe.startup_once
 def autostart():
     """
-        TODO
+        Runs when `qtile` starts.
+        The script mainly loads wallpapers, starts daemons such as `emacs` or
+        the `dunst` notification server, etc.
     """
     home = os.path.expanduser('~/.config/qtile/scripts/qtile-autostart.sh')
     subprocess.run([home])
@@ -87,8 +89,12 @@ def autostart():
 @hook.subscribe.client_new
 def func(client):
     """
-        TODO
+        This function is ran everytime a window is created.
+        The goal is, for instance, to send some windows to some dedicated
+        group, but one could do anything inside this function.
     """
+    # sends all instances of `mpv` to the `V7`, i.e. video, group,
+    # to minimize conflicts with non floating windows.
     if "mpv" in client._wm_class:
         client.cmd_togroup("V7")
 
