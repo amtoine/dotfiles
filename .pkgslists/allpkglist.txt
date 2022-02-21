@@ -38,6 +38,7 @@ cowsay
 cronie
 csvkit
 ctags
+dialog
 dictd
 discord
 dmenufm
