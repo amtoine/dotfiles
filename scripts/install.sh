@@ -22,19 +22,33 @@ CHANNEL="refacto"
 DRC="/tmp/.install.dialogrc"
 curl -fLo "$DRC" https://raw.githubusercontent.com/a2n-s/dotfiles/refacto/scripts/.install.dialogrc
 
-root_warning () {
-  echo "##################################################################"
-  echo "This script MUST NOT be run as root user since it makes changes"
-  echo "to the \$HOME directory of the \$USER executing this script."
-  echo "The \$HOME directory of the root user is, of course, '/root'."
-  echo "We don't want to mess around in there. So run this script as a"
-  echo "normal user. You will be asked for a sudo password when necessary."
-  echo "##################################################################"
-  exit 1
-}
+RED="$(tput setaf 1)"
+GREEN="$(tput setaf 2)"
+YELLOW="$(tput setaf 3)"
+MAGENTA="$(tput setaf 5)"
+RES="$(tput sgr0)"
 
 error() {
-  printf "ERROR:\\n%s\\n" "$1" >&2; exit 1;
+  echo -e "${RED}ERROR:\n$1${RES}"; exit 1;
+}
+
+warning () {
+  echo -e "${YELLOW}$1${RES}"
+}
+
+info () {
+  echo -e "${MAGENTA}$1${RES}"
+}
+
+root_warning () {
+  warning "##################################################################"
+  warning "This script MUST NOT be run as root user since it makes changes"
+  warning "to the \$HOME directory of the \$USER executing this script."
+  warning "The \$HOME directory of the root user is, of course, '/root'."
+  warning "We don't want to mess around in there. So run this script as a"
+  warning "normal user. You will be asked for a sudo password when necessary."
+  warning "##################################################################"
+  exit 1
 }
 
 welcome() {
@@ -48,9 +62,9 @@ lastchance() {
 }
 
 sync_repos () {
-  echo "################################################################"
-  echo "## Syncing the repos and installing 'dialog' if not installed ##"
-  echo "################################################################"
+  info "################################################################"
+  info "## Syncing the repos and installing 'dialog' if not installed ##"
+  info "################################################################"
   sudo pacman --noconfirm --needed -Syu dialog
 }
 
@@ -179,6 +193,9 @@ select_wm () {
 }
 
 build_deps () {
+  info "################################################################"
+  info "## Building the dependency table of the whole configuration   ##"
+  info "################################################################"
   declare -A deps_table
   deps_table[base_deps]="pacman:base-devel pacman:python pacman:python-pip pacman:xorg pacman:xorg-xinit yay-git:yay"
   deps_table[deps]="*pacman:qtile pacman:firefox pacman:neovim"
@@ -198,6 +215,7 @@ build_deps () {
   deps_table[discord_deps]="pacman:discord yay:noto-fonts-emoji"
   deps_table[surf_deps]="pacman:gcr pacman:webkit2gtk"
 
+  info "## Expanding the dependencies                                 ##"
   echo "${deps_table[base_deps]}" | tr ' ' '\n' >> "$deps_file"
   echo "${deps_table[deps]}" | tr ' ' '\n' >> "$deps_file"
   echo "${deps_table[opt_deps]}" | tr ' ' '\n' >> "$deps_file"
@@ -214,56 +232,78 @@ build_deps () {
   sort -o "$deps_file" "$deps_file"
 }
 
-install_yay () {
+_install_pacman_deps () {
+  info "################################################################"
+  info "## Installing pacman dependencies                             ##"
+  info "################################################################"
+  sudo pacman --needed --ask 4 -Sy $(grep -e "^pacman:" "$deps_file" | sed 's/^pacman://g' | tr '\n' ' ')
+}
+
+_install_yay () {
+  info "################################################################"
+  info "## Installing the yay Arch User Repositories package manager  ##"
+  info "################################################################"
   git clone https://aur.archlinux.org/yay-git.git /tmp/aur.yay-git
   cd /tmp/aur.yay-git
   makepkg -si
   cd -
 }
 
-install_deps () {
-  echo "################################################################"
-  echo "## Installing all the dependencies                            ##"
-  echo "################################################################"
-  echo "################################################################"
-  echo "## Installing pacman dependencies                             ##"
-  echo "################################################################"
-  if grep -e "^pacman:" "$deps_file" -q; then sudo pacman --needed --ask 4 -Sy $(grep -e "^pacman:" "$deps_file" | sed 's/^pacman://g' | tr '\n' ' '); fi
-  install_yay
-  echo "################################################################"
-  echo "## Installing yay dependencies                                ##"
-  echo "################################################################"
-  if grep -e "^yay:" "$deps_file" -q; then yay --needed --ask 4 -Sy $(grep -e "^yay:" "$deps_file" | sed 's/^yay://g' | tr '\n' ' '); fi
-  echo "################################################################"
-  echo "## Installing python dependencies                             ##"
-  echo "################################################################"
-  if grep -e "^pip:" "$deps_file" -q; then pip install $(grep -e "^pip:" "$deps_file" | sed 's/^pip://g' | tr '\n' ' '); fi
-  echo "################################################################"
-  echo "## Installing custom builds of suckless-like software         ##"
-  echo "################################################################"
+_install_yay_deps () {
+  info "################################################################"
+  info "## Installing yay dependencies                                ##"
+  info "################################################################"
+  yay --needed --ask 4 -Sy $(grep -e "^yay:" "$deps_file" | sed 's/^yay://g' | tr '\n' ' ')
+}
+
+_install_python_deps () {
+  info "################################################################"
+  info "## Installing python dependencies                             ##"
+  info "################################################################"
+  pip install $(grep -e "^pip:" "$deps_file" | sed 's/^pip://g' | tr '\n' ' ')
+}
+
+_install_custom_builds () {
+  info "################################################################"
+  info "## Installing custom builds of suckless-like software         ##"
+  info "################################################################"
   for dep in $(grep -e "^make:" "$deps_file"); do
     name="$(echo "$dep" | sed 's/^make://g')"
     git clone "https://github.com/a2n-s/$name" "/tmp/$name"; cd "/tmp/$name"; sudo make clean install; cd -
   done
 }
 
+install_deps () {
+  if grep -e "^pacman:" "$deps_file" -q; then _install_pacman_deps; fi
+  _install_yay
+  if grep -e "^yay:" "$deps_file" -q; then _install_yay_deps; fi
+  if grep -e "^pip:" "$deps_file" -q; then _install_python_deps; fi
+  if grep -e "^make:" "$deps_file" -q; then _install_custom_builds; fi
+}
+
 install_config () {
+  info "###################################"
+  info "## Install a new grub theme.     ##"
+  info "###################################"
   git clone -b "$CHANNEL" https://github.com/a2n-s/dotfiles "$DOTFILES"
   git clone https://github.com/catppuccin/grub.git /tmp/catppuccin-grub
   sudo cp -r /tmp/catppuccin-grub/catppuccin-grub-theme /usr/share/grub/themes/
   sudo cp "$DOTFILES/.config/etc/default/grub" /etc/default/grub
   sudo grub-mkconfig -o /boot/grub/grub.cfg
   sudo cp "$DOTFILES/.config/etc/issue" /etc/issue
+  info "###################################"
+  info "## Enable sddm as login manager. ##"
+  info "###################################"
   tar -xzvf "$DOTFILES/.config/etc/sddm-catppuccin.tar.gz"
   sudo mv sddm-catppuccin /usr/share/sddm/themes/catppuccin
   sudo cp "$DOTFILES/.config/etc/sddm.conf" /etc/sddm.conf
   # Disable the current login manager
-  sudo systemctl disable $(grep '/usr/s\?bin' /etc/systemd/system/display-manager.service | awk -F / '{print $NF}') || echo "Cannot disable current display manager."
+  sudo systemctl disable $(grep '/usr/s\?bin' /etc/systemd/system/display-manager.service | awk -F / '{print $NF}') || warning "Cannot disable current display manager."
   # Enable sddm as login manager
   sudo systemctl enable sddm
-  echo "###################################"
-  echo "## Enable sddm as login manager. ##"
-  echo "###################################"
+  info "###################################"
+  info "## Install some basic configs.   ##"
+  info "###################################"
   cp "$DOTFILES/.xinitrc" "$HOME/.xinitrc"
   cp "$DOTFILES/.bash_profile" "$HOME/.bash_profile"
   cp -r "$DOTFILES/.config/qtile" "$HOME/.config"
@@ -273,12 +313,32 @@ install_config () {
   cp -r "$DOTFILES/.config/kitty" "$HOME/.config"
   cp -r "$DOTFILES/.config/alacritty" "$HOME/.config"
   cp -r "$DOTFILES/.config/surf" "$HOME/.config"
+  info "###################################"
+  info "## Build & config text editors.  ##"
+  info "###################################"
   git clone https://github.com/a2n-s/nvim "$HOME/.config/nvim"
   git clone --depth 1 https://github.com/hlissner/doom-emacs "$HOME/.emacs.d"
   bash -c "$HOME/.emacs.d/bin/doom install"
   cp -r "$DOTFILES/.doom.d" "$HOME/.doom.d"
   bash -c "$HOME/.emacs.d/bin/doom sync"
   bash -c "$HOME/.emacs.d/bin/doom doctor"
+  info "###################################"
+  info "## Configure the shells.         ##"
+  info "###################################"
+  curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh | bash -s -- --dry-run
+  curl -fsSLo /tmp/omf.install https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install; chmod +x /tmp/omf.install; fish -c "/tmp/omf.install --noninteractive"
+  fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
+  cp "$DOTFILES/.bashrc" "$HOME/.bashrc"
+  cp "$DOTFILES/.bash_aliases" "$HOME/.bash_aliases"
+  cp -r "$DOTFILES/.config/fish" "$HOME/.config"
+  cp -r "$DOTFILES/.config/omf" "$HOME/.config"
+  fish -c "omf install"
+  fish -c "omf update"
+  fish -c "vf install"
+  fish -c "fisher update"
+  info "###################################"
+  info "## Final miscellaneous config.   ##"
+  info "###################################"
   cp "$DOTFILES/.vimrc" "$HOME/.vimrc"
   cp "$DOTFILES/.gitconfig" "$HOME/.gitconfig"
   cp -r "$DOTFILES/.config/htop" "$HOME/.config"
@@ -292,17 +352,6 @@ install_config () {
   cp -r "$DOTFILES/.config/tig" "$HOME/.config"
   cp -r "$DOTFILES/.config/rofi" "$HOME/.config"
   cp -r "$DOTFILES/.config/conky" "$HOME/.config"
-  curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh | bash -s -- --dry-run
-  curl -fsSLo /tmp/omf.install https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install; chmod +x /tmp/omf.install; fish -c "/tmp/omf.install --noninteractive"
-  fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
-  cp "$DOTFILES/.bashrc" "$HOME/.bashrc"
-  cp "$DOTFILES/.bash_aliases" "$HOME/.bash_aliases"
-  cp -r "$DOTFILES/.config/fish" "$HOME/.config"
-  cp -r "$DOTFILES/.config/omf" "$HOME/.config"
-  fish -c "omf install"
-  fish -c "omf update"
-  fish -c "vf install"
-  fish -c "fisher update"
 }
 
 main () {
@@ -320,11 +369,11 @@ main () {
   install_deps
   install_config || error "Error installing the configuration files"
 
-  echo "####################################"
-  echo "## The config has been installed! ##"
-  echo "####################################"
+  info "####################################"
+  info "## The config has been installed! ##"
+  info "####################################"
 
-  PS3='Set default user shell (enter number): '
+  PS3="${GREEN}Set default user shell (enter number): ${RES}"
   shells=("fish" "bash" "zsh" "quit")
   select choice in "${shells[@]}"; do
       case $choice in
@@ -345,12 +394,12 @@ main () {
   done
 
   while true; do
-      read -p "Do you want to reboot to get your new config? [Y/n] " yn
+      read -p "${GREEN}Do you want to reboot to get your new config?${RES} [Y/n] " yn
       case $yn in
           [Yy]* ) sudo reboot;;
           [Nn]* ) break;;
           "" ) sudo reboot;;
-          * ) echo "Please answer yes or no.";;
+          * ) echo "${RED}Please answer yes or no.${RES}";;
       esac
   done
 }
