@@ -18,7 +18,7 @@
 # Contributors: Stevan Antoine
 
 DOTFILES="$HOME/.dotfiles.a2n-s"
-CHANNEL="refacto"
+CHANNEL="main"
 DRC="/tmp/.install.dialogrc"
 curl -fLo "$DRC" https://raw.githubusercontent.com/a2n-s/dotfiles/refacto/scripts/.install.dialogrc
 
