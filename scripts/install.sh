@@ -34,7 +34,7 @@ root_warning () {
 }
 
 error() {
-  clear; printf "ERROR:\\n%s\\n" "$1" >&2; exit 1;
+  printf "ERROR:\\n%s\\n" "$1" >&2; exit 1;
 }
 
 welcome() {
@@ -182,7 +182,7 @@ build_deps () {
   declare -A deps_table
   deps_table[base_deps]="pacman:base-devel pacman:python pacman:python-pip pacman:xorg pacman:xorg-xinit yay-git:yay"
   deps_table[deps]="*pacman:qtile pacman:firefox pacman:neovim"
-  deps_table[opt_deps]="yay:dmscripts pacman:fzf pacman:catimg pacman:chromium pacman:emacs pacman:vim pacman:btop pacman:moc pacman:mpv yay:lf *pacman:discord pacman:thunderbird yay:slack-desktop pacman:signal-desktop pacman:caprine pacman:lazygit pacman:tig pacman:rofi pacman:conky pacman:pass make:dmenu make:tabbed *make:surf make:slock" 
+  deps_table[opt_deps]="make:dmenu make:tabbed *make:surf make:slock"
 
   deps_table[qtile_deps]="pacman:qtile pacman:python-gobject pacman:gtk3 pip:gdk yay:nerd-fonts-mononoki pip:psutil pip:dbus-next pacman:python-iwlib pacman:sddm pacman:dunst pacman:picom *pacman:feh *pacman:kitty *pacman:alacritty"
   deps_table[bspwm_deps]="pacman:bspwm pacman:sxhkd yay:nerd-fonts-mononoki pacman:sddm pacman:dunst pacman:picom *pacman:feh *pacman:kitty *pacman:alacritty"
@@ -196,7 +196,7 @@ build_deps () {
   deps_table[fish_deps]="pacman:fish pacman:peco yay:ghq pip:virtualfish"
 
   deps_table[discord_deps]="pacman:discord yay:noto-fonts-emoji"
-  deps_table[surf_deps]="pacman:gcr pacman:webkitgtk2"
+  deps_table[surf_deps]="pacman:gcr pacman:webkit2gtk"
 
   echo "${deps_table[base_deps]}" | tr ' ' '\n' >> "$deps_file"
   echo "${deps_table[deps]}" | tr ' ' '\n' >> "$deps_file"
@@ -292,9 +292,9 @@ install_config () {
   cp -r "$DOTFILES/.config/tig" "$HOME/.config"
   cp -r "$DOTFILES/.config/rofi" "$HOME/.config"
   cp -r "$DOTFILES/.config/conky" "$HOME/.config"
-  bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
-  curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
-  curl -sL https://git.io/fisher | fish
+  curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh | bash -s -- --dry-run
+  curl -fsSLo /tmp/omf.install https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install; chmod +x /tmp/omf.install; fish -c "/tmp/omf.install --noninteractive"
+  fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
   cp "$DOTFILES/.bashrc" "$HOME/.bashrc"
   cp "$DOTFILES/.bash_aliases" "$HOME/.bash_aliases"
   cp -r "$DOTFILES/.config/fish" "$HOME/.config"
@@ -302,10 +302,7 @@ install_config () {
   fish -c "omf install"
   fish -c "omf update"
   fish -c "vf install"
-  fish -c "fisher install jorgebucaran/fisher"
   fish -c "fisher update"
-  fish -c "omf reload"
-  fish -c "omf doctor"
 }
 
 main () {
@@ -319,7 +316,6 @@ main () {
   select_driver || error "Video driver selection failed"
   # select_boot || error "Error choosing boot options"
   # select_wm || error "Error choosing a window manager"
-  clear
   build_deps
   install_deps
   install_config || error "Error installing the configuration files"
@@ -335,7 +331,7 @@ main () {
            fish | bash | zsh)
               sudo chsh $USER -s "/bin/$choice" && \
               echo -e "$choice has been set as your default USER shell. \
-                      \nLogging out is required for this take effect."
+                      \nLogging out is required for this to take effect."
               break
               ;;
            quit)
