@@ -218,25 +218,8 @@ But as it is the first time, as I said, that I do such a thing in public, I do n
 **THE INSTALLATION SCRIPT IS FINALLY THERE!!**  
 Simply run:
 ```bash
-git clone git@github.com:a2n-s/dotfiles.git ~/a2n-s.dotfiles
-cd ~/a2n-s.dotfiles
-./scripts/install.sh
+curl -fsFL https://raw.githubusercontent.com/a2n-s/dotfiles/main/scripts/install.sh | bash
 ```
-or conversely
-```
-./scripts/install.sh --help
-./scripts/install.sh --man
-```
-to show the help and the man page respectively,  
-and then follow the installation process.  
-The idea of the script is to (*not in chronological order*):
-   - (1) select what part of the config to install,
-   - (2) backup the chosen files of the user inside a safe place and
-   - (3) install my config files in replacement.  
-   - (4) install the needed package at each step.  
-   - (5) install my scripts.  
-   - (6) clone my repos and recreate the same upstream links.
-   - (7) install the fonts I use (**NOT AVAILABLE NOW**)
 
 #### 3.3.3. Uninstall the config. [[toc](#table-of-content)]
 **NOT AVAILABLE NOW** but should simply be the mirror of the previous.

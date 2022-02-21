@@ -1,19 +1,17 @@
 #! /usr/bin/env bash
-#             ___
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
-#     \__,_/____/_/ /_/           /____/
-#         _            __        ____              __
-#        (_)___  _____/ /_____ _/ / /        _____/ /_
-#       / / __ \/ ___/ __/ __ `/ / /        / ___/ __ \
-#      / / / / (__  ) /_/ /_/ / / /   _    (__  ) / / /
-#     /_/_/ /_/____/\__/\__,_/_/_/   (_)  /____/_/ /_/
+#           ___                       personal page: https://a2n-s.github.io/ 
+#      __ _|_  )_ _    ___   ___      github   page: https://github.com/a2n-s 
+#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/a2n-s/dotfiles 
+#     \__,_/___|_||_|       /__/
+#             __  _         _        _ _      _
+#      ___   / / (_)_ _  __| |_ __ _| | |  __| |_
+#     (_-<  / /  | | ' \(_-<  _/ _` | | |_(_-< ' \
+#     /__/ /_/   |_|_||_/__/\__\__,_|_|_(_)__/_||_|
 #
-# Description:  TODO
+# Description:  this is the deployment script of my dotfiles.
 #               assumes basic Arch Linux installation: https://www.youtube.com/watch?v=PQgyW10xD8s
 #               commands taken from: https://www.youtube.com/watch?v=pouX5VvX0_Q
-# Dependencies: TODO
+# Dependencies: pacman, curl
 # License:      https://github.com/a2n-s/dotfiles/LICENSE 
 # Contributors: Stevan Antoine
 
@@ -52,13 +50,13 @@ root_warning () {
 }
 
 welcome() {
-  DIALOGRC="$DRC" dialog --colors --title "\Z7\ZbInstalling DTOS!" --msgbox "\Z4This is a script that will install what I sarcastically call DTOS (DT's operating system).  It's really just an installation script for those that want to try out my XMonad desktop.  We will add DTOS repos to Pacman and install the XMonad tiling window manager, the Xmobar panel, the Alacritty terminal, the Fish shell, Doom Emacs and many other essential programs needed to make my dotfiles work correctly.\\n\\n-DT (Derek Taylor, aka DistroTube)" 16 60
+  DIALOGRC="$DRC" dialog --colors --title "\Z7\ZbInstalling a2n-s' config!" --msgbox "\Z4This is a script that will install my current main config. It's really just an installation script for those that want to try out my Qtile desktop.  We will add install the Qtile tiling window manager, the kitty and alacritty terminal emulators , the Fish shell with Oh My Fish and augment the bash shell with Oh My Bash, Doom Emacs and my rice of Neovim and many other essential programs needed to make my dotfiles work correctly.\\n\\n-a2n-s (Antoine Stevan)" 16 60
   DIALOGRC="$DRC" dialog --colors --title "\Z7\ZbStay near your computer!" --yes-label "Continue" --no-label "Exit" --yesno "\Z4This script is not allowed to be run as root, but you will be asked to enter your sudo password at various points during this installation. This is to give PACMAN the necessary permissions to install the software.  So stay near the computer." 8 60
 }
 
 lastchance() {
-  DIALOGRC="$DRC" dialog --colors --title "\Z7\ZbInstalling DTOS!" --msgbox "\Z4WARNING! The DTOS installation script is currently in public beta testing. There are almost certainly errors in it; therefore, it is strongly recommended that you not install this on production machines. It is recommended that you try this out in either a virtual machine or on a test machine." 16 60
-  DIALOGRC="$DRC" dialog --colors --title "\Z7\ZbAre You Sure You Want To Do This?" --yes-label "Begin Installation" --no-label "Exit" --yesno "\Z4Shall we begin installing DTOS?" 8 60 || { clear; exit 1; }
+  DIALOGRC="$DRC" dialog --colors --title "\Z7\ZbInstalling a2n-s' config!" --msgbox "\Z4WARNING! This installation script is currently in public beta testing. There are almost certainly errors in it; therefore, it is strongly recommended that you not install this on production machines. It is recommended that you try this out in either a virtual machine or on a test machine." 16 60
+  DIALOGRC="$DRC" dialog --colors --title "\Z7\ZbAre You Sure You Want To Do This?" --yes-label "Begin Installation" --no-label "Exit" --yesno "\Z4Shall we begin installing a2n-s' config?" 8 60 || { clear; exit 1; }
 }
 
 sync_repos () {
