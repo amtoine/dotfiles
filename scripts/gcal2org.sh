@@ -5,7 +5,7 @@ WGET=/usr/bin/wget
 ICS2ORG=~/scripts/ical2org
 ICSFILE=~/org/sup.gcal
 ORGFILE=~/org/sup.org
-# URL=<private_agenda_url>
+URL="$(cat ~/scripts/.gcal2org.url)"
 
 # no customization needed below
 
