@@ -65,7 +65,7 @@ class Entropy(widget.base.ThreadPoolText):
         return self.format.format(**variables)
 
 
-def entropy(bg="#000000", fg="#ffffff"):
+def cst_entropy(bg="#000000", fg="#ffffff"):
     """
         A simple widget to display the entropy of the system.
 
@@ -135,7 +135,7 @@ class MOC(widget.base.ThreadPoolText):
         return self.format.format(**variables)
 
 
-def moc(terminal, bg="#000000", fg="#ffffff"):
+def cst_moc(terminal, bg="#000000", fg="#ffffff"):
     """
     A simple widget to interact with the moc music player.
 

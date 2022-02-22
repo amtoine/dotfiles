@@ -28,7 +28,7 @@ DMFONT = "mononoki Nerd Font-20"
 # BEGIN_QTILE_BAR_THEME
 # this might be automatically edited by ~/.config/qtile/scripts/qtile-bar.sh
 # choose from tiny, small, medium, large, huge
-ARROW_SIZE, SIZE, GROUP_SIZE = font_sizes.small
+ARROW_SIZE, SIZE, GROUP_SIZE = font_sizes.medium
 # choose from minimal, decreased, normal
 BAR = bars.decreased
 # END_QTILE_BAR_THEME

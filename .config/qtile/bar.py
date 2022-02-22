@@ -26,8 +26,8 @@ from widgets import prompt
 from widgets import check_updates
 from widgets import df
 from widgets import volume
-from widgets import moc
-from widgets import entropy
+from widgets import cst_moc
+from widgets import cst_entropy
 from widgets import wlan
 from widgets import net
 from widgets import cpu
@@ -57,8 +57,8 @@ def _create_widgets_table(terminal: str) -> dict:
         "check_updates": [check_updates, dict(**wt.check_updates, terminal=terminal)],
         "df": [df, dict(**wt.df, terminal=terminal)],
         "volume": [volume, dict(**wt.volume, terminal=terminal)],
-        "moc": [moc, dict(**wt.moc, terminal=terminal)],
-        "entropy": [entropy, dict(**wt.entropy)],
+        "cst_moc": [cst_moc, dict(**wt.cst_moc, terminal=terminal)],
+        "cst_entropy": [cst_entropy, dict(**wt.cst_entropy)],
         "wlan": [wlan, dict(**wt.wlan, terminal=terminal)],
         "net": [net, dict(**wt.net)],
         "cpu": [cpu, dict(**wt.cpu, terminal=terminal)],
@@ -67,6 +67,7 @@ def _create_widgets_table(terminal: str) -> dict:
         "quick_exit": [quick_exit, dict(**wt.quick_exit)],
         "spacer": [spacer, dict(**wt.spacer)],
         "notify": [notify, dict(**wt.notify)],
+        "cst_quick_exit": [cst_quick_exit, dict(**wt.cst_quick_exit)],
     }
 
 
@@ -91,7 +92,7 @@ _bar_styles = [
     # normal
     [
         ["current_screen", "current_layout", "group_box", "window_name"],
-        ["chord", "prompt", "check_updates", "df", "volume", "moc", "entropy", "wlan", "net", "cpu", "clock", "battery", "quick_exit"],
+        ["chord", "prompt", "check_updates", "df", "volume", "cst_moc", "cst_entropy", "wlan", "net", "cpu", "clock", "battery", "quick_exit"],
     ]
 ]
 
