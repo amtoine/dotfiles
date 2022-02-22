@@ -102,7 +102,8 @@ _confirm_driver () {
     --title "Selected driver: '$1'" \
     --no-label "Select this driver" \
     --yes-label "Change the driver" \
-    --yesno "" 5 60 3>&2 2>&1 1>&3
+    --yesno "" 5 60 \
+    --output-fd 1
   if [ "$?" == 0 ]; then
     echo "no driver"
   else
@@ -124,7 +125,8 @@ select_driver () {
       6 "xf86-video-nouveau (NVIDIA)" \
       7 "nvidia (NVIDIA**)" \
       8 "nvidia-470xx-dkms (NVIDIA**) (AUR)" \
-      9 "nvidia-390xx (NVIDIA**) (AUR)" 3>&2 2>&1 1>&3 \
+      9 "nvidia-390xx (NVIDIA**) (AUR)" \
+      --output-fd 1 \
     )
     case "$driver" in
       1) driver=$(_confirm_driver "xf86-video-fbdev") ;;
@@ -136,7 +138,7 @@ select_driver () {
       7) driver=$(_confirm_driver "nvidia") ;;
       8) driver=$(_confirm_driver "nvidia-470xx-dkms") ;;
       9) driver=$(_confirm_driver "nvidia-390xx") ;;
-      *) error "no video driver selected";;
+      *) clear; error "no video driver selected";;
     esac
   done
   echo "pacman:$driver" >> "$deps_file"
@@ -154,7 +156,8 @@ _confirm_boot () {
     --title "Selected boot options:" \
     --no-label "Select" \
     --yes-label "Change the boot options" \
-    --yesno "$msg" 7 60 3>&2 2>&1 1>&3
+    --yesno "$msg" 7 60 \
+    --output-fd 1
   if [ "$?" == 0 ]; then
     echo "1"
   else
@@ -171,7 +174,8 @@ select_boot () {
       --checklist "Choose" 10 48 16 \
       grub "" on \
       sddm "" on \
-      issue "" on 3>&2 2>&1 1>&3 \
+      issue "" on \
+      --output-fd 1 \
     )
     [ ! "$?" = 0 ] && return 1
     loop=$(_confirm_boot "$boot")
@@ -191,7 +195,8 @@ _confirm_wm () {
     --title "Selected window managers:" \
     --no-label "Select" \
     --yes-label "Change" \
-    --yesno "$msg" 7 60 3>&2 2>&1 1>&3
+    --yesno "$msg" 7 60 \
+    --output-fd 1
   if [ "$?" == 0 ]; then
     echo "1"
   else
@@ -208,7 +213,8 @@ select_wm () {
       --checklist "Choose" 10 48 16 \
       qtile "" on \
       bspwm "" off \
-      spectrwm "" off 3>&2 2>&1 1>&3 \
+      spectrwm "" off \
+      --output-fd 1 \
     )
     [ ! "$?" = 0 ] && return 1
     loop=$(_confirm_wm "$wms")
