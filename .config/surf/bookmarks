@@ -1,3 +1,5 @@
+     |                         |                                  | https://unix.stackexchange.com/questions/67652/copy-stdout-and-stderr-to-a-log-file-and-leave-them-on-the-console-within-the-sc
+     |                         |                                  | https://gitlab.com/dwt1
      |                         |                                  | https://fishshell.com/docs/current/completions.html
      |                         |                                  | https://iridakos.com/programming/2018/03/01/bash-programmable-completion-tutorial
      |                         |                                  | https://towardsdatascience.com/beginners-guide-to-custom-environments-in-openai-s-gym-989371673952
@@ -702,7 +704,7 @@ yt   | youtube                 | youtube                          | https://www.
      | youtube playlist        | Guitare                          | https://www.youtube.com/playlist?list=PLex3MS8x-JtrsRCjoeZEpWXiZ3wVu_JCy
      | youtube playlist        | ISN                              | https://www.youtube.com/playlist?list=PLex3MS8x-Jtohc8eurhxCUxICkcy3LCpM
      | youtube playlist        | Informatique                     | https://www.youtube.com/playlist?list=PLex3MS8x-JtqfrheyKH-mzMKmD2mNas0q
-     | youtube playlist        | linux-code                       | https://www.youtube.com/playlist?list=PLex3MS8x-JtogR3n63HQUVY3VA3XskVAl
+lcode| youtube playlist        | linux-code                       | https://www.youtube.com/playlist?list=PLex3MS8x-JtogR3n63HQUVY3VA3XskVAl
      | youtube playlist        | Maps                             | https://www.youtube.com/playlist?list=PLex3MS8x-Jtrq1bK_xdTAdoBkwtN1E2xx
      | youtube playlist        | Origami_s                        | https://www.youtube.com/playlist?list=PLex3MS8x-JtpWv6fLyf9jaJtVZKEPWgwJ
 some | youtube playlist        | Summer of Maths exposition       | https://www.youtube.com/playlist?list=PLnQX-jgAF5pTkwtUuVpqS5tuWmJ-6ZM-Z

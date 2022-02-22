@@ -14,8 +14,13 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
-conky --config ~/.config/qtile/conky/beginner.conkyrc --daemonize #--pause=5
-conky --config ~/.config/conky/vision/Z333-vision.conkyrc --daemonize #--pause=5
+# open the help only when first time
+if command -v feh &> /dev/null; then
+  [ ! -f $HOME/.local/share/qtile/nobeginner ] && conky --config ~/.config/qtile/conky/beginner.conkyrc --daemonize #--pause=5
+  [ ! -f $HOME/.local/share/qtile/nobeginner ] && conky --config ~/.config/conky/vision/Z333-vision.conkyrc --daemonize #--pause=5
+  [ ! -f $HOME/.local/share/qtile/nobeginner ] && touch $HOME/.local/share/qtile/nobeginner
+fi
+
 # start the compositor
 if command -v picom &> /dev/null; then picom -b; fi
 
@@ -36,8 +41,8 @@ if command -v dunst &> /dev/null; then
   dunst -conf ~/.config/dunst/dunstrc &
 fi
 
-killall -q xautolock
-xautolock -time 10 -locker ~/scripts/slock-cst.sh &
+if command -v killall &> /dev/null; then killall -q xautolock; fi
+if command -v xautolock &> /dev/null; then xautolock -time 10 -locker ~/scripts/slock-cst.sh &; fi
 # remvoves the auto saver of x as it makes my laptop crash
 xset s 0
 xset -dpms
