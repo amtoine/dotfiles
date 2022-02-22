@@ -15,22 +15,31 @@
 # License:      https://github.com/a2n-s/dotfiles/LICENSE 
 # Contributors: Stevan Antoine
 
+BLK="$(tput setaf 0)"
 RED="$(tput setaf 1)"
 GREEN="$(tput setaf 2)"
 YELLOW="$(tput setaf 3)"
+BLUE="$(tput setaf 4)"
 MAGENTA="$(tput setaf 5)"
-RES="$(tput sgr0)"
+CYAN="$(tput setaf 6)"
+WHITE="$(tput setaf 7)"
+OFF="$(tput sgr0)"
+
+CMD="$CYAN"
+SRC="$YELLOW"
+DST="$GREEN"
+SUB="$WHITE"
 
 error() {
-  echo -e "${RED}ERROR:\n$1${RES}"; exit 1;
+  echo -e "${RED}ERROR:\n$1${OFF}"; exit 1;
 }
 
 warning () {
-  echo -e "${YELLOW}$1${RES}"
+  echo -e "${YELLOW}$1${OFF}"
 }
 
 info () {
-  echo -e "${MAGENTA}$1${RES}"
+  echo -e "${MAGENTA}$1${OFF}"
 }
 
 DOTFILES="$HOME/.dotfiles.a2n-s"
@@ -77,9 +86,11 @@ init_deps () {
   info "################################################################"
   info "## Building the dependency table of the whole configuration   ##"
   info "################################################################"
-  deps_table[commands]="qtile::on firefox::on neovim::on sddm::on kitty::on pass::on dmenu::on nerd-fonts-mononoki::on fish::on bash::off alacritty::off dmscripts::off fzf::off catimg::off chromium::off emacs::off vim::off btop::off moc::off mpv::off lf::off discord::off thunderbird::off slack-desktop::off signal-desktop::off caprine::off lazygit::off tig::off rofi::off conky::off tabbed::off surf::off slock::off psutil::off dbus-next::off python-iwlib::off dunst::off picom::off feh::off"
+  deps_table[commands]="grub::on sddm::on issue::on qtile::on firefox::on neovim::on kitty::on pass::on dmenu::on nerd-fonts-mononoki::on fish::on bash::off git::on scripts::on bspwn::off spectrwm::off alacritty::off dmscripts::off fzf::off catimg::off chromium::off emacs::off vim::off htop::off btop::off moc::off mpv::off lf::off discord::off thunderbird::off slack-desktop::off signal-desktop::off caprine::off lazygit::off tig::off rofi::off conky::off tabbed::off surf::off slock::off psutil::off dbus-next::off python-iwlib::off dunst::off picom::off feh::off"
 
   deps_table[base]="pacman:base-devel pacman:python pacman:python-pip pacman:xorg pacman:xorg-xinit yay-git:yay"
+  deps_table[grub]="grub"
+  deps_table[issue]="issue"
   deps_table[qtile]="pacman:qtile pacman:python-gobject pacman:gtk3 pip:gdk"
   deps_table[firefox]="pacman:firefox"
   deps_table[neovim]="pacman:neovim"
@@ -89,11 +100,13 @@ init_deps () {
   deps_table[bash]="pacman:bash pip:virtualenvwrapper"
   deps_table[fish]="pacman:fish pacman:peco yay:ghq pip:virtualfish"
   deps_table[dmscripts]="yay:dmscripts"
+  deps_table[scripts]="scripts"
   deps_table[fzf]="pacman:fzf"
   deps_table[catimg]="pacman:catimg"
   deps_table[chromium]="pacman:chromium"
   deps_table[emacs]="pacman:emacs"
   deps_table[vim]="pacman:vim"
+  deps_table[htop]="pacman:htop"
   deps_table[btop]="pacman:btop"
   deps_table[moc]="pacman:moc"
   deps_table[mpv]="pacman:mpv"
@@ -103,6 +116,7 @@ init_deps () {
   deps_table[slack-desktop]="yay:slack-desktop"
   deps_table[signal-desktop]="pacman:signal-desktop"
   deps_table[caprine]="pacman:caprine"
+  deps_table[git]="git"
   deps_table[lazygit]="pacman:lazygit"
   deps_table[tig]="pacman:tig"
   deps_table[rofi]="pacman:rofi"
@@ -206,20 +220,20 @@ select_deps () {
     loop=$(_confirm_deps "$deps")
   done
   for dep in $(echo "$deps" | tr ' ' '\n'); do
-    echo "$dep" | sed 's/^/*/' >> "$deps_file"
+    echo "$dep" | sed 's/^/+/' >> "$deps_file"
   done
 }
 
 push_all_deps () {
-  echo "${deps_table[commands]}" | tr ' ' '\n' | sed "s/\(.*\)::.*/*\1/g" >> "$deps_file"
+  echo "${deps_table[commands]}" | tr ' ' '\n' | sed "s/\(.*\)::.*/+\1/g" >> "$deps_file"
 }
 
 build_deps () {
-  while (grep -e "^\*" "$deps_file" -q);
+  while (grep -e "^+" "$deps_file" -q);
   do
-    for dep in $(grep -e "^\*" "$deps_file"); do
+    for dep in $(grep -e "^+" "$deps_file"); do
       sed -i "s/$dep//g" "$deps_file"
-      echo "${deps_table[$(echo "$dep" | sed 's/\*//')]}" | tr ' ' '\n' >> "$deps_file"
+      echo "${deps_table[$(echo "$dep" | sed 's/+//')]}" | tr ' ' '\n' >> "$deps_file"
     done
   done
 
@@ -277,80 +291,181 @@ install_deps () {
 }
 
 install_config () {
-  info "###################################"
-  info "## Install a new grub theme.     ##"
-  info "###################################"
+  echo -e "${CMD}git clone ${SUB}-b $CHANNEL ${SRC}https://github.com/a2n-s/dotfiles ${DST}$DOTFILES${OFF}"
   git clone -b "$CHANNEL" https://github.com/a2n-s/dotfiles "$DOTFILES"
-  git clone https://github.com/catppuccin/grub.git /tmp/catppuccin-grub
-  sudo cp -r /tmp/catppuccin-grub/catppuccin-grub-theme /usr/share/grub/themes/
-  sudo cp "$DOTFILES/.config/etc/default/grub" /etc/default/grub
-  sudo grub-mkconfig -o /boot/grub/grub.cfg
-  sudo cp "$DOTFILES/.config/etc/issue" /etc/issue
-  info "###################################"
-  info "## Enable sddm as login manager. ##"
-  info "###################################"
-  tar -xzvf "$DOTFILES/.config/etc/sddm-catppuccin.tar.gz"
-  sudo mv sddm-catppuccin /usr/share/sddm/themes/catppuccin
-  sudo cp "$DOTFILES/.config/etc/sddm.conf" /etc/sddm.conf
-  # Disable the current login manager
-  sudo systemctl disable $(grep '/usr/s\?bin' /etc/systemd/system/display-manager.service | awk -F / '{print $NF}') || warning "Cannot disable current display manager."
-  # Enable sddm as login manager
-  sudo systemctl enable sddm
-  info "###################################"
-  info "## Install some basic configs.   ##"
-  info "###################################"
-  cp "$DOTFILES/.xinitrc" "$HOME/.xinitrc"
-  cp "$DOTFILES/.bash_profile" "$HOME/.bash_profile"
-  cp -r "$DOTFILES/.config/qtile" "$HOME/.config"
-  cp -r "$DOTFILES/.config/dunst" "$HOME/.config"
-  cp -r "$DOTFILES/.config/picom" "$HOME/.config"
-  git clone https://github.com/a2n-s/wallpapers "$HOME/repos/wallpapers"
-  cp -r "$DOTFILES/.config/kitty" "$HOME/.config"
-  cp -r "$DOTFILES/.config/alacritty" "$HOME/.config"
-  cp -r "$DOTFILES/.config/surf" "$HOME/.config"
-  info "###################################"
-  info "## Build & config text editors.  ##"
-  info "###################################"
-  git clone https://github.com/a2n-s/nvim "$HOME/.config/nvim"
-  git clone --depth 1 https://github.com/hlissner/doom-emacs "$HOME/.emacs.d"
-  bash -c "$HOME/.emacs.d/bin/doom install"
-  cp -r "$DOTFILES/.doom.d" "$HOME/.doom.d"
-  bash -c "$HOME/.emacs.d/bin/doom sync"
-  bash -c "$HOME/.emacs.d/bin/doom doctor"
-  info "###################################"
-  info "## Configure the shells.         ##"
-  info "###################################"
-  curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh | bash -s -- --dry-run
-  curl -fsSLo /tmp/omf.install https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install; chmod +x /tmp/omf.install; fish -c "/tmp/omf.install --noninteractive"
-  fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
-  cp "$DOTFILES/.bashrc" "$HOME/.bashrc"
-  cp "$DOTFILES/.bash_aliases" "$HOME/.bash_aliases"
-  cp -r "$DOTFILES/.config/fish" "$HOME/.config"
-  cp -r "$DOTFILES/.config/omf" "$HOME/.config"
-  fish -c "omf install"
-  fish -c "omf update"
-  fish -c "vf install"
-  fish -c "fisher update"
-  info "###################################"
-  info "## Final miscellaneous config.   ##"
-  info "###################################"
-  cp "$DOTFILES/.vimrc" "$HOME/.vimrc"
-  cp "$DOTFILES/.gitconfig" "$HOME/.gitconfig"
-  cp -r "$DOTFILES/.config/htop" "$HOME/.config"
-  cp -r "$DOTFILES/.config/btop" "$HOME/.config"
-  cp -r "$DOTFILES/.moc" "$HOME"
-  cp -r "$DOTFILES/.mpv" "$HOME/.config"
-  cp -r "$DOTFILES/scripts" "$HOME"
-  cp -r "$DOTFILES/.config/dmscripts" "$HOME/.config"
-  cp -r "$DOTFILES/.config/lf" "$HOME/.config"
-  cp -r "$DOTFILES/.config/lazygit" "$HOME/.config"
-  cp -r "$DOTFILES/.config/tig" "$HOME/.config"
-  cp -r "$DOTFILES/.config/rofi" "$HOME/.config"
-  cp -r "$DOTFILES/.config/conky" "$HOME/.config"
+  if grep -e "^grub" "$deps_file" -q; then
+    info "Install the new grub theme."
+    echo -e "${CMD}git clone${OFF} ${SRC}https://github.com/catppuccin/grub.git ${DST}/tmp/catppuccin-grub${OFF}"
+    git clone https://github.com/catppuccin/grub.git /tmp/catppuccin-grub
+    echo -e "${CMD}sudo cp -r ${SRC}/tmp/catppuccin-grub/catppuccin-grub-theme ${DST}/usr/share/grub/themes/${OFF}"
+    sudo cp -r /tmp/catppuccin-grub/catppuccin-grub-theme /usr/share/grub/themes/
+    echo -e "${CMD}sudo cp ${SRC}$DOTFILES/.config/etc/default/grub ${DST}/etc/default/grub${OFF}"
+    sudo cp "$DOTFILES/.config/etc/default/grub" /etc/default/grub
+    echo -e "${CMD}sudo grub-mkconfig ${DST}-o /boot/grub/grub.cfg${OFF}"
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+  fi
+  if grep -e "^issue" "$deps_file" -q; then
+    echo -e "${CMD}sudo cp ${SRC}"$DOTFILES/.config/etc/issue" ${DST}/etc/issue${OFF}"
+    sudo cp "$DOTFILES/.config/etc/issue" /etc/issue
+  fi
+  if grep -e "^.*:sddm" "$deps_file" -q; then
+    info "Enable sddm as login manager."
+    echo -e "${CMD}tar -xzvf ${SRC}$DOTFILES/.config/etc/sddm-catppuccin.tar.gz${OFF}"
+    tar -xzvf "$DOTFILES/.config/etc/sddm-catppuccin.tar.gz"
+    echo -e "${CMD}sudo mv ${SRC}sddm-catppuccin ${DST}/usr/share/sddm/themes/catppuccin${OFF}"
+    sudo mv sddm-catppuccin /usr/share/sddm/themes/catppuccin
+    echo -e "${CMD}sudo cp ${SRC}$DOTFILES/.config/etc/sddm.conf ${DST}/etc/sddm.conf${OFF}"
+    sudo cp "$DOTFILES/.config/etc/sddm.conf" /etc/sddm.conf
+    sudo systemctl disable $(grep '/usr/s\?bin' /etc/systemd/system/display-manager.service | awk -F / '{print $NF}') || warning "Cannot disable current display manager."
+    echo -e "${CMD}sudo systemctl ${SUB}enable sddm${OFF}"
+    sudo systemctl enable sddm
+  else
+    info "No login manager -> automatic startx on login"
+    echo -e "${CMD}cp ${SRC}$DOTFILES/.xinitrc ${DST}$HOME/.xinitrc${OFF}"
+    cp "$DOTFILES/.xinitrc" "$HOME/.xinitrc"
+    echo -e "${CMD}cp ${SRC}$DOTFILES/.bash_profile ${DST}$HOME/.bash_profile${OFF}"
+    cp "$DOTFILES/.bash_profile" "$HOME/.bash_profile"
+  fi
+  info "Install some basic configs."
+  if grep -e "^.*:qtile" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/qtile ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/qtile" "$HOME/.config"
+  fi
+  if grep -e "^.*:bspwm" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/bspwm ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/bspwm" "$HOME/.config"
+  fi
+  if grep -e "^.*:spectrwm" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/spectrwm ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/spectrwm" "$HOME/.config"
+  fi
+  if grep -e "^.*:dunst" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/dunst ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/dunst" "$HOME/.config"
+  fi
+  if grep -e "^.*:picom" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/picom ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/picom" "$HOME/.config"
+  fi
+  if grep -e "^wallpapers:a2n-s/wallpapers" "$deps_file" -q; then
+    echo -e "${CMD}git clone ${SRC}https://github.com/a2n-s/wallpapers ${DST}$HOME/repos/wallpapers"
+    git clone https://github.com/a2n-s/wallpapers "$HOME/repos/wallpapers"
+  fi
+  if grep -e "^.*:kitty" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/kitty ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/alacritty" "$HOME/.config"
+  fi
+  if grep -e "^.*:alacritty" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/alacritty ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/alacritty" "$HOME/.config"
+  fi
+  if grep -e "^.*:surf" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/surf ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/surf" "$HOME/.config"
+  fi
+  if grep -e "^.*:neovim" "$deps_file" -q; then
+    info "Installing my neovim rice"
+    echo -e "${CMD}git clone ${SRC}https://github.com/a2n-s/nvim ${DST}$HOME/.config/nvim${OFF}"
+    git clone https://github.com/a2n-s/nvim "$HOME/.config/nvim"
+  fi
+  if grep -e "^.*:emacs" "$deps_file" -q; then
+    info "Installing doom Emacs"
+    echo -e "${CMD}git clone ${SUB}--depth 1 ${SRC}https://github.com/hlissner/doom-emacs ${DST}$HOME/.emacs.d${OFF}"
+    git clone --depth 1 https://github.com/hlissner/doom-emacs "$HOME/.emacs.d"
+    echo -e "${CMD}bash -c ${SUB}$HOME/.emacs.d/bin/doom install${OFF}"
+    bash -c "$HOME/.emacs.d/bin/doom install"
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.doom.d ${DST}$HOME/.doom.d${OFF}"
+    cp -r "$DOTFILES/.doom.d" "$HOME/.doom.d"
+    echo -e "${CMD}bash -c ${SUB}$HOME/.emacs.d/bin/doom sync${OFF}"
+    bash -c "$HOME/.emacs.d/bin/doom sync"
+    echo -e "${CMD}bash -c ${SUB}$HOME/.emacs.d/bin/doom doctor${OFF}"
+    bash -c "$HOME/.emacs.d/bin/doom doctor"
+  fi
+  if grep -e "^.*:fish" "$deps_file" -q; then
+    info "Install and configure the fish shell with oh-my-fish"
+    echo -e "${CMD}curl -fsSLo ${DST}/tmp/omf.install ${SRC}https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install${OFF}; ${CMD}chmod +x ${SRC}/tmp/omf.install${OFF}; ${CMD}fish -c ${SUB}'/tmp/omf.install --noninteractive'${OFF}"
+    curl -fsSLo /tmp/omf.install https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install; chmod +x /tmp/omf.install; fish -c "/tmp/omf.install --noninteractive"
+    echo -e "${CMD}fish -c ${SUB}\"curl -sL ${SRC}https://git.io/fisher ${SUB}| ${DST}source ${SUB}&& fisher ${DST}install ${SRC}jorgebucaran/fisher${SUB}\"${OFF}"
+    fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/fish ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/fish" "$HOME/.config"
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/omf ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/omf" "$HOME/.config"
+    echo -e "${CMD}fish -c ${SUB}\"omf install\"${OFF}"
+    fish -c "omf install"
+    echo -e "${CMD}fish -c ${SUB}\"omf update\"${OFF}"
+    fish -c "omf update"
+    echo -e "${CMD}fish -c ${SUB}\"vf install\"${OFF}"
+    fish -c "vf install"
+    echo -e "${CMD}fish -c ${SUB}\"fisher update\"${OFF}"
+    fish -c "fisher update"
+  fi
+  if grep -e "^.*:bash" "$deps_file" -q; then
+    info "Configure the bash shell with oh-my-bash"
+    echo -e "${CMD}curl -fsSL ${SRC}https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh${OFF} | ${CMD}bash -s ${OFF}-- ${SUB}--dry-run${OFF}"
+    curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh | bash -s -- --dry-run
+    echo -e "${CMD}cp ${SRC}$DOTFILES/.bashrc ${DST}$HOME/.bashrc${OFF}"
+    cp "$DOTFILES/.bashrc" "$HOME/.bashrc"
+    echo -e "${CMD}cp ${SRC}$DOTFILES/.bash_aliases ${DST}$HOME/.bash_aliases${OFF}"
+    cp "$DOTFILES/.bash_aliases" "$HOME/.bash_aliases"
+  fi
+  info "Final miscellaneous configs."
+  if grep -e "^.*:vim" "$deps_file" -q; then
+    echo -e "${CMD}cp ${SRC}$DOTFILES/.vimrc ${DST}$HOME/.vimrc${OFF}"
+    cp "$DOTFILES/.vimrc" "$HOME/.vimrc"
+  fi
+  if grep -e "^git\$" "$deps_file" -q; then
+    echo -e "${CMD}cp ${SRC}$DOTFILES/.gitconfig ${DST}$HOME/.gitconfig${OFF}"
+    cp "$DOTFILES/.gitconfig" "$HOME/.gitconfig"
+  fi
+  if grep -e "^.*:htop" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/htop ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/htop" "$HOME/.config"
+  fi
+  if grep -e "^.*:btop" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/btop ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/btop" "$HOME/.config"
+  fi
+  if grep -e "^.*:moc" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.moc ${DST}$HOME${OFF}"
+    cp -r "$DOTFILES/.moc" "$HOME"
+  fi
+  if grep -e "^.*:mpv" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.mpv ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.mpv" "$HOME/.config"
+  fi
+  if grep -e "^scripts\$" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/scripts ${DST}$HOME${OFF}"
+    cp -r "$DOTFILES/scripts" "$HOME"
+  fi
+  if grep -e "^.*:dmscripts" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/dmscripts ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/dmscripts" "$HOME/.config"
+  fi
+  if grep -e "^.*:lf" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/lf ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/lf" "$HOME/.config"
+  fi
+  if grep -e "^.*:lazygit" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/lazygit ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/lazygit" "$HOME/.config"
+  fi
+  if grep -e "^.*:tig" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/tig ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/tig" "$HOME/.config"
+  fi
+  if grep -e "^.*:rofi" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/rofi ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/rofi" "$HOME/.config"
+  fi
+  if grep -e "^.*:conky" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/conky ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/conky" "$HOME/.config"
+  fi
 }
 
 prompt_shell () {
-  PS3="${GREEN}Set default user shell (enter number): ${RES}"
+  PS3="${GREEN}Set default user shell (enter number): ${OFF}"
   shells=("fish" "bash" "zsh" "quit")
   select choice in "${shells[@]}"; do
       case $choice in
@@ -373,12 +488,12 @@ prompt_shell () {
 
 prompt_reboot () {
   while true; do
-      read -p "${GREEN}Do you want to reboot to get your new config?${RES} [Y/n] " yn
+      read -p "${GREEN}Do you want to reboot to get your new config?${OFF} [Y/n] " yn
       case $yn in
           [Yy]* ) sudo reboot;;
           [Nn]* ) break;;
           "" ) sudo reboot;;
-          * ) echo "${RED}Please answer yes or no.${RES}";;
+          * ) echo "${RED}Please answer yes or no.${OFF}";;
       esac
   done
 }
