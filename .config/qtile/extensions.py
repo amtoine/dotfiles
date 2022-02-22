@@ -166,7 +166,7 @@ def window_list():
         background="#000000",                   # defines the normal background color (#RGB or #RRGGBB)
         command=None,                           # the command to be launched (string or list with arguments)
         dmenu_bottom=False,                     # dmenu appears at the bottom of the screen
-        dmenu_command='dmenu',                  # the dmenu command to be launched
+        dmenu_command='dmenu -c -bw 5',         # the dmenu command to be launched
         dmenu_font=DMFONT,                      # override the default 'font' and 'fontsize' options for dmenu
         dmenu_height=None,                      # defines the height (only supported by some dmenu forks)
         dmenu_ignorecase=False,                 # dmenu matches menu items case insensitively

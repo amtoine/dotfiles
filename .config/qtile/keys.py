@@ -56,8 +56,8 @@ HOME = os.path.expanduser("~")
 SCRIPTS = "scripts"
 
 # wrapper around dmenu-related commands
-DMRUN = f"dmenu_run -h {BAR_GEOMETRY['size']} -p 'Run: ' -fn '{DMFONT}'"
-PASS = f"passmenu -l 10 -c -fn '{DMFONT}'"
+DMRUN = f"dmenu_run -c -l 10 -bw 5 -h {BAR_GEOMETRY['size']} -p 'Run: ' -fn '{DMFONT}'"
+PASS = f"passmenu -l 10 -bw 5 -c -fn '{DMFONT}'"
 
 # text editors
 NVIM = " nvim"
@@ -265,17 +265,17 @@ def init_keymap(mod, terminal, groups):
                 mode=" MISCELLANEOUS"
             ),
             KeyChord(MOD, 'd', [
-                Key([], 'd', *_ucmd(DMRUN),                   desc="Open dmenu_run to run applications"),
-                Key([], 'e', *_ucmd("dm-confedit"),           desc="Choose a config file to edit with dmenu"),
-                Key([], 'i', *_ucmd("dm-maim"),               desc="Take screenshots via dmenu"),
-                Key([], 'h', *_ucmd("dm-hub"),                desc="Open the dm-scripts hub"),
-                Key([], 'k', *_ucmd("dm-kill"),               desc="Kill processes via dmenu"),
-                Key([], 'l', *_ucmd("dm-logout"),             desc="A logout menu in dmenu"),
-                Key([], 'm', *_ucmd("dm-man"),                desc="Search manpages in dmenu"),
-                Key([], 'n', *_ucmd("dm-note"),               desc="Take and copy note with dmenu"),
-                Key([], 'o', *_ucmd("dm-bookman"),            desc="Search your qutebrowser bookmarks and quickmarks"),
-                Key([], 'r', *_ucmd("dm-reddit"),             desc="Search reddit via dmenu"),
-                Key([], 's', *_ucmd("dm-websearch"),          desc="Search various search engines via dmenu"),
+                Key([], 'd', *_ucmd(DMRUN),                          desc="Open dmenu_run to run applications"),
+                Key([], 'e', *_ucmd(f"dm-confedit  -fn '{DMFONT}'"), desc="Choose a config file to edit with dmenu"),
+                Key([], 'i', *_ucmd(f"dm-maim      -fn '{DMFONT}'"), desc="Take screenshots via dmenu"),
+                Key([], 'h', *_ucmd(f"dm-hub       -fn '{DMFONT}'"), desc="Open the dm-scripts hub"),
+                Key([], 'k', *_ucmd(f"dm-kill      -fn '{DMFONT}'"), desc="Kill processes via dmenu"),
+                Key([], 'l', *_ucmd(f"dm-logout    -fn '{DMFONT}'"), desc="A logout menu in dmenu"),
+                Key([], 'm', *_ucmd(f"dm-man       -fn '{DMFONT}'"), desc="Search manpages in dmenu"),
+                Key([], 'n', *_ucmd(f"dm-note      -fn '{DMFONT}'"), desc="Take and copy note with dmenu"),
+                Key([], 'o', *_ucmd(f"dm-bookman   -fn '{DMFONT}'"), desc="Search your qutebrowser bookmarks and quickmarks"),
+                Key([], 'r', *_ucmd(f"dm-reddit    -fn '{DMFONT}'"), desc="Search reddit via dmenu"),
+                Key([], 's', *_ucmd(f"dm-websearch -fn '{DMFONT}'"), desc="Search various search engines via dmenu"),
                 Key([], 'w', lazy.run_extension(window_list()),
                     lazy.ungrab_chord(),                      desc="List and choose windows with dmenu"),
                 ],

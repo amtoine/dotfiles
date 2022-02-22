@@ -16,7 +16,8 @@
 
 # asks the user for the size of the bar.
 default_size="medium"
-size=$(echo -e "$default_size (default)\ntiny\nsmall\nmedium\nlarge\nhuge" | dmenu -l 10 -p "bar size")
+DMFONT="mononoki Nerd Font-20"
+size=$(echo -e "$default_size (default)\ntiny\nsmall\nmedium\nlarge\nhuge" | dmenu -c -l 10 -bw 5 -h 5 -fn "$DMFONT" -p "bar size")
 if [ -z "$size" ]; then
   size="$default_size"
 else
@@ -29,7 +30,7 @@ case "$size" in
   huge|large) options="minimal\ndecreased (recommended)\nnormal";;
   *) options="minimal\ndecreased\nnormal";;
 esac
-style=$(echo -e "$default_style (default)\n$options" | dmenu -l 10 -p "bar style")
+style=$(echo -e "$default_style (default)\n$options" | dmenu -c -l 10 -bw 5 -h 5 -fn "$DMFONT" -p "bar style")
 if [ -z "$style" ]; then
   style="$default_style"
 else

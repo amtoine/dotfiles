@@ -28,7 +28,7 @@ DMFONT = "mononoki Nerd Font-20"
 # BEGIN_QTILE_BAR_THEME
 # this might be automatically edited by ~/.config/qtile/scripts/qtile-bar.sh
 # choose from tiny, small, medium, large, huge
-ARROW_SIZE, SIZE, GROUP_SIZE = font_sizes.medium
+ARROW_SIZE, SIZE, GROUP_SIZE = font_sizes.large
 # choose from minimal, decreased, normal
 BAR = bars.decreased
 # END_QTILE_BAR_THEME
@@ -62,7 +62,7 @@ _margin = (1, 1, 1, 1)
 _border_color = theme.sel_bg
 BAR_GEOMETRY = dict(
     size=SIZE,
-    opacity=.8 if BAR in [bars.minimal, bars.decreased] else 1.,
+    opacity=.9 if BAR in [bars.minimal, bars.decreased] else 1.,
     background=theme.bg,
     #       N  E  S  W
     margin=list(map(lambda x: x * _margin_width, _margin)),

@@ -16,11 +16,11 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
-DMWIDTH=700; \
-DMHEIGHT=10; \
-DMCOLUMNS=3; \
-DMLINES=9; \
-DMBORDER=5; \
+DMWIDTH=700;
+DMHEIGHT=10;
+DMCOLUMNS=3;
+DMLINES=9;
+DMBORDER=5;
 dmenu_run -g $DMCOLUMNS -l $DMLINES \
           -x $((960 - $DMWIDTH/2)) -y $((540 - ($DMLINES+1)*$DMHEIGHT/2)) \
-          -z $DMWIDTH -h $DMHEIGHT -bw $DMBORDER
+          -z $DMWIDTH -h $DMHEIGHT -bw $DMBORDER -fn "mononoki Nerd Font-20"
