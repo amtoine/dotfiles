@@ -15,12 +15,6 @@
 # License:      https://github.com/a2n-s/dotfiles/LICENSE 
 # Contributors: Stevan Antoine
 
-DOTFILES="$HOME/.dotfiles.a2n-s"
-CHANNEL="main"
-DRC=$(mktemp /tmp/a2n-s_dotfiles_dialogrc.XXXXXX)
-trap 'rm "$DRC"' 0 1 15
-curl -fLo "$DRC" https://raw.githubusercontent.com/a2n-s/dotfiles/main/scripts/.install.dialogrc
-
 RED="$(tput setaf 1)"
 GREEN="$(tput setaf 2)"
 YELLOW="$(tput setaf 3)"
@@ -38,6 +32,15 @@ warning () {
 info () {
   echo -e "${MAGENTA}$1${RES}"
 }
+
+DOTFILES="$HOME/.dotfiles.a2n-s"
+CHANNEL="main"
+DRC=$(mktemp /tmp/a2n-s_dotfiles_dialogrc.XXXXXX)
+trap 'rm "$DRC"' 0 1 15
+_dialogrc_url="https://raw.githubusercontent.com/a2n-s/dotfiles/main/scripts/.install.dialogrc"
+curl -fsSLo "$DRC" "$_dialogrc_url" || error "Error downloading $_dialogrc_url"
+
+declare -A deps_table
 
 root_warning () {
   warning "##################################################################"
@@ -70,6 +73,28 @@ sync_repos () {
 init_deps () {
   deps_file=$(mktemp /tmp/a2n-s_dotfiles_deps.XXXXXX)
   trap 'rm "$deps_file"' 0 1 15
+
+  info "################################################################"
+  info "## Building the dependency table of the whole configuration   ##"
+  info "################################################################"
+  deps_table[base_deps]="pacman:base-devel pacman:python pacman:python-pip pacman:xorg pacman:xorg-xinit yay-git:yay"
+  deps_table[deps]="*pacman:qtile pacman:firefox pacman:neovim"
+  deps_table[opt_deps]="yay:dmscripts pacman:fzf pacman:catimg pacman:chromium pacman:emacs pacman:vim pacman:btop pacman:moc pacman:mpv yay:lf *pacman:discord pacman:thunderbird yay:slack-desktop pacman:signal-desktop pacman:caprine pacman:lazygit pacman:tig pacman:rofi pacman:conky pacman:pass make:dmenu make:tabbed *make:surf make:slock"
+
+  deps_table[qtile_deps]="pacman:qtile pacman:python-gobject pacman:gtk3 pip:gdk yay:nerd-fonts-mononoki pip:psutil pip:dbus-next pacman:python-iwlib pacman:sddm pacman:dunst pacman:picom *pacman:feh *pacman:kitty *pacman:alacritty"
+  deps_table[bspwm_deps]="pacman:bspwm pacman:sxhkd yay:nerd-fonts-mononoki pacman:sddm pacman:dunst pacman:picom *pacman:feh *pacman:kitty *pacman:alacritty"
+  deps_table[spectrwm_deps]="pacman:spectrwm yay:nerd-fonts-mononoki pacman:sddm pacman:dunst pacman:picom *pacman:feh *pacman:kitty *pacman:alacritty"
+
+  deps_table[feh_deps]="pacman:feh wallpapers:a2n-s/wallpapers"
+  deps_table[kitty_deps]="pacman:kitty *pacman:fish *pacman:bash"
+  deps_table[alacritty_deps]="pacman:alacritty *pacman:fish *pacman:bash"
+
+  deps_table[bash_deps]="pacman:bash pip:virtualenvwrapper"
+  deps_table[fish_deps]="pacman:fish pacman:peco yay:ghq pip:virtualfish"
+
+  deps_table[discord_deps]="pacman:discord yay:noto-fonts-emoji"
+  deps_table[surf_deps]="pacman:gcr pacman:webkit2gtk"
+
 }
 
 _confirm_driver () {
@@ -191,34 +216,14 @@ select_wm () {
   echo "$wms" | tr ' ' '\n' >> "$deps_file"
 }
 
-build_deps () {
-  info "################################################################"
-  info "## Building the dependency table of the whole configuration   ##"
-  info "################################################################"
-  declare -A deps_table
-  deps_table[base_deps]="pacman:base-devel pacman:python pacman:python-pip pacman:xorg pacman:xorg-xinit yay-git:yay"
-  deps_table[deps]="*pacman:qtile pacman:firefox pacman:neovim"
-  deps_table[opt_deps]="make:dmenu make:tabbed *make:surf make:slock"
-
-  deps_table[qtile_deps]="pacman:qtile pacman:python-gobject pacman:gtk3 pip:gdk yay:nerd-fonts-mononoki pip:psutil pip:dbus-next pacman:python-iwlib pacman:sddm pacman:dunst pacman:picom *pacman:feh *pacman:kitty *pacman:alacritty"
-  deps_table[bspwm_deps]="pacman:bspwm pacman:sxhkd yay:nerd-fonts-mononoki pacman:sddm pacman:dunst pacman:picom *pacman:feh *pacman:kitty *pacman:alacritty"
-  deps_table[spectrwm_deps]="pacman:spectrwm yay:nerd-fonts-mononoki pacman:sddm pacman:dunst pacman:picom *pacman:feh *pacman:kitty *pacman:alacritty"
-
-  deps_table[feh_deps]="pacman:feh wallpapers:a2n-s/wallpapers"
-  deps_table[kitty_deps]="pacman:kitty *pacman:fish *pacman:bash"
-  deps_table[alacritty_deps]="pacman:alacritty *pacman:fish *pacman:bash"
-
-  deps_table[bash_deps]="pacman:bash pip:virtualenvwrapper"
-  deps_table[fish_deps]="pacman:fish pacman:peco yay:ghq pip:virtualfish"
-
-  deps_table[discord_deps]="pacman:discord yay:noto-fonts-emoji"
-  deps_table[surf_deps]="pacman:gcr pacman:webkit2gtk"
-
-  info "## Expanding the dependencies                                 ##"
+push_all_deps () {
   echo "${deps_table[base_deps]}" | tr ' ' '\n' >> "$deps_file"
   echo "${deps_table[deps]}" | tr ' ' '\n' >> "$deps_file"
   echo "${deps_table[opt_deps]}" | tr ' ' '\n' >> "$deps_file"
+}
 
+build_deps () {
+  info "## Expanding the dependencies                                 ##"
   while (grep -e "^\*" "$deps_file" -q);
   do
     for dep in $(grep -e "^\*" "$deps_file"); do
@@ -274,7 +279,7 @@ _install_custom_builds () {
 
 install_deps () {
   if grep -e "^pacman:" "$deps_file" -q; then _install_pacman_deps; fi
-  _install_yay
+  if grep -e "^yay-git:" "$deps_file" -q; then _install_yay; fi
   if grep -e "^yay:" "$deps_file" -q; then _install_yay_deps; fi
   if grep -e "^pip:" "$deps_file" -q; then _install_python_deps; fi
   if grep -e "^make:" "$deps_file" -q; then _install_custom_builds; fi
@@ -387,28 +392,79 @@ prompt_reboot () {
   done
 }
 
+help () {
+  echo "install.sh:"
+  echo "     This is the deployment script of my dotfiles"
+  echo "     Software will be installed and configuration"
+  echo "     files will be moved around the filesystem."
+  echo ""
+  echo "Usage:"
+  echo "     /path/to/install.sh [-hsfSr]  [-a/--action ACTION]"
+  echo ""
+  echo "Switches:"
+  echo "     -h/--help           shows this help."
+  echo "     -s/--nosync         do not synchronize arch repos."
+  echo "     -f/--nodialog       do not ask for confirmation."
+  echo "     -S/--noshell        do not change the shell."
+  echo "     -r/--reboot         reboot without asking."
+  echo "     -a/--action ACTION  chooses the action to perform."
+  echo "                            available actions:"
+  echo "                                 all - install everything"
+  echo "                         interactive - let the user choose the software"
+  exit 0
+}
+
+OPTIONS=$(getopt -o hsrSfa: --long help,nosync,reboot,noshell,nodialog,action: \
+              -n 'install.sh' -- "$@")
+
+if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
+
+eval set -- "$OPTIONS"
+
 main () {
   if [ "$(id -u)" = 0 ]; then
     root_warning
   fi
-  sync_repos || error "Error syncing the repos."
-  welcome || error "User choose to exit."
-  lastchance || error "User choose to exit."
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -h | --help ) help ;;
+      -s | --nosync ) SYNC="no"; shift 1 ;;
+      -f | --nodialog ) DIALOG="no"; shift 1 ;;
+      -S | --noshell ) PROMPT_SHELL="no"; shift 1 ;;
+      -r | --reboot ) REBOOT="yes"; shift 1 ;;
+      -a | --action ) ACTION="$2"; shift 2 ;;
+      -- ) shift; break ;;
+      * ) break ;;
+    esac
+  done
+  case "$ACTION" in
+    all) ;;
+    interactive ) warning "interactive install AVAILABLE SOON\ndefaulting to full install"; ACTION="all";;
+    '' ) warning "install.sh requires the -a/--action switch"; help ;;
+    * ) error "got unexpected action '$ACTION'" ;;
+  esac
+
+  [ ! "$SYNC" = "no" ] && { sync_repos || error "Error syncing the repos."; }
+  [ ! "$DIALOG" = "no" ] && { welcome || { clear; error "User choose to exit.";}; }
+  [ ! "$DIALOG" = "no" ] && { lastchance || { clear; error "User choose to exit.";}; }
   init_deps || error "Error creating the dependencies file"
   select_driver || error "Video driver selection failed"
-  # select_boot || error "Error choosing boot options"
-  # select_wm || error "Error choosing a window manager"
-  build_deps
-  install_deps
-  install_config || error "Error installing the configuration files"
+  [ "$ACTION" = "interactive" ] && { select_boot || { clear; error "User choose to exit";}; }
+  [ "$ACTION" = "interactive" ] && { select_wm || { clear; error "User choose to exit";}; }
+  [ "$ACTION" = "all" ] && { push_all_deps || error "Pushing all deps failed"; }
+  clear
+  build_deps || error "Building the dependencies failed."
+  install_deps || error "Installing the dependencies failed."
+  install_config || error "Installing the configuration files failed"
 
   info "####################################"
   info "## The config has been installed! ##"
   info "####################################"
 
-  prompt_shell
+  [ ! "$PROMPT_SHELL" = "no" ] && prompt_shell
+  [ "$REBOOT" = "yes" ] && { echo "reboot"; exit 0; }
   prompt_reboot
 }
-main
-exit 0
 
+main "$@"
