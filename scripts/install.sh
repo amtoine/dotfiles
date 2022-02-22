@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
-#           ___                       personal page: https://a2n-s.github.io/ 
-#      __ _|_  )_ _    ___   ___      github   page: https://github.com/a2n-s 
-#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/a2n-s/dotfiles 
+#           ___                       personal page: https://a2n-s.github.io/
+#      __ _|_  )_ _    ___   ___      github   page: https://github.com/a2n-s
+#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/a2n-s/dotfiles
 #     \__,_/___|_||_|       /__/
 #             __  _         _        _ _      _
 #      ___   / / (_)_ _  __| |_ __ _| | |  __| |_
@@ -12,9 +12,10 @@
 #               assumes basic Arch Linux installation: https://www.youtube.com/watch?v=PQgyW10xD8s
 #               commands taken from: https://www.youtube.com/watch?v=pouX5VvX0_Q
 # Dependencies: pacman, curl
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/a2n-s/dotfiles/LICENSE
 # Contributors: Stevan Antoine
 
+# some color definitions
 BLK="$(tput setaf 0)"
 RED="$(tput setaf 1)"
 GREEN="$(tput setaf 2)"
@@ -24,34 +25,58 @@ MAGENTA="$(tput setaf 5)"
 CYAN="$(tput setaf 6)"
 WHITE="$(tput setaf 7)"
 OFF="$(tput sgr0)"
-
 CMD="$CYAN"
 SRC="$YELLOW"
 DST="$GREEN"
 SUB="$WHITE"
 
 error() {
+  #
+  # display the first argument as an error,
+  # in red,
+  # then exit the program.
+  #
+  # designed to be used as the piped output of another
+  # process, e.g. `process || error "process failed"`
+  #
   echo -e "${RED}ERROR:\n$1${OFF}"; exit 1;
 }
 
 warning () {
+  #
+  # display the first argument as a warning,
+  # in yellow.
+  #
   echo -e "${YELLOW}$1${OFF}"
 }
 
 info () {
+  #
+  # display the first argument as a regular info,
+  # in magenta.
+  #
   echo -e "${MAGENTA}$1${OFF}"
 }
 
-DOTFILES="$HOME/.dotfiles.a2n-s"
-CHANNEL="main"
+# some environment variable definitions and
+# preliminary work to get all the material
+# necessary to the deployment.
+[[ ! -v DOTFILES ]] && DOTFILES="$HOME/.dotfiles.a2n-s"
+[[ ! -v CHANNEL ]] && CHANNEL="main"
+
+# download the colorscheme in a temporary file.
 DRC=$(mktemp /tmp/a2n-s_dotfiles_dialogrc.XXXXXX)
 trap 'rm "$DRC"' 0 1 15
-_dialogrc_url="https://raw.githubusercontent.com/a2n-s/dotfiles/main/scripts/.install.dialogrc"
+_dialogrc_url="https://raw.githubusercontent.com/a2n-s/dotfiles/$CHANNEL/scripts/.install.dialogrc"
 curl -fsSLo "$DRC" "$_dialogrc_url" || error "Error downloading $_dialogrc_url"
 
+# declare the global dependency table.
 declare -A deps_table
 
 root_warning () {
+  #
+  # exit if the user runs the script as root.
+  #
   warning "##################################################################"
   warning "This script MUST NOT be run as root user since it makes changes"
   warning "to the \$HOME directory of the \$USER executing this script."
@@ -62,24 +87,51 @@ root_warning () {
   exit 1
 }
 
+sync_repos () {
+  #
+  # synchronize the local pacman database to be as up-to-date
+  # as possible
+  # installs the dependencies of the script.
+  #
+  info "############################################################"
+  info "## Syncing the repos and installing script's dependencies ##"
+  info "############################################################"
+  sudo pacman --noconfirm --needed -Syu dialog
+}
+
 welcome() {
+  #
+  # launch `dialog` to present the script to the user
+  # and ask to continue
+  #
+  # designed to be used with `error`, see `error` above
+  #
   DIALOGRC="$DRC" dialog --clear --colors --title "\Z7\ZbInstalling a2n-s' config!" --msgbox "This is a script that will install my current main config. It's really just an installation script for those that want to try out my Qtile desktop.  We will add install the Qtile tiling window manager, the kitty and alacritty terminal emulators , the Fish shell with Oh My Fish and augment the bash shell with Oh My Bash, Doom Emacs and my rice of Neovim and many other essential programs needed to make my dotfiles work correctly.\\n\\n-a2n-s (Antoine Stevan)" 16 60
   DIALOGRC="$DRC" dialog --clear --colors --title "\Z7\ZbStay near your computer!" --yes-label "Continue" --no-label "Exit" --yesno "This script is not allowed to be run as root, but you will be asked to enter your sudo password at various points during this installation. This is to give PACMAN the necessary permissions to install the software.  So stay near the computer." 8 60
 }
 
 lastchance() {
+  #
+  # launch `dialog` again to ask a final time the
+  # use if he really wants to install the config
+  #
+  # designed to be used with `error`, see `error` above
+  #
   DIALOGRC="$DRC" dialog --clear --colors --title "\Z7\ZbInstalling a2n-s' config!" --msgbox "WARNING! This installation script is currently in public beta testing. There are almost certainly errors in it; therefore, it is strongly recommended that you not install this on production machines. It is recommended that you try this out in either a virtual machine or on a test machine." 16 60
   DIALOGRC="$DRC" dialog --clear --colors --title "\Z7\ZbAre You Sure You Want To Do This?" --yes-label "Begin Installation" --no-label "Exit" --yesno "Shall we begin installing a2n-s' config?" 8 60 || { clear; exit 1; }
 }
 
-sync_repos () {
-  info "################################################################"
-  info "## Syncing the repos and installing 'dialog' if not installed ##"
-  info "################################################################"
-  sudo pacman --noconfirm --needed -Syu dialog
-}
-
 init_deps () {
+  #
+  # build the dependency file which will hold the list of
+  # all the software the user wants to install.
+  #
+  # build the dependency table that holds the dependency tree:
+  #   a dependency is here of the form deps_table[cmd]="dep1 dep2"
+  #   with additional options flags, e.g. `*:msg:on` or `*:msg:off`
+  #   are used inside the interactive dialog, `yay:cmd` means that
+  #   `cmd` is part of the AUR, etc...
+  #
   deps_file=$(mktemp /tmp/a2n-s_dotfiles_deps.XXXXXX)
   trap 'rm "$deps_file"' 0 1 15
 
@@ -138,6 +190,10 @@ init_deps () {
 }
 
 _confirm_driver () {
+  #
+  # show the currently selected driver
+  # ask the user to change or the continue
+  #
   DIALOGRC="$DRC" dialog --colors \
     --title "Selected driver: '$1'" \
     --no-label "Select this driver" \
@@ -151,9 +207,18 @@ _confirm_driver () {
   fi
 }
 select_driver () {
+  #
+  # let the user choose among a list of available Arch
+  # video drivers coming from the Arch Wiki,
+  # https://wiki.archlinux.org/title/xorg#Driver_installation
+  #
+  # ask for a confirmation to let the user change the driver
+  # when committing an error.
+  #
   local driver="no driver"
   while [ "$driver" = "no driver" ]
   do
+    # ask for the driver to use.
     driver=$(DIALOGRC="$DRC" dialog --colors --clear \
       --title "Mandatory drivers" \
       --menu "Choose a video driver (** ~ proprietary)" 16 48 16 \
@@ -168,6 +233,8 @@ select_driver () {
       9 "nvidia-390xx (NVIDIA**) (AUR)" \
       --output-fd 1 \
     )
+    # ask for confirmation when the driver is valid
+    # exit with an error otherwise.
     case "$driver" in
       1) driver=$(_confirm_driver "xf86-video-fbdev") ;;
       2) driver=$(_confirm_driver "xf86-video-amdgpu") ;;
@@ -181,10 +248,19 @@ select_driver () {
       *) clear; error "no video driver selected";;
     esac
   done
-  echo "pacman:$driver" >> "$deps_file"
+  # register the driver as a dependency.
+  case "$driver" in
+    nvidia-470xx-dkms | nvidia-390xx) echo "yay:$driver" >> "$deps_file" ;;
+    *) echo "pacman:$driver" >> "$deps_file" ;;
+  esac
+
 }
 
 _confirm_deps () {
+  #
+  # show the currently list of selected dependencies
+  # ask the user to change or the continue
+  #
   local msg=""
   if [ "$1" = "" ];
   then
@@ -205,43 +281,94 @@ _confirm_deps () {
   fi
 }
 select_deps () {
+  #
+  # uses the `commands` field of the dependency table, the one
+  # with `*:msg:state` elements, to build a checklist `dialog`
+  # and let the user choose the software he wants when using
+  # the `--action` switch in `interactive` mode.
+  #
   local deps=""
   local loop=1
+  # a fancy to build the array, as `dialog` wants real arrays
   readarray -t dependencies <<< "$(sed "s/ /\n/g; s/:/\n/g" <<< "${deps_table[commands]}")"}
   while [ "$loop" = 1 ]
   do
+    # let the user check the list
     deps=$(DIALOGRC="$DRC" dialog --colors --clear \
       --title "Dependencies:" \
       --checklist "Choose" 20 48 16 \
       "${dependencies[@]}" \
       --output-fd 1 \
     )
+    # exit on `dialog` error
     [ ! "$?" = 0 ] && return 1
+    # ask for a confirmation before exiting
     loop=$(_confirm_deps "$deps")
   done
+  # register all the dependencies
+  # note the `+` in sed?, see the `build_deps` function below
   for dep in $(echo "$deps" | tr ' ' '\n'); do
     echo "$dep" | sed 's/^/+/' >> "$deps_file"
   done
 }
 
 push_all_deps () {
+  #
+  # when not in `interactive` mode, push all the
+  # commands inside the dependencies
+  #
+  # this is mainly for people who really want to
+  # try out every piece of the config, or simply
+  # for myself, as I know these configs.
+  #
+
+  # note the `+` in sed?, see the `build_deps` function below
   echo "${deps_table[commands]}" | tr ' ' '\n' | sed "s/\(.*\)::.*/+\1/g" >> "$deps_file"
 }
 
 build_deps () {
+  #
+  # build the whole dependency list from a raw dependency list
+  #
+  # the raw list is a list of uncollapsed dependencies
+  # an uncollapsed dependency `dep` begins with a `+` sign and needs
+  # to be expanded using the `deps_table[dep]` dependency list
+  #
+  # for instance, if the raw list is "pacman:base-devel +qtile +kitty",
+  # kitty has dependency list "pacman:kitty +fish" and qtile has
+  # "pacman:qtile yay:nerd-fonts-mononoki",
+  # base-devel is already expanded and will be installed with pacman
+  # qtile and kitty are collapsed which brings the dependency list to
+  # "pacman:base-devel pacman:qtile yay:nerd-fonts-mononoki pacman:kitty +fish"
+  #
+  # fish needs an other expansion
+  # "pacman:base-devel pacman:qtile yay:nerd-fonts-mononoki pacman:kitty pacman:fish"
+  #
+  # everything is expanded, the algorithm stops with the final dependency list.
+  #
+
+  # as long as there are collapsed dependencies...
   while (grep -e "^+" "$deps_file" -q);
   do
+    # ...cycle through each of them, ...
     for dep in $(grep -e "^+" "$deps_file"); do
+      # ... remove the collapsed dependency...
       sed -i "s/$dep//g" "$deps_file"
+      # ... and replace it with its children, which might be collapsed as well.
       echo "${deps_table[$(echo "$dep" | sed 's/+//')]}" | tr ' ' '\n' >> "$deps_file"
     done
   done
 
+  # finally remove empty lines and sort
   sed -ir '/^\s*$/d' "$deps_file"
   sort -o "$deps_file" "$deps_file"
 }
 
 _install_pacman_deps () {
+  #
+  # install all the dependencies marked with "pacman:"
+  # using `sudo pacman [flags] dep1 dep2 ...`
+  #
   info "################################################################"
   info "## Installing pacman dependencies                             ##"
   info "################################################################"
@@ -249,6 +376,9 @@ _install_pacman_deps () {
 }
 
 _install_yay () {
+  #
+  # install the yay AUR helper.
+  #
   info "################################################################"
   info "## Installing the yay Arch User Repositories package manager  ##"
   info "################################################################"
@@ -259,6 +389,10 @@ _install_yay () {
 }
 
 _install_yay_deps () {
+  #
+  # install all the dependencies marked with "yay:"
+  # using `yay [flags] dep1 dep2 ...`
+  #
   info "################################################################"
   info "## Installing yay dependencies                                ##"
   info "################################################################"
@@ -266,6 +400,10 @@ _install_yay_deps () {
 }
 
 _install_python_deps () {
+  #
+  # install all the dependencies marked with "pip:"
+  # using `pip install dep1 dep2 ...`
+  #
   info "################################################################"
   info "## Installing python dependencies                             ##"
   info "################################################################"
@@ -273,16 +411,26 @@ _install_python_deps () {
 }
 
 _install_custom_builds () {
+  #
+  # install custom builds, i.e. dependencies marked with "make:"
+  # by pulling them from my repo and `make`ing them
+  #
   info "################################################################"
   info "## Installing custom builds of suckless-like software         ##"
   info "################################################################"
   for dep in $(grep -e "^make:" "$deps_file"); do
     name="$(echo "$dep" | sed 's/^make://g')"
-    git clone "https://github.com/a2n-s/$name" "/tmp/$name"; cd "/tmp/$name"; sudo make clean install; cd -
+    # clone the right repo
+    git clone "https://github.com/a2n-s/$name" "/tmp/$name";
+    # build it inside the directory and go back
+    cd "/tmp/$name"; sudo make clean install; cd -
   done
 }
 
 install_deps () {
+  #
+  # install all the dependencies using the previous tool functions.
+  #
   if grep -e "^pacman:" "$deps_file" -q; then _install_pacman_deps; fi
   if grep -e "^yay-git:" "$deps_file" -q; then _install_yay; fi
   if grep -e "^yay:" "$deps_file" -q; then _install_yay_deps; fi
@@ -291,6 +439,11 @@ install_deps () {
 }
 
 install_config () {
+  #
+  # install the dependencies configuration files when needed
+  # each line is duplicated to add a bit color verbose to the
+  # process and help the user know what is happening.
+  #
   echo -e "${CMD}git clone ${SUB}-b $CHANNEL ${SRC}https://github.com/a2n-s/dotfiles ${DST}$DOTFILES${OFF}"
   git clone -b "$CHANNEL" https://github.com/a2n-s/dotfiles "$DOTFILES"
   if grep -e "^grub" "$deps_file" -q; then
@@ -465,11 +618,14 @@ install_config () {
 }
 
 prompt_shell () {
+  #
+  # prompt the user to change the default shell.
+  #
   PS3="${GREEN}Set default user shell (enter number): ${OFF}"
-  shells=("fish" "bash" "zsh" "quit")
+  shells=("fish" "bash" "quit")
   select choice in "${shells[@]}"; do
       case $choice in
-           fish | bash | zsh)
+           fish | bash)
               sudo chsh $USER -s "/bin/$choice" && \
               echo -e "$choice has been set as your default USER shell. \
                       \nLogging out is required for this to take effect."
@@ -487,6 +643,10 @@ prompt_shell () {
 }
 
 prompt_reboot () {
+  #
+  # prompt the user to reboot the system and apply
+  # all the changes.
+  #
   while true; do
       read -p "${GREEN}Do you want to reboot to get your new config?${OFF} [Y/n] " yn
       case $yn in
@@ -499,6 +659,9 @@ prompt_reboot () {
 }
 
 help () {
+  #
+  # the help function.
+  #
   echo "install.sh:"
   echo "     This is the deployment script of my dotfiles"
   echo "     Software will be installed and configuration"
@@ -517,21 +680,29 @@ help () {
   echo "                            available actions:"
   echo "                                 all - install everything"
   echo "                         interactive - let the user choose the software"
+  echo "Environment variables:"
+  echo "     DOTFILES    the path where the dotfiles are pulled down  (defaults to \$HOME/.dotfiles.a2n-s)"
+  echo "     CHANNEL     the branch of the dotfiles to use            (defaults to main)"
   exit 0
 }
 
+# parse the arguments.
 OPTIONS=$(getopt -o hsrSfa: --long help,nosync,reboot,noshell,nodialog,action: \
               -n 'install.sh' -- "$@")
-
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
-
 eval set -- "$OPTIONS"
 
 main () {
+  #
+  # the main function
+  #
+
+  # exit if ran as root
   if [ "$(id -u)" = 0 ]; then
     root_warning
   fi
 
+  # interpret the switches.
   while [[ $# -gt 0 ]]; do
     case "$1" in
       -h | --help ) help ;;
@@ -544,12 +715,15 @@ main () {
       * ) break ;;
     esac
   done
+
+  # check if the action is valid.
   case "$ACTION" in
     all | interactive ) ;;
     '' ) warning "install.sh requires the -a/--action switch"; help ;;
     * ) error "got unexpected action '$ACTION'" ;;
   esac
 
+  # install
   [ ! "$SYNC" = "no" ] && { sync_repos || error "Error syncing the repos."; }
   [ ! "$DIALOG" = "no" ] && { welcome || { clear; error "User choose to exit.";}; }
   [ ! "$DIALOG" = "no" ] && { lastchance || { clear; error "User choose to exit.";}; }
