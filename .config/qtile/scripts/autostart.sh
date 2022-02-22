@@ -42,7 +42,10 @@ if command -v dunst &> /dev/null; then
 fi
 
 if command -v killall &> /dev/null; then killall -q xautolock; fi
-if command -v xautolock &> /dev/null; then xautolock -time 10 -locker ~/scripts/slock-cst.sh &; fi
-# remvoves the auto saver of x as it makes my laptop crash
+if command -v xautolock &> /dev/null; then
+  xautolock -time 10 -locker ~/scripts/slock-cst.sh &
+fi
+
+# removes the auto saver of x as it makes my laptop crash
 xset s 0
 xset -dpms

@@ -24,13 +24,13 @@ def init_groups():
         Initializes somes groups to sort windows easier.
     """
     groups = [
-        Group("D1",  layout="TALL"),  # development
-        Group("I2",  layout="TALL"),  # internet
-        Group("S3",  layout="TALL"),  # system
-        Group("W4",  layout="TALL"),  # wiki
-        Group("C5",  layout="TREE"),  # chat
-        Group("M6",  layout="TALL"),  # music
-        Group("V7",  layout="WIDE"),  # video
+        Group("1 ", layout="TALL"),  # development
+        Group("2 ", layout="TALL"),  # development
+        Group("3 ", layout="TALL"),  # development
+        Group(" ",  layout="TALL"),  # internet
+        Group(" ",  layout="TREE"),  # chat
+        Group(" ",  layout="TALL"),  # music
+        Group(" ",  layout="WIDE"),  # video
     ]
     # groups = [Group(i) for i in "123456789"]
     return groups
