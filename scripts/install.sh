@@ -77,24 +77,50 @@ init_deps () {
   info "################################################################"
   info "## Building the dependency table of the whole configuration   ##"
   info "################################################################"
-  deps_table[base_deps]="pacman:base-devel pacman:python pacman:python-pip pacman:xorg pacman:xorg-xinit yay-git:yay"
-  deps_table[deps]="*pacman:qtile pacman:firefox pacman:neovim"
-  deps_table[opt_deps]="yay:dmscripts pacman:fzf pacman:catimg pacman:chromium pacman:emacs pacman:vim pacman:btop pacman:moc pacman:mpv yay:lf *pacman:discord pacman:thunderbird yay:slack-desktop pacman:signal-desktop pacman:caprine pacman:lazygit pacman:tig pacman:rofi pacman:conky pacman:pass make:dmenu make:tabbed *make:surf make:slock"
+  deps_table[commands]="qtile::on firefox::on neovim::on sddm::on kitty::on pass::on dmenu::on nerd-fonts-mononoki::on fish::on bash::off alacritty::off dmscripts::off fzf::off catimg::off chromium::off emacs::off vim::off btop::off moc::off mpv::off lf::off discord::off thunderbird::off slack-desktop::off signal-desktop::off caprine::off lazygit::off tig::off rofi::off conky::off tabbed::off surf::off slock::off psutil::off dbus-next::off python-iwlib::off dunst::off picom::off feh::off"
 
-  deps_table[qtile_deps]="pacman:qtile pacman:python-gobject pacman:gtk3 pip:gdk yay:nerd-fonts-mononoki pip:psutil pip:dbus-next pacman:python-iwlib pacman:sddm pacman:dunst pacman:picom *pacman:feh *pacman:kitty *pacman:alacritty"
-  deps_table[bspwm_deps]="pacman:bspwm pacman:sxhkd yay:nerd-fonts-mononoki pacman:sddm pacman:dunst pacman:picom *pacman:feh *pacman:kitty *pacman:alacritty"
-  deps_table[spectrwm_deps]="pacman:spectrwm yay:nerd-fonts-mononoki pacman:sddm pacman:dunst pacman:picom *pacman:feh *pacman:kitty *pacman:alacritty"
-
-  deps_table[feh_deps]="pacman:feh wallpapers:a2n-s/wallpapers"
-  deps_table[kitty_deps]="pacman:kitty *pacman:fish *pacman:bash"
-  deps_table[alacritty_deps]="pacman:alacritty *pacman:fish *pacman:bash"
-
-  deps_table[bash_deps]="pacman:bash pip:virtualenvwrapper"
-  deps_table[fish_deps]="pacman:fish pacman:peco yay:ghq pip:virtualfish"
-
-  deps_table[discord_deps]="pacman:discord yay:noto-fonts-emoji"
-  deps_table[surf_deps]="pacman:gcr pacman:webkit2gtk"
-
+  deps_table[base]="pacman:base-devel pacman:python pacman:python-pip pacman:xorg pacman:xorg-xinit yay-git:yay"
+  deps_table[qtile]="pacman:qtile pacman:python-gobject pacman:gtk3 pip:gdk"
+  deps_table[firefox]="pacman:firefox"
+  deps_table[neovim]="pacman:neovim"
+  deps_table[sddm]="pacman:sddm"
+  deps_table[kitty]="pacman:kitty"
+  deps_table[alacritty]="pacman:alacritty"
+  deps_table[bash]="pacman:bash pip:virtualenvwrapper"
+  deps_table[fish]="pacman:fish pacman:peco yay:ghq pip:virtualfish"
+  deps_table[dmscripts]="yay:dmscripts"
+  deps_table[fzf]="pacman:fzf"
+  deps_table[catimg]="pacman:catimg"
+  deps_table[chromium]="pacman:chromium"
+  deps_table[emacs]="pacman:emacs"
+  deps_table[vim]="pacman:vim"
+  deps_table[btop]="pacman:btop"
+  deps_table[moc]="pacman:moc"
+  deps_table[mpv]="pacman:mpv"
+  deps_table[lf]="yay:lf"
+  deps_table[discord]="pacman:discord yay:noto-fonts-emoji"
+  deps_table[thunderbird]="pacman:thunderbird"
+  deps_table[slack-desktop]="yay:slack-desktop"
+  deps_table[signal-desktop]="pacman:signal-desktop"
+  deps_table[caprine]="pacman:caprine"
+  deps_table[lazygit]="pacman:lazygit"
+  deps_table[tig]="pacman:tig"
+  deps_table[rofi]="pacman:rofi"
+  deps_table[conky]="pacman:conky"
+  deps_table[pass]="pacman:pass"
+  deps_table[dmenu]="make:dmenu"
+  deps_table[tabbed]="make:tabbed"
+  deps_table[surf]="make:surf pacman:gcr pacman:webkit2gtk"
+  deps_table[slock]="make:slock"
+  deps_table[nerd-fonts-mononoki]="yay:nerd-fonts-mononoki"
+  deps_table[psutil]="pip:psutil"
+  deps_table[dbus-next]="pip:dbus-next"
+  deps_table[python-iwlib]="pacman:python-iwlib"
+  deps_table[dunst]="pacman:dunst"
+  deps_table[picom]="pacman:picom"
+  deps_table[feh]="pacman:feh wallpapers:a2n-s/wallpapers"
+  deps_table[bspwm]="pacman:bspwm pacman:sxhkd"
+  deps_table[spectrwm]="pacman:spectrwm"
 }
 
 _confirm_driver () {
@@ -144,58 +170,19 @@ select_driver () {
   echo "pacman:$driver" >> "$deps_file"
 }
 
-_confirm_boot () {
+_confirm_deps () {
   local msg=""
   if [ "$1" = "" ];
   then
-    msg="You have selected no boot option\nNo grub theme, no tty login prompt nor login manager will be installed"
+    msg="You have selected nothing\n\nAre You Sure You Really Want To Do That?"
   else
     msg=$(echo "$1" | tr ' ' '\n')
   fi
   DIALOGRC="$DRC" dialog --colors \
-    --title "Selected boot options:" \
-    --no-label "Select" \
-    --yes-label "Change the boot options" \
-    --yesno "$msg" 7 60 \
-    --output-fd 1
-  if [ "$?" == 0 ]; then
-    echo "1"
-  else
-    echo "0"
-  fi
-}
-select_boot () {
-  local boot=""
-  local loop=1
-  while [ "$loop" = 1 ]
-  do
-    boot=$(DIALOGRC="$DRC" dialog --colors --clear \
-      --title "Boot time" \
-      --checklist "Choose" 10 48 16 \
-      grub "" on \
-      sddm "" on \
-      issue "" on \
-      --output-fd 1 \
-    )
-    [ ! "$?" = 0 ] && return 1
-    loop=$(_confirm_boot "$boot")
-  done
-  echo "$boot" | tr ' ' '\n' >> "$deps_file"
-}
-
-_confirm_wm () {
-  local msg=""
-  if [ "$1" = "" ];
-  then
-    msg="You have selected no window manager\n\nAre You Sure You Really Want To Do That?"
-  else
-    msg=$(echo "$1" | tr ' ' '\n')
-  fi
-  DIALOGRC="$DRC" dialog --colors \
-    --title "Selected window managers:" \
+    --title "Selected dependencies:" \
     --no-label "Select" \
     --yes-label "Change" \
-    --yesno "$msg" 7 60 \
+    --yesno "$msg" 16 60 \
     --output-fd 1
   if [ "$?" == 0 ]; then
     echo "1"
@@ -203,38 +190,36 @@ _confirm_wm () {
     echo "0"
   fi
 }
-select_wm () {
-  local wms=""
+select_deps () {
+  local deps=""
   local loop=1
+  readarray -t dependencies <<< "$(sed "s/ /\n/g; s/:/\n/g" <<< "${deps_table[commands]}")"}
   while [ "$loop" = 1 ]
   do
-    wms=$(DIALOGRC="$DRC" dialog --colors --clear \
-      --title "Window managers:" \
-      --checklist "Choose" 10 48 16 \
-      qtile "" on \
-      bspwm "" off \
-      spectrwm "" off \
+    deps=$(DIALOGRC="$DRC" dialog --colors --clear \
+      --title "Dependencies:" \
+      --checklist "Choose" 20 48 16 \
+      "${dependencies[@]}" \
       --output-fd 1 \
     )
     [ ! "$?" = 0 ] && return 1
-    loop=$(_confirm_wm "$wms")
+    loop=$(_confirm_deps "$deps")
   done
-  echo "$wms" | tr ' ' '\n' >> "$deps_file"
+  for dep in $(echo "$deps" | tr ' ' '\n'); do
+    echo "$dep" | sed 's/^/*/' >> "$deps_file"
+  done
 }
 
 push_all_deps () {
-  echo "${deps_table[base_deps]}" | tr ' ' '\n' >> "$deps_file"
-  echo "${deps_table[deps]}" | tr ' ' '\n' >> "$deps_file"
-  echo "${deps_table[opt_deps]}" | tr ' ' '\n' >> "$deps_file"
+  echo "${deps_table[commands]}" | tr ' ' '\n' | sed "s/\(.*\)::.*/*\1/g" >> "$deps_file"
 }
 
 build_deps () {
-  info "## Expanding the dependencies                                 ##"
   while (grep -e "^\*" "$deps_file" -q);
   do
     for dep in $(grep -e "^\*" "$deps_file"); do
       sed -i "s/$dep//g" "$deps_file"
-      echo "${deps_table[$(echo "$dep" | sed 's/.*://')_deps]}" | tr ' ' '\n' >> "$deps_file"
+      echo "${deps_table[$(echo "$dep" | sed 's/\*//')]}" | tr ' ' '\n' >> "$deps_file"
     done
   done
 
@@ -445,8 +430,7 @@ main () {
     esac
   done
   case "$ACTION" in
-    all) ;;
-    interactive ) warning "interactive install AVAILABLE SOON\ndefaulting to full install"; ACTION="all";;
+    all | interactive ) ;;
     '' ) warning "install.sh requires the -a/--action switch"; help ;;
     * ) error "got unexpected action '$ACTION'" ;;
   esac
@@ -456,8 +440,7 @@ main () {
   [ ! "$DIALOG" = "no" ] && { lastchance || { clear; error "User choose to exit.";}; }
   init_deps || error "Error creating the dependencies file"
   select_driver || error "Video driver selection failed"
-  [ "$ACTION" = "interactive" ] && { select_boot || { clear; error "User choose to exit";}; }
-  [ "$ACTION" = "interactive" ] && { select_wm || { clear; error "User choose to exit";}; }
+  [ "$ACTION" = "interactive" ] && { select_deps || { clear; error "User choose to exit";}; }
   [ "$ACTION" = "all" ] && { push_all_deps || error "Pushing all deps failed"; }
   clear
   build_deps || error "Building the dependencies failed."
