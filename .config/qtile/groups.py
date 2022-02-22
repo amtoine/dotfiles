@@ -22,18 +22,25 @@ from libqtile.dgroups import simple_key_binder
 def init_groups():
     """
         Initializes somes groups to sort windows easier.
+
+        Return the list of groups and the list of group names.
     """
-    groups = [
-        Group("1 ", layout="TALL"),  # development
-        Group("2 ", layout="TALL"),  # development
-        Group("3 ", layout="TALL"),  # development
-        Group(" ",  layout="TALL"),  # internet
-        Group(" ",  layout="TREE"),  # chat
-        Group(" ",  layout="TALL"),  # music
-        Group(" ",  layout="WIDE"),  # video
+    group_opts = [
+        ["1 ", "TALL"],  # development
+        ["2 ", "TALL"],  # development
+        ["3 ", "TALL"],  # development
+        [" ",  "TALL"],  # internet
+        [" ",  "TREE"],  # chat
+        [" ",  "TALL"],  # music
+        [" ",  "WIDE"],  # video
     ]
-    # groups = [Group(i) for i in "123456789"]
-    return groups
+
+    groups = [
+        Group(name, layout=layout)
+        for name, layout in group_opts
+    ]
+    # use the zip function to isolate the name of each group.
+    return groups, list(list(zip(*group_opts))[0])
 
 
 # # Allow MODKEY+[0 through 9] to bind to groups,

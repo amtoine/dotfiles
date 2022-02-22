@@ -34,7 +34,7 @@ mod = "mod4"  # the super (windows or mac) key controls `qtile`
 terminal = guess_terminal(preference=["kitty", "alacritty"])
 
 # initialize everything.
-groups = init_groups()
+groups, group_names = init_groups()
 keys = init_keymap(mod, terminal, groups)
 layouts = init_layouts()
 widget_defaults = init_widget_defaults()
@@ -96,7 +96,7 @@ def func(client):
     # sends all instances of `mpv` to the `V7`, i.e. video, group,
     # to minimize conflicts with non floating windows.
     if "mpv" in client._wm_class:
-        client.cmd_togroup("V7")
+        client.cmd_togroup(group_names[6])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
