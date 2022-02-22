@@ -187,6 +187,9 @@ init_deps () {
   deps_table[feh]="pacman:feh wallpapers:a2n-s/wallpapers"
   deps_table[bspwm]="pacman:bspwm pacman:sxhkd"
   deps_table[spectrwm]="pacman:spectrwm"
+
+  # always add the base dependencies
+  echo "${deps_table[base]}" | tr ' ' '\n' >> "$deps_file"
 }
 
 _confirm_driver () {
@@ -501,12 +504,12 @@ install_config () {
     cp -r "$DOTFILES/.config/picom" "$HOME/.config"
   fi
   if grep -e "^wallpapers:a2n-s/wallpapers" "$deps_file" -q; then
-    echo -e "${CMD}git clone ${SRC}https://github.com/a2n-s/wallpapers ${DST}$HOME/repos/wallpapers"
+    echo -e "${CMD}git clone ${SRC}https://github.com/a2n-s/wallpapers ${DST}$HOME/repos/wallpapers${OFF}"
     git clone https://github.com/a2n-s/wallpapers "$HOME/repos/wallpapers"
   fi
   if grep -e "^.*:kitty" "$deps_file" -q; then
     echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/kitty ${DST}$HOME/.config${OFF}"
-    cp -r "$DOTFILES/.config/alacritty" "$HOME/.config"
+    cp -r "$DOTFILES/.config/kitty" "$HOME/.config"
   fi
   if grep -e "^.*:alacritty" "$deps_file" -q; then
     echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/alacritty ${DST}$HOME/.config${OFF}"
