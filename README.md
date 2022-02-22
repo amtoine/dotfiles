@@ -246,35 +246,7 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## 5. Gallery. [[toc](#table-of-content)]
-**These are old screenshots** from the time when I was on `spectrWM`.
-| ![My wallpaper.][mygallery-nitrogen] |
-|:--:|
-| *My wallpaper.* |
-
-| ![My bar.][mygallery-bar] |
-|:--:|
-| *My bar.* |
-
-| ![SpectrWM in a dual monitor setup: left monitor selected.][mygallery-spectrwm1] |
-|:--:|
-| *SpectrWM in a dual monitor setup: left monitor selected.* |
-
-| ![SpectrWM in a dual monitor setup: right monitor selected.][mygallery-spectrwm2] |
-|:--:|
-| *SpectrWM in a dual monitor setup: right monitor selected.* |
-
-| ![A screenshot of seing all processes.][mygallery-htop] |
-|:--:|
-| *A screenshot of seing all processes.* |
-
-| ![A screenshot of being in a git repository.][mygallery-git] |
-|:--:|
-| *A screenshot of being in a git repository.* |
-
-| ![A screenshot of being in vim.][mygallery-vim] |
-|:--:|
-| *A screenshot of being in vim.* |
-
+**COMING SOON**
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 <!-- my files -->
