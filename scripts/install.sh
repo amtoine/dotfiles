@@ -17,8 +17,9 @@
 
 DOTFILES="$HOME/.dotfiles.a2n-s"
 CHANNEL="main"
-DRC="/tmp/.install.dialogrc"
-curl -fLo "$DRC" https://raw.githubusercontent.com/a2n-s/dotfiles/refacto/scripts/.install.dialogrc
+DRC=$(mktemp /tmp/a2n-s_dotfiles_dialogrc.XXXXXX)
+trap 'rm "$DRC"' 0 1 15
+curl -fLo "$DRC" https://raw.githubusercontent.com/a2n-s/dotfiles/main/scripts/.install.dialogrc
 
 RED="$(tput setaf 1)"
 GREEN="$(tput setaf 2)"
@@ -50,13 +51,13 @@ root_warning () {
 }
 
 welcome() {
-  DIALOGRC="$DRC" dialog --colors --title "\Z7\ZbInstalling a2n-s' config!" --msgbox "\Z4This is a script that will install my current main config. It's really just an installation script for those that want to try out my Qtile desktop.  We will add install the Qtile tiling window manager, the kitty and alacritty terminal emulators , the Fish shell with Oh My Fish and augment the bash shell with Oh My Bash, Doom Emacs and my rice of Neovim and many other essential programs needed to make my dotfiles work correctly.\\n\\n-a2n-s (Antoine Stevan)" 16 60
-  DIALOGRC="$DRC" dialog --colors --title "\Z7\ZbStay near your computer!" --yes-label "Continue" --no-label "Exit" --yesno "\Z4This script is not allowed to be run as root, but you will be asked to enter your sudo password at various points during this installation. This is to give PACMAN the necessary permissions to install the software.  So stay near the computer." 8 60
+  DIALOGRC="$DRC" dialog --clear --colors --title "\Z7\ZbInstalling a2n-s' config!" --msgbox "This is a script that will install my current main config. It's really just an installation script for those that want to try out my Qtile desktop.  We will add install the Qtile tiling window manager, the kitty and alacritty terminal emulators , the Fish shell with Oh My Fish and augment the bash shell with Oh My Bash, Doom Emacs and my rice of Neovim and many other essential programs needed to make my dotfiles work correctly.\\n\\n-a2n-s (Antoine Stevan)" 16 60
+  DIALOGRC="$DRC" dialog --clear --colors --title "\Z7\ZbStay near your computer!" --yes-label "Continue" --no-label "Exit" --yesno "This script is not allowed to be run as root, but you will be asked to enter your sudo password at various points during this installation. This is to give PACMAN the necessary permissions to install the software.  So stay near the computer." 8 60
 }
 
 lastchance() {
-  DIALOGRC="$DRC" dialog --colors --title "\Z7\ZbInstalling a2n-s' config!" --msgbox "\Z4WARNING! This installation script is currently in public beta testing. There are almost certainly errors in it; therefore, it is strongly recommended that you not install this on production machines. It is recommended that you try this out in either a virtual machine or on a test machine." 16 60
-  DIALOGRC="$DRC" dialog --colors --title "\Z7\ZbAre You Sure You Want To Do This?" --yes-label "Begin Installation" --no-label "Exit" --yesno "\Z4Shall we begin installing a2n-s' config?" 8 60 || { clear; exit 1; }
+  DIALOGRC="$DRC" dialog --clear --colors --title "\Z7\ZbInstalling a2n-s' config!" --msgbox "WARNING! This installation script is currently in public beta testing. There are almost certainly errors in it; therefore, it is strongly recommended that you not install this on production machines. It is recommended that you try this out in either a virtual machine or on a test machine." 16 60
+  DIALOGRC="$DRC" dialog --clear --colors --title "\Z7\ZbAre You Sure You Want To Do This?" --yes-label "Begin Installation" --no-label "Exit" --yesno "Shall we begin installing a2n-s' config?" 8 60 || { clear; exit 1; }
 }
 
 sync_repos () {
@@ -352,25 +353,7 @@ install_config () {
   cp -r "$DOTFILES/.config/conky" "$HOME/.config"
 }
 
-main () {
-  if [ "$(id -u)" = 0 ]; then
-    root_warning
-  fi
-  sync_repos || error "Error syncing the repos."
-  welcome || error "User choose to exit."
-  lastchance || error "User choose to exit."
-  init_deps || error "Error creating the dependencies file"
-  select_driver || error "Video driver selection failed"
-  # select_boot || error "Error choosing boot options"
-  # select_wm || error "Error choosing a window manager"
-  build_deps
-  install_deps
-  install_config || error "Error installing the configuration files"
-
-  info "####################################"
-  info "## The config has been installed! ##"
-  info "####################################"
-
+prompt_shell () {
   PS3="${GREEN}Set default user shell (enter number): ${RES}"
   shells=("fish" "bash" "zsh" "quit")
   select choice in "${shells[@]}"; do
@@ -390,7 +373,9 @@ main () {
               ;;
       esac
   done
+}
 
+prompt_reboot () {
   while true; do
       read -p "${GREEN}Do you want to reboot to get your new config?${RES} [Y/n] " yn
       case $yn in
@@ -400,6 +385,29 @@ main () {
           * ) echo "${RED}Please answer yes or no.${RES}";;
       esac
   done
+}
+
+main () {
+  if [ "$(id -u)" = 0 ]; then
+    root_warning
+  fi
+  sync_repos || error "Error syncing the repos."
+  welcome || error "User choose to exit."
+  lastchance || error "User choose to exit."
+  init_deps || error "Error creating the dependencies file"
+  select_driver || error "Video driver selection failed"
+  # select_boot || error "Error choosing boot options"
+  # select_wm || error "Error choosing a window manager"
+  build_deps
+  install_deps
+  install_config || error "Error installing the configuration files"
+
+  info "####################################"
+  info "## The config has been installed! ##"
+  info "####################################"
+
+  prompt_shell
+  prompt_reboot
 }
 main
 exit 0
