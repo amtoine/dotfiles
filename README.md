@@ -218,8 +218,19 @@ But as it is the first time, as I said, that I do such a thing in public, I do n
 **THE INSTALLATION SCRIPT IS FINALLY THERE!!**  
 Simply run:
 ```bash
-curl -fsFL https://raw.githubusercontent.com/a2n-s/dotfiles/main/scripts/install.sh | bash
+curl -fsFLo /tmp/a2n-s.install.sh https://raw.githubusercontent.com/a2n-s/dotfiles/main/scripts/install.sh; /tmp/a2n-s.install.sh --help
 ```
+to pull the script down and directly show the help message, and then
+```bash
+/tmp/a2n-s.install.sh [switches]
+```
+to run the install process.
+Or one can directly run
+```bash
+curl -fsFLo /tmp/a2n-s.install.sh https://raw.githubusercontent.com/a2n-s/dotfiles/main/scripts/install.sh; /tmp/a2n-s.install.sh --all
+curl -fsFLo /tmp/a2n-s.install.sh https://raw.githubusercontent.com/a2n-s/dotfiles/main/scripts/install.sh; /tmp/a2n-s.install.sh --interactive
+```
+for a direct full/interactive install process respectively.
 
 #### 3.3.3. Uninstall the config. [[toc](#table-of-content)]
 **NOT AVAILABLE NOW** but should simply be the mirror of the previous.
