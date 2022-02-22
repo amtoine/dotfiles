@@ -55,15 +55,17 @@ LAYOUTS = build_layouts(
 
 # this is the bar geometry
 _border_width = LAYOUTS.border_width // 2
+_margin_width = LAYOUTS.border_width // 2
 #          N  E  S  W
-_border = (0, 0, 1, 0)
+_border = (0, 0, 0, 0)
+_margin = (1, 1, 1, 1)
 _border_color = theme.sel_bg
 BAR_GEOMETRY = dict(
     size=SIZE,
     opacity=.8 if BAR in [bars.minimal, bars.decreased] else 1.,
     background=theme.bg,
     #       N  E  S  W
-    margin=[0, 0, 0, 0],
+    margin=list(map(lambda x: x * _margin_width, _margin)),
     border_width=list(map(lambda x: x * _border_width, _border)),
     border_color=[_border_color] * 4
 )
