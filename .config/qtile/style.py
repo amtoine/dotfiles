@@ -37,16 +37,35 @@ BAR_STYLE = bar_styles.decreased
 SEP_STYLE = sep_styles.scolor
 # END_QTILE_BAR_THEME
 
+# the following lists contain formats for the widgets, in all the bar styles
+# that are available
+# the format is    "minimal",           "decreased",         "normal"
+battery_fmts = [
+                   "{char}",            "{char}",            "{char} {percent:2.0%}"
+]
+clock_fmts = [
+                   " %H:%M",           " %H:%M",           " %m/%d  %H:%M"
+]
+wlan_co_fmts = [
+                   " ",                " ",                " {essid} {quality:02d}/70"
+]
+wlan_dis_fmts = [
+                   "睊 ",               "睊 ",               "睊 --/--"
+]
+dunst_fmts = [
+                   "{state} {waiting}", "{state} {waiting}", "{state} {waiting} {count}"
+]
 # builds the widgets with current theme
 # and some styling that depends on the bar
 WIDGETS = build_widgets(
-    theme=theme,
-    battery_fmt="{char}" if BAR_STYLE in [bar_styles.minimal, bar_styles.decreased] else "{char} {percent:2.0%}",
-    clock_fmt=" %H:%M" if BAR_STYLE == bar_styles.decreased else " %m/%d  %H:%M",
-    wlan_co_fmt=" " if BAR_STYLE == bar_styles.decreased else " {essid} {quality:02d}/70",
-    wlan_dis_fmt="睊 " if BAR_STYLE == bar_styles.decreased else "睊 --/--",
-    count_fmt="{}",
+    countdown_fmt="{}",
     qexit_fmt="襤",
+    theme=theme,
+    battery_fmt=battery_fmts[BAR_STYLE],
+    clock_fmt=clock_fmts[BAR_STYLE],
+    wlan_co_fmt=wlan_co_fmts[BAR_STYLE],
+    wlan_dis_fmt=wlan_dis_fmts[BAR_STYLE],
+    dunst_fmt=dunst_fmts[BAR_STYLE],
     group_size=GROUP_SIZE,
 )
 # build the layouts with current theme

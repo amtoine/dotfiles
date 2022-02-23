@@ -46,7 +46,7 @@ class Dunst(widget.base.ThreadPoolText):
     defaults = [
         ("update_interval", 1.0, "Update interval for the Dunst widget"),
         (
-            "format", "DUNST {state}", "Dunst display format",
+            "format", "DUNST {state} ({waiting} - {count})", "Dunst display format",
         ),
     ]
 
@@ -58,12 +58,15 @@ class Dunst(widget.base.ThreadPoolText):
         variables = dict()
 
         state = subprocess.check_output(["dunstctl", "is-paused"]).decode("utf-8").strip()
+        waiting = subprocess.check_output(["dunstctl", "count", "waiting"]).decode("utf-8").strip()
         variables["state"] = "" if state == "false" else ""
+        variables["waiting"] = "" if waiting == "0" else ""
+        variables["count"] = int(waiting)
 
         return self.format.format(**variables)
 
 
-def cst_dunst(bg="#000000", fg="#ffffff"):
+def cst_dunst(fmt, bg="#000000", fg="#ffffff"):
     """
         A simple widget to display the state of the dunst notification server.
 
@@ -75,7 +78,7 @@ def cst_dunst(bg="#000000", fg="#ffffff"):
         font=FONT,           # Default font
         fontsize=None,       # Font size. Calculated if None.
         foreground=fg,       # Foreground colour
-        format="{state}",    # How to format the text
+        format=fmt,    # How to format the text
         fontshadow=None,     # font shadow color, default is None(no shadow)
         markup=True,         # Whether or not to use pango markup
         max_chars=0,         # Maximum number of characters to display in widget.
