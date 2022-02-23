@@ -41,6 +41,7 @@ from widgets import vertical_sep
 from widgets import slash_sep
 from widgets import spacer
 from widgets import notify
+from widgets import cst_dunst
 
 
 def _create_widgets_table(terminal: str) -> dict:
@@ -70,6 +71,7 @@ def _create_widgets_table(terminal: str) -> dict:
         "quick_exit": [quick_exit, dict(**wt.quick_exit)],
         "spacer": [spacer, dict(**wt.spacer)],
         "notify": [notify, dict(**wt.notify)],
+        "cst_dunst": [cst_dunst, dict(**wt.cst_dunst)],
     }
 
 
@@ -88,12 +90,12 @@ _bar_styles = [
     ],
     # decreased
     [
-        ["current_screen", "group_box", "window_name"],
+        ["current_screen", "cst_dunst", "group_box", "window_name"],
         ["chord", "prompt", "volume", "wlan", "clock", "cpu", "battery", "quick_exit"],
     ],
     # normal
     [
-        ["current_screen", "current_layout", "group_box", "window_name"],
+        ["current_screen", "cst_dunst", "current_layout", "group_box", "window_name"],
         ["chord", "prompt", "check_updates", "df", "volume", "cst_moc", "cst_entropy", "wlan", "net", "cpu", "clock", "battery", "quick_exit"],
     ]
 ]
@@ -123,7 +125,10 @@ def _init_widgets(terminal: str) -> list:
         func, kwargs = table[lf]
         _bg = kwargs["bg"]
         # add the arrow and the widget with appropriate colors
-        widgets.extend([right_arrow_sep(fg=_bg, bg=bg), func(**kwargs)])
+        if lf in ["window_name", "current_layout"]:
+            widgets.extend([right_arrow_sep(fg=_bg, bg=bg), func(**kwargs), right_arrow_sep(fg=bg, bg=_bg)])
+        else:
+            widgets.extend([func(**kwargs)])
         bg = _bg
     # reverse the list
     widgets = widgets[::-1]

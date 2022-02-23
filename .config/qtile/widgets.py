@@ -37,12 +37,58 @@ def init_widget_defaults() -> dict:
     )
 
 
+class Dunst(widget.base.ThreadPoolText):
+    """
+        A simple widget to display the state of the dunst notification server.
+
+        Widget requirements: dunstctl from the dunst package
+    """
+    defaults = [
+        ("update_interval", 1.0, "Update interval for the Dunst widget"),
+        (
+            "format", "DUNST {state}", "Dunst display format",
+        ),
+    ]
+
+    def __init__(self, **config):
+        super().__init__("", **config)
+        self.add_defaults(Dunst.defaults)
+
+    def poll(self):
+        variables = dict()
+
+        state = subprocess.check_output(["dunstctl", "is-paused"]).decode("utf-8").strip()
+        variables["state"] = "" if state == "false" else ""
+
+        return self.format.format(**variables)
+
+
+def cst_dunst(bg="#000000", fg="#ffffff"):
+    """
+        A simple widget to display the state of the dunst notification server.
+
+        Widget requirements: dunstctl from the dunst package
+    """
+    return Dunst(
+        background=bg,       # Widget background color
+        fmt="{}",            # How to format the text
+        font=FONT,           # Default font
+        fontsize=None,       # Font size. Calculated if None.
+        foreground=fg,       # Foreground colour
+        format="{state}",    # How to format the text
+        fontshadow=None,     # font shadow color, default is None(no shadow)
+        markup=True,         # Whether or not to use pango markup
+        max_chars=0,         # Maximum number of characters to display in widget.
+        mouse_callbacks={},  # Dict of mouse button press callback functions. Accepts functions and ``lazy`` calls.
+        padding=None,        # Padding. Calculated if None.
+    )
+
+
 class Entropy(widget.base.ThreadPoolText):
     """
-    A simple widget to display the entropy of the system.
+        A simple widget to display the entropy of the system.
 
-    Widget requirements: subprocess
-
+        Widget requirements: subprocess
     """
     defaults = [
         ("update_interval", 1.0, "Update interval for the Entropy widget"),
@@ -88,10 +134,9 @@ def cst_entropy(bg="#000000", fg="#ffffff"):
 
 class MOC(widget.base.ThreadPoolText):
     """
-    A simple widget to interact with the moc music player.
+        A simple widget to interact with the moc music player.
 
-    Widget requirements: the moc music player, subprocess
-
+        Widget requirements: the moc music player, subprocess
     """
     defaults = [
         ("update_interval", 1.0, "Update interval for the MOC widget"),
@@ -137,10 +182,9 @@ class MOC(widget.base.ThreadPoolText):
 
 def cst_moc(terminal, bg="#000000", fg="#ffffff"):
     """
-    A simple widget to interact with the moc music player.
+        A simple widget to interact with the moc music player.
 
-    Widget requirements: the moc music player, subprocess
-
+        Widget requirements: the moc music player, subprocess
     """
     return MOC(
         background=bg,          # Widget background color

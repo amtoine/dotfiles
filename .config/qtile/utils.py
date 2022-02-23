@@ -106,6 +106,7 @@ _widgets = [
         "cst_moc",
         "spacer",
         "notify",
+        "cst_dunst",
 ]
 WidgetTheme = namedtuple(
     "WidgetTheme",
@@ -171,6 +172,7 @@ def build_widgets(
         "battery":        {"bg": theme.bg,      "fg": theme.color14,  "format": battery_fmt},
         "quick_exit":     {"bg": theme.bg,      "fg": theme.color1,   "text": qexit_fmt, "countdown": count_fmt},
         "notify":         {"bg": theme.bg,      "fg": theme.color14},
+        "cst_dunst":      {"bg": theme.bg,      "fg": theme.color5},
     })
 
 
