@@ -14,30 +14,22 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
-# asks the user for the size of the bar.
-default_size="medium"
+# ask the user for the size of the bar.
 DMFONT="mononoki Nerd Font-20"
-size=$(echo -e "$default_size (default)\ntiny\nsmall\nmedium\nlarge\nhuge" | dmenu -c -l 10 -bw 5 -h 5 -fn "$DMFONT" -p "bar size")
-if [ -z "$size" ]; then
-  size="$default_size"
-else
-  size=$(echo "$size" | sed 's/ .*//')
-fi
+size=$(echo -e "tiny\nsmall\nmedium\nlarge\nhuge" | dmenu -c -l 10 -bw 5 -h 5 -fn "$DMFONT" -p "bar size")
+[ "$?" = 1 ] && exit 0
+size=$(echo "$size" | sed 's/ .*//')
 
-# asks the user for the content of the bar.
-default_style="decreased"
+# ask the user for the content of the bar.
 case "$size" in
   huge|large) options="minimal\ndecreased (recommended)\nnormal";;
   *) options="minimal\ndecreased\nnormal";;
 esac
-style=$(echo -e "$default_style (default)\n$options" | dmenu -c -l 10 -bw 5 -h 5 -fn "$DMFONT" -p "bar style")
-if [ -z "$style" ]; then
-  style="$default_style"
-else
-  style=$(echo "$style" | sed 's/ .*//')
-fi
+style=$(echo -e "$options" | dmenu -c -l 10 -bw 5 -h 5 -fn "$DMFONT" -p "bar style")
+[ "$?" = 1 ] && exit 0
+style=$(echo "$style" | sed 's/ .*//')
 
-# changes the ~/.config/qtile/style.py file to reflect the new bar
+# change the ~/.config/qtile/style.py file to reflect the new bar
 echo "size: $size; style: $style"
 sed -i "s/ = font_sizes\..*/ = font_sizes\.$size/" ~/.config/qtile/style.py
 sed -i "s/ = bars\..*/ = bars\.$style/" ~/.config/qtile/style.py
