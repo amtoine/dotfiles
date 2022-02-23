@@ -111,7 +111,6 @@ BLUETOGG = "sound.sh --bluetooth --notify"
 PYTHON = " python"
 BTOP = " btop --utf-force"
 HTOP = " htop"
-DUNST_CLOSE = "dunstctl close-all"
 MACHO = ' ' + os.path.expanduser("~/scripts/macho.sh")
 WTLDR = f" {F_TERM} bash " + os.path.expanduser("~/scripts/wtldr.sh")
 PASSEDIT = "passedit.sh"
@@ -253,11 +252,17 @@ def init_keymap(mod, terminal, groups):
                 mode=" BROWSER"
             ),
             KeyChord(MOD, 'c', [
-                Key([], 'c', *_ucmd(CAPRINE),                 desc="Open messenger"),
-                Key([], 'd', *_ucmd(DISCORD),                 desc="Open discord"),
-                Key([], 'g', *_ucmd(SIGNAL),                  desc="Open signal"),
-                Key([], 'm', *_ucmd(terminal + MACHO),        desc="Use the macho wrapper around man"),
-                Key([], 'n', *_ucmd(DUNST_CLOSE),             desc="Close all notifications on the screen"),
+                Key([], 'c', *_ucmd(CAPRINE),                   desc="Open messenger"),
+                Key([], 'd', *_ucmd(DISCORD),                   desc="Open discord"),
+                Key([], 'g', *_ucmd(SIGNAL),                    desc="Open signal"),
+                Key([], 'm', *_ucmd(terminal + MACHO),          desc="Use the macho wrapper around man"),
+                KeyChord([], 'n', [
+                    Key([], 'c', *_uacmd("dunstctl close-all"),         desc="Close all notifications on the screen"),
+                    Key([], 'h', *_uacmd("dunstctl history-pop"),       desc="Pop a notification from history"),
+                    Key([], 'p', *_uacmd("dunstctl set-paused toggle"), desc="Toggle the notifications"),
+                    ],
+                    mode=" NOTIFICATIONS"
+                ),
                 Key([], 's', *_ucmd(SLACK),                   desc="Open slack"),
                 Key([], 't', *_ucmd(THUNDERBIRD),             desc="Open thunderbird"),
                 Key([], 'w', *_ucmd(terminal + WTLDR),        desc="Use the wtldr wrapper around tldr"),

@@ -53,6 +53,7 @@ if [[ -f "$cache" ]]; then
     sed "s/^EDITOR /EDITOR:mod4+e,/g" | \
     sed "s/^MUSIC /MUSIC:mod4+m,/g" | \
     sed "s/^MISCELLANEOUS /MISCELLANEOUS:mod4+c,/g" | \
+    sed "s/^MISCELLANEOUS> NOTIFICATIONS /MISCELLANEOUS,NOTIFICATIONS:mod4+c,n,/g" | \
     sed "s/^PASS /PASS:mod4+p,/g" | \
     sed "s/^QTILE> HELP /QTILE,HELP:mod4+q,h,/g" | \
     sed "s/^QTILE /QTILE:mod4+q,/g" | \
