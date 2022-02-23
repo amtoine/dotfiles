@@ -174,10 +174,10 @@ init_deps () {
   deps_table[rofi]="pacman:rofi"
   deps_table[conky]="pacman:conky"
   deps_table[pass]="pacman:pass"
-  deps_table[dmenu]="make:dmenu"
-  deps_table[tabbed]="make:tabbed"
-  deps_table[surf]="make:surf pacman:gcr pacman:webkit2gtk"
-  deps_table[slock]="make:slock"
+  deps_table[dmenu]="make:a2n-s/dmenu"
+  deps_table[tabbed]="make:a2n-s/tabbed"
+  deps_table[surf]="make:a2n-s/surf pacman:gcr pacman:webkit2gtk"
+  deps_table[slock]="make:a2n-s/slock"
   deps_table[nerd-fonts-mononoki]="yay:nerd-fonts-mononoki"
   deps_table[psutil]="pip:psutil"
   deps_table[dbus-next]="pip:dbus-next"
@@ -422,11 +422,11 @@ _install_custom_builds () {
   info "## Installing custom builds of suckless-like software         ##"
   info "################################################################"
   for dep in $(grep -e "^make:" "$deps_file"); do
-    name="$(echo "$dep" | sed 's/^make://g')"
+    repo="$(echo "$dep" | sed 's/^make://g')"
     # clone the right repo
-    git clone "https://github.com/a2n-s/$name" "/tmp/$name";
+    git clone "https://github.com/$repo" "/tmp/$repo";
     # build it inside the directory and go back
-    cd "/tmp/$name"; sudo make clean install; cd -
+    cd "/tmp/$repo"; sudo make clean install; cd -
   done
 }
 
