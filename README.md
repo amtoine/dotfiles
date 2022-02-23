@@ -104,6 +104,8 @@ In this section, some general ideas are given and the lists of the programs, scr
 - [x] [`surf`] (\*) ([\*\*][mydoc-surf])
 - [x] [my fork][my-surf] of [suckless surf][surf] (\*) ([\*\*][mydoc-surf])
 - [x] [my fork][my-tabbed] of [suckless tabbed][tabbed] (\*) ([\*\*][mydoc-tabbed])
+- [x] [`vimb`]
+- [x] [`qutebrowser`]
 - [x] `firefox`, only log into the firefox account to synchronize.
 - [ ] `chromium`, only for very specific things.
 
@@ -276,6 +278,7 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [`sxhkd`]:        .config/sxhkd/sxhkdrc
 [`starship`]:     .config/starship.toml
 [`surf`]:         .config/surf
+[`vimb`]:         .config/vimb
 [`tig`]:          .config/tig/config
 [`tmux`]:         .tmux.conf
 [`vifm`]:         .config/vifm

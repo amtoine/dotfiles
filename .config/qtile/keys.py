@@ -64,6 +64,7 @@ NVIM = " nvim"
 EMACS = "emacsclient -c -a 'emacs'"
 
 SURF = "tabbed -c surf -N -e"
+VIMB = "tabbed -c vimb -e"
 
 # system related commands
 KLOCK = "killall -q xautolock"
@@ -247,7 +248,9 @@ def init_keymap(mod, terminal, groups):
             KeyChord(MOD, 'b', [
                 Key([], 'c', *_ucmd("chromium"),              desc="Launch chromium"),
                 Key([], 'f', *_ucmd("firefox"),               desc="Launch firefox"),
+                Key([], 'q', *_ucmd("qutebrowser"),           desc="Launch qutebrowser"),
                 Key([], 's', *_ucmd(SURF),                    desc="Launch surf"),
+                Key([], 'v', *_ucmd(VIMB),                    desc="Launch vimb"),
                 ],
                 mode=" BROWSER"
             ),

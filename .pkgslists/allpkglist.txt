@@ -156,6 +156,7 @@ python2
 python35
 python38
 qtile
+qutebrowser
 ranger
 read-edid
 reddio
@@ -196,6 +197,7 @@ ueberzug
 unzip
 vi
 vim
+vimb
 virtualbox
 virtualbox-host-modules-arch
 vnstat

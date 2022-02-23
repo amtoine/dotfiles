@@ -46,7 +46,6 @@ fortune-mod
 gimp
 github-cli
 grub
-gtk4
 guake
 gulp
 helm
@@ -79,7 +78,6 @@ python-black
 python-isort
 python-mpi4py
 python-nose
-python-opengl
 python-pipenv
 python-pytest
 python-tqdm
@@ -104,6 +102,7 @@ thunderbird
 tig
 tldr
 vi
+vimb
 virtualbox
 vnstat
 vulkan-tools

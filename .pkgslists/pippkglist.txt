@@ -64,7 +64,6 @@ ipykernel                     6.7.0
 ipython                       8.0.0
 ipython-genutils              0.2.0
 ipywidgets                    7.6.5
-isc                           2.0
 isodate                       0.6.1
 isort                         5.10.1
 itsdangerous                  2.0.1
@@ -79,7 +78,7 @@ lit                           13.0.1.dev0
 Markdown                      3.3.6
 MarkupSafe                    2.0.1
 matplotlib-inline             0.1.3
-mccabe                        0.6.1
+mccabe                        0.7.0
 meson                         0.61.2
 mistune                       0.8.4
 more-itertools                8.10.0
@@ -137,7 +136,7 @@ PyICU                         2.8.1
 pynvim                        0.4.3
 PyOpenGL                      3.1.5
 pyOpenSSL                     21.0.0
-pyparsing                     2.4.7
+pyparsing                     3.0.0
 pyrsistent                    0.18.0
 pyserial                      3.5
 pyte                          0.8.0
@@ -148,7 +147,7 @@ python-xlib                   0.31
 pytimeparse                   1.1.8
 pytz                          2021.3
 pyxdg                         0.27
-PyYAML                        5.4.1
+PyYAML                        6.0
 pyzmq                         22.3.0
 qtconsole                     5.2.2
 qtile                         0.20.0
