@@ -70,7 +70,6 @@ def _create_widgets_table(terminal: str) -> dict:
         "quick_exit": [quick_exit, dict(**wt.quick_exit)],
         "spacer": [spacer, dict(**wt.spacer)],
         "notify": [notify, dict(**wt.notify)],
-        "cst_quick_exit": [cst_quick_exit, dict(**wt.cst_quick_exit)],
     }
 
 
@@ -141,9 +140,11 @@ def _init_widgets(terminal: str) -> list:
         if SEP_STYLE in [sep_styles.vmono, sep_styles.smono]:
             fg = theme.color1
         else:
-            fg = kwargs["fg"] if "fg" in kwargs else theme.bg
+            fg = kwargs["fg"] if "fg" in kwargs else theme.fg
         # add a separator and the widget
-        if SEP_STYLE in [sep_styles.vmono, sep_styles.vcolor]:
+        if "fg" not in kwargs:
+            _sep = vertical_sep(fg=theme.fg, bg=theme.bg, width=5, size=100)
+        elif SEP_STYLE in [sep_styles.vmono, sep_styles.vcolor]:
             _sep = vertical_sep(fg=fg, bg=theme.bg, width=5, size=100)
         else:
             _sep = slash_sep(fg=fg, bg=theme.bg)
