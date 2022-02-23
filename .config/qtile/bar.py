@@ -14,8 +14,10 @@
 # Contributors: Stevan Antoine
 
 from theme import theme
-from style import BAR
+from style import BAR_STYLE
 from style import WIDGETS as wt
+from style import SEP_STYLE
+from utils import sep_styles
 from utils import fetch_monitors
 from widgets import current_screen
 from widgets import current_layout
@@ -34,8 +36,9 @@ from widgets import cpu
 from widgets import clock
 from widgets import battery
 from widgets import quick_exit
-from widgets import powerline_right_arrow
-from widgets import sep
+from widgets import right_arrow_sep
+from widgets import vertical_sep
+from widgets import slash_sep
 from widgets import spacer
 from widgets import notify
 
@@ -103,7 +106,7 @@ def _init_widgets(terminal: str) -> list:
         widget lists from _bar_styles
     """
     # isolate left from right
-    left, right = _bar_styles[BAR]
+    left, right = _bar_styles[BAR_STYLE]
     # remove the current_screen widget when there is only
     # one monitor
     if len(fetch_monitors()) == 1:
@@ -121,7 +124,7 @@ def _init_widgets(terminal: str) -> list:
         func, kwargs = table[lf]
         _bg = kwargs["bg"]
         # add the arrow and the widget with appropriate colors
-        widgets.extend([powerline_right_arrow(fg=_bg, bg=bg), func(**kwargs)])
+        widgets.extend([right_arrow_sep(fg=_bg, bg=bg), func(**kwargs)])
         bg = _bg
     # reverse the list
     widgets = widgets[::-1]
@@ -135,9 +138,15 @@ def _init_widgets(terminal: str) -> list:
     # no need for a fancy reverse color computation
     for rg in right:
         func, kwargs = table[rg]
-        fg = kwargs["fg"] if "fg" in kwargs else theme.bg
-        # add a vertical separator and the widget
-        _sep = sep(fg=fg, bg=theme.bg, width=5, size=100)
+        if SEP_STYLE in [sep_styles.vmono, sep_styles.smono]:
+            fg = theme.color1
+        else:
+            fg = kwargs["fg"] if "fg" in kwargs else theme.bg
+        # add a separator and the widget
+        if SEP_STYLE in [sep_styles.vmono, sep_styles.vcolor]:
+            _sep = vertical_sep(fg=fg, bg=theme.bg, width=5, size=100)
+        else:
+            _sep = slash_sep(fg=fg, bg=theme.bg)
         widgets.extend([_sep, func(**kwargs)])
 
     return widgets

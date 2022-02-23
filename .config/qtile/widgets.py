@@ -284,23 +284,6 @@ def df(terminal, bg="#000000", fg="#ffffff"):
     )
 
 
-def sep(bg="#000000", fg="#ffffff", width=10, size=20):
-    """
-        class libqtile.widget.Sep(**config)[source]
-        A visible widget separator
-
-        Supported bar orientations: horizontal and vertical
-    """
-    return widget.Sep(
-        background=bg,        # Widget background color
-        foreground=fg,        # Separator line colour.
-        linewidth=width,      # Width of separator line.
-        mouse_callbacks={},   # Dict of mouse button press callback functions. Accepts functions and lazy calls.
-        padding=2,            # Padding on either side of separator.
-        size_percent=size,    # Size as a percentage of bar size (0-100).
-    )
-
-
 def image(terminal, bg="#000000", filename=None):
     """
         class libqtile.widget.Image(length=CALCULATED, **config)[source]
@@ -1063,7 +1046,7 @@ def wlan(terminal, co_fmt=' {essid} {quality:02d}/70', dis_fmt="睊 --/--", b
     )
 
 
-def powerline_left_arrow(bg="#000000", fg="#ffffff"):
+def left_arrow_sep(bg="#000000", fg="#ffffff"):
     """
         TODO
     """
@@ -1077,7 +1060,7 @@ def powerline_left_arrow(bg="#000000", fg="#ffffff"):
     )
 
 
-def powerline_right_arrow(bg="#000000", fg="#ffffff"):
+def right_arrow_sep(bg="#000000", fg="#ffffff"):
     """
         TODO
     """
@@ -1091,17 +1074,31 @@ def powerline_right_arrow(bg="#000000", fg="#ffffff"):
     )
 
 
-def vertical_sep(bg="#000000", fg="#ffffff"):
+def vertical_sep(bg="#000000", fg="#ffffff", width=10, size=20):
     """
-        TODO
+        class libqtile.widget.Sep(**config)[source]
+        A visible widget separator
+
+        Supported bar orientations: horizontal and vertical
     """
+    return widget.Sep(
+        background=bg,        # Widget background color
+        foreground=fg,        # Separator line colour.
+        linewidth=width,      # Width of separator line.
+        mouse_callbacks={},   # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        padding=2,            # Padding on either side of separator.
+        size_percent=size,    # Size as a percentage of bar size (0-100).
+    )
+
+
+def slash_sep(bg="#000000", fg="#ffffff"):
     return widget.TextBox(
-        text='|',
-        font=FONT,
-        background=bg,
+        text='',
         foreground=fg,
-        padding=2,
-        fontsize=14
+        background=bg,
+        padding=0,
+        font="Fira Code Bold",
+        fontsize=int(ARROW_SIZE * 1.2),
     )
 
 
