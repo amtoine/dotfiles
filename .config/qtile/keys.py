@@ -67,7 +67,6 @@ SURF = "tabbed -c surf -N -e"
 VIMB = "tabbed -c vimb -e"
 
 # system related commands
-KLOCK = "killall -q xautolock"
 CHECK = f" {F_TERM} checkupdates"
 UPDT = f" {F_TERM} sudo pacman -Syu"
 TREE = " ncdu -x /"
@@ -347,7 +346,6 @@ def init_keymap(mod, terminal, groups):
                 Key([], "s", *USHUTDOWN,                      desc="Shutdown Qtile"),
                 Key([], 't', *_uscript(**THEME),              desc="Change the theme of qtile"),
                 Key([], 'w', *_uscript(WALLPAPER, terminal),  desc="Change the wallpapers"),
-                Key([], 'x', *_ucmd(KLOCK),                   desc="Kill the autolock if active"),
                 ],
                 mode="  QTILE"
             ),
@@ -401,6 +399,12 @@ def init_keymap(mod, terminal, groups):
                     mode=" UPDATES"
                 ),
                 Key([], 'y', *_ucmd(terminal + CAL),          desc="Open a calendar of current year"),
+                KeyChord([], 'x', [
+                    Key([], 'd', *_uascript("xal.sh -dn"),     desc="Updates the system"),
+                    Key([], 'e', *_uascript("xal.sh -en"),     desc="Updates the system"),
+                    ],
+                    mode=" XAUTOLOCK"
+                ),
                 ],
                 mode=" SYSTEM"
             ),

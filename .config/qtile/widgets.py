@@ -1144,8 +1144,8 @@ def slash_sep(bg="#000000", fg="#ffffff"):
         foreground=fg,
         background=bg,
         padding=0,
-        font="Fira Code Bold",
-        fontsize=int(ARROW_SIZE * 1.2),
+        font=FONT,
+        fontsize=int(ARROW_SIZE * 1.15),
     )
 
 

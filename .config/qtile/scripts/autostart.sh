@@ -14,6 +14,17 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
+_notify="yes"
+
+error () {
+  if [ "$1" = 0 ];
+  then
+    [ "$_notify" = "yes" ] && notify-send -u low -t 10000 -- "$2"
+  else
+    [ "$_notify" = "yes" ] && notify-send -u critical -t 10000 -- "$3"
+  fi
+}
+
 # open the help only when first time
 if command -v feh &> /dev/null; then
   [ ! -f $HOME/.local/share/qtile/nobeginner ] && conky --config ~/.config/qtile/conky/beginner.conkyrc --daemonize #--pause=5
@@ -21,8 +32,16 @@ if command -v feh &> /dev/null; then
   [ ! -f $HOME/.local/share/qtile/nobeginner ] && touch $HOME/.local/share/qtile/nobeginner
 fi
 
+# start the `dunst` notification server in the background
+if command -v dunst &> /dev/null; then
+  dunst -conf ~/.config/dunst/dunstrc &
+fi
+
 # start the compositor
-if command -v picom &> /dev/null; then picom -b; fi
+if command -v picom &> /dev/null; then
+  picom -b
+  error "$?" "picom started successfully" "picom failed to start"
+fi
 
 # choose a random wallpaper
 if command -v feh &> /dev/null; then
@@ -34,18 +53,21 @@ if command -v feh &> /dev/null; then
 fi
 
 # start emacs in the background
-if command -v emacs &> /dev/null; then emacs --daemon; fi
-
-# start the `dunst` notification server in the background
-if command -v dunst &> /dev/null; then
-  dunst -conf ~/.config/dunst/dunstrc &
+if command -v emacs &> /dev/null; then
+  emacs --daemon
+  error "$?" "Emacs started successfully" "Emacs failed to start"
 fi
 
-if command -v killall &> /dev/null; then killall -q xautolock; fi
 if command -v xautolock &> /dev/null; then
-  xautolock -time 10 -locker ~/scripts/slock-cst.sh &
+  margin=60
+  xautolock -exit
+  xautolock -time 15 -locker ~/scripts/slock-cst.sh -notify "$margin" -notifier "dunstify -u critical -t ${margin}000 'Locking in less than $margin sec...'" &
+  xautolock -disable
+  [ "$_notify" = "yes" ] && notify-send -u low -t 10000 -- 'LOCK is OFF by default'
 fi
 
 # removes the auto saver of x as it makes my laptop crash
 xset s 0
 xset -dpms
+
+[ "$_notify" = "yes" ] && notify-send -u normal -t 10000 -- "qtile has been fully loaded"

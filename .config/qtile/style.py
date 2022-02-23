@@ -85,7 +85,7 @@ _margin = (1, 1, 1, 1)
 _border_color = theme.sel_bg
 BAR_GEOMETRY = dict(
     size=BAR_SIZE,
-    opacity=.9 if BAR_STYLE in [bar_styles.minimal, bar_styles.decreased] else 1.,
+    opacity=.9 if BAR_STYLE <= bar_styles.decreased else 1.,
     background=theme.bg,
     margin=list(map(lambda x: x * _margin_width, _margin)),
     border_width=list(map(lambda x: x * _border_width, _border)),
