@@ -50,4 +50,5 @@ customcommandshistory:
 - cfg add ~/.config/
 - cfg add ~/scripts/*.sh
 - git rebase --abort
+- cfg add ~/scripts
 hidecommandlog: false

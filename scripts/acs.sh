@@ -73,7 +73,7 @@ main () {
       * ) break ;;
     esac
   done
-    # download the themes list from remote.
+  # download the themes list from remote.
   if [[ ! -d "$CACHE" ]]; then
     echo "Downloading themes from ${Src}$REPO${Off} to ${Dst}$CACHE${Off}.";
     git clone -q "https://github.com/$REPO.git" "$CACHE";

@@ -72,13 +72,13 @@ WIDGETS = build_widgets(
 # and some border size and margins for the windows
 LAYOUTS = build_layouts(
     theme,
-    border_width=2,
+    border_width=4,
     margin=8,
 )
 
 # this is the bar geometry
-_border_width = LAYOUTS.border_width // 4
-_margin_width = LAYOUTS.border_width // 4
+_border_width = 2
+_margin_width = 4
 #          N  E  S  W
 _border = (1, 1, 1, 1)
 _margin = (1, 1, 1, 1)
