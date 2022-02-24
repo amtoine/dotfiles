@@ -14,6 +14,6 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
-qtile_current="$HOME/.config/qtile/theme.py"
+_qtile_current="$HOME/.config/qtile/theme.py"
 
-tail -n1 $qtile_current | sed 's/# current: \(.*\).conf/\1/'
+tail -n1 "$_qtile_current" | sed 's/# current: \(.*\).conf/\1/'

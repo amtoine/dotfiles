@@ -13,16 +13,44 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
-OPTIONS=$(getopt -o edn --long enable,disable,notify \
+# parse the arguments
+OPTIONS=$(getopt -o hedn --long help,nable,disable,notify \
               -n 'xal.sh' -- "$@")
-
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
-
 eval set -- "$OPTIONS"
+
+usage () {
+  #
+  # the usage function.
+  #
+  echo "Usage: xal.sh [-hedn]"
+  echo "Type -h or --help for the full help."
+  exit 0
+}
+
+help () {
+  #
+  # the help function.
+  #
+  echo "xal.sh:"
+  echo "     This script allows the user to easily toggle xautolock."
+  echo "     Do not forget to puth it in your PATH."
+  echo ""
+  echo "Usage:"
+  echo "     xal.sh [-hedn]"
+  echo ""
+  echo "Switches:"
+  echo "     -h/--help               shows this help."
+  echo "     -e/--enable             enable the xautolock"
+  echo "     -d/--disable            disable the xautolock"
+  echo "     -n/--notify             enable notifications"
+  exit 0
+}
 
 main () {
   while [[ $# -gt 0 ]]; do
     case "$1" in
+      -h | --help )      help ;;
       -e | --enable)   ACTION="enable"; shift 1 ;;
       -d | --disable ) ACTION="disable"; shift 1 ;;
       -n | --notify )  NOTIFY="yes"; shift 1 ;;
@@ -30,6 +58,7 @@ main () {
       * ) break ;;
     esac
   done
+  [ -z "$ACTION" ] && usage
   case "$ACTION" in
     disable ) xautolock -disable; [[ "$NOTIFY" == "yes" ]] && dunstify "xal.sh" "xautolock disabled" ;;
     enable) xautolock -enable; [[ "$NOTIFY" == "yes" ]] && dunstify "xal.sh" "xautolock enabled" ;;

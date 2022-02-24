@@ -15,7 +15,8 @@
 # Contributors: Stevan Antoine
 
 # ask the user for the size of the bar.
-DMFONT="mononoki Nerd Font-20"
+[[ ! -v DMFONT ]] && DMFONT="mononoki Nerd Font-20"
+echo "$DMFONT"
 size=$(echo -e "tiny\nsmall\nmedium\nlarge\nhuge" | dmenu -c -l 10 -bw 5 -h 5 -fn "$DMFONT" -p "Choose a bar size (in px)")
 [ "$?" = 1 ] && exit 0
 size=$(echo "$size" | sed 's/ .*//')

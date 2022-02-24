@@ -42,8 +42,6 @@ if status is-interactive
 
   # to list all the git repositiories inside the home directory or gives a full diagnostic with the extra d.
   alias lgr='find $pwd -type d | grep "\.git\$" | sed "s/\/\.git//"'
-  alias lgrd='~/scripts/list.git-repos.diagnostic.sh'
-  alias lgrs='lgrd | grep "^./" | sort --field-separator="|" -nrk'
   # launches lazygit.
   alias lg='/usr/bin/lazygit'
   # interacts with my config's git bare repository.

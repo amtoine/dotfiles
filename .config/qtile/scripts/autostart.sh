@@ -53,15 +53,15 @@ if command -v feh &> /dev/null; then
 fi
 
 # start emacs in the background
-if command -v emacs &> /dev/null; then
-  emacs --daemon
-  error "$?" "Emacs started successfully" "Emacs failed to start"
-fi
+# if command -v emacs &> /dev/null; then
+#   emacs --daemon
+#   error "$?" "Emacs started successfully" "Emacs failed to start"
+# fi
 
 if command -v xautolock &> /dev/null; then
   margin=60
   xautolock -exit
-  xautolock -time 15 -locker ~/scripts/slock-cst.sh -notify "$margin" -notifier "dunstify -u critical -t ${margin}000 'Locking in less than $margin sec...'" &
+  xautolock -time 15 -locker ~/scripts/slock.sh -notify "$margin" -notifier "dunstify -u critical -t ${margin}000 'Locking in less than $margin sec...'" &
   xautolock -disable
   [ "$_notify" = "yes" ] && notify-send -u low -t 10000 -- 'LOCK is OFF by default'
 fi

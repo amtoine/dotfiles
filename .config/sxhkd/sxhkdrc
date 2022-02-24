@@ -81,7 +81,7 @@ super + F10
   kitty ~/scripts/lfrun.sh
 # lock the computer.
 super + ctrl + F12
-  ~/scripts/slock-cst.sh
+  ~/scripts/slock.sh
 
 #
 # >>> bspwm hotkeys

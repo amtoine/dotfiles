@@ -79,7 +79,6 @@ NET = " nmcli connection show"
 AUTOSTART = os.path.expanduser("~/.config/qtile/scripts/autostart.sh")
 LOG = " bat " + os.path.expanduser("~/.local/share/qtile/qtile.log")
 KB = ' ' + os.path.expanduser("~/.config/qtile/scripts/kb.sh")
-WALLPAPER = "wallpaper.fzf.sh"
 BAR = dict(script="bar.sh", path=".config/qtile/scripts")
 URELOAD = lazy.reload_config(), lazy.ungrab_chord()
 URESTART = lazy.restart(), lazy.ungrab_chord()
@@ -113,9 +112,9 @@ BTOP = " btop --utf-force"
 HTOP = " htop"
 MACHO = ' ' + os.path.expanduser("~/scripts/macho.sh")
 WTLDR = f" {F_TERM} bash " + os.path.expanduser("~/scripts/wtldr.sh")
-PASSEDIT = "passedit.sh"
+PASSEDIT = "pedit.sh"
 LGIT = f" lazygit --git-dir={HOME}/.dotfiles --work-tree={HOME}"
-TIGA = "config.tiga.sh"
+TIGA = "tcfg.sh"
 
 
 def _cmd(command: str):
@@ -324,7 +323,7 @@ def init_keymap(mod, terminal, groups):
                 mode=" MUSIC"
             ),
             KeyChord(MOD, 'p', [
-                Key([], 'e', *_uscript(PASSEDIT, terminal),   desc="Edit passwords and credentials"),
+                Key([], 'e', *_uscript("pedit.sh"),           desc="Edit passwords and credentials"),
                 Key([], 'p', *_ucmd(PASS),                    desc="Retrieve passwords with dmenu"),
                 ],
                 mode="ﳳ PASS"
@@ -345,7 +344,7 @@ def init_keymap(mod, terminal, groups):
                 Key([], "r", *URESTART,                       desc="Restart Qtile"),
                 Key([], "s", *USHUTDOWN,                      desc="Shutdown Qtile"),
                 Key([], 't', *_uscript(**THEME),              desc="Change the theme of qtile"),
-                Key([], 'w', *_uscript(WALLPAPER, terminal),  desc="Change the wallpapers"),
+                Key([], 'w', *_uscript("wfzf.sh", terminal),  desc="Change the wallpapers"),
                 ],
                 mode="  QTILE"
             ),
@@ -451,7 +450,7 @@ def init_keymap(mod, terminal, groups):
             Key(MOD, F8,  _script(MUTE),                     desc="Toggle the sound on and off for the selected channel"),
             Key(MOD, F9,  _script(SOUNDUP.format(SOUNDL)),   desc="Increase the sound by 'SOUNDL' (defaults to 5)"),
             Key(MOD, F10, _script(BLUETOGG),                 desc="Toggle a bluetooth device on and off"),
-            Key(MOD, F12, _script("slock-cst.sh"),           desc="Lock the computer"),
+            Key(MOD, F12, _script("slock.sh"),               desc="Lock the computer"),
         ]
     )
 

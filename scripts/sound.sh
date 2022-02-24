@@ -1,15 +1,12 @@
 #! /usr/bin/bash
-#             ___
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
-#     \__,_/____/_/ /_/           /____/
-#                        _       __             __                              __              __  
-#        _______________(_)___  / /______     _/_/  _________  __  ______  ____/ /        _____/ /_ 
-#       / ___/ ___/ ___/ / __ \/ __/ ___/   _/_/   / ___/ __ \/ / / / __ \/ __  /        / ___/ __ \
-#      (__  ) /__/ /  / / /_/ / /_(__  )  _/_/    (__  ) /_/ / /_/ / / / / /_/ /   _    (__  ) / / /
-#     /____/\___/_/  /_/ .___/\__/____/  /_/     /____/\____/\__,_/_/ /_/\__,_/   (_)  /____/_/ /_/ 
-#                     /_/                                                                           
+#           ___                       personal page: https://a2n-s.github.io/
+#      __ _|_  )_ _    ___   ___      github   page: https://github.com/a2n-s
+#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/a2n-s/dotfiles
+#     \__,_/___|_||_|       /__/
+#             __                       _      _
+#      ___   / /  ___ ___ _  _ _ _  __| |  __| |_
+#     (_-<  / /  (_-</ _ \ || | ' \/ _` |_(_-< ' \
+#     /__/ /_/   /__/\___/\_,_|_||_\__,_(_)__/_||_|
 #
 # Description:  manages sound and bluetooth sinks.
 #               one can use multiple flags, only the last one will be used.
@@ -17,19 +14,17 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
-OPTIONS=$(getopt -o udtmbs:c:n --long up,down,toggle,bluetooth,step:,channel:,notify \
+# parse the arguments
+OPTIONS=$(getopt -o udtmbc:s:nh --long up,down,toggle,bluetooth,channel:,step:,notify,help \
               -n 'sound.sh' -- "$@")
-
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
-
 eval set -- "$OPTIONS"
 
-CHANNEL="Master"
-STEP="5"
-
+# environment variables
 [[ ! -v DEVICE ]] && DEVICE="JBL Xtreme"
 [[ ! -v ON ]] && ON="a2dp_sink"
 [[ ! -v OFF ]] && OFF="off"
+
 NUM=$(pacmd list-cards | grep -B5 "$DEVICE" | head -1 | sed 's/\s\+index: //')
 
 bluetooth_on () {
@@ -72,13 +67,51 @@ bluetooth_notify () {
   fi
 }
 
+usage () {
+  #
+  # the usage function.
+  #
+  echo "Usage: sound.sh [-hudtbn] -c CHANNEL [-s STEP]"
+  echo "Type -h or --help for the full help."
+  exit 0
+}
+
+help () {
+  #
+  # the help function.
+  #
+  echo "hdmi.sh:"
+  echo "     This script allows the user to easily control the sound."
+  echo "     Do not forget to puth it in your PATH."
+  echo ""
+  echo "Usage:"
+  echo "     sound.sh [-hudtbn] -c CHANNEL [-s STEP]"
+  echo ""
+  echo "Switches:"
+  echo "     -h/--help               shows this help."
+  echo "     -c/--channel            the channel to control (required)"
+  echo "     -s/--step               the step to increase/decrease the volume by, in % (required when no toggle)"
+  echo "     -u/--up                 increase the volume of \`channel\` by \`step\`"
+  echo "     -d/--down               decrease the volume of \`channel\` by \`step\`"
+  echo "     -t/--toggle             toggle the sound of \`channel\` on and off"
+  echo "     -b/--bluetooth          switch between the main sound to the bluetooth device"
+  echo "     -n/--notify             enable notifications"
+  echo ""
+  echo "Environment variables:"
+  echo "     DEVICE                  the bluetooth device connected (defaults to 'JBL Xtreme')"
+  echo "     ON                      the 'on' sink related to the \`device\` (defaults to 'a2dp_sink')"
+  echo "     OFF                     the 'on' sink related to the \`device\` (defaults to 'off')"
+  exit 0
+}
+
 main () {
   while [[ $# -gt 0 ]]; do
     case "$1" in
+      -h | --help )      help ;;
       -u | --up )        ACTION="up"; shift 1 ;;
       -d | --down )      ACTION="down"; shift 1 ;;
       -t | --toggle )    ACTION="toggle"; shift 1 ;;
-      -b | --bluetooth ) ACTION="bluetooth"; shift 1 ;;
+      -t | --toggle )    ACTION="toggle"; shift 1 ;;
       -c | --channel )   CHANNEL="$2"; shift 2 ;;
       -s | --step )      STEP="$2"; shift 2 ;;
       -n | --notify )    NOTIFY="yes"; shift 1 ;;
@@ -86,6 +119,9 @@ main () {
       * ) break ;;
     esac
   done
+  [ -z "$ACTION" ] && usage
+  [ -z "$CHANNEL" ] && usage
+  [ ! "$ACTION" = "toggle" -a -z "$STEP" ] && usage
   case "$ACTION" in
     up )        amixer -q sset "$CHANNEL" "$STEP"%+; [[ "$NOTIFY" == "yes" ]] && notify ;;
     down )      amixer -q sset "$CHANNEL" "$STEP"%-; [[ "$NOTIFY" == "yes" ]] && notify ;;

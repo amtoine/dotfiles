@@ -34,7 +34,7 @@ feh --bg-fill --randomize ~/repos/wallpapers/wallpapers/
 pgrep -x sxhkd > /dev/null || sxhkd &
 bash $HOME/.config/polybar/launch.sh --forest &
 killall -q xautolock
-xautolock -time 10 -locker ~/scripts/slock-cst.sh &
+xautolock -time 10 -locker ~/scripts/slock.sh &
 xset s 0
 xset -dpms
 

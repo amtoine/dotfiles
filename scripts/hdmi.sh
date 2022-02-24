@@ -4,12 +4,10 @@
 #      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
 #     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
 #     \__,_/____/_/ /_/           /____/
-#                        _       __             __   __        __          _               __
-#        _______________(_)___  / /______     _/_/  / /_  ____/ /___ ___  (_)        _____/ /_
-#       / ___/ ___/ ___/ / __ \/ __/ ___/   _/_/   / __ \/ __  / __ `__ \/ /        / ___/ __ \
-#      (__  ) /__/ /  / / /_/ / /_(__  )  _/_/    / / / / /_/ / / / / / / /   _    (__  ) / / /
-#     /____/\___/_/  /_/ .___/\__/____/  /_/     /_/ /_/\__,_/_/ /_/ /_/_/   (_)  /____/_/ /_/
-#                     /_/
+#             __  _       _       _      _
+#      ___   / / | |_  __| |_ __ (_)  __| |_
+#     (_-<  / /  | ' \/ _` | '  \| |_(_-< ' \
+#     /__/ /_/   |_||_\__,_|_|_|_|_(_)__/_||_|
 #
 # Description:  manages hdmi monitors, increases or decreases the brightness of the screen by giving + or - to the script.
 #               one can use multiple flags, only the last one will be used.
@@ -18,13 +16,13 @@
 # Contributors: WinEunuuchs2Unix at https://askubuntu.com/questions/1150339/increment-brightness-by-value-using-xrandr (original idea)
 #               Stevan Antoine (adaptations)
 
-OPTIONS=$(getopt -o b:dlmrMSn --long brightness:,disconnect,left,mirror,right,main,second,notify \
+# parse the arguments.
+OPTIONS=$(getopt -o b:dlmrMSnh --long brightness:,disconnect,left,mirror,right,main,second,notify,help \
               -n 'hdmi.sh' -- "$@")
-
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
-
 eval set -- "$OPTIONS"
 
+# the environment variables
 [[ ! -v MAIN ]] && MAIN="eDP-1"
 [[ ! -v SECOND ]] && SECOND="HDMI-2"
 
@@ -82,9 +80,50 @@ notify_brightness () {
   dunstify "Brightness ($1)" -h "int:value:$2" -u low
 }
 
+usage () {
+  #
+  # the usage function.
+  #
+  echo "Usage: hdmi.sh [-hdlmrMSn] [-b BRIGHTNESS/DELTA]"
+  echo "Type -h or --help for the full help."
+  exit 0
+}
+
+help () {
+  #
+  # the help function.
+  #
+  echo "hdmi.sh:"
+  echo "     This script allows the user to easily manage hdmi devices."
+  echo "     Do not forget to puth it in your PATH."
+  echo ""
+  echo "Usage:"
+  echo "     hdmi.sh [-hdlmrMSn] [-b BRIGHTNESS/DELTA]"
+  echo ""
+  echo "Switches:"
+  echo "     -h/--help               shows this help."
+  echo "     -b/--brightness         change the brightness of the selected monitor (see -M and -S to select a monitor)."
+  echo "                             requires one positional argument after -b."
+  echo "                               the MAIN monitor uses \`brightnessctl\` and thus accepts arguments such as 123 or 16-"
+  echo "                               the SECOND monitor uses \`xrandr\` and thus accepts arguments such as +, - or .7"
+  echo "     -d/--disconnect         disconnect the SECOND monitor"
+  echo "     -l/--left               connect the SECOND monitor on the left of MAIN"
+  echo "     -m/--mirror             connect the SECOND monitor on the right of MAIN"
+  echo "     -r/--right              connect the SECOND monitor as a mirror of MAIN"
+  echo "     -M/--main               select MAIN as current monitor (see brightness)"
+  echo "     -S/--second             select SECOND as current monitor (see brightness)"
+  echo "     -n/--notify             enable notifications"
+  echo ""
+  echo "Environment variables:"
+  echo "     MAIN        the name of the main monitor (defaults to 'eDP-1')"
+  echo "     SECOND      the name of the main monitor (defaults to 'HDMI-2')"
+  exit 0
+}
+
 main () {
   while [[ $# -gt 0 ]]; do
     case "$1" in
+      -h | --help )       help ;;
       -b | --brightness ) ACTION="brightness"; BRIGHTNESS="$2"; shift 2 ;;
       -d | --disconnect ) ACTION="disconnect"; shift 1 ;;
       -l | --left )       ACTION="left"; shift 1 ;;
@@ -97,18 +136,19 @@ main () {
       * ) break ;;
     esac
   done
+  [ -z "$ACTION" ] && usage
   case "$ACTION" in
     brightness )
       if [ "$MONITOR" = "$MAIN" ]; then
         brightnessctl s "$BRIGHTNESS"
-        [[ "$NOTIFY" == "yes" ]] && notify_brightness "$MONITOR" $(brightnessctl | grep Current | sed 's/.*Current.*(\(.*\)%)/\1/')
+        [[ "$NOTIFY" == "yes" ]] && notify_brightness "$MONITOR" $(brightnessctl | grep "Current" | sed 's/.*Current.*(\(.*\)%)/\1/')
       elif [ "$MONITOR" = "$SECOND" ]; then
         change_brightness "$MONITOR" "$BRIGHTNESS" 2
         CurrBright=$(xrandr --verbose --current | grep ^"$MONITOR" -A5 | tail -n1 | sed 's/.*Brightness: \(.*\)/\1/' )
         CurrBright=$(awk -vb="$CurrBright" 'BEGIN{printf "%.2f" ,b * 100}')
         [[ "$NOTIFY" == "yes" ]] && notify_brightness "$MONITOR" "$CurrBright"
       else
-        echo "no monitor"
+        echo "no monitor selected"
       fi
       exit 0
       ;;

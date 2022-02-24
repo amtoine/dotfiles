@@ -14,16 +14,43 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
-OPTIONS=$(getopt -o tbn --long toggle,blur,notify \
-              -n 'pcm.sh' -- "$@")
-
+# parse the arguments.
+OPTIONS=$(getopt -o tbnh --long toggle,blur,notify,help -n 'pcm.sh' -- "$@")
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
-
 eval set -- "$OPTIONS"
+
+usage () {
+  #
+  # the usage function.
+  #
+  echo "Usage: pcm.sh [-htbn]"
+  echo "Type -h or --help for the full help."
+  exit 0
+}
+
+help () {
+  #
+  # the help function.
+  #
+  echo "pcm.sh:"
+  echo "     This script allows the user to easily manage picom."
+  echo "     Do not forget to puth it in your PATH."
+  echo ""
+  echo "Usage:"
+  echo "     pcm.sh [-htbn]"
+  echo ""
+  echo "Switches:"
+  echo "     -h/--help       shows this help."
+  echo "     -t/--toggle     toggle picom ON and OFF"
+  echo "     -b/--blur       toggle picom's blur effect on transparent windows"
+  echo "     -n/--notify     enable notifications"
+  exit 0
+}
 
 main () {
   while [[ $# -gt 0 ]]; do
     case "$1" in
+      -h | --help ) help ;;
       -t | --toggle ) ACTION="toggle"; shift 1 ;;
       -b | --blur )   ACTION="blur"; shift 1 ;;
       -n | --notify ) NOTIFY="yes"; shift 1 ;;
@@ -31,6 +58,7 @@ main () {
       * ) break ;;
     esac
   done
+  [ -z "$ACTION" ] && usage
   case "$ACTION" in
     toggle ) 
       if pgrep -x "picom" > /dev/null

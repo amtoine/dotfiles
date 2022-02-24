@@ -1,15 +1,12 @@
 #!/bin/sh
-#             ___
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
-#     \__,_/____/_/ /_/           /____/
-#                        _       __             __   ______                               __
-#        _______________(_)___  / /______     _/_/  / / __/______  ______           _____/ /_
-#       / ___/ ___/ ___/ / __ \/ __/ ___/   _/_/   / / /_/ ___/ / / / __ \         / ___/ __ \
-#      (__  ) /__/ /  / / /_/ / /_(__  )  _/_/    / / __/ /  / /_/ / / / /   _    (__  ) / / /
-#     /____/\___/_/  /_/ .___/\__/____/  /_/     /_/_/ /_/   \__,_/_/ /_/   (_)  /____/_/ /_/
-#                     /_/
+#           ___                       personal page: https://a2n-s.github.io/
+#      __ _|_  )_ _    ___   ___      github   page: https://github.com/a2n-s
+#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/a2n-s/dotfiles
+#     \__,_/___|_||_|       /__/
+#             __  _  __                    _
+#      ___   / / | |/ _|_ _ _  _ _ _    __| |_
+#     (_-<  / /  | |  _| '_| || | ' \ _(_-< ' \
+#     /__/ /_/   |_|_| |_|  \_,_|_||_(_)__/_||_|
 #
 # Description:  wrapper around lf to support advanced file preview with ueberzug.
 #               creates cache files to make previews faster once computed one time.
