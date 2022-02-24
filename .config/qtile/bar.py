@@ -13,6 +13,8 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
+import libqtile
+
 from theme import theme
 from style import BAR_STYLE
 from style import WIDGETS as wt
@@ -101,7 +103,7 @@ _bar_styles = [
 ]
 
 
-def _init_widgets(terminal: str) -> list:
+def _init_widgets(terminal: str, prompt: libqtile.widget.Prompt = None) -> list:
     """
         Builds the widgets using the left and right
         widget lists from _bar_styles
@@ -124,6 +126,7 @@ def _init_widgets(terminal: str) -> list:
     for lf in left[::-1]:
         func, kwargs = table[lf]
         _bg = kwargs["bg"]
+
         # add the arrow and the widget with appropriate colors
         if lf in ["window_name", "current_layout"]:
             widgets.extend([right_arrow_sep(fg=_bg, bg=bg), func(**kwargs), right_arrow_sep(fg=bg, bg=_bg)])
@@ -146,29 +149,57 @@ def _init_widgets(terminal: str) -> list:
             fg = theme.color1
         else:
             fg = kwargs["fg"] if "fg" in kwargs else theme.fg
-        # add a separator and the widget
+
+        # add a separator
         if "fg" not in kwargs:
             _sep = vertical_sep(fg=theme.fg, bg=theme.bg, width=5, size=100)
         elif SEP_STYLE in [sep_styles.vmono, sep_styles.vcolor]:
             _sep = vertical_sep(fg=fg, bg=theme.bg, width=5, size=100)
         else:
             _sep = slash_sep(fg=fg, bg=theme.bg)
-        widgets.extend([_sep, func(**kwargs)])
+
+        # add the widget
+        # the widget.Prompt is a bit special and needs to be
+        # manually mirrored on all monitors, hence the passing
+        # of a widget.Prompt object from init to init.
+        if rg == "prompt" and prompt is not None:
+            widgets.extend([_sep, prompt])
+        else:
+            widgets.extend([_sep, func(**kwargs)])
 
     return widgets
 
 
-def init_widgets_screen1(terminal: str) -> list:
+def build_prompt(terminal: str) -> libqtile.widget.Prompt:
+    """
+        Build the special widget.Prompt widget.
+        The Prompt widget is a bit special as it does not
+        mirror by default on all monitors.
+        A common widget.Prompt widget has to be given to
+        all bars to allow the prompt to be the same on all
+        monitors.
+    """
+    func, kwargs = _create_widgets_table(terminal)["prompt"]
+    return func(**kwargs)
+
+
+def init_widgets_screen1(
+        terminal: str,
+        prompt: libqtile.widget.Prompt = None
+        ) -> list:
     """
         Select the widgets for screen 1
     """
-    widgets = _init_widgets(terminal)
+    widgets = _init_widgets(terminal, prompt=prompt)
     return widgets
 
 
-def init_widgets_screen2(terminal: str) -> list:
+def init_widgets_screen2(
+        terminal: str,
+        prompt: libqtile.widget.Prompt = None
+        ) -> list:
     """
         Select the widgets for screen 2
     """
-    widgets = _init_widgets(terminal)
+    widgets = _init_widgets(terminal, prompt=prompt)
     return widgets
