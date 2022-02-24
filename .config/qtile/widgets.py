@@ -820,7 +820,7 @@ def prompt(bg="#000000", fg="#ffffff"):
         fontshadow=None,             # font shadow color, default is None(no shadow)
         fontsize=None,               # Font size. Calculated if None.
         foreground=fg,               # Foreground colour
-        ignore_dups_history=False,   # Don't store duplicates in history
+        ignore_dups_history=True,    # Don't store duplicates in history
         markup=True,                 # Whether or not to use pango markup
         max_chars=0,                 # Maximum number of characters to display in widget.
         max_history=100,             # Commands to keep in history. 0 for no limit.

@@ -9,7 +9,7 @@
 #     (_) \__| /_/   \__, | /_/   /__/ /_/   \__|_||_\__,_|_||_\__, \___|    \__|_||_\___|_|_|_\___(_)__/_||_|
 #                       |_|                                    |___/                                          
 #
-# Description:  change the theme of qtile with dmenu
+# Description:  change the theme of qtile with fzf
 # Dependencies: fzf
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
@@ -35,7 +35,6 @@ IYlw=$(printf '\033[0;93m')    # Yellow
 IBlu=$(printf '\033[0;94m')    # Blue
 IPur=$(printf '\033[0;95m')    # Purple
 IWht=$(printf '\033[0;97m')    # White
-# Bold High Intensity
 ################################################################################################
 ## 'Global constants' definitions ##############################################################
 ################################################################################################
@@ -58,12 +57,19 @@ export FZF_DEFAULT_OPTS="
 --height=100%
 --layout=reverse
 --prompt='Change qtile colorscheme: '
---preview=\"cat $cache/themes/{1} | grep -Ev 'cursor|active|^\$|^#|url' | sed 's/background/bg/; s/foreground/fg/; s/selection/sel/;  s/ #/%#/' | column -t -s '\%'\""
+--preview=\"cat $cache/themes/{1} | sed 's/#/%#/' | column -t -s '\%'\""
 
   # download the themes list from remote.
 if [[ ! -d "$cache" ]]; then
   echo "Downloading themes from ${Src}$repo${Off} to ${Dst}$cache${Off}.";
-  git clone -q "https://github.com/$repo.git" "$cache";
+  git clone "https://github.com/$repo.git" "$cache";
+  for theme in $(ls "$cache/themes");
+  do
+    echo "Stripping ${Src}$theme${Off}"
+    grep -Ev 'cursor|active|^\$|^#|url|mark' "$cache/themes/$theme" | sed 's/background/bg/; s/foreground/fg/; s/selection/sel/; s/^\s*//g; s/^\s\+/ /g' > "$cache/_tmp.conf"
+    cat "$cache/_tmp.conf" > "$cache/themes/$theme"
+  done
+  echo "${Dst}Done${Off}"
 fi
 
 if [ ! -z "$1" ];
@@ -113,10 +119,9 @@ EOF
 tmpbody=$(mktemp /tmp/qtile-body.XXXXXX)
 trap  'rm "$tmpbody"' 0 1 15
 { echo "from utils import ColorScheme"; echo "theme = ColorScheme(**{"; } > "$tmpbody"
-grep -Ev 'cursor|active|mark|^\$|^#|url' "$cache/themes/$theme" | \
-  sed 's/background/bg/; s/foreground/fg/; s/selection/sel/; s/\s\+/ /' | \
-  sed 's/\([a-z_0-9]*\)/    "\1":/; s/\(#......\)/"\1",/;' | \
-  sed 's/\s\+"":\s*$//' >> "$tmpbody"
+grep '^[bf]g' "$cache/themes/$theme" | sed 's/^\([bf]g\)\s*\(\#......\)/  "\1": "\2",/' >> "$tmpbody"
+grep '^sel_[bf]g' "$cache/themes/$theme" | sed 's/^\(sel_[bf]g\)\s*\(\#......\)/  "\1": "\2",/' >> "$tmpbody"
+grep 'color[0-9]\+' "$cache/themes/$theme" | sed 's/\s*\(color[0-9]\+\)\s\+\(\#......\)/  "\1": "\2",/' >> "$tmpbody"
 echo "})" >> "$tmpbody"
 
 # preview the theme file before installing.

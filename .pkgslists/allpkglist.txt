@@ -196,6 +196,7 @@ ttf-iosevka-nerd
 ueberzug
 unzip
 vi
+vifm
 vim
 vimb
 virtualbox

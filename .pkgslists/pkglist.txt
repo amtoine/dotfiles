@@ -102,6 +102,7 @@ thunderbird
 tig
 tldr
 vi
+vifm
 vimb
 virtualbox
 vnstat
