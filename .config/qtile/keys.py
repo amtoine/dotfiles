@@ -384,6 +384,12 @@ def init_keymap(mod, terminal, groups):
                 ),
                 Key([], 'm', *_ucmd(terminal + MIXER),        desc="Open alsamixer in new window"),
                 Key([], 'n', *_ucmd(terminal + NET),          desc="Show the connected network with nmcli"),
+                KeyChord([], 'p', [
+                    Key([], 'b', *_uascript("pcm.sh -bn"),    desc="Toggle picom on/off"),
+                    Key([], 't', *_uascript("pcm.sh -tn"),    desc="Toggle the blur effect"),
+                    ],
+                    mode=" PICOM"
+                ),
                 KeyChord([], 't', [
                     Key([], 'a', *_uacmd("alacritty"),        desc="Open alacritty in new window"),
                     Key([], 'k', *_uacmd("kitty"),            desc="Open kitty in new window"),
@@ -400,8 +406,8 @@ def init_keymap(mod, terminal, groups):
                 ),
                 Key([], 'y', *_ucmd(terminal + CAL),          desc="Open a calendar of current year"),
                 KeyChord([], 'x', [
-                    Key([], 'd', *_uascript("xal.sh -dn"),     desc="Updates the system"),
-                    Key([], 'e', *_uascript("xal.sh -en"),     desc="Updates the system"),
+                    Key([], 'd', *_uascript("xal.sh -dn"),    desc="Disable the autolock"),
+                    Key([], 'e', *_uascript("xal.sh -en"),    desc="Enable the autolock"),
                     ],
                     mode=" XAUTOLOCK"
                 ),

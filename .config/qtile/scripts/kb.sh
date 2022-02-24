@@ -61,8 +61,10 @@ if [[ -f "$cache" ]]; then
     sed "s/^SYSTEM> CONFIG /SYSTEM,CONFIG:mod4+s,c,/g" | \
     sed "s/^SYSTEM> DISK /SYSTEM,DISK:mod4+s,d,/g" | \
     sed "s/^SYSTEM> MONITOR /SYSTEM,MONITOR:mod4+s,h,/g" | \
+    sed "s/^SYSTEM> PICOM /SYSTEM,PICOM:mod4+s,p,/g" | \
     sed "s/^SYSTEM> TERMINAL /SYSTEM,TERMINAL:mod4+s,t,/g" | \
     sed "s/^SYSTEM> UPDATES /SYSTEM,UPDATES:mod4+s,u,/g" | \
+    sed "s/^SYSTEM> XAUTOLOCK /SYSTEM,XAUTOLOCK:mod4+s,x,/g" | \
     sed "s/^SYSTEM /SYSTEM:mod4+s,/g" | \
     sed "s/^RESIZE /RESIZE:mod4+z,/g" | \
 
