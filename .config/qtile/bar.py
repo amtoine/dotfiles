@@ -103,7 +103,11 @@ _bar_styles = [
 ]
 
 
-def _init_widgets(terminal: str, prompt: libqtile.widget.Prompt = None) -> list:
+def _init_widgets(
+        terminal: str,
+        prompt: libqtile.widget.Prompt = None,
+        battery: libqtile.widget.Battery = None,
+        ) -> list:
     """
         Builds the widgets using the left and right
         widget lists from _bar_styles
@@ -159,11 +163,16 @@ def _init_widgets(terminal: str, prompt: libqtile.widget.Prompt = None) -> list:
             _sep = slash_sep(fg=fg, bg=theme.bg)
 
         # add the widget
-        # the widget.Prompt is a bit special and needs to be
+        # widget.Prompt is a bit special and needs to be
         # manually mirrored on all monitors, hence the passing
         # of a widget.Prompt object from init to init.
         if rg == "prompt" and prompt is not None:
             widgets.extend([_sep, prompt])
+        # widget.Battery is also mirrored to avoid
+        # having multiple notifications when using
+        # a multi monitor setup.
+        elif rg == "battery" and battery is not None:
+            widgets.extend([_sep, battery])
         else:
             widgets.extend([_sep, func(**kwargs)])
 
@@ -183,23 +192,38 @@ def build_prompt(terminal: str) -> libqtile.widget.Prompt:
     return func(**kwargs)
 
 
+def build_battery(terminal: str) -> libqtile.widget.Battery:
+    """
+        Build the special widget.Batterywidget.
+        The Prompt widget is a bit special as it does not
+        mirror by default on all monitors.
+        A common widget.Battery widget has to be given to
+        all bars not to receive multiple notifications on
+        low battery.
+    """
+    func, kwargs = _create_widgets_table(terminal)["battery"]
+    return func(**kwargs)
+
+
 def init_widgets_screen1(
         terminal: str,
-        prompt: libqtile.widget.Prompt = None
+        prompt: libqtile.widget.Prompt = None,
+        battery: libqtile.widget.Battery = None,
         ) -> list:
     """
         Select the widgets for screen 1
     """
-    widgets = _init_widgets(terminal, prompt=prompt)
+    widgets = _init_widgets(terminal, prompt=prompt, battery=battery)
     return widgets
 
 
 def init_widgets_screen2(
         terminal: str,
-        prompt: libqtile.widget.Prompt = None
+        prompt: libqtile.widget.Prompt = None,
+        battery: libqtile.widget.Battery = None,
         ) -> list:
     """
         Select the widgets for screen 2
     """
-    widgets = _init_widgets(terminal, prompt=prompt)
+    widgets = _init_widgets(terminal, prompt=prompt, battery=battery)
     return widgets

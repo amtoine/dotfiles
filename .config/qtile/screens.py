@@ -18,6 +18,7 @@ from libqtile.config import Screen
 
 from bar import init_widgets_screen1
 from bar import build_prompt
+from bar import build_battery
 from style import BAR_GEOMETRY
 from utils import fetch_monitors
 
@@ -36,11 +37,12 @@ def init_screens(terminal: str) -> list:
 
     # do not forget to mirror the prompt manually
     prompt = build_prompt(terminal)
+    battery = build_battery(terminal)
     # return one Screen object per monitor detected
     # and adapt its position and size to the geometry
     return [
         Screen(
-            top=bar.Bar(widgets=init_widgets_screen1(terminal, prompt=prompt),
+            top=bar.Bar(widgets=init_widgets_screen1(terminal, prompt=prompt, battery=battery),
                         **BAR_GEOMETRY),
             **geometry
         ) for geometry in geometries

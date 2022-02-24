@@ -954,7 +954,7 @@ def clock(terminal, format='%H:%M', bg="#000000", fg="#ffffff"):
     )
 
 
-def battery(format, bg="#000000", fg="#ffffff"):
+def battery(format, bg="#000000", fg="#ffffff", low=.2):
     """
         class libqtile.widget.Battery(**config)[source]
         A text-based battery monitoring widget currently supporting FreeBSD
@@ -977,11 +977,11 @@ def battery(format, bg="#000000", fg="#ffffff"):
         hide_threshold=None,       # Hide the text when there is enough energy 0 <= x < 1
         low_background=None,       # Background color on low battery
         low_foreground="#ff0000",  # Font color on low battery
-        low_percentage=0.2,        # Indicates when to use the low_foreground color 0 < x < 1
+        low_percentage=low,        # Indicates when to use the low_foreground color 0 < x < 1
         markup=True,               # Whether or not to use pango markup
         max_chars=0,               # Maximum number of characters to display in widget.
         mouse_callbacks={},        # Dict of mouse button press callback functions. Accepts functions and lazy calls.
-        notify_below=20,           # Send a notification below this battery level.
+        notify_below=low*100,      # Send a notification below this battery level.
         padding=None,              # Padding. Calculated if None.
         show_short_text=True,      # Show "Full" or "Empty" rather than formated text
         unknown_char='?',          # Character to indicate the battery status is unknown
