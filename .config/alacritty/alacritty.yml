@@ -232,7 +232,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 10.0
+  size: 16.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -271,12 +271,12 @@ draw_bold_text_with_bright_colors: true
 #
 #
 colors:
-  # COLORSCHEME: doom_one.yml
+  # COLORSCHEME: dracula.yaml
   # Default colors
   primary:
     # hard contrast: background = '0x1d2021'
-    background: '0x282c34'
-    foreground: '0xbbc2cf'
+    background: '0x282a36'
+    foreground: '0xf8f8f2'
 
   # Normal colors
   cursor:
@@ -285,14 +285,16 @@ colors:
 
   # Normal colors
   normal:
-    black: '0x282c34'
-    red: '0xff6c6b'
-    green: '0x98be65'
-    yellow: '0xecbe7b'
-    blue: '0x51afef'
-    magenta: '0xc678dd'
-    cyan: '0x46d9ff'
-    white: '0xbbc2cf'
+    black: '0x000000'
+    red: '0xff5555'
+    green: '0x50fa7b'
+    yellow: '0xf1fa8c'
+    blue: '0xbd93f9'
+    magenta: '0xff79c6'
+    cyan: '0x8be9fd'
+    white: '0xbbbbbb'
+
+  # Bright colors
   bright:
     black: '0x555555'
     red: '0xff5555'
@@ -592,11 +594,22 @@ key_bindings:
     # (Windows, Linux, and BSD only)
   - {key: V, mods: Alt, action: Paste}
   - {key: C, mods: Alt, action: Copy}
+  - {key: U, mods: Alt, action: ScrollPageUp}
+  - {key: D, mods: Alt, action: ScrollPageDown}
+  - {key: K, mods: Alt, action: ScrollLineUp}
+  - {key: J, mods: Alt, action: ScrollLineDown}
+  - {key: G, mods: Alt, action: ScrollToTop}
+  - {key: G, mods: Alt|Shift, action: ScrollToBottom}
+  - {key: Q, mods: Alt, action: Quit}
+  - {key: C, mods: Alt|Shift, action: Quit}
+  - {key: F, mods: Alt, action: ToggleFullscreen}
+  - {key: N, mods: Alt, action: SpawnNewInstance}
   - {key: Key0, mods: Control, action: ResetFontSize}
   - {key: Equals, mods: Control, action: IncreaseFontSize}
   - {key: Plus, mods: Control, action: IncreaseFontSize}
   - {key: Minus, mods: Control, action: DecreaseFontSize}
   - {key: F11, mods: None, action: ToggleFullscreen}
-  - {key: L, mods: Control|Shift, action: ClearLogNotice}
-  - {key: L, mods: Control|Shift, chars: "\f"}
-  - {key: N, mods: Control, action: SpawnNewInstance}
+  - {key: N, mods: Alt, action: SpawnNewInstance}
+  - {key: D, mods: Alt, command: { program: "dmenu_run", args: ["-fn", "mononoki Nerd Font-20"] }}
+  # - {key: L, mods: Control|Shift, action: ClearLogNotice}
+  # - {key: L, mods: Control|Shift, chars: "\f"}
