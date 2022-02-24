@@ -57,22 +57,32 @@ qtile_current="$HOME/.config/qtile/theme.py"
 export FZF_DEFAULT_OPTS="
 --height=100%
 --layout=reverse
---prompt='Manual: '
+--prompt='Change qtile colorscheme: '
 --preview=\"cat $cache/themes/{1} | grep -Ev 'cursor|active|^\$|^#|url' | sed 's/background/bg/; s/foreground/fg/; s/selection/sel/;  s/ #/%#/' | column -t -s '\%'\""
 
+  # download the themes list from remote.
 if [[ ! -d "$cache" ]]; then
   echo "Downloading themes from ${Src}$repo${Off} to ${Dst}$cache${Off}.";
   git clone -q "https://github.com/$repo.git" "$cache";
 fi
 
-# download the themes list from remote.
-# use fzf to let the user choose the theme.
-theme=$(find "$cache/themes" -type f | sed 's/.*\/\(.*.conf\)/\1/;' | sort | fzf)
-if [ "$theme" == "" ]; then
-  echo "${Wrn}No theme selected. Aborting.${Off}";
-  exit 1
+if [ ! -z "$1" ];
+then
+  if ls "$cache/themes" | sed 's/\.conf$//g' | grep -w "$1"
+  then
+    theme="$1.conf"
+  else
+    echo "No theme named: $1"
+    exit 1
+  fi
+else
+  # use fzf to let the user choose the theme.
+  theme=$(find "$cache/themes" -type f | sed 's/.*\/\(.*.conf\)/\1/;' | sort | fzf)
+  if [ "$theme" == "" ]; then
+    echo "${Wrn}No theme selected. Aborting.${Off}";
+    exit 1
+  fi
 fi
-echo "$theme"
 
 # build the head and the body of the next theme file,
 # located at $qtile_current
@@ -103,7 +113,7 @@ EOF
 tmpbody=$(mktemp /tmp/qtile-body.XXXXXX)
 trap  'rm "$tmpbody"' 0 1 15
 { echo "from utils import ColorScheme"; echo "theme = ColorScheme(**{"; } > "$tmpbody"
-grep -Ev 'cursor|active|^\$|^#|url' "$cache/themes/$theme" | \
+grep -Ev 'cursor|active|mark|^\$|^#|url' "$cache/themes/$theme" | \
   sed 's/background/bg/; s/foreground/fg/; s/selection/sel/; s/\s\+/ /' | \
   sed 's/\([a-z_0-9]*\)/    "\1":/; s/\(#......\)/"\1",/;' | \
   sed 's/\s\+"":\s*$//' >> "$tmpbody"

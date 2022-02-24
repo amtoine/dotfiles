@@ -19,34 +19,25 @@
 from utils import ColorScheme
 theme = ColorScheme(**{
 
-
-    "fg": "#D8DEE9",
-    "bg": "#2E3440",
-    "sel_fg": "#000000",
-    "sel_bg": "#FFFACD",
-
-    "color0": "#3B4252",
-    "color8": "#4C566A",
-
-    "color1": "#BF616A",
-    "color9": "#BF616A",
-
-    "color2": "#A3BE8C",
-    "color10": "#A3BE8C",
-
-    "color3": "#EBCB8B",
-    "color11": "#EBCB8B",
-
-    "color4": "#81A1C1",
-    "color12": "#81A1C1",
-
-    "color5": "#B48EAD",
-    "color13": "#B48EAD",
-
-    "color6": "#88C0D0",
-    "color14": "#8FBCBB",
-
-    "color7": "#E5E9F0",
-    "color15": "#ECEFF4",
+    "fg": "#f8f8f2",
+    "bg": "#282a36",
+    "sel_fg": "#ffffff",
+    "sel_bg": "#44475a",
+    "color0": "#21222c",
+    "color8": "#6272a4",
+    "color1": "#ff5555",
+    "color9": "#ff6e6e",
+    "color2": "#50fa7b",
+    "color10": "#69ff94",
+    "color3": "#f1fa8c",
+    "color11": "#ffffa5",
+    "color4": "#bd93f9",
+    "color12": "#d6acff",
+    "color5": "#ff79c6",
+    "color13": "#ff92df",
+    "color6": "#8be9fd",
+    "color14": "#a4ffff",
+    "color7": "#f8f8f2",
+    "color15": "#ffffff",
 })
-# current: Nord.conf
+# current: Dracula.conf

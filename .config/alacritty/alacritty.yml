@@ -271,118 +271,40 @@ draw_bold_text_with_bright_colors: true
 #
 #
 colors:
-  # # Default colors
-  # primary:
-  #   background: '0x282c34'  # dark blue
-  #   foreground: '0xbbc2cf'  # mid dark blue
-  #
-  #   # Bright and dim foreground colors
-  #   #
-  #   # The dimmed foreground color is calculated automatically if it is not present.
-  #   # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-  #   # is `false`, the normal foreground color will be used.
-  #   dim_foreground:    '0x9a9a9a'  # light gray
-  #   bright_foreground: '0xffffff'  # white
-  #
-  # # Cursor colors
-  # #
-  # # Colors which should be used to draw the terminal cursor. If these are unset,
-  # # the cursor color will be the inverse of the cell color.
-  # cursor:
-  #   text:   '0x000000'  # black
-  #   cursor: '0x00cccc'  # white
-  #
-  # # Selection colors
-  # #
-  # # Colors which should be used to draw the selection area. If selection
-  # # background is unset, selection color will be the inverse of the cell colors.
-  # # If only text is unset the cell text color will remain the same.
-  # selection:
-  #   text: '0xbbc2cf'      # dark blue
-  #
-  # # Normal colors
-  # normal:
-  #   black:   '0x1c1f24'
-  #   red:     '0xff6c6b'
-  #   green:   '0x98be65'
-  #   yellow:  '0xda8548'
-  #   blue:    '0x51afef'
-  #   magenta: '0xc678dd'
-  #   cyan:    '0x5699af'
-  #   white:   '0x202328'
-  #
-  # # Bright colors
-  # bright:
-  #   black:   '0x5b6268'
-  #   red:     '0xda8548'
-  #   green:   '0x4dfbbd'
-  #   yellow:  '0xecbe7b'
-  #   blue:    '0x3071db'   # This is 2257a0 in Doom Emacs but I lightened it.
-  #   magenta: '0xa9a1e1'
-  #   cyan:    '0x46d9ff'
-  #   white:   '0xdfdfdf'
-  #
-  # # Dim colors
-  # #
-  # # If the dim colors are not set, they will be calculated automatically based
-  # # on the `normal` colors.
-  # # dim:
-  # #   black:   '0x000000'
-  # #   red:     '0x8c3336'
-  # #   green:   '0x7a8530'
-  # #   yellow:  '0x97822e'
-  # #   blue:    '0x506d8f'
-  # #   magenta: '0x80638e'
-  # #   cyan:    '0x497e7a'
-  # #   white:   '0x9a9a9a'
-  #
-  # # Indexed Colors
-  # #
-  # # The indexed colors include all colors from 16 to 256.
-  # # When these are not set, they're filled with sensible defaults.
-  # #
-  # # Example:
-  # #   `- { index: 16, color: '0xff00ff' }`
-  # #
-  # #indexed_colors: []
-
-# Catppuccin!
-colors:
+  # COLORSCHEME: doom_one.yml
   # Default colors
   primary:
-    background: '0x1E1D2F'
-    foreground: '0xD9E0EE'
+    # hard contrast: background = '0x1d2021'
+    background: '0x282c34'
+    foreground: '0xbbc2cf'
 
-  # Colors the cursor will use if `custom_cursor_colors` is true
+  # Normal colors
   cursor:
     text: '0x1E1D2F'
     cursor: '0xF5E0DC'
 
   # Normal colors
   normal:
-    black:   '0x6E6C7E'
-    red:     '0xF28FAD'
-    green:   '0xABE9B3'
-    yellow:  '0xFAE3B0'
-    blue:    '0x96CDFB'
-    magenta: '0xF5C2E7'
-    cyan:    '0x89DCEB'
-    white:   '0xD9E0EE'
-
-  # Bright colors
+    black: '0x282c34'
+    red: '0xff6c6b'
+    green: '0x98be65'
+    yellow: '0xecbe7b'
+    blue: '0x51afef'
+    magenta: '0xc678dd'
+    cyan: '0x46d9ff'
+    white: '0xbbc2cf'
   bright:
-    black:   '0x988BA2'
-    red:     '0xF28FAD'
-    green:   '0xABE9B3'
-    yellow:  '0xFAE3B0'
-    blue:    '0x96CDFB'
-    magenta: '0xF5C2E7'
-    cyan:    '0x89DCEB'
-    white:   '0xD9E0EE'
-
+    black: '0x555555'
+    red: '0xff5555'
+    green: '0x50fa7b'
+    yellow: '0xf1fa8c'
+    blue: '0xcaa9fa'
+    magenta: '0xff79c6'
+    cyan: '0x8be9fd'
+    white: '0xffffff'
   indexed_colors:
-    - { index: 16, color: '0xF8BD96' }
-    - { index: 17, color: '0xF5E0DC' }
+    - {index: 16, color: '0xF8BD96'}
+    - {index: 17, color: '0xF5E0DC'}
 #
 # >>> Visual Bell.
 #
@@ -514,8 +436,8 @@ mouse:
   # The `double_click` and `triple_click` settings control the time
   # alacritty should wait for accepting multiple clicks as one double
   # or triple click.
-  double_click: { threshold: 300 }
-  triple_click: { threshold: 300 }
+  double_click: {threshold: 300}
+  triple_click: {threshold: 300}
 
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: true
@@ -668,13 +590,13 @@ mouse:
 # a no-op if you do not wish to receive input characters for that binding.
 key_bindings:
     # (Windows, Linux, and BSD only)
-  - { key: V,         mods: Alt,           action: Paste            }
-  - { key: C,         mods: Alt,           action: Copy             }
-  - { key: Key0,      mods: Control,       action: ResetFontSize    }
-  - { key: Equals,    mods: Control,       action: IncreaseFontSize }
-  - { key: Plus,      mods: Control,       action: IncreaseFontSize }
-  - { key: Minus,     mods: Control,       action: DecreaseFontSize }
-  - { key: F11,       mods: None,          action: ToggleFullscreen }
-  - { key: L,         mods: Control|Shift, action: ClearLogNotice   }
-  - { key: L,         mods: Control|Shift, chars: "\x0c"            }
-  - { key: N,         mods: Control,       action: SpawnNewInstance }
+  - {key: V, mods: Alt, action: Paste}
+  - {key: C, mods: Alt, action: Copy}
+  - {key: Key0, mods: Control, action: ResetFontSize}
+  - {key: Equals, mods: Control, action: IncreaseFontSize}
+  - {key: Plus, mods: Control, action: IncreaseFontSize}
+  - {key: Minus, mods: Control, action: DecreaseFontSize}
+  - {key: F11, mods: None, action: ToggleFullscreen}
+  - {key: L, mods: Control|Shift, action: ClearLogNotice}
+  - {key: L, mods: Control|Shift, chars: "\f"}
+  - {key: N, mods: Control, action: SpawnNewInstance}

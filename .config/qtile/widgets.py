@@ -975,8 +975,8 @@ def battery(format, bg="#000000", fg="#ffffff"):
         format=format,             # Display format
         full_char='',             # Character to indicate the battery is full
         hide_threshold=None,       # Hide the text when there is enough energy 0 <= x < 1
-        low_background="#ff0000",  # Background color on low battery
-        low_foreground="#ffffff",  # Font color on low battery
+        low_background=None,       # Background color on low battery
+        low_foreground="#ff0000",  # Font color on low battery
         low_percentage=0.2,        # Indicates when to use the low_foreground color 0 < x < 1
         markup=True,               # Whether or not to use pango markup
         max_chars=0,               # Maximum number of characters to display in widget.
