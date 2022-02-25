@@ -2,4 +2,8 @@
 tmpfile=$(mktemp /tmp/st-edit.XXXXXX)
 trap  'rm "$tmpfile"' 0 1 15
 cat > "$tmpfile"
-st -e "$EDITOR" "$tmpfile"
+if command -v devour &> /dev/null; then
+  devour st -e "$EDITOR" "$tmpfile"
+else
+  st -e "$EDITOR" "$tmpfile"
+fi

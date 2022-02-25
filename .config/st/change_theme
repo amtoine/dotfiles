@@ -1,0 +1,7 @@
+#!/bin/sh
+THEMES="$HOME/ghq/git.suckless.org/st/themes.h"
+CONFIG="$HOME/.config/st/theme.txt"
+DMFONT="mononoki Nerd Font-20"
+_themes=$(grep -e '", "#' "$THEMES" | awk -F'", "' '{print $NF}' | sed 's/"},\s*$//g')
+choice=$(echo "$_themes" | awk -F: '{print $1}' | dmenu -c -l 10 -bw 5 -fn "$DMFONT" -p "Choose a theme:")
+echo "$_themes" | grep -e "$choice" | sed 's/\(.*\):\(.*\)/\2 \1/' > "$CONFIG"

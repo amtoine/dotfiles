@@ -150,6 +150,7 @@ init_deps () {
     "dmenu::on" \
     "nerd-fonts-mononoki::on" \
     "fish::on" \
+    "st::on" \
     "bash::off" \
     "git::on" \
     "scripts::on" \
@@ -224,6 +225,7 @@ init_deps () {
   deps_table[conky]="pacman:conky"
   deps_table[pass]="pacman:pass"
   deps_table[dmenu]="make:a2n-s/dmenu"
+  deps_table[st]="make:a2n-s/st"
   deps_table[tabbed]="make:a2n-s/tabbed"
   deps_table[surf]="make:a2n-s/surf pacman:gcr pacman:webkit2gtk"
   deps_table[slock]="make:a2n-s/slock"
@@ -567,6 +569,10 @@ install_config () {
   if grep -e "^.*:surf" "$deps_file" -q; then
     echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/surf ${DST}$HOME/.config${OFF}"
     cp -r "$DOTFILES/.config/surf" "$HOME/.config"
+  fi
+  if grep -e "^.*:st" "$deps_file" -q; then
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/st ${DST}$HOME/.config${OFF}"
+    cp -r "$DOTFILES/.config/st" "$HOME/.config"
   fi
   if grep -e "^.*:neovim" "$deps_file" -q; then
     info "Installing my neovim rice"
