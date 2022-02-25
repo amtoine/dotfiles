@@ -604,12 +604,11 @@ key_bindings:
   - {key: C, mods: Alt|Shift, action: Quit}
   - {key: F, mods: Alt, action: ToggleFullscreen}
   - {key: N, mods: Alt, action: SpawnNewInstance}
-  - {key: Key0, mods: Control, action: ResetFontSize}
-  - {key: Equals, mods: Control, action: IncreaseFontSize}
-  - {key: Plus, mods: Control, action: IncreaseFontSize}
-  - {key: Minus, mods: Control, action: DecreaseFontSize}
+  - {key: I, mods: Alt, action: ResetFontSize}
+  - {key: O, mods: Alt, action: IncreaseFontSize}
+  - {key: U, mods: Alt, action: DecreaseFontSize}
   - {key: F11, mods: None, action: ToggleFullscreen}
   - {key: N, mods: Alt, action: SpawnNewInstance}
-  - {key: D, mods: Alt, command: { program: "dmenu_run", args: ["-fn", "mononoki Nerd Font-20"] }}
+  - {key: M, mods: Alt, command: {program: dmenu_run, args: [-fn, mononoki Nerd Font-20]}}
   # - {key: L, mods: Control|Shift, action: ClearLogNotice}
   # - {key: L, mods: Control|Shift, chars: "\f"}

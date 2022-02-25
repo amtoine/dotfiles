@@ -32,8 +32,8 @@ from widgets import init_widget_defaults
 
 mod = "mod4"  # the super (windows or mac) key controls `qtile`
 preference = [
-    "kitty",
     "st",
+    "kitty",
     "alacritty",
 ]
 terminal = guess_terminal(preference=preference)
