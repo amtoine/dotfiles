@@ -138,7 +138,55 @@ init_deps () {
   info "################################################################"
   info "## Building the dependency table of the whole configuration   ##"
   info "################################################################"
-  deps_table[commands]="grub::on sddm::on issue::on qtile::on firefox::on neovim::on kitty::on pass::on dmenu::on nerd-fonts-mononoki::on fish::on bash::off git::on scripts::on devour::off bspwn::off spectrwm::off alacritty::off dmscripts::off fzf::off catimg::off chromium::off emacs::off vim::off htop::off btop::off moc::off mpv::off lf::off discord::off thunderbird::off slack-desktop::off signal-desktop::off caprine::off lazygit::off tig::off rofi::off conky::off tabbed::off surf::off slock::off psutil::off dbus-next::off python-iwlib::off dunst::off picom::off feh::off"
+  _commands=(  \
+    "grub::on" \
+    "sddm::on" \
+    "issue::on" \
+    "qtile::on" \
+    "firefox::on" \
+    "neovim::on" \
+    "kitty::on" \
+    "pass::on" \
+    "dmenu::on" \
+    "nerd-fonts-mononoki::on" \
+    "fish::on" \
+    "bash::off" \
+    "git::on" \
+    "scripts::on" \
+    "devour::off" \
+    "bspwn::off" \
+    "spectrwm::off" \
+    "alacritty::off" \
+    "dmscripts::off" \
+    "fzf::off" \
+    "catimg::off" \
+    "chromium::off" \
+    "emacs::off" \
+    "vim::off" \
+    "htop::off" \
+    "btop::off" \
+    "moc::off" \
+    "mpv::off" \
+    "lf::off" \
+    "discord::off" \
+    "thunderbird::off" \
+    "slack-desktop::off" \
+    "signal-desktop::off" \
+    "caprine::off" \
+    "lazygit::off" \
+    "tig::off" \
+    "rofi::off" \
+    "conky::off" \
+    "tabbed::off" \
+    "surf::off" \
+    "slock::off" \
+    "psutil::off" \
+    "dbus-next::off" \
+    "python-iwlib::off" \
+    "dunst::off" \
+    "picom::off" \
+    "feh::off" \
+  )
 
   deps_table[base]="pacman:base-devel pacman:python pacman:python-pip pacman:xorg pacman:xorg-xinit yay-git:yay"
   deps_table[devour]="yay:devour pacman:xdo"
@@ -294,7 +342,7 @@ select_deps () {
   local deps=""
   local loop=1
   # a fancy to build the array, as `dialog` wants real arrays
-  readarray -t dependencies <<< "$(sed "s/ /\n/g; s/:/\n/g" <<< "${deps_table[commands]}")"}
+  readarray -t dependencies <<< "$(sed "s/ /\n/g; s/:/\n/g" <<< "${_commands[@]}")"}
   while [ "$loop" = 1 ]
   do
     # let the user check the list
@@ -327,7 +375,7 @@ push_all_deps () {
   #
 
   # note the `+` in sed?, see the `build_deps` function below
-  echo "${deps_table[commands]}" | tr ' ' '\n' | sed "s/\(.*\)::.*/+\1/g" >> "$deps_file"
+  echo "${_commands[@]}" | tr ' ' '\n' | sed "s/\(.*\)::.*/+\1/g" >> "$deps_file"
 }
 
 build_deps () {
