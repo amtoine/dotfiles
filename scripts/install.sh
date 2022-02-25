@@ -138,9 +138,10 @@ init_deps () {
   info "################################################################"
   info "## Building the dependency table of the whole configuration   ##"
   info "################################################################"
-  deps_table[commands]="grub::on sddm::on issue::on qtile::on firefox::on neovim::on kitty::on pass::on dmenu::on nerd-fonts-mononoki::on fish::on bash::off git::on scripts::on bspwn::off spectrwm::off alacritty::off dmscripts::off fzf::off catimg::off chromium::off emacs::off vim::off htop::off btop::off moc::off mpv::off lf::off discord::off thunderbird::off slack-desktop::off signal-desktop::off caprine::off lazygit::off tig::off rofi::off conky::off tabbed::off surf::off slock::off psutil::off dbus-next::off python-iwlib::off dunst::off picom::off feh::off"
+  deps_table[commands]="grub::on sddm::on issue::on qtile::on firefox::on neovim::on kitty::on pass::on dmenu::on nerd-fonts-mononoki::on fish::on bash::off git::on scripts::on devour::off bspwn::off spectrwm::off alacritty::off dmscripts::off fzf::off catimg::off chromium::off emacs::off vim::off htop::off btop::off moc::off mpv::off lf::off discord::off thunderbird::off slack-desktop::off signal-desktop::off caprine::off lazygit::off tig::off rofi::off conky::off tabbed::off surf::off slock::off psutil::off dbus-next::off python-iwlib::off dunst::off picom::off feh::off"
 
   deps_table[base]="pacman:base-devel pacman:python pacman:python-pip pacman:xorg pacman:xorg-xinit yay-git:yay"
+  deps_table[devour]="yay:devour pacman:xdo"
   deps_table[grub]="grub"
   deps_table[issue]="issue"
   deps_table[qtile]="pacman:qtile pacman:python-gobject pacman:gtk3 pip:gdk"

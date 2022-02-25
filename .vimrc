@@ -68,12 +68,12 @@ set encoding=utf-8
 
 " STYLE ---------------------------------------------------------------- {{{
 " chooses a colorscheme.
-"colorscheme default
+colorscheme default
 "colorscheme desert
 "colorscheme koehler
 "colorscheme darkblue
 "colorscheme elflord
-colorscheme molokai
+" colorscheme molokai
 " turn syntax highlighting on.
 syntax on
 " makes line numbers visible.
@@ -125,7 +125,7 @@ set autoindent
 " dialogue asking if you wish to save changed files.
 set confirm
 " Use visual bell instead of beeping when doing something wrong
-set visualbell
+" set visualbell
 " enables the raindow parentheses.
 au VimEnter * RainbowParentheses
 " }}}

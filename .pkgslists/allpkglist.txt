@@ -38,6 +38,7 @@ cowsay
 cronie
 csvkit
 ctags
+devour
 dialog
 dictd
 discord
@@ -209,6 +210,7 @@ wget
 which
 xautolock
 xclip
+xdo
 xdotool
 xf86-video-vesa
 xonsh
