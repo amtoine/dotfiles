@@ -31,6 +31,7 @@ docker
 docker-compose
 dstat
 dunst
+dust
 dwarffortress
 eog
 exa

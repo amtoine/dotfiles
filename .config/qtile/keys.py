@@ -47,38 +47,28 @@ BCR = "bracketright"
 SLH = "slash"
 F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12 = (
     f"F{i}" for i in range(1, 13)
-    )
-
-F_TERM = "--hold"
+)
 
 # system shortcuts
 HOME = os.path.expanduser("~")
 SCRIPTS = "scripts"
 
+# some shortcuts for lenghty commands
 # wrapper around dmenu-related commands
 DMRUN = f"dmenu_run -c -l 10 -bw 5 -h {BAR_GEOMETRY['size']} -p 'Run: ' -fn '{DMFONT}'"
-PASS = f"passmenu -l 10 -bw 5 -c -fn '{DMFONT}'"
+DMPASS = f"passmenu -l 10 -bw 5 -c -fn '{DMFONT}'"
 
 # text editors
-NVIM = " nvim"
 EMACS = "emacsclient -c -a 'emacs'"
 
+# web browsers
 SURF = "tabbed -c surf -N -e"
 VIMB = "tabbed -c vimb -e"
 
-# system related commands
-CHECK = f" {F_TERM} checkupdates"
-UPDT = f" {F_TERM} sudo pacman -Syu"
-TREE = " ncdu -x /"
-DISK = f" {F_TERM} df -h"
-PROC = " htop"
-CAL = f" {F_TERM} cal -Y"
-NET = " nmcli connection show"
-
 # qtile related commands
-AUTOSTART = os.path.expanduser("~/.config/qtile/scripts/autostart.sh")
-LOG = " bat " + os.path.expanduser("~/.local/share/qtile/qtile.log")
-KB = ' ' + os.path.expanduser("~/.config/qtile/scripts/kb.sh")
+AUTOSTART = dict(script="autostart.sh", path=".config/qtile/scripts")
+LOG = "bat " + os.path.expanduser("~/.local/share/qtile/qtile.log")
+KB = os.path.expanduser("~/.config/qtile/scripts/kb.sh")
 BAR = dict(script="bar.sh", path=".config/qtile/scripts")
 URELOAD = lazy.reload_config(), lazy.ungrab_chord()
 URESTART = lazy.restart(), lazy.ungrab_chord()
@@ -90,15 +80,7 @@ HELP = f"conky --config={_HELP}"
 _CLOCK = os.path.expanduser('~/.config/conky/vision/Z333-vision.conkyrc')
 CLOCK = f"conky --config {_CLOCK}"
 
-# chat clients
-DISCORD = "discord > /dev/null 2> /dev/null"
-SLACK = "slack"
-CAPRINE = "caprine"
-SIGNAL = "signal-desktop"
-THUNDERBIRD = "thunderbird"
-
 # sound management
-MIXER = " alsamixer"
 SOUNDS = 1
 SOUNDL = 5
 SOUNDUP = "sound.sh --up --channel Master --step {} --notify"
@@ -107,40 +89,46 @@ MUTE = "sound.sh --toggle --channel Master --notify"
 BLUETOGG = "sound.sh --bluetooth --notify"
 
 # miscellaneous
-PYTHON = " python"
-BTOP = " btop --utf-force"
-HTOP = " htop"
-MACHO = ' ' + os.path.expanduser("~/scripts/macho.sh")
-WTLDR = f" {F_TERM} bash " + os.path.expanduser("~/scripts/wtldr.sh")
-PASSEDIT = "pedit.sh"
-LGIT = f" lazygit --git-dir={HOME}/.dotfiles --work-tree={HOME}"
+LCFG = f"lazygit --git-dir={HOME}/.dotfiles --work-tree={HOME}"
 TIGA = "tcfg.sh"
 
 
-def _cmd(command: str):
+def _cmd(command: str, terminal: str = None):
     """
         Runs a command.
+        Possibly inside a terminal.
     """
+    # add the terminal when the command needs one.
+    if terminal is not None:
+        if terminal == "kitty":
+            flags = "--hold"
+        elif terminal in ["alacritty", "st"]:
+            flags = "-e"
+        else:
+            flags = ""
+        command = ' '.join([terminal, flags, command])
     return lazy.spawn(command)
 
 
-def _ucmd(command: str):
+def _ucmd(command: str, terminal: str = None):
     """
         Runs a command and ungrabs the current chord.
+        Possibly inside a terminal.
         To be used inside a 1-depth chord or at depth one of a
         multi-depth chord.
         Needs to be written as *_cmd("...") inside a Key call.
     """
-    return lazy.spawn(command), lazy.ungrab_chord()
+    return _cmd(command, terminal), lazy.ungrab_chord()
 
 
-def _uacmd(command: str):
+def _uacmd(command: str, terminal: str = None):
     """
         Runs a command and ungrabs all the current chords.
+        Possibly inside a terminal.
         To be used a multi-depth chord.
         Needs to be written as *_cmd("...") inside a Key call.
     """
-    return lazy.spawn(command), lazy.ungrab_all_chords()
+    return _cmd(command, terminal), lazy.ungrab_all_chords()
 
 
 def _rofi(modi: str, ungrab: bool = True):
@@ -176,11 +164,8 @@ def _script(script: str, terminal: str = None, path: str = SCRIPTS):
         and from a given directory.
     """
     # expanduser to have '/home/user/path/to/script'
-    script = os.path.expanduser(os.path.join('~', path, script))
-    # add the terminal when the script needs one.
-    if terminal is not None:
-        script = terminal + ' ' + script
-    return _cmd(script)
+    script = os.path.join(HOME, path, script)
+    return _cmd(script, terminal)
 
 
 def _uscript(script: str, terminal: str = None, path: str = SCRIPTS):
@@ -214,10 +199,11 @@ def init_keymap(mod, terminal, groups):
         This is the main function here, that initializes every key in the
         keymap.
     """
+    # terminal = f"{terminal} -e"
     # just a wrapper for the qtile-change-theme line below.
     THEME = dict(
         script="change-theme.sh",
-        terminal=terminal + f" {F_TERM}",
+        terminal=terminal,
         path=".config/qtile/scripts",
     )
 
@@ -253,10 +239,10 @@ def init_keymap(mod, terminal, groups):
                 mode=" BROWSER"
             ),
             KeyChord(MOD, 'c', [
-                Key([], 'c', *_ucmd(CAPRINE),                   desc="Open messenger"),
-                Key([], 'd', *_ucmd(DISCORD),                   desc="Open discord"),
-                Key([], 'g', *_ucmd(SIGNAL),                    desc="Open signal"),
-                Key([], 'm', *_ucmd(terminal + MACHO),          desc="Use the macho wrapper around man"),
+                Key([], 'c', *_ucmd("caprine"),                 desc="Open messenger"),
+                Key([], 'd', *_ucmd("discord"),                 desc="Open discord"),
+                Key([], 'g', *_ucmd("signal-desktop"),          desc="Open signal"),
+                Key([], 'm', *_uscript("macho.sh", terminal),   desc="Use the macho wrapper around man"),
                 KeyChord([], 'n', [
                     Key([], 'c', *_uacmd("dunstctl close-all"),         desc="Close all notifications on the screen"),
                     Key([], 'h', *_uacmd("dunstctl history-pop"),       desc="Pop a notification from history"),
@@ -264,9 +250,9 @@ def init_keymap(mod, terminal, groups):
                     ],
                     mode=" NOTIFICATIONS"
                 ),
-                Key([], 's', *_ucmd(SLACK),                   desc="Open slack"),
-                Key([], 't', *_ucmd(THUNDERBIRD),             desc="Open thunderbird"),
-                Key([], 'w', *_ucmd(terminal + WTLDR),        desc="Use the wtldr wrapper around tldr"),
+                Key([], 's', *_ucmd("slack"),                 desc="Open slack"),
+                Key([], 't', *_ucmd("thunderbird"),           desc="Open thunderbird"),
+                Key([], 'w', *_uscript("wtldr.sh", terminal), desc="Use the wtldr wrapper around tldr"),
                 ],
                 mode=" MISCELLANEOUS"
             ),
@@ -295,7 +281,7 @@ def init_keymap(mod, terminal, groups):
                 Key([], 'f', *_emacs("elfeed"),               desc="Launch elfeed inside Emacs"),
                 Key([], 'i', *_emacs("erc"),                  desc="Launch erc inside Emacs"),
                 Key([], 'm', *_emacs("mu4e"),                 desc="Launch mu4e inside Emacs"),
-                Key([], 'n', *_ucmd(terminal + NVIM),         desc="Launch neovim"),
+                Key([], 'n', *_ucmd("nvim", terminal),        desc="Launch neovim"),
                 Key([], 's', *_emacs("eshell"),               desc="Launch the eshell inside Emacs"),
                 Key([], 'v', *_emacs("+vterm/here nil"),      desc="Launch vterm inside Emacs"),
                 ],
@@ -306,7 +292,7 @@ def init_keymap(mod, terminal, groups):
                 Key([], 'b', *_ucmd("mocp -r"),                 desc="Previous song"),
                 Key([], 'm', *_ucmd("mocp -G"),                 desc="Toggle pause"),
                 Key([], 'n', *_ucmd("mocp -f"),                 desc="Next song"),
-                Key([], 'o', *_ucmd(terminal + " mocp"),        desc="Open moc in a window"),
+                Key([], 'o', *_ucmd("mocp", terminal),          desc="Open moc in a window"),
                 Key([], 'p', *_ucmd("mocp -G"),                 desc="Toggle pause"),
                 Key([], 'q', *_ucmd("mocp -x"),                 desc="Stop the music"),
                 Key([], 'r', *_ucmd("mocp -t repeat"),          desc="Toggle the 'repeat' option"),
@@ -324,23 +310,23 @@ def init_keymap(mod, terminal, groups):
             ),
             KeyChord(MOD, 'p', [
                 Key([], 'e', *_uscript("pedit.sh"),           desc="Edit passwords and credentials"),
-                Key([], 'p', *_ucmd(PASS),                    desc="Retrieve passwords with dmenu"),
+                Key([], 'p', *_ucmd(DMPASS),                  desc="Retrieve passwords with dmenu"),
                 ],
                 mode="ﳳ PASS"
             ),
             KeyChord(MOD, 'q', [
-                Key([], 'a', *_ucmd(AUTOSTART),               desc="Run the ./scripts/qtile-autostart.sh script"),
+                Key([], 'a', *_uscript(**AUTOSTART),          desc="Run the ./scripts/qtile-autostart.sh script"),
                 Key([], 'b', *_uscript(**BAR),                desc="Change the bar"),
                 Key([], "c", *URELOAD,                        desc="Reload the config"),
                 KeyChord([], 'h', [
                     Key([], 'b', *_uacmd(CONKY),              desc="Open the begin help conky"),
                     Key([], 'c', *_uacmd(CLOCK),              desc="Show a clock with weather"),
                     Key([], 'h', *_uacmd(HELP),               desc="Open a more complete help"),
-                    Key([], 'k', *_uacmd(terminal + KB),      desc="Open a tool to explore the keymap"),
+                    Key([], 'k', *_uacmd(KB, terminal),       desc="Open a tool to explore the keymap"),
                     ],
                     mode=" HELP"
                 ),
-                Key([], 'l', *_ucmd(terminal + LOG),          desc="Open the log file inside a terminal"),
+                Key([], 'l', *_ucmd(LOG, terminal),           desc="Open the log file inside a terminal"),
                 Key([], "r", *URESTART,                       desc="Restart Qtile"),
                 Key([], "s", *USHUTDOWN,                      desc="Shutdown Qtile"),
                 Key([], 't', *_uscript(**THEME),              desc="Change the theme of qtile"),
@@ -363,26 +349,26 @@ def init_keymap(mod, terminal, groups):
                 Key([], 'b', *_ucmd("blueman-manager"),       desc="Open the blueman bluetooth manager"),
                 KeyChord([], 'c', [
                     Key([], 'e', *_uacmd("dm-confedit"),      desc="Choose a config file to edit"),
-                    Key([], 'l', *_uacmd(terminal + LGIT),    desc="Open lazygit to manage the dotfiles bare repo"),
+                    Key([], 'l', *_uacmd(LCFG, terminal),     desc="Open lazygit to manage the dotfiles bare repo"),
                     Key([], 't', *_uascript(TIGA, terminal),  desc="Open tig to manage the dotfiles bare repo"),
                     ],
                     mode=" CONFIG"
                 ),
                 KeyChord([], 'd', [
-                    Key([], 's', *_uacmd(terminal + TREE),    desc="Scans the whole '/' partition with ncdu"),
-                    Key([], 'u', *_uacmd(terminal + DISK),    desc="Show partition usage with df"),
+                    Key([], 's', *_uacmd("ncdu -x /", terminal), desc="Scans the whole '/' partition with ncdu"),
+                    Key([], 'u', *_uacmd("df -h", terminal),     desc="Show partition usage with df"),
                     ],
                     mode=" DISK"
                 ),
                 Key([], 'f', *_uscript("lfrun.sh", terminal), desc="Open the file explorer in a new window"),
                 KeyChord([], 'h', [
-                    Key([], 'b', *_uacmd(terminal + BTOP),    desc="Open btop in new window"),
-                    Key([], 'h', *_uacmd(terminal + HTOP),    desc="Open htop in new window"),
+                    Key([], 'b', *_uacmd("btop --utf-force", terminal), desc="Open btop in new window"),
+                    Key([], 'h', *_uacmd("htop", terminal),             desc="Open htop in new window"),
                     ],
                     mode=" MONITOR"
                 ),
-                Key([], 'm', *_ucmd(terminal + MIXER),        desc="Open alsamixer in new window"),
-                Key([], 'n', *_ucmd(terminal + NET),          desc="Show the connected network with nmcli"),
+                Key([], 'm', *_ucmd("alsamixer", terminal),   desc="Open alsamixer in new window"),
+                Key([], 'n', *_ucmd("nmcli c s", terminal),   desc="Show the connected network with nmcli"),
                 KeyChord([], 'p', [
                     Key([], 'b', *_uascript("pcm.sh -bn"),    desc="Toggle picom on/off"),
                     Key([], 't', *_uascript("pcm.sh -tn"),    desc="Toggle the blur effect"),
@@ -392,18 +378,19 @@ def init_keymap(mod, terminal, groups):
                 KeyChord([], 't', [
                     Key([], 'a', *_uacmd("alacritty"),        desc="Open alacritty in new window"),
                     Key([], 'k', *_uacmd("kitty"),            desc="Open kitty in new window"),
-                    Key([], 'p', *_uacmd(terminal + PYTHON),  desc="Open a python interpreter in new window"),
+                    Key([], 'p', *_uacmd("python", terminal), desc="Open a python interpreter in new window"),
+                    Key([], 's', *_uacmd("st"),               desc="Open st in new window"),
                     Key([], 't', *_uacmd(terminal),           desc="Open the qtile terminal"),
                     ],
                     mode=" TERMINAL"
                 ),
                 KeyChord([], 'u', [
-                    Key([], 'c', *_uacmd(terminal + CHECK),   desc="Check pacman for new updates"),
-                    Key([], 'u', *_uacmd(terminal + UPDT),    desc="Updates the system"),
+                    Key([], 'c', *_uacmd("checkupdates", terminal),     desc="Check pacman for new updates"),
+                    Key([], 'u', *_uacmd("sudo pacman -Syu", terminal), desc="Updates the system"),
                     ],
                     mode=" UPDATES"
                 ),
-                Key([], 'y', *_ucmd(terminal + CAL),          desc="Open a calendar of current year"),
+                Key([], 'y', *_ucmd("cal -Y", terminal),      desc="Open a calendar of current year"),
                 KeyChord([], 'x', [
                     Key([], 'd', *_uascript("xal.sh -dn"),    desc="Disable the autolock"),
                     Key([], 'e', *_uascript("xal.sh -en"),    desc="Enable the autolock"),

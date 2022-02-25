@@ -21,7 +21,6 @@ from libqtile import bar
 from libqtile import qtile
 from libqtile import widget
 
-from keys import MIXER
 from style import FONT
 from style import ARROW_SIZE
 
@@ -480,7 +479,7 @@ def volume(terminal, bg="#000000", fg="#ffffff"):
         markup=True,               # Whether or not to use pango markup
         max_chars=0,               # Maximum number of characters to display in widget.
         mouse_callbacks={
-            'Button2': lambda: qtile.cmd_spawn(terminal + MIXER)
+            'Button2': lambda: qtile.cmd_spawn(terminal + "alsamixer")
         },                                 # Dict of mouse button press callback functions. Accepts functions and lazy calls.
         mute_command=None,         # Mute command
         padding=3,                 # Padding left and right. Calculated if None.

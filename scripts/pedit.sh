@@ -55,7 +55,7 @@ main () {
   pass_entry=$(
     find ~/.password-store/ -type f -not -path "*/.git*" | \
     sed "s|$HOME\/\.password-store||; s/\.gpg//" | \
-    dmenu -c -l 10 -p "Please choose a pass entry to edit:" -fn "$DMFONT"
+    dmenu -c -l 10 -bw 5 -p "Please choose a pass entry to edit:" -fn "$DMFONT"
   )
   [ -z "$pass_entry" ] && exit 0
 

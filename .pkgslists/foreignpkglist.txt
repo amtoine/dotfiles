@@ -27,6 +27,7 @@ reddio
 sddm-archlinux-theme-git
 shell-color-scripts
 slack-desktop
+st
 toilet
 tomb
 xsnow

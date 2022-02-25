@@ -31,7 +31,12 @@ from widgets import init_widget_defaults
 
 
 mod = "mod4"  # the super (windows or mac) key controls `qtile`
-terminal = guess_terminal(preference=["kitty", "alacritty"])
+preference = [
+    "kitty",
+    "st",
+    "alacritty",
+]
+terminal = guess_terminal(preference=preference)
 
 # initialize everything.
 groups, group_names = init_groups()

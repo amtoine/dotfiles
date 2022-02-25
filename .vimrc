@@ -502,3 +502,5 @@ set laststatus=2"
 
 "let g:xml_syntax_folding = 1
 "set foldmethod=syntax
+
+set ttymouse=sgr

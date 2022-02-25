@@ -49,6 +49,7 @@ docker-compose
 dosfstools
 dstat
 dunst
+dust
 dwarffortress
 ed
 efibootmgr
@@ -178,6 +179,7 @@ sl
 slack-desktop
 sox
 spectrwm
+st
 starship
 sudo
 swig
