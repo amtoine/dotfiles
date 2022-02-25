@@ -692,7 +692,7 @@ help () {
 }
 
 # parse the arguments.
-OPTIONS=$(getopt -o hsrSfa: --long help,nosync,reboot,noshell,nodialog,action: \
+OPTIONS=$(getopt -o hsrSfa:d --long help,nosync,reboot,noshell,nodialog,action:,debug \
               -n 'install.sh' -- "$@")
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
 eval set -- "$OPTIONS"
@@ -711,11 +711,12 @@ main () {
   while [[ $# -gt 0 ]]; do
     case "$1" in
       -h | --help ) help ;;
-      -s | --nosync ) SYNC="no"; shift 1 ;;
-      -f | --nodialog ) DIALOG="no"; shift 1 ;;
-      -S | --noshell ) PROMPT_SHELL="no"; shift 1 ;;
+      -s | --nosync ) NOSYNC="no"; shift 1 ;;
+      -f | --nodialog ) NODIALOG="no"; shift 1 ;;
+      -S | --noshell ) NOPROMPTSHELL="no"; shift 1 ;;
       -r | --reboot ) REBOOT="yes"; shift 1 ;;
       -a | --action ) ACTION="$2"; shift 2 ;;
+      -d | --debug ) DEBUG="yes"; shift 1 ;;
       -- ) shift; break ;;
       * ) break ;;
     esac
@@ -729,15 +730,16 @@ main () {
   esac
 
   # install
-  [ ! "$SYNC" = "no" ] && { sync_repos || error "Error syncing the repos."; }
-  [ ! "$DIALOG" = "no" ] && { welcome || { clear; error "User choose to exit.";}; }
-  [ ! "$DIALOG" = "no" ] && { lastchance || { clear; error "User choose to exit.";}; }
+  [ ! -v NOSYNC ] && { sync_repos || error "Error syncing the repos."; }
+  [ ! -v NODIALOG ] && { welcome || { [ ! -v DEBUG ] && clear; error "User choose to exit.";}; }
+  [ ! -v NODIALOG ] && { lastchance || { [ ! -v DEBUG ] && clear; error "User choose to exit.";}; }
   init_deps || error "Error creating the dependencies file"
   select_driver || error "Video driver selection failed"
-  [ "$ACTION" = "interactive" ] && { select_deps || { clear; error "User choose to exit";}; }
+  [ "$ACTION" = "interactive" ] && { select_deps || { [ ! -v DEBUG ] && clear; error "User choose to exit";}; }
   [ "$ACTION" = "all" ] && { push_all_deps || error "Pushing all deps failed"; }
   clear
   build_deps || error "Building the dependencies failed."
+  [ -v DEBUG ] && less "$deps_file"; exit 0
   install_deps || error "Installing the dependencies failed."
   install_config || error "Installing the configuration files failed"
 
@@ -745,8 +747,8 @@ main () {
   info "## The config has been installed! ##"
   info "####################################"
 
-  [ ! "$PROMPT_SHELL" = "no" ] && prompt_shell
-  [ "$REBOOT" = "yes" ] && { echo "reboot"; exit 0; }
+  [ ! -v NOPROMPTSHELL ] && prompt_shell
+  [ -v REBOOT ] && { sudo reboot; exit 0; }
   prompt_reboot
 }
 
