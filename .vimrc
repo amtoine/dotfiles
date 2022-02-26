@@ -14,42 +14,6 @@
 " Dependencies:
 " License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 " Contributors: Stevan Antoine
-"
-"               Table of Content:
-"                 BASIC OPTIONS
-"                 STYLE
-"                 MORE OPTIONS
-"                 WILD MENU
-"                 FILE MANAGEMENT
-"                 MAPPINGS
-"                 PLUGINS
-"                    FastFold
-"                    SimpylFold
-"                    YouCompleteMe
-"                    vim-flake8
-"                    ctrlp
-"                    powerline
-"                    ultisnips
-"                    vim-floaterm
-"                    vim=startify
-"                    fzf
-"                    fzf.vim
-"                    vim-cmake
-"                    vim-signify
-"                    vim-fugitive
-"                    vim-rhubarb
-"                    gv.vim
-"                    rainbow_parentheses.vim
-"                    onedark.vim
-"                    vim-airline
-"                    vim-airline-themes
-"                    vim-commentary
-"                    vim-which-key
-"                 VIMSCRIPT
-"                 python support
-"                 full stack support
-"                 STATUS LINE
-"
 
 
 " BASIC OPTIONS ---------------------------------------------------------------- {{{
@@ -67,8 +31,10 @@ set encoding=utf-8
 
 
 " STYLE ---------------------------------------------------------------- {{{
+packadd! dracula
 " chooses a colorscheme.
-colorscheme default
+" colorscheme default
+colorscheme dracula
 "colorscheme desert
 "colorscheme koehler
 "colorscheme darkblue
@@ -165,23 +131,18 @@ if !isdirectory(expand("$HOME/.vim/plugged")) | call mkdir(expand("$HOME/.vim/pl
 map \p ebi(<Esc>ea)<Esc>
 map \c ebi{<Esc>ea}<Esc>
 
-" Set the backslash as the leader key.
-let mapleader = "\\"
-" applies the changes made to .vimrc
-nnoremap <leader>sv :source $MYVIMRC<cr>
-" Turn off search highlighting by pressing \\.
-nnoremap <leader>\ :nohlsearch<CR>
-" Press `` to jump back to the last cursor position.
-nnoremap <leader>' ``
-" make all splits the same size, as best as vim can do.
-noremap <leader>] <c-w>=
-" clears trailling spaces.
-noremap <leader>t :%s/\s\+$//<cr>
-" Press \p to print the current file to the default printer from a Linux operating system.
-" View available printers:   lpstat -v
-" Set default printer:       lpoptions -d <printer_name>
-" <silent> means do not display output.
-"nnoremap <silent> <leader>p :%w !lp<CR>
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+set timeoutlen=100
+"
+" " Turn off search highlighting by pressing \\.
+" nnoremap <leader>h :nohlsearch<CR>
+" " Press `` to jump back to the last cursor position.
+" nnoremap <leader>, ``
+" " make all splits the same size, as best as vim can do.
+" noremap <leader>] <c-w>=
+" " clears trailling spaces.
+" noremap <leader>t :%s/\s\+$//<cr>
 " moves lines up and dowm in every mode.
 nnoremap <S-j> :m .+1<CR>
 nnoremap <S-k> :m .-2<CR>
@@ -189,8 +150,6 @@ vnoremap <S-j> :m '>+1<CR>gv=gv
 vnoremap <S-k> :m '<-2<CR>gv=gv
 " Type jk to exit insert mode quickly.
 inoremap jk <Esc>
-" Press the space bar to type the : character in command mode.
-nnoremap <space> :
 " Pressing the letter o will open a new line below the current one.
 " Exit insert mode after creating a new line above or below the current line.
 nnoremap o o<esc>
@@ -213,6 +172,7 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+nnoremap <c-m> <c-d>
 " Resize split windows using arrow keys by pressing:
 " CTRL+UP, CTRL+DOWN, CTRL+LEFT, or CTRL+RIGHT.
 noremap <c-up> <c-w>+
@@ -228,6 +188,9 @@ nnoremap <F3> :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
 " search visually selected text.
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
+" Press the space bar to type the : character in command mode.
+nnoremap <space> :
 " }}}
 
 
@@ -240,7 +203,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'Konfekt/FastFold'                                        " https://github.com/Konfekt/FastFold 
   Plug 'tmhedberg/SimpylFold'                                    " https://github.com/tmhedberg/SimpylFold 
   Plug 'vim-scripts/indentpython.vim'                            " https://github.com/vim-scripts/indentpython.vim 
-  Plug 'Valloric/YouCompleteMe'                                  " https://github.com/ycm-core/YouCompleteMe 
+  " Plug 'Valloric/YouCompleteMe'                                  " https://github.com/ycm-core/YouCompleteMe 
   Plug 'vim-syntastic/syntastic'                                 " https://github.com/vim-syntastic/syntastic 
   Plug 'nvie/vim-flake8'                                         " https://github.com/nvie/vim-flake8 
   Plug 'kien/ctrlp.vim'                                          " https://github.com/kien/ctrlp.vim 
@@ -278,6 +241,103 @@ endif
   " Plug 'petRUShka/vim-sage'
 call plug#end()
 
+" WhichKey config {{{
+call which_key#register('<Space>', "g:which_key_map")
+
+" applies the changes made to .vimrc
+nnoremap <leader>S :source $MYVIMRC<cr>
+
+" Define prefix dictionary
+let g:which_key_map =  {}
+
+" Second level dictionaries:
+" 'name' is a special field. It will define the name of the group, e.g., leader-f is the "+file" group.
+" Unnamed groups will show a default empty string.
+
+" =======================================================
+" Create menus based on existing mappings
+" =======================================================
+" You can pass a descriptive text to an existing mapping.
+
+let g:which_key_map.f = { 'name' : '+file' }
+
+nnoremap <silent> <leader>fs :update<CR>
+let g:which_key_map.f.s = 'save-file'
+
+nnoremap <silent> <leader>fd :e $MYVIMRC<CR>
+let g:which_key_map.f.d = 'open-vimrc'
+
+nnoremap <silent> <leader>oq  :copen<CR>
+nnoremap <silent> <leader>ol  :lopen<CR>
+let g:which_key_map.o = {
+      \ 'name' : '+open',
+      \ 'q' : 'open-quickfix'    ,
+      \ 'l' : 'open-locationlist',
+      \ }
+
+" =======================================================
+" Create menus not based on existing mappings:
+" =======================================================
+" Provide commands(ex-command, <Plug>/<C-W>/<C-d> mapping, etc.)
+" and descriptions for the existing mappings.
+"
+" Note:
+" Some complicated ex-cmd may not work as expected since they'll be
+" feed into `feedkeys()`, in which case you have to define a decicated
+" Command or function wrapper to make it work with vim-which-key.
+" Ref issue #126, #133 etc.
+let g:which_key_map.b = {
+      \ 'name' : '+buffer' ,
+      \ '1' : ['b1'        , 'buffer 1']        ,
+      \ '2' : ['b2'        , 'buffer 2']        ,
+      \ 'd' : ['bd'        , 'delete-buffer']   ,
+      \ 'f' : ['bfirst'    , 'first-buffer']    ,
+      \ 'h' : ['Startify'  , 'home-buffer']     ,
+      \ 'l' : ['blast'     , 'last-buffer']     ,
+      \ 'n' : ['bnext'     , 'next-buffer']     ,
+      \ 'p' : ['bprevious' , 'previous-buffer'] ,
+      \ '?' : ['Buffers'   , 'fzf-buffer']      ,
+      \ }
+
+let g:which_key_map.l = {
+      \ 'name' : '+lsp',
+      \ 'f' : ['spacevim#lang#util#Format()'          , 'formatting']       ,
+      \ 'r' : ['spacevim#lang#util#FindReferences()'  , 'references']       ,
+      \ 'R' : ['spacevim#lang#util#Rename()'          , 'rename']           ,
+      \ 's' : ['spacevim#lang#util#DocumentSymbol()'  , 'document-symbol']  ,
+      \ 'S' : ['spacevim#lang#util#WorkspaceSymbol()' , 'workspace-symbol'] ,
+      \ 'g' : {
+        \ 'name': '+goto',
+        \ 'd' : ['spacevim#lang#util#Definition()'     , 'definition']      ,
+        \ 't' : ['spacevim#lang#util#TypeDefinition()' , 'type-definition'] ,
+        \ 'i' : ['spacevim#lang#util#Implementation()' , 'implementation']  ,
+        \ },
+      \ }
+
+let g:which_key_map['w'] = {
+  \ 'name' : '+windows' ,
+  \ 'w' : ['<C-W>w'     , 'other-window']          ,
+  \ 'd' : ['<C-W>c'     , 'delete-window']         ,
+  \ '-' : ['<C-W>s'     , 'split-window-below']    ,
+  \ '|' : ['<C-W>v'     , 'split-window-right']    ,
+  \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
+  \ 'h' : ['<C-W>h'     , 'window-left']           ,
+  \ 'j' : ['<C-W>j'     , 'window-below']          ,
+  \ 'l' : ['<C-W>l'     , 'window-right']          ,
+  \ 'k' : ['<C-W>k'     , 'window-up']             ,
+  \ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
+  \ 'J' : [':resize +5'  , 'expand-window-below']   ,
+  \ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
+  \ 'K' : [':resize -5'  , 'expand-window-up']      ,
+  \ '=' : ['<C-W>='     , 'balance-window']        ,
+  \ 's' : ['<C-W>s'     , 'split-window-below']    ,
+  \ 'v' : ['<C-W>v'     , 'split-window-below']    ,
+  \ '?' : ['Windows'    , 'fzf-window']            ,
+  \ }
+
+
+" }}}
+
 " FastFold config -- https://github.com/Konfekt/FastFold ----------------- {{{
 nmap zuz <Plug>(FastFoldUpdate)
 let g:fastfold_savehook               = 1
@@ -307,10 +367,10 @@ let g:SimpylFold_fold_blank        = 0 "0
 let b:SimpylFold_fold_blank        = 0 "0
 " }}}
 
-" YouCompleteMe config -- https://github.com/ycm-core/YouCompleteMe ----------------- {{{
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" }}}
+" " YouCompleteMe config -- https://github.com/ycm-core/YouCompleteMe ----------------- {{{
+" let g:ycm_autoclose_preview_window_after_completion=1
+" map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" " }}}
 
 "" syntastic config -- https://github.com/vim-syntastic/syntastic ----------------- {{{
 set statusline+=%#warningmsg#

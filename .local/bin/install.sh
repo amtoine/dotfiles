@@ -624,6 +624,10 @@ install_config () {
   if grep -e "^.*:vim" "$deps_file" -q; then
     echo -e "${CMD}cp ${SRC}$DOTFILES/.vimrc ${DST}$HOME/.vimrc${OFF}"
     cp "$DOTFILES/.vimrc" "$HOME/.vimrc"
+    echo -e "${CMD}mkdir -p ${DST}$HOME/.vim/pack/themes/start${OFF}"
+    mkdir -p "$HOME/.vim/pack/themes/start"
+    echo -e "${CMD}git clone ${SRC}https://github.com/dracula/vim.git ${DST}$HOME/.vim/pack/themes/start/dracula${OFF}"
+    git clone https://github.com/dracula/vim.git "$HOME/.vim/pack/themes/start/dracula"
   fi
   if grep -e "^git\$" "$deps_file" -q; then
     echo -e "${CMD}cp ${SRC}$DOTFILES/.gitconfig ${DST}$HOME/.gitconfig${OFF}"
