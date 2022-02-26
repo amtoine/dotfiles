@@ -31,7 +31,7 @@ export OSH=$HOME/.oh-my-bash
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
-OSH_THEME="random" # (...please let it be pie... please be some pie..)
+# OSH_THEME="random" # (...please let it be pie... please be some pie..)
 # OSH_THEME="agnoster"
 # OSH_THEME="powerline"
 
@@ -231,7 +231,7 @@ extr ()
 ## the prompt ###
 # eval "$(starship init bash)"
 # export PS1="$RD[\#] $NC\u@\h:$YL\w$NC $GR>$NC "
-export PS1="$RD[\#]$NC $YL\w$NC \$($HOME/scripts/_parse_git_info.sh)$GR>$NC "
+export PS1="$RD[\#]$NC $YL\w$NC \$(_parse_git_info.sh)$GR>$NC "
 
 ## after prompt ###
 if [ -f /etc/bash.command-not-found ]; then

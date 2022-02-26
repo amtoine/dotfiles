@@ -39,7 +39,6 @@
 #      https://starship.rs/config 
 # Use custom format
 format = """
-\n\
 $username\
 $hostname\
 $directory\
@@ -52,7 +51,7 @@ $python\
 $battery\
 $cmake\
 $cmd_duration\
-$memory_usage\n\
+$memory_usage\
 $character\
 """
 # move the rest of the prompt to the right

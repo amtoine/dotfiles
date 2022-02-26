@@ -1,7 +1,10 @@
 #!/bin/sh
 THEMES="$HOME/ghq/git.suckless.org/st/themes.h"
-CONFIG="$HOME/.config/st/theme.txt"
+CURRENT="$HOME/.config/st/theme.txt"
 DMFONT="mononoki Nerd Font-20"
+_current=$(sed 's/.* \(.*\)/\1/' "$CURRENT")
 _themes=$(grep -e '", "#' "$THEMES" | awk -F'", "' '{print $NF}' | sed 's/"},\s*$//g')
-choice=$(echo "$_themes" | awk -F: '{print $1}' | dmenu -l 10 -bw 5 -fn "$DMFONT" -p "Choose a theme:" -w "$WINDOWID")
-echo "$_themes" | grep -e "$choice" | sed 's/\(.*\):\(.*\)/\2 \1/' > "$CONFIG"
+choice=$(echo -e "current theme is $_current\n$_themes" | awk -F: '{print $1}' | dmenu -l 10 -bw 5 -fn "$DMFONT" -p "Choose a theme:" -w "$WINDOWID")
+[ -z "$choice" ] && exit 0
+[[ "$choice" == current* ]] && exit 0
+echo "$_themes" | grep -we "$choice" | sed 's/current theme is //; s/\(.*\):\(.*\)/\2 \1/' > "$CURRENT"
