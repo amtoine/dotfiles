@@ -81,6 +81,12 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+if command -v devour &> /dev/null; then
+  alias feh='devour feh'
+  alias mpv='devour mpv'
+  alias okular='devour okular'
+fi
+
 alias kicat="kitty +kitten icat"
 alias kthemes="kitty +kitten themes"
 

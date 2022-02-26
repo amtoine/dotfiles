@@ -75,20 +75,26 @@ if status is-interactive
 
   # enable color support of ls and also add handy aliases
   if type -q exa
-    alias ls 'exa -g --icons'
-    alias ll "exa -l -g --icons"
-    alias lla "exa -l -g -a --icons"
-    alias tree "exa -g --icons --tree"
+    alias ls='exa -g --icons'
+    alias ll="exa -l -g --icons"
+    alias lla="exa -l -g -a --icons"
+    alias tree="exa -g --icons --tree"
   else
-    alias ls 'ls --color=auto'
-    alias ll 'ls -l --color=auto'
-    alias lla 'ls -la --color=auto'
+    alias ls='ls --color=auto'
+    alias ll='ls -l --color=auto'
+    alias lla='ls -la --color=auto'
   end
   alias dir='dir --color=auto'
   alias vdir='vdir --color=auto'
   alias grep='grep --color=auto'
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
+
+  if type -q devour
+    alias feh='devour feh'
+    alias mpv='devour mpv'
+    alias okular='devour okular'
+  end
 
   alias kicat="kitty +kitten icat"
   alias kthemes="kitty +kitten themes"
