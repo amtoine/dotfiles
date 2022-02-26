@@ -67,7 +67,7 @@ info () {
 # download the colorscheme in a temporary file.
 DRC=$(mktemp /tmp/a2n-s_dotfiles_dialogrc.XXXXXX)
 trap 'rm "$DRC"' 0 1 15
-_dialogrc_url="https://raw.githubusercontent.com/a2n-s/dotfiles/$CHANNEL/scripts/.install.dialogrc"
+_dialogrc_url="https://raw.githubusercontent.com/a2n-s/dotfiles/$CHANNEL/.local/bin/.install.dialogrc"
 curl -fsSLo "$DRC" "$_dialogrc_url" || error "Error downloading $_dialogrc_url"
 
 # declare the global dependency table.
@@ -646,8 +646,8 @@ install_config () {
     cp -r "$DOTFILES/.mpv" "$HOME/.config"
   fi
   if grep -e "^scripts\$" "$deps_file" -q; then
-    echo -e "${CMD}cp -r ${SRC}$DOTFILES/scripts ${DST}$HOME${OFF}"
-    cp -r "$DOTFILES/scripts" "$HOME"
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.local/bin ${DST}$HOME/.local${OFF}"
+    cp -r "$DOTFILES/.local/bin" "$HOME/.local"
   fi
   if grep -e "^.*:dmscripts" "$deps_file" -q; then
     echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/dmscripts ${DST}$HOME/.config${OFF}"

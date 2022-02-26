@@ -51,7 +51,8 @@ F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12 = (
 
 # system shortcuts
 HOME = os.path.expanduser("~")
-SCRIPTS = "scripts"
+SCRIPTS = ".local/bin"
+QSCRIPTS = ".config/qtile/scripts"
 
 # some shortcuts for lenghty commands
 # wrapper around dmenu-related commands
@@ -66,10 +67,10 @@ SURF = "tabbed -c surf -N -e"
 VIMB = "tabbed -c vimb -e"
 
 # qtile related commands
-AUTOSTART = dict(script="autostart.sh", path=".config/qtile/scripts")
+AUTOSTART = dict(script="autostart.sh", path=QSCRIPTS)
 LOG = "bat " + os.path.expanduser("~/.local/share/qtile/qtile.log")
-KB = os.path.expanduser("~/.config/qtile/scripts/kb.sh")
-BAR = dict(script="bar.sh", path=".config/qtile/scripts")
+KB = os.path.join(HOME, QSCRIPTS, "kb.sh")
+BAR = dict(script="bar.sh", path=QSCRIPTS)
 URELOAD = lazy.reload_config(), lazy.ungrab_chord()
 URESTART = lazy.restart(), lazy.ungrab_chord()
 USHUTDOWN = lazy.shutdown(), lazy.ungrab_chord()
@@ -204,7 +205,7 @@ def init_keymap(mod, terminal, groups):
     THEME = dict(
         script="change-theme.sh",
         terminal=terminal,
-        path=".config/qtile/scripts",
+        path=QSCRIPTS,
     )
 
     km = []

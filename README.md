@@ -220,7 +220,7 @@ But as it is the first time, as I said, that I do such a thing in public, I do n
 **THE INSTALLATION SCRIPT IS FINALLY THERE!!**  
 Simply run:
 ```bash
-curl -fsFLo /tmp/a2n-s.install.sh https://raw.githubusercontent.com/a2n-s/dotfiles/main/scripts/install.sh; /tmp/a2n-s.install.sh --help
+curl -fsFLo /tmp/a2n-s.install.sh https://raw.githubusercontent.com/a2n-s/dotfiles/main/.local/bin/install.sh; /tmp/a2n-s.install.sh --help
 ```
 to pull the script down and directly show the help message, and then
 ```bash
@@ -229,8 +229,8 @@ to pull the script down and directly show the help message, and then
 to run the install process.
 Or one can directly run
 ```bash
-curl -fsFLo /tmp/a2n-s.install.sh https://raw.githubusercontent.com/a2n-s/dotfiles/main/scripts/install.sh; /tmp/a2n-s.install.sh --all
-curl -fsFLo /tmp/a2n-s.install.sh https://raw.githubusercontent.com/a2n-s/dotfiles/main/scripts/install.sh; /tmp/a2n-s.install.sh --interactive
+curl -fsFLo /tmp/a2n-s.install.sh https://raw.githubusercontent.com/a2n-s/dotfiles/main/.local/bin/install.sh; /tmp/a2n-s.install.sh --all
+curl -fsFLo /tmp/a2n-s.install.sh https://raw.githubusercontent.com/a2n-s/dotfiles/main/.local/bin/install.sh; /tmp/a2n-s.install.sh --interactive
 ```
 for a direct full/interactive install process respectively.
 
@@ -346,7 +346,7 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [mydoc-zsh]:            https://a2n-s.github.io/public/doc/config/dotfiles/zsh
 
 <!-- other stuff -->
-[`scripts`]:            scripts
+[`scripts`]:            .local/bin
 [virtualenvs-en]:       https://virtualenvwrapper.readthedocs.io/en/latest/
 [virtualenvs-fr]:       https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html
 [dmenu]:                https://git.suckless.org/dmenu/
