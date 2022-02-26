@@ -96,20 +96,24 @@ if status is-interactive
     alias okular='devour okular'
   end
 
-  alias kicat="kitty +kitten icat"
-  alias kthemes="kitty +kitten themes"
+  if [ "$TERM" = "xterm-kitty" ]
+    alias kicat="kitty +kitten icat"
+    alias kthemes="kitty +kitten themes"
+  end
 
-  alias qtheme="$HOME/.config/qtile/scripts/change-theme.sh"
-  alias qbar="$HOME/.config/qtile/scripts/bar.sh"
-  alias qrestart="qtile cmd-obj -o cmd -f restart"
-  alias qcmd="qtile cmd-obj -o cmd -f"
-  alias qprompt="qtile cmd-obj -o cmd -f spawncmd"
+  if pgrep "qtile" > /dev/null
+    alias qtheme="$HOME/.config/qtile/scripts/change-theme.sh"
+    alias qbar="$HOME/.config/qtile/scripts/bar.sh"
+    alias qrestart="qtile cmd-obj -o cmd -f restart"
+    alias qcmd="qtile cmd-obj -o cmd -f"
+    alias qprompt="qtile cmd-obj -o cmd -f spawncmd"
+    alias qstop="qtile cmd-obj -o cmd -f shutdown"
+  end
   if type -q bat
     alias qlog="bat $HOME/.local/share/qtile/qtile.log"
   else
     alias qlog="cat $HOME/.local/share/qtile/qtile.log | less"
   end
-  alias qstop="qtile cmd-obj -o cmd -f shutdown"
 
   #        _
   #  _ __ (_)___ __

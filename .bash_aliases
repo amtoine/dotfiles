@@ -87,17 +87,23 @@ if command -v devour &> /dev/null; then
   alias okular='devour okular'
 fi
 
-alias kicat="kitty +kitten icat"
-alias kthemes="kitty +kitten themes"
+if [ "$TERM" = "xterm-kitty" ]; then
+  alias kicat="kitty +kitten icat"
+  alias kthemes="kitty +kitten themes"
+fi
 
-alias qtheme="$HOME/.config/qtile/scripts/change-theme.sh"
-alias qbar="$HOME/.config/qtile/scripts/bar.sh"
-alias qrestart="qtile cmd-obj -o cmd -f restart"
-alias qcmd="qtile cmd-obj -o cmd -f"
-alias qprompt="qtile cmd-obj -o cmd -f spawncmd"
+if pgrep "qtile" > /dev/null
+then
+  alias qtheme="$HOME/.config/qtile/scripts/change-theme.sh"
+  alias qbar="$HOME/.config/qtile/scripts/bar.sh"
+  alias qrestart="qtile cmd-obj -o cmd -f restart"
+  alias qcmd="qtile cmd-obj -o cmd -f"
+  alias qprompt="qtile cmd-obj -o cmd -f spawncmd"
+  alias qstop="qtile cmd-obj -o cmd -f shutdown"
+fi
+
 if command -v bat &> /dev/null; then
   alias qlog="bat $HOME/.local/share/qtile/qtile.log"
 else
   alias qlog="cat $HOME/.local/share/qtile/qtile.log | less"
 fi
-alias qstop="qtile cmd-obj -o cmd -f shutdown"
