@@ -45,7 +45,7 @@ class Dunst(widget.base.ThreadPoolText):
     defaults = [
         ("update_interval", 1.0, "Update interval for the Dunst widget"),
         (
-            "format", "DUNST {state} ({waiting} - {count})", "Dunst display format",
+            "format", "DUNST {state} ({count})", "Dunst display format",
         ),
     ]
 
@@ -57,10 +57,11 @@ class Dunst(widget.base.ThreadPoolText):
         variables = dict()
 
         state = subprocess.check_output(["dunstctl", "is-paused"]).decode("utf-8").strip()
-        waiting = subprocess.check_output(["dunstctl", "count", "waiting"]).decode("utf-8").strip()
-        variables["state"] = "" if state == "false" else ""
-        variables["waiting"] = "" if waiting == "0" else ""
-        variables["count"] = int(waiting)
+        count = int(
+            subprocess.check_output(
+                ["dunstctl", "count", "waiting"]).decode("utf-8").strip())
+        variables["state"] = "" if count > 0 else "" if state == "false" else ""
+        variables["count"] = count
 
         return self.format.format(**variables)
 

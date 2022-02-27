@@ -271,12 +271,12 @@ draw_bold_text_with_bright_colors: true
 #
 #
 colors:
-  # COLORSCHEME: dracula.yaml
+  # COLORSCHEME: tokyo-night-storm.yaml
   # Default colors
   primary:
     # hard contrast: background = '0x1d2021'
-    background: '0x282a36'
-    foreground: '0xf8f8f2'
+    background: '0x24283b'
+    foreground: '0xa9b1d6'
 
   # Normal colors
   cursor:
@@ -285,25 +285,25 @@ colors:
 
   # Normal colors
   normal:
-    black: '0x000000'
-    red: '0xff5555'
-    green: '0x50fa7b'
-    yellow: '0xf1fa8c'
-    blue: '0xbd93f9'
-    magenta: '0xff79c6'
-    cyan: '0x8be9fd'
-    white: '0xbbbbbb'
+    black: '0x32344a'
+    red: '0xf7768e'
+    green: '0x9ece6a'
+    yellow: '0xe0af68'
+    blue: '0x7aa2f7'
+    magenta: '0xad8ee6'
+    cyan: '0x449dab'
+    white: '0x9699a8'
 
   # Bright colors
   bright:
-    black: '0x555555'
-    red: '0xff5555'
-    green: '0x50fa7b'
-    yellow: '0xf1fa8c'
-    blue: '0xcaa9fa'
-    magenta: '0xff79c6'
-    cyan: '0x8be9fd'
-    white: '0xffffff'
+    black: '0x444b6a'
+    red: '0xff7a93'
+    green: '0xb9f27c'
+    yellow: '0xff9e64'
+    blue: '0x7da6ff'
+    magenta: '0xbb9af7'
+    cyan: '0x0db9d7'
+    white: '0xacb0d0'
   indexed_colors:
     - {index: 16, color: '0xF8BD96'}
     - {index: 17, color: '0xF5E0DC'}

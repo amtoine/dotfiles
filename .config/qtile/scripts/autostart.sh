@@ -39,7 +39,7 @@ fi
 
 # start the compositor
 if command -v picom &> /dev/null; then
-  picom -b
+  picom --experimental-backends -b
   error "$?" "picom started successfully" "picom failed to start"
 fi
 
@@ -51,12 +51,6 @@ if command -v feh &> /dev/null; then
     ~/repos/catppucin/wallpapers/mandelbrot/* \
     --no-fehbg --bg-fill
 fi
-
-# start emacs in the background
-# if command -v emacs &> /dev/null; then
-#   emacs --daemon
-#   error "$?" "Emacs started successfully" "Emacs failed to start"
-# fi
 
 if command -v xautolock &> /dev/null; then
   margin=60

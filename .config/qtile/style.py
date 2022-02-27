@@ -41,19 +41,19 @@ SEP_STYLE = sep_styles.scolor
 # that are available
 # the format is    "minimal",           "decreased",         "normal"
 battery_fmts = [
-                   "{char}",            "{char}",            "{char} {percent:2.0%}"
+                   "{char}",  "{char}",  "{char} {percent:2.0%}"
 ]
 clock_fmts = [
-                   " %H:%M",           " %H:%M",           " %m/%d  %H:%M"
+                   " %H:%M", " %H:%M", " %m/%d  %H:%M"
 ]
 wlan_co_fmts = [
-                   " ",                " ",                " {essid} {quality:02d}/70"
+                   " ",      " ",      " {essid} {quality:02d}/70"
 ]
 wlan_dis_fmts = [
-                   "睊 ",               "睊 ",               "睊 --/--"
+                   "睊 ",      "睊 ",      "睊 --/--"
 ]
 dunst_fmts = [
-                   "{state} {waiting}", "{state} {waiting}", "{state} {waiting} {count}"
+                   "{state}", "{state}", "{state} {count}"
 ]
 # builds the widgets with current theme
 # and some styling that depends on the bar
