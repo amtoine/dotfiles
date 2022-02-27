@@ -15,7 +15,9 @@
 
 from typing import List  # noqa: F401
 
+from libqtile.config import DropDown
 from libqtile.config import Group
+from libqtile.config import ScratchPad
 from libqtile.dgroups import simple_key_binder
 
 
@@ -34,13 +36,26 @@ def init_groups():
         [" ",  "TALL"],  # music
         [" ",  "WIDE"],  # video
     ]
-
     groups = [
         Group(name, layout=layout)
         for name, layout in group_opts
     ]
+
+    qshell = dict(
+        x=0.05, y=0.4, width=0.9, height=0.55, opacity=0.9
+    )
+    term = dict(
+        x=0.05, y=0.0, width=0.9, height=0.35, opacity=0.9
+    )
+    scratchpads = [
+        ScratchPad("sp1", [
+            DropDown("term",   "st",                **term),
+            DropDown("qshell", "st -e qtile shell", **qshell)
+        ]),
+    ]
+
     # use the zip function to isolate the name of each group.
-    return groups, list(list(zip(*group_opts))[0])
+    return groups + scratchpads, list(list(zip(*group_opts))[0])
 
 
 # # Allow MODKEY+[0 through 9] to bind to groups,
