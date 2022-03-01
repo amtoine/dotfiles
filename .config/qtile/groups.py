@@ -52,6 +52,7 @@ def init_groups():
         ScratchPad("sp1", [
             DropDown("term",   terminal,                     **term),
             DropDown("qshell", f"{terminal} -e qtile shell", **qshell),
+            DropDown("python", f"{terminal} -e ptpython",    **qshell),
         ]),
     ]
 
