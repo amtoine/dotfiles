@@ -23,6 +23,7 @@ import os
 
 from libqtile.config import Key
 from libqtile.config import KeyChord
+from libqtile.config import ScratchPad
 from libqtile.lazy import lazy
 
 from extensions import window_list
@@ -222,11 +223,12 @@ def init_keymap(mod, terminal, groups):
     # allow to move windows to other groups, with following (mod + ctrl + 1-7)
     # or without following (mod + shift + 1-7).
     for i, group in enumerate(groups):
-        km.extend([
-            Key([mod],      str(i+1), lazy.group[group.name].toscreen(),                   desc="Switch to group {}".format(group.name)),
-            Key([mod, SHI], str(i+1), lazy.window.togroup(group.name, switch_group=False), desc="Move focused window to group {}".format(group.name)),
-            Key([mod, CON], str(i+1), lazy.window.togroup(group.name, switch_group=True),  desc="Switch to & move focused window to group {}".format(group.name)),
-        ])
+        if not isinstance(group, ScratchPad):
+            km.extend([
+                Key([mod],      str(i+1), lazy.group[group.name].toscreen(),                   desc="Switch to group {}".format(group.name)),
+                Key([mod, SHI], str(i+1), lazy.window.togroup(group.name, switch_group=False), desc="Move focused window to group {}".format(group.name)),
+                Key([mod, CON], str(i+1), lazy.window.togroup(group.name, switch_group=True),  desc="Switch to & move focused window to group {}".format(group.name)),
+            ])
 
     # commands of the form "mod + key"
     MOD = [mod]

@@ -58,14 +58,15 @@ floating_layout = layout.Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
-        Match(wm_class='confirmreset'),    # gitk
-        Match(wm_class='makebranch'),      # gitk
-        Match(wm_class='maketag'),         # gitk
-        Match(wm_class='ssh-askpass'),     # ssh-askpass
-        Match(title='branchdialog'),       # gitk
-        Match(title='pinentry'),           # GPG key password entry
-        Match(wm_class='pinentry-gtk-2'),  # gtk
-        Match(wm_class="conky"),           # conky
+        Match(wm_class='confirmreset'),        # gitk
+        Match(wm_class='makebranch'),          # gitk
+        Match(wm_class='maketag'),             # gitk
+        Match(wm_class='ssh-askpass'),         # ssh-askpass
+        Match(title='branchdialog'),           # gitk
+        Match(title='pinentry'),               # GPG key password entry
+        Match(wm_class='pinentry-gtk-2'),      # gtk
+        Match(wm_class="conky"),               # conky
+        Match(wm_class="qemu-system-x86_64"),  # quickemu VM manager
     ],
     border_focus=lt.floating.focus,    # Border colour(s) for the focused window.
     border_normal=lt.floating.normal,  # Border colour(s) for un-focused windows.

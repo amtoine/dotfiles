@@ -10,6 +10,8 @@ settings:
     global: dark
   content.register_protocol_handler:
     https://wali-m.isae.fr#!/Mail/0/INBOX/new?%25s: false
+  downloads.location.directory:
+    global: ~/dl
   fonts.default_family:
     global: mononoki Nerd Font
   fonts.default_size:

@@ -158,6 +158,7 @@ python2
 python35
 python38
 qtile
+quickemu
 qutebrowser
 ranger
 read-edid

@@ -23,6 +23,7 @@ pixterm
 polybar
 python35
 python38
+quickemu
 reddio
 sddm-archlinux-theme-git
 shell-color-scripts

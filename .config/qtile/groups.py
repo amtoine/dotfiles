@@ -47,10 +47,11 @@ def init_groups():
     term = dict(
         x=0.05, y=0.0, width=0.9, height=0.35, opacity=0.9
     )
+    terminal = "st"
     scratchpads = [
         ScratchPad("sp1", [
-            DropDown("term",   "st",                **term),
-            DropDown("qshell", "st -e qtile shell", **qshell)
+            DropDown("term",   terminal,                     **term),
+            DropDown("qshell", f"{terminal} -e qtile shell", **qshell),
         ]),
     ]
 

@@ -109,7 +109,6 @@ virtualbox
 vnstat
 vulkan-tools
 weechat
-wget
 xautolock
 xf86-video-vesa
 xonsh
