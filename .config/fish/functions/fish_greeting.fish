@@ -1,3 +1,3 @@
 function fish_greeting
-  fish_logo
+  # fish_logo
 end

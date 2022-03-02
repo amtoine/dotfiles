@@ -111,7 +111,7 @@ main () {
       -u | --up )        ACTION="up"; shift 1 ;;
       -d | --down )      ACTION="down"; shift 1 ;;
       -t | --toggle )    ACTION="toggle"; shift 1 ;;
-      -t | --toggle )    ACTION="toggle"; shift 1 ;;
+      -b | --bluetooth ) ACTION="bluetooth"; shift 1 ;;
       -c | --channel )   CHANNEL="$2"; shift 2 ;;
       -s | --step )      STEP="$2"; shift 2 ;;
       -n | --notify )    NOTIFY="yes"; shift 1 ;;
@@ -119,14 +119,19 @@ main () {
       * ) break ;;
     esac
   done
+
+  #an action is required
   [ -z "$ACTION" ] && usage
-  [ -z "$CHANNEL" ] && usage
-  [ ! "$ACTION" = "toggle" -a -z "$STEP" ] && usage
+  # everything that is not bluetooth requires a channel
+  [ ! "$ACTION" = "bluetooth" -a -z "$CHANNEL" ] && usage
+  # up and down require a step size
+  [ "$ACTION" = "up" -a -z "$STEP" ] && usage
+  [ "$ACTION" = "down" -a -z "$STEP" ] && usage
   case "$ACTION" in
     up )        amixer -q sset "$CHANNEL" "$STEP"%+; [[ "$NOTIFY" == "yes" ]] && notify ;;
     down )      amixer -q sset "$CHANNEL" "$STEP"%-; [[ "$NOTIFY" == "yes" ]] && notify ;;
-    toggle )    amixer -q sset Master toggle; [[ "$NOTIFY" == "yes" ]] && mute_notify "$CHANNEL" ;;
-    bluetooth ) bluetooth_toggle "$NUM" ; [[ "$NOTIFY" == "yes" ]] && bluetooth_notify ;;
+    toggle )    amixer -q sset "$CHANNEL" toggle; [[ "$NOTIFY" == "yes" ]] && mute_notify "$CHANNEL" ;;
+    bluetooth ) echo "$NUM"; bluetooth_toggle "$NUM" ; [[ "$NOTIFY" == "yes" ]] && bluetooth_notify ;;
     * ) echo "an error occured (got unexpected '$ACTION')"; exit 1 ;;
   esac
 }
