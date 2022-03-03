@@ -2,6 +2,7 @@ acpi
 alacritty
 arandr
 arduino
+asciinema
 autoconf
 automake
 base

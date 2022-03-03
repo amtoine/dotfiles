@@ -53,3 +53,17 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+
+(beacon-mode 1)
+
+(setq minimap-window-location 'right)
+(setq minimap-width-fraction 0.1)
+(map! :leader
+      (:prefix ("t" . "toggle")
+       :desc "Toggle minimap-mode" "m" #'minimap-mode))
+
+(map! :leader
+      (:prefix ("c h" . "Help info from Clippy")
+       :desc "Clippy describes function under point" "f" #'clippy-describe-function
+       :desc "Clippy describes variable under point" "v" #'clippy-describe-variable))

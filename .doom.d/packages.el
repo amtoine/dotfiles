@@ -50,4 +50,7 @@
 ;(unpin! t)
 
 (package! evil-tutor)
+(package! beacon)
+(package! minimap)
+(package! clippy)
 ;; (package! mu4e)
