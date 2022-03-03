@@ -4,6 +4,7 @@ arduino-mk
 cava
 conky-lua-nv
 devour
+dmenu-a2ns-git
 dmenufm
 dmscripts-git
 ghq

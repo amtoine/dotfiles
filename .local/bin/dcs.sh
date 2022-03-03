@@ -43,7 +43,7 @@ export FZF_DEFAULT_OPTS="
 --height=100%
 --layout=reverse
 --prompt='Change dunst colorscheme: '
---preview=\"cat $cache/themes/{1} | sed 's/#/%#/' | column -t -s '\%'\""
+--preview=\"cat $CACHE/themes/{1} | sed 's/#/%#/' | column -t -s '\%'\""
 
 # parse the arguments.
 OPTIONS=$(getopt -o h --long help -n 'dcs.sh' -- "$@")

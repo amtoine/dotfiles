@@ -43,6 +43,7 @@ devour
 dialog
 dictd
 discord
+dmenu-a2ns-git
 dmenufm
 dmscripts-git
 docker
