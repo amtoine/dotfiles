@@ -66,7 +66,6 @@ floating_layout = layout.Floating(
         Match(title='pinentry'),               # GPG key password entry
         Match(wm_class='pinentry-gtk-2'),      # gtk
         Match(wm_class="conky"),               # conky
-        Match(wm_class="qemu-system-x86_64"),  # quickemu VM manager
     ],
     border_focus=lt.floating.focus,    # Border colour(s) for the focused window.
     border_normal=lt.floating.normal,  # Border colour(s) for un-focused windows.
@@ -103,6 +102,10 @@ def func(client):
     # to minimize conflicts with non floating windows.
     if "mpv" in client._wm_class:
         client.cmd_togroup(group_names[6])
+    # send quickemu virtualmachines to the third terminal
+    # group.
+    elif "qemu" in client._wm_class:
+        client.cmd_togroup(group_names[2])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the

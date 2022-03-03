@@ -30,7 +30,7 @@ def init_groups():
     group_opts = [
         ["1 ", "TALL"],  # development
         ["2 ", "TALL"],  # development
-        ["3 ", "TALL"],  # development
+        ["3 ", "TREE"],  # development
         [" ",  "TALL"],  # internet
         [" ",  "TREE"],  # chat
         [" ",  "TALL"],  # music
