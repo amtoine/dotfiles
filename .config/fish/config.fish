@@ -2,7 +2,6 @@ if status is-interactive
   fish_add_path -mP $HOME/.cargo/bin
   fish_add_path -mP $HOME/.emacs.d/bin
   fish_add_path -mP $HOME/.local/bin
-  fish_add_path -mP $HOME/scripts
 
   #       _ _
   #  __ _| (_)__ _ ___ ___ ___
@@ -22,7 +21,7 @@ if status is-interactive
   # allows to see any csv file directly in the terminal.
   alias seecsv='perl -pe "s/((?<=,)|(?<=^)),/ ,/g;" "$argv" | column -t -s, | less  -F -S -X -K ;'
   # wrapper around lf to support file preview.
-  alias lf='~/scripts/lfrun.sh'
+  alias lf='~/.local/bin/lfrun.sh'
   # a complete diagnostic of the current directory.
   alias diag='du -hs (ls (pwd) -A) | sort -h'
   # replacement of vim by nvim.

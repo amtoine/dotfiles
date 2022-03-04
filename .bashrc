@@ -182,6 +182,14 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 set -o vi
 
+# make man pages prettier
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 2)  # green
+export LESS_TERMCAP_md=$(tput bold; tput setaf 2)  # green
+export LESS_TERMCAP_so=$(tput bold; tput rev; tput setaf 3)  # yellow
+export LESS_TERMCAP_se=$(tput smul; tput sgr0)
+export LESS_TERMCAP_us=$(tput bold; tput bold; tput setaf 1)  # red
+export LESS_TERMCAP_me=$(tput sgr0)
+
 # activates virtualenvwrapper to manage python virtual environments.
 export WORKON_HOME=$HOME/.virtualenvs
 if [[ ! -d $WORKON_HOME ]]; then mkdir -p $WORKON_HOME; fi

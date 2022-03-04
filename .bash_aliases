@@ -13,7 +13,7 @@ alias bmm='blueman-manager'
 # allows to see any csv file directly in the terminal.
 alias seecsv='perl -pe "s/((?<=,)|(?<=^)),/ ,/g;" "$argv" | column -t -s, | less  -F -S -X -K ;'
 # wrapper around lf to support file preview.
-alias lf='~/scripts/lfrun.sh'
+alias lf='~/.local/bin/lfrun.sh'
 # a complete diagnostic of the current directory.
 alias diag='du -hs (ls (pwd) -A) | sort -h'
 # replacement of vim by nvim.

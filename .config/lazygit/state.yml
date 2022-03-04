@@ -1,11 +1,12 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/repos/surf
+- /home/ants/repos/tabbed
+- /home/ants/repos/slock
 - /home/ants/repos/dmenu
 - /home/ants/ghq/git.suckless.org/st
 - /home/ants/ghq/git.suckless.org/dwm
 - /home/ants/.config/nvim
-- /home/ants/repos/tabbed
-- /home/ants/repos/surf
 - /home/ants/research/imagineXdial
 - /home/ants/research/ma_playground_env
 - /home/ants/repos/server
@@ -25,7 +26,6 @@ recentrepos:
 - /home/ants/.emacs.d
 - /home/ants/repos/linux-slides
 - /tmp/reveal.js
-- /home/ants/repos/slock
 - /home/ants/research/Imagine
 - /home/ants/prog/dqn
 - /home/ants/research/learning-to-communicate-pytorch
