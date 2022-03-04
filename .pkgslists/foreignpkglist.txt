@@ -7,6 +7,7 @@ devour
 dmenu-a2ns-git
 dmenufm
 dmscripts-git
+dwm-a2ns-git
 ghq
 irony-mode
 lf

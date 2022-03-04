@@ -53,6 +53,7 @@ dstat
 dunst
 dust
 dwarffortress
+dwm-a2ns-git
 ed
 efibootmgr
 emacs

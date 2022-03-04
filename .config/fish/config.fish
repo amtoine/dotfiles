@@ -94,6 +94,7 @@ if status is-interactive
     alias mpv='devour mpv'
     alias okular='devour okular'
     alias kolourpaint='devour kolourpaint'
+    alias emacs='devour emacs'
   end
 
   if [ "$TERM" = "xterm-kitty" ]
