@@ -29,8 +29,12 @@ reddio
 sddm-archlinux-theme-git
 shell-color-scripts
 slack-desktop
-st
+slock-a2ns-git
+st-a2ns-git
+surf-a2ns-git
+tabbed-a2ns-git
 toilet
 tomb
+xmenu
 xsnow
 yay-git

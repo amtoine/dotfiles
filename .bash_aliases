@@ -85,6 +85,7 @@ if command -v devour &> /dev/null; then
   alias feh='devour feh'
   alias mpv='devour mpv'
   alias okular='devour okular'
+  alias kolourpaint='devour kolourpaint'
 fi
 
 if [ "$TERM" = "xterm-kitty" ]; then
