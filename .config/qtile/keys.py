@@ -443,8 +443,6 @@ def init_keymap(mod, terminal, groups):
 
             Key(MOD, F1,  _cmd("hdmi.sh -M -b 8- -n"),       desc="Brightness of the main screen down"),
             Key(MOD, F2,  _cmd("hdmi.sh -M -b 8+ -n"),       desc="Brightness of the main screen up"),
-            Key(MOD, F3,  _scratch("sp1", "term"),           desc="Open a terminal in first scratchpad"),
-            Key(MOD, F4,  _scratch("sp1", "python"),         desc="Open a python shell in first scratchpad"),
             Key(MOD, F5,  _script("screenshot.sh window"),   desc="Take a screenshot a window"),
             Key(MOD, F6,  _script("screenshot.sh full"),     desc="Take a screenshot of everything"),
             Key(MOD, F7,  _script(SOUNDDOWN.format(SOUNDL)), desc="Decrease the sound by 'SOUNDL' (defaults to 5)"),
@@ -494,6 +492,11 @@ def init_keymap(mod, terminal, groups):
             Key(MOD, "m", lazy.next_layout(),            desc="Toggle between layouts"),
             Key(MOD, "f", lazy.window.toggle_floating(), desc="Toggle floating mode for current window"),
             Key(MOD, "t", lazy.screen.toggle_group(),    desc="Go to previously seen group"),
+            Key(MOD, F1,  _scratch("sp1", "term"),       desc="Open a terminal in first scratchpad"),
+            Key(MOD, F2,  _scratch("sp1", "python"),     desc="Open a python shell in first scratchpad"),
+            Key(MOD, F3,  _scratch("sp1", "lcfg"),       desc="Open a python shell in first scratchpad"),
+            Key(MOD, F4,  _scratch("sp1", "tcfg"),       desc="Open a python shell in first scratchpad"),
+            Key(MOD, F5,  _scratch("sp1", "mocp"),       desc="Open a python shell in first scratchpad"),
         ]
     )
 

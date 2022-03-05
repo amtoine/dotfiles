@@ -45,8 +45,6 @@ if status is-interactive
   alias lg='/usr/bin/lazygit'
   # interacts with my config's git bare repository.
   alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-  alias lcfg='/usr/bin/lazygit --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-  alias tcfg="GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME tig --all"
   alias tiga='/usr/bin/tig --all'
 
   alias tls='tmux ls'               # list the sessions.

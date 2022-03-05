@@ -41,18 +41,33 @@ def init_groups():
         for name, layout in group_opts
     ]
 
-    qshell = dict(
-        x=0.05, y=0.4, width=0.9, height=0.55, opacity=0.9
-    )
-    term = dict(
-        x=0.05, y=0.0, width=0.9, height=0.35, opacity=0.9
-    )
     terminal = "st"
     scratchpads = [
         ScratchPad("sp1", [
-            DropDown("term",   terminal,                     **term),
-            DropDown("qshell", f"{terminal} -e qtile shell", **qshell),
-            DropDown("python", f"{terminal} -e ptpython",    **qshell),
+            DropDown(
+                "term", terminal,
+                x=0.05, y=0.05, width=0.9, height=0.9, opacity=0.9,
+            ),
+            DropDown(
+                "qshell", f"{terminal} -e qtile shell",
+                x=0.05, y=0.05, width=0.9, height=0.9, opacity=0.9,
+            ),
+            DropDown(
+                "python", f"{terminal} -e ptpython",
+                x=0.05, y=0.05, width=0.9, height=0.9, opacity=0.9,
+            ),
+            DropDown(
+                "lcfg",   f"{terminal} -e lcfg.sh",
+                x=0.05, y=0.05, width=0.9, height=0.9, opacity=0.9,
+            ),
+            DropDown(
+                "tcfg",   f"{terminal} -e tcfg.sh",
+                x=0.05, y=0.05, width=0.9, height=0.9, opacity=0.9,
+            ),
+            DropDown(
+                "mocp",   f"{terminal} -e mocp",
+                x=0.05, y=0.05, width=0.9, height=0.9, opacity=0.9,
+            ),
         ]),
     ]
 
