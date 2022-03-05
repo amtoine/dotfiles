@@ -7,7 +7,6 @@ autoconf
 automake
 base
 bashtop
-bc
 bison
 blueman
 bluez-utils
@@ -38,7 +37,6 @@ eog
 exa
 expac
 fd
-feh
 festival
 figlet
 firefox
@@ -72,7 +70,6 @@ pacman-contrib
 pavucontrol
 peco
 picom
-pkgconf
 ponysay
 prettier
 protobuf
@@ -130,7 +127,6 @@ xorg-x11perf
 xorg-xbacklight
 xorg-xcmsdb
 xorg-xcursorgen
-xorg-xdpyinfo
 xorg-xdriinfo
 xorg-xev
 xorg-xgamma

@@ -1,6 +1,8 @@
+adwaita-dark
 ani-cli
 archlinux-themes-sddm
 arduino-mk
+betterlockscreen-git
 cava
 conky-lua-nv
 devour

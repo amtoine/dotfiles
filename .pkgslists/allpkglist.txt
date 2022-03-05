@@ -1,4 +1,5 @@
 acpi
+adwaita-dark
 alacritty
 alsa-utils
 ani-cli
@@ -14,6 +15,7 @@ bash-completion
 bashtop
 bat
 bc
+betterlockscreen-git
 bind
 binutils
 bison
