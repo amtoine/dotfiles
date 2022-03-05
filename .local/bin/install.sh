@@ -187,6 +187,7 @@ init_deps () {
     "dunst::off" \
     "picom::off" \
     "feh::off" \
+    "arcologout::off" \
   )
 
   deps_table[base]="pacman:base-devel pacman:python pacman:python-pip pacman:xorg pacman:xorg-xinit yay-git:yay"
@@ -238,6 +239,7 @@ init_deps () {
   deps_table[feh]="pacman:feh wallpapers:a2n-s/wallpapers"
   deps_table[bspwm]="pacman:bspwm pacman:sxhkd"
   deps_table[spectrwm]="pacman:spectrwm"
+  deps_table[arcologout]=""
 
   # always add the base dependencies
   echo "${deps_table[base]}" | tr ' ' '\n' >> "$deps_file"
@@ -676,6 +678,22 @@ install_config () {
   if grep -e "^.*:conky" "$deps_file" -q; then
     echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/conky ${DST}$HOME/.config${OFF}"
     cp -r "$DOTFILES/.config/conky" "$HOME/.config"
+  fi
+  if grep -e "^.*:arcologout" "$deps_file" -q; then
+    # in the middle of a pull request so need to use my fork and pull branch.
+    echo -e "${CMD}git clone ${SRC}https://github.com/a2n-s/arcolinux-logout.git ${DST}/tmp/arcologout${OFF}"
+    git clone https://github.com/a2n-s/arcolinux-logout.git /tmp/arcologout
+    echo -e "${CMD}git ${SRC}-C /tmp/arcologout/ ${CMD}checkout ${DST}lock/other${OFF}"
+    git -C /tmp/arcologout/ checkout lock/other
+    ##
+    echo -e "${CMD}sudo cp ${SRC}$DOTFILES/arcologout ${DST}$HOME/.config/${OFF}"
+    sudo cp $DOTFILES/arcologout $HOME/.config/
+    echo -e "${CMD}sudo cp ${SRC}/tmp/arcologout/usr/local/bin/arcolinux-logout ${DST}/usr/local/bin/${OFF}"
+    sudo cp /tmp/arcologout/usr/local/bin/arcolinux-logout /usr/local/bin/
+    echo -e "${CMD}sudo cp -r ${SRC}/tmp/arcologout/usr/share/arcologout ${DST}/usr/share${OFF}"
+    sudo cp -r /tmp/arcologout/usr/share/arcologout /usr/share
+    echo -e "${CMD}sudo cp -r ${SRC}/tmp/arcologout/usr/share/arcologout-themes ${DST}/usr/share${OFF}"
+    sudo cp -r /tmp/arcologout/usr/share/arcologout-themes /usr/share
   fi
 }
 
