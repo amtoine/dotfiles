@@ -271,7 +271,7 @@ draw_bold_text_with_bright_colors: true
 #
 #
 colors:
-  # COLORSCHEME: darcula.yaml
+  # COLORSCHEME: dracula.yaml
   # Default colors
   primary:
     # hard contrast: background = '0x1d2021'
@@ -289,21 +289,21 @@ colors:
     red: '0xff5555'
     green: '0x50fa7b'
     yellow: '0xf1fa8c'
-    blue: '0xcaa9fa'
+    blue: '0xbd93f9'
     magenta: '0xff79c6'
     cyan: '0x8be9fd'
-    white: '0xbfbfbf'
+    white: '0xbbbbbb'
 
   # Bright colors
   bright:
-    black: '0x282a35'
-    red: '0xff6e67'
-    green: '0x5af78e'
-    yellow: '0xf4f99d'
+    black: '0x555555'
+    red: '0xff5555'
+    green: '0x50fa7b'
+    yellow: '0xf1fa8c'
     blue: '0xcaa9fa'
-    magenta: '0xff92d0'
-    cyan: '0x9aedfe'
-    white: '0xe6e6e6'
+    magenta: '0xff79c6'
+    cyan: '0x8be9fd'
+    white: '0xffffff'
   indexed_colors:
     - {index: 16, color: '0xF8BD96'}
     - {index: 17, color: '0xF5E0DC'}

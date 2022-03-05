@@ -11,6 +11,7 @@ bison
 blueman
 bluez-utils
 bpytop
+breeze
 brightnessctl
 bspwm
 btop
@@ -54,9 +55,11 @@ hugo
 jgmenu
 kitty
 kolourpaint
+kvantum
 lazygit
 librsync
 lolcat
+lxappearance
 mathomatic
 ncdu
 net-tools
@@ -73,6 +76,7 @@ picom
 ponysay
 prettier
 protobuf
+pyside2
 python-black
 python-isort
 python-mpi4py
@@ -80,6 +84,17 @@ python-nose
 python-pipenv
 python-pytest
 python-tqdm
+qt5-examples
+qt5-gamepad
+qt5-lottie
+qt5-networkauth
+qt5-purchasing
+qt5-quicktimeline
+qt5-serialbus
+qt5-virtualkeyboard
+qt5-webglplugin
+qt5-webview
+qt5ct
 qtile
 ranger
 read-edid

@@ -237,9 +237,9 @@ extr ()
 # fortune -c | ponysay --ponyonly
 
 ## the prompt ###
-# eval "$(starship init bash)"
+eval "$(starship init bash)"
 # export PS1="$RD[\#] $NC\u@\h:$YL\w$NC $GR>$NC "
-export PS1="$RD[\#]$NC $YL\w$NC \$(_parse_git_info.sh)$GR>$NC "
+# export PS1="$RD[\#]$NC $YL\w$NC \$(_parse_git_info.sh)$GR>$NC "
 
 ## after prompt ###
 if [ -f /etc/bash.command-not-found ]; then
