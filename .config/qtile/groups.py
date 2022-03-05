@@ -41,32 +41,35 @@ def init_groups():
         for name, layout in group_opts
     ]
 
-    terminal = "st"
     scratchpads = [
         ScratchPad("sp1", [
             DropDown(
-                "term", terminal,
-                x=0.05, y=0.05, width=0.9, height=0.9, opacity=0.9,
+                "term",   "st",
+                x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
             DropDown(
-                "qshell", f"{terminal} -e qtile shell",
-                x=0.05, y=0.05, width=0.9, height=0.9, opacity=0.9,
+                "qshell", "st -e qtile shell",
+                x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
             DropDown(
-                "python", f"{terminal} -e ptpython",
-                x=0.05, y=0.05, width=0.9, height=0.9, opacity=0.9,
+                "python", "st -e ptpython",
+                x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
             DropDown(
-                "lcfg",   f"{terminal} -e lcfg.sh",
-                x=0.05, y=0.05, width=0.9, height=0.9, opacity=0.9,
+                "lcfg",   "st -e lcfg.sh",
+                x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
             DropDown(
-                "tcfg",   f"{terminal} -e tcfg.sh",
-                x=0.05, y=0.05, width=0.9, height=0.9, opacity=0.9,
+                "tcfg",   "st -e tcfg.sh",
+                x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
             DropDown(
-                "mocp",   f"{terminal} -e mocp",
-                x=0.05, y=0.05, width=0.9, height=0.9, opacity=0.9,
+                "mocp",   "st -z 16 -e mocp",
+                x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
+            ),
+            DropDown(
+                "clock",  "st -z 16 -e termdown -z",
+                x=0.18, y=0.30, width=0.64, height=0.40, opacity=0.90,
             ),
         ]),
     ]

@@ -497,6 +497,7 @@ def init_keymap(mod, terminal, groups):
             Key(MOD, F3,  _scratch("sp1", "lcfg"),       desc="Open a python shell in first scratchpad"),
             Key(MOD, F4,  _scratch("sp1", "tcfg"),       desc="Open a python shell in first scratchpad"),
             Key(MOD, F5,  _scratch("sp1", "mocp"),       desc="Open a python shell in first scratchpad"),
+            Key(MOD, F6,  _scratch("sp1", "clock"),       desc="Open a python shell in first scratchpad"),
         ]
     )
 
