@@ -64,12 +64,16 @@ def init_groups():
                 x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
             DropDown(
-                "mocp",   "st -z 16 -e mocp",
+                "mocp",   "st -e mocp",
                 x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
             DropDown(
                 "clock",  "st -z 16 -e termdown -z",
                 x=0.18, y=0.30, width=0.64, height=0.40, opacity=0.90,
+            ),
+            DropDown(
+                "fm",  "st -z 24 -e lf",
+                x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
         ]),
     ]
