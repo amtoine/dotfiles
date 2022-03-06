@@ -49,8 +49,8 @@ Dst=$Grn   # destination
 Pmt=$Cyn   # prompt
 Tip=$IGrn  # tip
 
-[[ ! -v DATABASE ]] && DATABASE="kovidgoyal/kitty-themes"
-[[ ! -v BRANCH ]] && BRANCH="master"
+[[ ! -v DATABASE ]] && DATABASE="a2n-s/themes"
+[[ ! -v BRANCH ]] && BRANCH="main"
 [[ ! -v CACHE ]] && CACHE="$HOME/.cache/all-themes"
 [[ ! -v COLORDATABASE ]] && COLORDATABASE="$CACHE/themes.csv"
 
@@ -58,7 +58,7 @@ Tip=$IGrn  # tip
 [[ ! -v QTILE ]] && QTILE="$HOME/.config/qtile"
 [[ ! -v DUNSTRC ]] && DUNSTRC="$HOME/.config/dunst/dunstrc"
 [[ ! -v ALACRITTYYML ]] && ALACRITTYYML="$HOME/.config/alacritty/alacritty.yml"
-[[ ! -v KITTYCONF ]] && KITTYCONF="$HOME/.config/kitty"
+[[ ! -v KITTYCONF ]] && KITTYCONF="$HOME/.config/kitty/kitty.conf"
 [[ ! -v CONKY ]] && CONKY="$HOME/.config/conky"
 _nb_colors=20
 _columns=(name bg fg sel_bg sel_fg 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15)
@@ -243,10 +243,29 @@ kitty_cfg () {
   #
   # change the theme of the kitty terminal emulator.
   #
-  if ! kitty +kitten themes --reload-in=all "$2" &> /dev/null;
-  then
-    echo "ok" | dmenu -bw 5 -p "'$2' is not a kitty theme..."
-  fi
+  echo "kitty $KITTYCONF"
+  sed -i "s/\(^background\s*\)#....../\1$(echo "$1" | awk -F, '{print $1}')/" "$KITTYCONF"
+  sed -i "s/\(^foreground\s*\)#....../\1$(echo "$1" | awk -F, '{print $2}')/" "$KITTYCONF"
+  sed -i "s/\(^selection_background \s*\)#....../\1$(echo "$1" | awk -F, '{print $3}')/" "$KITTYCONF"
+  sed -i "s/\(^selection_foreground \s*\)#....../\1$(echo "$1" | awk -F, '{print $4}')/" "$KITTYCONF"
+  sed -i "s/\(^color0\s*\)#....../\1$(echo "$1" | awk -F, '{print $5}')/" "$KITTYCONF"
+  sed -i "s/\(^color1\s*\)#....../\1$(echo "$1" | awk -F, '{print $6}')/" "$KITTYCONF"
+  sed -i "s/\(^color2\s*\)#....../\1$(echo "$1" | awk -F, '{print $7}')/" "$KITTYCONF"
+  sed -i "s/\(^color3\s*\)#....../\1$(echo "$1" | awk -F, '{print $8}')/" "$KITTYCONF"
+  sed -i "s/\(^color4\s*\)#....../\1$(echo "$1" | awk -F, '{print $9}')/" "$KITTYCONF"
+  sed -i "s/\(^color5\s*\)#....../\1$(echo "$1" | awk -F, '{print $10}')/" "$KITTYCONF"
+  sed -i "s/\(^color6\s*\)#....../\1$(echo "$1" | awk -F, '{print $11}')/" "$KITTYCONF"
+  sed -i "s/\(^color7\s*\)#....../\1$(echo "$1" | awk -F, '{print $12}')/" "$KITTYCONF"
+  sed -i "s/\(^color8\s*\)#....../\1$(echo "$1" | awk -F, '{print $13}')/" "$KITTYCONF"
+  sed -i "s/\(^color9\s*\)#....../\1$(echo "$1" | awk -F, '{print $14}')/" "$KITTYCONF"
+  sed -i "s/\(^color10\s*\)#....../\1$(echo "$1" | awk -F, '{print $15}')/" "$KITTYCONF"
+  sed -i "s/\(^color11\s*\)#....../\1$(echo "$1" | awk -F, '{print $16}')/" "$KITTYCONF"
+  sed -i "s/\(^color12\s*\)#....../\1$(echo "$1" | awk -F, '{print $17}')/" "$KITTYCONF"
+  sed -i "s/\(^color13\s*\)#....../\1$(echo "$1" | awk -F, '{print $18}')/" "$KITTYCONF"
+  sed -i "s/\(^color14\s*\)#....../\1$(echo "$1" | awk -F, '{print $19}')/" "$KITTYCONF"
+  sed -i "s/\(^color15\s*\)#....../\1$(echo "$1" | awk -F, '{print $20}')/" "$KITTYCONF"
+  # change the name of the theme.
+  sed -i "s/\(^# THEME: \).*/\1$2/" "$KITTYCONF"
 }
 
 theme () {
@@ -254,18 +273,19 @@ theme () {
   # let the user pick a theme.
   # $1 is a preselected theme with the -t=THEME switch.
   #
-  theme="$1"
-  [ ! "$theme" ] && theme=" "
+  theme=$(echo "$1" | sed 's/^\s*//g; s/\s*$//g')
+  [ ! "$theme" ] && theme="DEFAULT_TO_DMENU"
   if [[ -f "$COLORDATABASE" ]]; then
-    if ! awk -F, '{print $1}' "$COLORDATABASE" | grep -we "$theme" -q;
+    if ! awk -F, '{print $1}' "$COLORDATABASE" | grep -we "$(echo $theme | sed 's/ /_/g')" -q;
     then
       echo -e "${Err}'$theme' not in $COLORDATABASE${Off}"
-      theme=$(tail -n +2 "$COLORDATABASE" | awk -F, '{print $1}' | dmenu -bw 5 -c -l 20 -i -p "Choose a theme: ")
+      theme=$(tail -n +2 "$COLORDATABASE" | awk -F, '{print $1}' | sed 's/_/ /g' | dmenu -bw 5 -c -l 20 -i -p "Choose a theme: ")
       [ ! "$theme" ] && { echo -e "${Wrn}No theme selected${Off}"; exit 0; }
       echo -e "${Ok}'$theme' selected${Off}"
     else 
       echo -e "${Tip}'$theme' found in $COLORDATABASE${Off}"
     fi
+    theme=$(echo "$theme" | sed 's/ /_/g')
     colors=$(grep -w "$theme" "$COLORDATABASE" | sed "s/$theme,//")
     for config in $(echo "$2" | tr ',' ' ');do
       case "$config" in
@@ -314,16 +334,16 @@ help () {
   echo "     -a/--all            same as -C=all."
   echo ""
   echo "Environment variables:"
-  echo "     DATABASE            the remote database (defaults to 'kovidgoyal/kitty-themes)"
-  echo "     BRANCH              the branch to use on the remote (defaults to 'master')"
+  echo "     DATABASE            the remote database (defaults to 'a2n-s/themes)"
+  echo "     BRANCH              the branch to use on the remote (defaults to 'main')"
   echo "     CACHE               the location of the cache (defaults to '\$HOME/.cache/all-themes')"
   echo "     COLORDATABASE       the final local database (defaults to '\$CACHE/themes.csv')"
   echo "     CONFIGS             the list of all implemented configs (defaults to 'qtile,dunst,alacritty')"
   echo "     QTILE               the path to the qtile config (defaults to '\$HOME/.config/qtile')"
   echo "     DUNSTRC             the path to the dunst config file (defaults to '\$HOME/.config/dunst/dunstrc')"
   echo "     ALACRITTYYML        the path to the alacritty config file (defaults to '\$HOME/.config/alacritty/alacritty.yml')"
-  echo "     KITTYCONF           the path to the kitty config (defaults to '\$HOME/.config/kitty')"
-  echo "     KITTY               the path to all the conky configs (defaults to '\$HOME/.config/conky')"
+  echo "     KITTYCONF           the path to the kitty config file (defaults to '\$HOME/.config/kitty/kitty.conf')"
+  echo "     CONKY               the path to all the conky configs (defaults to '\$HOME/.config/conky')"
   exit 0
 }
 

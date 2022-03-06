@@ -97,7 +97,6 @@ if status is-interactive
 
   if [ "$TERM" = "xterm-kitty" ]
     alias kicat="kitty +kitten icat"
-    alias kthemes="kitty +kitten themes"
   end
 
   if pgrep "qtile" > /dev/null

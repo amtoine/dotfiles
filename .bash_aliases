@@ -89,7 +89,6 @@ fi
 
 if [ "$TERM" = "xterm-kitty" ]; then
   alias kicat="kitty +kitten icat"
-  alias kthemes="kitty +kitten themes"
 fi
 
 if pgrep "qtile" > /dev/null
