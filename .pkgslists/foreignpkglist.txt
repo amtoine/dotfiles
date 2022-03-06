@@ -38,6 +38,7 @@ surf-a2ns-git
 tabbed-a2ns-git
 toilet
 tomb
+ttf-symbola
 xmenu
 xsnow
 yay-git

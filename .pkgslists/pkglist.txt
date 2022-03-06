@@ -66,7 +66,7 @@ net-tools
 nethack
 network-manager-applet
 nmap
-noto-fonts-emoji
+noto-fonts-cjk
 okular
 pacgraph
 pacman-contrib

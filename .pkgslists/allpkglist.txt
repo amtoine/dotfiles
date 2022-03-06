@@ -124,7 +124,7 @@ network-manager-applet
 networkmanager
 ngrok
 nmap
-noto-fonts-emoji
+noto-fonts-cjk
 npm
 nsxiv
 ntfs-3g
@@ -235,6 +235,7 @@ toilet
 tomb
 tree
 ttf-iosevka-nerd
+ttf-symbola
 ueberzug
 unzip
 vi
