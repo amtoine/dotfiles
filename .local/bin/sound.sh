@@ -120,7 +120,7 @@ main () {
     esac
   done
 
-  #an action is required
+  # an action is required
   [ -z "$ACTION" ] && usage
   # everything that is not bluetooth requires a channel
   [ ! "$ACTION" = "bluetooth" -a -z "$CHANNEL" ] && usage
