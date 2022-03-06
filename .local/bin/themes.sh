@@ -53,6 +53,10 @@ Tip=$IGrn  # tip
 [[ ! -v BRANCH ]] && BRANCH="master"
 [[ ! -v CACHE ]] && CACHE="$HOME/.cache/all-themes"
 [[ ! -v COLORDATABASE ]] && COLORDATABASE="$CACHE/themes.csv"
+
+[[ ! -v CONFIGS ]] && CONFIGS="qtile,dunst"
+[[ ! -v QTILE ]] && QTILE="$HOME/.config/qtile"
+[[ ! -v DUNSTRC ]] && DUNSTRC="$HOME/.config/dunst/dunstrc"
 _nb_colors=20
 _columns=(name bg fg sel_bg sel_fg 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15)
 
@@ -150,38 +154,89 @@ clean () {
   fi
 }
 
+qtile_cfg () {
+  #
+  # Change the theme of qtile.
+  #
+
+  # change all the fields
+  fields=(bg fg sel_bg sel_fg color0 color1 color2 color3 color4 color5 color6 color7 color8 color9 color10 color11 color12 color13 color14 color15)
+  for i in $(seq 0 19);
+  do
+    sed -i "s/\(\s*\"${fields[$i]}\": \"\)#......\",\s*\$/\1$(echo "$1" | awk -F, "{print \$$(($i+1))}")\",/" "$QTILE/theme.py"
+  done
+  # change the name of the current theme
+  sed -i "s/# current: .*/# current: $2/" "$QTILE/theme.py"
+  # restart qtile
+  if pgrep qtile > /dev/null;
+  then
+    qtile cmd-obj -o cmd -f restart
+  fi
+}
+
+dunst_cfg () {
+  #
+  # change the theme of the dunst notification server.
+  #
+  # update the theme inside the dunstrc config file
+  bg=$(echo "$1" | awk -F, "{print \$1}")
+  cfg=$(echo "$1" | awk -F, "{print \$6}")
+  cfc=$(echo "$1" | awk -F, "{print \$16}")
+  nfg=$(echo "$1" | awk -F, "{print \$9}")
+  lfg=$(echo "$1" | awk -F, "{print \$12}")
+  sed -i "s/\(\s\+background\s\+=\s\+\"\)#......\(\"  # URGENCY_CRITICAL BG\)/\1$bg\2/" "$DUNSTRC"
+  sed -i "s/\(\s\+background\s\+=\s\+\"\)#......\(\"  # URGENCY_NORMAL BG\)/\1$bg\2/" "$DUNSTRC"
+  sed -i "s/\(\s\+background\s\+=\s\+\"\)#......\(\"  # URGENCY_LOW BG\)/\1$bg\2/" "$DUNSTRC"
+  sed -i "s/\(\s\+foreground\s\+=\s\+\"\)#......\(\"  # URGENCY_CRITICAL FG\)/\1$cfg\2/" "$DUNSTRC"
+  sed -i "s/\(\s\+foreground\s\+=\s\+\"\)#......\(\"  # URGENCY_NORMAL FG\)/\1$nfg\2/" "$DUNSTRC"
+  sed -i "s/\(\s\+foreground\s\+=\s\+\"\)#......\(\"  # URGENCY_LOW FG\)/\1$lfg\2/" "$DUNSTRC"
+  sed -i "s/\(\s\+frame_color\s\+=\s\+\"\)#......\(\"  # URGENCY_CRITICAL FC\)/\1$cfc\2/" "$DUNSTRC"
+  # change the name of the theme.
+  sed -i "s/# THEME: .*/# THEME: $2/" "$DUNSTRC"
+  # restart dunst and show a preview
+  killall dunst
+  dunst -conf "$DUNSTRC" &
+  dunstify "$(echo $theme | sed 's/.conf$//')" "this is an error" -u critical -t 10000
+  dunstify "$(echo $theme | sed 's/.conf$//')" "this is normal" -u normal -t 10000
+  dunstify "$(echo $theme | sed 's/.conf$//')" "this is nothing" -u low -t 10000
+}
+
 theme () {
   #
   # let the user pick a theme.
   # $1 is a preselected theme with the -t=THEME switch.
   #
+  theme="$1"
+  [ ! "$theme" ] && theme=" "
   if [[ -f "$COLORDATABASE" ]]; then
-    if ! awk -F, '{print $1}' "$COLORDATABASE" | grep -we "$1" -q;
+    if ! awk -F, '{print $1}' "$COLORDATABASE" | grep -we "$theme" -q;
     then
-      echo -e "${Err}'$1' not in $COLORDATABASE${Off}"
+      echo -e "${Err}'$theme' not in $COLORDATABASE${Off}"
       theme=$(tail -n +2 "$COLORDATABASE" | awk -F, '{print $1}' | dmenu -l 20 -i -p "Choose a theme: ")
       [ ! "$theme" ] && { echo -e "${Wrn}No theme selected${Off}"; exit 0; }
       echo -e "${Ok}'$theme' selected${Off}"
     else 
-      theme="$1"
-      echo -e "${Tip}'$1' found in $COLORDATABASE${Off}"
+      echo -e "${Tip}'$theme' found in $COLORDATABASE${Off}"
     fi
+    colors=$(grep -w "$theme" "$COLORDATABASE" | sed "s/$theme,//")
+    for config in $(echo "$2" | tr ',' ' ');do
+      case "$config" in
+        qtile ) qtile_cfg "$colors" "$theme";;
+        dunst ) dunst_cfg "$colors" "$theme";;
+        * ) echo "an error occured (got unexpected config '$config')"; exit 1 ;;
+      esac
+    done
   else
     echo -e "No database at ${Pmt}$COLORDATABASE${Off}."
     echo -e "Consider using ${Tip}themes.sh -s${Off} to generate the ${Dst}$COLORDATABASE${Off} database.";
   fi
 }
 
-# parse the arguments.
-OPTIONS=$(getopt -o huscpt:: --long help,update,strip,clean,print,theme:: -n 'themes.sh' -- "$@")
-if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
-eval set -- "$OPTIONS"
-
 usage () {
   #
   # the usage function.
   #
-  echo "Usage: themes.sh [-huscp] [-t=THEME]"
+  echo "Usage: themes.sh [-huscpa] [-t=THEME] [-C=C1,C2]"
   echo "Type -h or --help for the full help."
   exit 0
 }
@@ -196,7 +251,7 @@ help () {
   echo "     Do not forget to puth it in your PATH."
   echo ""
   echo "Usage:"
-  echo "     themes.sh [-huscp] [-t=THEME]"
+  echo "     themes.sh [-huscpa] [-t=THEME] [-C=C1,C2]"
   echo ""
   echo "Switches:"
   echo "     -h/--help           shows this help."
@@ -205,14 +260,24 @@ help () {
   echo "     -c/--clean          clean the cache."
   echo "     -p/--print          print the local database."
   echo "     -t/--theme[=THEME]  pick a theme from the local database, possibly with default one."
+  echo "     -C/--config=C1,C2   give the configs to apply the selected theme on."
+  echo "     -a/--all            same as -C=all."
   echo ""
   echo "Environment variables:"
   echo "     DATABASE            the remote database (defaults to 'kovidgoyal/kitty-themes)"
   echo "     BRANCH              the branch to use on the remote (defaults to 'master')"
   echo "     CACHE               the location of the cache (defaults to '\$HOME/.cache/all-themes')"
   echo "     COLORDATABASE       the final local database (defaults to '\$CACHE/themes.csv')"
+  echo "     CONFIGS             the list of all implemented configs (defaults to 'qtile,dunst')"
+  echo "     QTILE               the path to the qtile config (defaults to '\$HOME/.config/qtile')"
+  echo "     DUNSTRC             the path to the dunst config file (defaults to '\$HOME/.config/dunst/dunstrc')"
   exit 0
 }
+
+# parse the arguments.
+OPTIONS=$(getopt -o huscpt::C:a --long help,update,strip,clean,print,theme::,config:,all -n 'themes.sh' -- "$@")
+if [ $? != 0 ] ; then usage >&2 ; exit 1 ; fi
+eval set -- "$OPTIONS"
 
 main () {
   while [[ $# -gt 0 ]]; do
@@ -223,10 +288,14 @@ main () {
       -c | --clean ) ACTION="clean"; shift 1 ;;
       -p | --print ) ACTION="print"; shift 1 ;;
       -t | --theme ) ACTION="theme"; theme="$(echo "$2" | sed 's/^=//')" ; shift 2;;
+      -C | --config ) ACTION="theme"; CONFIG="$(echo "$2" | sed 's/^=//')"; shift 2 ;;
+      -a | --all ) CONFIG="all"; shift 1 ;;
       -- ) shift; break ;;
       * ) break ;;
     esac
   done
+  [ "$CONFIG" = "all" ] && CONFIG="$CONFIGS"
+  echo "$CONFIG"
 
   # an action is required
   [ -z "$ACTION" ] && usage
@@ -235,8 +304,8 @@ main () {
     strip )  strip ;;
     clean )  clean ;;
     print )  print ;;
-    theme )  theme "$theme" ;;
-    * ) echo "an error occured (got unexpected '$ACTION')"; exit 1 ;;
+    theme )  theme "$theme" "$CONFIG" ;;
+    * ) echo "an error occured (got unexpected action '$ACTION')"; exit 1 ;;
   esac
 }
 

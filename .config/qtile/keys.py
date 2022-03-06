@@ -212,9 +212,8 @@ def init_keymap(mod, terminal, groups):
     # terminal = f"{terminal} -e"
     # just a wrapper for the qtile-change-theme line below.
     THEME = dict(
-        script="change-theme.sh",
-        terminal=terminal,
-        path=QSCRIPTS,
+        script="themes.sh -C=qtile",
+        path=SCRIPTS,
     )
 
     km = []

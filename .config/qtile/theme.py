@@ -39,4 +39,4 @@ theme = ColorScheme(**{
   "color7": "#f8f8f2",
   "color15": "#ffffff",
 })
-# current: Dracula.conf
+# current: Dracula

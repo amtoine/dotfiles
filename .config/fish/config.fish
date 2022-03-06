@@ -101,7 +101,7 @@ if status is-interactive
   end
 
   if pgrep "qtile" > /dev/null
-    alias qtheme="$HOME/.config/qtile/scripts/change-theme.sh"
+    alias qtheme="themes.sh -C=qtile"
     alias qbar="$HOME/.config/qtile/scripts/bar.sh"
     alias qrestart="qtile cmd-obj -o cmd -f restart"
     alias qcmd="qtile cmd-obj -o cmd -f"
