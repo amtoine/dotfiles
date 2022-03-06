@@ -15,6 +15,7 @@ bash-completion
 bashtop
 bat
 bc
+bemenu
 betterlockscreen-git
 bind
 binutils

@@ -30,6 +30,7 @@ alias rand="tr -dc 'A-Za-z0-9!@#\$%^&*()' < /dev/urandom  | head -c"
 # alias docker="sudo docker"
 # wrapper around btop to bypass lack of locale.
 alias btop="btop --utf-force"
+alias clear="clear; echo; seq 1 $(tput cols) | sort -R | spark.sh | lolcat; echo"
 
 # to list all the git repositiories inside the home directory or gives a full diagnostic with the extra d.
 alias lgr='find $pwd -type d | grep "\.git\$" | sed "s/\/\.git//"'

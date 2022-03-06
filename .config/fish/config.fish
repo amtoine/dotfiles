@@ -3,6 +3,50 @@ if status is-interactive
   fish_add_path -mP $HOME/.emacs.d/bin
   fish_add_path -mP $HOME/.local/bin
 
+  function spark -d "sparkline generator"
+    if isatty
+      switch "$argv"
+        case {,-}-v{ersion,}
+          echo "spark version $spark_version"
+        case {,-}-h{elp,}
+          echo "usage: spark [--min=<n> --max=<n>] <numbers...>  Draw sparklines"
+          echo "examples:"
+          echo "       spark 1 2 3 4"
+          echo "       seq 100 | sort -R | spark"
+          echo "       awk \\\$0=length spark.fish | spark"
+        case \*
+          echo $argv | spark $argv
+      end
+      return
+    end
+
+    command awk -v FS="[[:space:],]*" -v argv="$argv" '
+      BEGIN {
+        min = match(argv, /--min=[0-9]+/) ? substr(argv, RSTART + 6, RLENGTH - 6) + 0 : ""
+        max = match(argv, /--max=[0-9]+/) ? substr(argv, RSTART + 6, RLENGTH - 6) + 0 : ""
+      }
+      {
+        for (i = j = 1; i <= NF; i++) {
+          if ($i ~ /^--/) continue
+          if ($i !~ /^-?[0-9]/) data[count + j++] = ""
+          else {
+            v = data[count + j++] = int($i)
+            if (max == "" && min == "") max = min = v
+            if (max < v) max = v
+            if (min > v ) min = v
+          }
+        }
+        count += j - 1
+      }
+      END {
+        n = split(min == max && max ? "▅ ▅" : "▁ ▂ ▃ ▄ ▅ ▆ ▇ █", blocks, " ")
+        scale = (scale = int(256 * (max - min) / (n - 1))) ? scale : 1
+        for (i = 1; i <= count; i++)
+          out = out (data[i] == "" ? " " : blocks[idx = int(256 * (data[i] - min) / scale) + 1])
+        print out
+      }
+    '
+  end
   #       _ _
   #  __ _| (_)__ _ ___ ___ ___
   # / _` | | / _` (_-</ -_|_-<
@@ -38,6 +82,7 @@ if status is-interactive
   # alias docker="sudo docker"
   # wrapper around btop to bypass lack of locale.
   alias btop="btop --utf-force"
+  alias clear='echo -en "\x1b[2J\x1b[1;1H" ; echo; seq 1 (tput cols) | sort -R | spark | lolcat; echo'
 
   # to list all the git repositiories inside the home directory or gives a full diagnostic with the extra d.
   alias lgr='find $pwd -type d | grep "\.git\$" | sed "s/\/\.git//"'
