@@ -59,6 +59,7 @@ Tip=$IGrn  # tip
 [[ ! -v DUNSTRC ]] && DUNSTRC="$HOME/.config/dunst/dunstrc"
 [[ ! -v ALACRITTYYML ]] && ALACRITTYYML="$HOME/.config/alacritty/alacritty.yml"
 [[ ! -v KITTYCONF ]] && KITTYCONF="$HOME/.config/kitty"
+[[ ! -v CONKY ]] && CONKY="$HOME/.config/conky"
 _nb_colors=20
 _columns=(name bg fg sel_bg sel_fg 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15)
 
@@ -174,6 +175,12 @@ qtile_cfg () {
   then
     qtile cmd-obj -o cmd -f restart
   fi
+  # changes the conky as well
+  sed -i "s/\(\s\+color0\s\+=\s\+\)'#......',/\1'$(echo "$1" | awk -F, "{print \$9}")',/" "$CONKY/qtile.conkyrc"
+  sed -i "s/\(\s\+color1\s\+=\s\+\)'#......',/\1'$(echo "$1" | awk -F, "{print \$12}")',/" "$CONKY/qtile.conkyrc"
+  sed -i "s/\(\s\+color2\s\+=\s\+\)'#......',/\1'$(echo "$1" | awk -F, "{print \$11}")',/" "$CONKY/qtile.conkyrc"
+  sed -i "s/\(\s\+color3\s\+=\s\+\)'#......',/\1'$(echo "$1" | awk -F, "{print \$7}")',/" "$CONKY/qtile.conkyrc"
+  sed -i "s/\(\s\+--Colors \).*/\1$2/" "$CONKY/qtile.conkyrc"
 }
 
 dunst_cfg () {
@@ -316,6 +323,7 @@ help () {
   echo "     DUNSTRC             the path to the dunst config file (defaults to '\$HOME/.config/dunst/dunstrc')"
   echo "     ALACRITTYYML        the path to the alacritty config file (defaults to '\$HOME/.config/alacritty/alacritty.yml')"
   echo "     KITTYCONF           the path to the kitty config (defaults to '\$HOME/.config/kitty')"
+  echo "     KITTY               the path to all the conky configs (defaults to '\$HOME/.config/conky')"
   exit 0
 }
 

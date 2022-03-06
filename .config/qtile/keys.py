@@ -75,10 +75,8 @@ BAR = dict(script="bar.sh", path=QSCRIPTS)
 URELOAD = lazy.reload_config(), lazy.ungrab_chord()
 URESTART = lazy.restart(), lazy.ungrab_chord()
 USHUTDOWN = lazy.shutdown(), lazy.ungrab_chord()
-_CONKY = os.path.expanduser('~/.config/qtile/conky/beginner.conkyrc')
+_CONKY = os.path.expanduser('~/.config/conky/qtile.conkyrc')
 CONKY = f"conky --config={_CONKY}"
-_HELP = os.path.expanduser('~/.config/qtile/conky/help.conkyrc')
-HELP = f"conky --config={_HELP}"
 _CLOCK = os.path.expanduser('~/.config/conky/vision/Z333-vision.conkyrc')
 CLOCK = f"conky --config {_CLOCK}"
 
@@ -329,9 +327,8 @@ def init_keymap(mod, terminal, groups):
                 Key([], 'b', *_uscript(**BAR),                desc="Change the bar"),
                 Key([], "c", *URELOAD,                        desc="Reload the config"),
                 KeyChord([], 'h', [
-                    Key([], 'b', *_uacmd(CONKY),              desc="Open the begin help conky"),
                     Key([], 'c', *_uacmd(CLOCK),              desc="Show a clock with weather"),
-                    Key([], 'h', *_uacmd(HELP),               desc="Open a more complete help"),
+                    Key([], 'h', *_uacmd(CONKY),              desc="Open the begin help conky"),
                     Key([], 'k', *_uacmd(KB, terminal),       desc="Open a tool to explore the keymap"),
                     ],
                     mode=" HELP"
