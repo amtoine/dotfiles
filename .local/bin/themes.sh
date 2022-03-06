@@ -53,7 +53,8 @@ Tip=$IGrn  # tip
 [[ ! -v BRANCH ]] && BRANCH="master"
 [[ ! -v CACHE ]] && CACHE="$HOME/.cache/all-themes"
 [[ ! -v COLORDATABASE ]] && COLORDATABASE="$CACHE/themes.csv"
-nb_colors=20
+_nb_colors=20
+_columns=(name bg fg sel_bg sel_fg 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15)
 
 update () {
   #
@@ -77,7 +78,7 @@ strip () {
   #
   if [[ -d "$CACHE" ]]; then
     [ -f "$COLORDATABASE" ] && rm "$COLORDATABASE"
-    echo "name,bg,fg,sel_bg,sel_fg,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15" | tee "$COLORDATABASE" -a > /dev/null
+    echo "${_columns[@]}" | tr ' ' ',' | tee "$COLORDATABASE" -a > /dev/null
     for theme in $(ls "$CACHE/themes" | sed 's/\.conf$//g');
     do
       echo -en "Stripping ${Src}$theme${Off}... "
@@ -86,15 +87,15 @@ strip () {
         sed 's/^color//g; s/\s\+/ /g;' |\
         sort -g | head -n 20)
       nb_lines=$(echo "$colors" | wc -l)
-      if [ "$nb_lines" = "$nb_colors" ];
+      if [ "$nb_lines" = "$_nb_colors" ];
       then
         # append the line to the theme database.
         echo -e "${Ok}ok${Off}"
         colors="$(echo "$colors" | awk '{print $2}' | tr '\n' ' ')"
-        echo "$theme,$colors" | tr ' ' ',' | tee "$COLORDATABASE" -a > /dev/null
+        echo "$theme,$colors" | tr ' ' ',' | sed 's/,\s*$//g' | tee "$COLORDATABASE" -a > /dev/null
       else
         # explain a bit the error to the user.
-        echo -e "${Err}not ok${Off} (${Wrn}expected $nb_colors colors but got $nb_lines${Off})"
+        echo -e "${Err}not ok${Off} (${Wrn}expected $_nb_colors colors but got $nb_lines${Off})"
         if ! echo "$colors" | grep -e "bg" -q;
         then
           echo -e "${Wrn}  missing bg${Off}"
@@ -149,8 +150,30 @@ clean () {
   fi
 }
 
+theme () {
+  #
+  # let the user pick a theme.
+  # $1 is a preselected theme with the -t=THEME switch.
+  #
+  if [[ -f "$COLORDATABASE" ]]; then
+    if ! awk -F, '{print $1}' "$COLORDATABASE" | grep -we "$1" -q;
+    then
+      echo -e "${Err}'$1' not in $COLORDATABASE${Off}"
+      theme=$(tail -n +2 "$COLORDATABASE" | awk -F, '{print $1}' | dmenu -l 20 -i -p "Choose a theme: ")
+      [ ! "$theme" ] && { echo -e "${Wrn}No theme selected${Off}"; exit 0; }
+      echo -e "${Ok}'$theme' selected${Off}"
+    else 
+      theme="$1"
+      echo -e "${Tip}'$1' found in $COLORDATABASE${Off}"
+    fi
+  else
+    echo -e "No database at ${Pmt}$COLORDATABASE${Off}."
+    echo -e "Consider using ${Tip}themes.sh -s${Off} to generate the ${Dst}$COLORDATABASE${Off} database.";
+  fi
+}
+
 # parse the arguments.
-OPTIONS=$(getopt -o huscp --long help,update,strip,clean,print -n 'themes.sh' -- "$@")
+OPTIONS=$(getopt -o huscpt:: --long help,update,strip,clean,print,theme:: -n 'themes.sh' -- "$@")
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
 eval set -- "$OPTIONS"
 
@@ -158,7 +181,7 @@ usage () {
   #
   # the usage function.
   #
-  echo "Usage: themes.sh [-husc]"
+  echo "Usage: themes.sh [-huscp] [-t=THEME]"
   echo "Type -h or --help for the full help."
   exit 0
 }
@@ -173,20 +196,21 @@ help () {
   echo "     Do not forget to puth it in your PATH."
   echo ""
   echo "Usage:"
-  echo "     themes.sh [-husc]"
+  echo "     themes.sh [-huscp] [-t=THEME]"
   echo ""
   echo "Switches:"
-  echo "     -h/--help       shows this help."
-  echo "     -u/--update     download the database or sync the repo."
-  echo "     -s/--strip      strip the theme files to keep only relevant colors."
-  echo "     -c/--clean      clean the cache."
-  echo "     -p/--print      print the local database."
+  echo "     -h/--help           shows this help."
+  echo "     -u/--update         download the database or sync the repo."
+  echo "     -s/--strip          strip the theme files to keep only relevant colors."
+  echo "     -c/--clean          clean the cache."
+  echo "     -p/--print          print the local database."
+  echo "     -t/--theme[=THEME]  pick a theme from the local database, possibly with default one."
   echo ""
   echo "Environment variables:"
-  echo "     DATABASE        the remote database (defaults to 'kovidgoyal/kitty-themes)"
-  echo "     BRANCH          the branch to use on the remote (defaults to 'master')"
-  echo "     CACHE           the location of the cache (defaults to '\$HOME/.cache/all-themes')"
-  echo "     COLORDATABASE   the final local database (defaults to '\$CACHE/themes.csv')"
+  echo "     DATABASE            the remote database (defaults to 'kovidgoyal/kitty-themes)"
+  echo "     BRANCH              the branch to use on the remote (defaults to 'master')"
+  echo "     CACHE               the location of the cache (defaults to '\$HOME/.cache/all-themes')"
+  echo "     COLORDATABASE       the final local database (defaults to '\$CACHE/themes.csv')"
   exit 0
 }
 
@@ -198,6 +222,7 @@ main () {
       -s | --strip ) ACTION="strip"; shift 1 ;;
       -c | --clean ) ACTION="clean"; shift 1 ;;
       -p | --print ) ACTION="print"; shift 1 ;;
+      -t | --theme ) ACTION="theme"; theme="$(echo "$2" | sed 's/^=//')" ; shift 2;;
       -- ) shift; break ;;
       * ) break ;;
     esac
@@ -210,6 +235,7 @@ main () {
     strip )  strip ;;
     clean )  clean ;;
     print )  print ;;
+    theme )  theme "$theme" ;;
     * ) echo "an error occured (got unexpected '$ACTION')"; exit 1 ;;
   esac
 }
