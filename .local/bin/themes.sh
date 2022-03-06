@@ -54,9 +54,10 @@ Tip=$IGrn  # tip
 [[ ! -v CACHE ]] && CACHE="$HOME/.cache/all-themes"
 [[ ! -v COLORDATABASE ]] && COLORDATABASE="$CACHE/themes.csv"
 
-[[ ! -v CONFIGS ]] && CONFIGS="qtile,dunst"
+[[ ! -v CONFIGS ]] && CONFIGS="qtile,dunst,alacritty"
 [[ ! -v QTILE ]] && QTILE="$HOME/.config/qtile"
 [[ ! -v DUNSTRC ]] && DUNSTRC="$HOME/.config/dunst/dunstrc"
+[[ ! -v ALACRITTYYML ]] && ALACRITTYYML="$HOME/.config/alacritty/alacritty.yml"
 _nb_colors=20
 _columns=(name bg fg sel_bg sel_fg 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15)
 
@@ -201,6 +202,34 @@ dunst_cfg () {
   dunstify "$(echo $theme | sed 's/.conf$//')" "this is nothing" -u low -t 10000
 }
 
+alacritty_cfg () {
+  #
+  # change the theme of the alacritty terminal emulator.
+  #
+  sed -i "s/\(\s*background\s*:\s*'0x\)......\('\s*# PRIMARY\)/\1$(echo "$1" | awk -F, '{print $1}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*foreground\s*:\s*'0x\)......\('\s*# PRIMARY\)/\1$(echo "$1" | awk -F, '{print $2}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*text\s*:\s*'0x\)......\('\s*# CURSOR\)/\1$(echo "$1" | awk -F, '{print $3}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*cursor\s*:\s*'0x\)......\('\s*# CURSOR\)/\1$(echo "$1" | awk -F, '{print $4}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*black\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $5}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*red\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $6}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*green\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $7}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*yellow\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $8}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*blue\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $9}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*magenta\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $10}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*cyan\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $11}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*white\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $12}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*black\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $13}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*red\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $14}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*green\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $15}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*yellow\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $16}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*blue\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $17}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*magenta\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $18}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*cyan\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $19}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*white\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $20}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  # change the name of the theme.
+  sed -i "s/\(\s*# COLORSCHEME: \).*/\1$2/" "$ALACRITTYYML"
+}
+
 theme () {
   #
   # let the user pick a theme.
@@ -223,6 +252,7 @@ theme () {
       case "$config" in
         qtile ) qtile_cfg "$colors" "$theme";;
         dunst ) dunst_cfg "$colors" "$theme";;
+        alacritty ) alacritty_cfg "$colors" "$theme";;
         * ) echo "an error occured (got unexpected config '$config')"; exit 1 ;;
       esac
     done
@@ -268,9 +298,10 @@ help () {
   echo "     BRANCH              the branch to use on the remote (defaults to 'master')"
   echo "     CACHE               the location of the cache (defaults to '\$HOME/.cache/all-themes')"
   echo "     COLORDATABASE       the final local database (defaults to '\$CACHE/themes.csv')"
-  echo "     CONFIGS             the list of all implemented configs (defaults to 'qtile,dunst')"
+  echo "     CONFIGS             the list of all implemented configs (defaults to 'qtile,dunst,alacritty')"
   echo "     QTILE               the path to the qtile config (defaults to '\$HOME/.config/qtile')"
   echo "     DUNSTRC             the path to the dunst config file (defaults to '\$HOME/.config/dunst/dunstrc')"
+  echo "     ALACRITTYYML        the path to the alacritty config file (defaults to '\$HOME/.config/alacritty/alacritty.yml')"
   exit 0
 }
 
@@ -295,7 +326,6 @@ main () {
     esac
   done
   [ "$CONFIG" = "all" ] && CONFIG="$CONFIGS"
-  echo "$CONFIG"
 
   # an action is required
   [ -z "$ACTION" ] && usage

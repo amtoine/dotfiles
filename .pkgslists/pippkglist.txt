@@ -5,7 +5,6 @@ agate-dbf                     0.2.2
 agate-excel                   0.2.5
 agate-sql                     0.5.8
 alabaster                     0.7.12
-alacritty-colorscheme         1.0.1
 apipkg                        2.1.0
 appdirs                       1.4.4
 arandr                        0.1.10
@@ -147,6 +146,7 @@ PyQt5-sip                     12.9.1
 PyQtWebEngine                 5.15.5
 pyrsistent                    0.18.0
 pyserial                      3.5
+PySide2                       5.15.2.1
 pyte                          0.8.0
 pytest                        7.0.1
 python-dateutil               2.8.2
@@ -170,6 +170,7 @@ ruamel.yaml                   0.16.13
 Send2Trash                    1.8.0
 setproctitle                  1.2.2
 setuptools                    59.3.0
+shiboken2                     5.15.2.1
 shtab                         1.5.3
 six                           1.16.0
 snowballstemmer               2.2.0
