@@ -1,0 +1,10 @@
+[MIME Cache]
+application/json=qutebrowser.desktop;
+application/pdf=qutebrowser.desktop;
+application/x-ipynb+json=jupyter-notebook.desktop;
+application/x-xpinstall=qutebrowser.desktop;
+application/xhtml+xml=qutebrowser.desktop;
+text/html=qutebrowser.desktop;
+text/xml=qutebrowser.desktop;
+x-scheme-handler/http=qutebrowser.desktop;
+x-scheme-handler/https=qutebrowser.desktop;

@@ -1,0 +1,22 @@
+[Desktop Entry]
+Version=1.0
+Name=qutebrowser
+GenericName=Web Browser
+Comment=Browse the World Wide Web
+Keywords=Internet;WWW;Browser;Web;Explorer
+Exec=/usr/bin/qutebrowser %u
+Icon=qutebrowser
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+StartupNotify=true
+StartupWMClass=qutebrowser
+Categories=Network;WebBrowser;
+Actions=new-window;
+
+X-Desktop-File-Install-Version=0.26
+
+[Desktop Action new-window]
+Name=New Window
+Exec=/usr/bin/qutebrowser %u
+MimeType=x-scheme-handler/unknown;x-scheme-handler/about;text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;application/pdf;application/json;
