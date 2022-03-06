@@ -54,10 +54,11 @@ Tip=$IGrn  # tip
 [[ ! -v CACHE ]] && CACHE="$HOME/.cache/all-themes"
 [[ ! -v COLORDATABASE ]] && COLORDATABASE="$CACHE/themes.csv"
 
-[[ ! -v CONFIGS ]] && CONFIGS="qtile,dunst,alacritty"
+[[ ! -v CONFIGS ]] && CONFIGS="qtile,dunst,alacritty,kitty"
 [[ ! -v QTILE ]] && QTILE="$HOME/.config/qtile"
 [[ ! -v DUNSTRC ]] && DUNSTRC="$HOME/.config/dunst/dunstrc"
 [[ ! -v ALACRITTYYML ]] && ALACRITTYYML="$HOME/.config/alacritty/alacritty.yml"
+[[ ! -v KITTYCONF ]] && KITTYCONF="$HOME/.config/kitty"
 _nb_colors=20
 _columns=(name bg fg sel_bg sel_fg 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15)
 
@@ -197,9 +198,10 @@ dunst_cfg () {
   # restart dunst and show a preview
   killall dunst
   dunst -conf "$DUNSTRC" &
-  dunstify "$(echo $theme | sed 's/.conf$//')" "this is an error" -u critical -t 10000
-  dunstify "$(echo $theme | sed 's/.conf$//')" "this is normal" -u normal -t 10000
-  dunstify "$(echo $theme | sed 's/.conf$//')" "this is nothing" -u low -t 10000
+  dunstify "$(echo $theme | sed 's/.conf$//')" "this is a critical test" -u critical -t 10000
+  dunstify "$(echo $theme | sed 's/.conf$//')" "this is a normal test" -u normal -t 10000
+  dunstify "$(echo $theme | sed 's/.conf$//')" "this is a low test" -u low -t 10000
+  dunstify "$(echo $theme | sed 's/.conf$//') (sample progress bar)" -h "int:value:40" -u low --icon=/usr/share/icons/Adwaita/16x16/legacy/audio-volume-medium.png -t 10000
 }
 
 alacritty_cfg () {
@@ -230,6 +232,16 @@ alacritty_cfg () {
   sed -i "s/\(\s*# COLORSCHEME: \).*/\1$2/" "$ALACRITTYYML"
 }
 
+kitty_cfg () {
+  #
+  # change the theme of the kitty terminal emulator.
+  #
+  if ! kitty +kitten themes --reload-in=all "$2" &> /dev/null;
+  then
+    echo "ok" | dmenu -bw 5 -p "'$2' is not a kitty theme..."
+  fi
+}
+
 theme () {
   #
   # let the user pick a theme.
@@ -241,7 +253,7 @@ theme () {
     if ! awk -F, '{print $1}' "$COLORDATABASE" | grep -we "$theme" -q;
     then
       echo -e "${Err}'$theme' not in $COLORDATABASE${Off}"
-      theme=$(tail -n +2 "$COLORDATABASE" | awk -F, '{print $1}' | dmenu -l 20 -i -p "Choose a theme: ")
+      theme=$(tail -n +2 "$COLORDATABASE" | awk -F, '{print $1}' | dmenu -bw 5 -c -l 20 -i -p "Choose a theme: ")
       [ ! "$theme" ] && { echo -e "${Wrn}No theme selected${Off}"; exit 0; }
       echo -e "${Ok}'$theme' selected${Off}"
     else 
@@ -253,6 +265,7 @@ theme () {
         qtile ) qtile_cfg "$colors" "$theme";;
         dunst ) dunst_cfg "$colors" "$theme";;
         alacritty ) alacritty_cfg "$colors" "$theme";;
+        kitty ) kitty_cfg "$colors" "$theme";;
         * ) echo "an error occured (got unexpected config '$config')"; exit 1 ;;
       esac
     done
@@ -302,6 +315,7 @@ help () {
   echo "     QTILE               the path to the qtile config (defaults to '\$HOME/.config/qtile')"
   echo "     DUNSTRC             the path to the dunst config file (defaults to '\$HOME/.config/dunst/dunstrc')"
   echo "     ALACRITTYYML        the path to the alacritty config file (defaults to '\$HOME/.config/alacritty/alacritty.yml')"
+  echo "     KITTYCONF           the path to the kitty config (defaults to '\$HOME/.config/kitty')"
   exit 0
 }
 
