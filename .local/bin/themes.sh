@@ -54,12 +54,13 @@ Tip=$IGrn  # tip
 [[ ! -v CACHE ]] && CACHE="$HOME/.cache/all-themes"
 [[ ! -v COLORDATABASE ]] && COLORDATABASE="$CACHE/themes.csv"
 
-[[ ! -v CONFIGS ]] && CONFIGS="qtile,dunst,alacritty,kitty"
+[[ ! -v CONFIGS ]] && CONFIGS="qtile,dunst,alacritty,kitty,dmenu"
 [[ ! -v QTILE ]] && QTILE="$HOME/.config/qtile"
 [[ ! -v DUNSTRC ]] && DUNSTRC="$HOME/.config/dunst/dunstrc"
 [[ ! -v ALACRITTYYML ]] && ALACRITTYYML="$HOME/.config/alacritty/alacritty.yml"
 [[ ! -v KITTYCONF ]] && KITTYCONF="$HOME/.config/kitty/kitty.conf"
 [[ ! -v CONKY ]] && CONKY="$HOME/.config/conky"
+[[ ! -v DMENU ]] && DMENU="$HOME/ghq/git.suckless.org/dmenu"
 _nb_colors=20
 _columns=(name bg fg sel_bg sel_fg 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15)
 
@@ -243,7 +244,6 @@ kitty_cfg () {
   #
   # change the theme of the kitty terminal emulator.
   #
-  echo "kitty $KITTYCONF"
   sed -i "s/\(^background\s*\)#....../\1$(echo "$1" | awk -F, '{print $1}')/" "$KITTYCONF"
   sed -i "s/\(^foreground\s*\)#....../\1$(echo "$1" | awk -F, '{print $2}')/" "$KITTYCONF"
   sed -i "s/\(^selection_background \s*\)#....../\1$(echo "$1" | awk -F, '{print $3}')/" "$KITTYCONF"
@@ -266,6 +266,24 @@ kitty_cfg () {
   sed -i "s/\(^color15\s*\)#....../\1$(echo "$1" | awk -F, '{print $20}')/" "$KITTYCONF"
   # change the name of the theme.
   sed -i "s/\(^# THEME: \).*/\1$2/" "$KITTYCONF"
+}
+
+dmenu_cfg () {
+  #
+  # change the theme of dmenu.
+  #
+  sed -i "s/\(\[SchemeSel\]            = { \"\)#......\", \"#......\(\" },  \/\/ only selected item.\)/\1$(echo "$1" | awk -F, '{print $5}')\", \"$(echo "$1" | awk -F, '{print $10}')\2/" "$DMENU/config.h"
+  sed -i "s/\(\[SchemeMid\]            = { \"\)#......\", \"#......\(\" },  \/\/ side selections\)/\1$(echo "$1" | awk -F, '{print $2}')\", \"$(echo "$1" | awk -F, '{print $1}')\2/" "$DMENU/config.h"
+  sed -i "s/\(\[SchemeNorm\]           = { \"\)#......\", \"#......\(\" },  \/\/ general\)/\1$(echo "$1" | awk -F, '{print $2}')\", \"$(echo "$1" | awk -F, '{print $1}')\2/" "$DMENU/config.h"
+  sed -i "s/\(\[SchemeSelHighlight\]   = { \"\)#......\", \"#......\(\" },  \/\/ filtered characters selection\)/\1$(echo "$1" | awk -F, '{print $7}')\", \"$(echo "$1" | awk -F, '{print $5}')\2/" "$DMENU/config.h"
+  sed -i "s/\(\[SchemeNormHighlight\]  = { \"\)#......\", \"#......\(\" },  \/\/ filtered characters others\)/\1$(echo "$1" | awk -F, '{print $7}')\", \"$(echo "$1" | awk -F, '{print $5}')\2/" "$DMENU/config.h"
+  sed -i "s/\(\[SchemeOut\]            = { \"\)#......\", \"#......\(\" },\)/\1$(echo "$1" | awk -F, '{print $5}')\", \"$(echo "$1" | awk -F, '{print $11}')\2/" "$DMENU/config.h"
+  # change the name of the theme.
+  sed -i "s/\(^\/\/ THEME: \).*/\1$2/" "$DMENU/config.h"
+  cd "$DMENU" || exit 1
+  sudo make clean install
+  cd - || exit 1
+  cat "$COLORDATABASE" | dmenu -c -l 20 -bw 5 -p "Demo of dmenu with $2: "
 }
 
 theme () {
@@ -293,6 +311,7 @@ theme () {
         dunst ) dunst_cfg "$colors" "$theme";;
         alacritty ) alacritty_cfg "$colors" "$theme";;
         kitty ) kitty_cfg "$colors" "$theme";;
+        dmenu ) dmenu_cfg "$colors" "$theme";;
         * ) echo "an error occured (got unexpected config '$config')"; exit 1 ;;
       esac
     done
@@ -338,12 +357,13 @@ help () {
   echo "     BRANCH              the branch to use on the remote (defaults to 'main')"
   echo "     CACHE               the location of the cache (defaults to '\$HOME/.cache/all-themes')"
   echo "     COLORDATABASE       the final local database (defaults to '\$CACHE/themes.csv')"
-  echo "     CONFIGS             the list of all implemented configs (defaults to 'qtile,dunst,alacritty')"
+  echo "     CONFIGS             the list of all implemented configs (defaults to 'qtile,dunst,alacritty,kitty')"
   echo "     QTILE               the path to the qtile config (defaults to '\$HOME/.config/qtile')"
   echo "     DUNSTRC             the path to the dunst config file (defaults to '\$HOME/.config/dunst/dunstrc')"
   echo "     ALACRITTYYML        the path to the alacritty config file (defaults to '\$HOME/.config/alacritty/alacritty.yml')"
   echo "     KITTYCONF           the path to the kitty config file (defaults to '\$HOME/.config/kitty/kitty.conf')"
   echo "     CONKY               the path to all the conky configs (defaults to '\$HOME/.config/conky')"
+  echo "     DMENU               the path to the source code of dmenu (defaults to '\$HOME/ghq/git.suckless.org/dmenu')"
   exit 0
 }
 
