@@ -54,13 +54,14 @@ Tip=$IGrn  # tip
 [[ ! -v CACHE ]] && CACHE="$HOME/.cache/all-themes"
 [[ ! -v COLORDATABASE ]] && COLORDATABASE="$CACHE/themes.csv"
 
-[[ ! -v CONFIGS ]] && CONFIGS="qtile,dunst,alacritty,kitty,dmenu"
+[[ ! -v CONFIGS ]] && CONFIGS="qtile,dunst,alacritty,kitty,dmenu,st"
 [[ ! -v QTILE ]] && QTILE="$HOME/.config/qtile"
 [[ ! -v DUNSTRC ]] && DUNSTRC="$HOME/.config/dunst/dunstrc"
 [[ ! -v ALACRITTYYML ]] && ALACRITTYYML="$HOME/.config/alacritty/alacritty.yml"
 [[ ! -v KITTYCONF ]] && KITTYCONF="$HOME/.config/kitty/kitty.conf"
 [[ ! -v CONKY ]] && CONKY="$HOME/.config/conky"
 [[ ! -v DMENU ]] && DMENU="$HOME/ghq/git.suckless.org/dmenu"
+[[ ! -v ST ]] && ST="$HOME/ghq/git.suckless.org/st"
 _nb_colors=20
 _columns=(name bg fg sel_bg sel_fg 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15)
 
@@ -283,7 +284,37 @@ dmenu_cfg () {
   cd "$DMENU" || exit 1
   sudo make clean install
   cd - || exit 1
-  cat "$COLORDATABASE" | dmenu -c -l 20 -bw 5 -p "Demo of dmenu with $2: "
+}
+
+st_cfg () {
+  #
+  # change the theme of st.
+  #
+  sed -i "s/\[16\] = \"#......\",/[16] = \"$(echo "$1" | awk -F, '{print $1}')\",/" "$ST/config.h"
+  sed -i "s/\[17\] = \"#......\",/[17] = \"$(echo "$1" | awk -F, '{print $2}')\",/" "$ST/config.h"
+  # no selection foreground nor background
+  sed -i "s/\[0\] = \"#......\",/[0] = \"$(echo "$1" | awk -F, '{print $5}')\",/" "$ST/config.h"
+  sed -i "s/\[1\] = \"#......\",/[1] = \"$(echo "$1" | awk -F, '{print $6}')\",/" "$ST/config.h"
+  sed -i "s/\[2\] = \"#......\",/[2] = \"$(echo "$1" | awk -F, '{print $7}')\",/" "$ST/config.h"
+  sed -i "s/\[3\] = \"#......\",/[3] = \"$(echo "$1" | awk -F, '{print $8}')\",/" "$ST/config.h"
+  sed -i "s/\[4\] = \"#......\",/[4] = \"$(echo "$1" | awk -F, '{print $9}')\",/" "$ST/config.h"
+  sed -i "s/\[5\] = \"#......\",/[5] = \"$(echo "$1" | awk -F, '{print $10}')\",/" "$ST/config.h"
+  sed -i "s/\[6\] = \"#......\",/[6] = \"$(echo "$1" | awk -F, '{print $11}')\",/" "$ST/config.h"
+  sed -i "s/\[7\] = \"#......\",/[7] = \"$(echo "$1" | awk -F, '{print $12}')\",/" "$ST/config.h"
+  sed -i "s/\[8\] = \"#......\",/[8] = \"$(echo "$1" | awk -F, '{print $13}')\",/" "$ST/config.h"
+  sed -i "s/\[9\] = \"#......\",/[9] = \"$(echo "$1" | awk -F, '{print $14}')\",/" "$ST/config.h"
+  sed -i "s/\[10\] = \"#......\",/[10] = \"$(echo "$1" | awk -F, '{print $15}')\",/" "$ST/config.h"
+  sed -i "s/\[11\] = \"#......\",/[11] = \"$(echo "$1" | awk -F, '{print $16}')\",/" "$ST/config.h"
+  sed -i "s/\[12\] = \"#......\",/[12] = \"$(echo "$1" | awk -F, '{print $17}')\",/" "$ST/config.h"
+  sed -i "s/\[13\] = \"#......\",/[13] = \"$(echo "$1" | awk -F, '{print $18}')\",/" "$ST/config.h"
+  sed -i "s/\[14\] = \"#......\",/[14] = \"$(echo "$1" | awk -F, '{print $19}')\",/" "$ST/config.h"
+  sed -i "s/\[15\] = \"#......\",/[15] = \"$(echo "$1" | awk -F, '{print $20}')\",/" "$ST/config.h"
+  # change the name of the theme.
+  sed -i "s/\(^\/\/ THEME: \).*/\1$2/" "$ST/config.h"
+  cd "$ST" || exit 1
+  sudo make clean install
+  cd - || exit 1
+  [ "$(echo -e "No\nYes" | dmenu -i -p "Kill all instances of st to apply changes: ")" = "Yes" ] && killall st
 }
 
 theme () {
@@ -312,6 +343,7 @@ theme () {
         alacritty ) alacritty_cfg "$colors" "$theme";;
         kitty ) kitty_cfg "$colors" "$theme";;
         dmenu ) dmenu_cfg "$colors" "$theme";;
+        st ) st_cfg "$colors" "$theme";;
         * ) echo "an error occured (got unexpected config '$config')"; exit 1 ;;
       esac
     done
@@ -364,6 +396,7 @@ help () {
   echo "     KITTYCONF           the path to the kitty config file (defaults to '\$HOME/.config/kitty/kitty.conf')"
   echo "     CONKY               the path to all the conky configs (defaults to '\$HOME/.config/conky')"
   echo "     DMENU               the path to the source code of dmenu (defaults to '\$HOME/ghq/git.suckless.org/dmenu')"
+  echo "     ST                  the path to the source code of st (defaults to '\$HOME/ghq/git.suckless.org/st')"
   exit 0
 }
 
