@@ -16,8 +16,6 @@ alias seecsv='perl -pe "s/((?<=,)|(?<=^)),/ ,/g;" "$argv" | column -t -s, | less
 alias lf='~/.local/bin/lfrun.sh'
 # a complete diagnostic of the current directory.
 alias diag='du -hs (ls (pwd) -A) | sort -h'
-# replacement of vim by nvim.
-alias nv='/usr/bin/nvim'
 # the lazycli tool.
 alias lac="$HOME/.local/bin/lazycli"
 # to source this quicker.
@@ -85,7 +83,9 @@ if command -v devour &> /dev/null; then
   alias mpv='devour mpv'
   alias okular='devour okular'
   alias kolourpaint='devour kolourpaint'
-  alias emacs='devour emacs'
+  alias emacs='devour emacsclient -c -a "emacs"'
+else
+  alias emacs='emacsclient -c -a "emacs"'
 fi
 
 if [ "$TERM" = "xterm-kitty" ]; then

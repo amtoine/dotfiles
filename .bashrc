@@ -225,7 +225,7 @@ extr ()
 #	neofetch;
 #fi
 # figlet -tf slant "welcome in BASH"
-# colorscript -e elfman
+colorscript -r
 # cal -3
 # fortune -c | cowthink -f $(find /usr/share/cows -type f | shuf -n 1)
 # fortune -c | ponysay --pony

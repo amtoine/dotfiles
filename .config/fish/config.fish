@@ -68,8 +68,6 @@ if status is-interactive
   alias lf='~/.local/bin/lfrun.sh'
   # a complete diagnostic of the current directory.
   alias diag='du -hs (ls (pwd) -A) | sort -h'
-  # replacement of vim by nvim.
-  alias nv='/usr/bin/nvim'
   # the lazycli tool.
   alias lac="$HOME/.local/bin/lazycli"
   # to source this quicker.
@@ -137,7 +135,9 @@ if status is-interactive
     alias mpv='devour mpv'
     alias okular='devour okular'
     alias kolourpaint='devour kolourpaint'
-    alias emacs='devour emacs'
+    alias emacs='devour emacsclient -c -a "emacs"'
+  else
+    alias emacs='emacsclient -c -a "emacs"'
   end
 
   if [ "$TERM" = "xterm-kitty" ]

@@ -69,7 +69,6 @@ nmap
 noto-fonts-cjk
 okular
 pacgraph
-pacman-contrib
 pavucontrol
 peco
 picom

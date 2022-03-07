@@ -9,12 +9,14 @@ devour
 dmenu-a2ns-git
 dmenufm
 dmscripts-git
+downgrade
 dwm-a2ns-git
 ghq
 irony-mode
 lf
 mbsync-git
 mu
+multicolor-sddm-theme
 myman
 nerd-fonts-mononoki
 ngrok

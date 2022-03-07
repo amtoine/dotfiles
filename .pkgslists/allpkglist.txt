@@ -53,6 +53,7 @@ dmscripts-git
 docker
 docker-compose
 dosfstools
+downgrade
 dstat
 dunst
 dust
@@ -115,6 +116,7 @@ mpd
 mpv
 mtools
 mu
+multicolor-sddm-theme
 myman
 ncdu
 neovim

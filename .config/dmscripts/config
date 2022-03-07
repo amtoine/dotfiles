@@ -33,13 +33,13 @@ DMBORDER=5
 DMENU="dmenu -i -l $DMLINES -c -bw $DMBORDER -p"
 
 # DMBROWSER="brave"
-DMBROWSER="surf"
+# DMBROWSER="surf"
 # DMBROWSER="firefox"
-# DMBROWSER="qutebrowser"
+DMBROWSER="qutebrowser"
 
-# DMTERM="st -e"
+DMTERM="st -e"
 # DMTERM="alacritty -e"
-DMTERM="kitty"
+# DMTERM="kitty"
 
 DMEDITOR="emacsclient -c -a emacs"
 # DMEDITOR="${DMTERM} nvim"

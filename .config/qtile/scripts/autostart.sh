@@ -64,4 +64,10 @@ fi
 xset s 0
 xset -dpms
 
+# start the `dunst` notification server in the background
+if command -v dunst &> /dev/null; then
+  emacs --daemon &
+  error "$?" "emacs server started successfully" "emacs server failed to start"
+fi
+
 [ "$_notify" = "yes" ] && notify-send -u normal -t 10000 -- "qtile has been fully loaded"
