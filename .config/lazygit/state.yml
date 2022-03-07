@@ -1,5 +1,6 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/repos/wallpapers
 - /home/ants/ghq/git.suckless.org/st
 - /home/ants/ghq/git.suckless.org/dmenu
 - /home/ants/ghq/github.com/a2n-s/themes
@@ -21,7 +22,6 @@ recentrepos:
 - /home/ants/repos/amazons
 - /home/ants/repos/a2n-s
 - /home/ants/research/gym-basic
-- /home/ants/repos/wallpapers
 - /home/ants/.local/share/omf
 - /home/ants/prog/docker/scsc/docker
 - /home/ants/repos/oh-my-fish

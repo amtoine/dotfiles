@@ -16,6 +16,7 @@
 #   please use the `qtile-change-theme.sh` script in `~/.config/qtile/scripts`
 #   to automatically edit this file and change the theme of Qtile.
 
+# current: Cobalt_Neon
 from utils import ColorScheme
 theme = ColorScheme(**{
   "fg": "#f8f8f2",
@@ -39,4 +40,3 @@ theme = ColorScheme(**{
   "color7": "#f8f8f2",
   "color15": "#ffffff",
 })
-# current: Dracula
