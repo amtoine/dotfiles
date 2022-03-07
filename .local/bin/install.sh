@@ -190,7 +190,7 @@ init_deps () {
     "arcologout::off" \
   )
 
-  deps_table[base]="pacman:base-devel pacman:python pacman:python-pip pacman:xorg pacman:xorg-xinit yay-git:yay"
+  deps_table[base]="pacman:base-devel pacman:python pacman:python-pip pacman:xorg pacman:xorg-xinit yay-git:yay aura-bin:aura"
   deps_table[devour]="yay:devour pacman:xdo"
   deps_table[grub]="grub"
   deps_table[issue]="issue"
@@ -431,6 +431,20 @@ _install_pacman_deps () {
   sudo pacman --needed --ask 4 -Sy $(grep -e "^pacman:" "$deps_file" | sed 's/^pacman://g' | tr '\n' ' ')
 }
 
+_install_aura () {
+  #
+  # install the aura AUR helper.
+  #
+  info "################################################################"
+  info "## Installing the yay Arch User Repositories package manager  ##"
+  info "################################################################"
+  git clone https://aur.archlinux.org/aura-bin.git /tmp/aur/aura-bin
+  cd /tmp/aur/aura-bin
+  makepkg
+  sudo pacman -U *.pkg.tar.zst
+  cd -
+}
+
 _install_yay () {
   #
   # install the yay AUR helper.
@@ -438,8 +452,8 @@ _install_yay () {
   info "################################################################"
   info "## Installing the yay Arch User Repositories package manager  ##"
   info "################################################################"
-  git clone https://aur.archlinux.org/yay-git.git /tmp/aur.yay-git
-  cd /tmp/aur.yay-git
+  git clone https://aur.archlinux.org/yay-git.git /tmp/aur/yay-git
+  cd /tmp/aur/yay-git
   makepkg -si
   cd -
 }
@@ -489,6 +503,7 @@ install_deps () {
   #
   if grep -e "^pacman:" "$deps_file" -q; then _install_pacman_deps; fi
   if grep -e "^yay-git:" "$deps_file" -q; then _install_yay; fi
+  if grep -e "^aura-bin:" "$deps_file" -q; then _install_aura; fi
   if grep -e "^yay:" "$deps_file" -q; then _install_yay_deps; fi
   if grep -e "^pip:" "$deps_file" -q; then _install_python_deps; fi
   if grep -e "^make:" "$deps_file" -q; then _install_custom_builds; fi

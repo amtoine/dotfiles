@@ -2,6 +2,7 @@ adwaita-dark
 ani-cli
 archlinux-themes-sddm
 arduino-mk
+aura-bin
 betterlockscreen-git
 cava
 conky-lua-nv
