@@ -51,7 +51,7 @@ Tip=$IGrn  # tip
 
 [[ ! -v DATABASE ]] && DATABASE="a2n-s/themes"
 [[ ! -v BRANCH ]] && BRANCH="main"
-[[ ! -v CACHE ]] && CACHE="$HOME/.cache/all-themes"
+CACHE="$HOME/.cache/all-themes"
 [[ ! -v COLORDATABASE ]] && COLORDATABASE="$CACHE/themes.csv"
 
 [[ ! -v CONFIGS ]] && CONFIGS="qtile,dunst,alacritty,kitty,dmenu,st"
@@ -387,7 +387,7 @@ help () {
   echo "Environment variables:"
   echo "     DATABASE            the remote database (defaults to 'a2n-s/themes)"
   echo "     BRANCH              the branch to use on the remote (defaults to 'main')"
-  echo "     CACHE               the location of the cache (defaults to '\$HOME/.cache/all-themes')"
+  echo "     CACHE**             the location of the cache (set to '\$HOME/.cache/all-themes')"
   echo "     COLORDATABASE       the final local database (defaults to '\$CACHE/themes.csv')"
   echo "     CONFIGS             the list of all implemented configs (defaults to 'qtile,dunst,alacritty,kitty')"
   echo "     QTILE               the path to the qtile config (defaults to '\$HOME/.config/qtile')"
@@ -397,6 +397,7 @@ help () {
   echo "     CONKY               the path to all the conky configs (defaults to '\$HOME/.config/conky')"
   echo "     DMENU               the path to the source code of dmenu (defaults to '\$HOME/ghq/git.suckless.org/dmenu')"
   echo "     ST                  the path to the source code of st (defaults to '\$HOME/ghq/git.suckless.org/st')"
+  echo " ** cannot be changed"
   exit 0
 }
 
