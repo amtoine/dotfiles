@@ -26,7 +26,7 @@ export FZF_DEFAULT_OPTS="
 --height=100%
 --layout=reverse
 --preview-window=\"down,75%\"
---preview=\"catimg $WALLPAPERS/{1} -H 100 -r 2\""
+--preview=\"catimg {1} -H 100 -r 2\""
 
 help () {
   #
@@ -56,15 +56,20 @@ main () {
     esac
   done
 
+  monitors=$(xrandr --query | grep -e "\<connected" | sed 's/ connected.*//')
+  nb_monitors=$(wc -l <<< "$monitors")
   wallpapers=()
-  for x in $(xrandr --query | grep -e "\<connected" | sed 's/ connected.*//');
+  for x in $monitors;
   do
     wallpaper=$(
-      ls "$WALLPAPERS" | \
+      {
+        grep "feh" ~/.fehbg | awk -v nm="$nb_monitors" -F" " '{ for (i = 4; i < 4 + nm; i++) print $i; }' | sed "s/'//g;";
+        find "$WALLPAPERS" -type f | sort;
+      } | \
       fzf --prompt="Please choose a wallpaper for $x: "
     )
     [ -z "$wallpaper" ] && exit 0
-    wallpapers+=("$WALLPAPERS/$wallpaper")
+    wallpapers+=("$wallpaper")
   done
   feh --bg-fill "${wallpapers[@]}"
 }
