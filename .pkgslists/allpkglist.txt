@@ -92,7 +92,7 @@ gtk4
 guake
 gulp
 helm
-htop
+htim
 hugo
 irony-mode
 jgmenu
@@ -211,6 +211,7 @@ sc
 scrot
 sddm
 sddm-archlinux-theme-git
+sfm-a2ns-git
 sfml
 shell-color-scripts
 shellcheck

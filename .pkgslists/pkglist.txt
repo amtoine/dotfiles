@@ -50,7 +50,6 @@ grub
 guake
 gulp
 helm
-htop
 hugo
 jgmenu
 kitty

@@ -311,9 +311,9 @@ st_cfg () {
   sed -i "s/\[15\] = \"#......\",/[15] = \"$(echo "$1" | awk -F, '{print $20}')\",/" "$ST/config.h"
   # change the name of the theme.
   sed -i "s/\(^\/\/ THEME: \).*/\1$2/" "$ST/config.h"
-  cd "$ST" || exit 1
+  cd "$ST" > /dev/null || exit 1
   sudo make clean install
-  cd - || exit 1
+  cd - > /dev/null || exit 1
   [ "$(echo -e "No\nYes" | dmenu -i -p "Kill all instances of st to apply changes: ")" = "Yes" ] && killall st
 }
 

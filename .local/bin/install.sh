@@ -148,6 +148,7 @@ init_deps () {
     "kitty::on" \
     "pass::on" \
     "dmenu::on" \
+    "sfm::off" \
     "nerd-fonts-mononoki::on" \
     "fish::on" \
     "st::on" \
@@ -230,6 +231,7 @@ init_deps () {
   deps_table[tabbed]="make:a2n-s/tabbed"
   deps_table[surf]="make:a2n-s/surf pacman:gcr pacman:webkit2gtk"
   deps_table[slock]="make:a2n-s/slock"
+  deps_table[sfm]="make:a2n-s/sfm"
   deps_table[nerd-fonts-mononoki]="yay:nerd-fonts-mononoki"
   deps_table[psutil]="pip:psutil"
   deps_table[dbus-next]="pip:dbus-next"
@@ -438,10 +440,10 @@ _install_aura () {
   info "################################################################"
   info "## Installing the yay Arch User Repositories package manager  ##"
   info "################################################################"
-  git clone https://aur.archlinux.org/aura-bin.git /tmp/aur/aura-bin
-  cd /tmp/aur/aura-bin
+  git clone https://aur.archlinux.org/aura-bin.git "$HOME/.a2n-s/aura-bin"
+  cd "$HOME/.a2n-s/aura-bin"
   makepkg
-  sudo pacman -U *.pkg.tar.zst
+  sudo pacman -U ./*.pkg.tar.zst
   cd -
 }
 
@@ -452,8 +454,8 @@ _install_yay () {
   info "################################################################"
   info "## Installing the yay Arch User Repositories package manager  ##"
   info "################################################################"
-  git clone https://aur.archlinux.org/yay-git.git /tmp/aur/yay-git
-  cd /tmp/aur/yay-git
+  git clone https://aur.archlinux.org/yay-git.git "$HOME/.a2n-s/yay-git"
+  cd "$HOME/.a2n-s/yay-git"
   makepkg -si
   cd -
 }
@@ -491,9 +493,9 @@ _install_custom_builds () {
   for dep in $(grep -e "^make:" "$deps_file"); do
     repo="$(echo "$dep" | sed 's/^make://g')"
     # clone the right repo
-    git clone "https://github.com/$repo" "/tmp/$repo";
+    git clone "https://github.com/$repo" "$HOME/.a2n-s/$repo";
     # build it inside the directory and go back
-    cd "/tmp/$repo"; sudo make clean install; cd -
+    cd "$HOME/.a2n-s/$repo"; sudo make clean install; cd -
   done
 }
 

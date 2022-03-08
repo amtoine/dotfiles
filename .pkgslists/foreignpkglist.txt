@@ -13,6 +13,7 @@ dmscripts-git
 downgrade
 dwm-a2ns-git
 ghq
+htim
 irony-mode
 lf
 mbsync-git
@@ -33,6 +34,7 @@ python38
 quickemu
 reddio
 sddm-archlinux-theme-git
+sfm-a2ns-git
 shell-color-scripts
 slack-desktop
 slock-a2ns-git
