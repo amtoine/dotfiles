@@ -229,6 +229,7 @@ swig
 sxhkd
 sysstat
 tabbed-a2ns-git
+telegram-tg
 termdown
 texinfo
 thunderbird

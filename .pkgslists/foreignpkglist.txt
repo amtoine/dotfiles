@@ -41,6 +41,7 @@ slock-a2ns-git
 st-a2ns-git
 surf-a2ns-git
 tabbed-a2ns-git
+telegram-tg
 toilet
 tomb
 ttf-symbola

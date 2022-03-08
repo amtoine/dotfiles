@@ -94,7 +94,6 @@ qt5-webglplugin
 qt5-webview
 qt5ct
 qtile
-ranger
 read-edid
 ripgrep
 rogue
