@@ -90,7 +90,7 @@ strip () {
     for theme in $(ls "$CACHE/themes" | sed 's/\.conf$//g');
     do
       echo -en "Stripping ${Src}$theme${Off}... "
-      colors=$(grep -Ev 'cursor|active|^\$|^#|url|mark' "$CACHE/themes/$theme.conf" |\
+      colors=$(grep -Ev 'cursor|active|^\$|^#|url|mark|color ' "$CACHE/themes/$theme.conf" |\
         sed 's/background/bg/; s/foreground/fg/; s/selection/sel/; /^\s*$/d;' |\
         sed 's/^color//g; s/\s\+/ /g;' |\
         sort -g | head -n 20)

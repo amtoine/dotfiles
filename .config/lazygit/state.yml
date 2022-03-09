@@ -1,5 +1,6 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/.config/nvim
 - /home/ants/repos/wallpapers
 - /home/ants/ghq/git.suckless.org/st
 - /home/ants/ghq/git.suckless.org/dmenu
@@ -11,7 +12,6 @@ recentrepos:
 - /home/ants/repos/tabbed
 - /home/ants/repos/slock
 - /home/ants/repos/dmenu
-- /home/ants/.config/nvim
 - /home/ants/research/imagineXdial
 - /home/ants/research/ma_playground_env
 - /home/ants/repos/server
