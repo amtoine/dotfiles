@@ -80,11 +80,11 @@ conky.config = {
   own_window_type = 'desktop',       -- if own_window true options are: normal/override/dock/desktop/panel
   own_window_hints = 'undecorated,below,above,sticky,skip_taskbar,skip_pager',  -- if own_window true - just hints - own_window_type sets it
 
-  --Colors Dracula
-  color0 = '#bd93f9',
-  color1 = '#f8f8f2',
-  color2 = '#8be9fd',
-  color3 = '#50fa7b',
+  --Colors Gruvbox_Dark_Hard
+  color0 = '#458588',
+  color1 = '#a89984',
+  color2 = '#689d6a',
+  color3 = '#98971a',
 };
 
 conky.text = [[
