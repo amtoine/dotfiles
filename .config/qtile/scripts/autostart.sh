@@ -49,7 +49,7 @@ if command -v feh &> /dev/null; then
     ~/repos/wallpapers/wallpapers/* \
     ~/repos/catppucin/wallpapers/minimalistic/* \
     ~/repos/catppucin/wallpapers/mandelbrot/* \
-    --no-fehbg --bg-fill
+    --bg-fill
 fi
 
 if command -v xautolock &> /dev/null; then

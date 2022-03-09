@@ -60,8 +60,7 @@ CACHE="$HOME/.cache/all-themes"
 [[ ! -v ALACRITTYYML ]] && ALACRITTYYML="$HOME/.config/alacritty/alacritty.yml"
 [[ ! -v KITTYCONF ]] && KITTYCONF="$HOME/.config/kitty/kitty.conf"
 [[ ! -v CONKY ]] && CONKY="$HOME/.config/conky"
-[[ ! -v DMENU ]] && DMENU="$HOME/ghq/git.suckless.org/dmenu"
-[[ ! -v ST ]] && ST="$HOME/ghq/git.suckless.org/st"
+[[ ! -v SUCKLESS ]] && SUCKLESS="$HOME/ghq/git.suckless.org"
 _nb_colors=20
 _columns=(name bg fg sel_bg sel_fg 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15)
 
@@ -273,45 +272,49 @@ dmenu_cfg () {
   #
   # change the theme of dmenu.
   #
-  sed -i "s/\(\[SchemeSel\]            = { \"\)#......\", \"#......\(\" },  \/\/ only selected item.\)/\1$(echo "$1" | awk -F, '{print $5}')\", \"$(echo "$1" | awk -F, '{print $10}')\2/" "$DMENU/config.h"
-  sed -i "s/\(\[SchemeMid\]            = { \"\)#......\", \"#......\(\" },  \/\/ side selections\)/\1$(echo "$1" | awk -F, '{print $2}')\", \"$(echo "$1" | awk -F, '{print $1}')\2/" "$DMENU/config.h"
-  sed -i "s/\(\[SchemeNorm\]           = { \"\)#......\", \"#......\(\" },  \/\/ general\)/\1$(echo "$1" | awk -F, '{print $2}')\", \"$(echo "$1" | awk -F, '{print $1}')\2/" "$DMENU/config.h"
-  sed -i "s/\(\[SchemeSelHighlight\]   = { \"\)#......\", \"#......\(\" },  \/\/ filtered characters selection\)/\1$(echo "$1" | awk -F, '{print $7}')\", \"$(echo "$1" | awk -F, '{print $5}')\2/" "$DMENU/config.h"
-  sed -i "s/\(\[SchemeNormHighlight\]  = { \"\)#......\", \"#......\(\" },  \/\/ filtered characters others\)/\1$(echo "$1" | awk -F, '{print $7}')\", \"$(echo "$1" | awk -F, '{print $5}')\2/" "$DMENU/config.h"
-  sed -i "s/\(\[SchemeOut\]            = { \"\)#......\", \"#......\(\" },\)/\1$(echo "$1" | awk -F, '{print $5}')\", \"$(echo "$1" | awk -F, '{print $11}')\2/" "$DMENU/config.h"
+  [ ! -f "$SUCKLESS/dmenu/config.h" ] && cp "$SUCKLESS/dmenu/config.def.h" "$SUCKLESS/dmenu/config.h"
+  sed -i "s/\(\[SchemeSel\]            = { \"\)#......\", \"#......\(\" },\)/\1$(echo "$1" | awk -F, '{print $5}')\", \"$(echo "$1" | awk -F, '{print $10}')\2/" "$SUCKLESS/dmenu/config.h"
+  sed -i "s/\(\[SchemeSelOut\]         = { \"\)#......\", \"#......\(\" },\)/\1$(echo "$1" | awk -F, '{print $5}')\", \"$(echo "$1" | awk -F, '{print $11}')\2/" "$SUCKLESS/dmenu/config.h"
+  sed -i "s/\(\[SchemeMid\]            = { \"\)#......\", \"#......\(\" },\)/\1$(echo "$1" | awk -F, '{print $2}')\", \"$(echo "$1" | awk -F, '{print $3}')\2/" "$SUCKLESS/dmenu/config.h"
+  sed -i "s/\(\[SchemeMidOut\]         = { \"\)#......\", \"#......\(\" },\)/\1$(echo "$1" | awk -F, '{print $2}')\", \"$(echo "$1" | awk -F, '{print $13}')\2/" "$SUCKLESS/dmenu/config.h"
+  sed -i "s/\(\[SchemeSelHighlight\]   = { \"\)#......\", \"#......\(\" },\)/\1$(echo "$1" | awk -F, '{print $7}')\", \"$(echo "$1" | awk -F, '{print $5}')\2/" "$SUCKLESS/dmenu/config.h"
+  sed -i "s/\(\[SchemeNormHighlight\]  = { \"\)#......\", \"#......\(\" },\)/\1$(echo "$1" | awk -F, '{print $7}')\", \"$(echo "$1" | awk -F, '{print $5}')\2/" "$SUCKLESS/dmenu/config.h"
+  sed -i "s/\(\[SchemeNorm\]           = { \"\)#......\", \"#......\(\" },\)/\1$(echo "$1" | awk -F, '{print $2}')\", \"$(echo "$1" | awk -F, '{print $1}')\2/" "$SUCKLESS/dmenu/config.h"
+  sed -i "s/\(\[SchemeOut\]            = { \"\)#......\", \"#......\(\" },\)/\1$(echo "$1" | awk -F, '{print $5}')\", \"$(echo "$1" | awk -F, '{print $2}')\2/" "$SUCKLESS/dmenu/config.h"
   # change the name of the theme.
-  sed -i "s/\(^\/\/ THEME: \).*/\1$2/" "$DMENU/config.h"
-  cd "$DMENU" || exit 1
+  sed -i "s/\(^\/\/ THEME: \).*/\1$2/" "$SUCKLESS/dmenu/config.h"
+  cd "$SUCKLESS/dmenu" > /dev/null || exit 1
   sudo make clean install
-  cd - || exit 1
+  cd - > /dev/null || exit 1
 }
 
 st_cfg () {
   #
   # change the theme of st.
   #
-  sed -i "s/\[16\] = \"#......\",/[16] = \"$(echo "$1" | awk -F, '{print $1}')\",/" "$ST/config.h"
-  sed -i "s/\[17\] = \"#......\",/[17] = \"$(echo "$1" | awk -F, '{print $2}')\",/" "$ST/config.h"
+  [ ! -f "$SUCKLESS/st/config.h" ] && cp "$SUCKLESS/st/config.def.h" "$SUCKLESS/st/config.h"
+  sed -i "s/\[16\] = \"#......\",/[16] = \"$(echo "$1" | awk -F, '{print $1}')\",/" "$SUCKLESS/st/config.h"
+  sed -i "s/\[17\] = \"#......\",/[17] = \"$(echo "$1" | awk -F, '{print $2}')\",/" "$SUCKLESS/st/config.h"
   # no selection foreground nor background
-  sed -i "s/\[0\] = \"#......\",/[0] = \"$(echo "$1" | awk -F, '{print $5}')\",/" "$ST/config.h"
-  sed -i "s/\[1\] = \"#......\",/[1] = \"$(echo "$1" | awk -F, '{print $6}')\",/" "$ST/config.h"
-  sed -i "s/\[2\] = \"#......\",/[2] = \"$(echo "$1" | awk -F, '{print $7}')\",/" "$ST/config.h"
-  sed -i "s/\[3\] = \"#......\",/[3] = \"$(echo "$1" | awk -F, '{print $8}')\",/" "$ST/config.h"
-  sed -i "s/\[4\] = \"#......\",/[4] = \"$(echo "$1" | awk -F, '{print $9}')\",/" "$ST/config.h"
-  sed -i "s/\[5\] = \"#......\",/[5] = \"$(echo "$1" | awk -F, '{print $10}')\",/" "$ST/config.h"
-  sed -i "s/\[6\] = \"#......\",/[6] = \"$(echo "$1" | awk -F, '{print $11}')\",/" "$ST/config.h"
-  sed -i "s/\[7\] = \"#......\",/[7] = \"$(echo "$1" | awk -F, '{print $12}')\",/" "$ST/config.h"
-  sed -i "s/\[8\] = \"#......\",/[8] = \"$(echo "$1" | awk -F, '{print $13}')\",/" "$ST/config.h"
-  sed -i "s/\[9\] = \"#......\",/[9] = \"$(echo "$1" | awk -F, '{print $14}')\",/" "$ST/config.h"
-  sed -i "s/\[10\] = \"#......\",/[10] = \"$(echo "$1" | awk -F, '{print $15}')\",/" "$ST/config.h"
-  sed -i "s/\[11\] = \"#......\",/[11] = \"$(echo "$1" | awk -F, '{print $16}')\",/" "$ST/config.h"
-  sed -i "s/\[12\] = \"#......\",/[12] = \"$(echo "$1" | awk -F, '{print $17}')\",/" "$ST/config.h"
-  sed -i "s/\[13\] = \"#......\",/[13] = \"$(echo "$1" | awk -F, '{print $18}')\",/" "$ST/config.h"
-  sed -i "s/\[14\] = \"#......\",/[14] = \"$(echo "$1" | awk -F, '{print $19}')\",/" "$ST/config.h"
-  sed -i "s/\[15\] = \"#......\",/[15] = \"$(echo "$1" | awk -F, '{print $20}')\",/" "$ST/config.h"
+  sed -i "s/\[0\] = \"#......\",/[0] = \"$(echo "$1" | awk -F, '{print $5}')\",/" "$SUCKLESS/st/config.h"
+  sed -i "s/\[1\] = \"#......\",/[1] = \"$(echo "$1" | awk -F, '{print $6}')\",/" "$SUCKLESS/st/config.h"
+  sed -i "s/\[2\] = \"#......\",/[2] = \"$(echo "$1" | awk -F, '{print $7}')\",/" "$SUCKLESS/st/config.h"
+  sed -i "s/\[3\] = \"#......\",/[3] = \"$(echo "$1" | awk -F, '{print $8}')\",/" "$SUCKLESS/st/config.h"
+  sed -i "s/\[4\] = \"#......\",/[4] = \"$(echo "$1" | awk -F, '{print $9}')\",/" "$SUCKLESS/st/config.h"
+  sed -i "s/\[5\] = \"#......\",/[5] = \"$(echo "$1" | awk -F, '{print $10}')\",/" "$SUCKLESS/st/config.h"
+  sed -i "s/\[6\] = \"#......\",/[6] = \"$(echo "$1" | awk -F, '{print $11}')\",/" "$SUCKLESS/st/config.h"
+  sed -i "s/\[7\] = \"#......\",/[7] = \"$(echo "$1" | awk -F, '{print $12}')\",/" "$SUCKLESS/st/config.h"
+  sed -i "s/\[8\] = \"#......\",/[8] = \"$(echo "$1" | awk -F, '{print $13}')\",/" "$SUCKLESS/st/config.h"
+  sed -i "s/\[9\] = \"#......\",/[9] = \"$(echo "$1" | awk -F, '{print $14}')\",/" "$SUCKLESS/st/config.h"
+  sed -i "s/\[10\] = \"#......\",/[10] = \"$(echo "$1" | awk -F, '{print $15}')\",/" "$SUCKLESS/st/config.h"
+  sed -i "s/\[11\] = \"#......\",/[11] = \"$(echo "$1" | awk -F, '{print $16}')\",/" "$SUCKLESS/st/config.h"
+  sed -i "s/\[12\] = \"#......\",/[12] = \"$(echo "$1" | awk -F, '{print $17}')\",/" "$SUCKLESS/st/config.h"
+  sed -i "s/\[13\] = \"#......\",/[13] = \"$(echo "$1" | awk -F, '{print $18}')\",/" "$SUCKLESS/st/config.h"
+  sed -i "s/\[14\] = \"#......\",/[14] = \"$(echo "$1" | awk -F, '{print $19}')\",/" "$SUCKLESS/st/config.h"
+  sed -i "s/\[15\] = \"#......\",/[15] = \"$(echo "$1" | awk -F, '{print $20}')\",/" "$SUCKLESS/st/config.h"
   # change the name of the theme.
-  sed -i "s/\(^\/\/ THEME: \).*/\1$2/" "$ST/config.h"
-  cd "$ST" > /dev/null || exit 1
+  sed -i "s/\(^\/\/ THEME: \).*/\1$2/" "$SUCKLESS/st/config.h"
+  cd "$SUCKLESS/st" > /dev/null || exit 1
   sudo make clean install
   cd - > /dev/null || exit 1
   [ "$(echo -e "No\nYes" | dmenu -i -p "Kill all instances of st to apply changes: ")" = "Yes" ] && killall st
@@ -395,8 +398,7 @@ help () {
   echo "     ALACRITTYYML        the path to the alacritty config file (defaults to '\$HOME/.config/alacritty/alacritty.yml')"
   echo "     KITTYCONF           the path to the kitty config file (defaults to '\$HOME/.config/kitty/kitty.conf')"
   echo "     CONKY               the path to all the conky configs (defaults to '\$HOME/.config/conky')"
-  echo "     DMENU               the path to the source code of dmenu (defaults to '\$HOME/ghq/git.suckless.org/dmenu')"
-  echo "     ST                  the path to the source code of st (defaults to '\$HOME/ghq/git.suckless.org/st')"
+  echo "     SUCKLESS            the path to the suckless source codes (defaults to '\$HOME/ghq/git.suckless.org')"
   echo " ** cannot be changed"
   exit 0
 }
