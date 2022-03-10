@@ -33,13 +33,13 @@ from widgets import init_widget_defaults
 mod = "mod4"  # the super (windows or mac) key controls `qtile`
 preference = [
     "st",
-    "kitty",
     "alacritty",
+    "kitty",
 ]
 terminal = guess_terminal(preference=preference)
 
 # initialize everything.
-groups, group_names = init_groups()
+groups, group_names = init_groups(terminal)
 keys = init_keymap(mod, terminal, groups)
 layouts = init_layouts()
 widget_defaults = init_widget_defaults()

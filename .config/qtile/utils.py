@@ -363,19 +363,25 @@ SCRIPTS = ".local/bin"
 QSCRIPTS = ".config/qtile/scripts"
 
 
-def expand_terminal(terminal: str) -> str:
+def expand_terminal(terminal: str, fs: int = None) -> str:
     """
         Adds appropriate flags to a terminal
         name to allow the execution of commands inside
         the terminal.
+        `fs` is an optional font size for st's `-z` switch.
     """
     if terminal == "kitty":
-        flags = "--hold"
-    elif terminal in ["alacritty", "st"]:
-        flags = "-e"
+        flags = ["--hold"]
+    elif terminal == "st":
+        flags = []
+        if fs is not None:
+            flags = [f"-z {fs}"]
+        flags += ["-e"]
+    elif terminal == "alacritty":
+        flags = ["-e"]
     else:
-        flags = ""
-    return ' '.join([terminal, flags])
+        flags = [""]
+    return ' '.join([terminal, *flags])
 
 
 def _cmd(command: str, terminal: str = None):

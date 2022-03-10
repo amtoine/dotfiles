@@ -20,8 +20,10 @@ from libqtile.config import Group
 from libqtile.config import ScratchPad
 from libqtile.dgroups import simple_key_binder
 
+from utils import expand_terminal
 
-def init_groups():
+
+def init_groups(terminal: str):
     """
         Initializes somes groups to sort windows easier.
 
@@ -44,35 +46,35 @@ def init_groups():
     scratchpads = [
         ScratchPad("sp1", [
             DropDown(
-                "term",   "st",
+                "term",   terminal,
                 x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
             DropDown(
-                "qshell", "st -e qtile shell",
+                "qshell", f"{expand_terminal(terminal)} qtile shell",
                 x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
             DropDown(
-                "python", "st -e ptpython",
+                "python", f"{expand_terminal(terminal)} ptpython",
                 x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
             DropDown(
-                "lcfg",   "st -e lcfg.sh",
+                "lcfg",   f"{expand_terminal(terminal)} lcfg.sh",
                 x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
             DropDown(
-                "tcfg",   "st -e tcfg.sh",
+                "tcfg",   f"{expand_terminal(terminal)} tcfg.sh",
                 x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
             DropDown(
-                "mocp",   "st -e mocp",
+                "mocp",   f"{expand_terminal(terminal)} mocp",
                 x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
             DropDown(
-                "clock",  "st -z 16 -e termdown -z",
+                "clock",  f"{expand_terminal(terminal, fs=16)} termdown -z",
                 x=0.18, y=0.30, width=0.64, height=0.40, opacity=0.90,
             ),
             DropDown(
-                "fm",  "st -z 24 -e lf",
+                "fm",     f"{expand_terminal(terminal, fs=24)} lf",
                 x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
         ]),
