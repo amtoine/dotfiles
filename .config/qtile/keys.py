@@ -32,6 +32,18 @@ from style import DMFONT
 from utils import float_to_front
 from utils import window_to_next_screen
 from utils import window_to_previous_screen
+from utils import _cmd
+from utils import _ucmd
+from utils import _uacmd
+from utils import _rofi
+from utils import _emacs
+from utils import _script
+from utils import _uscript
+from utils import _uascript
+from utils import _scratch
+from utils import HOME
+from utils import SCRIPTS
+from utils import QSCRIPTS
 
 # some shortcuts for the `qtile` key codes.
 SPC = "space"
@@ -50,18 +62,10 @@ F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12 = (
     f"F{i}" for i in range(1, 13)
 )
 
-# system shortcuts
-HOME = os.path.expanduser("~")
-SCRIPTS = ".local/bin"
-QSCRIPTS = ".config/qtile/scripts"
-
 # some shortcuts for lenghty commands
 # wrapper around dmenu-related commands
 DMRUN = f"dmenu_run -c -l 10 -bw 5 -h {BAR_GEOMETRY['size']} -p 'Run: ' -fn '{DMFONT}'"
 DMPASS = f"passmenu -l 10 -bw 5 -c -fn '{DMFONT}'"
-
-# text editors
-EMACS = "emacsclient -c -a 'emacs'"
 
 # web browsers
 SURF = "tabbed -c surf -N -e"
@@ -91,112 +95,6 @@ BLUETOGG = "sound.sh --bluetooth --notify"
 # miscellaneous
 LCFG = f"lazygit --git-dir={HOME}/.dotfiles --work-tree={HOME}"
 TIGA = "tcfg.sh"
-
-
-def _cmd(command: str, terminal: str = None):
-    """
-        Runs a command.
-        Possibly inside a terminal.
-    """
-    # add the terminal when the command needs one.
-    if terminal is not None:
-        if terminal == "kitty":
-            flags = "--hold"
-        elif terminal in ["alacritty", "st"]:
-            flags = "-e"
-        else:
-            flags = ""
-        command = ' '.join([terminal, flags, command])
-    return lazy.spawn(command)
-
-
-def _ucmd(command: str, terminal: str = None):
-    """
-        Runs a command and ungrabs the current chord.
-        Possibly inside a terminal.
-        To be used inside a 1-depth chord or at depth one of a
-        multi-depth chord.
-        Needs to be written as *_cmd("...") inside a Key call.
-    """
-    return _cmd(command, terminal), lazy.ungrab_chord()
-
-
-def _uacmd(command: str, terminal: str = None):
-    """
-        Runs a command and ungrabs all the current chords.
-        Possibly inside a terminal.
-        To be used a multi-depth chord.
-        Needs to be written as *_cmd("...") inside a Key call.
-    """
-    return _cmd(command, terminal), lazy.ungrab_all_chords()
-
-
-def _rofi(modi: str, ungrab: bool = True):
-    """
-        Opens `rofi` using a given modi.
-
-        Ungrab by default.
-        Needs to be written as *_rofi("...") inside a Key call
-        if ungrab is True.
-    """
-    command = "rofi -show " + modi
-    return _ucmd(command) if ungrab else _cmd(command)
-
-
-def _emacs(eval: str = None, ungrab: bool = True):
-    """
-        Opens `emacs` using a given optional evaluation.
-        First run `emacs --daemon` either during autostart or
-        from a background process.
-
-        Ungrab by default.
-        Needs to be written as *_emacs("...") inside a Key call
-        if ungrab is True.
-    """
-    command = EMACS if eval is None else f"{EMACS} --eval '({eval})'"
-    return _ucmd(command) if ungrab else _cmd(command)
-
-
-def _script(script: str, terminal: str = None, path: str = SCRIPTS):
-    """
-        Runs a script,
-        possibly inside a terminal
-        and from a given directory.
-    """
-    # expanduser to have '/home/user/path/to/script'
-    script = os.path.join(HOME, path, script)
-    return _cmd(script, terminal)
-
-
-def _uscript(script: str, terminal: str = None, path: str = SCRIPTS):
-    """
-        Runs a script,
-        possibly inside a terminal
-        and from a given directory.
-
-        Ungrabs one layer of chords.
-    """
-    return _script(script, terminal=terminal, path=path), lazy.ungrab_chord()
-
-
-def _uascript(script: str, terminal: str = None, path: str = SCRIPTS):
-    """
-        Runs a script,
-        possibly inside a terminal
-        and from a given directory.
-
-        Ungrabs all layers of a chord.
-    """
-    script_ = _script(script, terminal=terminal, path=path)
-    return script_, lazy.ungrab_all_chords()
-
-
-def _scratch(scratchpad: str, dropdown: str):
-    """
-        Opens a dropdown
-        inside a scratchpad.
-    """
-    return lazy.group[scratchpad].dropdown_toggle(dropdown)
 
 
 def init_keymap(mod, terminal, groups):

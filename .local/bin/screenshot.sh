@@ -21,7 +21,7 @@ if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
 eval set -- "$OPTIONS"
 
 # the environment variables
-[[ ! -v SHOTS ]] && SHOTS="~/imgs/shots"
+[[ ! -v SHOTS ]] && SHOTS="$HOME/imgs/shots"
 [[ ! -v FORMAT ]] && FORMAT='%Y-%m-%d_%H-%M-%S_$wx$h_scrot'
 
 usage () {

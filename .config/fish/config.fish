@@ -80,7 +80,7 @@ if status is-interactive
   # alias docker="sudo docker"
   # wrapper around btop to bypass lack of locale.
   alias btop="btop --utf-force"
-  alias clear='echo -en "\x1b[2J\x1b[1;1H" ; echo; seq 1 (tput cols) | sort -R | spark | lolcat; echo'
+  alias clear='echo -en "\x1b[2J\x1b[1;1H" ; echo; seq 1 (tput cols) | sort -R | spark | lolcat -t; echo'
 
   # to list all the git repositiories inside the home directory or gives a full diagnostic with the extra d.
   alias lgr='find $pwd -type d | grep "\.git\$" | sed "s/\/\.git//"'
