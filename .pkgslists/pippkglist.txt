@@ -114,7 +114,7 @@ Pillow                        9.0.1
 pip                           21.0
 pipenv                        2022.1.8
 pkgconfig                     1.5.5
-platformdirs                  2.4.1
+platformdirs                  2.5.0
 pluggy                        0.13.1
 ply                           3.11
 progress                      1.6
@@ -197,7 +197,7 @@ tldr                          3.1.0
 toml                          0.10.2
 tomli                         2.0.0
 tornado                       6.1
-tqdm                          4.62.3
+tqdm                          4.63.0
 traitlets                     5.1.1
 typed-argument-parser         1.7.2
 typing-extensions             3.10.0.2

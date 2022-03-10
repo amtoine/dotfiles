@@ -49,16 +49,16 @@ Dst=$Grn   # destination
 Pmt=$Cyn   # prompt
 Tip=$IGrn  # tip
 
-[[ ! -v DATABASE ]] && DATABASE="a2n-s/themes"
+[[ ! -v REMOTE ]] && REMOTE="a2n-s/themes"
 [[ ! -v BRANCH ]] && BRANCH="main"
 CACHE="$HOME/.cache/all-themes"
-[[ ! -v COLORDATABASE ]] && COLORDATABASE="$CACHE/themes.csv"
-
-[[ ! -v CONFIGS ]] && CONFIGS="qtile,dunst,alacritty,kitty,dmenu,st"
+colordatabase="$CACHE/themes.csv"
+colorpreview="$CACHE/themes.clr"
+configs="qtile,dunst,alacritty,kitty,dmenu,st"
 [[ ! -v QTILE ]] && QTILE="$HOME/.config/qtile"
-[[ ! -v DUNSTRC ]] && DUNSTRC="$HOME/.config/dunst/dunstrc"
-[[ ! -v ALACRITTYYML ]] && ALACRITTYYML="$HOME/.config/alacritty/alacritty.yml"
-[[ ! -v KITTYCONF ]] && KITTYCONF="$HOME/.config/kitty/kitty.conf"
+[[ ! -v DUNST ]] && DUNST="$HOME/.config/dunst/dunstrc"
+[[ ! -v ALACRITTY ]] && ALACRITTY="$HOME/.config/alacritty/alacritty.yml"
+[[ ! -v KITTY ]] && KITTY="$HOME/.config/kitty/kitty.conf"
 [[ ! -v CONKY ]] && CONKY="$HOME/.config/conky"
 [[ ! -v SUCKLESS ]] && SUCKLESS="$HOME/ghq/git.suckless.org"
 _nb_colors=20
@@ -70,10 +70,10 @@ update () {
   # or sync the local repo with the remote.
   # 
   if [[ ! -d "$CACHE" ]]; then
-    echo -e "Downloading themes from ${Src}$DATABASE${Off} to ${Dst}$CACHE${Off}.";
-    git clone "https://github.com/$DATABASE.git" "$CACHE";
+    echo -e "Downloading themes from ${Src}$REMOTE${Off} to ${Dst}$CACHE${Off}.";
+    git clone "https://github.com/$REMOTE.git" "$CACHE";
   else
-    echo -e "Syncing ${Dst}$CACHE${Off} with ${Src}$DATABASE${Off}.";
+    echo -e "Syncing ${Dst}$CACHE${Off} with ${Src}$REMOTE${Off}.";
     git -C "$CACHE" checkout "$BRANCH" || exit 1;
     git -C "$CACHE" pull origin || exit 1;
   fi
@@ -85,8 +85,9 @@ strip () {
   # keep only relevant colors
   #
   if [[ -d "$CACHE" ]]; then
-    [ -f "$COLORDATABASE" ] && rm "$COLORDATABASE"
-    echo "${_columns[@]}" | tr ' ' ',' | tee "$COLORDATABASE" -a > /dev/null
+    [ -f "$colordatabase" ] && rm "$colordatabase"
+    [ -f "$colorpreview" ] && rm "$colorpreview"
+    echo "${_columns[@]}" | tr ' ' ',' | tee "$colordatabase" -a > /dev/null
     for theme in $(ls "$CACHE/themes" | sed 's/\.conf$//g');
     do
       echo -en "Stripping ${Src}$theme${Off}... "
@@ -98,9 +99,11 @@ strip () {
       if [ "$nb_lines" = "$_nb_colors" ];
       then
         # append the line to the theme database.
+        colors="$(echo "$colors" | awk '{print $2}' | tr '\n' ',' | sed 's/,\s*$//g')"
+        echo "$theme,$colors" | tee "$colordatabase" -a > /dev/null
+        # add the theme preview to $colorpreview
+        _gencols.fish "$(echo "$theme,$colors")" | tee "$colorpreview" -a > /dev/null
         echo -e "${Ok}ok${Off}"
-        colors="$(echo "$colors" | awk '{print $2}' | tr '\n' ' ')"
-        echo "$theme,$colors" | tr ' ' ',' | sed 's/,\s*$//g' | tee "$COLORDATABASE" -a > /dev/null
       else
         # explain a bit the error to the user.
         echo -e "${Err}not ok${Off} (${Wrn}expected $_nb_colors colors but got $nb_lines${Off})"
@@ -133,15 +136,31 @@ print () {
   #
   # print the whole database.
   #
-  if [[ -f "$COLORDATABASE" ]]; then
+  if [[ -f "$colordatabase" ]]; then
     if command -v bat &> /dev/null; then
-      bat "$COLORDATABASE"
+      bat "$colordatabase"
     else
-      less "$COLORDATABASE"
+      less "$colordatabase"
     fi
   else
-    echo -e "No database at ${Pmt}$COLORDATABASE${Off}."
-    echo -e "Consider using ${Tip}themes.sh -s${Off} to generate the ${Dst}$COLORDATABASE${Off} database.";
+    echo -e "No database at ${Pmt}$colordatabase${Off}."
+    echo -e "Consider using ${Tip}themes.sh -s${Off} to generate the ${Dst}$colordatabase${Off} database.";
+  fi
+}
+
+preview () {
+  #
+  # preview the whole database.
+  #
+  if [[ -f "$colorpreview" ]]; then
+    if command -v bat &> /dev/null; then
+      bat "$colorpreview"
+    else
+      less "$colorpreview"
+    fi
+  else
+    echo -e "No database at ${Pmt}$colorpreview${Off}."
+    echo -e "Consider using ${Tip}themes.sh -s${Off} to generate the ${Dst}$colorpreview${Off} database.";
   fi
 }
 
@@ -194,18 +213,18 @@ dunst_cfg () {
   cfc=$(echo "$1" | awk -F, "{print \$16}")
   nfg=$(echo "$1" | awk -F, "{print \$9}")
   lfg=$(echo "$1" | awk -F, "{print \$12}")
-  sed -i "s/\(\s\+background\s\+=\s\+\"\)#......\(\"  # URGENCY_CRITICAL BG\)/\1$bg\2/" "$DUNSTRC"
-  sed -i "s/\(\s\+background\s\+=\s\+\"\)#......\(\"  # URGENCY_NORMAL BG\)/\1$bg\2/" "$DUNSTRC"
-  sed -i "s/\(\s\+background\s\+=\s\+\"\)#......\(\"  # URGENCY_LOW BG\)/\1$bg\2/" "$DUNSTRC"
-  sed -i "s/\(\s\+foreground\s\+=\s\+\"\)#......\(\"  # URGENCY_CRITICAL FG\)/\1$cfg\2/" "$DUNSTRC"
-  sed -i "s/\(\s\+foreground\s\+=\s\+\"\)#......\(\"  # URGENCY_NORMAL FG\)/\1$nfg\2/" "$DUNSTRC"
-  sed -i "s/\(\s\+foreground\s\+=\s\+\"\)#......\(\"  # URGENCY_LOW FG\)/\1$lfg\2/" "$DUNSTRC"
-  sed -i "s/\(\s\+frame_color\s\+=\s\+\"\)#......\(\"  # URGENCY_CRITICAL FC\)/\1$cfc\2/" "$DUNSTRC"
+  sed -i "s/\(\s\+background\s\+=\s\+\"\)#......\(\"  # URGENCY_CRITICAL BG\)/\1$bg\2/" "$DUNST"
+  sed -i "s/\(\s\+background\s\+=\s\+\"\)#......\(\"  # URGENCY_NORMAL BG\)/\1$bg\2/" "$DUNST"
+  sed -i "s/\(\s\+background\s\+=\s\+\"\)#......\(\"  # URGENCY_LOW BG\)/\1$bg\2/" "$DUNST"
+  sed -i "s/\(\s\+foreground\s\+=\s\+\"\)#......\(\"  # URGENCY_CRITICAL FG\)/\1$cfg\2/" "$DUNST"
+  sed -i "s/\(\s\+foreground\s\+=\s\+\"\)#......\(\"  # URGENCY_NORMAL FG\)/\1$nfg\2/" "$DUNST"
+  sed -i "s/\(\s\+foreground\s\+=\s\+\"\)#......\(\"  # URGENCY_LOW FG\)/\1$lfg\2/" "$DUNST"
+  sed -i "s/\(\s\+frame_color\s\+=\s\+\"\)#......\(\"  # URGENCY_CRITICAL FC\)/\1$cfc\2/" "$DUNST"
   # change the name of the theme.
-  sed -i "s/# THEME: .*/# THEME: $2/" "$DUNSTRC"
+  sed -i "s/# THEME: .*/# THEME: $2/" "$DUNST"
   # restart dunst and show a preview
   killall dunst
-  dunst -conf "$DUNSTRC" &
+  dunst -conf "$DUNST" &
   dunstify "$(echo $theme | sed 's/.conf$//')" "this is a critical test" -u critical -t 10000
   dunstify "$(echo $theme | sed 's/.conf$//')" "this is a normal test" -u normal -t 10000
   dunstify "$(echo $theme | sed 's/.conf$//')" "this is a low test" -u low -t 10000
@@ -216,56 +235,56 @@ alacritty_cfg () {
   #
   # change the theme of the alacritty terminal emulator.
   #
-  sed -i "s/\(\s*background\s*:\s*'0x\)......\('\s*# PRIMARY\)/\1$(echo "$1" | awk -F, '{print $1}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*foreground\s*:\s*'0x\)......\('\s*# PRIMARY\)/\1$(echo "$1" | awk -F, '{print $2}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*text\s*:\s*'0x\)......\('\s*# CURSOR\)/\1$(echo "$1" | awk -F, '{print $3}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*cursor\s*:\s*'0x\)......\('\s*# CURSOR\)/\1$(echo "$1" | awk -F, '{print $4}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*black\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $5}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*red\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $6}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*green\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $7}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*yellow\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $8}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*blue\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $9}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*magenta\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $10}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*cyan\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $11}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*white\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $12}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*black\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $13}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*red\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $14}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*green\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $15}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*yellow\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $16}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*blue\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $17}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*magenta\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $18}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*cyan\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $19}' | sed 's/#//')\2/" "$ALACRITTYYML"
-  sed -i "s/\(\s*white\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $20}' | sed 's/#//')\2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*background\s*:\s*'0x\)......\('\s*# PRIMARY\)/\1$(echo "$1" | awk -F, '{print $1}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*foreground\s*:\s*'0x\)......\('\s*# PRIMARY\)/\1$(echo "$1" | awk -F, '{print $2}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*text\s*:\s*'0x\)......\('\s*# CURSOR\)/\1$(echo "$1" | awk -F, '{print $3}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*cursor\s*:\s*'0x\)......\('\s*# CURSOR\)/\1$(echo "$1" | awk -F, '{print $4}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*black\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $5}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*red\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $6}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*green\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $7}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*yellow\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $8}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*blue\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $9}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*magenta\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $10}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*cyan\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $11}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*white\s*:\s*'0x\)......\('\s*# NORMAL\)/\1$(echo "$1" | awk -F, '{print $12}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*black\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $13}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*red\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $14}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*green\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $15}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*yellow\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $16}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*blue\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $17}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*magenta\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $18}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*cyan\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $19}' | sed 's/#//')\2/" "$ALACRITTY"
+  sed -i "s/\(\s*white\s*:\s*'0x\)......\('\s*# BRIGHT\)/\1$(echo "$1" | awk -F, '{print $20}' | sed 's/#//')\2/" "$ALACRITTY"
   # change the name of the theme.
-  sed -i "s/\(\s*# COLORSCHEME: \).*/\1$2/" "$ALACRITTYYML"
+  sed -i "s/\(\s*# COLORSCHEME: \).*/\1$2/" "$ALACRITTY"
 }
 
 kitty_cfg () {
   #
   # change the theme of the kitty terminal emulator.
   #
-  sed -i "s/\(^background\s*\)#....../\1$(echo "$1" | awk -F, '{print $1}')/" "$KITTYCONF"
-  sed -i "s/\(^foreground\s*\)#....../\1$(echo "$1" | awk -F, '{print $2}')/" "$KITTYCONF"
-  sed -i "s/\(^selection_background \s*\)#....../\1$(echo "$1" | awk -F, '{print $3}')/" "$KITTYCONF"
-  sed -i "s/\(^selection_foreground \s*\)#....../\1$(echo "$1" | awk -F, '{print $4}')/" "$KITTYCONF"
-  sed -i "s/\(^color0\s*\)#....../\1$(echo "$1" | awk -F, '{print $5}')/" "$KITTYCONF"
-  sed -i "s/\(^color1\s*\)#....../\1$(echo "$1" | awk -F, '{print $6}')/" "$KITTYCONF"
-  sed -i "s/\(^color2\s*\)#....../\1$(echo "$1" | awk -F, '{print $7}')/" "$KITTYCONF"
-  sed -i "s/\(^color3\s*\)#....../\1$(echo "$1" | awk -F, '{print $8}')/" "$KITTYCONF"
-  sed -i "s/\(^color4\s*\)#....../\1$(echo "$1" | awk -F, '{print $9}')/" "$KITTYCONF"
-  sed -i "s/\(^color5\s*\)#....../\1$(echo "$1" | awk -F, '{print $10}')/" "$KITTYCONF"
-  sed -i "s/\(^color6\s*\)#....../\1$(echo "$1" | awk -F, '{print $11}')/" "$KITTYCONF"
-  sed -i "s/\(^color7\s*\)#....../\1$(echo "$1" | awk -F, '{print $12}')/" "$KITTYCONF"
-  sed -i "s/\(^color8\s*\)#....../\1$(echo "$1" | awk -F, '{print $13}')/" "$KITTYCONF"
-  sed -i "s/\(^color9\s*\)#....../\1$(echo "$1" | awk -F, '{print $14}')/" "$KITTYCONF"
-  sed -i "s/\(^color10\s*\)#....../\1$(echo "$1" | awk -F, '{print $15}')/" "$KITTYCONF"
-  sed -i "s/\(^color11\s*\)#....../\1$(echo "$1" | awk -F, '{print $16}')/" "$KITTYCONF"
-  sed -i "s/\(^color12\s*\)#....../\1$(echo "$1" | awk -F, '{print $17}')/" "$KITTYCONF"
-  sed -i "s/\(^color13\s*\)#....../\1$(echo "$1" | awk -F, '{print $18}')/" "$KITTYCONF"
-  sed -i "s/\(^color14\s*\)#....../\1$(echo "$1" | awk -F, '{print $19}')/" "$KITTYCONF"
-  sed -i "s/\(^color15\s*\)#....../\1$(echo "$1" | awk -F, '{print $20}')/" "$KITTYCONF"
+  sed -i "s/\(^background\s*\)#....../\1$(echo "$1" | awk -F, '{print $1}')/" "$KITTY"
+  sed -i "s/\(^foreground\s*\)#....../\1$(echo "$1" | awk -F, '{print $2}')/" "$KITTY"
+  sed -i "s/\(^selection_background \s*\)#....../\1$(echo "$1" | awk -F, '{print $3}')/" "$KITTY"
+  sed -i "s/\(^selection_foreground \s*\)#....../\1$(echo "$1" | awk -F, '{print $4}')/" "$KITTY"
+  sed -i "s/\(^color0\s*\)#....../\1$(echo "$1" | awk -F, '{print $5}')/" "$KITTY"
+  sed -i "s/\(^color1\s*\)#....../\1$(echo "$1" | awk -F, '{print $6}')/" "$KITTY"
+  sed -i "s/\(^color2\s*\)#....../\1$(echo "$1" | awk -F, '{print $7}')/" "$KITTY"
+  sed -i "s/\(^color3\s*\)#....../\1$(echo "$1" | awk -F, '{print $8}')/" "$KITTY"
+  sed -i "s/\(^color4\s*\)#....../\1$(echo "$1" | awk -F, '{print $9}')/" "$KITTY"
+  sed -i "s/\(^color5\s*\)#....../\1$(echo "$1" | awk -F, '{print $10}')/" "$KITTY"
+  sed -i "s/\(^color6\s*\)#....../\1$(echo "$1" | awk -F, '{print $11}')/" "$KITTY"
+  sed -i "s/\(^color7\s*\)#....../\1$(echo "$1" | awk -F, '{print $12}')/" "$KITTY"
+  sed -i "s/\(^color8\s*\)#....../\1$(echo "$1" | awk -F, '{print $13}')/" "$KITTY"
+  sed -i "s/\(^color9\s*\)#....../\1$(echo "$1" | awk -F, '{print $14}')/" "$KITTY"
+  sed -i "s/\(^color10\s*\)#....../\1$(echo "$1" | awk -F, '{print $15}')/" "$KITTY"
+  sed -i "s/\(^color11\s*\)#....../\1$(echo "$1" | awk -F, '{print $16}')/" "$KITTY"
+  sed -i "s/\(^color12\s*\)#....../\1$(echo "$1" | awk -F, '{print $17}')/" "$KITTY"
+  sed -i "s/\(^color13\s*\)#....../\1$(echo "$1" | awk -F, '{print $18}')/" "$KITTY"
+  sed -i "s/\(^color14\s*\)#....../\1$(echo "$1" | awk -F, '{print $19}')/" "$KITTY"
+  sed -i "s/\(^color15\s*\)#....../\1$(echo "$1" | awk -F, '{print $20}')/" "$KITTY"
   # change the name of the theme.
-  sed -i "s/\(^# THEME: \).*/\1$2/" "$KITTYCONF"
+  sed -i "s/\(^# THEME: \).*/\1$2/" "$KITTY"
 }
 
 dmenu_cfg () {
@@ -327,18 +346,18 @@ theme () {
   #
   theme=$(echo "$1" | sed 's/^\s*//g; s/\s*$//g')
   [ ! "$theme" ] && theme="DEFAULT_TO_DMENU"
-  if [[ -f "$COLORDATABASE" ]]; then
-    if ! awk -F, '{print $1}' "$COLORDATABASE" | grep -we "$(echo $theme | sed 's/ /_/g')" -q;
+  if [[ -f "$colordatabase" ]]; then
+    if ! awk -F, '{print $1}' "$colordatabase" | grep -we "$(echo $theme | sed 's/ /_/g')" -q;
     then
-      echo -e "${Err}'$theme' not in $COLORDATABASE${Off}"
-      theme=$(tail -n +2 "$COLORDATABASE" | awk -F, '{print $1}' | sed 's/_/ /g' | dmenu -bw 5 -c -l 20 -i -p "Choose a theme: ")
+      echo -e "${Err}'$theme' not in $colordatabase${Off}"
+      theme=$(tail -n +2 "$colordatabase" | awk -F, '{print $1}' | sed 's/_/ /g' | dmenu -bw 5 -c -l 20 -i -p "Choose a theme: ")
       [ ! "$theme" ] && { echo -e "${Wrn}No theme selected${Off}"; exit 0; }
       echo -e "${Ok}'$theme' selected${Off}"
     else 
-      echo -e "${Tip}'$theme' found in $COLORDATABASE${Off}"
+      echo -e "${Tip}'$theme' found in $colordatabase${Off}"
     fi
     theme=$(echo "$theme" | sed 's/ /_/g')
-    colors=$(grep -w "$theme" "$COLORDATABASE" | sed "s/$theme,//")
+    colors=$(grep -w "$theme" "$colordatabase" | sed "s/$theme,//")
     for config in $(echo "$2" | tr ',' ' ');do
       case "$config" in
         qtile ) qtile_cfg "$colors" "$theme";;
@@ -351,8 +370,8 @@ theme () {
       esac
     done
   else
-    echo -e "No database at ${Pmt}$COLORDATABASE${Off}."
-    echo -e "Consider using ${Tip}themes.sh -s${Off} to generate the ${Dst}$COLORDATABASE${Off} database.";
+    echo -e "No database at ${Pmt}$colordatabase${Off}."
+    echo -e "Consider using ${Tip}themes.sh -s${Off} to generate the ${Dst}$colordatabase${Off} database.";
   fi
 }
 
@@ -360,7 +379,7 @@ usage () {
   #
   # the usage function.
   #
-  echo "Usage: themes.sh [-huscpa] [-t=THEME] [-C=C1,C2]"
+  echo "Usage: themes.sh [-huscpaP] [-t=THEME] [-C=C1,C2]"
   echo "Type -h or --help for the full help."
   exit 0
 }
@@ -375,7 +394,7 @@ help () {
   echo "     Do not forget to puth it in your PATH."
   echo ""
   echo "Usage:"
-  echo "     themes.sh [-huscpa] [-t=THEME] [-C=C1,C2]"
+  echo "     themes.sh [-huscpaP] [-t=THEME] [-C=C1,C2]"
   echo ""
   echo "Switches:"
   echo "     -h/--help           shows this help."
@@ -383,20 +402,19 @@ help () {
   echo "     -s/--strip          strip the theme files to keep only relevant colors."
   echo "     -c/--clean          clean the cache."
   echo "     -p/--print          print the local database."
+  echo "     -P/--preview        preview the local database."
   echo "     -t/--theme[=THEME]  pick a theme from the local database, possibly with default one."
   echo "     -C/--config=C1,C2   give the configs to apply the selected theme on."
   echo "     -a/--all            same as -C=all."
   echo ""
   echo "Environment variables:"
-  echo "     DATABASE            the remote database (defaults to 'a2n-s/themes)"
+  echo "     REMOTE              the remote database (defaults to 'a2n-s/themes)"
   echo "     BRANCH              the branch to use on the remote (defaults to 'main')"
   echo "     CACHE**             the location of the cache (set to '\$HOME/.cache/all-themes')"
-  echo "     COLORDATABASE       the final local database (defaults to '\$CACHE/themes.csv')"
-  echo "     CONFIGS             the list of all implemented configs (defaults to 'qtile,dunst,alacritty,kitty')"
   echo "     QTILE               the path to the qtile config (defaults to '\$HOME/.config/qtile')"
-  echo "     DUNSTRC             the path to the dunst config file (defaults to '\$HOME/.config/dunst/dunstrc')"
-  echo "     ALACRITTYYML        the path to the alacritty config file (defaults to '\$HOME/.config/alacritty/alacritty.yml')"
-  echo "     KITTYCONF           the path to the kitty config file (defaults to '\$HOME/.config/kitty/kitty.conf')"
+  echo "     DUNST               the path to the dunst config file (defaults to '\$HOME/.config/dunst/dunstrc')"
+  echo "     ALACRITTY           the path to the alacritty config file (defaults to '\$HOME/.config/alacritty/alacritty.yml')"
+  echo "     KITTY               the path to the kitty config file (defaults to '\$HOME/.config/kitty/kitty.conf')"
   echo "     CONKY               the path to all the conky configs (defaults to '\$HOME/.config/conky')"
   echo "     SUCKLESS            the path to the suckless source codes (defaults to '\$HOME/ghq/git.suckless.org')"
   echo " ** cannot be changed"
@@ -404,7 +422,7 @@ help () {
 }
 
 # parse the arguments.
-OPTIONS=$(getopt -o huscpt::C:a --long help,update,strip,clean,print,theme::,config:,all -n 'themes.sh' -- "$@")
+OPTIONS=$(getopt -o huscpt::C:aP --long help,update,strip,clean,print,theme::,config:,all,preview -n 'themes.sh' -- "$@")
 if [ $? != 0 ] ; then usage >&2 ; exit 1 ; fi
 eval set -- "$OPTIONS"
 
@@ -416,6 +434,7 @@ main () {
       -s | --strip ) ACTION="strip"; shift 1 ;;
       -c | --clean ) ACTION="clean"; shift 1 ;;
       -p | --print ) ACTION="print"; shift 1 ;;
+      -P | --preview ) ACTION="preview"; shift 1 ;;
       -t | --theme ) ACTION="theme"; theme="$(echo "$2" | sed 's/^=//')" ; shift 2;;
       -C | --config ) ACTION="theme"; CONFIG="$(echo "$2" | sed 's/^=//')"; shift 2 ;;
       -a | --all ) CONFIG="all"; shift 1 ;;
@@ -423,7 +442,7 @@ main () {
       * ) break ;;
     esac
   done
-  [ "$CONFIG" = "all" ] && CONFIG="$CONFIGS"
+  [ "$CONFIG" = "all" ] && CONFIG="$configs"
 
   # an action is required
   [ -z "$ACTION" ] && usage
@@ -432,6 +451,7 @@ main () {
     strip )  strip ;;
     clean )  clean ;;
     print )  print ;;
+    preview )  preview ;;
     theme )  theme "$theme" "$CONFIG" ;;
     * ) echo "an error occured (got unexpected action '$ACTION')"; exit 1 ;;
   esac

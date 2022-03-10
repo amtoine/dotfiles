@@ -21,14 +21,9 @@ function theme ()
   echo "$argv" | awk -F, '{print $1}'
   line "$argv" "2" "6"
   line "$argv" "4" "14"
+  set_color normal
+  echo ""
+  echo ""
 end
 
-function preview ()
-  for theme in (tail -n +2 ~/.cache/all-themes/themes.csv)
-    theme "$theme"
-    set_color normal
-    echo ""
-    echo ""
-  end
-end
-preview
+theme "$argv"
