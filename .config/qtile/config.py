@@ -98,14 +98,16 @@ def func(client):
         The goal is, for instance, to send some windows to some dedicated
         group, but one could do anything inside this function.
     """
-    # sends all instances of `mpv` to the `V7`, i.e. video, group,
+    _, cls = client._wm_class
+    # sends all instances of `mpv` to the `V7`, i.e. video group,
     # to minimize conflicts with non floating windows.
-    if "mpv" in client._wm_class:
+    if cls in ["mpv"]:
         client.cmd_togroup(group_names[6])
-    # send quickemu virtualmachines to the third terminal
-    # group.
-    elif "qemu" in client._wm_class:
+    # send quickemu virtualmachines to the third terminal group.
+    elif cls in ["qemu"]:
         client.cmd_togroup(group_names[2])
+    elif cls in ["discord", "Caprine", "Slack", "Signal", "Thunderbird"]:
+        client.cmd_togroup(group_names[4])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
