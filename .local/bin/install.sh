@@ -165,6 +165,7 @@ init_deps () {
     "chromium::off" \
     "emacs::off" \
     "vim::off" \
+    "spacevim::on" \
     "htop::off" \
     "btop::off" \
     "moc::off" \
@@ -210,6 +211,7 @@ init_deps () {
   deps_table[chromium]="pacman:chromium"
   deps_table[emacs]="pacman:emacs"
   deps_table[vim]="pacman:vim"
+  deps_table[spacevim]="pacman:vim"
   deps_table[htop]="pacman:htop"
   deps_table[btop]="pacman:btop"
   deps_table[moc]="pacman:moc"
@@ -647,6 +649,12 @@ install_config () {
     mkdir -p "$HOME/.vim/pack/themes/start"
     echo -e "${CMD}git clone ${SRC}https://github.com/dracula/vim.git ${DST}$HOME/.vim/pack/themes/start/dracula${OFF}"
     git clone https://github.com/dracula/vim.git "$HOME/.vim/pack/themes/start/dracula"
+  fi
+  if grep -e "^.*:spacevim" "$deps_file" -q; then
+    echo -e "${CMD}curl -sLf ${SRC}https://spacevim.org/install.sh${OFF} | ${CMD}bash -s -- --install ${DST}vim${OFF}"
+    curl -sLf https://spacevim.org/install.sh | bash -s -- --install vim
+    echo -e "${CMD}cp -r ${SRC}$DOTFILES/.SpaceVim.d ${DST}$HOME/.SpaceVim.d${OFF}"
+    cp -r "$DOTFILES/.SpaceVim.d" "$HOME/.SpaceVim.d"
   fi
   if grep -e "^git\$" "$deps_file" -q; then
     echo -e "${CMD}cp ${SRC}$DOTFILES/.gitconfig ${DST}$HOME/.gitconfig${OFF}"
