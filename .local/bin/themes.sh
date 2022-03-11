@@ -54,13 +54,14 @@ Tip=$IGrn  # tip
 CACHE="$HOME/.cache/all-themes"
 colordatabase="$CACHE/themes.csv"
 colorpreview="$CACHE/themes.clr"
-configs="qtile,dunst,alacritty,kitty,dmenu,st"
+configs="qtile,dunst,alacritty,kitty,doom,dmenu,st"
 [[ ! -v QTILE ]] && QTILE="$HOME/.config/qtile"
 [[ ! -v DUNST ]] && DUNST="$HOME/.config/dunst/dunstrc"
 [[ ! -v ALACRITTY ]] && ALACRITTY="$HOME/.config/alacritty/alacritty.yml"
 [[ ! -v KITTY ]] && KITTY="$HOME/.config/kitty/kitty.conf"
 [[ ! -v CONKY ]] && CONKY="$HOME/.config/conky"
 [[ ! -v SUCKLESS ]] && SUCKLESS="$HOME/ghq/git.suckless.org"
+[[ ! -v XRESOURCES ]] && XRESOURCES="$HOME/.Xresources"
 _nb_colors=20
 _columns=(name bg fg sel_bg sel_fg 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15)
 
@@ -336,7 +337,39 @@ st_cfg () {
   cd "$SUCKLESS/st" > /dev/null || exit 1
   sudo make clean install
   cd - > /dev/null || exit 1
-  [ "$(echo -e "No\nYes" | dmenu -i -p "Kill all instances of st to apply changes: ")" = "Yes" ] && killall st
+  [ "$(echo -e "No\nYes" | dmenu -c -l 2 -bw 5 -i -p "Kill all instances of st to apply changes: ")" = "Yes" ] && killall st
+}
+
+doom_cfg () {
+  #
+  # change the theme of doom emacs.
+  #
+  sed -i "s/^\(\*fadeColor:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $5}')/" "$XRESOURCES"
+  sed -i "s/^\(\*background:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $1}')/" "$XRESOURCES"
+  sed -i "s/^\(\*foreground:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $2}')/" "$XRESOURCES"
+  sed -i "s/^\(\*pointerColorBackground:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $3}')/" "$XRESOURCES"
+  sed -i "s/^\(\*pointerColorForeground:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $4}')/" "$XRESOURCES"
+  sed -i "s/^\(\*cursorColor:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $4}')/" "$XRESOURCES"
+  sed -i "s/^\(\*color0:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $5}')/" "$XRESOURCES"
+  sed -i "s/^\(\*color1:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $6}')/" "$XRESOURCES"
+  sed -i "s/^\(\*color2:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $7}')/" "$XRESOURCES"
+  sed -i "s/^\(\*color3:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $8}')/" "$XRESOURCES"
+  sed -i "s/^\(\*color4:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $9}')/" "$XRESOURCES"
+  sed -i "s/^\(\*color5:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $10}')/" "$XRESOURCES"
+  sed -i "s/^\(\*color6:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $11}')/" "$XRESOURCES"
+  sed -i "s/^\(\*color7:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $12}')/" "$XRESOURCES"
+  sed -i "s/^\(\*color9:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $13}')/" "$XRESOURCES"
+  sed -i "s/^\(\*color8:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $14}')/" "$XRESOURCES"
+  sed -i "s/^\(\*color10:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $15}')/" "$XRESOURCES"
+  sed -i "s/^\(\*color11:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $16}')/" "$XRESOURCES"
+  sed -i "s/^\(\*color12:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $17}')/" "$XRESOURCES"
+  sed -i "s/^\(\*color13:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $18}')/" "$XRESOURCES"
+  sed -i "s/^\(\*color14:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $19}')/" "$XRESOURCES"
+  sed -i "s/^\(\*color15:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $20}')/" "$XRESOURCES"
+  # change the name of the theme.
+  sed -i "s/\(^! THEME: \).*/\1$2/" "$XRESOURCES"
+  xrdb "$XRESOURCES"
+  [ "$(echo -e "No\nYes" | dmenu -c -l 2 -bw 5 -i -p "Kill all instances of emacs to apply changes: ")" = "Yes" ] && killall emacs
 }
 
 theme () {
@@ -364,6 +397,7 @@ theme () {
         dunst ) dunst_cfg "$colors" "$theme";;
         alacritty ) alacritty_cfg "$colors" "$theme";;
         kitty ) kitty_cfg "$colors" "$theme";;
+        doom ) doom_cfg "$colors" "$theme";;
         dmenu ) dmenu_cfg "$colors" "$theme";;
         st ) st_cfg "$colors" "$theme";;
         * ) echo "an error occured (got unexpected config '$config')"; exit 1 ;;
@@ -417,6 +451,7 @@ help () {
   echo "     KITTY               the path to the kitty config file (defaults to '\$HOME/.config/kitty/kitty.conf')"
   echo "     CONKY               the path to all the conky configs (defaults to '\$HOME/.config/conky')"
   echo "     SUCKLESS            the path to the suckless source codes (defaults to '\$HOME/ghq/git.suckless.org')"
+  echo "     XRESOURCES          the location of the xresources, used for Doom Emacs (defaults to '\$HOME/.Xresources)"
   echo " ** cannot be changed"
   exit 0
 }
