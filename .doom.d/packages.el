@@ -54,3 +54,5 @@
 (package! minimap)
 (package! clippy)
 ;; (package! mu4e)
+(package! xresources-theme
+  :recipe (:host github :repo "martenlienen/xresources-theme"))

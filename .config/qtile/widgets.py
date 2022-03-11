@@ -973,7 +973,7 @@ def battery(format, bg="#000000", fg="#ffffff", low=.2):
         fontsize=None,             # Font size. Calculated if None.
         foreground=fg,             # Foreground colour
         format=format,             # Display format
-        full_char='',             # Character to indicate the battery is full
+        full_char='',             # Character to indicate the battery is full
         hide_threshold=None,       # Hide the text when there is enough energy 0 <= x < 1
         low_background=None,       # Background color on low battery
         low_foreground="#ff0000",  # Font color on low battery
@@ -983,7 +983,7 @@ def battery(format, bg="#000000", fg="#ffffff", low=.2):
         mouse_callbacks={},        # Dict of mouse button press callback functions. Accepts functions and lazy calls.
         notify_below=low*100,      # Send a notification below this battery level.
         padding=None,              # Padding. Calculated if None.
-        show_short_text=True,      # Show "Full" or "Empty" rather than formated text
+        show_short_text=False,     # Show "Full" or "Empty" rather than formated text
         unknown_char='?',          # Character to indicate the battery status is unknown
         update_interval=60,        # Seconds between status updates
     )
