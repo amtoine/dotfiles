@@ -194,12 +194,12 @@ init_deps () {
 
   deps_table[base]="pacman:base-devel pacman:python pacman:python-pip pacman:xorg pacman:xorg-xinit yay-git:yay aura-bin:aura"
   deps_table[devour]="yay:devour pacman:xdo"
-  deps_table[grub]="grub"
+  deps_table[grub]="grub yay:catppuccin-grub-theme-git yay:sekiro-grub-theme-git"
   deps_table[issue]="issue"
   deps_table[qtile]="pacman:qtile pacman:python-gobject pacman:gtk3 pip:gdk"
   deps_table[firefox]="pacman:firefox"
   deps_table[neovim]="pacman:neovim"
-  deps_table[sddm]="pacman:sddm"
+  deps_table[sddm]="pacman:sddm yay:sddm-theme-catppuccin yay:solarized-sddm-theme yay:multicolor-sddm-theme yay:sddm-chinese-painting-theme"
   deps_table[kitty]="pacman:kitty"
   deps_table[alacritty]="pacman:alacritty"
   deps_table[bash]="pacman:bash pip:virtualenvwrapper"
@@ -522,13 +522,6 @@ install_config () {
   echo -e "${CMD}git clone ${SUB}-b $CHANNEL ${SRC}https://github.com/a2n-s/dotfiles ${DST}$DOTFILES${OFF}"
   git clone -b "$CHANNEL" https://github.com/a2n-s/dotfiles "$DOTFILES"
   if grep -e "^grub" "$deps_file" -q; then
-    info "Install the new grub theme."
-    echo -e "${CMD}git clone${OFF} ${SRC}https://github.com/catppuccin/grub.git ${DST}/tmp/catppuccin-grub${OFF}"
-    git clone https://github.com/catppuccin/grub.git /tmp/catppuccin-grub
-    echo -e "${CMD}sudo cp -r ${SRC}/tmp/catppuccin-grub/catppuccin-grub-theme ${DST}/usr/share/grub/themes/${OFF}"
-    sudo cp -r /tmp/catppuccin-grub/catppuccin-grub-theme /usr/share/grub/themes/
-    echo -e "${CMD}sudo cp ${SRC}$DOTFILES/.config/etc/default/grub ${DST}/etc/default/grub${OFF}"
-    sudo cp "$DOTFILES/.config/etc/default/grub" /etc/default/grub
     echo -e "${CMD}sudo grub-mkconfig ${DST}-o /boot/grub/grub.cfg${OFF}"
     sudo grub-mkconfig -o /boot/grub/grub.cfg
   fi
@@ -538,10 +531,6 @@ install_config () {
   fi
   if grep -e "^.*:sddm" "$deps_file" -q; then
     info "Enable sddm as login manager."
-    echo -e "${CMD}tar -xzvf ${SRC}$DOTFILES/.config/etc/sddm-catppuccin.tar.gz${OFF}"
-    tar -xzvf "$DOTFILES/.config/etc/sddm-catppuccin.tar.gz"
-    echo -e "${CMD}sudo mv ${SRC}sddm-catppuccin ${DST}/usr/share/sddm/themes/catppuccin${OFF}"
-    sudo mv sddm-catppuccin /usr/share/sddm/themes/catppuccin
     echo -e "${CMD}sudo cp ${SRC}$DOTFILES/.config/etc/sddm.conf ${DST}/etc/sddm.conf${OFF}"
     sudo cp "$DOTFILES/.config/etc/sddm.conf" /etc/sddm.conf
     sudo systemctl disable $(grep '/usr/s\?bin' /etc/systemd/system/display-manager.service | awk -F / '{print $NF}') || warning "Cannot disable current display manager."

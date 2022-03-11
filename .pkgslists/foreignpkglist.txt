@@ -4,6 +4,7 @@ archlinux-themes-sddm
 arduino-mk
 aura-bin
 betterlockscreen-git
+catppuccin-grub-theme-git
 cava
 conky-lua-nv
 devour
@@ -34,10 +35,14 @@ python38
 quickemu
 reddio
 sddm-archlinux-theme-git
+sddm-chinese-painting-theme
+sddm-theme-catppuccin-git
+sekiro-grub-theme-git
 sfm-a2ns-git
 shell-color-scripts
 slack-desktop
 slock-a2ns-git
+solarized-sddm-theme
 st-a2ns-git
 surf-a2ns-git
 tabbed-a2ns-git

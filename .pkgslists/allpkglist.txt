@@ -31,6 +31,7 @@ bspwm
 btop
 caprine
 catimg
+catppuccin-grub-theme-git
 cava
 chafa
 chromium
@@ -211,6 +212,9 @@ sc
 scrot
 sddm
 sddm-archlinux-theme-git
+sddm-chinese-painting-theme
+sddm-theme-catppuccin-git
+sekiro-grub-theme-git
 sfm-a2ns-git
 sfml
 shell-color-scripts
@@ -219,6 +223,7 @@ signal-desktop
 sl
 slack-desktop
 slock-a2ns-git
+solarized-sddm-theme
 sox
 spectrwm
 st-a2ns-git
