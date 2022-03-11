@@ -139,9 +139,9 @@ print () {
   #
   if [[ -f "$colordatabase" ]]; then
     if command -v bat &> /dev/null; then
-      bat "$colordatabase"
+      column -t -s ',' "$colordatabase" | bat --wrap=never
     else
-      less "$colordatabase"
+      column -t -s ',' "$colordatabase" | less
     fi
   else
     echo -e "No database at ${Pmt}$colordatabase${Off}."
@@ -155,7 +155,7 @@ preview () {
   #
   if [[ -f "$colorpreview" ]]; then
     if command -v bat &> /dev/null; then
-      bat "$colorpreview"
+      bat "$colorpreview" --wrap=never
     else
       less "$colorpreview"
     fi
