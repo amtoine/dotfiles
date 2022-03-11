@@ -54,5 +54,7 @@
 (package! minimap)
 (package! clippy)
 ;; (package! mu4e)
-(package! xresources-theme
-  :recipe (:host github :repo "a2n-s/xresources-theme"))
+(package! xresources-theme :recipe
+  (:host github
+   :repo "a2n-s/xresources-theme"
+   :branch "master"))

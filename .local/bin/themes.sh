@@ -54,7 +54,7 @@ Tip=$IGrn  # tip
 CACHE="$HOME/.cache/all-themes"
 colordatabase="$CACHE/themes.csv"
 colorpreview="$CACHE/themes.clr"
-configs="qtile,dunst,alacritty,kitty,doom,dmenu,st"
+configs="qtile,dunst,alacritty,kitty,xresources,dmenu,st"
 [[ ! -v QTILE ]] && QTILE="$HOME/.config/qtile"
 [[ ! -v DUNST ]] && DUNST="$HOME/.config/dunst/dunstrc"
 [[ ! -v ALACRITTY ]] && ALACRITTY="$HOME/.config/alacritty/alacritty.yml"
@@ -340,9 +340,9 @@ st_cfg () {
   [ "$(echo -e "No\nYes" | dmenu -c -l 2 -bw 5 -i -p "Kill all instances of st to apply changes: ")" = "Yes" ] && killall st
 }
 
-doom_cfg () {
+xresources_cfg () {
   #
-  # change the theme of doom emacs.
+  # change the theme of doom emacs and neovim.
   #
   sed -i "s/^\(\*fadeColor:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $5}')/" "$XRESOURCES"
   sed -i "s/^\(\*background:\s\+\)#....../\1$(echo "$1" | awk -F, '{print $1}')/" "$XRESOURCES"
@@ -397,7 +397,7 @@ theme () {
         dunst ) dunst_cfg "$colors" "$theme";;
         alacritty ) alacritty_cfg "$colors" "$theme";;
         kitty ) kitty_cfg "$colors" "$theme";;
-        doom ) doom_cfg "$colors" "$theme";;
+        xresources ) xresources_cfg "$colors" "$theme";;
         dmenu ) dmenu_cfg "$colors" "$theme";;
         st ) st_cfg "$colors" "$theme";;
         * ) echo "an error occured (got unexpected config '$config')"; exit 1 ;;
@@ -451,7 +451,7 @@ help () {
   echo "     KITTY               the path to the kitty config file (defaults to '\$HOME/.config/kitty/kitty.conf')"
   echo "     CONKY               the path to all the conky configs (defaults to '\$HOME/.config/conky')"
   echo "     SUCKLESS            the path to the suckless source codes (defaults to '\$HOME/ghq/git.suckless.org')"
-  echo "     XRESOURCES          the location of the xresources, used for Doom Emacs (defaults to '\$HOME/.Xresources)"
+  echo "     XRESOURCES          the location of the xresources, used for Doom Emacs and Neovim (defaults to '\$HOME/.Xresources)"
   echo " ** cannot be changed"
   exit 0
 }
