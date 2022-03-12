@@ -54,7 +54,7 @@ Tip=$IGrn  # tip
 CACHE="$HOME/.cache/all-themes"
 colordatabase="$CACHE/themes.csv"
 colorpreview="$CACHE/themes.clr"
-configs="qtile,dunst,alacritty,kitty,xresources,dmenu,st"
+configs="qtile,dunst,alacritty,kitty,xresources,dmenu,grub,sddm,st"
 [[ ! -v QTILE ]] && QTILE="$HOME/.config/qtile"
 [[ ! -v DUNST ]] && DUNST="$HOME/.config/dunst/dunstrc"
 [[ ! -v ALACRITTY ]] && ALACRITTY="$HOME/.config/alacritty/alacritty.yml"
@@ -62,6 +62,8 @@ configs="qtile,dunst,alacritty,kitty,xresources,dmenu,st"
 [[ ! -v CONKY ]] && CONKY="$HOME/.config/conky"
 [[ ! -v SUCKLESS ]] && SUCKLESS="$HOME/ghq/git.suckless.org"
 [[ ! -v XRESOURCES ]] && XRESOURCES="$HOME/.Xresources"
+GRUB="/usr/share/grub/themes"
+SDDM="/usr/share/sddm/themes"
 _columns=(name bg fg sel_bg sel_fg 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15)
 _nb_colors="$(( ${#_columns[@]}-1 ))"
 
@@ -328,6 +330,32 @@ xresources_cfg () {
   [ "$(echo -e "No\nYes" | dmenu -c -l 2 -bw 5 -i -p "Kill all instances of emacs to apply changes: ")" = "Yes" ] && killall emacs
 }
 
+grub_cfg () {
+  #
+  # change the theme of grub
+  #
+  echo -e "Changing ${Dst}grub${Off}' theme${Off}"
+  choices=($(ls "$GRUB" | dmenu -c -l 8 -bw 5 -p "Pick a theme from $GRUB: "))
+  [ ! "$choices" ] && { echo -e "${Wrn}No theme selected for grub${Off}"; exit 0; }
+  choice="${choices[0]}"
+  [ ! -f "$GRUB/$choice/theme.txt" ] && { echo -e "${Wrn}No theme.txt found in $GRUB/$choice${Off}"; exit 0; }
+  sudo sed -i "s|^GRUB_THEME=\"$GRUB/.*/theme.txt\"|GRUB_THEME=\"$GRUB/$choice/theme.txt\"|" /etc/default/grub
+  sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+  [ "$(echo -e "No\nYes" | dmenu -c -l 2 -bw 5 -i -p "Reboot: ")" = "Yes" ] && reboot
+}
+
+sddm_cfg () {
+  #
+  # change the theme of sddm
+  #
+  echo -e "Changing ${Dst}sddm${Off}' theme${Off}"
+  choice=($(ls "$SDDM" | dmenu -c -l 8 -bw 5 -p "Pick a theme from $SDDM: "))
+  [ ! "$choice" ] && { echo -e "${Wrn}No theme selected for sddm${Off}"; exit 0; }
+  sudo sed -i "s/^Current=.*/Current=${choice[0]}/" /etc/sddm.conf
+  [ "$(echo -e "No\nYes" | dmenu -c -l 2 -bw 5 -i -p "Restart sddm: ")" = "Yes" ] && sudo systemctl restart sddm.service
+}
+
 theme () {
   #
   # let the user pick a theme.
@@ -361,6 +389,8 @@ theme () {
         xresources ) xresources_cfg "$colors" "$theme";;
         dmenu ) dmenu_cfg "$colors" "$theme";;
         st ) st_cfg "$colors" "$theme";;
+        grub ) grub_cfg ;;
+        sddm ) sddm_cfg ;;
         * ) echo "an error occured (got unexpected config '$config')"; exit 1 ;;
       esac
     done
@@ -413,6 +443,8 @@ help () {
   echo "     CONKY               the path to all the conky configs (defaults to '\$HOME/.config/conky')"
   echo "     SUCKLESS            the path to the suckless source codes (defaults to '\$HOME/ghq/git.suckless.org')"
   echo "     XRESOURCES          the location of the xresources, used for Doom Emacs and Neovim (defaults to '\$HOME/.Xresources)"
+  echo "     GRUB**              the location of the grub themes (set to '/usr/share/grub/themes/')"
+  echo "     SDDM**              the location of the sddm themes (set to '/usr/share/sddm/themes/')"
   echo " ** cannot be changed"
   exit 0
 }
