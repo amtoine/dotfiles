@@ -95,6 +95,7 @@ gulp
 helm
 htim
 hugo
+imv
 irony-mode
 jgmenu
 jq
@@ -319,6 +320,7 @@ xorg-xwud
 xscreensaver
 xsnow
 xterm
+xwallpaper
 yad
 yay-git
 youtube-dl

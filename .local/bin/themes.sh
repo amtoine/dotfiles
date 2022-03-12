@@ -54,7 +54,6 @@ Tip=$IGrn  # tip
 CACHE="$HOME/.cache/all-themes"
 colordatabase="$CACHE/themes.csv"
 colorpreview="$CACHE/themes.clr"
-configs="qtile,dunst,alacritty,kitty,xresources,dmenu,grub,sddm,st"
 [[ ! -v QTILE ]] && QTILE="$HOME/.config/qtile"
 [[ ! -v DUNST ]] && DUNST="$HOME/.config/dunst/dunstrc"
 [[ ! -v ALACRITTY ]] && ALACRITTY="$HOME/.config/alacritty/alacritty.yml"
@@ -336,9 +335,9 @@ grub_cfg () {
   #
   echo -e "Changing ${Dst}grub${Off}' theme${Off}"
   choices=($(ls "$GRUB" | dmenu -c -l 8 -bw 5 -p "Pick a theme from $GRUB: "))
-  [ ! "$choices" ] && { echo -e "${Wrn}No theme selected for grub${Off}"; exit 0; }
+  [ ! "$choices" ] && { echo -e "${Wrn}No theme selected for grub${Off}"; return; }
   choice="${choices[0]}"
-  [ ! -f "$GRUB/$choice/theme.txt" ] && { echo -e "${Wrn}No theme.txt found in $GRUB/$choice${Off}"; exit 0; }
+  [ ! -f "$GRUB/$choice/theme.txt" ] && { echo -e "${Wrn}No theme.txt found in $GRUB/$choice${Off}"; return; }
   sudo sed -i "s|^GRUB_THEME=\"$GRUB/.*/theme.txt\"|GRUB_THEME=\"$GRUB/$choice/theme.txt\"|" /etc/default/grub
   sudo grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -362,25 +361,29 @@ theme () {
   # $1 is a preselected theme with the -t=THEME switch.
   #
   theme=$(echo "$1" | sed 's/^\s*//g; s/\s*$//g')
+  echo "${CONFIGS[@]}"
   [ ! "$theme" ] && theme="DEFAULT_TO_DMENU"
   if [[ -f "$colordatabase" ]]; then
-    # extract the theme colors, either directly if -t is valid
-    # or with dmenu
-    if ! awk -F, '{print $1}' "$colordatabase" | grep -we "${theme// /_}" -q;
+    if grep -E "qtile|dunst" -q <<< "${CONFIGS[@]}";
     then
-      echo -e "${Err}'$theme' not in $colordatabase${Off}"
-      theme=$(tail -n +2 "$colordatabase" | awk -F, '{print $1}' | sed 's/_/ /g' | dmenu -bw 5 -c -l 20 -i -p "Choose a theme: ")
-      [ ! "$theme" ] && { echo -e "${Wrn}No theme selected${Off}"; exit 0; }
-      echo -e "${Ok}'$theme' selected${Off}"
-    else 
-      echo -e "'$theme' ${Tip}found${Off} in $colordatabase"
+      # extract the theme colors, either directly if -t is valid
+      # or with dmenu
+      if ! awk -F, '{print $1}' "$colordatabase" | grep -we "${theme// /_}" -q;
+      then
+        echo -e "${Err}'$theme' not in $colordatabase${Off}"
+        theme=$(tail -n +2 "$colordatabase" | awk -F, '{print $1}' | sed 's/_/ /g' | dmenu -bw 5 -c -l 20 -i -p "Choose a theme: ")
+        [ ! "$theme" ] && { echo -e "${Wrn}No theme selected${Off}"; exit 0; }
+        echo -e "${Ok}'$theme' selected${Off}"
+      else
+        echo -e "'$theme' ${Tip}found${Off} in $colordatabase"
+      fi
+      theme="${theme// /_}"
+      # put the colors in an array for easier color access later
+      colors=($(grep -w "$theme" "$colordatabase" | sed "s/$theme,//; s/,/ /g"))
     fi
-    theme="${theme// /_}"
-    # put the colors in an array for easier color access later
-    colors=($(grep -w "$theme" "$colordatabase" | sed "s/$theme,//; s/,/ /g"))
 
     # modify the configs accordingly
-    for config in $(echo "$2" | tr ',' ' ');do
+    for config in ${CONFIGS[@]};do
       case "$config" in
         qtile ) qtile_cfg "$colors" "$theme";;
         dunst ) dunst_cfg "$colors" "$theme";;
@@ -419,7 +422,7 @@ help () {
   echo "     Do not forget to puth it in your PATH."
   echo ""
   echo "Usage:"
-  echo "     themes.sh [-huscpaP] [-t=THEME] [-C=C1,C2]"
+  echo "     themes.sh [-huscpPaob] [-t=THEME] [-C=C1,C2]"
   echo ""
   echo "Switches:"
   echo "     -h/--help           shows this help."
@@ -430,7 +433,13 @@ help () {
   echo "     -P/--preview        preview the local database."
   echo "     -t/--theme[=THEME]  pick a theme from the local database, possibly with default one."
   echo "     -C/--config=C1,C2   give the configs to apply the selected theme on."
-  echo "     -a/--all            same as -C=all."
+  echo "                         Can be a comma or space separated list."
+  echo "                         One can use '-C=a,b,c', '-C \"a,b,c\"', '-C \"a b c\"', etc"
+  echo "     -a/--all            same as -C=all"
+  echo "     -b/--boot           applications that run at boot time and do not require 'real' themes."
+  echo "                         same as -C=grub,sddm"
+  echo "     -o/--other          all the other themeable applications."
+  echo "                         same as -C=qtile,dunst,alacritty,kitty,xresources,dmenu,st"
   echo ""
   echo "Environment variables:"
   echo "     REMOTE              the remote database (defaults to 'a2n-s/themes)"
@@ -450,39 +459,51 @@ help () {
 }
 
 # parse the arguments.
-OPTIONS=$(getopt -o huscpt::C:aP --long help,update,strip,clean,print,theme::,config:,all,preview -n 'themes.sh' -- "$@")
+OPTIONS=$(getopt -o huscpt::C:aPbo --long help,update,strip,clean,print,theme::,config:,all,preview,boot,other -n 'themes.sh' -- "$@")
 if [ $? != 0 ] ; then usage >&2 ; exit 1 ; fi
 eval set -- "$OPTIONS"
 
 main () {
+  ACTIONS=()
+  CONFIGS=()
   while [[ $# -gt 0 ]]; do
     case "$1" in
       -h | --help ) help ;;
-      -u | --update ) ACTION="update"; shift 1 ;;
-      -s | --strip ) ACTION="strip"; shift 1 ;;
-      -c | --clean ) ACTION="clean"; shift 1 ;;
-      -p | --print ) ACTION="print"; shift 1 ;;
-      -P | --preview ) ACTION="preview"; shift 1 ;;
-      -t | --theme ) ACTION="theme"; theme="$(echo "$2" | sed 's/^=//')" ; shift 2;;
-      -C | --config ) ACTION="theme"; CONFIG="$(echo "$2" | sed 's/^=//')"; shift 2 ;;
-      -a | --all ) CONFIG="all"; shift 1 ;;
+      -c | --clean ) ACTIONS+=("0"); shift 1 ;;
+      -u | --update ) ACTIONS+=("1"); shift 1 ;;
+      -s | --strip ) ACTIONS+=("2"); shift 1 ;;
+      -p | --print ) ACTIONS+=("3"); shift 1 ;;
+      -P | --preview ) ACTIONS+=("4"); shift 1 ;;
+      -t | --theme ) theme="$(echo "$2" | sed 's/^=//')" ; shift 2;;
+      -C | --config ) ACTIONS+=("5"); CONFIGS+=($(echo "$2" | sed 's/^=//; s/,/ /g')); shift 2 ;;
+      -a | --all ) ACTIONS+=("5"); CONFIGS=("all"); shift 1 ;;
+      -o | --other ) ACTIONS+=("5"); CONFIGS=("other"); shift 1 ;;
+      -b | --boot ) ACTIONS+=("5"); CONFIGS=("boot"); shift 1 ;;
       -- ) shift; break ;;
       * ) break ;;
     esac
   done
-  [ "$CONFIG" = "all" ] && CONFIG="$configs"
+  for config in "${CONFIGS[@]}"; do
+    [ "$config" = "all" ] && { CONFIGS=("qtile" "dunst" "alacritty" "kitty" "xresources" "dmenu" "grub" "sddm" "st"); break; }
+    [ "$config" = "other" ] && { CONFIGS=("qtile" "dunst" "alacritty" "kitty" "xresources" "dmenu" "st"); break; }
+    [ "$config" = "boot" ] && { CONFIGS=("grub" "sddm"); break; }
+  done
 
+  echo "${CONFIGS[@]}"
   # an action is required
-  [ -z "$ACTION" ] && usage
-  case "$ACTION" in
-    update ) update ;;
-    strip )  strip ;;
-    clean )  clean ;;
-    print )  print ;;
-    preview )  preview ;;
-    theme )  theme "$theme" "$CONFIG" ;;
-    * ) echo "an error occured (got unexpected action '$ACTION')"; exit 1 ;;
-  esac
+  [ -z "$ACTIONS" ] && usage
+  ACTIONS=($(echo "${ACTIONS[@]}" | tr ' ' '\n' | sort -u))
+  for action in "${ACTIONS[@]}"; do
+    case "$action" in
+      0 ) clean ;;
+      1 ) update ;;
+      2 ) strip ;;
+      3 ) print ;;
+      4 ) preview ;;
+      5 ) theme "$theme" ;;
+      * ) echo "an error occured (got unexpected action '$action')"; exit 1 ;;
+    esac
+  done
 }
 
 main "$@"

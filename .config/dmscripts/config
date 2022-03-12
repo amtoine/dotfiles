@@ -612,7 +612,7 @@ bookman_show_source=1
 sounds_dir="${HOME}/.config/dmscripts/dmsounds"
 
 # dm-setbg
-setbg_dir="${HOME}/Pictures/Wallpapers"
+setbg_dir="${HOME}/repos/wallpapers/wallpapers"
 # Set this to 1 if you want to use imv and wayland, 0 if you want to use sxiv
 # Note that sxiv is X11 only, you need to mark the image you want to use.
 use_imv=1

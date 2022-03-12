@@ -164,6 +164,7 @@ def init_keymap(mod, terminal, groups):
             ),
             KeyChord(MOD, 'd', [
                 Key([], 'd', *_ucmd(DMRUN),                          desc="Open dmenu_run to run applications"),
+                Key([], 'b', *_ucmd(f"dm-setbg  -fn '{DMFONT}'"),    desc="Set the background wallpaper with dmenu"),
                 Key([], 'e', *_ucmd(f"dm-confedit  -fn '{DMFONT}'"), desc="Choose a config file to edit with dmenu"),
                 Key([], 'i', *_ucmd(f"dm-maim      -fn '{DMFONT}'"), desc="Take screenshots via dmenu"),
                 Key([], 'h', *_ucmd(f"dm-hub       -fn '{DMFONT}'"), desc="Open the dm-scripts hub"),
