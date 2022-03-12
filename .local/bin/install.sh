@@ -349,8 +349,8 @@ select_deps () {
   #
   local deps=""
   local loop=1
-  # a fancy to build the array, as `dialog` wants real arrays
-  readarray -t dependencies <<< "$(sed "s/ /\n/g; s/:/\n/g" <<< "${_commands[@]}")"}
+  # a fancy way to build the array, as `dialog` wants real arrays
+  readarray -t dependencies <<< "$(sed "s/ /\n/g; s/:/\n/g" <<< "${_commands[@]}")"
   while [ "$loop" = 1 ]
   do
     # let the user check the list
