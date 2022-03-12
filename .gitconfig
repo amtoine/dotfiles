@@ -41,11 +41,6 @@
   editor = nvim
 [ghq "https://git.example.com/repos/"]
   vcs = git
-  root = ~/repos
-  root = ~/.config
-  root = ~/research
-  root = ~/sup
-  root = ~/prog
 [alias]
 ; basic aliases.
   i       = init

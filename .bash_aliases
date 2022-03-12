@@ -29,6 +29,7 @@ alias rand="tr -dc 'A-Za-z0-9!@#\$%^&*()' < /dev/urandom  | head -c"
 # wrapper around btop to bypass lack of locale.
 alias btop="btop --utf-force"
 alias clear="clear; echo; seq 1 $(tput cols) | sort -R | spark.sh | lolcat -t; echo"
+alias repo='cd ~/ghq/$(ghq list | fzf)'
 
 # to list all the git repositiories inside the home directory or gives a full diagnostic with the extra d.
 alias lgr='find $pwd -type d | grep "\.git\$" | sed "s/\/\.git//"'
@@ -49,10 +50,7 @@ alias ncue='nmcli c up "eduroam"'  # connects to the network of my school.
 alias jpy='jupyter'
 alias jnb='jupyter-notebook'
 
-alias sdn='shutdown now -h'
-alias sdnr='shutdown now -h -r'
-# alias reboot='sudo reboot'
-# alias sctl='sudo systemctl'
+alias lout='arcolinux-logout'
 
 alias cp='cp -i'
 alias ln='ln -i'

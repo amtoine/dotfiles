@@ -20,7 +20,7 @@ if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
 eval set -- "$OPTIONS"
 
 # environment variables
-[[ ! -v WALLPAPERS ]] && WALLPAPERS="$HOME/repos/wallpapers/wallpapers"
+[[ ! -v WALLPAPERS ]] && WALLPAPERS="$HOME/ghq/github.com/a2n-s/wallpapers/wallpapers"
 
 export FZF_DEFAULT_OPTS="
 --height=100%
@@ -43,7 +43,7 @@ help () {
   echo "     -h/--help         shows this help."
   echo ""
   echo "Environment variables:"
-  echo "     WALLPAPERS        the path to the wallpapers (defaults to '\$HOME/repos/wallpapers/wallpapers')"
+  echo "     WALLPAPERS        the path to the wallpapers (defaults to '\$HOME/ghq/github.com/a2n-s/wallpapers/wallpapers')"
   exit 0
 }
 

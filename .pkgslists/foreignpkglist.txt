@@ -1,9 +1,10 @@
 adwaita-dark
 ani-cli
 archlinux-themes-sddm
+arcolinux-betterlockscreen
+arcolinux-logout
 arduino-mk
 aura-bin
-betterlockscreen-git
 catppuccin-grub-theme-git
 cava
 conky-lua-nv

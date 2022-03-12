@@ -83,7 +83,6 @@ confedit_list[alacritty]="$HOME/.config/alacritty/alacritty.yml"
 confedit_list[bashrc]="$HOME/.bashrc"
 confedit_list[bash_profile]="$HOME/.bash_profile"
 confedit_list[bash_logout]="$HOME/.bash_logout"
-confedit_list[aliases]="$HOME/repos/oh-my-bash/custom/aliases/a2ns.aliases.aliases.sh"
 confedit_list[bspwm]="$HOME/.config/bspwm"
 confedit_list[bspwmrc]="$HOME/.config/bspwm/bspwmrc"
 confedit_list[confedit]="$HOME/.config/dmscripts/config"
@@ -102,7 +101,6 @@ confedit_list[moc]="$HOME/.moc"
 confedit_list[neofetch]="$HOME/.config/neofetch"
 confedit_list[ncmcpp]="$HOME/.config/ncmpcpp/config"
 confedit_list[picom]="$HOME/.config/picom/picom.conf"
-confedit_list[polybar]="$HOME/repos/polybar-themes"
 confedit_list[profile]="$HOME/.profile"
 confedit_list[qtile]="$HOME/.config/qtile"
 #confedit_list[qutebrowser bookmarks]="$HOME/.config/qutebrowser/bookmarks/urls"
@@ -125,21 +123,6 @@ confedit_list[vifm]="$HOME/.config/vifm/vifmrc"
 confedit_list[vim]="$HOME/.vimrc"
 confedit_list[xinitrc]="$HOME/.xinitrc"
 confedit_list[xresources]="$HOME/.Xresources"
-
-confedit_list[a2n-s]="$HOME/repos/a2n-s"
-confedit_list[dmenu]="$HOME/repos/dmenu"
-confedit_list[dmscripts]="$HOME/repos/dmscripts"
-confedit_list[kitty]="$HOME/repos/kitty"
-confedit_list[oh-my-bash]="$HOME/repos/oh-my-bash"
-confedit_list[oh-my-fish]="$HOME/repos/oh-my-fish"
-confedit_list[oh-my-zsh]="$HOME/repos/oh-my-zsh"
-confedit_list[polybar]="$HOME/repos/polybar"
-confedit_list[sites]="$HOME/repos/sites"
-confedit_list[surf]="$HOME/repos/surf"
-confedit_list[slock]="$HOME/repos/slock"
-confedit_list[tabbed]="$HOME/repos/tabbed"
-confedit_list[uzbl]="$HOME/repos/uzbl"
-
 
 # dm-reddit config
 declare -a reddit_list=(
@@ -612,7 +595,7 @@ bookman_show_source=1
 sounds_dir="${HOME}/.config/dmscripts/dmsounds"
 
 # dm-setbg
-setbg_dir="${HOME}/repos/wallpapers/wallpapers"
+setbg_dir="${HOME}/ghq/github.com/a2n-s/wallpapers/wallpapers"
 # Set this to 1 if you want to use imv and wayland, 0 if you want to use sxiv
 # Note that sxiv is X11 only, you need to mark the image you want to use.
 use_imv=1

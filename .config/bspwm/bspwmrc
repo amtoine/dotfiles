@@ -26,7 +26,7 @@
 #
 
 # >>> BSPWM initialization.
-feh --bg-fill --randomize ~/repos/wallpapers/wallpapers/
+feh --bg-fill --randomize ~/ghq/gitlab.com/a2n-s/wallpapers/wallpapers/
 # set -U SHELL /bin/sh
 # set -U SXHKD_SHELL sh
 # set -U SHELL /bin/bash

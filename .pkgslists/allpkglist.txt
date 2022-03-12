@@ -5,6 +5,8 @@ alsa-utils
 ani-cli
 arandr
 archlinux-themes-sddm
+arcolinux-betterlockscreen
+arcolinux-logout
 arduino
 arduino-mk
 asciinema
@@ -17,7 +19,6 @@ bashtop
 bat
 bc
 bemenu
-betterlockscreen-git
 bind
 binutils
 bison

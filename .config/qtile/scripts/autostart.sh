@@ -46,9 +46,7 @@ fi
 # choose a random wallpaper
 if command -v feh &> /dev/null; then
   feh --randomize \
-    ~/repos/wallpapers/wallpapers/* \
-    ~/repos/catppucin/wallpapers/minimalistic/* \
-    ~/repos/catppucin/wallpapers/mandelbrot/* \
+    ~/ghq/github.com/a2n-s/wallpapers/wallpapers/* \
     --bg-fill
 fi
 

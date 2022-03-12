@@ -666,7 +666,7 @@ def wallpaper(bg="#000000", fg="#ffffff"):
     """
     return widget.Wallpaper(
         background=bg,                               # Widget background color
-        directory='~/repos/wallpapers/wallpapers/',  # Wallpaper Directory
+        directory='~/ghq/github.com/a2n-s/wallpapers/wallpapers/',  # Wallpaper Directory
         fmt='{}',                                    # How to format the text
         font=FONT,                                   # Default font
         fontshadow=None,                             # font shadow color, default is None(no shadow)

@@ -565,8 +565,8 @@ install_config () {
     cp -r "$DOTFILES/.config/picom" "$HOME/.config"
   fi
   if grep -e "^wallpapers:a2n-s/wallpapers" "$deps_file" -q; then
-    echo -e "${CMD}git clone ${SRC}https://github.com/a2n-s/wallpapers ${DST}$HOME/repos/wallpapers${OFF}"
-    git clone https://github.com/a2n-s/wallpapers "$HOME/repos/wallpapers"
+    echo -e "${CMD}git clone ${SRC}https://github.com/a2n-s/wallpapers ${DST}$HOME/ghq/githb.com/a2n-s/wallpapers${OFF}"
+    git clone https://github.com/a2n-s/wallpapers "$HOME/ghq/github.com/a2n-s/wallpapers"
   fi
   if grep -e "^.*:kitty" "$deps_file" -q; then
     echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/kitty ${DST}$HOME/.config${OFF}"
