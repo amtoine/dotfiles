@@ -90,9 +90,11 @@ strip () {
     [ -f "$colordatabase" ] && rm "$colordatabase"
     [ -f "$colorpreview" ] && rm "$colorpreview"
     echo "${_columns[@]}" | tr ' ' ',' | tee "$colordatabase" -a > /dev/null
-    for theme in $(ls "$CACHE/themes" | sed 's/\.conf$//g');
+    themes=($(ls "$CACHE/themes" | sed 's/\.conf$//g'))
+    for (( i = 0; i < "${#themes[@]}"; i++ ));
     do
-      echo -en "Stripping ${Src}$theme${Off}... "
+      theme="${themes[$i]}"
+      echo -en "[$((i+1)) / ${#themes[@]}] ${Src}$theme${Off}... "
       colors=$(grep -Ev 'cursor|active|^\$|^#|url|mark|color ' "$CACHE/themes/$theme.conf" |\
         sed 's/background/bg/; s/foreground/fg/; s/selection/sel/; /^\s*$/d;' |\
         sed 's/^color//g; s/\s\+/ /g;' |\
@@ -361,7 +363,6 @@ theme () {
   # $1 is a preselected theme with the -t=THEME switch.
   #
   theme=$(echo "$1" | sed 's/^\s*//g; s/\s*$//g')
-  echo "${CONFIGS[@]}"
   [ ! "$theme" ] && theme="DEFAULT_TO_DMENU"
   if [[ -f "$colordatabase" ]]; then
     if grep -E "qtile|dunst" -q <<< "${CONFIGS[@]}";
@@ -469,16 +470,16 @@ main () {
   while [[ $# -gt 0 ]]; do
     case "$1" in
       -h | --help ) help ;;
-      -c | --clean ) ACTIONS+=("0"); shift 1 ;;
-      -u | --update ) ACTIONS+=("1"); shift 1 ;;
-      -s | --strip ) ACTIONS+=("2"); shift 1 ;;
-      -p | --print ) ACTIONS+=("3"); shift 1 ;;
+      -c | --clean )   ACTIONS+=("0"); shift 1 ;;
+      -u | --update )  ACTIONS+=("1" "2"); shift 1 ;;
+      -s | --strip )   ACTIONS+=("2"); shift 1 ;;
+      -p | --print )   ACTIONS+=("3"); shift 1 ;;
       -P | --preview ) ACTIONS+=("4"); shift 1 ;;
-      -t | --theme ) theme="$(echo "$2" | sed 's/^=//')" ; shift 2;;
-      -C | --config ) ACTIONS+=("5"); CONFIGS+=($(echo "$2" | sed 's/^=//; s/,/ /g')); shift 2 ;;
-      -a | --all ) ACTIONS+=("5"); CONFIGS=("all"); shift 1 ;;
-      -o | --other ) ACTIONS+=("5"); CONFIGS=("other"); shift 1 ;;
-      -b | --boot ) ACTIONS+=("5"); CONFIGS=("boot"); shift 1 ;;
+      -C | --config )  ACTIONS+=("5"); CONFIGS+=($(echo "$2" | sed 's/^=//; s/,/ /g')); shift 2 ;;
+      -a | --all )     ACTIONS+=("5"); CONFIGS=("all"); shift 1 ;;
+      -o | --other )   ACTIONS+=("5"); CONFIGS=("other"); shift 1 ;;
+      -b | --boot )    ACTIONS+=("5"); CONFIGS=("boot"); shift 1 ;;
+      -t | --theme )   theme="$(echo "$2" | sed 's/^=//')" ; shift 2;;
       -- ) shift; break ;;
       * ) break ;;
     esac
@@ -489,7 +490,6 @@ main () {
     [ "$config" = "boot" ] && { CONFIGS=("grub" "sddm"); break; }
   done
 
-  echo "${CONFIGS[@]}"
   # an action is required
   [ -z "$ACTIONS" ] && usage
   ACTIONS=($(echo "${ACTIONS[@]}" | tr ' ' '\n' | sort -u))
