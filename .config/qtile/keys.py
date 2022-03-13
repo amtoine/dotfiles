@@ -42,7 +42,6 @@ from utils import _uscript
 from utils import _uascript
 from utils import _scratch
 from utils import HOME
-from utils import SCRIPTS
 from utils import QSCRIPTS
 
 # some shortcuts for the `qtile` key codes.
@@ -105,13 +104,6 @@ def init_keymap(mod, terminal, groups):
         This is the main function here, that initializes every key in the
         keymap.
     """
-    # terminal = f"{terminal} -e"
-    # just a wrapper for the qtile-change-theme line below.
-    THEME = dict(
-        script="themes.sh -C=qtile",
-        path=SCRIPTS,
-    )
-
     km = []
 
     # first of all, enable movement between groups (mod + 1-7)
@@ -236,7 +228,7 @@ def init_keymap(mod, terminal, groups):
                 Key([], 'q', *_ucmd("arcolinux-logout"),      desc="Show some options for logout in a window."),
                 Key([], "r", *URESTART,                       desc="Restart Qtile"),
                 Key([], "s", *USHUTDOWN,                      desc="Shutdown Qtile"),
-                Key([], 't', *_uscript(**THEME),              desc="Change the theme of qtile"),
+                Key([], 't', *_uscript("themes.sh -d"),       desc="Change the theme"),
                 Key([], 'w', *_uscript("wfzf.sh -d"),         desc="Change the wallpapers"),
                 ],
                 mode="  QTILE"

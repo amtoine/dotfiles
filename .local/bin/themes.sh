@@ -373,6 +373,32 @@ sddm_cfg () {
   [ "$(echo -e "No\nYes" | dmenu -c -l 2 -bw 5 -i -p "Restart sddm: ")" = "Yes" ] && sudo systemctl restart sddm.service
 }
 
+dmenu_support () {
+  #
+  # allow the user to choose options
+  # with dmenu
+  #
+
+  # choose the actions to perform
+  choices=($(echo -e "clean\nupdate\nstrip\ntheme" | dmenu -c -bw 5 -l 20 -p "Choose an option: " | sort -u))
+  [ ! "$choices" ] && { echo -e "${Wrn}User choose to exit${Off}"; return; }
+  ACTIONS=()
+  for choice in "${choices[@]}"; do
+    case "$choice" in
+      clean )   ACTIONS+=("0") ;;
+      update )  ACTIONS+=("1" "2") ;;
+      strip )   ACTIONS+=("2") ;;
+      theme )   ACTIONS+=("5"); totheme="_" ;;
+    esac
+  done
+  [ -z "$totheme" ] && return
+
+  # choose the configs to modify
+  choices=($(echo -e "all\nother\nboot" | dmenu -c -bw 5 -l 20 -p "Configs to change: " | sort -u))
+  [ ! "$choices" ] && { echo -e "${Wrn}User choose to exit${Off}"; return; }
+  CONFIGS=("$choices")
+}
+
 theme () {
   #
   # let the user pick a theme.
@@ -425,7 +451,7 @@ usage () {
   #
   # the usage function.
   #
-  echo "Usage: themes.sh [-huscpaP] [-t=THEME] [-C=C1,C2]"
+  echo "Usage: themes.sh [-huscpaPd] [-t=THEME] [-C=C1,C2]"
   echo "Type -h or --help for the full help."
   exit 0
 }
@@ -458,6 +484,7 @@ help () {
   echo "                         same as -C=grub,sddm"
   echo "     -o/--other          all the other themeable applications."
   echo "                         same as -C=qtile,dunst,alacritty,kitty,xresources,dmenu,st"
+  echo "     -d/--dmenu          allow to use the script from dmenu"
   echo ""
   echo "Environment variables:"
   echo "     REMOTE              the remote database (defaults to 'a2n-s/themes)"
@@ -478,7 +505,7 @@ help () {
 }
 
 # parse the arguments.
-OPTIONS=$(getopt -o huscpt::C:aPbo --long help,update,strip,clean,print,theme::,config:,all,preview,boot,other -n 'themes.sh' -- "$@")
+OPTIONS=$(getopt -o huscpt::C:aPbod --long help,update,strip,clean,print,theme::,config:,all,preview,boot,other,dmenu -n 'themes.sh' -- "$@")
 if [ $? != 0 ] ; then usage >&2 ; exit 1 ; fi
 eval set -- "$OPTIONS"
 
@@ -498,6 +525,7 @@ main () {
       -o | --other )   ACTIONS+=("5"); CONFIGS=("other"); shift 1 ;;
       -b | --boot )    ACTIONS+=("5"); CONFIGS=("boot"); shift 1 ;;
       -t | --theme )   theme="$(echo "$2" | sed 's/^=//')" ; shift 2;;
+      -d | --dmenu )   dmenu_support; break;;
       -- ) shift; break ;;
       * ) break ;;
     esac
