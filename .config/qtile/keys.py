@@ -73,7 +73,7 @@ VIMB = "tabbed -c vimb -e"
 # qtile related commands
 AUTOSTART = dict(script="autostart.sh", path=QSCRIPTS)
 LOG = "bat " + os.path.expanduser("~/.local/share/qtile/qtile.log")
-KB = os.path.join(HOME, QSCRIPTS, "kb.sh")
+KB = os.path.join(HOME, QSCRIPTS, "km.sh")
 BAR = dict(script="bar.sh", path=QSCRIPTS)
 URELOAD = lazy.reload_config(), lazy.ungrab_chord()
 URESTART = lazy.restart(), lazy.ungrab_chord()
@@ -156,16 +156,16 @@ def init_keymap(mod, terminal, groups):
             ),
             KeyChord(MOD, 'd', [
                 Key([], 'd', *_ucmd(DMRUN),                          desc="Open dmenu_run to run applications"),
-                Key([], 'b', *_ucmd(f"dm-setbg  -fn '{DMFONT}'"),    desc="Set the background wallpaper with dmenu"),
-                Key([], 'e', *_ucmd(f"dm-confedit  -fn '{DMFONT}'"), desc="Choose a config file to edit with dmenu"),
-                Key([], 'i', *_ucmd(f"dm-maim      -fn '{DMFONT}'"), desc="Take screenshots via dmenu"),
-                Key([], 'h', *_ucmd(f"dm-hub       -fn '{DMFONT}'"), desc="Open the dm-scripts hub"),
-                Key([], 'k', *_ucmd(f"dm-kill      -fn '{DMFONT}'"), desc="Kill processes via dmenu"),
-                Key([], 'l', *_ucmd(f"dm-logout    -fn '{DMFONT}'"), desc="A logout menu in dmenu"),
-                Key([], 'm', *_ucmd(f"dm-man       -fn '{DMFONT}'"), desc="Search manpages in dmenu"),
-                Key([], 'n', *_ucmd(f"dm-note      -fn '{DMFONT}'"), desc="Take and copy note with dmenu"),
-                Key([], 'o', *_ucmd(f"dm-bookman   -fn '{DMFONT}'"), desc="Search your qutebrowser bookmarks and quickmarks"),
-                Key([], 'r', *_ucmd(f"dm-reddit    -fn '{DMFONT}'"), desc="Search reddit via dmenu"),
+                Key([], 'b', *_ucmd(f"dm-setbg -fn '{DMFONT}'"),     desc="Set the background wallpaper with dmenu"),
+                Key([], 'e', *_ucmd(f"dm-confedit -fn '{DMFONT}'"),  desc="Choose a config file to edit with dmenu"),
+                Key([], 'i', *_ucmd(f"dm-maim -fn '{DMFONT}'"),      desc="Take screenshots via dmenu"),
+                Key([], 'h', *_ucmd(f"dm-hub -fn '{DMFONT}'"),       desc="Open the dm-scripts hub"),
+                Key([], 'k', *_ucmd(f"dm-kill -fn '{DMFONT}'"),      desc="Kill processes via dmenu"),
+                Key([], 'l', *_ucmd(f"dm-logout -fn '{DMFONT}'"),    desc="A logout menu in dmenu"),
+                Key([], 'm', *_ucmd(f"dm-man -fn '{DMFONT}'"),       desc="Search manpages in dmenu"),
+                Key([], 'n', *_ucmd(f"dm-note -fn '{DMFONT}'"),      desc="Take and copy note with dmenu"),
+                Key([], 'o', *_ucmd(f"dm-bookman -fn '{DMFONT}'"),   desc="Search your qutebrowser bookmarks and quickmarks"),
+                Key([], 'r', *_ucmd(f"dm-reddit -fn '{DMFONT}'"),    desc="Search reddit via dmenu"),
                 Key([], 's', *_ucmd(f"dm-websearch -fn '{DMFONT}'"), desc="Search various search engines via dmenu"),
                 Key([], 'w', lazy.run_extension(window_list()),
                     lazy.ungrab_chord(),                      desc="List and choose windows with dmenu"),
@@ -220,7 +220,7 @@ def init_keymap(mod, terminal, groups):
                 KeyChord([], 'h', [
                     Key([], 'c', *_uacmd(CLOCK),              desc="Show a clock with weather"),
                     Key([], 'h', *_uacmd(CONKY),              desc="Open the begin help conky"),
-                    Key([], 'k', *_uacmd(KB, terminal),       desc="Open a tool to explore the keymap"),
+                    Key([], 'k', *_uacmd(KB),                 desc="Open a tool to explore the keymap"),
                     ],
                     mode=" HELP"
                 ),
@@ -228,7 +228,7 @@ def init_keymap(mod, terminal, groups):
                 Key([], 'q', *_ucmd("arcolinux-logout"),      desc="Show some options for logout in a window."),
                 Key([], "r", *URESTART,                       desc="Restart Qtile"),
                 Key([], "s", *USHUTDOWN,                      desc="Shutdown Qtile"),
-                Key([], 't', *_uscript("themes.sh -d"),       desc="Change the theme"),
+                Key([], 't', *_uscript("themes.sh -d", terminal),       desc="Change the theme"),
                 Key([], 'w', *_uscript("wfzf.sh -d"),         desc="Change the wallpapers"),
                 ],
                 mode="  QTILE"
