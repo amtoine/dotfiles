@@ -113,15 +113,7 @@ main () {
   done
   sed -i 's/>[A-Z]*//; /Enter/d' /tmp/qtile.kb4
   sed 's/ \s\+/%%/g; s/+shift/+S/g; s/+comma/+,/; s/+period/+./; s/^[a-z0-9]*/[S]/;; s/+mod1/+A/; s/+Return/+R/; s/+control/+C/; s/+space/+" "/' /tmp/qtile.kb4 | tee /tmp/qtile.kb5 > /dev/null
-  choice=$(awk -F'%%' '{print $1"%%"$3"%%"$2}' /tmp/qtile.kb5 |\
-    # sed "s/spawn('\(.*\)')/\1/g" |\
-    # sed "s/spawn(\"\(.*\)\")/\1/g" |\
-    # sed "s/\/home\/ants/\~/g" |\
-    # sed "s/.local\/bin/.l\/b/g" |\
-    # sed "s/.config\/qtile/.c\/q/g" |\
-    # sed "s/.config\/conky/.c\/c/g" |\
-    # sed "s/\(run_extension\)(<libqtile\.extension\.\(.*\) object.*)/\1(\2)/g" |\
-    column -t -s '%%' | dmenu -l 20 -bw 5 | sed 's/ \s\+/%%/g' | awk -F'%%' '{print $3}')
+  choice=$(awk -F'%%' '{print $1"%%"$3"%%"$2}' /tmp/qtile.kb5 | column -t -s '%%' | sort | dmenu -l 20 -bw 5 | sed 's/ \s\+/%%/g' | awk -F'%%' '{print $3}')
   command=$(echo "$choice" | sed 's/(.*//')
   arg=$(echo "$choice" | sed "s/[a-z_-]*(\(.*\))/\1/")
 

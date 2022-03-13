@@ -190,6 +190,7 @@ init_deps () {
     "picom::off" \
     "feh::off" \
     "arcologout::off" \
+    "shell-color-scripts::off" \
   )
 
   deps_table[base]="pacman:base-devel pacman:python pacman:python-pip pacman:xorg pacman:xorg-xinit aur:yay aur:aura aur:paru"
@@ -228,22 +229,26 @@ init_deps () {
   deps_table[rofi]="pacman:rofi"
   deps_table[conky]="pacman:conky"
   deps_table[pass]="pacman:pass"
-  deps_table[dmenu]="make:a2n-s/dmenu"
-  deps_table[st]="make:a2n-s/st"
-  deps_table[tabbed]="make:a2n-s/tabbed"
-  deps_table[surf]="make:a2n-s/surf pacman:gcr pacman:webkit2gtk"
-  deps_table[slock]="make:a2n-s/slock"
-  deps_table[sfm]="make:a2n-s/sfm"
   deps_table[nerd-fonts-mononoki]="yay:nerd-fonts-mononoki"
   deps_table[psutil]="pip:psutil"
   deps_table[dbus-next]="pip:dbus-next"
   deps_table[python-iwlib]="pacman:python-iwlib"
   deps_table[dunst]="pacman:dunst"
   deps_table[picom]="pacman:picom"
-  deps_table[feh]="pacman:feh wallpapers:a2n-s/wallpapers"
+  deps_table[feh]="pacman:feh"
   deps_table[bspwm]="pacman:bspwm pacman:sxhkd"
   deps_table[spectrwm]="pacman:spectrwm"
+
+  # need to PKGBUILD them
+  deps_table[wallpapers]="wallpapers:a2n-s/wallpapers feh"
   deps_table[arcologout]=""
+  deps_table[shell-color-scripts]="paru:shell-color-scripts"
+  deps_table[dmenu]="make:a2n-s/dmenu"
+  deps_table[st]="make:a2n-s/st"
+  deps_table[tabbed]="make:a2n-s/tabbed"
+  deps_table[surf]="make:a2n-s/surf pacman:gcr pacman:webkit2gtk"
+  deps_table[slock]="make:a2n-s/slock"
+  deps_table[sfm]="make:a2n-s/sfm"
 
   # always add the base dependencies
   echo "${deps_table[base]}" | tr ' ' '\n' >> "$deps_file"
@@ -725,6 +730,12 @@ install_config () {
     sudo cp -r /tmp/arcologout/usr/share/arcologout /usr/share
     echo -e "${CMD}sudo cp -r ${SRC}/tmp/arcologout/usr/share/arcologout-themes ${DST}/usr/share${OFF}"
     sudo cp -r /tmp/arcologout/usr/share/arcologout-themes /usr/share
+  fi
+  if grep -e "^.*:shell-color-scripts" "$deps_file" -q; then
+    scriptstoban=(bomber pipes1 pipes2 pipes2-slim)
+    for script in "${scriptstoban[@]}"; do
+      colorscript --blacklist "$script"
+    done
   fi
 }
 
