@@ -1,25 +1,25 @@
-// THEME: Gruvbox_Dark_Hard
+// THEME: Solarized_Dark
 * {
-    bg:      #1d2021;
-    fg:      #ebdbb2;
-    selbg:   #d65d0e;
-    selfg:   #ebdbb2;
-    color0:  #3c3836;
-    color1:  #cc241d;
-    color2:  #98971a;
-    color3:  #d79921;
-    color4:  #458588;
-    color5:  #b16286;
-    color6:  #689d6a;
-    color7:  #a89984;
-    color8:  #928374;
-    color9:  #fb4934;
-    color10: #b8bb26;
-    color11: #fabd2f;
-    color12: #83a598;
-    color13: #d3869b;
-    color14: #8ec07c;
-    color15: #fbf1c7;
+    bg:      #002b36;
+    fg:      #839496;
+    selbg:   #073642;
+    selfg:   #93a1a1;
+    color0:  #002731;
+    color1:  #d01b24;
+    color2:  #728905;
+    color3:  #a57705;
+    color4:  #2075c7;
+    color5:  #c61b6e;
+    color6:  #259185;
+    color7:  #e9e2cb;
+    color8:  #001e26;
+    color9:  #bd3612;
+    color10: #465a61;
+    color11: #52676f;
+    color12: #708183;
+    color13: #5856b9;
+    color14: #81908f;
+    color15: #fcf4dc;
 
     background:                  @bg;
     normal-background:           @bg;

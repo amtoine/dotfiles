@@ -16,27 +16,27 @@
 #   please use the `qtile-change-theme.sh` script in `~/.config/qtile/scripts`
 #   to automatically edit this file and change the theme of Qtile.
 
-# current: Gruvbox_Dark_Hard
+# current: Solarized_Dark
 from utils import ColorScheme
 theme = ColorScheme(**{
-  "fg": "#ebdbb2",
-  "bg": "#1d2021",
-  "sel_fg": "#ebdbb2",
-  "sel_bg": "#d65d0e",
-  "color0": "#3c3836",
-  "color8": "#928374",
-  "color1": "#cc241d",
-  "color9": "#fb4934",
-  "color2": "#98971a",
-  "color10": "#b8bb26",
-  "color3": "#d79921",
-  "color11": "#fabd2f",
-  "color4": "#458588",
-  "color12": "#83a598",
-  "color5": "#b16286",
-  "color13": "#d3869b",
-  "color6": "#689d6a",
-  "color14": "#8ec07c",
-  "color7": "#a89984",
-  "color15": "#fbf1c7",
+  "fg": "#839496",
+  "bg": "#002b36",
+  "sel_fg": "#93a1a1",
+  "sel_bg": "#073642",
+  "color0": "#002731",
+  "color8": "#001e26",
+  "color1": "#d01b24",
+  "color9": "#bd3612",
+  "color2": "#728905",
+  "color10": "#465a61",
+  "color3": "#a57705",
+  "color11": "#52676f",
+  "color4": "#2075c7",
+  "color12": "#708183",
+  "color5": "#c61b6e",
+  "color13": "#5856b9",
+  "color6": "#259185",
+  "color14": "#81908f",
+  "color7": "#e9e2cb",
+  "color15": "#fcf4dc",
 })

@@ -271,31 +271,31 @@ draw_bold_text_with_bright_colors: true
 #
 #
 colors:
-  # COLORSCHEME: Gruvbox_Dark_Hard
+  # COLORSCHEME: Solarized_Dark
   primary:
-    background: '0x1d2021' # PRIMARY
-    foreground: '0xebdbb2' # PRIMARY
+    background: '0x002b36' # PRIMARY
+    foreground: '0x839496' # PRIMARY
   cursor:
-    text: '0xd65d0e'   # CURSOR
-    cursor: '0xebdbb2' # CURSOR
+    text: '0x073642'   # CURSOR
+    cursor: '0x93a1a1' # CURSOR
   normal:
-    black: '0x3c3836'   # NORMAL
-    red: '0xcc241d'     # NORMAL
-    green: '0x98971a'   # NORMAL
-    yellow: '0xd79921'  # NORMAL
-    blue: '0x458588'    # NORMAL
-    magenta: '0xb16286' # NORMAL
-    cyan: '0x689d6a'    # NORMAL
-    white: '0xa89984'   # NORMAL
+    black: '0x002731'   # NORMAL
+    red: '0xd01b24'     # NORMAL
+    green: '0x728905'   # NORMAL
+    yellow: '0xa57705'  # NORMAL
+    blue: '0x2075c7'    # NORMAL
+    magenta: '0xc61b6e' # NORMAL
+    cyan: '0x259185'    # NORMAL
+    white: '0xe9e2cb'   # NORMAL
   bright:
-    black: '0x928374'   # BRIGHT
-    red: '0xfb4934'     # BRIGHT
-    green: '0xb8bb26'   # BRIGHT
-    yellow: '0xfabd2f'  # BRIGHT
-    blue: '0x83a598'    # BRIGHT
-    magenta: '0xd3869b' # BRIGHT
-    cyan: '0x8ec07c'    # BRIGHT
-    white: '0xfbf1c7'   # BRIGHT
+    black: '0x001e26'   # BRIGHT
+    red: '0xbd3612'     # BRIGHT
+    green: '0x465a61'   # BRIGHT
+    yellow: '0x52676f'  # BRIGHT
+    blue: '0x708183'    # BRIGHT
+    magenta: '0x5856b9' # BRIGHT
+    cyan: '0x81908f'    # BRIGHT
+    white: '0xfcf4dc'   # BRIGHT
 
 # >>> Visual Bell.
 #
