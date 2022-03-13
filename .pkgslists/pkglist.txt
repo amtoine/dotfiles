@@ -1,6 +1,7 @@
 acpi
 alacritty
 arandr
+archlinux-wallpaper
 arduino
 asciinema
 autoconf
@@ -58,11 +59,13 @@ lazygit
 librsync
 lolcat
 lxappearance
+mate-backgrounds
 mathomatic
 ncdu
 net-tools
 nethack
 network-manager-applet
+nitrogen
 nmap
 noto-fonts-cjk
 okular

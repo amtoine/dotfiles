@@ -45,9 +45,7 @@ fi
 
 # choose a random wallpaper
 if command -v feh &> /dev/null; then
-  feh --randomize \
-    ~/ghq/github.com/a2n-s/wallpapers/wallpapers/* \
-    --bg-fill
+  feh --randomize /usr/share/backgrounds/* --bg-fill
 fi
 
 if command -v xautolock &> /dev/null; then

@@ -58,3 +58,4 @@
   (:host github
    :repo "a2n-s/xresources-theme"
    :branch "master"))
+(package! rainbow-mode)

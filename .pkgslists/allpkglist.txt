@@ -1,3 +1,4 @@
+a2n-s-wallpapers
 acpi
 adwaita-dark
 alacritty
@@ -5,6 +6,7 @@ alsa-utils
 ani-cli
 arandr
 archlinux-themes-sddm
+archlinux-wallpaper
 arcolinux-betterlockscreen
 arcolinux-logout
 arduino
@@ -113,6 +115,7 @@ lolcat
 lxappearance
 m4
 make
+mate-backgrounds
 mathomatic
 mbsync-git
 moc
@@ -130,6 +133,7 @@ nethack
 network-manager-applet
 networkmanager
 ngrok
+nitrogen
 nmap
 noto-fonts-cjk
 npm
@@ -145,6 +149,7 @@ pass-import
 pass-tomb
 patch
 pavucontrol
+pcmanfm
 peco
 perl-file-mimeinfo
 pfetch
