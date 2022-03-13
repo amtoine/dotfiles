@@ -177,13 +177,21 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 set -o vi
 
-# make man pages prettier
+### SET MANPAGER
+### Uncomment only one of these!
+# make "less" man pages prettier
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2)  # green
 export LESS_TERMCAP_md=$(tput bold; tput setaf 2)  # green
 export LESS_TERMCAP_so=$(tput bold; tput rev; tput setaf 3)  # yellow
 export LESS_TERMCAP_se=$(tput smul; tput sgr0)
 export LESS_TERMCAP_us=$(tput bold; tput bold; tput setaf 1)  # red
 export LESS_TERMCAP_me=$(tput sgr0)
+### "bat" as manpager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+### "vim" as manpager
+# export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
+### "nvim" as manpager
+# export MANPAGER="nvim -c 'set ft=man' -"
 
 # activates virtualenvwrapper to manage python virtual environments.
 export WORKON_HOME=$HOME/.virtualenvs
