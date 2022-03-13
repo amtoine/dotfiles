@@ -237,7 +237,7 @@ def init_keymap(mod, terminal, groups):
                 Key([], "r", *URESTART,                       desc="Restart Qtile"),
                 Key([], "s", *USHUTDOWN,                      desc="Shutdown Qtile"),
                 Key([], 't', *_uscript(**THEME),              desc="Change the theme of qtile"),
-                Key([], 'w', *_uscript("wfzf.sh", terminal),  desc="Change the wallpapers"),
+                Key([], 'w', *_uscript("wfzf.sh -d"),         desc="Change the wallpapers"),
                 ],
                 mode="  QTILE"
             ),

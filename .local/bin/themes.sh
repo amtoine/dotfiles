@@ -61,6 +61,7 @@ colorpreview="$CACHE/themes.clr"
 [[ ! -v CONKY ]] && CONKY="$HOME/.config/conky"
 [[ ! -v SUCKLESS ]] && SUCKLESS="$HOME/ghq/git.suckless.org"
 [[ ! -v XRESOURCES ]] && XRESOURCES="$HOME/.Xresources"
+[[ ! -v ROFI ]] && ROFI="$HOME/.config/rofi/all.rasi"
 GRUB="/usr/share/grub/themes"
 SDDM="/usr/share/sddm/themes"
 _columns=(name bg fg sel_bg sel_fg 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15)
@@ -190,10 +191,10 @@ qtile_cfg () {
   echo -e "Changing ${Dst}qtile${Off}'s theme to ${Src}'$2'${Off}"
   colors="$1"
 
-  fields=(bg fg sel_bg sel_fg color0 color1 color2 color3 color4 color5 color6 color7 color8 color9 color10 color11 color12 color13 color14 color15)
-  for i in $(seq 0 19);
+  a=(bg fg sel_bg sel_fg color0 color1 color2 color3 color4 color5 color6 color7 color8 color9 color10 color11 color12 color13 color14 color15)
+  for ((i = 0; i < "${#a[@]}"; i++));
   do
-    sed -i "s/\(\s*\"${fields[$i]}\": \"\)#......\",\s*\$/\1${colors[$i]}\",/" "$QTILE/theme.py"
+    sed -i "s/\(\s*\"${a[$i]}\": \"\)#......\",\s*\$/\1${colors[$i]}\",/" "$QTILE/theme.py"
   done
   # change the name of the current theme
   sed -i "s/# current: .*/# current: $2/" "$QTILE/theme.py"
@@ -221,7 +222,7 @@ dunst_cfg () {
   a=("background" "background" "background" "foreground" "foreground" "foreground" "frame_color")
   b=("CRITICAL"   "NORMAL"     "LOW"        "CRITICAL"   "NORMAL"     "LOW"        "CRITICAL")
   c=(0            0            0            5            8            11           15)
-  for ((i = 0; i < 7; i++));
+  for ((i = 0; i < "${#a[@]}"; i++));
   do
     sed -i "s/\(\s\+${a[$i]}\s\+=\s\+\"\)#......\(\"  # ${b[$i]}\)/\1${colors[${c[$i]}]}\2/" "$DUNST"
   done
@@ -245,7 +246,7 @@ alacritty_cfg () {
 
   a=(background foreground text   cursor black  red    green  yellow blue   magenta cyan   white  black  red    green  yellow blue   magenta cyan   white)
   b=(PRIMARY    PRIMARY    CURSOR CURSOR NORMAL NORMAL NORMAL NORMAL NORMAL NORMAL  NORMAL NORMAL BRIGHT BRIGHT BRIGHT BRIGHT BRIGHT BRIGHT  BRIGHT BRIGHT)
-  for ((i = 0; i < 20; i++));
+  for ((i = 0; i < "${#a[@]}"; i++));
   do
     sed -i "s/\(\s*${a[$i]}\s*:\s*'0x\)......\('\s*# ${b[$i]}\)/\1${colors[$i]//#/}\2/" "$ALACRITTY"
   done
@@ -261,7 +262,7 @@ kitty_cfg () {
   colors="$1"
 
   a=(background foreground selection_background selection_foreground color0 color1 color2 color3 color4 color5 color6 color7 color8 color9 color10 color11 color12 color13 color14 color15)
-  for ((i = 0; i < 20; i++));
+  for ((i = 0; i < "${#a[@]}"; i++));
   do
     sed -i "s/\(^${a[$i]}\s*\)#....../\1${colors[$i]}/" "$KITTY"
   done
@@ -269,6 +270,21 @@ kitty_cfg () {
   sed -i "s/\(^# THEME: \).*/\1$2/" "$KITTY"
 }
 
+rofi_cfg () {
+  #
+  # change the theme of rofi.
+  #
+  echo -e "Changing ${Dst}rofi${Off}'s theme to ${Src}'$2'${Off}"
+  colors="$1"
+
+  a=(bg fg selbg selfg color0 color1 color2 color3 color4 color5 color6 color7 color8 color9 color10 color11 color12 color13 color14 color15)
+  for ((i = 0; i < "${#a[@]}"; i++));
+  do
+    sed -i "s/\(\s*${a[$i]}:\s\+\)#......;/\1${colors[$i]};/" "$ROFI"
+  done
+  # change the name of the theme.
+  sed -i "s/\(^\/\/ THEME: \).*/\1$2/" "$ROFI"
+}
 dmenu_cfg () {
   #
   # change the theme of dmenu.
@@ -280,7 +296,7 @@ dmenu_cfg () {
   a=(SchemeSel SchemeSelOut SchemeMid SchemeMidOut SchemeSelHighlight SchemeNormHighlight SchemeNorm SchemeOut)
   b=(4         4            1         1            6                  6                   1          4)
   c=(9         10           2         12           4                  4                   0          1)
-  for ((i = 0; i < 8; i++));
+  for ((i = 0; i < "${#a[@]}"; i++));
   do
     sed -i "s/\(\[${a[$i]}\]\s\+= { \"\)#......\", \"#......\(\" },\)/\1${colors[${b[$i]}]}\", \"${colors[${c[$i]}]}\2/" "$SUCKLESS/dmenu/config.h"
   done
@@ -300,7 +316,7 @@ st_cfg () {
 
   [ ! -f "$SUCKLESS/st/config.h" ] && cp "$SUCKLESS/st/config.def.h" "$SUCKLESS/st/config.h"
   a=(4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 0 1)
-  for ((i = 0; i < 18; i++));
+  for ((i = 0; i < "${#a[@]}"; i++));
   do
     sed -i "s/\[$i\] = \"#......\",/[$i] = \"${colors[${a[$i]}]}\",/" "$SUCKLESS/st/config.h"
   done
@@ -321,7 +337,7 @@ xresources_cfg () {
 
   a=(background foreground pointerColorBackground pointerColorForeground cursorColor fadeColor color0 color1 color2 color3 color4 color5 color6 color7 color9 color8 color10 color11 color12 color13 color14 color15)
   b=(0          1          2                      3                      3           4         4      5      6      7      8      9      10     11     12     13     14      15      16      17      18      19)
-  for ((i = 0; i < 22; i++));
+  for ((i = 0; i < "${#a[@]}"; i++));
   do
     sed -i "s/^\(\*${a[$i]}:\s\+\)#....../\1${colors[${b[$i]}]}/" "$XRESOURCES"
   done
@@ -365,7 +381,7 @@ theme () {
   theme=$(echo "$1" | sed 's/^\s*//g; s/\s*$//g')
   [ ! "$theme" ] && theme="DEFAULT_TO_DMENU"
   if [[ -f "$colordatabase" ]]; then
-    if grep -E "qtile|dunst" -q <<< "${CONFIGS[@]}";
+    if grep -E "qtile|dunst|alacritty|kitty|xesources|rofi|dmenu|st" -q <<< "${CONFIGS[@]}";
     then
       # extract the theme colors, either directly if -t is valid
       # or with dmenu
@@ -391,6 +407,7 @@ theme () {
         alacritty ) alacritty_cfg "$colors" "$theme";;
         kitty ) kitty_cfg "$colors" "$theme";;
         xresources ) xresources_cfg "$colors" "$theme";;
+        rofi ) rofi_cfg "$colors" "$theme";;
         dmenu ) dmenu_cfg "$colors" "$theme";;
         st ) st_cfg "$colors" "$theme";;
         grub ) grub_cfg ;;
@@ -455,6 +472,7 @@ help () {
   echo "     XRESOURCES          the location of the xresources, used for Doom Emacs and Neovim (defaults to '\$HOME/.Xresources)"
   echo "     GRUB**              the location of the grub themes (set to '/usr/share/grub/themes/')"
   echo "     SDDM**              the location of the sddm themes (set to '/usr/share/sddm/themes/')"
+  echo "     ROFI                the path to the rofi theme file (defaults to '\$HOME/.config/rofi/all.rasi')"
   echo " ** cannot be changed"
   exit 0
 }
@@ -485,8 +503,8 @@ main () {
     esac
   done
   for config in "${CONFIGS[@]}"; do
-    [ "$config" = "all" ] && { CONFIGS=("qtile" "dunst" "alacritty" "kitty" "xresources" "dmenu" "grub" "sddm" "st"); break; }
-    [ "$config" = "other" ] && { CONFIGS=("qtile" "dunst" "alacritty" "kitty" "xresources" "dmenu" "st"); break; }
+    [ "$config" = "all" ] && { CONFIGS=("qtile" "dunst" "alacritty" "kitty" "xresources" "rofi" "dmenu" "grub" "sddm" "st"); break; }
+    [ "$config" = "other" ] && { CONFIGS=("qtile" "dunst" "alacritty" "kitty" "xresources" "rofi" "dmenu" "st"); break; }
     [ "$config" = "boot" ] && { CONFIGS=("grub" "sddm"); break; }
   done
 

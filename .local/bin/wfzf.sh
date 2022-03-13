@@ -3,10 +3,10 @@
 #      __ _|_  )_ _    ___   ___      github   page: https://github.com/a2n-s
 #     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/a2n-s/dotfiles
 #     \__,_/___|_||_|       /__/
-#             __          __     __     _
-#      ___   / / __ __ __/ _|___/ _| __| |_
-#     (_-<  / /  \ V  V /  _|_ /  _|(_-< ' \
-#     /__/ /_/    \_/\_/|_| /__|_|(_)__/_||_|
+#        _     __  _        __          __     __     _
+#       | |   / / | |__    / / __ __ __/ _|___/ _| __| |_
+#      _| |  / /  | '_ \  / /  \ V  V /  _|_ /  _|(_-< ' \
+#     (_)_| /_/   |_.__/ /_/    \_/\_/|_| /__|_|(_)__/_||_|
 #
 # Description:  changes all your wallpapers in one command, with fzf.
 #               adapted from https://hiphish.github.io/blog/2020/05/31/macho-man-command-on-steroids
@@ -15,7 +15,7 @@
 # Contributors: Stevan Antoine
 
 # parse the arguments
-OPTIONS=$(getopt -o h --long help -n 'wfzf.sh' -- "$@")
+OPTIONS=$(getopt -o hdr --long help,dmenu,rofi -n 'wfzf.sh' -- "$@")
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
 eval set -- "$OPTIONS"
 
@@ -41,6 +41,8 @@ help () {
   echo ""
   echo "Switches:"
   echo "     -h/--help         shows this help."
+  echo "     -d/--dmenu        uses dmenu instead of fzf."
+  echo "     -r/--rofi         uses rofi instead of fzf."
   echo ""
   echo "Environment variables:"
   echo "     WALLPAPERS        the path to the wallpapers (defaults to '/usr/share/backgrounds')"
@@ -48,9 +50,12 @@ help () {
 }
 
 main () {
+  command="fzf --prompt"
   while [[ $# -gt 0 ]]; do
     case "$1" in
       -h | --help ) help ;;
+      -d | --dmenu ) command="dmenu -c -l 20 -bw 5 -p"; break ;;
+      -r | --rofi ) command="rofi -dmenu -c -l 20 -bw 5 -p"; break ;;
       -- ) shift; break ;;
       * ) break ;;
     esac
@@ -65,11 +70,11 @@ main () {
       {
         grep "feh" ~/.fehbg | awk -v nm="$nb_monitors" -F" " '{ for (i = 4; i < 4 + nm; i++) print $i; }' | sed "s/'//g;";
         find "$WALLPAPERS" -type f | sort;
-      } | \
-      fzf --prompt="Please choose a wallpaper for $x: "
+      } | sed "s|$WALLPAPERS/||g" |\
+      $command "Wallpaper for $x: "
     )
     [ -z "$wallpaper" ] && exit 0
-    wallpapers+=("$wallpaper")
+    wallpapers+=("$WALLPAPERS/$wallpaper")
   done
   feh --bg-fill "${wallpapers[@]}"
 }
