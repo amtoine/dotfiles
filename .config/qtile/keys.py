@@ -44,6 +44,8 @@ from utils import _scratch
 from utils import HOME
 from utils import QSCRIPTS
 
+SHELL = "fish"
+
 # some shortcuts for the `qtile` key codes.
 SPC = "space"
 ESC = "Escape"
@@ -275,11 +277,11 @@ def init_keymap(mod, terminal, groups):
                     mode=" PICOM"
                 ),
                 KeyChord([], 't', [
-                    Key([], 'a', *_uacmd("alacritty"),        desc="Open alacritty in new window"),
-                    Key([], 'k', *_uacmd("kitty"),            desc="Open kitty in new window"),
-                    Key([], 'p', *_uacmd("python", terminal), desc="Open a python interpreter in new window"),
-                    Key([], 's', *_uacmd("st"),               desc="Open st in new window"),
-                    Key([], 't', *_uacmd(terminal),           desc="Open the qtile terminal"),
+                    Key([], 'a', *_uacmd(SHELL, "alacritty"),    desc="Open alacritty in new window"),
+                    Key([], 'k', *_uacmd(SHELL, "kitty", False), desc="Open kitty in new window"),
+                    Key([], 'p', *_uacmd("python", terminal),    desc="Open a python interpreter in new window"),
+                    Key([], 's', *_uacmd(SHELL, "st"),           desc="Open st in new window"),
+                    Key([], 't', *_uacmd(terminal),              desc="Open the qtile terminal"),
                     ],
                     mode=" TERMINAL"
                 ),
@@ -326,7 +328,7 @@ def init_keymap(mod, terminal, groups):
                 mode=" RESIZE"
             ),
             Key(MOD, SPC, lazy.layout.next(),                desc="Move window focus to other window"),
-            Key(MOD, RET, _cmd(terminal),                    desc="Launch terminal"),
+            Key(MOD, RET, _cmd(SHELL, terminal, False),      desc="Launch terminal"),
 
             Key(MOD, F1,  _cmd("hdmi.sh -M -b 8- -n"),       desc="Brightness of the main screen down"),
             Key(MOD, F2,  _cmd("hdmi.sh -M -b 8+ -n"),       desc="Brightness of the main screen up"),

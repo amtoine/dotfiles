@@ -363,15 +363,16 @@ SCRIPTS = ".local/bin"
 QSCRIPTS = ".config/qtile/scripts"
 
 
-def expand_terminal(terminal: str, fs: int = None) -> str:
+def expand_terminal(terminal: str, fs: int = None, hold: bool = True) -> str:
     """
         Adds appropriate flags to a terminal
         name to allow the execution of commands inside
         the terminal.
         `fs` is an optional font size for st's `-z` switch.
+        `hold` is an optional argument for kitty to "--hold".
     """
     if terminal == "kitty":
-        flags = ["--hold"]
+        flags = ["--hold"] if hold else []
     elif terminal == "st":
         flags = []
         if fs is not None:
@@ -381,21 +382,22 @@ def expand_terminal(terminal: str, fs: int = None) -> str:
         flags = ["-e"]
     else:
         flags = [""]
-    return ' '.join([terminal, *flags])
+    term = ' '.join([terminal, *flags])
+    return term
 
 
-def _cmd(command: str, terminal: str = None):
+def _cmd(command: str, terminal: str = None, hold: bool = True):
     """
         Runs a command.
         Possibly inside a terminal.
     """
     # add the terminal when the command needs one.
     if terminal is not None:
-        command = ' '.join([expand_terminal(terminal), command])
+        command = ' '.join([expand_terminal(terminal, hold=hold), command])
     return lazy.spawn(command)
 
 
-def _ucmd(command: str, terminal: str = None):
+def _ucmd(command: str, terminal: str = None, hold: bool = True):
     """
         Runs a command and ungrabs the current chord.
         Possibly inside a terminal.
@@ -403,17 +405,17 @@ def _ucmd(command: str, terminal: str = None):
         multi-depth chord.
         Needs to be written as *_cmd("...") inside a Key call.
     """
-    return _cmd(command, terminal), lazy.ungrab_chord()
+    return _cmd(command, terminal, hold=hold), lazy.ungrab_chord()
 
 
-def _uacmd(command: str, terminal: str = None):
+def _uacmd(command: str, terminal: str = None, hold: bool = True):
     """
         Runs a command and ungrabs all the current chords.
         Possibly inside a terminal.
         To be used a multi-depth chord.
         Needs to be written as *_cmd("...") inside a Key call.
     """
-    return _cmd(command, terminal), lazy.ungrab_all_chords()
+    return _cmd(command, terminal, hold=hold), lazy.ungrab_all_chords()
 
 
 def _rofi(modi: str, ungrab: bool = True):
