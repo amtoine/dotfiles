@@ -44,14 +44,11 @@ show_keymap () {
   choice=$(awk -F'%%' '{print $1"%%"$3"%%"$2}' "$KEYMAP" | column -t -s '%%' | sort | dmenu -l 20 -bw 5 | sed 's/ \s\+/%%/g' | awk -F'%%' '{print $3}')
   # func ~ command(arg)
   command=$(echo "$choice" | sed 's/(.*//')
-  arg=$(echo "$choice" | sed "s/[a-z_-]*(\(.*\))/\1/")
+  # remove command() and leading or trailing "" or '' pairs that mess up expansion
+  arg=$(echo "$choice" | sed "s/[a-z_-]*(\(.*\))/\1/; s/^'\(.*\)'$/\1/g; s/^\"\(.*\)\"$/\1/g")
 
-  # finally execute the command with optional arg
-  if [ "$arg" = "" ]; then
-    qtile cmd-obj -o cmd -f "$command"
-  else
-    qtile cmd-obj -o cmd -f $command -a "$arg"
-  fi
+  # finally execute the command
+  qtile cmd-obj -o cmd -f "$command" -a "$arg"
 }
 
 usage () {
