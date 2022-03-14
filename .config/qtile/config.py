@@ -17,6 +17,7 @@ import os
 import subprocess
 
 from libqtile import hook
+from libqtile import qtile
 from libqtile import layout
 from libqtile.config import Match
 from libqtile.utils import guess_terminal
@@ -25,6 +26,7 @@ from groups import init_groups
 from keys import init_keymap
 from layouts import init_layouts
 from mouse import init_mouse
+from popups import text_popup
 from screens import init_screens
 from style import LAYOUTS as lt
 from widgets import init_widget_defaults
@@ -79,7 +81,6 @@ reconfigure_screens = True
 # focus, should we respect this or not?
 auto_minimize = True
 
-
 @hook.subscribe.startup_once
 def autostart():
     """
@@ -108,6 +109,17 @@ def client_new(client):
         client.cmd_togroup(group_names[2])
     elif cls in ["discord", "Caprine", "Slack", "Signal", "Thunderbird"]:
         client.cmd_togroup(group_names[4])
+
+
+@hook.subscribe.setgroup
+def setgroup():
+    """
+        Run code whenever the user changes group.
+    """
+    # show a popup in the middle of the scren
+    # with the name of the new group
+    text_popup(qtile, qtile.current_group.name)
+
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the

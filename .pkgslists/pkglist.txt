@@ -95,7 +95,6 @@ qt5-virtualkeyboard
 qt5-webglplugin
 qt5-webview
 qt5ct
-qtile
 read-edid
 ripgrep
 rogue

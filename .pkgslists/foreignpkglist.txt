@@ -1,5 +1,6 @@
 a2n-s-wallpapers
 adwaita-dark
+alttab-git
 ani-cli
 archlinux-themes-sddm
 arcolinux-betterlockscreen
@@ -34,6 +35,7 @@ pixterm
 polybar
 python35
 python38
+qtile-extras-git
 quickemu
 reddio
 sddm-archlinux-theme-git

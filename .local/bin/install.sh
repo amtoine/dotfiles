@@ -197,7 +197,7 @@ init_deps () {
   deps_table[devour]="yay:devour pacman:xdo"
   deps_table[grub]="grub yay:catppuccin-grub-theme-git yay:sekiro-grub-theme-git"
   deps_table[issue]="issue"
-  deps_table[qtile]="pacman:qtile pacman:python-gobject pacman:gtk3 pip:gdk"
+  deps_table[qtile]="pacman:qtile pacman:python-gobject pacman:gtk3 pip:gdk yay:qtile-extras-git"
   deps_table[firefox]="pacman:firefox"
   deps_table[neovim]="pacman:neovim"
   deps_table[sddm]="pacman:sddm yay:sddm-theme-catppuccin yay:solarized-sddm-theme yay:multicolor-sddm-theme yay:sddm-chinese-painting-theme"

@@ -3,6 +3,7 @@ acpi
 adwaita-dark
 alacritty
 alsa-utils
+alttab-git
 ani-cli
 arandr
 archlinux-themes-sddm
@@ -205,6 +206,7 @@ qt5-webview
 qt5-xmlpatterns
 qt5ct
 qtile
+qtile-extras-git
 quickemu
 qutebrowser
 ranger
