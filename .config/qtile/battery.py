@@ -392,6 +392,15 @@ class Battery(base.ThreadPoolText):
                         timeout=self.timeout,
                     )
                     self._has_notified = True
+            elif percent > 100 - self.notify_below:
+                if not self._has_notified:
+                    send_notification(
+                        "Warning",
+                        "Battery at {0}%".format(percent),
+                        urgent=True,
+                        timeout=self.timeout,
+                    )
+                    self._has_notified = True
             elif self._has_notified:
                 self._has_notified = False
 

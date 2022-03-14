@@ -92,7 +92,7 @@ def autostart():
 
 
 @hook.subscribe.client_new
-def func(client):
+def client_new(client):
     """
         This function is ran everytime a window is created.
         The goal is, for instance, to send some windows to some dedicated
