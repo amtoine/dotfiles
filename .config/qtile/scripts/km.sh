@@ -9,62 +9,56 @@
 #     (_)__| /_/   \__, | /_/   /__/ /_/   |_\_\_|_|_(_)__/_||_|
 #                     |_|
 #
-# Description:  TODO
-# Dependencies: TODO
+# Description:  extracts the keymap, put it through dmenu and execute the command.
+# Dependencies: qtile
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
-################################################################################################
-## Some color definitions ######################################################################
-################################################################################################
-# Reset
-Off=$(printf '\033[0m')        # Text Reset
-# Regular Colors
-Blk=$(printf '\033[0;30m')     # Black
-Red=$(printf '\033[0;31m')     # Red
-Grn=$(printf '\033[0;32m')     # Green
-Ylw=$(printf '\033[0;33m')     # Yellow
-Blu=$(printf '\033[0;34m')     # Blue
-Pur=$(printf '\033[0;35m')     # Purple
-Cyn=$(printf '\033[0;36m')     # Cyan
-Wht=$(printf '\033[0;37m')     # White
-# High Intensity
-IRed=$(printf '\033[0;91m')    # Red
-IGrn=$(printf '\033[0;92m')    # Green
-IYlw=$(printf '\033[0;93m')    # Yellow
-IBlu=$(printf '\033[0;94m')    # Blue
-IPur=$(printf '\033[0;95m')    # Purple
-IWht=$(printf '\033[0;97m')    # White
-################################################################################################
-## 'Global constants' definitions ##############################################################
-################################################################################################
-# Specific color use. #
-#######################
-Ok=$Grn    # ok statement
-Err=$IRed  # errors
-Wrn=$IYlw  # warnings
-Cod=$IBlu  # code
-Hed=$IPur  # head
-Src=$Pur   # source
-Dst=$Grn   # destination
-Pmt=$Cyn   # prompt
-Tip=$IGrn  # tip
-
-[[ ! -v VAR ]] && VAR="DEFAULT"
-
-func () {
+show_keymap () {
   #
-  # TODO
+  # extracts the keymap, put it through dmenu and execute the command
   #
-  echo "this is an example function (VAR='$VAR')"
+  KEYMAP=$(mktemp /tmp/qtile-keymap.XXXXXX)
+  trap 'rm "$KEYMAP"' 0 1 15
+  CHORDS=$(mktemp /tmp/qtile-chords.XXXXXX)
+  trap 'rm "$CHORDS"' 0 1 15
+
+  # extract the raw keymap from qtile
+  python -c "print($(qtile cmd-obj -o cmd -f display_kb))" | tee "$KEYMAP" > /dev/null
+  # remove the header  | and  emojis       |  compact keys       ;  <root>      keysym             modifiers          > m+k  ; rm trailing spaces...               after chords      ;   align with '%%'
+  tail -n +3 "$KEYMAP" | tr -d '\200-\377' | sed 's/mod4, /mod4+/; s/<root>\s*\([a-zA-Z0-9]*\)\s*\(mod4[+a-zA-Z0-9]*\)/\2+\1/; s/^\s*//; s/\s*$//g; s/> />/g; s/^\([A-Z>]*\)\s\+/\1+/; s/ \s\+/%%/g' | column -t -s '%%' | tee "$KEYMAP" > /dev/null
+
+  # isolate the keychord entries
+  grep "Enter" "$KEYMAP" | awk '{print $3","$1}' | sort -r | tee "$CHORDS" > /dev/null
+  # replace them iteratively inside the keymap to get rid of chord names
+  for line in $(cat "$CHORDS"); do
+    pat=$(echo "$line" | awk -F, '{print $1}')
+    rep=$(echo "$line" | awk -F, '{print $2}')
+    sed -i "s/$pat/$rep/" "$KEYMAP"
+  done
+  sed -i 's/>[A-Z]*//; /Enter/d' "$KEYMAP"
+
+  #        realign    ; compact mod key...   and all special and long keys
+  sed -i 's/ \s\+/%%/g; s/^[a-z0-9]*/[S]/; s/+shift/+S/g; s/+comma/+,/; s/+period/+./; s/+mod1/+A/; s/+Return/+R/; s/+control/+C/; s/+space/+" "/' "$KEYMAP"
+  #        show 'key' 'desc' 'func' and let the user choose one of them with dmenu                      | separate again to isolate 'func'
+  choice=$(awk -F'%%' '{print $1"%%"$3"%%"$2}' "$KEYMAP" | column -t -s '%%' | sort | dmenu -l 20 -bw 5 | sed 's/ \s\+/%%/g' | awk -F'%%' '{print $3}')
+  # func ~ command(arg)
+  command=$(echo "$choice" | sed 's/(.*//')
+  arg=$(echo "$choice" | sed "s/[a-z_-]*(\(.*\))/\1/")
+
+  # finally execute the command with optional arg
+  if [ "$arg" = "" ]; then
+    qtile cmd-obj -o cmd -f "$command"
+  else
+    qtile cmd-obj -o cmd -f $command -a "$arg"
+  fi
 }
-
 
 usage () {
   #
   # the usage function.
   #
-  echo "Usage: ****.sh [-h]"
+  echo "Usage: qtile/scripts/km.sh [-h]"
   echo "Type -h or --help for the full help."
   exit 0
 }
@@ -73,23 +67,21 @@ help () {
   #
   # the help function.
   #
-  echo "****.sh:"
-  echo "     TODO"
-  echo "     Do not forget to puth it in your PATH."
+  echo "qtile/scripts/km.sh:"
+  echo "     show qtile's keymap"
+  echo "     and let the user explore and execute qtile"
+  echo "     bindings with dmenu."
   echo ""
   echo "Usage:"
-  echo "     ****.sh [-h]"
+  echo "     qtile/scripts/km.sh [-h]"
   echo ""
   echo "Switches:"
-  echo "     -h/--help           shows this help."
-  echo ""
-  echo "Environment variables:"
-  echo "     VAR                 an environment variable (defaults to 'DEFAULT')"
+  echo "     -h/--help    show this help."
   exit 0
 }
 
 # parse the arguments.
-OPTIONS=$(getopt -o h --long help -n '****.sh' -- "$@")
+OPTIONS=$(getopt -o h --long help -n 'qtile/scripts/km.sh' -- "$@")
 if [ $? != 0 ] ; then usage >&2 ; exit 1 ; fi
 eval set -- "$OPTIONS"
 
@@ -102,29 +94,7 @@ main () {
     esac
   done
 
-  python -c "print(`qtile cmd-obj -o cmd -f display_kb`)" | tee /tmp/qtile.kb > /dev/null
-  tail -n +3 /tmp/qtile.kb | tr -d '\200-\377' | sed 's/mod4, /mod4+/; s/<root>\s*\([a-zA-Z0-9]*\)\s*\(mod4[+a-zA-Z0-9]*\)/\2+\1/; s/^\s*//; s/> />/g; s/^\([A-Z>]*\)\s\+/\1+/; s/ \s\+/%%/g; s/\s*$//g' | column -t -s '%%' | tee /tmp/qtile.kb2 > /dev/null
-  cat /tmp/qtile.kb2 | grep Enter | awk '{print $3","$1}' | sort -r | tee /tmp/qtile.kb3 > /dev/null
-  cp /tmp/qtile.kb2 /tmp/qtile.kb4
-  for line in $(cat /tmp/qtile.kb3); do
-    pat=$(echo "$line" | awk -F, '{print $1}')
-    rep=$(echo "$line" | awk -F, '{print $2}')
-    sed -i "s/$pat/$rep/" /tmp/qtile.kb4
-  done
-  sed -i 's/>[A-Z]*//; /Enter/d' /tmp/qtile.kb4
-  sed 's/ \s\+/%%/g; s/+shift/+S/g; s/+comma/+,/; s/+period/+./; s/^[a-z0-9]*/[S]/;; s/+mod1/+A/; s/+Return/+R/; s/+control/+C/; s/+space/+" "/' /tmp/qtile.kb4 | tee /tmp/qtile.kb5 > /dev/null
-  choice=$(awk -F'%%' '{print $1"%%"$3"%%"$2}' /tmp/qtile.kb5 | column -t -s '%%' | sort | dmenu -l 20 -bw 5 | sed 's/ \s\+/%%/g' | awk -F'%%' '{print $3}')
-  command=$(echo "$choice" | sed 's/(.*//')
-  arg=$(echo "$choice" | sed "s/[a-z_-]*(\(.*\))/\1/")
-
-  if [ "$arg" = "" ]; then
-    echo qtile cmd-obj -o cmd -f "$command"
-    qtile cmd-obj -o cmd -f "$command"
-  else
-    echo qtile cmd-obj -o cmd -f $command -a "$arg"
-    qtile cmd-obj -o cmd -f $command -a "$arg"
-  fi
-  
+  show_keymap
 }
 
 main "$@"
