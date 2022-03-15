@@ -27,6 +27,7 @@ myman
 nerd-fonts-mononoki
 ngrok
 nsxiv
+nyxt
 paru
 pass-import
 pass-tomb

@@ -1,6 +1,7 @@
 ebook-tools
 kio-extras
 mpdecimal
+pandoc
 pipewire-media-session
 python-pyxdg
 unixodbc

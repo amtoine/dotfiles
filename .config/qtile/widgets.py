@@ -955,7 +955,7 @@ def clock(terminal, format='%H:%M', bg="#000000", fg="#ffffff"):
     )
 
 
-def battery(format, bg="#000000", fg="#ffffff", low=.2, high=.8):
+def battery(format, bg="#000000", fg="#ffffff", low=.15, high=.85):
     """
         class libqtile.widget.Battery(**config)[source]
         A text-based battery monitoring widget currently supporting FreeBSD
@@ -963,34 +963,35 @@ def battery(format, bg="#000000", fg="#ffffff", low=.2, high=.8):
         Supported bar orientations: horizontal and vertical
     """
     return Battery(
-        background=bg,             # Widget background color
-        battery=0,                 # Which battery should be monitored (battery number or name)
-        charge_char='',           # Character to indicate the battery is charging
-        discharge_char='',        # Character to indicate the battery is discharging
-        empty_char='',            # Character to indicate the battery is empty
-        fmt='{}',                  # How to format the text
-        font=FONT,                 # Default font
-        fontshadow=None,           # font shadow color, default is None(no shadow)
-        fontsize=None,             # Font size. Calculated if None.
-        foreground=fg,             # Foreground colour
-        format=format,             # Display format
-        full_char='',             # Character to indicate the battery is full
-        hide_threshold=None,       # Hide the text when there is enough energy 0 <= x < 1
-        high_background=None,      # Background color on high battery
-        high_foreground="#ffff00", # Font color on high battery
-        high_percentage=high,      # Indicates when to use the high_foreground color 0 < l < x < 1
-        low_background=None,       # Background color on low battery
-        low_foreground="#ff0000",  # Font color on low battery
-        low_percentage=low,        # Indicates when to use the low_foreground color 0 < x < h < 1
-        notification_timeout=0,    # Time in seconds to display notification. 0 for no expiry.
-        markup=True,               # Whether or not to use pango markup
-        max_chars=0,               # Maximum number of characters to display in widget.
-        mouse_callbacks={},        # Dict of mouse button press callback functions. Accepts functions and lazy calls.
-        notify_below=low*100,      # Send a notification below this battery level.
-        padding=None,              # Padding. Calculated if None.
-        show_short_text=False,     # Show "Full" or "Empty" rather than formated text
-        unknown_char='?',          # Character to indicate the battery status is unknown
-        update_interval=60,        # Seconds between status updates
+        background=bg,              # Widget background color
+        battery=0,                  # Which battery should be monitored (battery number or name)
+        charge_char='',            # Character to indicate the battery is charging
+        discharge_char='',         # Character to indicate the battery is discharging
+        empty_char='',             # Character to indicate the battery is empty
+        fmt='{}',                   # How to format the text
+        font=FONT,                  # Default font
+        fontshadow=None,            # font shadow color, default is None(no shadow)
+        fontsize=None,              # Font size. Calculated if None.
+        foreground=fg,              # Foreground colour
+        format=format,              # Display format
+        full_char='',              # Character to indicate the battery is full
+        hide_threshold=None,        # Hide the text when there is enough energy 0 <= x < 1
+        high_background=None,       # Background color on high battery
+        high_foreground="#ffff00",  # Font color on high battery
+        high_percentage=high,       # Indicates when to use the high_foreground color 0 < l < x < 1
+        low_background=None,        # Background color on low battery
+        low_foreground="#ff0000",   # Font color on low battery
+        low_percentage=low,         # Indicates when to use the low_foreground color 0 < x < h < 1
+        notification_timeout=0,     # Time in seconds to display notification. 0 for no expiry.
+        markup=True,                # Whether or not to use pango markup
+        max_chars=0,                # Maximum number of characters to display in widget.
+        mouse_callbacks={},         # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        notify_below=low*100,       # Send a notification below this battery level.
+        notify_above=high*100,      # Send a notification above this battery level.
+        padding=None,               # Padding. Calculated if None.
+        show_short_text=False,      # Show "Full" or "Empty" rather than formated text
+        unknown_char='?',           # Character to indicate the battery status is unknown
+        update_interval=60,         # Seconds between status updates
     )
 
 

@@ -76,6 +76,14 @@ connect () {
   change_brightness "$SECOND" .2
 }
 
+wm_restart () {
+  if pgrep qtile &> /dev/null;
+  then
+    qtile cmd-obj -o cmd -f restart;
+    return
+  fi
+}
+
 notify_brightness () {
   dunstify "Brightness ($1)" -h "int:value:$2" -u low
 }
@@ -152,10 +160,10 @@ main () {
       fi
       exit 0
       ;;
-    disconnect ) xrandr --output "$MAIN" --auto --output "$SECOND" --off; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "$SECOND disconnected" ;;
-    left )       connect "$MAIN" "$SECOND" "left-of"; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "$SECOND is now on the left of $MAIN" ;;
-    mirror )     connect "$MAIN" "$SECOND" "same-as"; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "$SECOND is now the same as $MAIN" ;;
-    right )      connect "$MAIN" "$SECOND" "right-of"; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "$SECOND is now on the right of $MAIN" ;;
+    disconnect ) xrandr --output "$MAIN" --auto --output "$SECOND" --off; wm_restart; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "$SECOND disconnected" ;;
+    left )       connect "$MAIN" "$SECOND" "left-of"; wm_restart; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "$SECOND is now on the left of $MAIN" ;;
+    mirror )     connect "$MAIN" "$SECOND" "same-as"; wm_restart; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "$SECOND is now the same as $MAIN" ;;
+    right )      connect "$MAIN" "$SECOND" "right-of"; wm_restart; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "$SECOND is now on the right of $MAIN" ;;
     * ) echo "an error occured (got unexpected '$ACTION')"; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "an error occured (got unexpected '$ACTION')"; break ;;
   esac
 }

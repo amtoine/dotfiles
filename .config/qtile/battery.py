@@ -335,6 +335,7 @@ class Battery(base.ThreadPoolText):
         ("update_interval", 60, "Seconds between status updates"),
         ("battery", 0, "Which battery should be monitored (battery number or name)"),
         ("notify_below", None, "Send a notification below this battery level."),
+        ("notify_above", None, "Send a notification above this battery level."),
         ("notification_timeout", 10, "Time in seconds to display notification. 0 for no expiry."),
     ]
 
@@ -383,7 +384,7 @@ class Battery(base.ThreadPoolText):
 
         if self.notify_below:
             percent = int(status.percent * 100)
-            if percent < self.notify_below:
+            if percent < self.notify_below and status.state == BatteryState.DISCHARGING:
                 if not self._has_notified:
                     send_notification(
                         "Warning",
@@ -392,7 +393,8 @@ class Battery(base.ThreadPoolText):
                         timeout=self.timeout,
                     )
                     self._has_notified = True
-            elif percent > 100 - self.notify_below:
+        if self.notify_above:
+            if percent > self.notify_above and status.state == BatteryState.CHARGING:
                 if not self._has_notified:
                     send_notification(
                         "Warning",

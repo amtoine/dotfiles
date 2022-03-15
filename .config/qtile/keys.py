@@ -132,6 +132,7 @@ def init_keymap(mod, terminal, groups):
             KeyChord(MOD, 'b', [
                 Key([], 'c', *_ucmd("chromium"),              desc="Launch chromium"),
                 Key([], 'f', *_ucmd("firefox"),               desc="Launch firefox"),
+                Key([], 'n', *_ucmd("nyxt"),                  desc="Launch nyxt"),
                 Key([], 'q', *_ucmd("qutebrowser"),           desc="Launch qutebrowser"),
                 Key([], 's', *_ucmd(SURF),                    desc="Launch surf"),
                 Key([], 'v', *_ucmd(VIMB),                    desc="Launch vimb"),
@@ -170,7 +171,7 @@ def init_keymap(mod, terminal, groups):
                 Key([], 'r', *_ucmd(f"dm-reddit -fn '{DMFONT}'"),    desc="Search reddit via dmenu"),
                 Key([], 's', *_ucmd(f"dm-websearch -fn '{DMFONT}'"), desc="Search various search engines via dmenu"),
                 Key([], 'w', lazy.run_extension(window_list()),
-                    lazy.ungrab_chord(),                      desc="List and choose windows with dmenu"),
+                    lazy.ungrab_chord(),                             desc="List and choose windows with dmenu"),
                 ],
                 mode=" DMENU"
             ),
