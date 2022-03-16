@@ -387,18 +387,24 @@ class Battery(base.ThreadPoolText):
             if percent < self.notify_below and status.state == BatteryState.DISCHARGING:
                 if not self._has_notified:
                     send_notification(
-                        "Warning",
-                        "Battery at {0}%".format(percent),
+                        "Warning - Battery low",
+                        "Battery level: {0}%".format(percent),
                         urgent=True,
                         timeout=self.timeout,
                     )
                     self._has_notified = True
+            elif self._has_notified:
+                self._has_notified = False
+            # do not check the above case
+            return self.build_string(status)
+
         if self.notify_above:
+            percent = int(status.percent * 100)
             if percent > self.notify_above and status.state == BatteryState.CHARGING:
                 if not self._has_notified:
                     send_notification(
-                        "Warning",
-                        "Battery at {0}%".format(percent),
+                        "Warning - Battery high",
+                        "Battery level: {0}%".format(percent),
                         urgent=True,
                         timeout=self.timeout,
                     )

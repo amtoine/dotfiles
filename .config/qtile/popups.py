@@ -47,8 +47,7 @@ def text_popup(qtile, text, size=150):
         initial_focus=0,
         rows=1,
         cols=1,
-        keyboard_navigation=False,
     )
 
     layout.show(centered=True)
-    qtile.call_later(1, layout.kill)  # kill popup after 1 second
+    qtile.call_later(.5, layout.kill)  # kill popup after 1 second
