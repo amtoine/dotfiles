@@ -26,7 +26,7 @@ export FZF_DEFAULT_OPTS="
 --height=100%
 --layout=reverse
 --preview-window=\"down,75%\"
---preview=\"catimg {1} -H 100 -r 2\""
+--preview=\"catimg $WALLPAPERS/{1} -H 100 -r 2\""
 
 help () {
   #

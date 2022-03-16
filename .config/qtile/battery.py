@@ -382,35 +382,23 @@ class Battery(base.ThreadPoolText):
         except RuntimeError as e:
             return "Error: {}".format(e)
 
-        if self.notify_below:
-            percent = int(status.percent * 100)
-            if percent < self.notify_below and status.state == BatteryState.DISCHARGING:
-                if not self._has_notified:
-                    send_notification(
-                        "Warning - Battery low",
-                        "Battery level: {0}%".format(percent),
-                        urgent=True,
-                        timeout=self.timeout,
-                    )
-                    self._has_notified = True
-            elif self._has_notified:
-                self._has_notified = False
-            # do not check the above case
-            return self.build_string(status)
+        percent = int(status.percent * 100)
+        warning = None
+        if self.notify_below and percent < self.notify_below and status.state == BatteryState.DISCHARGING:
+            warning = "low"
+        elif self.notify_above and percent > self.notify_above and status.state == BatteryState.CHARGING:
+            warning = "high"
+        elif self._has_notified:
+            self._has_notified = False
 
-        if self.notify_above:
-            percent = int(status.percent * 100)
-            if percent > self.notify_above and status.state == BatteryState.CHARGING:
-                if not self._has_notified:
-                    send_notification(
-                        "Warning - Battery high",
-                        "Battery level: {0}%".format(percent),
-                        urgent=True,
-                        timeout=self.timeout,
-                    )
-                    self._has_notified = True
-            elif self._has_notified:
-                self._has_notified = False
+        if warning is not None and not self._has_notified:
+            send_notification(
+                f"Warning - Battery {warning}",
+                "Battery level: {0}%".format(percent),
+                urgent=True,
+                timeout=self.timeout,
+            )
+            self._has_notified = True
 
         return self.build_string(status)
 
