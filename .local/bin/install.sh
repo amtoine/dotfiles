@@ -248,17 +248,17 @@ init_deps () {
   deps_table[feh]="pacman:feh"
   deps_table[bspwm]="pacman:bspwm pacman:sxhkd"
   deps_table[spectrwm]="pacman:spectrwm"
+  deps_table[shell-color-scripts]="aur:shell-color-scripts"
 
   # need to PKGBUILD them
-  deps_table[wallpapers]="wallpapers:a2n-s/wallpapers +feh"
-  deps_table[arcologout]="mine:arcologout"
-  deps_table[shell-color-scripts]="aur:shell-color-scripts"
-  deps_table[dmenu]="make:a2n-s/dmenu"
-  deps_table[st]="make:a2n-s/st"
-  deps_table[tabbed]="make:a2n-s/tabbed"
-  deps_table[surf]="make:a2n-s/surf pacman:gcr pacman:webkit2gtk +tabbed"
-  deps_table[slock]="make:a2n-s/slock"
-  deps_table[sfm]="make:a2n-s/sfm"
+  deps_table[wallpapers]="pkg:wallpapers/main +feh"
+  deps_table[arcologout]="pkg:arcolinux-logout/lock/other"
+  deps_table[dmenu]="pkg:dmenu/main"
+  deps_table[st]="pkg:st/main"
+  deps_table[tabbed]="pkg:tabbed/main"
+  deps_table[surf]="pkg:surf/main pacman:gcr pacman:webkit2gtk +tabbed"
+  deps_table[slock]="pkg:slock/main"
+  deps_table[sfm]="pkg:sfm/main"
 
   # always add the base dependencies
   echo "${deps_table[base]}" | tr ' ' '\n' >> "$deps_file"
@@ -515,24 +515,25 @@ _install_python_deps () {
   pip install $(grep -e "^pip:" "$deps_file" | sed 's/^pip://g' | tr '\n' ' ')
 }
 
-_install_custom_builds () {
+_install_custom_pkgs () {
   #
-  # install custom builds, i.e. dependencies marked with "make:"
-  # by pulling them from my repo and `make`ing them
+  # install custom packages, i.e. dependencies marked with "pkg:"
+  # by pulling their PKGBUILD from my repos, `makepkg`ing them and
+  # `pacman`ing them
   #
   info "################################################################"
-  info "## Installing custom builds of suckless-like software         ##"
+  info "## Installing custom packages of suckless software and others ##"
   info "################################################################"
-  for dep in $(grep -e "^make:" "$deps_file"); do
-    repo="$(echo "$dep" | sed 's/^make://g')"
-    # clone the right repo
-    sudo git clone "https://github.com/$repo" "/opt/$repo";
-    # build it inside the directory and go back
-    (
-      cd "/opt/$repo" || return
-      sudo make clean install
-    )
-  done
+  (
+    cd /tmp || return
+    for dep in $(grep -e "^pkg:" "$deps_file"); do
+      repo_branch="${dep//^pkg:/}"
+      # pull the PKGBUILD
+      curl -fsSLo PKGBUILD "https://raw.githubusercontent.com/a2n-s/$repo_branch/PKGBUILD"
+      makepkg -cf
+    done
+    sudo pacman -U -- *.pkg.tar.zst*
+  )
 }
 
 install_deps () {
@@ -545,7 +546,7 @@ install_deps () {
   if grep -e "^aur-helper:paru" "$deps_file" -q; then _install_paru; fi
   if grep -e "^aur:" "$deps_file" -q; then _install_aur_deps; fi
   if grep -e "^pip:" "$deps_file" -q; then _install_python_deps; fi
-  if grep -e "^make:" "$deps_file" -q; then _install_custom_builds; fi
+  if grep -e "^pkg:" "$deps_file" -q; then _install_custom_pkgs; fi
 }
 
 install_config () {
@@ -731,22 +732,6 @@ install_config () {
   if grep -e "^.*:conky" "$deps_file" -q; then
     echo -e "${CMD}cp -r ${SRC}$DOTFILES/.config/conky ${DST}$HOME/.config${OFF}"
     cp -r "$DOTFILES/.config/conky" "$HOME/.config"
-  fi
-  if grep -e "^.*:arcologout" "$deps_file" -q; then
-    # in the middle of a pull request so need to use my fork and pull branch.
-    echo -e "${CMD}git clone ${SRC}https://github.com/a2n-s/arcolinux-logout.git ${DST}/tmp/arcologout${OFF}"
-    git clone https://github.com/a2n-s/arcolinux-logout.git /tmp/arcologout
-    echo -e "${CMD}git ${SRC}-C /tmp/arcologout/ ${CMD}checkout ${DST}lock/other${OFF}"
-    git -C /tmp/arcologout/ checkout lock/other
-    ##
-    echo -e "${CMD}sudo cp ${SRC}$DOTFILES/arcologout ${DST}$HOME/.config/${OFF}"
-    sudo cp $DOTFILES/arcologout $HOME/.config/
-    echo -e "${CMD}sudo cp ${SRC}/tmp/arcologout/usr/local/bin/arcolinux-logout ${DST}/usr/local/bin/${OFF}"
-    sudo cp /tmp/arcologout/usr/local/bin/arcolinux-logout /usr/local/bin/
-    echo -e "${CMD}sudo cp -r ${SRC}/tmp/arcologout/usr/share/arcologout ${DST}/usr/share${OFF}"
-    sudo cp -r /tmp/arcologout/usr/share/arcologout /usr/share
-    echo -e "${CMD}sudo cp -r ${SRC}/tmp/arcologout/usr/share/arcologout-themes ${DST}/usr/share${OFF}"
-    sudo cp -r /tmp/arcologout/usr/share/arcologout-themes /usr/share
   fi
   if grep -e "^.*:shell-color-scripts" "$deps_file" -q; then
     scriptstoban=(bomber pipes1 pipes2 pipes2-slim)
