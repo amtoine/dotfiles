@@ -139,12 +139,16 @@ init_deps () {
   info "## Building the dependency table of the whole configuration   ##"
   info "################################################################"
   _commands=(  \
+    "aura:AUR_helpers:off" \
+    "paru::off" \
+
     "grub:boot:off" \
     "sddm::off" \
     "issue::off" \
 
     "qtile:Window_Managers:off" \
-    "bspwn::off" \
+    "dwm::off" \
+    "bspwm::off" \
     "spectrwm::off" \
 
     "st:Terminal_Emulators:off" \
@@ -203,15 +207,18 @@ init_deps () {
     "mpv::off" \
   )
 
-  deps_table[base]="pacman:base-devel pacman:python pacman:python-pip pacman:xorg pacman:xorg-xinit aur-helper:yay aur-helper:aura aur-helper:paru pacman:git"
+  deps_table[base]="pacman:base-devel pacman:python pacman:python-pip aur-helper:yay pacman:git"
+  deps_table[xorg]="pacman:xorg pacman:xorg-xinit"
+  deps_table[aura]="aur-helper:aura"
+  deps_table[paru]="aur-helper:paru"
   deps_table[devour]="aur:devour pacman:xdo"
   deps_table[grub]="grub aur:catppuccin-grub-theme-git aur:sekiro-grub-theme-git"
   deps_table[issue]="issue"
-  deps_table[qtile]="pacman:qtile pacman:python-gobject pacman:gtk3 pip:gdk pip:psutil pip:dbus-next aur:python-iwlib aur:qtile-extras-git"
+  deps_table[qtile]="+xorg pacman:qtile pacman:python-gobject pacman:gtk3 pip:gdk pip:psutil pip:dbus-next aur:python-iwlib aur:qtile-extras-git"
   deps_table[firefox]="pacman:firefox"
   deps_table[qutebrowser]="pacman:qutebrowser"
   deps_table[neovim]="pacman:neovim"
-  deps_table[sddm]="pacman:sddm aur:sddm-theme-catppuccin aur:solarized-sddm-theme aur:multicolor-sddm-theme aur:sddm-chinese-painting-theme"
+  deps_table[sddm]="pacman:sddm aur:sddm-theme-catppuccin-git aur:solarized-sddm-theme aur:multicolor-sddm-theme aur:sddm-chinese-painting-theme"
   deps_table[kitty]="pacman:kitty"
   deps_table[alacritty]="pacman:alacritty"
   deps_table[bash]="pacman:bash pip:virtualenvwrapper"
@@ -246,8 +253,8 @@ init_deps () {
   deps_table[dunst]="pacman:dunst"
   deps_table[picom]="pacman:picom"
   deps_table[feh]="pacman:feh"
-  deps_table[bspwm]="pacman:bspwm pacman:sxhkd"
-  deps_table[spectrwm]="pacman:spectrwm"
+  deps_table[bspwm]="+xorg pacman:bspwm pacman:sxhkd"
+  deps_table[spectrwm]="+xorg pacman:spectrwm"
   deps_table[shell-color-scripts]="aur:shell-color-scripts"
 
   # need to PKGBUILD them
@@ -259,6 +266,7 @@ init_deps () {
   deps_table[surf]="pkg:surf/main pacman:gcr pacman:webkit2gtk +tabbed"
   deps_table[slock]="pkg:slock/main"
   deps_table[sfm]="pkg:sfm/main"
+  deps_table[dwm]="pkg:dwm/main"
 
   # always add the base dependencies
   echo "${deps_table[base]}" | tr ' ' '\n' >> "$deps_file"
@@ -527,7 +535,7 @@ _install_custom_pkgs () {
   (
     cd /tmp || return
     for dep in $(grep -e "^pkg:" "$deps_file"); do
-      repo_branch="${dep//^pkg:/}"
+      repo_branch="$(echo "$dep" | sed 's/^pkg://')"
       # pull the PKGBUILD
       curl -fsSLo PKGBUILD "https://raw.githubusercontent.com/a2n-s/$repo_branch/PKGBUILD"
       makepkg -cf
