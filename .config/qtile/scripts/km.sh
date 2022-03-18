@@ -41,7 +41,7 @@ show_keymap () {
   #        realign    ; compact mod key...   and all special and long keys
   sed -i 's/ \s\+/%%/g; s/^[a-z0-9]*/[S]/; s/+shift/+S/g; s/+comma/+,/; s/+period/+./; s/+mod1/+A/; s/+Return/+R/; s/+control/+C/; s/+space/+" "/' "$KEYMAP"
   #        show 'key' 'desc' 'func' and let the user choose one of them with dmenu                      | separate again to isolate 'func'
-  choice=$(awk -F'%%' '{print $1"%%"$3"%%"$2}' "$KEYMAP" | column -t -s '%%' | sort | dmenu -l 20 -bw 5 | sed 's/ \s\+/%%/g' | awk -F'%%' '{print $3}')
+  choice=$(awk -F'%%' '{print $1"%%"$3"%%"$2}' "$KEYMAP" | column -t -s '%%' | sort | dmenu -i -l 20 -bw 5 | sed 's/ \s\+/%%/g' | awk -F'%%' '{print $3}')
   # func ~ command(arg)
   command=$(echo "$choice" | sed 's/(.*//')
   # remove command() and leading or trailing "" or '' pairs that mess up expansion

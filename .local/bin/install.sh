@@ -259,11 +259,11 @@ init_deps () {
 
   # need to PKGBUILD them
   deps_table[wallpapers]="pkg:wallpapers/main +feh"
-  deps_table[arcologout]="pkg:arcolinux-logout/lock/other"
+  deps_table[arcologout]="pkg:arcolinux-logout/lock/other pacman:python-cairo"
   deps_table[dmenu]="pkg:dmenu/main"
   deps_table[st]="pkg:st/main"
   deps_table[tabbed]="pkg:tabbed/main"
-  deps_table[surf]="pkg:surf/main pacman:gcr pacman:webkit2gtk +tabbed"
+  deps_table[surf]="pkg:surf/main pacman:gcr pacman:webkit2gtk pacman:xorg-xprop +tabbed"
   deps_table[slock]="pkg:slock/main"
   deps_table[sfm]="pkg:sfm/main"
   deps_table[dwm]="pkg:dwm/main"
@@ -801,7 +801,7 @@ help () {
   echo "     files will be moved around the filesystem."
   echo ""
   echo "Usage:"
-  echo "     install.sh [-hsfSr]  [-a/--action ACTION]"
+  echo "     install.sh [-hsfSrai]"
   echo ""
   echo "Switches:"
   echo "     -h/--help           shows this help."
@@ -809,10 +809,8 @@ help () {
   echo "     -f/--nodialog       do not ask for confirmation."
   echo "     -S/--noshell        do not change the shell."
   echo "     -r/--reboot         reboot without asking."
-  echo "     -a/--action ACTION  chooses the action to perform."
-  echo "                            available actions:"
-  echo "                                 all - install everything"
-  echo "                         interactive - let the user choose the software"
+  echo "     -a/--all            install everything"
+  echo "     -i/--interactive    interactive install process"
   echo ""
   echo "Environment variables:"
   echo "     DOTFILES    the path where the dotfiles are pulled down  (defaults to \$HOME/.dotfiles.a2n-s)"
@@ -821,7 +819,7 @@ help () {
 }
 
 # parse the arguments.
-OPTIONS=$(getopt -o hsrSfa:d --long help,nosync,reboot,noshell,nodialog,action:,debug \
+OPTIONS=$(getopt -o hsrSfaid --long help,nosync,reboot,noshell,nodialog,action,interactive,debug \
               -n 'install.sh' -- "$@")
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
 eval set -- "$OPTIONS"
@@ -844,7 +842,8 @@ main () {
       -f | --nodialog ) NODIALOG="no"; shift 1 ;;
       -S | --noshell ) NOPROMPTSHELL="no"; shift 1 ;;
       -r | --reboot ) REBOOT="yes"; shift 1 ;;
-      -a | --action ) ACTION="$2"; shift 2 ;;
+      -a | --action ) ACTION="all"; shift 1 ;;
+      -i | --interactive ) ACTION="interactive"; shift 1 ;;
       -d | --debug ) DEBUG="yes"; shift 1 ;;
       -- ) shift; break ;;
       * ) break ;;
@@ -854,7 +853,7 @@ main () {
   # check if the action is valid.
   case "$ACTION" in
     all | interactive ) ;;
-    '' ) warning "install.sh requires the -a/--action switch"; help ;;
+    '' ) warning "defaulting to interactive install"; ACTION="interactive" ;;
     * ) error "got unexpected action '$ACTION'" ;;
   esac
 

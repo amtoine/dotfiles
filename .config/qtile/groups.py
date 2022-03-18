@@ -20,6 +20,7 @@ from libqtile.config import Group
 from libqtile.config import ScratchPad
 from libqtile.dgroups import simple_key_binder
 
+from keys import SHELL
 from utils import expand_terminal
 
 
@@ -30,13 +31,13 @@ def init_groups(terminal: str):
         Return the list of groups and the list of group names.
     """
     group_opts = [
-        ["1 ", "TALL"],  # development
-        ["2 ", "TALL"],  # development
-        ["3 ", "TREE"],  # development
-        [" ",  "TALL"],  # internet
-        [" ",  "TREE"],  # chat
-        [" ",  "TALL"],  # music
-        [" ",  "WIDE"],  # video
+        ["dv1", "TALL"],  # development
+        ["dv2", "TALL"],  # development
+        ["dv3", "TREE"],  # development
+        ["www", "TALL"],  # internet
+        ["cht", "TREE"],  # chat
+        ["mus", "TALL"],  # music
+        ["vid", "WIDE"],  # video
     ]
     groups = [
         Group(name, layout=layout)
@@ -46,7 +47,7 @@ def init_groups(terminal: str):
     scratchpads = [
         ScratchPad("sp1", [
             DropDown(
-                "term",   terminal,
+                "term", f"{expand_terminal(terminal)} {SHELL}",
                 x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
             DropDown(
@@ -75,6 +76,10 @@ def init_groups(terminal: str):
             ),
             DropDown(
                 "fm",     f"{expand_terminal(terminal, fs=24)} lf",
+                x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
+            ),
+            DropDown(
+                "du",     f"{expand_terminal(terminal, fs=24)} ncdu",
                 x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
         ]),

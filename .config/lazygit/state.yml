@@ -1,5 +1,7 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/ants/ghq/git.suckless.org/dwm
+- /home/ants/.local/bin
 - /home/ants/ghq/github.com/a2n-s/wallpapers
 - /home/ants/ghq/github.com/a2n-s/hiv_experiment
 - /home/ants/.config/nvim
@@ -10,7 +12,6 @@ recentrepos:
 - /home/ants/ghq/git.suckless.org/st
 - /home/ants/ghq/github.com/a2n-s/themes
 - /home/ants/.oh-my-bash
-- /home/ants/ghq/git.suckless.org/dwm
 - /home/ants/ghq/git.suckless.org/surf
 - /home/ants/research/imagineXdial
 - /home/ants/research/ma_playground_env

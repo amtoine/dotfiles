@@ -220,7 +220,9 @@ But as it is the first time, as I said, that I do such a thing in public, I do n
 **THE INSTALLATION SCRIPT IS FINALLY THERE!!**  
 Simply run:
 ```bash
-curl -fsFLo /tmp/a2n-s.install.sh https://raw.githubusercontent.com/a2n-s/dotfiles/main/.local/bin/install.sh; /tmp/a2n-s.install.sh --help
+curl -fsFLo /tmp/a2n-s.install.sh https://raw.githubusercontent.com/a2n-s/dotfiles/main/.local/bin/install.sh
+chmod +x /tmp/a2n-s.install.sh
+/tmp/a2n-s.install.sh --help
 ```
 to pull the script down and directly show the help message, and then
 ```bash
