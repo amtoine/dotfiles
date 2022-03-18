@@ -991,7 +991,7 @@ def battery(format, bg="#000000", fg="#ffffff", low=.15, high=.85):
         padding=None,               # Padding. Calculated if None.
         show_short_text=False,      # Show "Full" or "Empty" rather than formated text
         unknown_char='?',           # Character to indicate the battery status is unknown
-        update_interval=60,         # Seconds between status updates
+        update_interval=10,         # Seconds between status updates
     )
 
 

@@ -106,6 +106,7 @@ jq
 jupyter-notebook
 kitty
 kolourpaint
+ktorrent
 kvantum
 lazygit
 lf
@@ -218,6 +219,7 @@ reddio
 ripgrep
 rofi
 rogue
+rtorrent
 rust
 sauerbraten
 sc
@@ -258,8 +260,10 @@ toilet
 tomb
 tree
 ttf-iosevka-nerd
+ttf-muli
 ttf-symbola
 ueberzug
+ufw
 unzip
 vi
 vifm

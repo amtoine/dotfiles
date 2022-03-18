@@ -17,6 +17,9 @@ import os
 from libqtile.lazy import lazy
 
 from collections import namedtuple
+from collections.abc import Sequence
+from shutil import which
+from libqtile.log_utils import logger
 
 import gi
 gi.require_version("Gdk", "3.0")
@@ -486,3 +489,29 @@ def _scratch(scratchpad: str, dropdown: str):
         inside a scratchpad.
     """
     return lazy.group[scratchpad].dropdown_toggle(dropdown)
+
+
+def guess_shell(preference=None):
+    """
+        Try to guess shell.
+    """
+    test_shells = []
+    if isinstance(preference, str):
+        test_shells += [preference]
+    elif isinstance(preference, Sequence):
+        test_shells += list(preference)
+    test_shells += [
+        "bash",
+        "fish",
+        "zsh",
+    ]
+
+    for shell in test_shells:
+        logger.debug("Guessing shell: {}".format(shell))
+        if not which(shell, os.X_OK):
+            continue
+
+        logger.info("Shell found: {}".format(shell))
+        return shell
+
+    logger.error("Default shell has not been found.")

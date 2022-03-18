@@ -54,6 +54,7 @@ hugo
 jgmenu
 kitty
 kolourpaint
+ktorrent
 kvantum
 lazygit
 librsync
@@ -98,6 +99,7 @@ qt5ct
 read-edid
 ripgrep
 rogue
+rtorrent
 rust
 sauerbraten
 sc
@@ -113,6 +115,7 @@ termdown
 thunderbird
 tig
 tldr
+ufw
 vi
 vifm
 vimb

@@ -30,19 +30,26 @@ from popups import text_popup
 from screens import init_screens
 from style import LAYOUTS as lt
 from widgets import init_widget_defaults
+from utils import guess_shell
 
 
 mod = "mod4"  # the super (windows or mac) key controls `qtile`
-preference = [
+terminal_preferences = [
     "st",
     "alacritty",
     "kitty",
 ]
-terminal = guess_terminal(preference=preference)
+shell_preferences = [
+    "xonsh",
+    "fish",
+    "bash",
+]
+terminal = guess_terminal(preference=terminal_preferences)
+shell = guess_shell(preference=shell_preferences)
 
 # initialize everything.
-groups, group_names = init_groups(terminal)
-keys = init_keymap(mod, terminal, groups)
+groups, group_names = init_groups(terminal, shell)
+keys = init_keymap(mod, terminal, shell, groups)
 layouts = init_layouts()
 widget_defaults = init_widget_defaults()
 extension_defaults = widget_defaults.copy()

@@ -20,11 +20,10 @@ from libqtile.config import Group
 from libqtile.config import ScratchPad
 from libqtile.dgroups import simple_key_binder
 
-from keys import SHELL
 from utils import expand_terminal
 
 
-def init_groups(terminal: str):
+def init_groups(terminal: str, shell: str):
     """
         Initializes somes groups to sort windows easier.
 
@@ -47,7 +46,7 @@ def init_groups(terminal: str):
     scratchpads = [
         ScratchPad("sp1", [
             DropDown(
-                "term", f"{expand_terminal(terminal)} {SHELL}",
+                "term", f"{expand_terminal(terminal)} {shell}",
                 x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
             ),
             DropDown(
