@@ -41,6 +41,7 @@ terminal_preferences = [
 ]
 shell_preferences = [
     "xonsh",
+    "nu",
     "fish",
     "bash",
 ]

@@ -54,7 +54,6 @@ tabbed-a2ns-git
 telegram-tg
 toilet
 tomb
-ttf-muli
 ttf-symbola
 xmenu
 xsnow

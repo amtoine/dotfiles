@@ -63,18 +63,22 @@ alias rmrf='rm -rf'
 
 # enable color support of ls and also add handy aliases
 if command -v exa &> /dev/null; then
-  alias ls='exa -g --icons'
-  alias ll="exa -l -g --icons"
-  alias lla="exa -l -g -a --icons"
-  alias tree="exa -g --icons --tree"
+  alias ls='exa -g --icons --group-directories-first'
+  alias ll="exa -l -g --icons --group-directories-first"
+  alias lla="exa -l -g -a --icons --group-directories-first"
+  alias tree="exa -g --icons --tree --group-directories-first"
 else
-  alias ls='ls --color=auto'
-  alias ll='ls -l --color=auto'
-  alias lla='ls -la --color=auto'
+  alias ls='ls --color=auto --group-directories-first'
+  alias ll='ls -l --color=auto --group-directories-first'
+  alias lla='ls -la --color=auto --group-directories-first'
 fi
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
-alias grep='grep --color=auto'
+if command -v rg &> /dev/null; then
+  alias grep='rg'
+else
+  alias grep='grep --color=auto'
+fi
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
@@ -104,6 +108,11 @@ fi
 
 if command -v bat &> /dev/null; then
   alias qlog="bat $HOME/.local/share/qtile/qtile.log"
+  alias cat="bat"
 else
   alias qlog="cat $HOME/.local/share/qtile/qtile.log | less"
+fi
+
+if command -v fd &> /dev/null; then
+  alias find="fd"
 fi

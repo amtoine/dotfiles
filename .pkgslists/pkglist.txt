@@ -70,6 +70,7 @@ network-manager-applet
 nitrogen
 nmap
 noto-fonts-cjk
+nushell
 okular
 pacgraph
 pavucontrol
@@ -77,6 +78,7 @@ peco
 picom
 ponysay
 prettier
+procs
 protobuf
 pyside2
 python-isort
@@ -115,6 +117,7 @@ termdown
 thunderbird
 tig
 tldr
+tokei
 ufw
 vi
 vifm

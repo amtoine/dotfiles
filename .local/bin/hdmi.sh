@@ -17,14 +17,14 @@
 #               Stevan Antoine (adaptations)
 
 # parse the arguments.
-OPTIONS=$(getopt -o b:dlmrMSnh --long brightness:,disconnect,left,mirror,right,main,second,notify,help \
+OPTIONS=$(getopt -o b:dlmrMSnhw --long brightness:,disconnect,left,mirror,right,main,second,notify,restart-wm,help \
               -n 'hdmi.sh' -- "$@")
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
 eval set -- "$OPTIONS"
 
 # the environment variables
-[[ ! -v MAIN ]] && MAIN="eDP-1"
-[[ ! -v SECOND ]] && SECOND="HDMI-2"
+[ ! -v MAIN ] && MAIN="eDP-1"
+[ ! -v SECOND ] && SECOND="HDMI-2"
 
 change_brightness () {
   SIDE="$2"
@@ -140,6 +140,7 @@ main () {
       -M | --main )       MONITOR="$MAIN"; shift 1 ;;
       -S | --second )     MONITOR="$SECOND"; shift 1 ;;
       -n | --notify )     NOTIFY="yes"; shift 1 ;;
+      -w | --restart-wm ) WM="yes"; shift 1 ;;
       -- ) shift; break ;;
       * ) break ;;
     esac
@@ -149,22 +150,22 @@ main () {
     brightness )
       if [ "$MONITOR" = "$MAIN" ]; then
         brightnessctl s "$BRIGHTNESS"
-        [[ "$NOTIFY" == "yes" ]] && notify_brightness "$MONITOR" $(brightnessctl | grep "Current" | sed 's/.*Current.*(\(.*\)%)/\1/')
+        [ -v NOTIFY ] && notify_brightness "$MONITOR" $(brightnessctl | grep "Current" | sed 's/.*Current.*(\(.*\)%)/\1/')
       elif [ "$MONITOR" = "$SECOND" ]; then
         change_brightness "$MONITOR" "$BRIGHTNESS" 2
         CurrBright=$(xrandr --verbose --current | grep ^"$MONITOR" -A5 | tail -n1 | sed 's/.*Brightness: \(.*\)/\1/' )
         CurrBright=$(awk -vb="$CurrBright" 'BEGIN{printf "%.2f" ,b * 100}')
-        [[ "$NOTIFY" == "yes" ]] && notify_brightness "$MONITOR" "$CurrBright"
+        [ -v NOTIFY ] && notify_brightness "$MONITOR" "$CurrBright"
       else
         echo "no monitor selected"
       fi
       exit 0
       ;;
-    disconnect ) xrandr --output "$MAIN" --auto --output "$SECOND" --off; wm_restart; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "$SECOND disconnected" ;;
-    left )       connect "$MAIN" "$SECOND" "left-of"; wm_restart; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "$SECOND is now on the left of $MAIN" ;;
-    mirror )     connect "$MAIN" "$SECOND" "same-as"; wm_restart; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "$SECOND is now the same as $MAIN" ;;
-    right )      connect "$MAIN" "$SECOND" "right-of"; wm_restart; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "$SECOND is now on the right of $MAIN" ;;
-    * ) echo "an error occured (got unexpected '$ACTION')"; [[ "$NOTIFY" == "yes" ]] && dunstify "hdmi.sh" "an error occured (got unexpected '$ACTION')"; break ;;
+    disconnect ) xrandr --output "$MAIN" --auto --output "$SECOND" --off; [ -v WM ] && wm_restart; [ -v NOTIFY ] && dunstify "hdmi.sh" "$SECOND disconnected" ;;
+    left )       connect "$MAIN" "$SECOND" "left-of"; [ -v WM ] && wm_restart;  [ -v NOTIFY ] && dunstify "hdmi.sh" "$SECOND is now on the left of $MAIN" ;;
+    mirror )     connect "$MAIN" "$SECOND" "same-as"; [ -v WM ] && wm_restart;  [ -v NOTIFY ] && dunstify "hdmi.sh" "$SECOND is now the same as $MAIN" ;;
+    right )      connect "$MAIN" "$SECOND" "right-of"; [ -v WM ] && wm_restart; [ -v NOTIFY ] && dunstify "hdmi.sh" "$SECOND is now on the right of $MAIN" ;;
+    * ) echo "an error occured (got unexpected '$ACTION')"; [ -v NOTIFY ] && dunstify "hdmi.sh" "an error occured (got unexpected '$ACTION')"; break ;;
   esac
 }
 

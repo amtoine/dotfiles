@@ -143,6 +143,7 @@ noto-fonts-cjk
 npm
 nsxiv
 ntfs-3g
+nushell
 nyxt
 okular
 os-prober
@@ -164,6 +165,7 @@ pkgconf
 polybar
 ponysay
 prettier
+procs
 protobuf
 pulseaudio
 pulseaudio-alsa
@@ -257,10 +259,10 @@ tk
 tldr
 tmux
 toilet
+tokei
 tomb
 tree
 ttf-iosevka-nerd
-ttf-muli
 ttf-symbola
 ueberzug
 ufw

@@ -115,18 +115,22 @@ if status is-interactive
 
   # enable color support of ls and also add handy aliases
   if type -q exa
-    alias ls='exa -g --icons'
-    alias ll="exa -l -g --icons"
-    alias lla="exa -l -g -a --icons"
-    alias tree="exa -g --icons --tree"
+    alias ls='exa -g --icons --group-directories-first'
+    alias ll="exa -l -g --icons --group-directories-first"
+    alias lla="exa -l -g -a --icons --group-directories-first"
+    alias tree="exa -g --icons --tree --group-directories-first"
   else
-    alias ls='ls --color=auto'
-    alias ll='ls -l --color=auto'
-    alias lla='ls -la --color=auto'
+    alias ls='ls --color=auto --group-directories-first'
+    alias ll='ls -l --color=auto --group-directories-first'
+    alias lla='ls -la --color=auto --group-directories-first'
   end
   alias dir='dir --color=auto'
   alias vdir='vdir --color=auto'
-  alias grep='grep --color=auto'
+  if type -q rg
+    alias grep='rg'
+  else
+    alias grep='grep --color=auto'
+  end
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
 
@@ -152,10 +156,16 @@ if status is-interactive
     alias qprompt="qtile cmd-obj -o cmd -f spawncmd"
     alias qstop="qtile cmd-obj -o cmd -f shutdown"
   end
+
   if type -q bat
     alias qlog="bat $HOME/.local/share/qtile/qtile.log"
+    alias cat="bat"
   else
     alias qlog="cat $HOME/.local/share/qtile/qtile.log | less"
+  end
+
+  if type -q fd
+    alias find="fd"
   end
 
   #        _
