@@ -140,6 +140,9 @@ if status is-interactive
     alias okular='devour okular'
     alias kolourpaint='devour kolourpaint'
     alias emacs='devour emacsclient -c -a "emacs"'
+    if type -q alacritty
+      alias ssh="devour alacritty -e ssh $1 > /dev/null"
+    end
   else
     alias emacs='emacsclient -c -a "emacs"'
   end

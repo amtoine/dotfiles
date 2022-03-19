@@ -88,6 +88,9 @@ if command -v devour &> /dev/null; then
   alias okular='devour okular'
   alias kolourpaint='devour kolourpaint'
   alias emacs='devour emacsclient -c -a "emacs"'
+  if command -v alacritty &> /dev/null; then
+    alias ssh="devour alacritty -e ssh $1 > /dev/null"
+  fi
 else
   alias emacs='emacsclient -c -a "emacs"'
 fi
