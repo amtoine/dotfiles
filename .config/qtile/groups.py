@@ -35,7 +35,7 @@ def init_groups(terminal: str, shell: str):
         ["dv3", "TREE"],  # development
         ["www", "TALL"],  # internet
         ["cht", "TREE"],  # chat
-        ["mus", "TALL"],  # music
+        ["gam", "TALL"],  # games
         ["vid", "WIDE"],  # video
     ]
     groups = [

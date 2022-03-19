@@ -149,7 +149,7 @@ main () {
   case "$ACTION" in
     brightness )
       if [ "$MONITOR" = "$MAIN" ]; then
-        brightnessctl s "$BRIGHTNESS"
+        brightnessctl s "$BRIGHTNESS" -e 2
         [ -v NOTIFY ] && notify_brightness "$MONITOR" $(brightnessctl | grep "Current" | sed 's/.*Current.*(\(.*\)%)/\1/')
       elif [ "$MONITOR" = "$SECOND" ]; then
         change_brightness "$MONITOR" "$BRIGHTNESS" 2

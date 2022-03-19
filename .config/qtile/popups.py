@@ -20,7 +20,7 @@ from theme import theme
 from style import FONT
 
 
-def text_popup(qtile, text, size=150):
+def text_popup(qtile, text, size=100, x=None, y=None, centered=True):
     """
         Opens a popup with a single string of text.
     """
@@ -38,16 +38,16 @@ def text_popup(qtile, text, size=150):
 
     layout = PopupGridLayout(
         qtile,
-        width=int(0.65 * len(text) * size),
+        width=int(0.85 * len(text) * size),
         height=int(1.33 * size),
         controls=controls,
         background=theme.color8 + "d0",
-        margin=16,
+        margin=8,
         opacity=1.,
         initial_focus=0,
         rows=1,
         cols=1,
     )
 
-    layout.show(centered=True)
-    qtile.call_later(.5, layout.kill)  # kill popup after 1 second
+    layout.show(x=x, y=y, centered=centered)
+    qtile.call_later(.5, layout.kill)  # kill popup after some time

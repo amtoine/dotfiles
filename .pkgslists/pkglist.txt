@@ -112,6 +112,7 @@ sl
 sox
 spectrwm
 starship
+steam
 swig
 termdown
 thunderbird
@@ -165,5 +166,4 @@ xorg-xwd
 xorg-xwud
 xscreensaver
 z
-zenity
 zip

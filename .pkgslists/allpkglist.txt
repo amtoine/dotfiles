@@ -244,6 +244,7 @@ sox
 spectrwm
 st-a2ns-git
 starship
+steam
 sudo
 surf-a2ns-git
 swig

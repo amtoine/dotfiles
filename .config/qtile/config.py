@@ -117,6 +117,8 @@ def client_new(client):
         client.cmd_togroup(group_names[2])
     elif cls in ["discord", "Caprine", "Slack", "Signal", "Thunderbird"]:
         client.cmd_togroup(group_names[4])
+    elif cls in ["Steam"]:
+        client.cmd_togroup(group_names[5])
 
 
 @hook.subscribe.setgroup
@@ -126,9 +128,18 @@ def setgroup():
     """
     # show a popup in the middle of the scren
     # with the name of the new group
-    text_popup(qtile, qtile.current_group.name)
+    text_popup(qtile, qtile.current_group.name, centered=True)
 
 
+@hook.subscribe.layout_change
+def layout_change(layout, group):
+    """
+        Show the layout name in a popup when changing layout.
+    """
+    # put the popup relative to the top left corner of current screen.
+    x = qtile.current_screen.x + 160
+    y = qtile.current_screen.y + 90
+    text_popup(qtile, layout.name, x=x, y=y, centered=False)
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
 # mailing lists, GitHub issues, and other WM documentation that suggest setting
