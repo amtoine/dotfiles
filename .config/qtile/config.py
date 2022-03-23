@@ -90,7 +90,7 @@ reconfigure_screens = True
 auto_minimize = True
 
 @hook.subscribe.startup_once
-def autostart():
+def _autostart():
     """
         Runs when `qtile` starts.
         The script mainly loads wallpapers, starts daemons such as `emacs` or
@@ -101,7 +101,7 @@ def autostart():
 
 
 @hook.subscribe.client_new
-def client_new(client):
+def _client_new(client):
     """
         This function is ran everytime a window is created.
         The goal is, for instance, to send some windows to some dedicated
@@ -122,7 +122,7 @@ def client_new(client):
 
 
 @hook.subscribe.setgroup
-def setgroup():
+def _setgroup():
     """
         Run code whenever the user changes group.
     """
@@ -132,7 +132,7 @@ def setgroup():
 
 
 @hook.subscribe.layout_change
-def layout_change(layout, group):
+def _layout_change(layout, group):
     """
         Show the layout name in a popup when changing layout.
     """
@@ -140,6 +140,15 @@ def layout_change(layout, group):
     x = qtile.current_screen.x + 160
     y = qtile.current_screen.y + 90
     text_popup(qtile, layout.name, x=x, y=y, centered=False)
+@hook.subscribe.screens_reconfigured
+async def _screens_reconfigured():
+    """
+        Do something when the screen configuration changes.
+    """
+    # restart qtile to apply major changes.
+    qtile.restart()
+
+
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
 # mailing lists, GitHub issues, and other WM documentation that suggest setting

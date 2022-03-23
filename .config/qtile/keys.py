@@ -330,8 +330,8 @@ def init_keymap(mod, terminal, shell, groups):
             Key(MOD, SPC, lazy.layout.next(),                desc="Move window focus to other window"),
             Key(MOD, RET, _cmd(shell, terminal, False),      desc="Launch terminal"),
 
-            Key(MOD, F1,  _cmd("hdmi.sh -M -b 8- -n"),       desc="Brightness of the main screen down"),
-            Key(MOD, F2,  _cmd("hdmi.sh -M -b 8+ -n"),       desc="Brightness of the main screen up"),
+            Key(MOD, F1,  _cmd("hdmi.sh -M -b 2- -n"),       desc="Brightness of the main screen down"),
+            Key(MOD, F2,  _cmd("hdmi.sh -M -b 2+ -n"),       desc="Brightness of the main screen up"),
             Key(MOD, F5,  _script("screenshot.sh window"),   desc="Take a screenshot a window"),
             Key(MOD, F6,  _script("screenshot.sh full"),     desc="Take a screenshot of everything"),
             Key(MOD, F7,  _script(SOUNDDOWN.format(SOUNDL)), desc="Decrease the sound by 'SOUNDL' (defaults to 5)"),
