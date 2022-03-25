@@ -60,6 +60,11 @@ SLH = "slash"
 F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12 = (
     f"F{i}" for i in range(1, 13)
 )
+XBD = "XF86MonBrightnessDown"
+XBU = "XF86MonBrightnessUp"
+XAL = "XF86AudioLowerVolume"
+XAM = "XF86AudioMute"
+XAR = "XF86AudioRaiseVolume"
 
 # some shortcuts for lenghty commands
 # wrapper around dmenu-related commands
@@ -334,15 +339,15 @@ def init_keymap(mod, terminal, shell, groups):
             Key(MOD, SPC, lazy.layout.next(),                desc="Move window focus to other window"),
             Key(MOD, RET, _cmd(shell, terminal, False),      desc="Launch terminal"),
 
-            Key(MOD, F1,  _cmd("hdmi.sh -M -b 2- -n"),       desc="Brightness of the main screen down"),
-            Key(MOD, F2,  _cmd("hdmi.sh -M -b 2+ -n"),       desc="Brightness of the main screen up"),
             Key(MOD, F5,  _script("screenshot.sh window"),   desc="Take a screenshot a window"),
             Key(MOD, F6,  _script("screenshot.sh full"),     desc="Take a screenshot of everything"),
-            Key(MOD, F7,  _script(SOUNDDOWN.format(SOUNDL)), desc="Decrease the sound by 'SOUNDL' (defaults to 5)"),
-            Key(MOD, F8,  _script(MUTE),                     desc="Toggle the sound on and off for the selected channel"),
-            Key(MOD, F9,  _script(SOUNDUP.format(SOUNDL)),   desc="Increase the sound by 'SOUNDL' (defaults to 5)"),
             Key(MOD, F10, _script(BLUETOGG),                 desc="Toggle a bluetooth device on and off"),
             Key(MOD, F12, _script("slock.sh"),               desc="Lock the computer"),
+            Key(MOD, XBD, _cmd("hdmi.sh -M -b 2- -n"),       desc="Brightness of the main screen down"),
+            Key(MOD, XBU, _cmd("hdmi.sh -M -b 2+ -n"),       desc="Brightness of the main screen up"),
+            Key(MOD, XAL, _script(SOUNDDOWN.format(SOUNDL)), desc="Decrease the sound by 'SOUNDL' (defaults to 5)"),
+            Key(MOD, XAM, _script(MUTE),                     desc="Toggle the sound on and off for the selected channel"),
+            Key(MOD, XAR, _script(SOUNDUP.format(SOUNDL)),   desc="Increase the sound by 'SOUNDL' (defaults to 5)"),
         ]
     )
 
@@ -364,8 +369,8 @@ def init_keymap(mod, terminal, shell, groups):
                                         switch_screen=True),              desc="Send a window to the next screen, with following"),
             Key(MOD, COM, lazy.function(window_to_previous_screen,
                                         switch_screen=True),              desc="Send a window to the previous screen, with following"),
-            Key(MOD, F7,  _script(SOUNDDOWN.format(SOUNDS)),              desc="Decrease the sound by 'SOUNDS' (defaults to 1)"),
-            Key(MOD, F9,  _script(SOUNDUP.format(SOUNDS)),                desc="Increase the sound by 'SOUNDS' (defaults to 1)"),
+            Key(MOD, XAL,  _script(SOUNDDOWN.format(SOUNDS)),             desc="Decrease the sound by 'SOUNDS' (defaults to 1)"),
+            Key(MOD, XAR,  _script(SOUNDUP.format(SOUNDS)),               desc="Increase the sound by 'SOUNDS' (defaults to 1)"),
         ]
     )
 
@@ -420,8 +425,8 @@ def init_keymap(mod, terminal, shell, groups):
             Key(MOD, "f", float_to_front,                                         desc="Brings all floating windows to the front"),
             Key(MOD, PER, lazy.function(window_to_next_screen),                   desc="Send a window to the next screen, without following"),
             Key(MOD, COM, lazy.function(window_to_previous_screen),               desc="Send a window to the previous screen, without following"),
-            Key(MOD, F1,  _script("hdmi.sh -S -b - -n"),                          desc="Brightness of the second screen down"),
-            Key(MOD, F2,  _script("hdmi.sh -S -b + -n"),                          desc="Brightness of the second screen up"),
+            Key(MOD, XBD, _script("hdmi.sh -S -b - -n"),                          desc="Brightness of the second screen down"),
+            Key(MOD, XBU, _script("hdmi.sh -S -b + -n"),                          desc="Brightness of the second screen up"),
         ]
     )
     return km

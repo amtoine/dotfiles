@@ -44,11 +44,6 @@ alias tns='tmux new -s'           # creates a new session with name given after 
 alias tat='tmux attach -t'        # attaches to the session given after the alias.
 alias tkt='tmux kill-session -t'  # kills the session with name given after the alias.
 
-alias ncua='nmcli c up "a2n-s"'    # connects to my 4g, change to what you want.
-alias ncue='nmcli c up "eduroam"'  # connects to the network of my school.
-alias blcon='bluetoothctl connect B8:D5:0B:DD:9A:A7'
-alias bldis='bluetoothctl disconnect B8:D5:0B:DD:9A:A7'
-
 alias jpy='jupyter'
 alias jnb='jupyter-notebook'
 
