@@ -42,6 +42,7 @@ festival
 figlet
 firefox
 flake8
+flameshot
 flex
 fortune-mod
 gimp

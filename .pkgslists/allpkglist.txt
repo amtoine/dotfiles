@@ -79,6 +79,7 @@ figlet
 firefox
 fish
 flake8
+flameshot
 flex
 fortune-mod
 fzf
