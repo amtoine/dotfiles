@@ -16,7 +16,7 @@
 from libqtile import bar
 from libqtile.config import Screen
 
-from bar import init_widgets_screen1
+from bar import init_bar_widgets
 from bar import build_prompt
 from bar import build_battery
 from style import BAR_GEOMETRY
@@ -42,8 +42,8 @@ def init_screens(terminal: str) -> list:
     # and adapt its position and size to the geometry
     return [
         Screen(
-            top=bar.Bar(widgets=init_widgets_screen1(terminal, prompt=prompt, battery=battery),
+            top=bar.Bar(widgets=init_bar_widgets(i, terminal, prompt=prompt, battery=battery),
                         **BAR_GEOMETRY),
             **geometry
-        ) for geometry in geometries
+        ) for i, geometry in enumerate(geometries)
     ]

@@ -119,12 +119,14 @@ thunderbird
 tig
 tldr
 tokei
+trayer
 ufw
 vi
 vifm
 vimb
 virtualbox
 vnstat
+volumeicon
 vulkan-tools
 weechat
 xautolock

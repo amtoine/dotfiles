@@ -162,6 +162,7 @@ def build_widgets(
         "group_box":      {"bg": theme.bg,      "fg": theme.fg,       **_group_box_misc_colors},
         "window_name":    {"bg": theme.sel_bg,  "fg": theme.sel_fg},
 
+        "systray":        {"bg": theme.bg},
         "spacer":         {"bg": theme.bg},
         "chord":          {"bg": theme.bg,      "fg": theme.color1},
         "prompt":         {"bg": theme.bg,      "fg": theme.fg},

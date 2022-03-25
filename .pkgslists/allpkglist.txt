@@ -262,6 +262,7 @@ tmux
 toilet
 tokei
 tomb
+trayer
 tree
 ttf-iosevka-nerd
 ttf-symbola
@@ -275,6 +276,7 @@ vimb
 virtualbox
 virtualbox-host-modules-arch
 vnstat
+volumeicon
 vulkan-tools
 w3m
 weechat

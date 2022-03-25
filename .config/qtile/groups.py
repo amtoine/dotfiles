@@ -44,44 +44,47 @@ def init_groups(terminal: str, shell: str):
     ]
 
     scratchpads = [
-        ScratchPad("sp1", [
-            DropDown(
-                "term", f"{expand_terminal(terminal)} {shell}",
-                x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
-            ),
-            DropDown(
-                "qshell", f"{expand_terminal(terminal)} qtile shell",
-                x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
-            ),
-            DropDown(
-                "python", f"{expand_terminal(terminal)} ptpython",
-                x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
-            ),
-            DropDown(
-                "lcfg",   f"{expand_terminal(terminal)} lcfg.sh",
-                x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
-            ),
-            DropDown(
-                "tcfg",   f"{expand_terminal(terminal)} tcfg.sh",
-                x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
-            ),
-            DropDown(
-                "mocp",   f"{expand_terminal(terminal)} mocp",
-                x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
-            ),
-            DropDown(
-                "clock",  f"{expand_terminal(terminal, fs=24)} termdown -z",
-                x=0.18, y=0.30, width=0.64, height=0.40, opacity=0.90,
-            ),
-            DropDown(
-                "fm",     f"{expand_terminal(terminal, fs=24)} lf",
-                x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
-            ),
-            DropDown(
-                "du",     f"{expand_terminal(terminal, fs=24)} ncdu",
-                x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
-            ),
-        ]),
+        ScratchPad(
+            "sp1",
+            [
+                DropDown(
+                    "term", f"{expand_terminal(terminal)} {shell}",
+                    x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
+                ),
+                DropDown(
+                    "qshell", f"{expand_terminal(terminal)} qtile shell",
+                    x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
+                ),
+                DropDown(
+                    "python", f"{expand_terminal(terminal)} ptpython",
+                    x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
+                ),
+                DropDown(
+                    "lcfg",   f"{expand_terminal(terminal)} lcfg.sh",
+                    x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
+                ),
+                DropDown(
+                    "tcfg",   f"{expand_terminal(terminal)} tcfg.sh",
+                    x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
+                ),
+                DropDown(
+                    "mocp",   f"{expand_terminal(terminal)} mocp",
+                    x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
+                ),
+                DropDown(
+                    "clock",  f"{expand_terminal(terminal, fs=24)} termdown -z",
+                    x=0.18, y=0.30, width=0.64, height=0.40, opacity=0.90,
+                ),
+                DropDown(
+                    "fm",     f"{expand_terminal(terminal, fs=24)} lf",
+                    x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
+                ),
+                DropDown(
+                    "du",     f"{expand_terminal(terminal, fs=24)} ncdu",
+                    x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
+                ),
+            ]
+        ),
     ]
 
     # use the zip function to isolate the name of each group.

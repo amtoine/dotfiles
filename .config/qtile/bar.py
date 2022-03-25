@@ -44,6 +44,7 @@ from widgets import slash_sep
 from widgets import spacer
 from widgets import notify
 from widgets import cst_dunst
+from widgets import systray
 
 
 def _create_widgets_table(terminal: str) -> dict:
@@ -74,6 +75,7 @@ def _create_widgets_table(terminal: str) -> dict:
         "spacer": [spacer, dict(**wt.spacer)],
         "notify": [notify, dict(**wt.notify)],
         "cst_dunst": [cst_dunst, dict(**wt.cst_dunst)],
+        "systray": [systray, dict(**wt.systray)],
     }
 
 
@@ -93,17 +95,18 @@ _bar_styles = [
     # decreased
     [
         ["current_screen", "cst_dunst", "group_box", "window_name"],
-        ["chord", "prompt", "volume", "wlan", "clock", "cpu", "battery", "quick_exit"],
+        ["chord", "prompt", "volume", "wlan", "clock", "cpu", "systray", "battery", "quick_exit"],
     ],
     # normal
     [
         ["current_screen", "cst_dunst", "current_layout", "group_box", "window_name"],
-        ["chord", "prompt", "check_updates", "df", "volume", "cst_moc", "cst_entropy", "wlan", "net", "cpu", "clock", "battery", "quick_exit"],
+        ["chord", "prompt", "check_updates", "df", "volume", "cst_moc", "cst_entropy", "wlan", "net", "cpu", "clock", "systray", "battery", "quick_exit"],
     ]
 ]
 
 
-def _init_widgets(
+def init_bar_widgets(
+        screen: int,
         terminal: str,
         prompt: libqtile.widget.Prompt = None,
         battery: libqtile.widget.Battery = None,
@@ -151,13 +154,13 @@ def _init_widgets(
         func, kwargs = table[rg]
         if SEP_STYLE in [sep_styles.vmono, sep_styles.smono]:
             fg = theme.color1
+        elif "fg" not in kwargs:
+            fg = theme.fg
         else:
             fg = kwargs["fg"] if "fg" in kwargs else theme.fg
 
         # add a separator
-        if "fg" not in kwargs:
-            _sep = vertical_sep(fg=theme.fg, bg=theme.bg, width=5, size=100)
-        elif SEP_STYLE in [sep_styles.vmono, sep_styles.vcolor]:
+        if SEP_STYLE in [sep_styles.vmono, sep_styles.vcolor]:
             _sep = vertical_sep(fg=fg, bg=theme.bg, width=5, size=100)
         else:
             _sep = slash_sep(fg=fg, bg=theme.bg)
@@ -173,7 +176,8 @@ def _init_widgets(
         # a multi monitor setup.
         elif rg == "battery" and battery is not None:
             widgets.extend([_sep, battery])
-        else:
+        # add widget unless systray not on main monitor.
+        elif not (screen > 0 and rg == "systray"):
             widgets.extend([_sep, func(**kwargs)])
 
     return widgets
@@ -203,27 +207,3 @@ def build_battery(terminal: str) -> libqtile.widget.Battery:
     """
     func, kwargs = _create_widgets_table(terminal)["battery"]
     return func(**kwargs)
-
-
-def init_widgets_screen1(
-        terminal: str,
-        prompt: libqtile.widget.Prompt = None,
-        battery: libqtile.widget.Battery = None,
-        ) -> list:
-    """
-        Select the widgets for screen 1
-    """
-    widgets = _init_widgets(terminal, prompt=prompt, battery=battery)
-    return widgets
-
-
-def init_widgets_screen2(
-        terminal: str,
-        prompt: libqtile.widget.Prompt = None,
-        battery: libqtile.widget.Battery = None,
-        ) -> list:
-    """
-        Select the widgets for screen 2
-    """
-    widgets = _init_widgets(terminal, prompt=prompt, battery=battery)
-    return widgets
