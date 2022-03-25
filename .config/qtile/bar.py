@@ -45,6 +45,7 @@ from widgets import spacer
 from widgets import notify
 from widgets import cst_dunst
 from widgets import systray
+from widgets import cst_bluetooth
 
 
 def _create_widgets_table(terminal: str) -> dict:
@@ -76,6 +77,7 @@ def _create_widgets_table(terminal: str) -> dict:
         "notify": [notify, dict(**wt.notify)],
         "cst_dunst": [cst_dunst, dict(**wt.cst_dunst)],
         "systray": [systray, dict(**wt.systray)],
+        "cst_bluetooth": [cst_bluetooth, dict(**wt.cst_bluetooth)],
     }
 
 
@@ -95,12 +97,12 @@ _bar_styles = [
     # decreased
     [
         ["current_screen", "cst_dunst", "group_box", "window_name"],
-        ["chord", "prompt", "volume", "wlan", "clock", "cpu", "battery", "quick_exit"],
+        ["chord", "prompt", "volume", "wlan", "cst_bluetooth", "clock", "cpu", "battery", "quick_exit"],
     ],
     # normal
     [
         ["current_screen", "cst_dunst", "current_layout", "group_box", "window_name"],
-        ["chord", "prompt", "check_updates", "df", "volume", "cst_moc", "cst_entropy", "wlan", "net", "cpu", "clock", "systray", "battery", "quick_exit"],
+        ["chord", "prompt", "check_updates", "df", "volume", "cst_moc", "cst_entropy", "wlan", "net", "cst_bluetooth", "cpu", "clock", "systray", "battery", "quick_exit"],
     ]
 ]
 

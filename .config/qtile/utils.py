@@ -96,6 +96,7 @@ _widgets = [
         "wlan",
         "chord",
         "systray",
+        "cst_bluetooth",
         "memory",
         "cpu",
         "check_updates",
@@ -162,6 +163,7 @@ def build_widgets(
         "group_box":      {"bg": theme.bg,      "fg": theme.fg,       **_group_box_misc_colors},
         "window_name":    {"bg": theme.sel_bg,  "fg": theme.sel_fg},
 
+        "cst_bluetooth":  {"bg": theme.bg,      "fg": theme.color10},
         "systray":        {"bg": theme.bg},
         "spacer":         {"bg": theme.bg},
         "chord":          {"bg": theme.bg,      "fg": theme.color1},

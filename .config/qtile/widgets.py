@@ -15,15 +15,18 @@
 # Contributors: Stevan Antoine
 
 import os
-import subprocess
 
 from libqtile import bar
 from libqtile import qtile
 from libqtile import widget
 
 from battery import Battery
+from dunst import Dunst
+from entropy import Entropy
+from moc import MOC
 from style import FONT
 from style import ARROW_SIZE
+from keys import DMNET
 
 
 def init_widget_defaults() -> dict:
@@ -35,36 +38,6 @@ def init_widget_defaults() -> dict:
         fontsize=40,
         padding=3,
     )
-
-
-class Dunst(widget.base.ThreadPoolText):
-    """
-        A simple widget to display the state of the dunst notification server.
-
-        Widget requirements: dunstctl from the dunst package
-    """
-    defaults = [
-        ("update_interval", 1.0, "Update interval for the Dunst widget"),
-        (
-            "format", "DUNST {state} ({count})", "Dunst display format",
-        ),
-    ]
-
-    def __init__(self, **config):
-        super().__init__("", **config)
-        self.add_defaults(Dunst.defaults)
-
-    def poll(self):
-        variables = dict()
-
-        state = subprocess.check_output(["dunstctl", "is-paused"]).decode("utf-8").strip()
-        count = int(
-            subprocess.check_output(
-                ["dunstctl", "count", "waiting"]).decode("utf-8").strip())
-        variables["state"] = "" if count > 0 else "" if state == "false" else ""
-        variables["count"] = count
-
-        return self.format.format(**variables)
 
 
 def cst_dunst(fmt, bg="#000000", fg="#ffffff"):
@@ -88,33 +61,6 @@ def cst_dunst(fmt, bg="#000000", fg="#ffffff"):
     )
 
 
-class Entropy(widget.base.ThreadPoolText):
-    """
-        A simple widget to display the entropy of the system.
-
-        Widget requirements: subprocess
-    """
-    defaults = [
-        ("update_interval", 1.0, "Update interval for the Entropy widget"),
-        (
-            "format", "ENTROPY {entropy}", "Entropy display format",
-        ),
-    ]
-
-    def __init__(self, **config):
-        super().__init__("", **config)
-        self.add_defaults(Entropy.defaults)
-
-    def poll(self):
-        variables = dict()
-
-        entropy = subprocess.check_output(["cat", "/proc/sys/kernel/random/entropy_avail"])
-        # variables["entropy"] = str(entropy).strip()
-        variables["entropy"] = int(entropy.decode("utf-8").strip())
-
-        return self.format.format(**variables)
-
-
 def cst_entropy(bg="#000000", fg="#ffffff"):
     """
         A simple widget to display the entropy of the system.
@@ -134,54 +80,6 @@ def cst_entropy(bg="#000000", fg="#ffffff"):
         mouse_callbacks={},        # Dict of mouse button press callback functions. Accepts functions and ``lazy`` calls.
         padding=None,              # Padding. Calculated if None.
     )
-
-
-class MOC(widget.base.ThreadPoolText):
-    """
-        A simple widget to interact with the moc music player.
-
-        Widget requirements: the moc music player, subprocess
-    """
-    defaults = [
-        ("update_interval", 1.0, "Update interval for the MOC widget"),
-        (
-            "format", "{state} {title} {ct}", "MOC display format",
-        ),
-    ]
-
-    def __init__(self, **config):
-        super().__init__("", **config)
-        self.add_defaults(MOC.defaults)
-
-    def poll(self):
-        sep = "__SEP__"
-        fmt = sep.join(["%state", "%file", "%title", "%artist", "%song", "%album", "%tt", "%tl", "%ts", "%ct", "%cs", "%b", "%r"])
-        states = {"PAUSE": '', "PLAY": '', "STOP": ''}
-        try:
-            moc_state = subprocess.check_output(["mocp", f"-Q {fmt}"]).decode("utf-8").strip()
-        except subprocess.CalledProcessError:
-            moc_state = "FATAL_ERROR"
-
-        if moc_state == "FATAL_ERROR":
-            return " --:--"
-
-        variables = dict()
-        state, file, title, artist, song, album, tt, tl, ts, ct, cs, b, r = moc_state.split(sep)
-        variables["state"] = states[state] if state in states else '?'
-        variables["file"] = file
-        variables["title"] = title
-        variables["artist"] = artist
-        variables["song"] = song
-        variables["album"] = album
-        variables["tt"] = tt
-        variables["tl"] = tl
-        variables["ts"] = ts
-        variables["ct"] = ct
-        variables["cs"] = cs
-        variables["b"] = b
-        variables["r"] = r
-
-        return self.format.format(**variables)
 
 
 def cst_moc(terminal, bg="#000000", fg="#ffffff"):
@@ -581,6 +479,32 @@ def bluetooth(bg="#000000", fg="#ffffff"):
         max_chars=0,                   # Maximum number of characters to display in widget.
         mouse_callbacks={},            # Dict of mouse button press callback functions. Accepts functions and lazy calls.
         padding=None,                  # Padding. Calculated if None.
+    )
+
+
+def cst_bluetooth(bg="#000000", fg="#ffffff"):
+    """
+        class libqtile.widget.Bluetooth(**config)[source]
+        Displays bluetooth status or connected device.
+        Uses dbus to communicate with the system bus.
+        Widget requirements: dbus-next.
+        Supported bar orientations: horizontal and vertical
+    """
+    return widget.TextBox(
+        "",
+        background=bg,          # Widget background color
+        fmt='{}',               # How to format the text
+        font=FONT,              # Text font
+        fontshadow=None,        # font shadow color, default is None(no shadow)
+        fontsize=None,          # Font pixel size. Calculated if None.
+        foreground=fg,          # Foreground colour.
+        markup=True,            # Whether or not to use pango markup
+        max_chars=0,            # Maximum number of characters to display in widget.
+        mouse_callbacks={
+            'Button1': lambda: qtile.cmd_spawn("rofi-bluetooth"),
+            'Button3': lambda: qtile.cmd_spawn("blueman-manager"),
+        },                                 # Dict of mouse button press callback functions. Accepts functions and lazy calls.
+        padding=None,           # Padding left and right. Calculated if None.
     )
 
 
@@ -1091,8 +1015,8 @@ def wlan(terminal, co_fmt=' {essid} {quality:02d}/70', dis_fmt="睊 --/--", b
         markup=True,                   # Whether or not to use pango markup
         max_chars=0,                   # Maximum number of characters to display in widget.
         mouse_callbacks={
-            'Button1': lambda: qtile.cmd_spawn(terminal + " --hold nmcli connection show"),
-            'Button3': lambda: qtile.cmd_spawn("blueman-manager"),
+            'Button1': lambda: qtile.cmd_spawn(DMNET),
+            'Button3': lambda: qtile.cmd_spawn("nm-connection-editor"),
         },                             # dict of mouse button press callback functions. accepts functions and lazy calls.
         padding=None,                  # Padding. Calculated if None.
         update_interval=1,             # The update interval.
