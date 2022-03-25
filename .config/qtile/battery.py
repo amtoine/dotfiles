@@ -386,7 +386,7 @@ class Battery(base.ThreadPoolText):
         warning = None
         if self.notify_below and percent < self.notify_below and status.state == BatteryState.DISCHARGING:
             warning = "low"
-        elif self.notify_above and percent > self.notify_above and status.state == BatteryState.CHARGING:
+        elif self.notify_above and percent >= self.notify_above and status.state == BatteryState.CHARGING:
             warning = "high"
         elif self._has_notified:
             self._has_notified = False

@@ -123,6 +123,36 @@ def init_keymap(mod, terminal, shell, groups):
                 Key([mod, CON], str(i+1), lazy.window.togroup(group.name, switch_group=True),  desc="Switch to & move focused window to group {}".format(group.name)),
             ])
 
+    # commands of the form "key"
+    MOD = []
+    km.extend(
+        [
+            Key(MOD, XBD, _cmd("hdmi.sh -M -b 2- -n"),        desc="Brightness of the main screen down"),
+            Key(MOD, XBU, _cmd("hdmi.sh -M -b 2+ -n"),        desc="Brightness of the main screen up"),
+            Key(MOD, XAL, _script(SOUNDDOWN.format(SOUNDL)),  desc="Decrease the sound by 'SOUNDL' (defaults to 5)"),
+            Key(MOD, XAM, _script(MUTE),                      desc="Toggle the sound on and off for the selected channel"),
+            Key(MOD, XAR, _script(SOUNDUP.format(SOUNDL)),    desc="Increase the sound by 'SOUNDL' (defaults to 5)"),
+        ]
+    )
+
+    # commands of the form "control + key"
+    MOD = [CON]
+    km.extend(
+        [
+            Key(MOD, XAL, _script(SOUNDDOWN.format(SOUNDS)),  desc="Decrease the sound by 'SOUNDS' (defaults to 1)"),
+            Key(MOD, XAR, _script(SOUNDUP.format(SOUNDS)),    desc="Increase the sound by 'SOUNDS' (defaults to 1)"),
+        ]
+    )
+
+    # commands of the form "shift + key"
+    MOD = [SHI]
+    km.extend(
+        [
+            Key(MOD, XBD, _script("hdmi.sh -S -b - -n"),      desc="Brightness of the second screen down"),
+            Key(MOD, XBU, _script("hdmi.sh -S -b + -n"),      desc="Brightness of the second screen up"),
+        ]
+    )
+
     # commands of the form "mod + key"
     MOD = [mod]
     km.extend(
@@ -345,11 +375,6 @@ def init_keymap(mod, terminal, shell, groups):
             Key(MOD, F4,  _script("scrot.sh full"),          desc="Take a screenshot of everything with scrot"),
             Key(MOD, F10, _script(BLUETOGG),                 desc="Toggle a bluetooth device on and off"),
             Key(MOD, F12, _script("slock.sh"),               desc="Lock the computer"),
-            Key(MOD, XBD, _cmd("hdmi.sh -M -b 2- -n"),       desc="Brightness of the main screen down"),
-            Key(MOD, XBU, _cmd("hdmi.sh -M -b 2+ -n"),       desc="Brightness of the main screen up"),
-            Key(MOD, XAL, _script(SOUNDDOWN.format(SOUNDL)), desc="Decrease the sound by 'SOUNDL' (defaults to 5)"),
-            Key(MOD, XAM, _script(MUTE),                     desc="Toggle the sound on and off for the selected channel"),
-            Key(MOD, XAR, _script(SOUNDUP.format(SOUNDL)),   desc="Increase the sound by 'SOUNDL' (defaults to 5)"),
         ]
     )
 
@@ -371,8 +396,6 @@ def init_keymap(mod, terminal, shell, groups):
                                         switch_screen=True),              desc="Send a window to the next screen, with following"),
             Key(MOD, COM, lazy.function(window_to_previous_screen,
                                         switch_screen=True),              desc="Send a window to the previous screen, with following"),
-            Key(MOD, XAL,  _script(SOUNDDOWN.format(SOUNDS)),             desc="Decrease the sound by 'SOUNDS' (defaults to 1)"),
-            Key(MOD, XAR,  _script(SOUNDUP.format(SOUNDS)),               desc="Increase the sound by 'SOUNDS' (defaults to 1)"),
         ]
     )
 
@@ -428,8 +451,6 @@ def init_keymap(mod, terminal, shell, groups):
             Key(MOD, F1,  _cmd("flameshot launcher"),                             desc="Take a screenshot with flameshot"),
             Key(MOD, PER, lazy.function(window_to_next_screen),                   desc="Send a window to the next screen, without following"),
             Key(MOD, COM, lazy.function(window_to_previous_screen),               desc="Send a window to the previous screen, without following"),
-            Key(MOD, XBD, _script("hdmi.sh -S -b - -n"),                          desc="Brightness of the second screen down"),
-            Key(MOD, XBU, _script("hdmi.sh -S -b + -n"),                          desc="Brightness of the second screen up"),
         ]
     )
     return km

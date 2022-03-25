@@ -25,8 +25,8 @@ show_keymap () {
 
   # extract the raw keymap from qtile
   python -c "print($(qtile cmd-obj -o cmd -f display_kb))" | tee "$KEYMAP" > /dev/null
-  # remove the header  | and  emojis       |  compact keys       ;  <root>      keysym             modifiers          > m+k  ; rm trailing spaces...               after chords      ;   align with '%%'
-  tail -n +3 "$KEYMAP" | tr -d '\200-\377' | sed 's/mod4, /mod4+/; s/<root>\s*\([a-zA-Z0-9]*\)\s*\(mod4[+a-zA-Z0-9]*\)/\2+\1/; s/^\s*//; s/\s*$//g; s/> />/g; s/^\([A-Z>]*\)\s\+/\1+/; s/ \s\+/%%/g' | column -t -s '%%' | tee "$KEYMAP" > /dev/null
+  # remove the header  | and  emojis       |  compact keys       ;  <root>      keysym             modifiers          > m+k  ; rm trailing spaces...               after chords      ; treat the special XF86 keys that do not use the SUPER key                                        ; align with '%%' and store in $KEYMAP
+  tail -n +3 "$KEYMAP" | tr -d '\200-\377' | sed 's/mod4, /mod4+/; s/<root>\s*\([a-zA-Z0-9]*\)\s*\(mod4[+a-zA-Z0-9]*\)/\2+\1/; s/^\s*//; s/\s*$//g; s/> />/g; s/^\([A-Z>]*\)\s\+/\1+/; s/<root>\s*//; s/^\(XF86[a-zA-z]*\)\s*control/control+\1/; s/^\(XF86[a-zA-z]*\)\s*shift/shift+\1/; s/ \s\+/%%/g' | column -t -s '%%' | tee "$KEYMAP" > /dev/null
 
   # isolate the keychord entries
   grep "Enter" "$KEYMAP" | awk '{print $3","$1}' | sort -r | tee "$CHORDS" > /dev/null
@@ -38,10 +38,11 @@ show_keymap () {
   done
   sed -i 's/>[A-Z]*//; /Enter/d' "$KEYMAP"
 
-  #        realign    ; compact mod key...   and all special and long keys
-  sed -i 's/ \s\+/%%/g; s/^[a-z0-9]*/[S]/; s/+shift/+S/g; s/+comma/+,/; s/+period/+./; s/+mod1/+A/; s/+Return/+R/; s/+control/+C/; s/+space/+" "/' "$KEYMAP"
+  #        realign    ; compact special and long keys
+  sed -i 's/ \s\+/%%/g; s/^mod./[S]/; s/shift+/S+/g; s/+comma/+,/; s/+period/+./; s/mod1+/A+/; s/Return+/R+/; s/control+/C+/; s/+space/+" "/' "$KEYMAP"
   #        show 'key' 'desc' 'func' and let the user choose one of them with dmenu                      | separate again to isolate 'func'
   choice=$(awk -F'%%' '{print $1"%%"$3"%%"$2}' "$KEYMAP" | column -t -s '%%' | sort | dmenu -i -l 20 -bw 5 | sed 's/ \s\+/%%/g' | awk -F'%%' '{print $3}')
+  [ -n $choice ] && { echo -e "No command selected\nAborting"; exit 0; }
   # func ~ command(arg)
   command=$(echo "$choice" | sed 's/(.*//')
   # remove command() and leading or trailing "" or '' pairs that mess up expansion
