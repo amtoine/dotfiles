@@ -95,7 +95,7 @@ _bar_styles = [
     # decreased
     [
         ["current_screen", "cst_dunst", "group_box", "window_name"],
-        ["chord", "prompt", "volume", "wlan", "clock", "cpu", "systray", "battery", "quick_exit"],
+        ["chord", "prompt", "volume", "wlan", "clock", "cpu", "battery", "quick_exit"],
     ],
     # normal
     [
@@ -176,7 +176,7 @@ def init_bar_widgets(
         # a multi monitor setup.
         elif rg == "battery" and battery is not None:
             widgets.extend([_sep, battery])
-        # add widget unless systray not on main monitor.
+        # add widget unless systray and not on main monitor.
         elif not (screen > 0 and rg == "systray"):
             widgets.extend([_sep, func(**kwargs)])
 

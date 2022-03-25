@@ -22,7 +22,7 @@ eval set -- "$OPTIONS"
 
 # the environment variables
 [[ ! -v SHOTS ]] && SHOTS="$HOME/imgs/shots"
-[[ ! -v FORMAT ]] && FORMAT='%Y-%m-%d_%H-%M-%S_$wx$h_scrot'
+[[ ! -v FORMAT ]] && FORMAT='scrot_%Y-%m-%d_%H-%M-%S_$wx$h'
 
 usage () {
   #

@@ -25,6 +25,7 @@ mu
 multicolor-sddm-theme
 myman
 nerd-fonts-mononoki
+networkmanager-dmenu-git
 ngrok
 nsxiv
 nyxt
@@ -39,6 +40,7 @@ python38
 qtile-extras-git
 quickemu
 reddio
+rofi-bluetooth-git
 sddm-archlinux-theme-git
 sddm-chinese-painting-theme
 sddm-theme-catppuccin-git

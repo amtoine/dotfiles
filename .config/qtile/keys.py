@@ -65,6 +65,7 @@ F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12 = (
 # wrapper around dmenu-related commands
 DMRUN = f"dmenu_run -c -l 10 -bw 5 -h {BAR_GEOMETRY['size']} -p 'Run: ' -fn '{DMFONT}'"
 DMPASS = f"passmenu -l 10 -bw 5 -c -fn '{DMFONT}'"
+DMNET = f"networkmanager_dmenu -c -l 20 -bw 5 -fn '{DMFONT}'"
 
 # web browsers
 SURF = "tabbed -c surf -N -e"
@@ -139,8 +140,10 @@ def init_keymap(mod, terminal, shell, groups):
             ),
             KeyChord(MOD, 'c', [
                 Key([], 'a', *_ucmd("ani-cli", terminal),       desc="Open the ani-cli service to play anime in the terminal."),
+                Key([], 'b', *_ucmd("rofi-bluetooth"),          desc="Manage bluetooth connections with rofi"),
                 Key([], 'c', *_ucmd("caprine"),                 desc="Open messenger"),
                 Key([], 'd', *_ucmd("discord"),                 desc="Open discord"),
+                Key([], 'e', *_ucmd(DMNET),                     desc="Manage network connections with dmenu"),
                 Key([], 'g', *_ucmd("signal-desktop"),          desc="Open signal"),
                 Key([], 'm', *_uscript("macho.sh", terminal),   desc="Use the macho wrapper around man"),
                 KeyChord([], 'n', [
@@ -236,6 +239,7 @@ def init_keymap(mod, terminal, shell, groups):
                 mode="  QTILE"
             ),
             KeyChord(MOD, 'r', [
+                Key([], 'b', *_ucmd("rofi-bluetooth"),        desc="Manages bluetooth connections with rofi"),
                 Key([], 'c', *_rofi(modi="combi"),            desc="Run rofi with combi"),
                 Key([], 'd', *_rofi(modi="drun"),             desc="Run rofi with drun"),
                 Key([], 'f', *_rofi(modi="filebrowser"),      desc="Run rofi with filebrowser"),

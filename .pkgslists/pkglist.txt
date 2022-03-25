@@ -10,7 +10,6 @@ base
 bashtop
 bison
 blueman
-bluez-utils
 bpytop
 breeze
 brightnessctl
@@ -66,7 +65,6 @@ mathomatic
 ncdu
 net-tools
 nethack
-network-manager-applet
 nitrogen
 nmap
 noto-fonts-cjk

@@ -601,7 +601,7 @@ setbg_dir="/usr/share/backgrounds"
 use_imv=1
 
 # dm-maim
-maim_dir="${HOME}/Screenshots"
+maim_dir="${HOME}/imgs/shots"
 maim_file_prefix="maim"
 
 # dm-colpick config
