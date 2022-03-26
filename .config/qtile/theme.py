@@ -17,7 +17,7 @@
 #   to automatically edit this file and change the theme of Qtile.
 
 # current: Solarized_Dark
-from utils import ColorScheme
+from utils.colorscheme import ColorScheme
 theme = ColorScheme(**{
   "fg": "#839496",
   "bg": "#002b36",

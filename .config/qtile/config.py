@@ -30,7 +30,7 @@ from popups import text_popup
 from screens import init_screens
 from style import LAYOUTS as lt
 from widgets import init_widget_defaults
-from utils import guess_shell
+from utils.utils import guess_shell
 
 
 mod = "mod4"  # the super (windows or mac) key controls `qtile`
@@ -40,10 +40,10 @@ terminal_preferences = [
     "kitty",
 ]
 shell_preferences = [
+    "bash",
     "xonsh",
     "nu",
     "fish",
-    "bash",
 ]
 terminal = guess_terminal(preference=terminal_preferences)
 shell = guess_shell(preference=shell_preferences)

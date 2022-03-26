@@ -15,11 +15,11 @@
 # Contributors: Stevan Antoine
 
 from theme import theme
-from utils import build_widgets
-from utils import build_layouts
-from utils import font_sizes
-from utils import bar_styles
-from utils import sep_styles
+from utils.widgets import build_widgets
+from utils.layouts import build_layouts
+from utils.constants import font_sizes
+from utils.constants import bar_styles
+from utils.constants import sep_styles
 
 # the fonts used for the widgets and dmenu respectively
 FONT = "mononoki Nerd Font"
@@ -39,18 +39,18 @@ SEP_STYLE = sep_styles.scolor
 
 # the following lists contain formats for the widgets, in all the bar styles
 # that are available
-# the format is    "minimal",           "decreased",         "normal"
+# the format is    "minimal", "decreased", "normal"
 battery_fmts = [
-                   "{char}",  "{char}",  "{char} {percent:2.0%}"
+                   "{char}",  "{char}",    "{char} {percent:2.0%}"
 ]
 clock_fmts = [
-                   " %H:%M", " %H:%M", " %m/%d  %H:%M"
+                   " %H:%M", " %H:%M",   " %m/%d  %H:%M"
 ]
 wlan_co_fmts = [
-                   " ",      " ",      " {essid} {quality:02d}/70"
+                   " ",      " ",        " {essid} {quality:02d}/70"
 ]
 wlan_dis_fmts = [
-                   "睊 ",      "睊 ",      "睊 --/--"
+                   "睊 ",      "睊 ",        "睊 --/--"
 ]
 dunst_fmts = [
                    "{state}", "{state}", "{state} {count}"

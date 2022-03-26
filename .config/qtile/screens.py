@@ -20,7 +20,7 @@ from bar import init_bar_widgets
 from bar import build_prompt
 from bar import build_battery
 from style import BAR_GEOMETRY
-from utils import fetch_monitors
+from utils.utils import fetch_monitors
 
 
 def init_screens(terminal: str) -> list:

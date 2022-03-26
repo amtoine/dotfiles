@@ -29,20 +29,20 @@ from libqtile.lazy import lazy
 from extensions import window_list
 from style import BAR_GEOMETRY
 from style import DMFONT
-from utils import float_to_front
-from utils import window_to_next_screen
-from utils import window_to_previous_screen
-from utils import _cmd
-from utils import _ucmd
-from utils import _uacmd
-from utils import _rofi
-from utils import _emacs
-from utils import _script
-from utils import _uscript
-from utils import _uascript
-from utils import _scratch
-from utils import HOME
-from utils import QSCRIPTS
+from utils.utils import float_to_front
+from utils.utils import window_to_next_screen
+from utils.utils import window_to_previous_screen
+from utils.utils import _cmd
+from utils.utils import _ucmd
+from utils.utils import _uacmd
+from utils.utils import _rofi
+from utils.utils import _emacs
+from utils.utils import _script
+from utils.utils import _uscript
+from utils.utils import _uascript
+from utils.utils import _scratch
+from utils.utils import HOME
+from utils.utils import QSCRIPTS
 
 # some shortcuts for the `qtile` key codes.
 SPC = "space"

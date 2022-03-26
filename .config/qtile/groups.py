@@ -20,7 +20,7 @@ from libqtile.config import Group
 from libqtile.config import ScratchPad
 from libqtile.dgroups import simple_key_binder
 
-from utils import expand_terminal
+from utils.utils import expand_terminal
 
 
 def init_groups(terminal: str, shell: str):

@@ -20,13 +20,13 @@ from libqtile import bar
 from libqtile import qtile
 from libqtile import widget
 
-from battery import Battery
-from dunst import Dunst
-from entropy import Entropy
-from moc import MOC
+from custom.battery import Battery
+from custom.dunst import Dunst
+from custom.entropy import Entropy
+from custom.moc import MOC
+from keys import DMNET
 from style import FONT
 from style import ARROW_SIZE
-from keys import DMNET
 
 
 def init_widget_defaults() -> dict:

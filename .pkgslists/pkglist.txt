@@ -64,6 +64,7 @@ lxappearance
 mate-backgrounds
 mathomatic
 ncdu
+ncmpcpp
 net-tools
 nethack
 nitrogen

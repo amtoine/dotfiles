@@ -19,33 +19,9 @@ from theme import theme
 from style import BAR_STYLE
 from style import WIDGETS as wt
 from style import SEP_STYLE
-from utils import sep_styles
-from utils import fetch_monitors
-from widgets import current_screen
-from widgets import current_layout
-from widgets import group_box
-from widgets import window_name
-from widgets import chord
-from widgets import prompt
-from widgets import check_updates
-from widgets import df
-from widgets import volume
-from widgets import cst_moc
-from widgets import cst_entropy
-from widgets import wlan
-from widgets import net
-from widgets import cpu
-from widgets import clock
-from widgets import battery
-from widgets import quick_exit
-from widgets import right_arrow_sep
-from widgets import vertical_sep
-from widgets import slash_sep
-from widgets import spacer
-from widgets import notify
-from widgets import cst_dunst
-from widgets import systray
-from widgets import cst_bluetooth
+from utils.constants import sep_styles
+from utils.utils import fetch_monitors
+import widgets
 
 
 def _create_widgets_table(terminal: str) -> dict:
@@ -56,28 +32,28 @@ def _create_widgets_table(terminal: str) -> dict:
     """
     # dict of the form {"key": [wrapper, args]}
     return {
-        "current_screen": [current_screen, dict(**wt.current_screen)],
-        "current_layout": [current_layout, dict(**wt.current_layout)],
-        "group_box": [group_box, dict(**wt.group_box)],
-        "window_name": [window_name, dict(**wt.window_name)],
-        "chord": [chord, dict(**wt.chord)],
-        "prompt": [prompt, dict(**wt.prompt)],
-        "check_updates": [check_updates, dict(**wt.check_updates, terminal=terminal)],
-        "df": [df, dict(**wt.df, terminal=terminal)],
-        "volume": [volume, dict(**wt.volume, terminal=terminal)],
-        "cst_moc": [cst_moc, dict(**wt.cst_moc, terminal=terminal)],
-        "cst_entropy": [cst_entropy, dict(**wt.cst_entropy)],
-        "wlan": [wlan, dict(**wt.wlan, terminal=terminal)],
-        "net": [net, dict(**wt.net)],
-        "cpu": [cpu, dict(**wt.cpu, terminal=terminal)],
-        "clock": [clock, dict(**wt.clock, terminal=terminal)],
-        "battery": [battery, dict(**wt.battery)],
-        "quick_exit": [quick_exit, dict(**wt.quick_exit)],
-        "spacer": [spacer, dict(**wt.spacer)],
-        "notify": [notify, dict(**wt.notify)],
-        "cst_dunst": [cst_dunst, dict(**wt.cst_dunst)],
-        "systray": [systray, dict(**wt.systray)],
-        "cst_bluetooth": [cst_bluetooth, dict(**wt.cst_bluetooth)],
+        "current_screen": [widgets.current_screen, dict(**wt.current_screen)],
+        "current_layout": [widgets.current_layout, dict(**wt.current_layout)],
+        "group_box": [widgets.group_box, dict(**wt.group_box)],
+        "window_name": [widgets.window_name, dict(**wt.window_name)],
+        "chord": [widgets.chord, dict(**wt.chord)],
+        "prompt": [widgets.prompt, dict(**wt.prompt)],
+        "check_updates": [widgets.check_updates, dict(**wt.check_updates, terminal=terminal)],
+        "df": [widgets.df, dict(**wt.df, terminal=terminal)],
+        "volume": [widgets.volume, dict(**wt.volume, terminal=terminal)],
+        "cst_moc": [widgets.cst_moc, dict(**wt.cst_moc, terminal=terminal)],
+        "cst_entropy": [widgets.cst_entropy, dict(**wt.cst_entropy)],
+        "wlan": [widgets.wlan, dict(**wt.wlan, terminal=terminal)],
+        "net": [widgets.net, dict(**wt.net)],
+        "cpu": [widgets.cpu, dict(**wt.cpu, terminal=terminal)],
+        "clock": [widgets.clock, dict(**wt.clock, terminal=terminal)],
+        "battery": [widgets.battery, dict(**wt.battery)],
+        "quick_exit": [widgets.quick_exit, dict(**wt.quick_exit)],
+        "spacer": [widgets.spacer, dict(**wt.spacer)],
+        "notify": [widgets.notify, dict(**wt.notify)],
+        "cst_dunst": [widgets.cst_dunst, dict(**wt.cst_dunst)],
+        "systray": [widgets.systray, dict(**wt.systray)],
+        "cst_bluetooth": [widgets.cst_bluetooth, dict(**wt.cst_bluetooth)],
     }
 
 
@@ -126,7 +102,7 @@ def init_bar_widgets(
         right = list(filter(lambda s: s != "current_screen", right))
 
     table = _create_widgets_table(terminal)
-    widgets = []
+    widgets_list = []
 
     # build the left widgets
     # on the left, widget are separated by a powerline like arrow
@@ -138,16 +114,19 @@ def init_bar_widgets(
 
         # add the arrow and the widget with appropriate colors
         if lf in ["window_name", "current_layout"]:
-            widgets.extend([right_arrow_sep(fg=_bg, bg=bg), func(**kwargs), right_arrow_sep(fg=bg, bg=_bg)])
+            widgets_list.extend([
+                widgets.right_arrow_sep(fg=_bg, bg=bg),
+                func(**kwargs),
+                widgets.right_arrow_sep(fg=bg, bg=_bg)])
         else:
-            widgets.extend([func(**kwargs)])
+            widgets_list.extend([func(**kwargs)])
         bg = _bg
     # reverse the list
-    widgets = widgets[::-1]
+    widgets_list = widgets_list[::-1]
 
     # add a spacer if the window_name widget is missing
     if left[-1] != "window_name":
-        widgets.append(spacer(**wt.spacer))
+        widgets_list.append(widgets.spacer(**wt.spacer))
 
     # build the right widgets
     # they are separated by vertical lines
@@ -163,26 +142,26 @@ def init_bar_widgets(
 
         # add a separator
         if SEP_STYLE in [sep_styles.vmono, sep_styles.vcolor]:
-            _sep = vertical_sep(fg=fg, bg=theme.bg, width=5, size=100)
+            _sep = widgets.vertical_sep(fg=fg, bg=theme.bg, width=5, size=100)
         else:
-            _sep = slash_sep(fg=fg, bg=theme.bg)
+            _sep = widgets.slash_sep(fg=fg, bg=theme.bg)
 
         # add the widget
         # widget.Prompt is a bit special and needs to be
         # manually mirrored on all monitors, hence the passing
         # of a widget.Prompt object from init to init.
         if rg == "prompt" and prompt is not None:
-            widgets.extend([_sep, prompt])
+            widgets_list.extend([_sep, prompt])
         # widget.Battery is also mirrored to avoid
         # having multiple notifications when using
         # a multi monitor setup.
         elif rg == "battery" and battery is not None:
-            widgets.extend([_sep, battery])
+            widgets_list.extend([_sep, battery])
         # add widget unless systray and not on main monitor.
         elif not (screen > 0 and rg == "systray"):
-            widgets.extend([_sep, func(**kwargs)])
+            widgets_list.extend([_sep, func(**kwargs)])
 
-    return widgets
+    return widgets_list
 
 
 def build_prompt(terminal: str) -> libqtile.widget.Prompt:

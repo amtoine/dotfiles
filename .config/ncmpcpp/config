@@ -14,25 +14,20 @@
 # Dependencies:
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
-#
-#
+
 ##### directories ######
 ##
 ## Directory for storing ncmpcpp related files.  Changing it is useful if you
 ## want to store everything somewhere else and provide command line setting for
 ## alternative location to config file which defines that while launching
 ## ncmpcpp.
-##
-#
-#ncmpcpp_directory = ~/.config/ncmpcpp
-#
+ncmpcpp_directory = ~/.config/ncmpcpp
+
 ##
 ## Directory for storing downloaded lyrics. It defaults to ~/.lyrics since other
 ## MPD clients (eg. ncmpc) also use that location.
-##
-#
 #lyrics_directory = ~/.lyrics
-#
+
 ##### connection settings #####
 #
 mpd_host = localhost
@@ -43,7 +38,7 @@ mpd_connection_timeout = 5
 #
 ## Needed for tag editor and file operations to work.
 ##
-mpd_music_dir = /media/hdd/music
+mpd_music_dir = "~/music"
 #
 #mpd_crossfade_time = 5
 #

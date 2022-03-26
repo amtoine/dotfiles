@@ -132,6 +132,7 @@ mu
 multicolor-sddm-theme
 myman
 ncdu
+ncmpcpp
 neovim
 nerd-fonts-mononoki
 net-tools
