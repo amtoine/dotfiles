@@ -1,25 +1,25 @@
-// THEME: Solarized_Dark
+// THEME: Dracula
 * {
-    bg:      #002b36;
-    fg:      #839496;
-    selbg:   #073642;
-    selfg:   #93a1a1;
-    color0:  #002731;
-    color1:  #d01b24;
-    color2:  #728905;
-    color3:  #a57705;
-    color4:  #2075c7;
-    color5:  #c61b6e;
-    color6:  #259185;
-    color7:  #e9e2cb;
-    color8:  #001e26;
-    color9:  #bd3612;
-    color10: #465a61;
-    color11: #52676f;
-    color12: #708183;
-    color13: #5856b9;
-    color14: #81908f;
-    color15: #fcf4dc;
+    bg:      #282a36;
+    fg:      #f8f8f2;
+    selbg:   #44475a;
+    selfg:   #ffffff;
+    color0:  #21222c;
+    color1:  #ff5555;
+    color2:  #50fa7b;
+    color3:  #f1fa8c;
+    color4:  #bd93f9;
+    color5:  #ff79c6;
+    color6:  #8be9fd;
+    color7:  #f8f8f2;
+    color8:  #6272a4;
+    color9:  #ff6e6e;
+    color10: #69ff94;
+    color11: #ffffa5;
+    color12: #d6acff;
+    color13: #ff92df;
+    color14: #a4ffff;
+    color15: #ffffff;
 
     background:                  @bg;
     normal-background:           @bg;

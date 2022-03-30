@@ -16,27 +16,27 @@
 #   please use the `qtile-change-theme.sh` script in `~/.config/qtile/scripts`
 #   to automatically edit this file and change the theme of Qtile.
 
-# current: Solarized_Dark
+# current: Dracula
 from utils.colorscheme import ColorScheme
 theme = ColorScheme(**{
-  "fg": "#839496",
-  "bg": "#002b36",
-  "sel_fg": "#93a1a1",
-  "sel_bg": "#073642",
-  "color0": "#002731",
-  "color8": "#001e26",
-  "color1": "#d01b24",
-  "color9": "#bd3612",
-  "color2": "#728905",
-  "color10": "#465a61",
-  "color3": "#a57705",
-  "color11": "#52676f",
-  "color4": "#2075c7",
-  "color12": "#708183",
-  "color5": "#c61b6e",
-  "color13": "#5856b9",
-  "color6": "#259185",
-  "color14": "#81908f",
-  "color7": "#e9e2cb",
-  "color15": "#fcf4dc",
+  "fg": "#f8f8f2",
+  "bg": "#282a36",
+  "sel_fg": "#ffffff",
+  "sel_bg": "#44475a",
+  "color0": "#21222c",
+  "color8": "#6272a4",
+  "color1": "#ff5555",
+  "color9": "#ff6e6e",
+  "color2": "#50fa7b",
+  "color10": "#69ff94",
+  "color3": "#f1fa8c",
+  "color11": "#ffffa5",
+  "color4": "#bd93f9",
+  "color12": "#d6acff",
+  "color5": "#ff79c6",
+  "color13": "#ff92df",
+  "color6": "#8be9fd",
+  "color14": "#a4ffff",
+  "color7": "#f8f8f2",
+  "color15": "#ffffff",
 })

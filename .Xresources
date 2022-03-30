@@ -3,28 +3,28 @@
 !
 ! URxvt*background:         #xxxxxx
 
-! THEME: Solarized_Dark
-*fadeColor:               #002731
-*background:              #002b36
-*foreground:              #839496
-*pointerColorBackground:  #073642
-*pointerColorForeground:  #93a1a1
-*cursorColor:             #93a1a1
+! THEME: Dracula
+*fadeColor:               #21222c
+*background:              #282a36
+*foreground:              #f8f8f2
+*pointerColorBackground:  #44475a
+*pointerColorForeground:  #ffffff
+*cursorColor:             #ffffff
 *fading:                  40
 
-*color0:                  #002731
-*color1:                  #d01b24
-*color2:                  #728905
-*color3:                  #a57705
-*color4:                  #2075c7
-*color5:                  #c61b6e
-*color6:                  #259185
-*color7:                  #e9e2cb
-*color9:                  #001e26
-*color8:                  #bd3612
-*color10:                 #465a61
-*color11:                 #52676f
-*color12:                 #708183
-*color13:                 #5856b9
-*color14:                 #81908f
-*color15:                 #fcf4dc
+*color0:                  #21222c
+*color1:                  #ff5555
+*color2:                  #50fa7b
+*color3:                  #f1fa8c
+*color4:                  #bd93f9
+*color5:                  #ff79c6
+*color6:                  #8be9fd
+*color7:                  #f8f8f2
+*color9:                  #6272a4
+*color8:                  #ff6e6e
+*color10:                 #69ff94
+*color11:                 #ffffa5
+*color12:                 #d6acff
+*color13:                 #ff92df
+*color14:                 #a4ffff
+*color15:                 #ffffff
