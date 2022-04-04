@@ -162,20 +162,20 @@ def window_list():
         Give vertical list of all open windows in dmenu. Switch to selected.
     """
     return extension.WindowList(
-        all_groups=True,                        # If True, list windows from all groups; otherwise only from the current group
-        background="#000000",                   # defines the normal background color (#RGB or #RRGGBB)
-        command=None,                           # the command to be launched (string or list with arguments)
-        dmenu_bottom=False,                     # dmenu appears at the bottom of the screen
-        dmenu_command='dmenu -i -c -bw 5',      # the dmenu command to be launched
-        dmenu_font=DMFONT,                      # override the default 'font' and 'fontsize' options for dmenu
-        dmenu_height=None,                      # defines the height (only supported by some dmenu forks)
-        dmenu_ignorecase=False,                 # dmenu matches menu items case insensitively
-        dmenu_lines='80',                       # Give lines vertically. Set to None get inline
-        dmenu_prompt="Opened windows:",         # defines the prompt to be displayed to the left of the input field
-        font=DMFONT,                            # defines the font name to be used
-        fontsize=None,                          # defines the font size to be used
-        foreground=None,                        # defines the normal foreground color (#RGB or #RRGGBB)
-        item_format='{group}({id}): {window}',  # the format for the menu items
-        selected_background=None,               # defines the selected background color (#RGB or #RRGGBB)
-        selected_foreground=None,               # defines the selected foreground color (#RGB or #RRGGBB)
+        all_groups=True,                  # If True, list windows from all groups; otherwise only from the current group
+        background=None,                  # defines the normal background color (#RGB or #RRGGBB)
+        command=None,                     # the command to be launched (string or list with arguments)
+        dmenu_bottom=False,               # dmenu appears at the bottom of the screen
+        dmenu_command='dmenu -c -bw 5',   # the dmenu command to be launched
+        dmenu_font=DMFONT,                # override the default 'font' and 'fontsize' options for dmenu
+        dmenu_height=None,                # defines the height (only supported by some dmenu forks)
+        dmenu_ignorecase=True,            # dmenu matches menu items case insensitively
+        dmenu_lines='80',                 # Give lines vertically. Set to None get inline
+        dmenu_prompt="Windows:",          # defines the prompt to be displayed to the left of the input field
+        font=DMFONT,                      # defines the font name to be used
+        fontsize=None,                    # defines the font size to be used
+        foreground=None,                  # defines the normal foreground color (#RGB or #RRGGBB)
+        item_format='{group}: {window}',  # the format for the menu items
+        selected_background=None,         # defines the selected background color (#RGB or #RRGGBB)
+        selected_foreground=None,         # defines the selected foreground color (#RGB or #RRGGBB)
     )

@@ -174,13 +174,27 @@ def init_keymap(mod, terminal, shell, groups):
                 mode=" BROWSER"
             ),
             KeyChord(MOD, 'c', [
-                Key([], 'a', *_ucmd("ani-cli", terminal),       desc="Open the ani-cli service to play anime in the terminal."),
-                Key([], 'b', *_ucmd("rofi-bluetooth"),          desc="Manage bluetooth connections with rofi"),
-                Key([], 'c', *_ucmd("caprine"),                 desc="Open messenger"),
-                Key([], 'd', *_ucmd("discord"),                 desc="Open discord"),
-                Key([], 'e', *_ucmd(DMNET),                     desc="Manage network connections with dmenu"),
-                Key([], 'g', *_ucmd("gmail-desktop"),           desc="Open gmail"),
-                Key([], 'i', *_ucmd("signal-desktop"),          desc="Open signal"),
+                Key([], 'a', *_ucmd("ani-cli", terminal),  desc="Open the ani-cli service to play anime in the terminal."),
+                Key([], 'b', *_ucmd("rofi-bluetooth"),     desc="Manage bluetooth connections with rofi"),
+                Key([], 'e', *_ucmd(DMNET),                desc="Manage network connections with dmenu"),
+                KeyChord([], 'c', [
+                    Key([], 'a', *list(map(lazy.spawn, [
+                            "caprine",
+                            "discord",
+                            "gmail-desktop",
+                            "signal-desktop",
+                            "slack",
+                            "thunderbird"
+                        ])), lazy.ungrab_all_chords(),       desc="Open all chat clients"),
+                    Key([], 'c', *_uacmd("caprine"),         desc="Open messenger"),
+                    Key([], 'd', *_uacmd("discord"),         desc="Open discord"),
+                    Key([], 'g', *_uacmd("gmail-desktop"),   desc="Open gmail"),
+                    Key([], 'i', *_uacmd("signal-desktop"),  desc="Open signal"),
+                    Key([], 'k', *_uacmd("slack"),           desc="Open slack"),
+                    Key([], 't', *_uacmd("thunderbird"),     desc="Open thunderbird"),
+                    ],
+                    mode=" CHAT"
+                ),
                 Key([], 'm', *_uscript("macho.sh", terminal),   desc="Use the macho wrapper around man"),
                 KeyChord([], 'n', [
                     Key([], 'c', *_uacmd("dunstctl close-all"),         desc="Close all notifications on the screen"),
@@ -189,8 +203,6 @@ def init_keymap(mod, terminal, shell, groups):
                     ],
                     mode=" NOTIFICATIONS"
                 ),
-                Key([], 's', *_ucmd("slack"),                 desc="Open slack"),
-                Key([], 't', *_ucmd("thunderbird"),           desc="Open thunderbird"),
                 Key([], 'w', *_uscript("wtldr.sh", terminal), desc="Use the wtldr wrapper around tldr"),
                 ],
                 mode=" MISCELLANEOUS"
