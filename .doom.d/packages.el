@@ -59,4 +59,10 @@
    :repo "a2n-s/xresources-theme"
    :branch "master"))
 (package! rainbow-mode)
+
+;; python support
+(package! elpy)
+(package! flycheck)
 (package! ein)
+(package! py-autopep8)
+(package! blacken)

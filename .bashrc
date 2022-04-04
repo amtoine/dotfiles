@@ -171,6 +171,7 @@ source "$OSH/oh-my-bash.sh"
 #     /_____/(_)____(_)  /_/ /_/ /_/_/____/\___/
 
 export PATH="$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.cargo/bin:$PATH"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/ants/.mujoco/mujoco210/bin"
 
 # changes the editor in the terminal, to edit long commands.
 export EDITOR='nvim'

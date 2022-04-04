@@ -6,6 +6,7 @@ arduino
 asciinema
 autoconf
 automake
+autopep8
 base
 bashtop
 bison

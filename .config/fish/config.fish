@@ -2,6 +2,7 @@ if status is-interactive
   fish_add_path -mP $HOME/.cargo/bin
   fish_add_path -mP $HOME/.emacs.d/bin
   fish_add_path -mP $HOME/.local/bin
+  set -Ux LD_LIBRARY_PATH /home/ants/.mujoco/mujoco210/bin
 
   function spark -d "sparkline generator"
     if isatty

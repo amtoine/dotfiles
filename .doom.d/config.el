@@ -55,15 +55,29 @@
 ;; they are implemented.
 
 
+;; add a beacon when moving around
 (beacon-mode 1)
 
+;; a minimap for long files
 (setq minimap-window-location 'right)
 (setq minimap-width-fraction 0.1)
 (map! :leader
       (:prefix ("t" . "toggle")
        :desc "Toggle minimap-mode" "m" #'minimap-mode))
 
+;; some help support with clippy on c h
 (map! :leader
       (:prefix ("c h" . "Help info from Clippy")
        :desc "Clippy describes function under point" "f" #'clippy-describe-function
        :desc "Clippy describes variable under point" "v" #'clippy-describe-variable))
+
+;; python support
+;; the base with elpy
+(elpy-enable)
+;; flycheck for syntax checking
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+;; autopep8 to format
+(require 'py-autopep8)
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)

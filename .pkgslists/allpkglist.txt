@@ -16,6 +16,7 @@ asciinema
 aura-bin
 autoconf
 automake
+autopep8
 base
 bash-completion
 bashtop
