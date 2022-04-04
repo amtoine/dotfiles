@@ -115,7 +115,7 @@ def _client_new(client):
     # send quickemu virtualmachines to the third terminal group.
     elif cls in ["qemu"]:
         client.cmd_togroup(group_names[2])
-    elif cls in ["discord", "Caprine", "Slack", "Signal", "Thunderbird"]:
+    elif cls in ["discord", "Caprine", "Slack", "Signal", "Thunderbird", "Gmail Desktop"]:
         client.cmd_togroup(group_names[4])
     elif cls in ["Steam"]:
         client.cmd_togroup(group_names[5])

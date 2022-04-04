@@ -89,6 +89,7 @@ ghq
 gimp
 git
 github-cli
+gmail-desktop
 gnu-netcat
 gnuplot
 grub
@@ -112,6 +113,7 @@ kvantum
 lazygit
 lf
 libappindicator-gtk3
+libreoffice-still
 librsync
 links
 linux
@@ -124,6 +126,7 @@ make
 mate-backgrounds
 mathomatic
 mbsync-git
+mk_vpp
 moc
 mpd
 mpv
@@ -247,6 +250,7 @@ slock-a2ns-git
 solarized-sddm-theme
 sox
 spectrwm
+sshfs
 st-a2ns-git
 starship
 steam

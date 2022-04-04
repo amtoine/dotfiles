@@ -1,7 +1,11 @@
 ebook-tools
+i3-wm
+jupyter_console
 kio-extras
 mpdecimal
 pandoc
 pipewire-media-session
+python-dnspython
+python-markdown
 python-pyxdg
 unixodbc

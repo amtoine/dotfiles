@@ -179,7 +179,8 @@ def init_keymap(mod, terminal, shell, groups):
                 Key([], 'c', *_ucmd("caprine"),                 desc="Open messenger"),
                 Key([], 'd', *_ucmd("discord"),                 desc="Open discord"),
                 Key([], 'e', *_ucmd(DMNET),                     desc="Manage network connections with dmenu"),
-                Key([], 'g', *_ucmd("signal-desktop"),          desc="Open signal"),
+                Key([], 'g', *_ucmd("gmail-desktop"),           desc="Open gmail"),
+                Key([], 'i', *_ucmd("signal-desktop"),          desc="Open signal"),
                 Key([], 'm', *_uscript("macho.sh", terminal),   desc="Use the macho wrapper around man"),
                 KeyChord([], 'n', [
                     Key([], 'c', *_uacmd("dunstctl close-all"),         desc="Close all notifications on the screen"),

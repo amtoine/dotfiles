@@ -17,10 +17,12 @@ dmscripts-git
 downgrade
 dwm-a2ns-git
 ghq
+gmail-desktop
 htim
 irony-mode
 lf
 mbsync-git
+mk_vpp
 mu
 multicolor-sddm-theme
 myman

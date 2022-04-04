@@ -190,6 +190,12 @@ class _LinuxBattery(_Battery, configurable.Configurable):
             None,
             "Name of file with the current power draw in /sys/class/power_supply/battery_name",
         ),
+        (
+            "full_not_charging",
+            False,
+            "Some batteries report their status as 'Not charging' when full, rather than 'Full'. "
+            "If the widget reports an unknown state when full, try changing this to 'True'.",
+        ),
     ]
 
     filenames = {}  # type: dict
@@ -269,14 +275,12 @@ class _LinuxBattery(_Battery, configurable.Configurable):
     def update_status(self) -> BatteryStatus:
         stat = self._get_param("status_file")[0]
 
-        if stat == "Full":
+        if stat == "Full" or (self.full_not_charging and stat == "Not charging"):
             state = BatteryState.FULL
         elif stat == "Charging":
             state = BatteryState.CHARGING
         elif stat == "Discharging":
             state = BatteryState.DISCHARGING
-        elif stat == "Not charging":
-            state = BatteryState.FULL
         else:
             state = BatteryState.UNKNOWN
 
@@ -337,6 +341,12 @@ class Battery(base.ThreadPoolText):
         ("notify_below", None, "Send a notification below this battery level."),
         ("notify_above", None, "Send a notification above this battery level."),
         ("notification_timeout", 10, "Time in seconds to display notification. 0 for no expiry."),
+        (
+            "full_not_charging",
+            False,
+            "Some batteries report their status as 'Not charging' when full, rather than 'Full'. "
+            "If the widget reports an unknown state when full, try changing this to 'True'.",
+        ),
     ]
 
     def __init__(self, **config) -> None:
