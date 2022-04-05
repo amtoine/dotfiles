@@ -80,7 +80,7 @@ def init_groups(terminal: str, shell: str):
                     x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
                 ),
                 DropDown(
-                    "du",     f"{expand_terminal(terminal, fs=24)} ncdu",
+                    "du",     f"{expand_terminal(terminal, fs=24)} ncdu -x /",
                     x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
                 ),
             ]

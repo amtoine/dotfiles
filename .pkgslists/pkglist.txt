@@ -82,10 +82,10 @@ prettier
 procs
 protobuf
 pyside2
-python-isort
 python-mpi4py
 python-nose
 python-pipenv
+python-pylint
 python-pytest
 python-tqdm
 qt5-examples

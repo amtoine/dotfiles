@@ -899,6 +899,7 @@ def battery(format, bg="#000000", fg="#ffffff", low=.15, high=.85):
         foreground=fg,              # Foreground colour
         format=format,              # Display format
         full_char='',              # Character to indicate the battery is full
+        full_not_charging=True,
         hide_threshold=None,        # Hide the text when there is enough energy 0 <= x < 1
         high_background=None,       # Background color on high battery
         high_foreground="#ffff00",  # Font color on high battery

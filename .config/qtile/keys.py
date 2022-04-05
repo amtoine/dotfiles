@@ -70,7 +70,7 @@ XAR = "XF86AudioRaiseVolume"
 # wrapper around dmenu-related commands
 DMRUN = f"dmenu_run -c -l 10 -bw 5 -h {BAR_GEOMETRY['size']} -p 'Run: ' -fn '{DMFONT}'"
 DMPASS = f"passmenu -l 10 -bw 5 -c -fn '{DMFONT}'"
-DMNET = f"networkmanager_dmenu -c -l 20 -bw 5 -fn '{DMFONT}'"
+DMNET = f"networkmanager_dmenu -i -c -l 20 -bw 5 -fn '{DMFONT}'"
 
 # web browsers
 SURF = "tabbed -c surf -N -e"
@@ -204,6 +204,7 @@ def init_keymap(mod, terminal, shell, groups):
                     mode=" NOTIFICATIONS"
                 ),
                 Key([], 'w', *_uscript("wtldr.sh", terminal), desc="Use the wtldr wrapper around tldr"),
+                Key([], 'z', *_ucmd("zotero"),                desc="Manage papers and pdf documents with zotero"),
                 ],
                 mode=" MISCELLANEOUS"
             ),

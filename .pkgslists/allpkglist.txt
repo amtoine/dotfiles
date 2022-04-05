@@ -147,6 +147,7 @@ networkmanager-dmenu-git
 ngrok
 nitrogen
 nmap
+notion-app-enhanced
 noto-fonts-cjk
 npm
 nsxiv
@@ -187,6 +188,7 @@ python-nose
 python-opengl
 python-pip
 python-pipenv
+python-pylint
 python-pytest
 python-tqdm
 python-virtualenv
@@ -357,4 +359,5 @@ youtube-dl
 z
 zenity
 zip
+zotero
 zsh

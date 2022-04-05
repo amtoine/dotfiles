@@ -1,5 +1,6 @@
 ebook-tools
 i3-wm
+jupyter-widgetsnbextension
 jupyter_console
 kio-extras
 mpdecimal

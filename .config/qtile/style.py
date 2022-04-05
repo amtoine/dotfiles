@@ -31,7 +31,7 @@ DMFONT = "mononoki Nerd Font-20"
 ARROW_SIZE, BAR_SIZE, GROUP_SIZE = font_sizes.large
 # the bar content
 # choose from minimal, decreased, normal
-BAR_STYLE = bar_styles.decreased
+BAR_STYLE = bar_styles.minimal
 # the widget separator style
 # choose vmono, vcolor, smono, scolor
 SEP_STYLE = sep_styles.scolor
