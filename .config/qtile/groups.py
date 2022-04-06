@@ -48,7 +48,7 @@ def init_groups(terminal: str, shell: str):
             "sp1",
             [
                 DropDown(
-                    "term", f"{expand_terminal(terminal)} {shell}",
+                    "term",   f"{expand_terminal(terminal)} {shell}",
                     x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
                 ),
                 DropDown(
@@ -60,15 +60,15 @@ def init_groups(terminal: str, shell: str):
                     x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
                 ),
                 DropDown(
-                    "lcfg",   f"{expand_terminal(terminal)} lcfg.sh",
+                    "cfg",    f"{expand_terminal(terminal)} lcfg.sh",
                     x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
                 ),
                 DropDown(
-                    "tcfg",   f"{expand_terminal(terminal)} tcfg.sh",
+                    "sound",  f"{expand_terminal(terminal)} alsamixer",
                     x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
                 ),
                 DropDown(
-                    "mocp",   f"{expand_terminal(terminal)} mocp",
+                    "music",  f"{expand_terminal(terminal)} mocp",
                     x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
                 ),
                 DropDown(
@@ -80,7 +80,7 @@ def init_groups(terminal: str, shell: str):
                     x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
                 ),
                 DropDown(
-                    "du",     f"{expand_terminal(terminal, fs=24)} ncdu -x /",
+                    "disk",   f"{expand_terminal(terminal, fs=24)} ncdu -x /",
                     x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
                 ),
             ]

@@ -82,7 +82,7 @@ _margin_width = 2
 #          N  E  S  W
 _border = (1, 1, 1, 1)
 _margin = (1, 1, 1, 1)
-_border_color = theme.sel_bg
+_border_color = theme.fg
 BAR_GEOMETRY = dict(
     size=BAR_SIZE,
     opacity=.9 if BAR_STYLE <= bar_styles.decreased else 1.,

@@ -174,7 +174,7 @@ def init_keymap(mod, terminal, shell, groups):
                 mode=" BROWSER"
             ),
             KeyChord(MOD, 'c', [
-                Key([], 'a', *_ucmd("ani-cli", terminal),  desc="Open the ani-cli service to play anime in the terminal."),
+                Key([], 'a', *_ucmd("ani-cli -q 480", terminal),  desc="Open the ani-cli service to play anime in the terminal."),
                 Key([], 'b', *_ucmd("rofi-bluetooth"),     desc="Manage bluetooth connections with rofi"),
                 Key([], 'e', *_ucmd(DMNET),                desc="Manage network connections with dmenu"),
                 KeyChord([], 'c', [
@@ -431,12 +431,12 @@ def init_keymap(mod, terminal, shell, groups):
             Key(MOD, "t", lazy.screen.toggle_group(),    desc="Go to previously seen group"),
             Key(MOD, F1,  _scratch("sp1", "term"),       desc="Open a terminal in first scratchpad"),
             Key(MOD, F2,  _scratch("sp1", "python"),     desc="Open a python shell in first scratchpad"),
-            Key(MOD, F3,  _scratch("sp1", "lcfg"),       desc="Open lazygit on the dotfiles in first scratchpad"),
-            Key(MOD, F4,  _scratch("sp1", "tcfg"),       desc="Open tig on the dotfiles in first scratchpad"),
-            Key(MOD, F5,  _scratch("sp1", "mocp"),       desc="Open the moc music player in first scratchpad"),
+            Key(MOD, F3,  _scratch("sp1", "cfg"),        desc="Open git manager on the dotfiles in first scratchpad"),
+            Key(MOD, F4,  _scratch("sp1", "sound"),      desc="TODO"),
+            Key(MOD, F5,  _scratch("sp1", "music"),      desc="Open the music player in first scratchpad"),
             Key(MOD, F6,  _scratch("sp1", "clock"),      desc="Open a clock in first scratchpad"),
             Key(MOD, F7,  _scratch("sp1", "fm"),         desc="Open a file manager in first scratchpad"),
-            Key(MOD, F8,  _scratch("sp1", "du"),         desc="Show the disk usage in first scratchpad"),
+            Key(MOD, F8,  _scratch("sp1", "disk"),       desc="Show the disk usage in first scratchpad"),
         ]
     )
 
