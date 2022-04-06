@@ -72,8 +72,8 @@ def init_groups(terminal: str, shell: str):
                     x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
                 ),
                 DropDown(
-                    "clock",  f"{expand_terminal(terminal, fs=24)} termdown -z",
-                    x=0.18, y=0.30, width=0.64, height=0.40, opacity=0.90,
+                    "clock",  f"{expand_terminal(terminal, fs=12)} termdown -z",
+                    x=0.67, y=0.02, width=0.32, height=0.20, opacity=0.90,
                 ),
                 DropDown(
                     "fm",     f"{expand_terminal(terminal, fs=24)} lf",

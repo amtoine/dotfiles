@@ -40,10 +40,10 @@ terminal_preferences = [
     "kitty",
 ]
 shell_preferences = [
+    "fish",
     "bash",
     "xonsh",
     "nu",
-    "fish",
 ]
 terminal = guess_terminal(preference=terminal_preferences)
 shell = guess_shell(preference=shell_preferences)

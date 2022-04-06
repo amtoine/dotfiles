@@ -48,11 +48,11 @@ def cst_dunst(fmt, bg="#000000", fg="#ffffff"):
     """
     return Dunst(
         background=bg,       # Widget background color
-        fmt="{}",            # How to format the text
+        fmt="{} ",           # How to format the text
         font=FONT,           # Default font
         fontsize=None,       # Font size. Calculated if None.
         foreground=fg,       # Foreground colour
-        format=fmt,    # How to format the text
+        format=fmt,          # How to format the text
         fontshadow=None,     # font shadow color, default is None(no shadow)
         markup=True,         # Whether or not to use pango markup
         max_chars=0,         # Maximum number of characters to display in widget.

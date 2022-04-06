@@ -16,3 +16,6 @@ google-code-review-guideline https://google.github.io/eng-practices/review/
 google-style-guideline https://google.github.io/styleguide/
 pep8 https://pep8.org/
 scholar https://scholar.google.com/
+qtile-org http://www.qtile.org/
+ppo-spinningup https://spinningup.openai.com/en/latest/algorithms/ppo.html
+ppo-openai https://openai.com/blog/openai-baselines-ppo/

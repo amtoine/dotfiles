@@ -108,9 +108,7 @@ def expand_terminal(terminal: str, fs: int = None, hold: bool = True) -> str:
     if terminal == "kitty":
         flags = ["--hold"] if hold else []
     elif terminal == "st":
-        flags = []
-        if fs is not None:
-            flags = [f"-z {fs}"]
+        flags = [f"-z {fs}"] if fs is not None else []
         flags += ["-e"]
     elif terminal == "alacritty":
         flags = ["-e"]
