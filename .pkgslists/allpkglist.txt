@@ -179,8 +179,10 @@ protobuf
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
+pulsemixer
 pyside2
 python-black
+python-flake8-black
 python-isort
 python-iwlib
 python-mpi4py

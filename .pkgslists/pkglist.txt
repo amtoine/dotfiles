@@ -41,7 +41,6 @@ fd
 festival
 figlet
 firefox
-flake8
 flameshot
 flex
 fortune-mod
@@ -81,7 +80,9 @@ ponysay
 prettier
 procs
 protobuf
+pulsemixer
 pyside2
+python-flake8-black
 python-mpi4py
 python-nose
 python-pipenv
