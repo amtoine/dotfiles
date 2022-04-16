@@ -73,6 +73,7 @@ noto-fonts-cjk
 nushell
 okular
 pacgraph
+patchelf
 pavucontrol
 peco
 picom

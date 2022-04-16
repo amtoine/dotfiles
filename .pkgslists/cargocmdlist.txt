@@ -14,6 +14,7 @@ Installed Commands:
     fmt                  Formats all bin and lib files of the current crate using rustfmt.
     generate-lockfile    Generate the lockfile for a package
     git-checkout         This subcommand has been removed
+    help                 Displays help for a cargo subcommand
     init                 Create a new cargo package in an existing directory
     install              Install a Rust binary. Default location is $HOME/.cargo/bin
     locate-project       Print a JSON representation of a Cargo.toml file's location

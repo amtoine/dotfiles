@@ -432,11 +432,12 @@ def init_keymap(mod, terminal, shell, groups):
             Key(MOD, F1,  _scratch("sp1", "term"),       desc="Open a terminal in first scratchpad"),
             Key(MOD, F2,  _scratch("sp1", "python"),     desc="Open a python shell in first scratchpad"),
             Key(MOD, F3,  _scratch("sp1", "cfg"),        desc="Open git manager on the dotfiles in first scratchpad"),
-            Key(MOD, F4,  _scratch("sp1", "sound"),      desc="TODO"),
+            Key(MOD, F4,  _scratch("sp1", "sound"),      desc="Open the sound manager of the system in first scratchpad"),
             Key(MOD, F5,  _scratch("sp1", "music"),      desc="Open the music player in first scratchpad"),
             Key(MOD, F6,  _scratch("sp1", "clock"),      desc="Open a clock in first scratchpad"),
             Key(MOD, F7,  _scratch("sp1", "fm"),         desc="Open a file manager in first scratchpad"),
             Key(MOD, F8,  _scratch("sp1", "disk"),       desc="Show the disk usage in first scratchpad"),
+            Key(MOD, F9,  _scratch("sp1", "top"),        desc="Open the process monitor in first scratchpad"),
         ]
     )
 

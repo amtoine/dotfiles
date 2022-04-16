@@ -83,6 +83,10 @@ def init_groups(terminal: str, shell: str):
                     "disk",   f"{expand_terminal(terminal, fs=24)} ncdu -x /",
                     x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
                 ),
+                DropDown(
+                    "top",    f"{expand_terminal(terminal, fs=24)} btop",
+                    x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
+                ),
             ]
         ),
     ]

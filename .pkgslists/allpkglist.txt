@@ -163,6 +163,7 @@ pass
 pass-import
 pass-tomb
 patch
+patchelf
 pavucontrol
 pcmanfm
 peco
