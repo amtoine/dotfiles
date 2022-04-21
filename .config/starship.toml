@@ -75,7 +75,6 @@ add_newline = false
  discharging_symbol = " "    # The symbol shown when the battery is discharging.
  unknown_symbol     = " "    # The symbol shown when the battery state is unknown.
  empty_symbol       = " "    # The symbol shown when the battery state is empty.
- display            = "link"  # Display threshold and style for the module.
  disabled           = false
 
 

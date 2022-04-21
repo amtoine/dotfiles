@@ -9,5 +9,4 @@ pandoc
 pipewire-media-session
 python-dnspython
 python-markdown
-python-pyxdg
 unixodbc

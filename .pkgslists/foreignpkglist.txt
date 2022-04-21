@@ -16,6 +16,7 @@ dmenufm
 dmscripts-git
 downgrade
 dwm-a2ns-git
+espeak
 ghq
 gmail-desktop
 htim
@@ -31,7 +32,6 @@ networkmanager-dmenu-git
 ngrok
 notion-app-enhanced
 nsxiv
-nyxt
 paru
 pass-import
 pass-tomb
@@ -60,6 +60,7 @@ telegram-tg
 toilet
 tomb
 ttf-symbola
+vieb-bin
 xmenu
 xsnow
 yay-git

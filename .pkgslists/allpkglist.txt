@@ -70,6 +70,7 @@ ed
 efibootmgr
 emacs
 eog
+espeak
 exa
 expac
 fakeroot
@@ -116,6 +117,8 @@ lf
 libappindicator-gtk3
 libreoffice-still
 librsync
+libspeechd
+libvterm
 links
 linux
 linux-firmware
@@ -155,6 +158,7 @@ ntfs-3g
 nushell
 nyxt
 okular
+orca
 os-prober
 pacgraph
 pacman-contrib
@@ -256,6 +260,7 @@ slock-a2ns-git
 solarized-sddm-theme
 sox
 spectrwm
+speech-dispatcher
 sshfs
 st-a2ns-git
 starship
@@ -285,6 +290,7 @@ ueberzug
 ufw
 unzip
 vi
+vieb-bin
 vifm
 vim
 vimb
@@ -296,6 +302,7 @@ vulkan-tools
 w3m
 weechat
 wget
+when
 which
 xautolock
 xclip

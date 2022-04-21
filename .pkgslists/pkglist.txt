@@ -38,7 +38,6 @@ eog
 exa
 expac
 fd
-festival
 figlet
 firefox
 flameshot
@@ -58,6 +57,7 @@ kvantum
 lazygit
 libreoffice-still
 librsync
+libvterm
 links
 lolcat
 lxappearance
@@ -71,7 +71,9 @@ nitrogen
 nmap
 noto-fonts-cjk
 nushell
+nyxt
 okular
+orca
 pacgraph
 patchelf
 pavucontrol
@@ -133,6 +135,7 @@ vnstat
 volumeicon
 vulkan-tools
 weechat
+when
 xautolock
 xf86-video-vesa
 xonsh

@@ -87,6 +87,10 @@ def init_groups(terminal: str, shell: str):
                     "top",    f"{expand_terminal(terminal, fs=24)} btop",
                     x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
                 ),
+                DropDown(
+                    "cava",   f"{expand_terminal(terminal, fs=24)} cava",
+                    x=0.05, y=0.05, width=0.90, height=0.90, opacity=0.90,
+                ),
             ]
         ),
     ]
