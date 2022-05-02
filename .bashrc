@@ -174,8 +174,8 @@ export PATH="$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.cargo/bin:$PATH"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/ants/.mujoco/mujoco210/bin"
 
 # changes the editor in the terminal, to edit long commands.
-export EDITOR='nvim'
-export VISUAL='nvim'
+export EDITOR='emacsclient -nw -c -a "emacs"'
+export VISAL='emacsclient -nw -c -a "emacs"'
 set -o vi
 
 ### SET MANPAGER

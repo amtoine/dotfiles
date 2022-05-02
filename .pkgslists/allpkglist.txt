@@ -34,6 +34,7 @@ breeze
 brightnessctl
 bspwm
 btop
+calcurse
 caprine
 catimg
 catppuccin-grub-theme-git
@@ -137,6 +138,7 @@ mpv
 mtools
 mu
 multicolor-sddm-theme
+mut-ex-wallpapers
 myman
 ncdu
 ncmpcpp

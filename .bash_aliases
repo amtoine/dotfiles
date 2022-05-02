@@ -82,13 +82,11 @@ if command -v devour &> /dev/null; then
   alias mpv='devour mpv'
   alias okular='devour okular'
   alias kolourpaint='devour kolourpaint'
-  alias emacs='devour emacsclient -c -a "emacs"'
   if command -v alacritty &> /dev/null; then
     alias ssh="devour alacritty -e ssh $1 > /dev/null"
   fi
-else
-  alias emacs='emacsclient -c -a "emacs"'
 fi
+alias emacs='emacsclient -c -nw -a "emacs"'
 
 if [ "$TERM" = "xterm-kitty" ]; then
   alias kicat="kitty +kitten icat"

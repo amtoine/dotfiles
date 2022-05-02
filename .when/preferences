@@ -1,2 +1,2 @@
 calendar = /home/ants/.when/calendar
-editor = emacs -nw
+editor = emacsclient -c -a "emacs" -nw

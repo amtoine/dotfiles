@@ -203,6 +203,14 @@ def init_keymap(mod, terminal, shell, groups):
                     ],
                     mode=" NOTIFICATIONS"
                 ),
+                KeyChord([], 'r', [
+                    Key([], 'e', *_uacmd("killall emacs"),
+                                 *_uacmd("/usr/bin/emacs --daemon"), desc="Force emacs to restart"),
+                    Key([], 'q', *URESTART,                          desc="Restart qtile"),
+                    Key([], 'w', *_uacmd("feh --bg-fill --randomize /usr/share/backgrounds/*"), desc="Reload random wallpapers"),
+                    ],
+                    mode=" RELOAD"
+                ),
                 Key([], 'w', *_uscript("wtldr.sh", terminal), desc="Use the wtldr wrapper around tldr"),
                 Key([], 'z', *_ucmd("zotero"),                desc="Manage papers and pdf documents with zotero"),
                 ],

@@ -26,6 +26,7 @@ mbsync-git
 mk_vpp
 mu
 multicolor-sddm-theme
+mut-ex-wallpapers
 myman
 nerd-fonts-mononoki
 networkmanager-dmenu-git
