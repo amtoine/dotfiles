@@ -204,7 +204,7 @@ def init_keymap(mod, terminal, shell, groups):
                     mode=" NOTIFICATIONS"
                 ),
                 KeyChord([], 'r', [
-                    Key([], 'e', *_uacmd("killall emacs"),
+                    Key([], 'e', _cmd("killall emacs"),
                                  *_uacmd("/usr/bin/emacs --daemon"), desc="Force emacs to restart"),
                     Key([], 'q', *URESTART,                          desc="Restart qtile"),
                     Key([], 'w', *_uacmd("feh --bg-fill --randomize /usr/share/backgrounds/*"), desc="Reload random wallpapers"),
