@@ -91,6 +91,21 @@ def float_to_front(qtile):
                 window.cmd_bring_to_front()
 
 
+@lazy.function
+def toggle_minimize_all(qtile):
+    """Toggle the windows of current group."""
+    for group in qtile.groups:
+        for window in group.windows:
+            window.toggle_minimize()
+
+
+@lazy.function
+def toggle_minimize_current_group(qtile):
+    """Toggle all the windows."""
+    for window in qtile.current_group.windows:
+        window.toggle_minimize()
+
+
 # system shortcuts
 HOME = os.path.expanduser("~")
 SCRIPTS = ".local/bin"

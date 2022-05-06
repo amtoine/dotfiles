@@ -30,6 +30,8 @@ from extensions import window_list
 from style import BAR_GEOMETRY
 from style import DMFONT
 from utils.utils import float_to_front
+from utils.utils import toggle_minimize_all
+from utils.utils import toggle_minimize_current_group
 from utils.utils import window_to_next_screen
 from utils.utils import window_to_previous_screen
 from utils.utils import _cmd
@@ -411,6 +413,7 @@ def init_keymap(mod, terminal, shell, groups):
             Key(MOD, 'l',
                 lazy.layout.decrease_ratio().when(layout="RTIO"),
                 lazy.layout.swap_column_right().when(layout=["COLS"]),    desc="Decrease the ratio in 'ratio', swap right in 'columns'"),
+            Key(MOD, "m", toggle_minimize_current_group,                  desc="Toggle windows of current group"),
             Key(MOD, RET,
                 lazy.layout.toggle_split().when(layout=["COLS", " BSP"]),
                 lazy.layout.flip().when(layout=["TALL", "WIDE"]),         desc="Toggle between split and unsplit sides of stack"),
@@ -472,6 +475,7 @@ def init_keymap(mod, terminal, shell, groups):
                 lazy.layout.swap_right().when(layout="TALL"),                     desc="Move window right"),
             Key(MOD, "c", lazy.window.kill(),                                     desc="Kill focused window"),
             Key(MOD, "f", float_to_front,                                         desc="Brings all floating windows to the front"),
+            Key(MOD, "m", toggle_minimize_all,                                    desc="Toggle all windows"),
             Key(MOD, F1,  _cmd("flameshot launcher"),                             desc="Take a screenshot with flameshot"),
             Key(MOD, PER, lazy.function(window_to_next_screen),                   desc="Send a window to the next screen, without following"),
             Key(MOD, COM, lazy.function(window_to_previous_screen),               desc="Send a window to the previous screen, without following"),
