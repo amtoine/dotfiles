@@ -10,7 +10,7 @@
 #
 # Description:  changes all your wallpapers in one command, with fzf.
 #               adapted from https://hiphish.github.io/blog/2020/05/31/macho-man-command-on-steroids
-# Dependencies: amixer, ~/scripts/bluetooth.toggle.sh
+# Dependencies: amixer, ~/scripts/bluetooth.toggle.sh, polybar
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
@@ -61,7 +61,7 @@ main () {
     esac
   done
 
-  monitors=$(xrandr --query | grep -e "\<connected" | sed 's/ connected.*//')
+  monitors=$(polybar -m | awk -F: '{print $1}')
   nb_monitors=$(wc -l <<< "$monitors")
   wallpapers=()
   for x in $monitors;
