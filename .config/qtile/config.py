@@ -137,9 +137,12 @@ def _layout_change(layout, group):
         Show the layout name in a popup when changing layout.
     """
     # put the popup relative to the top left corner of current screen.
-    x = qtile.current_screen.x + 160
-    y = qtile.current_screen.y + 90
-    text_popup(qtile, layout.name, x=x, y=y, centered=False)
+    if hasattr(qtile, "current_screen"):
+        x = qtile.current_screen.x + 160
+        y = qtile.current_screen.y + 90
+        text_popup(qtile, layout.name, x=x, y=y, centered=False)
+
+
 @hook.subscribe.screens_reconfigured
 async def _screens_reconfigured():
     """

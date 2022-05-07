@@ -141,7 +141,7 @@ def _cmd(command: str, terminal: str = None, hold: bool = True):
     # add the terminal when the command needs one.
     if terminal is not None:
         command = ' '.join([expand_terminal(terminal, hold=hold), command])
-    return lazy.spawn(command)
+    return lazy.spawn(command, shell=True)
 
 
 def _ucmd(command: str, terminal: str = None, hold: bool = True):
