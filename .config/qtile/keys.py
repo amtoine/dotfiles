@@ -45,6 +45,7 @@ from utils.utils import _uascript
 from utils.utils import _scratch
 from utils.utils import HOME
 from utils.utils import QSCRIPTS
+from popups import feh_popup
 
 # some shortcuts for the `qtile` key codes.
 SPC = "space"
@@ -73,6 +74,7 @@ XAR = "XF86AudioRaiseVolume"
 DMRUN = f"dmenu_run -c -l 10 -bw 5 -h {BAR_GEOMETRY['size']} -p 'Run: ' -fn '{DMFONT}'"
 DMPASS = f"passmenu -l 10 -bw 5 -c -fn '{DMFONT}'"
 DMNET = f"networkmanager_dmenu -i -c -l 20 -bw 5 -fn '{DMFONT}'"
+WALLPAPERS = "feh --bg-fill --randomize /usr/share/backgrounds/*"
 
 # web browsers
 SURF = "tabbed -c surf -N -e"
@@ -209,7 +211,8 @@ def init_keymap(mod, terminal, shell, groups):
                     Key([], 'e', _cmd("killall emacs"),
                                  *_uacmd("/usr/bin/emacs --daemon"), desc="Force emacs to restart"),
                     Key([], 'q', *URESTART,                          desc="Restart qtile"),
-                    Key([], 'w', *_uacmd("feh --bg-fill --randomize /usr/share/backgrounds/*"), desc="Reload random wallpapers"),
+                    Key([], 'w', _cmd(WALLPAPERS),                   desc="Reload random wallpapers"),
+                    Key([SHI], 'w', lazy.function(feh_popup),        desc="Show current wallpapers"),
                     ],
                     mode=" RELOAD"
                 ),
