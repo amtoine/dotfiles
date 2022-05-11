@@ -25,6 +25,9 @@ error () {
   fi
 }
 
+# quick startup sound.
+mpv --no-video ~/.config/qtile/scripts/startup.mp3 &
+
 # open the help only when first time
 if command -v conky &> /dev/null; then
   [ ! -f $HOME/.local/share/qtile/nobeginner ] && conky --config ~/.config/qtile/conky/beginner.conkyrc --daemonize #--pause=5

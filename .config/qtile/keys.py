@@ -131,8 +131,8 @@ def init_keymap(mod, terminal, shell, groups):
     MOD = []
     km.extend(
         [
-            Key(MOD, XBD, _cmd("hdmi.sh -M -b 2- -n"),        desc="Brightness of the main screen down"),
-            Key(MOD, XBU, _cmd("hdmi.sh -M -b 2+ -n"),        desc="Brightness of the main screen up"),
+            Key(MOD, XBD, _cmd("hdmi.sh -M -b 20- -n"),       desc="Brightness of the main screen down"),
+            Key(MOD, XBU, _cmd("hdmi.sh -M -b 20+ -n"),       desc="Brightness of the main screen up"),
             Key(MOD, XAL, _script(SOUNDDOWN.format(SOUNDL)),  desc="Decrease the sound by 'SOUNDL' (defaults to 5)"),
             Key(MOD, XAM, _script(MUTE),                      desc="Toggle the sound on and off for the selected channel"),
             Key(MOD, XAR, _script(SOUNDUP.format(SOUNDL)),    desc="Increase the sound by 'SOUNDL' (defaults to 5)"),

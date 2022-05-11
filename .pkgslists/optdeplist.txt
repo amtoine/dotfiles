@@ -1,12 +1,14 @@
 ebook-tools
 ffmpeg4.4
+gvfs
 i3-wm
 jupyter-widgetsnbextension
 jupyter_console
 kio-extras
 mpdecimal
 pandoc
-pipewire-media-session
 python-dnspython
 python-markdown
+qt6-svg
 unixodbc
+wireplumber

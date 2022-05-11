@@ -57,7 +57,6 @@ ktorrent
 kvantum
 lazygit
 libreoffice-still
-librsync
 libvterm
 links
 lolcat
@@ -80,6 +79,7 @@ patchelf
 pavucontrol
 peco
 picom
+polybar
 ponysay
 prettier
 procs
