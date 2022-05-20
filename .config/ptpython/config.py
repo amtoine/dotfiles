@@ -73,7 +73,7 @@ def configure(repl):
     repl.paste_mode = False
 
     # Use the classic prompt. (Display '>>>' instead of 'In [1]'.)
-    repl.prompt_style = "classic"  # 'classic' or 'ipython'
+    repl.prompt_style = "ipython"  # 'classic' or 'ipython'
 
     # Don't insert a blank line after the output.
     repl.insert_blank_line_after_output = False
@@ -110,7 +110,7 @@ def configure(repl):
     # color schemes. See:
     # https://pygments.org/docs/styles/
     # https://pygments.org/demo/
-    repl.use_code_colorscheme("default")
+    repl.use_code_colorscheme("dracula")
     # A colorscheme that looks good on dark backgrounds is 'native':
     # repl.use_code_colorscheme("native")
 
@@ -197,7 +197,7 @@ def configure(repl):
 # `ptpython/style.py` for all possible tokens.
 _custom_ui_colorscheme = {
     # Blue prompt.
-    "prompt": "bg:#eeeeff #000000 bold",
+    "prompt": "bg:#ffeeff #000000 bold",
     # Make the status toolbar red.
     "status-toolbar": "bg:#ff0000 #000000",
 }

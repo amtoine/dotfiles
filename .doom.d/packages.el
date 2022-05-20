@@ -66,3 +66,7 @@
 (package! ein)
 (package! py-autopep8)
 (package! blacken)
+
+(package! dired-single)
+(package! dired-hide-dotfiles)
+(package! all-the-icons-dired)

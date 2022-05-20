@@ -54,6 +54,23 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; better dired configuration.
+(use-package dired
+  :ensure nil
+  :commands (dired dired-jump)
+  :bind (("C-x C-j" . dired-jump))
+  :config
+  (evil-collection-define-key 'normal 'dired-mode-map
+        "h" 'dired-single-up-directory
+        "l" 'dired-single-buffer))
+(use-package dired-single)
+(use-package all-the-icons-dired
+  :hook (dired-mode . all-the-icons-dired-mode))
+(use-package dired-hide-dotfiles
+  :hook (dired-mode . dired-hide-dotfiles-mode)
+  :config
+  (evil-collection-define-key 'normal 'dired-mode-map
+        "H" 'dired-hide-dotfiles-mode))
 
 ;; add a beacon when moving around
 (beacon-mode 1)
@@ -92,3 +109,11 @@
 ;;       python-shell-prompt-detect-failure-warning nil)
 ;; (add-to-list 'python-shell-completion-native-disabled-interpreters
 ;;              "jupyter")
+(setq erc-prompt (lambda () (concat "[" (buffer-name) "]"))
+      erc-server "irc.libera.chat"
+      erc-nick "astevan"
+      erc-user-full-name "Antoine Stevan"
+      erc-auto-query 'bury
+      erc-fill-column 100
+      erc-fill-function 'erc-fill-static
+      erc-fill-static-center 20)
