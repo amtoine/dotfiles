@@ -292,7 +292,7 @@ def init_keymap(mod, terminal, shell, groups):
                     mode=" HELP"
                 ),
                 Key([], 'l', *_ucmd(LOG, terminal),           desc="Open the log file inside a terminal"),
-                Key([], 'q', *_ucmd("arcolinux-logout"),      desc="Show some options for logout in a window."),
+                Key([], 'q', *_ucmd("archlinux-logout"),      desc="Show some options for logout in a window."),
                 Key([], "r", *URESTART,                       desc="Restart Qtile"),
                 Key([], "s", *USHUTDOWN,                      desc="Shutdown Qtile"),
                 Key([], 't', *_uscript("themes.sh -d", terminal),       desc="Change the theme"),

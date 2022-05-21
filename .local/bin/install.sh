@@ -259,7 +259,7 @@ init_deps () {
 
   # need to PKGBUILD them
   deps_table[wallpapers]="pkg:wallpapers/main +feh"
-  deps_table[arcologout]="pkg:arcolinux-logout/lock/other pacman:python-cairo"
+  deps_table[arcologout]="aur:arcolinux-logout pacman:python-cairo"
   deps_table[dmenu]="pkg:dmenu/main"
   deps_table[st]="pkg:st/main"
   deps_table[tabbed]="pkg:tabbed/main"
