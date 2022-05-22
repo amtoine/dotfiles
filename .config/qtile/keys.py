@@ -200,6 +200,7 @@ def init_keymap(mod, terminal, shell, groups):
                     mode=" CHAT"
                 ),
                 Key([], 'm', *_uscript("macho.sh", terminal),   desc="Use the macho wrapper around man"),
+                Key([], 'p', *_uscript("pdf.sh"),               desc="Open pdfs in okular."),
                 KeyChord([], 'n', [
                     Key([], 'c', *_uacmd("dunstctl close-all"),         desc="Close all notifications on the screen"),
                     Key([], 'h', *_uacmd("dunstctl history-pop"),       desc="Pop a notification from history"),

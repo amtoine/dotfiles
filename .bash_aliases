@@ -87,6 +87,8 @@ if command -v devour &> /dev/null; then
   fi
 fi
 alias emacs='emacsclient -c -nw -a "emacs"'
+alias pdf='okular $(find "\.pdf$" . | fzf)'
+
 
 if [ "$TERM" = "xterm-kitty" ]; then
   alias kicat="kitty +kitten icat"

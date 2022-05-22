@@ -140,6 +140,7 @@ if status is-interactive
     end
   end
   alias emacs='emacsclient -c -nw -a "emacs"'
+  alias pdf='okular (find "\.pdf\$" . | fzf)'
 
   if [ "$TERM" = "xterm-kitty" ]
     alias kicat="kitty +kitten icat"
