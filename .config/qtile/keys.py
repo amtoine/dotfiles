@@ -104,6 +104,7 @@ BLUETOGG = "sound.sh --bluetooth --notify"
 # miscellaneous
 LCFG = f"lazygit --git-dir={HOME}/.dotfiles --work-tree={HOME}"
 TIGA = "tcfg.sh"
+EMACS_RESTART = "killall emacs && /usr/bin/emacs --daemon && dunstify 'Emacs' 'server restart successful'"
 
 
 def init_keymap(mod, terminal, shell, groups):
@@ -209,8 +210,7 @@ def init_keymap(mod, terminal, shell, groups):
                     mode=" NOTIFICATIONS"
                 ),
                 KeyChord([], 'r', [
-                    Key([], 'e', _cmd("killall emacs"),
-                                 *_uacmd("/usr/bin/emacs --daemon"), desc="Force emacs to restart"),
+                    Key([], 'e', *_uacmd(EMACS_RESTART),             desc="Force emacs to restart"),
                     Key([], 'q', *URESTART,                          desc="Restart qtile"),
                     Key([], 'w', _cmd(WALLPAPERS),                   desc="Reload random wallpapers"),
                     Key([SHI], 'w', lazy.function(feh_popup),        desc="Show current wallpapers"),

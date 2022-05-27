@@ -64,4 +64,4 @@ vieb-bin
 xmenu
 xsnow
 yay-git
-zotero
+yup

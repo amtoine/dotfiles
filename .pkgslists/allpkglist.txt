@@ -368,8 +368,8 @@ xwallpaper
 yad
 yay-git
 youtube-dl
+yup
 z
 zenity
 zip
-zotero
 zsh
