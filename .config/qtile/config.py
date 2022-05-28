@@ -43,6 +43,8 @@ shell_preferences = [
     "xonsh",
     "nu",
 ]
+use_bar = True
+
 terminal = guess_terminal(preference=terminal_preferences)
 shell = guess_shell(preference=shell_preferences)
 
@@ -52,7 +54,7 @@ keys = init_keymap(mod, terminal, shell, groups)
 layouts = init_layouts()
 widget_defaults = init_widget_defaults()
 extension_defaults = widget_defaults.copy()
-fake_screens = init_screens(terminal)
+fake_screens = init_screens(terminal, use_bar=use_bar)
 
 # some mouse related stuff.
 mouse = init_mouse(mod)
