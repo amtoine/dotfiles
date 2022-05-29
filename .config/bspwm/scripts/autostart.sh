@@ -64,6 +64,11 @@ run_conky () {
 }
 
 
+export DMFONT="mononoki Nerd Font-20"
+export SCRIPTS="$HOME/.local/bin"
+export TERM="st"
+export TERMFLAGS="-e"
+export SHELL="bash"
 pgrep -x sxhkd > /dev/null || sxhkd -c "$SXHKD_COMMON" "$SXHKD_BSPWM" &
 
 # start the `dunst` notification server in the background

@@ -1,179 +1,87 @@
-#             ___
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
-#     \__,_/____/_/ /_/           /____/
-#                               _____             __             __    __       __      __             __    __       __
-#             _________  ____  / __(_)___ _     _/_/  ______  __/ /_  / /______/ /    _/_/  ______  __/ /_  / /______/ /_________
-#            / ___/ __ \/ __ \/ /_/ / __ `/   _/_/   / ___/ |/_/ __ \/ //_/ __  /   _/_/   / ___/ |/_/ __ \/ //_/ __  / ___/ ___/
-#      _    / /__/ /_/ / / / / __/ / /_/ /  _/_/    (__  )>  </ / / / ,< / /_/ /  _/_/    (__  )>  </ / / / ,< / /_/ / /  / /__
-#     (_)   \___/\____/_/ /_/_/ /_/\__, /  /_/     /____/_/|_/_/ /_/_/|_|\__,_/  /_/     /____/_/|_/_/ /_/_/|_|\__,_/_/   \___/
-#                                 /____/
-# Description:  TODO.
+#           ___
+#      __ _|_  )_ _ ___ ___   personal page: https://a2n-s.github.io/
+#     / _` |/ /| ' \___(_-<   github   page: https://github.com/a2n-s
+#     \__,_/___|_||_|  /__/   my   dotfiles: https://github.com/a2n-s/dotfiles
+#               __         __         _    _      _
+#        __    / /  ___   / /  ____ _| |_ | |____| |_ _ __
+#      _/ _|  / /  (_-<  / /  (_-< \ / ' \| / / _` | '_/ _|
+#     (_)__| /_/   /__/ /_/   /__/_\_\_||_|_\_\__,_|_| \__|
+#
+# Description:  WM-agnostic key-bindings.
 # Dependencies: TODO.
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
-#
-#               Table of Content:
-#                 wm independent hotkeys
-#                 bspwm hotkeys
-#                 state/flags
-#                 focus/swap
-#                 preselect
-#                 move/resize
-#                 misc
 
-#
-# >>> wm independent hotkeys
-#
-# open the terminal emulator
+XF86MonBrightness{Down,Up}
+  "$SCRIPTS/hdmi.sh" -M -b 20{-,+} -n
+shift + XF86MonBrightness{Down,Up}
+  "$SCRIPTS/hdmi.sh" -S -b {-,+} -n
+XF86AudioMute
+  "$SCRIPTS/sound.sh" --toggle --channel Master --notify
+ctrl + XF86AudioMute
+  "$SCRIPTS/sound.sh" --bluetooth --notify
+XF86Audio{Lower,Raise}Volume
+  "$SCRIPTS/sound.sh" --{down,up} --channel Master --step 5 --notify
+
+super + {_,shift} + F1
+  flameshot {gui,launcher}
+super + F2
+  "$SCRIPTS/flameshot-screen.sh"
+super + {F3, F4}
+  $TERM $TERMFLAGS {lazygit --git-dir="$HOME/.dotfiles" --work-tree="$HOME", "$SCRIPTS/tcfg.sh"}
+super + {F5,F6}
+  sh "$SCRIPTS/scrot.sh" {window,full}
+super + F12
+  archlinux-logout
+
 super + Return
-  kitty
-#  alacritty
-super + n
-  kitty nvim
-super + e
-  emacsclient -c -a 'emacs'
-# run a program launcher
+  $TERM $TERMFLAGS $SHELL
 super + @space
-  sh ~/scripts/dmrun.sh
-# make sxhkd reload its configuration files:
+  dmenu_run -c -bw 5 -l 10
 super + Escape
   pkill -USR1 -x sxhkd
 
-# open the hub of dmenu with dmscripts.
-super + F1
-  /usr/bin/dm-hub
-  # ~/repos/dmscripts/scripts/dm-hub
-# pop a list of all config files to edit them.
-super + F2
-  /usr/bin/dm-confedit
-  # ~/repos/dmscripts/scripts/dm-confedit
-# restart all instances of polybar.
-super + F3
-  bash ~/.config/polybar/launch.sh --forest
-# kill all instances of polybar.
-super + F4
-  killall -q polybar
-# brightness of the main screen down.
-super + F5
-  brightnessctl s 8-
-# brightness of the main screen up.
-super + F6
-  brightnessctl s 8+
-# brightness of the second screen down.
-super + shift + F5
-  ~/scripts/hdmi.brightness.sh -
-# brightness of the second screen up.
-super + shift + F6
-  ~/scripts/hdmi.brightness.sh +
-# take a screenshot of everything or chose a window.
-super + {_, shift +}F7
-  ~/scripts/screenshot.sh {full, window}
-# my web browser.
-super + F8
-  tabbed -c surf -N -e
-# my password manager.
-super + F9
-  passmenu -l 10 -c
-# my file explorer.
-super + F10
-  kitty ~/scripts/lfrun.sh
-# lock the computer.
-super + ctrl + F12
-  ~/scripts/slock.sh
+super + c; b; {c, f, n, q, s, v}
+  {chromium,firefox,nyxt,qutebrowser,tabbed -c surf -N -e,tabbed -c vimb -e}
+super + c; c; {c, d, g, i, k, t}
+  {caprine,discord,gmail-desktop,signal-desktop,slack,thunderbird}
+super + c; n; {b, d}
+  {rofi-bluetooth, networkmanager_dmenu -i -c -l 20 -bw 5 -fn "mononoki Nerd Font-20"}
+super + c; d; {c, h, p}
+  dunstctl {close-all,history-pop,set-paused-toggle}
+super + c; m; {a, m, w}
+  $TERM $TERMFLAGS {ani-cli -q 480,"$SCRIPTS/macho.sh","$SCRIPTS/wtldr.sh"}
+super + c; p
+  "$SCRIPTS/pdf.sh"
+super + c; r; e
+  killall emacs; \
+  /usr/bin/emacs --daemon; \
+  dunstify 'Emacs' 'server restart successful'
+super + c; r; t
+  $TERM $TERMFLAGS "$SCRIPTS/themes.sh" -d
+super + c; r; w; {f,s}
+  {feh --bg-fill --randomize /usr/share/backgrounds/*,$TERM $TERMFLAGS "$SCRIPTS/themes.sh" -d}
 
-#
-# >>> bspwm hotkeys
-#
-# quit/restart bspwm
-super + alt + {q,r}
-  bspc {quit,wm -r}
-# close and kill
-super + {_,shift + }w
-  bspc node -{c,k}
-# alternate between the tiled and monocle layout
-super + m
-  bspc desktop -l next
-# send the newest marked node to the newest preselected node
-super + y
-  bspc node newest.marked.local -n newest.!automatic.local
-# swap the current node and the biggest window
-super + g
-  bspc node -s biggest.window
 
-#
-# >>> state/flags
-#
-# set the window state
-super + {t,shift + t,s,f}
-  bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-# set the node flags
-super + ctrl + {m,x,y,z}
-  bspc node -g {marked,locked,sticky,private}
+super + d; {b, e, i, h, k, l, m, n, o, r, s}
+ dm-{setbg,confedit,maim,hub,kill,logout,man,note,bookman,reddit,websearch} -fn "mononoki Nerd Font-20"
 
-#
-# >>> focus/swap
-#
-# focus the node in the given direction
-super + {_,shift + }{h, j, k, l}
-  bspc node -{f,s} {west, south, north, east}
-# focus the node for the given path jump
-super + {p,b,comma,period}
-  bspc node -f @{parent,brother,first,second}
-# focus the next/previous window in the current desktop
-super + {_,shift + }c
-  bspc node -f {next,prev}.local.!hidden.window
-# focus the next/previous desktop in the current monitor
-super + bracket{left,right}
-  bspc desktop -f {prev,next}.local
-# focus the next/previous monitor
-super + shift + bracket{left,right}
-  bspc monitor -f {prev,next}
-# focus the last node/desktop
-super + {grave,Tab}
-  bspc {node,desktop} -f last
-# focus the older or newer node in the focus history
-super + {o,i}
-  bspc wm -h off; \
-  bspc node {older,newer} -f; \
-  bspc wm -h on
-# focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-  bspc {desktop -f,node -d} '^{1-9,10}'
+super + e; e
+  emacsclient -c -a "emacs"
+super + e; {a,b,d,f,i,m,s,v}
+  emacsclient -c -a "emacs" --eval "({org-agenda,ibuffer,dired nil,elfeed,erc,mu4e,eshell,+vterm/here nil})"
+super + e; n
+  $TERM $TERMFLAGS nvim
 
-#
-# >>> preselect
-#
-# preselect the direction
-super + ctrl + {h,j,k,l}
-  bspc node -p {west,south,north,east}
-# preselect the ratio
-super + ctrl + {1-9}
-  bspc node -o 0.{1-9}
-# cancel the preselection for the focused node
-super + ctrl + space
-  bspc node -p cancel
-# cancel the preselection for the focused desktop
-super + ctrl + shift + space
-  bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+super + m; {b,m,n,,p,q,r,s,h,j,k,l}
+  mocp {-r,-G,-f,-G,-x,-t repeat,-t shuffle,-k -10,-f,-r,-k +10}
+super + m; o
+  $TERM $TERMFLAGS mocp
 
-#
-# >>> move/resize
-#
-# expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
-  bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
-# contract a window by moving one of its side inward
-super + alt + shift + {h,j,k,l}
-  bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
-# move a floating window
-super + {Left,Down,Up,Right}
-  bspc node -v {-20 0,0 20,0 -20,20 0}
+super + p; p
+  passmenu -l 10 -bw 5 -c -fn "mononoki Nerd Font-20"
+super + p; e
+  "$SCRIPTS/pedit.sh"
 
-#
-# >>> misc
-#
-# to change layouts
-super + {F10, F11, F12}
-  ~/.config/bspwm/scheme.sh {first_child, longest_side, spiral}
+super + r; {c, d, f, k, r, s, w}
+  rofi -show {combi, drun, filebrowser, keys, run ,ssh, window}

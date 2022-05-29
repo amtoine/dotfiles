@@ -19,6 +19,9 @@
 #                 coloring.
 #                 rules.
 
+# some handy variables.
+AUTOSTART="$HOME/.config/bspwm/scripts/autostart.sh"
+
 # >>> monitor connection.
 bspc monitor eDP-1  -n 1 -d I II III IV V
 bspc monitor HDMI-2 -n 2 -d VI VII VIII IX X
@@ -60,4 +63,4 @@ bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
-bash "$HOME/.config/bspwm/scripts/autostart.sh"
+bash "$AUTOSTART"
