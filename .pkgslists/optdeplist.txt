@@ -1,7 +1,6 @@
 ebook-tools
 ffmpeg4.4
 gvfs
-i3-wm
 jupyter-widgetsnbextension
 jupyter_console
 kio-extras

@@ -53,7 +53,7 @@ et-xmlfile                    1.1.0
 ewmh                          0.1.6
 executing                     0.8.2
 fastjsonschema                2.15.3
-filelock                      3.4.2
+filelock                      3.5.0
 flake8                        4.0.1
 flake8-black                  0.3.3
 Flask                         2.0.2
@@ -94,7 +94,7 @@ jupyter-packaging             0.12.0
 jupyter-server                1.17.0
 jupyterlab                    3.4.2
 jupyterlab-pygments           0.1.2
-jupyterlab-server             2.13.0
+jupyterlab-server             2.14.0
 jupyterlab-widgets            1.0.2
 lazy-object-proxy             1.7.1
 leather                       0.3.4
@@ -168,7 +168,7 @@ pylint                        2.13.8
 pynvim                        0.4.3
 PyOpenGL                      3.1.6
 pyOpenSSL                     22.0.0
-pyparsing                     3.0.8
+pyparsing                     3.0.9
 PyQt5                         5.15.6
 PyQt5-sip                     12.10.1
 PyQtWebEngine                 5.15.5
@@ -200,7 +200,7 @@ rsa                           4.8
 ruamel.yaml                   0.16.13
 Send2Trash                    1.8.0
 setproctitle                  1.2.3
-setuptools                    60.5.0
+setuptools                    60.6.0
 shiboken2                     5.15.4
 shtab                         1.5.4
 six                           1.16.0
@@ -215,7 +215,7 @@ sphinxcontrib-htmlhelp        2.0.0
 sphinxcontrib-jsmath          1.0.1
 sphinxcontrib-qthelp          1.0.3
 sphinxcontrib-serializinghtml 1.1.5
-SQLAlchemy                    1.4.35
+SQLAlchemy                    1.4.36
 stack-data                    0.1.4
 stevedore                     3.5.0
 team                          1.0

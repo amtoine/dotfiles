@@ -58,7 +58,6 @@ mute_notify () {
   fi
 }
 bluetooth_notify () {
-  echo "LOL"
   if pacmd list-cards | grep -B5 "JBL Xtreme" | grep 'active profile'
   then
     dunstify "Bluetooth" "active" 
