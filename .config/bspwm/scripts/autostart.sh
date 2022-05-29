@@ -17,9 +17,6 @@
 CONKY_HELP="$HOME/.config/conky/bspwm.conkyrc"
 CONKY_CLOCK="$HOME/.config/conky/vision/Z333-vision.conkyrc"
 
-SXHKD_COMMON="$HOME/.config/sxhkd/sxhkdrc"
-SXHKD_BSPWM="$HOME/.config/bspwm/sxhkd/sxhkdrc"
-
 POLYBAR="$HOME/.config/polybar/launch.sh"
 POLYBAR_THEME="forest"
 
@@ -64,12 +61,7 @@ run_conky () {
 }
 
 
-export DMFONT="mononoki Nerd Font-20"
-export SCRIPTS="$HOME/.local/bin"
-export TERM="st"
-export TERMFLAGS="-e"
-export SHELL="bash"
-pgrep -x sxhkd > /dev/null || sxhkd -c "$SXHKD_COMMON" "$SXHKD_BSPWM" &
+bash "$HOME/.config/bspwm/scripts/sxhkd_start.sh"
 
 # start the `dunst` notification server in the background
 if command -v dunst &> /dev/null; then

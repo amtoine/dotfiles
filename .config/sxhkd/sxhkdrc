@@ -28,14 +28,14 @@ super + {_,shift} + F1
 super + F2
   "$SCRIPTS/flameshot-screen.sh"
 super + {F3, F4}
-  $TERM $TERMFLAGS {lazygit --git-dir="$HOME/.dotfiles" --work-tree="$HOME", "$SCRIPTS/tcfg.sh"}
+  $TERM $TERM_FLAGS {lazygit --git-dir="$HOME/.dotfiles" --work-tree="$HOME", "$SCRIPTS/tcfg.sh"}
 super + {F5,F6}
   sh "$SCRIPTS/scrot.sh" {window,full}
 super + F12
   archlinux-logout
 
 super + Return
-  $TERM $TERMFLAGS $SHELL
+  $TERM $TERM_FLAGS $TERM_SHELL
 super + @space
   dmenu_run -c -bw 5 -l 10
 super + Escape
@@ -50,7 +50,7 @@ super + c; n; {b, d}
 super + c; d; {c, h, p}
   dunstctl {close-all,history-pop,set-paused-toggle}
 super + c; m; {a, m, w}
-  $TERM $TERMFLAGS {ani-cli -q 480,"$SCRIPTS/macho.sh","$SCRIPTS/wtldr.sh"}
+  $TERM $TERM_FLAGS {ani-cli -q 480,"$SCRIPTS/macho.sh","$SCRIPTS/wtldr.sh"}
 super + c; p
   "$SCRIPTS/pdf.sh"
 super + c; r; e
@@ -58,9 +58,9 @@ super + c; r; e
   /usr/bin/emacs --daemon; \
   dunstify 'Emacs' 'server restart successful'
 super + c; r; t
-  $TERM $TERMFLAGS "$SCRIPTS/themes.sh" -d
+  $TERM $TERM_FLAGS "$SCRIPTS/themes.sh" -d
 super + c; r; w; {f,s}
-  {feh --bg-fill --randomize /usr/share/backgrounds/*,$TERM $TERMFLAGS "$SCRIPTS/themes.sh" -d}
+  {feh --bg-fill --randomize /usr/share/backgrounds/*,$TERM $TERM_FLAGS "$SCRIPTS/themes.sh" -d}
 
 
 super + d; {b, e, i, h, k, l, m, n, o, r, s}
@@ -71,12 +71,12 @@ super + e; e
 super + e; {a,b,d,f,i,m,s,v}
   emacsclient -c -a "emacs" --eval "({org-agenda,ibuffer,dired nil,elfeed,erc,mu4e,eshell,+vterm/here nil})"
 super + e; n
-  $TERM $TERMFLAGS nvim
+  $TERM $TERM_FLAGS nvim
 
 super + m; {b,m,n,,p,q,r,s,h,j,k,l}
   mocp {-r,-G,-f,-G,-x,-t repeat,-t shuffle,-k -10,-f,-r,-k +10}
 super + m; o
-  $TERM $TERMFLAGS mocp
+  $TERM $TERM_FLAGS mocp
 
 super + p; p
   passmenu -l 10 -bw 5 -c -fn "mononoki Nerd Font-20"

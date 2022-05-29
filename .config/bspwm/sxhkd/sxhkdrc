@@ -31,6 +31,8 @@ super + y
 super + g
   bspc node -s biggest.window
 
+super + ctrl + Escape
+  bash "$HOME/.config/bspwm/scripts/sxhkd_start.sh"
 #
 # >>> state/flags
 #
