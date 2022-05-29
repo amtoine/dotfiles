@@ -26,7 +26,7 @@ error () {
 }
 
 # quick startup sound.
-mpv --no-video ~/.config/qtile/scripts/startup.mp3 &
+mpv --no-video ~/.local/share/sounds/startup.mp3 &
 
 # open the help only when first time
 if command -v conky &> /dev/null; then
