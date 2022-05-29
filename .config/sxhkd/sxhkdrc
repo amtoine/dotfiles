@@ -41,6 +41,8 @@ super + @space
 super + Escape
   pkill -USR1 -x sxhkd
 
+super + c; {0-9}
+  $TERM {$SHELL,qtile shell,ptpython,pulsemixer,mocp,termdown -z,lf,ncdu -x /, btop, cava}
 super + c; b; {c, f, n, q, s, v}
   {chromium,firefox,nyxt,qutebrowser,tabbed -c surf -N -e,tabbed -c vimb -e}
 super + c; c; {c, d, g, i, k, t}
@@ -51,7 +53,9 @@ super + c; d; {c, h, p}
   dunstctl {close-all,history-pop,set-paused-toggle}
 super + c; m; {a, m, w}
   $TERM $TERM_FLAGS {ani-cli -q 480,"$SCRIPTS/macho.sh","$SCRIPTS/wtldr.sh"}
-super + c; p
+super + c; p; {b,t}
+  "$SCRIPTS/pcm.sh" -{b,t}n
+super + c; p; d; f
   "$SCRIPTS/pdf.sh"
 super + c; r; e
   killall emacs; \
@@ -61,7 +65,6 @@ super + c; r; t
   $TERM $TERM_FLAGS "$SCRIPTS/themes.sh" -d
 super + c; r; w; {f,s}
   {feh --bg-fill --randomize /usr/share/backgrounds/*,$TERM $TERM_FLAGS "$SCRIPTS/themes.sh" -d}
-
 
 super + d; {b, e, i, h, k, l, m, n, o, r, s}
  dm-{setbg,confedit,maim,hub,kill,logout,man,note,bookman,reddit,websearch} -fn "mononoki Nerd Font-20"
