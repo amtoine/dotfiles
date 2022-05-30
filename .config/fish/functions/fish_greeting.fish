@@ -1,4 +1,3 @@
 function fish_greeting
-  # fish_logo
-  colorscript -r
+  pokemon-colorscripts -r
 end

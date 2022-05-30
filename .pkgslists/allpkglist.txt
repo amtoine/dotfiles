@@ -178,6 +178,7 @@ pfetch
 picom
 pixterm
 pkgconf
+pokemon-colorscripts-git
 polybar
 ponysay
 prettier

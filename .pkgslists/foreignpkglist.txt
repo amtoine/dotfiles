@@ -38,6 +38,7 @@ pass-import
 pass-tomb
 pfetch
 pixterm
+pokemon-colorscripts-git
 python-pygmo
 python35
 python38

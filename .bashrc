@@ -228,28 +228,10 @@ extr ()
 }
 
 ## before prompt ###
-#if [[ -f ~/.config/neofetch/.neofetchrc ]]; then
-#	. ~/.config/neofetch/.neofetchrc;
-#else
-#	neofetch;
-#fi
-# figlet -tf slant "welcome in BASH"
-colorscript -r
-# cal -3
-# fortune -c | cowthink -f $(find /usr/share/cows -type f | shuf -n 1)
-# fortune -c | ponysay --pony
-# fortune -c | ponysay --ponyonly
+pokemon-colorscripts -r
 
 ## the prompt ###
 eval "$(starship init bash)"
-# ## colors ###
-# NC="\[\e[0m\]"
-# BK="\[\e[30;1m\]"
-# RD="\[\e[31;1m\]"
-# GR="\[\e[32;40m\]"
-# YL="\[\e[33;31m\]"
-# export PS1="$RD[\#] $NC\u@\h:$YL\w$NC $GR>$NC "
-# export PS1="$RD[\#]$NC $YL\w$NC \$(_parse_git_info.sh)$GR>$NC "
 
 ## after prompt ###
 if [ -f /etc/bash.command-not-found ]; then
