@@ -175,7 +175,7 @@ pcmanfm
 peco
 perl-file-mimeinfo
 pfetch
-picom
+picom-animations-git
 pixterm
 pkgconf
 pokemon-colorscripts-git

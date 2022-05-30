@@ -84,7 +84,7 @@ fi
 if command -v picom &> /dev/null; then
   killall picom
   error "$?" "picom successfully killed" "picom was not killed"
-  picom --experimental-backends -b
+  picom --experimental-backends --daemon --animations
   error "$?" "picom started successfully" "picom failed to start"
 fi
 

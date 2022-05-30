@@ -37,6 +37,7 @@ paru
 pass-import
 pass-tomb
 pfetch
+picom-animations-git
 pixterm
 pokemon-colorscripts-git
 python-pygmo

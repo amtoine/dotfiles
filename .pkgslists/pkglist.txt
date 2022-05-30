@@ -78,7 +78,6 @@ pacgraph
 patchelf
 pavucontrol
 peco
-picom
 polybar
 ponysay
 prettier
