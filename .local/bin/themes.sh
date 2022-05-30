@@ -234,7 +234,7 @@ dunst_cfg () {
   dunstify "${theme//\.conf$//}" "this is a critical test" -u critical -t 10000
   dunstify "${theme//\.conf$//}" "this is a normal test" -u normal -t 10000
   dunstify "${theme//\.conf$//}" "this is a low test" -u low -t 10000
-  dunstify "${theme//\.conf$//} (sample progress bar)" -h "int:value:40" -u low --icon=/usr/share/icons/Adwaita/16x16/legacy/audio-volume-medium.png -t 10000
+  dunstify "${theme//\.conf$//} (sample progress bar)" -h "int:value:40" -u low --icon="$HOME/.icons/volume.png" -t 10000
 }
 
 alacritty_cfg () {

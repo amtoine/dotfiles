@@ -24,6 +24,7 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
+    # width = 300
     width = 500
 
     # The maximum height of a single notification, excluding the frame.
@@ -155,7 +156,7 @@
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
-    alignment = left
+    alignment = center
 
     # Vertical alignment of message text and icon.
     # Possible values are "top", "center" and "bottom".
@@ -193,7 +194,7 @@
     min_icon_size = 0
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 32
+    max_icon_size = 64
 
     # Paths to default icons.
     icon_path = /usr/share/icons/Adwaita/16x16/status/:/usr/share/icons/Adwaita/16x16/devices/:/usr/share/icons/Adwaita/16x16/legacy/
@@ -229,7 +230,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 0
+    corner_radius = 8
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -297,14 +298,14 @@
     foreground = "#f8f8f2"  # LOW
     timeout = 3
     # Icon for notifications with low urgency, uncomment to enable
-    #default_icon = /path/to/icon
+    default_icon = ~/.icons/normal.png
 
 [urgency_normal]
     background = "#282a36"  # NORMAL
     foreground = "#bd93f9"  # NORMAL
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
-    #default_icon = /path/to/icon
+    default_icon = ~/.icons/normal.png
 
 [urgency_critical]
     background =  "#282a36"  # CRITICAL
@@ -312,7 +313,7 @@
     frame_color = "#ffffa5"  # CRITICAL
     timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable
-    #default_icon = /path/to/icon
+    default_icon = ~/.icons/critical.png
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.

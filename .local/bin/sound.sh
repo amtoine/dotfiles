@@ -48,13 +48,13 @@ bluetooth_toggle () {
 
 notify () {
   _volume=$(amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }' | sed 's/%//')
-  dunstify "volume" -h "int:value:$_volume" -u low --icon=/usr/share/icons/Adwaita/16x16/legacy/audio-volume-medium.png
+  dunstify "volume" -h "int:value:$_volume" -u low --icon="$HOME/.icons/volume.png"
 }
 mute_notify () {
   if amixer sget "$1" | grep "\[on\]" > /dev/null; then
-    dunstify "$1" "Device unmuted"  --icon=/usr/share/icons/Adwaita/16x16/legacy/audio-volume-muted.png
+    dunstify "$1" "Device unmuted"  --icon="$HOME/.icons/unmute.png"
   else
-    dunstify "$1" "Device muted"  --icon=/usr/share/icons/Adwaita/16x16/legacy/audio-volume-muted.png
+    dunstify "$1" "Device muted"  --icon="$HOME/.icons/mute.png"
   fi
 }
 bluetooth_notify () {
