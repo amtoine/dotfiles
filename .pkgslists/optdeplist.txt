@@ -1,5 +1,6 @@
 ebook-tools
 ffmpeg4.4
+gcc-fortran
 gvfs
 jupyter-widgetsnbextension
 jupyter_console

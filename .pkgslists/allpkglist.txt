@@ -197,6 +197,7 @@ python-nose
 python-opengl
 python-pip
 python-pipenv
+python-pygmo
 python-pylint
 python-pytest
 python-tqdm
