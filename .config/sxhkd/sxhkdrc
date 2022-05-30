@@ -41,30 +41,34 @@ super + @space
 super + Escape
   pkill -USR1 -x sxhkd
 
-super + c; {0-9}
+super + m; {0-9}
   $TERM {$SHELL,qtile shell,ptpython,pulsemixer,mocp,termdown -z,lf,ncdu -x /, btop, cava}
-super + c; b; {c, f, n, q, s, v}
+super + m; b; {c, f, n, q, s, v}
   {chromium,firefox,nyxt,qutebrowser,tabbed -c surf -N -e,tabbed -c vimb -e}
-super + c; c; {c, d, g, i, k, t}
+super + m; c; {c, d, g, i, k, t}
   {caprine,discord,gmail-desktop,signal-desktop,slack,thunderbird}
-super + c; n; {b, d}
+super + m; n; {b, d}
   {rofi-bluetooth, networkmanager_dmenu -i -c -l 20 -bw 5 -fn "mononoki Nerd Font-20"}
-super + c; d; {c, h, p}
+super + m; d; {c, h, p}
   dunstctl {close-all,history-pop,set-paused-toggle}
-super + c; m; {a, m, w}
-  $TERM $TERM_FLAGS {ani-cli -q 480,"$SCRIPTS/macho.sh","$SCRIPTS/wtldr.sh"}
-super + c; p; {b,t}
+super + m; m; {b,m,n,,p,q,r,s,h,j,k,l}
+  mocp {-r,-G,-f,-G,-x,-t repeat,-t shuffle,-k -10,-f,-r,-k +10}
+super + m; m; o
+  $TERM $TERM_FLAGS mocp
+super + m; p; {b,t}
   "$SCRIPTS/pcm.sh" -{b,t}n
-super + c; p; d; f
+super + m; p; d; f
   "$SCRIPTS/pdf.sh"
-super + c; r; e
+super + m; r; e
   killall emacs; \
   /usr/bin/emacs --daemon; \
   dunstify 'Emacs' 'server restart successful'
-super + c; r; t
+super + m; r; t
   $TERM $TERM_FLAGS "$SCRIPTS/themes.sh" -d
-super + c; r; w; {f,s}
+super + m; r; w; {f,s}
   {feh --bg-fill --randomize /usr/share/backgrounds/*,$TERM $TERM_FLAGS "$SCRIPTS/themes.sh" -d}
+super + m; z; {a, m, w}
+  $TERM $TERM_FLAGS {ani-cli -q 480,"$SCRIPTS/macho.sh","$SCRIPTS/wtldr.sh"}
 
 super + d; {b, e, i, h, k, l, m, n, o, r, s}
  dm-{setbg,confedit,maim,hub,kill,logout,man,note,bookman,reddit,websearch} -fn "mononoki Nerd Font-20"
@@ -75,11 +79,6 @@ super + e; {a,b,d,f,i,m,s,v}
   emacsclient -c -a "emacs" --eval "({org-agenda,ibuffer,dired nil,elfeed,erc,mu4e,eshell,+vterm/here nil})"
 super + e; n
   $TERM $TERM_FLAGS nvim
-
-super + m; {b,m,n,,p,q,r,s,h,j,k,l}
-  mocp {-r,-G,-f,-G,-x,-t repeat,-t shuffle,-k -10,-f,-r,-k +10}
-super + m; o
-  $TERM $TERM_FLAGS mocp
 
 super + p; p
   passmenu -l 10 -bw 5 -c -fn "mononoki Nerd Font-20"
