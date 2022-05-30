@@ -13,20 +13,6 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
-# some general variables used during startup.
-CONKY_HELP="$HOME/.config/conky/bspwm.conkyrc"
-CONKY_CLOCK="$HOME/.config/conky/vision/Z333-vision.conkyrc"
-
-POLYBAR="$HOME/.config/polybar/launch.sh"
-POLYBAR_THEME="forest"
-
-LOCKER="$HOME/.local/bin/slock.sh"
-STARTUP_SOUND="$HOME/.local/share/sounds/startup.mp3"
-
-# comment the following line to receive no notification at startup.
-NOTIFY="yes"
-# comment the following line to emmit no sound at startup.
-SOUND="yes"
 
 
 error () {
@@ -39,9 +25,9 @@ error () {
   #
   if [ "$1" = 0 ];
   then
-    [ -n "$NOTIFY" ] && dunstify -u low -t 10000 -- "$2"
+    [ -n "$WM_NOTIFY_AT_STARTUP" ] && dunstify -u low -t 10000 -- "$2"
   else
-    [ -n "$NOTIFY" ] && dunstify -u critical -t 10000 -- "$3"
+    [ -n "$WM_NOTIFY_AT_STARTUP" ] && dunstify -u critical -t 10000 -- "$3"
   fi
 }
 
@@ -53,8 +39,8 @@ run_conky () {
   # Now, there is a help conky at $CONKY_HELP and a clock at $CONKY_CLOCK
   #
   if [ ! -f "$NO_BEGINNER" ]; then
-    conky --config "$CONKY_HELP" --daemonize
-    conky --config "$CONKY_CLOCK" --daemonize
+    conky --config "$WM_CONKY_HELP" --daemonize
+    conky --config "$WM_CONKY_CLOCK" --daemonize
     mkdir -p "$(dirname "$NO_BEGINNER")"
     touch "$NO_BEGINNER"
   fi
@@ -71,8 +57,10 @@ if command -v dunst &> /dev/null; then
 fi
 
 if command -v polybar &> /dev/null; then
-  bash "$POLYBAR" --"$POLYBAR_THEME" &
-  error "$?" "polybar started successfully" "polybar failed to start"
+  [ -n "$WM_USE_POLYBAR" ] && {
+    bash "$WM_POLYBAR" --"$WM_POLYBAR_THEME" &
+    error "$?" "polybar started successfully" "polybar failed to start"
+  }
 fi
 
 # open the help only when first time
@@ -111,7 +99,7 @@ if command -v xautolock &> /dev/null; then
   xautolock -time 15 -locker "$LOCKER" &
   error "$?" "xautolock started successfully" "xautolock failed to start"
   xautolock -disable
-  [ -n "$NOTIFY" ] && notify-send -u low -t 10000 -- 'LOCK is OFF by default'
+  [ -n "$WM_NOTIFY_AT_STARTUP" ] && notify-send -u low -t 10000 -- 'LOCK is OFF by default'
 fi
 
 # removes the auto saver of x as it makes my laptop crash
@@ -127,5 +115,5 @@ if command -v emacs &> /dev/null; then
 fi
 
 # bspwm has been completely started
-[ -n "$NOTIFY" ] && dunstify -u normal -t 10000 -- "bspwm has been fully loaded"
-[ -n "$SOUND" ] && mpv --no-video "$STARTUP_SOUND" &
+[ -n "$WM_NOTIFY_AT_STARTUP" ] && dunstify -u normal -t 10000 -- "bspwm has been fully loaded"
+[ -n "$WM_PLAY_STARTUP_SOUND" ] && mpv --no-video "$WM_STARTUP_SOUND" &

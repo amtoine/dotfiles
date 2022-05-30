@@ -21,6 +21,25 @@
 
 # some handy variables.
 AUTOSTART="$HOME/.config/bspwm/scripts/autostart.sh"
+export WM_STARTUP_SOUND="$HOME/.local/share/sounds/startup.mp3"
+export WM_CONKY_HELP="$HOME/.config/conky/bspwm.conkyrc"
+export WM_CONKY_CLOCK="$HOME/.config/conky/vision/Z333-vision.conkyrc"
+export WM_POLYBAR="$HOME/.config/polybar/launch.sh"
+export WM_POLYBAR_THEME="forest"
+export WM_LOCKER="$HOME/.local/bin/slock.sh"
+# comment any of the following lines to change the behaviour of the startup of bspwm.
+# export WM_USE_POLYBAR="yes"
+export WM_PLAY_STARTUP_SOUND="yes"
+export WM_NOTIFY_AT_STARTUP="yes"
+
+
+# the top padding needs to adapt depending on whether a bar is used.
+if [ -n "$WM_USE_POLYBAR" ]; then
+    top_padding=20
+else
+    killall polybar
+    top_padding=0
+fi
 
 # >>> monitor connection.
 bspc monitor eDP-1  -n 1 -d I II III IV V
@@ -30,7 +49,7 @@ bspc monitor HDMI-2 -n 2 -d VI VII VIII IX X
 bspc config border_radius                 8
 bspc config border_width                  2
 bspc config window_gap                    2
-bspc config top_padding                   20
+bspc config top_padding                   $top_padding
 bspc config bottom_padding                0
 bspc config left_padding                  0
 bspc config right_padding                 0
