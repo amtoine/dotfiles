@@ -24,6 +24,7 @@ eval set -- "$OPTIONS"
 [[ ! -v DEVICE ]] && DEVICE="JBL Xtreme"
 [[ ! -v ON ]] && ON="a2dp_sink"
 [[ ! -v OFF ]] && OFF="off"
+[[ ! -v ICONS ]] && ICONS="/usr/share/icons/a2n-s-icons"
 
 NUM=$(pacmd list-cards | grep -B5 "$DEVICE" | head -1 | sed 's/\s\+index: //')
 
@@ -48,21 +49,21 @@ bluetooth_toggle () {
 
 notify () {
   _volume=$(amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }' | sed 's/%//')
-  dunstify "volume" -h "int:value:$_volume" -u low --icon="$HOME/.icons/volume.png"
+  dunstify "volume" -h "int:value:$_volume" -u low --icon="$ICONS/audio-volume.png"
 }
 mute_notify () {
   if amixer sget "$1" | grep "\[on\]" > /dev/null; then
-    dunstify "$1" "Device unmuted"  --icon="$HOME/.icons/unmute.png"
+    dunstify "$1" "Device unmuted"  --icon="$ICONS/audio-unmute.png"
   else
-    dunstify "$1" "Device muted"  --icon="$HOME/.icons/mute.png"
+    dunstify "$1" "Device muted"  --icon="$ICONS/audio-mute.png"
   fi
 }
 bluetooth_notify () {
   if pacmd list-cards | grep -B5 "JBL Xtreme" | grep 'active profile'
   then
-    dunstify "Bluetooth" "active" 
+    dunstify "Bluetooth" "active"  --icon="$ICONS/bluetooth-active.png"
   else
-    dunstify "Bluetooth" "disabled" 
+    dunstify "Bluetooth" "disabled"  --icon="$ICONS/bluetooth-disabled.png"
   fi
 }
 
@@ -100,6 +101,7 @@ help () {
   echo "     DEVICE                  the bluetooth device connected (defaults to 'JBL Xtreme')"
   echo "     ON                      the 'on' sink related to the \`device\` (defaults to 'a2dp_sink')"
   echo "     OFF                     the 'on' sink related to the \`device\` (defaults to 'off')"
+  echo "     ICONS                   the path the the icons (defaults to '/usr/share/icons/a2n-s-icons')"
   exit 0
 }
 

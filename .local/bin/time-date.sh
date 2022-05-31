@@ -13,4 +13,6 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
-notify-send -t 3500 "$(date '+%a %b %e %r')"
+[[ ! -v ICONS ]] && ICONS="/usr/share/icons/a2n-s-icons"
+
+notify-send -t 3500 "$(date '+%a %b %e %r')" --icon="$ICONS/calendar.png"

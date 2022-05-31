@@ -19,6 +19,9 @@ OPTIONS=$(getopt -o hedn --long help,nable,disable,notify \
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
 eval set -- "$OPTIONS"
 
+# environment variables
+[[ ! -v ICONS ]] && ICONS="/usr/share/icons/a2n-s-icons"
+
 usage () {
   #
   # the usage function.
@@ -44,6 +47,9 @@ help () {
   echo "     -e/--enable             enable the xautolock"
   echo "     -d/--disable            disable the xautolock"
   echo "     -n/--notify             enable notifications"
+  echo ""
+  echo "Environment variables:"
+  echo "     ICONS                   the path the the icons (defaults to '/usr/share/icons/a2n-s-icons')"
   exit 0
 }
 
@@ -60,8 +66,8 @@ main () {
   done
   [ -z "$ACTION" ] && usage
   case "$ACTION" in
-    disable ) xautolock -disable; [[ "$NOTIFY" == "yes" ]] && dunstify "xal.sh" "xautolock disabled" ;;
-    enable) xautolock -enable; [[ "$NOTIFY" == "yes" ]] && dunstify "xal.sh" "xautolock enabled" ;;
+    disable ) xautolock -disable; [[ "$NOTIFY" == "yes" ]] && dunstify "xal.sh" "xautolock disabled" --icon="$ICONS/lock-unlocked.png" ;;
+    enable) xautolock -enable; [[ "$NOTIFY" == "yes" ]] && dunstify "xal.sh" "xautolock enabled" --icon="$ICONS/lock-locked.png" ;;
     * ) echo "an error occured (got unexpected '$ACTION')" ;;
   esac
 }

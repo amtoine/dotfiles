@@ -23,6 +23,7 @@ eval set -- "$OPTIONS"
 # the environment variables
 [[ ! -v SHOTS ]] && SHOTS="$HOME/imgs/shots"
 [[ ! -v FORMAT ]] && FORMAT='scrot_%Y-%m-%d_%H-%M-%S_$wx$h'
+[[ ! -v ICONS ]] && ICONS="/usr/share/icons/a2n-s-icons"
 
 usage () {
   #
@@ -57,6 +58,7 @@ help () {
   echo "Environment variables:"
   echo "     SHOTS       the place where to store screenshots (defaults to '~/imgs/shots')"
   echo "     FORMAT      the format for the filenames (defaults to 'scrot_%Y-%m-%d_%H-%M-%S_\$wx\$h')"
+  echo "     ICONS       the path the the icons (defaults to '/usr/share/icons/a2n-s-icons')"
   exit 0
 }
 
@@ -75,7 +77,7 @@ main () {
 		name=$(scrot -m "$FORMAT.png" -e "echo \$f; mv \$f $SHOTS");
 		;;
 	window)
-    [ -v NOTIFY ] && dunstify "scrot.sh" "please select a window";
+    [ -v NOTIFY ] && dunstify "scrot.sh" "please select a window" --icon="$ICONS/camera.png";
 		name=$(scrot -s "$FORMAT.png" -e "echo \$f; mv \$f $SHOTS");
 		;;
 	*) usage
@@ -83,7 +85,7 @@ main () {
 	esac;
 
   echo "name: $name"
-  [ -n "$name" ] && [ -v NOTIFY ] && dunstify "scrot.sh" "$1 screenshot at\n$name"
+  [ -n "$name" ] && [ -v NOTIFY ] && dunstify "scrot.sh" "$1 screenshot at\n$name" --icon="$ICONS/camera.png"
 }
 
 main "$@"

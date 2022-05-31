@@ -25,6 +25,7 @@ eval set -- "$OPTIONS"
 # the environment variables
 [ ! -v MAIN ] && MAIN="eDP-1"
 [ ! -v SECOND ] && SECOND="HDMI-2"
+[[ ! -v ICONS ]] && ICONS="/usr/share/icons/a2n-s-icons"
 
 change_brightness () {
   SIDE="$2"
@@ -85,7 +86,7 @@ wm_restart () {
 }
 
 notify_brightness () {
-  dunstify "Brightness ($1)" -h "int:value:$2" -u low
+  dunstify "Brightness ($1)" -h "int:value:$2" -u low --icon="$ICONS/video-brightness.png"
 }
 
 usage () {
@@ -125,6 +126,7 @@ help () {
   echo "Environment variables:"
   echo "     MAIN        the name of the main monitor (defaults to 'eDP-1')"
   echo "     SECOND      the name of the main monitor (defaults to 'HDMI-2')"
+  echo "     ICONS                   the path the the icons (defaults to '/usr/share/icons/a2n-s-icons')"
   exit 0
 }
 
@@ -161,10 +163,10 @@ main () {
       fi
       exit 0
       ;;
-    disconnect ) xrandr --output "$MAIN" --auto --output "$SECOND" --off; [ -v WM ] && wm_restart; [ -v NOTIFY ] && dunstify "hdmi.sh" "$SECOND disconnected" ;;
-    left )       connect "$MAIN" "$SECOND" "left-of"; [ -v WM ] && wm_restart;  [ -v NOTIFY ] && dunstify "hdmi.sh" "$SECOND is now on the left of $MAIN" ;;
-    mirror )     connect "$MAIN" "$SECOND" "same-as"; [ -v WM ] && wm_restart;  [ -v NOTIFY ] && dunstify "hdmi.sh" "$SECOND is now the same as $MAIN" ;;
-    right )      connect "$MAIN" "$SECOND" "right-of"; [ -v WM ] && wm_restart; [ -v NOTIFY ] && dunstify "hdmi.sh" "$SECOND is now on the right of $MAIN" ;;
+    disconnect ) xrandr --output "$MAIN" --auto --output "$SECOND" --off; [ -v WM ] && wm_restart; [ -v NOTIFY ] && dunstify "hdmi.sh" "$SECOND disconnected" --icon="$ICONS/video-monitor-disconnected.png" ;;
+    left )       connect "$MAIN" "$SECOND" "left-of"; [ -v WM ] && wm_restart;  [ -v NOTIFY ] && dunstify "hdmi.sh" "$SECOND is now on the left of $MAIN" --icon="$ICONS/video-monitor-left.png" ;;
+    mirror )     connect "$MAIN" "$SECOND" "same-as"; [ -v WM ] && wm_restart;  [ -v NOTIFY ] && dunstify "hdmi.sh" "$SECOND is now the same as $MAIN" --icon="$ICONS/video-monitor-mirror.png" ;;
+    right )      connect "$MAIN" "$SECOND" "right-of"; [ -v WM ] && wm_restart; [ -v NOTIFY ] && dunstify "hdmi.sh" "$SECOND is now on the right of $MAIN" --icon="$ICONS/video-monitor-right.png" ;;
     * ) echo "an error occured (got unexpected '$ACTION')"; [ -v NOTIFY ] && dunstify "hdmi.sh" "an error occured (got unexpected '$ACTION')"; break ;;
   esac
 }

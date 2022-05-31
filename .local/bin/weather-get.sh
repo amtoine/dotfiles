@@ -13,5 +13,7 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
-PLACES="Paris,Seoul,Nantes"
-notify-send -t 4500 "$(curl -s "wttr.in/{$PLACES}?format=3")"
+[[ ! -v ICONS ]] && ICONS="/usr/share/icons/a2n-s-icons"
+[[ ! -v PLACES ]] && PLACES="Paris,Seoul,Nantes"
+
+notify-send -t 4500 "$(curl -s "wttr.in/{$PLACES}?format=3")" --icon="$ICONS/weather-cloud-and-sun.png"

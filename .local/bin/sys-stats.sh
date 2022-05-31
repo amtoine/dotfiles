@@ -14,10 +14,12 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
+[[ ! -v ICONS ]] && ICONS="/usr/share/icons/a2n-s-icons"
+
 CPUTemp=$(sensors | grep 'Core .:' | awk -F' ' '{ print $3 }')
 
 notify-send -t 8000 "$(
 free -m | awk 'NR==2{printf "🐏 Usage: %s/%sMB (%.2f%%)\n", $3,$2,$3*100/$2 }'
 top -bn1 | grep load | awk '{printf "🧠 Load: %.2f\n", $(NF-2)}'
 printf "🌡️ CPU: $CPUTemp"
-)"
+)" --icon="$ICONS/gears.png"

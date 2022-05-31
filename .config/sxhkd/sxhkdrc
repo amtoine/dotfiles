@@ -88,5 +88,7 @@ super + p; e
 super + r; {c, d, f, k, r, s, w}
   rofi -show {combi, drun, filebrowser, keys, run ,ssh, window}
 
+super + z; b
+  "$SCRIPTS/battery.sh" -p
 super + z; {s,t,w}
   "$SCRIPTS/{sys-stats,time-date,weather-get}.sh"

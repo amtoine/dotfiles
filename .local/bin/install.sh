@@ -258,7 +258,8 @@ init_deps () {
   deps_table[shell-color-scripts]="aur:shell-color-scripts"
 
   # need to PKGBUILD them
-  deps_table[wallpapers]="pkg:wallpapers/main +feh"
+  deps_table[wallpapers]="pkg:wallpapers/main pkg:mut-ex-wallpapers/arch/pkg +feh"
+  deps_table[icons]="pkg:icons/main +feh"
   deps_table[arcologout]="aur:arcolinux-logout pacman:python-cairo"
   deps_table[dmenu]="pkg:dmenu/main"
   deps_table[st]="pkg:st/main"
