@@ -11,7 +11,6 @@ appdirs                       1.4.4
 arandr                        0.1.10
 argon2-cffi                   21.3.0
 argon2-cffi-bindings          21.2.0
-asciidoc                      10.1.4
 asciinema                     2.1.0
 astroid                       2.11.5
 asttokens                     2.0.5
@@ -32,9 +31,10 @@ certifi                       2021.10.8
 cffi                          1.15.0
 chardet                       4.0.0
 click                         8.1.3
+cloudpickle                   2.0.0
 colorama                      0.4.4
 contextlib2                   0.6.0.post1
-cryptography                  37.0.0
+cryptography                  37.0.1
 csvkit                        1.0.6
 dbfread                       2.0.7
 dbus-next                     0.2.3
@@ -47,7 +47,7 @@ distlib                       0.3.4
 distro                        1.7.0
 dnspython                     2.2.1
 docopt                        0.6.2
-docutils                      0.16
+docutils                      0.18.1
 entrypoints                   0.4
 et-xmlfile                    1.1.0
 ewmh                          0.1.6
@@ -82,9 +82,8 @@ isodate                       0.6.1
 isort                         5.10.1
 itsdangerous                  2.0.1
 iwlib                         1.7.0
-jdcal                         1.4.1
 jedi                          0.18.1
-Jinja2                        3.0.3
+Jinja2                        3.1.2
 json5                         0.9.8
 jsonschema                    4.3.3
 jupyter-client                7.1.2
@@ -106,7 +105,6 @@ Markdown                      3.3.7
 MarkupSafe                    2.1.1
 matplotlib-inline             0.1.3
 mccabe                        0.7.0
-meson                         0.62.1
 mistune                       0.8.4
 more-itertools                8.12.0
 mpi4py                        3.1.3
@@ -120,9 +118,10 @@ netsnmp-python                1.0a1
 nose                          1.3.7
 notebook                      6.4.11
 notebook-shim                 0.1.0
+numpy                         1.22.3
 oauth2client                  4.1.3
 olefile                       0.46
-openpyxl                      3.0.9
+openpyxl                      3.0.10
 ordered-set                   4.0.2
 packaging                     21.3
 pandocfilters                 1.5.0
@@ -135,7 +134,7 @@ pbr                           5.8.0
 pep517                        0.12.0
 pexpect                       4.8.0
 pickleshare                   0.7.5
-Pillow                        9.1.0
+Pillow                        9.1.1
 pip                           21.0
 pipenv                        2022.5.2
 pkgconfig                     1.5.5
@@ -190,7 +189,7 @@ qtconsole                     5.2.2
 qtile                         0.21.0
 qtile-extras                  0.1.0
 QtPy                          2.0.0
-qutebrowser                   2.5.0
+qutebrowser                   2.5.1
 ranger-fm                     1.9.3
 requests                      2.27.1
 requests-unixsocket           0.3.0
@@ -207,7 +206,7 @@ six                           1.16.0
 sniffio                       1.2.0
 snowballstemmer               2.2.0
 soupsieve                     2.3.1
-Sphinx                        4.5.0
+Sphinx                        5.0.0
 sphinx-rtd-theme              1.0.0
 sphinxcontrib-applehelp       1.0.2
 sphinxcontrib-devhelp         1.0.2
@@ -218,6 +217,7 @@ sphinxcontrib-serializinghtml 1.1.5
 SQLAlchemy                    1.4.36
 stack-data                    0.1.4
 stevedore                     3.5.0
+TBB                           0.2
 team                          1.0
 termcolor                     1.1.0
 termdown                      1.18.0
@@ -229,7 +229,7 @@ tinycss2                      1.1.1
 tldr                          3.1.0
 toml                          0.10.2
 tomli                         2.0.1
-tomlkit                       0.10.2
+tomlkit                       0.11.0
 tornado                       6.1
 tqdm                          4.64.0
 traitlets                     5.1.1

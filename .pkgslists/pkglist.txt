@@ -75,6 +75,7 @@ nyxt
 okular
 orca
 pacgraph
+patch
 patchelf
 pavucontrol
 peco
@@ -92,6 +93,7 @@ python-pipenv
 python-pylint
 python-pytest
 python-tqdm
+python2
 qt5-examples
 qt5-gamepad
 qt5-lottie
