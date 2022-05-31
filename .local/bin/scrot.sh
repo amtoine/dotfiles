@@ -16,7 +16,7 @@
 # Contributors: Stevan Antoine
 
 # parse the arguments.
-OPTIONS=$(getopt -o h --long help -n 'scrot.sh' -- "$@")
+OPTIONS=$(getopt -o hn --long help,notify -n 'scrot.sh' -- "$@")
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
 eval set -- "$OPTIONS"
 
@@ -28,7 +28,7 @@ usage () {
   #
   # the usage function.
   #
-  echo "Usage: scrot.sh [-h] METHOD"
+  echo "Usage: scrot.sh [-hn] METHOD"
   echo "Type -h or --help for the full help."
   exit 0
 }
@@ -43,10 +43,11 @@ help () {
   echo "     Do not forget to puth it in your PATH."
   echo ""
   echo "Usage:"
-  echo "     scrot.sh [-h] METHOD"
+  echo "     scrot.sh [-hn] METHOD"
   echo ""
   echo "Switches:"
-  echo "     -h/--help   shows this help."
+  echo "     -h/--help               shows this help."
+  echo "     -n/--notify             enable notifications"
   echo ""
   echo "METHOD:"
   echo "the \`scrot.sh\` script allows two methods:"
@@ -55,7 +56,7 @@ help () {
   echo ""
   echo "Environment variables:"
   echo "     SHOTS       the place where to store screenshots (defaults to '~/imgs/shots')"
-  echo "     FORMAT      the format for the filenames (defaults to '%Y-%m-%d_%H-%M-%S_\$wx\$h_scrot')"
+  echo "     FORMAT      the format for the filenames (defaults to 'scrot_%Y-%m-%d_%H-%M-%S_\$wx\$h')"
   exit 0
 }
 
@@ -63,6 +64,7 @@ main () {
   while [[ $# -gt 0 ]]; do
     case "$1" in
       -h | --help ) help ;;
+      -n | --notify ) NOTIFY="yes"; shift 1 ;;
       -- ) shift; break ;;
       * ) break ;;
     esac
@@ -70,14 +72,18 @@ main () {
 
 	case "$1" in
 	full)
-		scrot -m "$FORMAT.png" -e "mv \$f $SHOTS"
+		name=$(scrot -m "$FORMAT.png" -e "echo \$f; mv \$f $SHOTS");
 		;;
 	window)
-		scrot -s "$FORMAT.png" -e "mv \$f $SHOTS"
+    [ -v NOTIFY ] && dunstify "scrot.sh" "please select a window";
+		name=$(scrot -s "$FORMAT.png" -e "echo \$f; mv \$f $SHOTS");
 		;;
 	*) usage
 		;;
 	esac;
+
+  echo "name: $name"
+  [ -n "$name" ] && [ -v NOTIFY ] && dunstify "scrot.sh" "$1 screenshot at\n$name"
 }
 
 main "$@"

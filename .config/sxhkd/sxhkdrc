@@ -30,7 +30,7 @@ super + F2
 super + {F3, F4}
   $TERM $TERM_FLAGS {lazygit --git-dir="$HOME/.dotfiles" --work-tree="$HOME", "$SCRIPTS/tcfg.sh"}
 super + {F5,F6}
-  sh "$SCRIPTS/scrot.sh" {window,full}
+  "$SCRIPTS/scrot.sh" {window,full} -n
 super + F12
   archlinux-logout
 
