@@ -1,2 +1,3 @@
 #!/bin/sh
-notify-send "$1" "$2"
+
+dunstify --urgency normal "$1" "$2" --icon "$HOME/.icons/music.png"

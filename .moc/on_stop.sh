@@ -1,2 +1,3 @@
 #!/bin/sh
-notify-send "MOC" "stop"
+
+dunstify --urgency normal "Music On Console" "Server stopped" --icon "$HOME/.icons/stop.png"
