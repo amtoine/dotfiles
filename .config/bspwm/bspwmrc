@@ -12,14 +12,23 @@
 # Dependencies: sxhkd, polybar
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
-#
-#               Table of Content:
-#                 monitor connection.
-#                 configuration.
-#                 coloring.
-#                 rules.
 
 # some handy variables.
+NB_WORKSPACES_PER_MONITOR=3
+
+BORDER_RADIUS=8
+BORDER_WIDTH=2
+WINDOW_GAP=2
+
+COLOR_RESOURCES="$HOME/.Xresources"
+declare -A COLOR_MAP=(
+    ["normal_border_color"]="color0"
+    ["active_border_color"]="color2"
+    ["focused_border_color"]="color1"
+    ["presel_feedback_color"]="color9"
+    ["urgent_border_color"]="color5"
+)
+
 AUTOSTART="$HOME/.config/bspwm/scripts/autostart.sh"
 export WM_STARTUP_SOUND="$HOME/.local/share/sounds/startup.mp3"
 export WM_CONKY_HELP="$HOME/.config/conky/bspwm.conkyrc"
@@ -27,11 +36,82 @@ export WM_CONKY_CLOCK="$HOME/.config/conky/vision/Z333-vision.conkyrc"
 export WM_POLYBAR="$HOME/.config/polybar/launch.sh"
 export WM_POLYBAR_THEME="forest"
 export WM_LOCKER="$HOME/.local/bin/slock.sh"
+
 # comment any of the following lines to change the behaviour of the startup of bspwm.
 # export WM_USE_POLYBAR="yes"
 # export WM_USE_SYSTRAY="yes"
 export WM_PLAY_STARTUP_SOUND="yes"
 export WM_NOTIFY_AT_STARTUP="yes"
+
+
+# tool functions.
+_build_workspaces () {
+    # Build a list of workspace ids.
+    #
+    # An example will be the best to understand the code below.
+    # Let us say we have 2 monitors connected and want 4 workspaces
+    # on each of the monitor, i.e. (1, 2, 3, 4) on the first monitor
+    # and (5, 6, 7, 8) on the second one.
+    # For the first monitor, $1 = 0 and $2 = 4:
+    #   - j = 4 * 0 + 1 = 1
+    #   - j + k, for k in (0, 1, 2, 3), gives (1, 2, 3, 4)
+    # For the second monitor, $1 = 1 and $2 = 4:
+    #   - j = 4 * 1 + 1 = 5
+    #   - j + k, for k in (0, 1, 2, 3), gives (5, 6, 7, 8)
+    #
+    # Args:
+    #   $1: the monitor id.
+    #   $2: the number of workspaces to build.
+    #
+    # Returns:
+    #   workspaces: the list of workspaces, i.e. integer ids.
+    j=$(("$2" * "$1" + 1))
+    workspaces=()
+    for (( k = 0; k < "$2"; k++ )); do
+        workspaces+=($((j + k)))
+    done
+    echo "${workspaces[@]}"
+}
+
+
+connect_monitors () {
+    # Connect all the monitors to the bspwm socket through bspc.
+
+    # get the list of all the monitors
+    monitors=($(polybar -m | awk -F: '{ print $1 }' | tr '\n' ' '))
+
+    # for each monitor, build the list of numbered monitors and connect if with
+    # bspc monitor <nanme> -n <id> -d <workspace 1> <workspace 2>...
+    for (( i = 0; i < "${#monitors[@]}"; i++ )); do
+        workspaces=($(_build_workspaces "$i" "$NB_WORKSPACES_PER_MONITOR"))
+        bspc monitor "${monitors[$i]}" -n "$i" -d ${workspaces[@]}
+    done
+}
+
+
+_get_color () {
+    # TODO.
+    color=$(grep "^*$1:" "$COLOR_RESOURCES" | sed 's/.*\s\+//')
+    echo "$color"
+}
+
+apply_colors () {
+    # TODO.
+    for config in "${!COLOR_MAP[@]}"; do
+        bspc config "$config" "$(_get_color "${COLOR_MAP[$config]}")"
+    done
+}
+
+
+apply_rules () {
+    # TODO.
+    # force emacs to tile as it does not by default.
+    bspc rule -a Emacs state=tiled focus=on follow=on manage=on
+    # send any chat client to the last workspace of the main monitor, without focus.
+    for app in "discord" "Caprine" "Slack" "Signal" "Thunderbird" "Gmail Desktop"; do
+        bspc rule -a "$app" desktop="^$NB_WORKSPACES_PER_MONITOR" state=tiled focus=off follow=off manage=on
+    done
+}
 
 
 # the top padding needs to adapt depending on whether a bar is used.
@@ -42,15 +122,13 @@ else
     top_padding=0
 fi
 
-# >>> monitor connection.
-bspc monitor eDP-1  -n 1 -d I II III IV V
-bspc monitor HDMI-2 -n 2 -d VI VII VIII IX X
+# configure bspwm.
+connect_monitors
 
-# >>> configuration.
-bspc config border_radius                 8
-bspc config border_width                  2
-bspc config window_gap                    2
-bspc config top_padding                   $top_padding
+bspc config border_radius                 "$BORDER_RADIUS"
+bspc config border_width                  "$BORDER_WIDTH"
+bspc config window_gap                    "$WINDOW_GAP"
+bspc config top_padding                   "$top_padding"
 bspc config bottom_padding                0
 bspc config left_padding                  0
 bspc config right_padding                 0
@@ -69,25 +147,6 @@ bspc config pointer_action1 move
 bspc config pointer_action2 resize_side
 bspc config pointer_action3 resize_corner
 
-# >>> coloring.
-colors="$HOME/.Xresources"
-normal_border="color0"
-active_border="color2"
-focused_border="color1"
-presel_feedback="color9"
-urgent_border="color5"
-
-bspc config normal_border_color   "$(grep "^*$normal_border:" "$colors" | sed 's/.*\s\+//')"
-bspc config active_border_color   "$(grep "^*$active_border:" "$colors" | sed 's/.*\s\+//')"
-bspc config focused_border_color  "$(grep "^*$focused_border:" "$colors" | sed 's/.*\s\+//')"
-bspc config presel_feedback_color "$(grep "^*$presel_feedback:" "$colors" | sed 's/.*\s\+//')"
-bspc config urgent_border_color   "$(grep "^*$urgent_border:" "$colors" | sed 's/.*\s\+//')"
-
-# >>> rules.
-bspc rule -a Emacs state=tiled focus=on follow=on manage=on
-for app in "discord" "Caprine" "Slack" "Signal" "Thunderbird" "Gmail Desktop"; do
-    bspc rule -a "$app" desktop='^5' state=tiled focus=off follow=off manage=on
-done
-
-# >>> autostart.
+apply_colors
+apply_rules
 bash "$AUTOSTART"
