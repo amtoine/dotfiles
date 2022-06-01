@@ -10,7 +10,7 @@
 #                                                          |__/
 # Description:  a script to check the state of the battery and throw appropriate notifications.
 #   run `sudo systemctl enable cronie` to activate the `cron` daemon if not already done, then
-#   add `* * * * * DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=<address> $HOME/.local/bin/battery.sh`
+#   add `* * * * * DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=<address> $HOME/.local/bin/battery.sh --check`
 #   to the `cron` table with `crontab -e` and restart the `cron` daemon with
 #   `sudo systemctl restart cronie`. The address can be found with `echo $DBUS_SESSION_BUS_ADDRESS`.
 # Dependencies: dunst.
@@ -19,7 +19,7 @@
 
 # parse the arguments
 OPTIONS=$(getopt -o hcp --long help,check,print \
-              -n 'sound.sh' -- "$@")
+              -n 'battery.sh' -- "$@")
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
 eval set -- "$OPTIONS"
 
@@ -28,9 +28,6 @@ eval set -- "$OPTIONS"
 [ -z "$LOW" ] && LOW=15
 [ -z "$HIGH" ] && HIGH=85
 [ -z "$ICONS" ] && ICONS="/usr/share/icons/a2n-s-icons"
-echo "BATTERY: $BATTERY"
-echo "LOW: $LOW"
-echo "HIGH: $HIGH"
 
 # the location of the battery information files
 SUPPLY="/sys/class/power_supply"
@@ -128,6 +125,38 @@ check_battery () {
         dunstify --urgency critical "battery.sh" "$BATTERY is $state" --icon="$icon";
         print_battery "$status" "$level"
     }
+}
+
+usage () {
+  #
+  # the usage function.
+  #
+  echo "Usage: battery.sh [-hcp]"
+  echo "Type -h or --help for the full help."
+  exit 0
+}
+
+help () {
+  #
+  # the help function.
+  #
+  echo "battery.sh:"
+  echo "     TODO."
+  echo ""
+  echo "Usage:"
+  echo "     battery.sh [-hcp]"
+  echo ""
+  echo "Switches:"
+  echo "     -h/--help             shows this help."
+  echo "     -c/--check            TODO."
+  echo "     -p/--print            TODO."
+  echo ""
+  echo "Environment variables:"
+  echo "     BATTERY               TODO (defaults to 'BAT0')"
+  echo "     LOW                   TODO (defaults to 5)"
+  echo "     HIGH                  TODO (defaults to 5)"
+  echo "     ICONS                 the path the the icons (defaults to '/usr/share/icons/a2n-s-icons')"
+  exit 0
 }
 
 main () {
