@@ -77,7 +77,7 @@ if does_command_exist dunst; then
   error "$?" "dunst started successfully" "dunst failed to start"
 fi
 
-if does_command_exist polybar &&  -n "$WM_USE_POLYBAR" ]; then
+if does_command_exist polybar && [ -n "$WM_USE_POLYBAR" ]; then
   bash "$WM_POLYBAR" --"$WM_POLYBAR_THEME" &
   error "$?" "polybar started successfully" "polybar failed to start"
 fi
