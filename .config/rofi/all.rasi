@@ -45,7 +45,7 @@
     selected-urgent-foreground:  @color0;
     alternate-urgent-foreground: @color0;
 
-    red:                         @color2;
+    red:                         @color1;
     blue:                        @color2;
     background-color:            @bg;
     lightbg:                     @color2;

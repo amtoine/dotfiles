@@ -17,7 +17,7 @@ configuration{
     sidebar-mode: true;
 }
 
-@theme "all"
+@theme "catppuccin"
 
 element-text, element-icon , mode-switcher {
     background-color: inherit;
@@ -26,7 +26,7 @@ element-text, element-icon , mode-switcher {
 
 window {
     height: 360px;
-    border: 3px;
+    border: 2px;
     border-color: @border-col;
     background-color: @bg-col;
 }
