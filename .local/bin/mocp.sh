@@ -14,9 +14,17 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
+# parse the arguments
+OPTIONS=$(getopt -o fh --long follow,help \
+              -n 'mocp.sh' -- "$@")
+if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
+eval set -- "$OPTIONS"
+
 # environment variables.
 [[ ! -v ICONS ]] && ICONS="/usr/share/icons/a2n-s-icons"
-
+[[ ! -v FOLLOW_ID ]] && FOLLOW_ID=42
+[[ ! -v FOLLOW_SLEEP ]] && FOLLOW_SLEEP=1
+[[ ! -v FOLLOW_LOOPS ]] && FOLLOW_LOOPS=10
 
 _get_mocp_info () {
     # Get a keyword info from the moc server.
@@ -68,19 +76,81 @@ _compute_icon () {
     echo "$icon"
 }
 
+show_moc_server_once () {
+    # Throw one notification with the state of the MOC server.
+    total_sec=$(_get_mocp_info "TotalSec")
+    current_sec=$(_get_mocp_info "CurrentSec")
+    total_time=$(_get_mocp_info "TotalTime")
+    current_time=$(_get_mocp_info "CurrentTime")
+    progress=$(_compute_progress "$current_sec" "$total_sec")
+    dunstify "mocp.sh" "$title\n$current_time/$total_time" -h "int:value:$progress" -u low --icon="$icon" --replace="$FOLLOW_ID"
+}
 
-# get all the useful data from the moc server.
-state=$(_get_mocp_info "State")
-title=$(_get_mocp_info "Title")
-total_sec=$(_get_mocp_info "TotalSec")
-current_sec=$(_get_mocp_info "CurrentSec")
-total_time=$(_get_mocp_info "TotalTime")
-current_time=$(_get_mocp_info "CurrentTime")
+follow () {
+    # Show the MOC server once... but for many times.
+    for _ in $(seq "$FOLLOW_LOOPS"); do
+        show_moc_server_once
+        sleep "$FOLLOW_SLEEP"
+    done
+    dunstify "close" --timeout 1 --replace="$FOLLOW_ID"
+}
 
-# state won't be set if the server is not running, quit properly.
-[ -z "$state" ] && { dunstify "mocp.sh" "server is not running" -u critical -t 5000 --icon="$ICONS/audio-mute.png"; exit 1; }
+usage () {
+  #
+  # the usage function.
+  #
+  echo "Usage: mocp.sh [-hf]"
+  echo "Type -h or --help for the full help."
+  exit 0
+}
 
-# otherwise show a nice notification.
-progress=$(_compute_progress "$current_sec" "$total_sec")
-dunstify "mocp.sh" "$title\n$current_time / $total_time" -h "int:value:$progress" -u low --icon="$(_compute_icon "$state")"
-exit 0
+help () {
+  #
+  # the help function.
+  #
+  echo "mocp.sh:"
+  echo "     show the current state of the MOC server."
+  echo ""
+  echo "Usage:"
+  echo "     mocp.sh [-hf]"
+  echo ""
+  echo "Switches:"
+  echo "     -h/--help               shows this help."
+  echo "     -f/--follow             follow the song instead of showing a single notification."
+  echo ""
+  echo "Environment variables:"
+  echo "     ICONS                   the path the the icons (defaults to '/usr/share/icons/a2n-s-icons')"
+  echo "     FOLLOW_ID               the id of the dunst notification to be replaced (defaults to 42)"
+  echo "     FOLLOW_SLEEP            the time to sleep between two server polls when following (defaults to 1)"
+  echo "     FOLLOW_LOOPS            the number of time to follow the server (defaults to 10)"
+  exit 0
+}
+
+main () {
+  ACTION=""
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -h | --help )      help ;;
+      -f | --follow )    ACTION="follow"; shift 1 ;;
+      -- ) shift; break ;;
+      * ) break ;;
+    esac
+  done
+
+  # get all the useful data from the moc server.
+  state=$(_get_mocp_info "State")
+  title=$(_get_mocp_info "Title")
+
+  # state won't be set if the server is not running, quit properly.
+  [ -z "$state" ] && { dunstify "mocp.sh" "server is not running" -u critical -t 5000 --icon="$ICONS/audio-mute.png"; exit 1; }
+
+  # otherwise show a nice notification.
+  icon="$(_compute_icon "$state")"
+  if [ "$ACTION" = "follow" ]; then
+      follow
+    else
+      show_moc_server_once
+    fi
+}
+
+main "$@"

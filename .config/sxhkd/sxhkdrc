@@ -92,5 +92,7 @@ super + z; b
   "$SCRIPTS/battery.sh" --print
 super + z; u
   "$SCRIPTS/update.sh" --update
-super + z; {m,s,t,w}
-  "$SCRIPTS/{mocp,sys-stats,time-date,weather-get}.sh"
+super + z; m
+  "$SCRIPTS/mocp.sh" --follow
+super + z; {s,t,w}
+  "$SCRIPTS/{sys-stats,time-date,weather-get}.sh"
