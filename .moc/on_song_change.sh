@@ -1,3 +1,10 @@
 #!/bin/sh
+#
+# Args:
+#   $1: the artist.
+#   $2: the title.
+#   $3: the duration.
 
-dunstify --urgency normal "$1" "$2" --icon "$HOME/.icons/music.png"
+[[ ! -v ICONS ]] && ICONS="/usr/share/icons/a2n-s-icons"
+
+dunstify --urgency normal "$1" "$2\n$3" --icon "$ICONS/audio-music.png"

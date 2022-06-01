@@ -73,7 +73,7 @@ main () {
         [[ "$NOTIFY" == "yes" ]] && dunstify "pcm.sh" "picom killed" --icon="$ICONS/video-compositor-off.png"
       else
         picom --experimental-backends -b
-        [[ "$NOTIFY" == "yes" ]] && dunstify "pcm.sh" "picom started" --icon="$ICONS/video-compositor-on.png"
+        [[ "$NOTIFY" == "yes" ]] && dunstify "pcm.sh" "picom started" --icon="$ICONS/video-compositor-off.png"
       fi;;
     blur )
       if grep "^#blur-method" ~/.config/picom/picom.conf > /dev/null
