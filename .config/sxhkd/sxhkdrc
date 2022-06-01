@@ -13,9 +13,9 @@
 # Contributors: Stevan Antoine
 
 XF86MonBrightness{Down,Up}
-  "$SCRIPTS/hdmi.sh" -M -b 20{-,+} -n
+  "$SCRIPTS/hdmi.sh" --main --brightness 20{-,+} --notify
 shift + XF86MonBrightness{Down,Up}
-  "$SCRIPTS/hdmi.sh" -S -b {-,+} -n
+  "$SCRIPTS/hdmi.sh" --second --brightness {-,+} --notify
 XF86AudioMute
   "$SCRIPTS/sound.sh" --toggle --channel Master --notify
 ctrl + XF86AudioMute
@@ -30,7 +30,7 @@ super + F2
 super + {F3, F4}
   $TERM $TERM_FLAGS {lazygit --git-dir="$HOME/.dotfiles" --work-tree="$HOME", "$SCRIPTS/tcfg.sh"}
 super + {F5,F6}
-  "$SCRIPTS/scrot.sh" {window,full} -n
+  "$SCRIPTS/scrot.sh" {window,full} --notify
 super + F12
   archlinux-logout
 
@@ -56,7 +56,7 @@ super + m; m; {b,m,n,,p,q,r,s,h,j,k,l}
 super + m; m; o
   $TERM $TERM_FLAGS mocp
 super + m; p; {b,t}
-  "$SCRIPTS/pcm.sh" -{b,t}n
+  "$SCRIPTS/pcm.sh" --{blur,toggle} --notify
 super + m; p; d; f
   "$SCRIPTS/pdf.sh"
 super + m; r; e
@@ -64,9 +64,9 @@ super + m; r; e
   /usr/bin/emacs --daemon; \
   dunstify 'Emacs' 'server restart successful'
 super + m; r; t
-  $TERM $TERM_FLAGS "$SCRIPTS/themes.sh" -d
+  $TERM $TERM_FLAGS "$SCRIPTS/themes.sh" --dmenu
 super + m; r; w; {f,s}
-  {feh --bg-fill --randomize /usr/share/backgrounds/*,$TERM $TERM_FLAGS "$SCRIPTS/themes.sh" -d}
+  {feh --bg-fill --randomize /usr/share/backgrounds/*,"$SCRIPTS/wfzf.sh" --dmenu}
 super + m; z; {a, m, w}
   $TERM $TERM_FLAGS {ani-cli -q 480,"$SCRIPTS/macho.sh","$SCRIPTS/wtldr.sh"}
 
@@ -89,6 +89,6 @@ super + r; {c, d, f, k, r, s, w}
   rofi -show {combi, drun, filebrowser, keys, run ,ssh, window}
 
 super + z; b
-  "$SCRIPTS/battery.sh" -p
+  "$SCRIPTS/battery.sh" --print
 super + z; {m,s,t,w}
   "$SCRIPTS/{mocp,sys-stats,time-date,weather-get}.sh"
