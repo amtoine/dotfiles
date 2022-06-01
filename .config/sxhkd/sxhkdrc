@@ -90,5 +90,5 @@ super + r; {c, d, f, k, r, s, w}
 
 super + z; b
   "$SCRIPTS/battery.sh" -p
-super + z; {s,t,w}
-  "$SCRIPTS/{sys-stats,time-date,weather-get}.sh"
+super + z; {m,s,t,w}
+  "$SCRIPTS/{mocp,sys-stats,time-date,weather-get}.sh"
