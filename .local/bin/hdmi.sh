@@ -37,43 +37,32 @@ get_curr_bright() {
 
 change_brightness () {
   SIDE="$2"
-  STEP="$3" # Step Up/Down brightness by: 5 = ".05", 10 = ".10", etc.
+  STEP="$3"
 
+  # force set the brightness if there is no `+/-` before the value.
   if [[ ! "$SIDE" == +* ]] && [[ ! "$SIDE" == -* ]]; then
     xrandr --output "$1" --brightness "$SIDE"
     return
   fi
 
-  CurrBright=$(xrandr --verbose --current | grep ^"$1" -A5 | tail -n1 )
-  CurrBright="${CurrBright##* }"  # Get brightness level with decimal place
+  # get the current brightness.
+  curr_bright="$(get_curr_bright "$1")"
 
-  Left=${CurrBright%%"."*}        # Extract left of decimal point
-  Right=${CurrBright#*"."}        # Extract right of decimal point
+  # add the step in the right direction.
+  new_bright="$(awk -v c="$curr_bright" -v s="$SIDE$STEP" 'BEGIN {print c + s}')"
 
-  MathBright="0"
-  [[ "$Left" != 0 && "$STEP" -lt 10 ]] && STEP=10     # > 1.0, only .1 works
-  [[ "$Left" != 0 ]] && MathBright="$Left"00          # 1.0 becomes "100"
-  [[ "${#Right}" -eq 1 ]] && Right="$Right"0          # 0.5 becomes "50"
-  MathBright=$(( MathBright + Right ))
+  # clip the brightness between 0 and 100%.
+  if [ "$new_bright" -lt 0 ]; then
+    new_bright=0
+  elif [ "$new_bright" -gt 100 ]; then
+    new_bright=100
+  fi
 
-  [[ "$SIDE" == "Up" || "$SIDE" == "+" ]] && MathBright=$(( MathBright + STEP ))
-  [[ "$SIDE" == "Down" || "$SIDE" == "-" ]] && MathBright=$(( MathBright - STEP ))
-  [[ "${MathBright:0:1}" == "-" ]] && MathBright=0    # Negative not allowed
-  [[ "$MathBright" -gt 110  ]] && MathBright=110      # Can't go over 1.10
+  # divide by 100 to go between 0 and 1.
+  final_bright="$(awk -v n="$new_bright" 'BEGIN {print n / 100}')"
 
-  case "${#MathBright}" in
-    3) MathBright="$MathBright"
-       CurrBright="${MathBright:0:1}.${MathBright:1:2}"
-    ;;
-    1) MathBright=0"$MathBright"
-       CurrBright=".${MathBright:0:2}"
-    ;;
-    *) MathBright="$MathBright"
-       CurrBright=".${MathBright:0:2}"
-    ;;
-  esac
-
-  xrandr --output "$1" --brightness "$CurrBright"   # Set new brightness
+  # set the final brightness
+  xrandr --output "$1" --brightness "$final_bright"
 }
 
 connect () {
