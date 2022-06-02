@@ -93,6 +93,7 @@ ghq
 gimp
 git
 github-cli
+glow
 gmail-desktop
 gnu-netcat
 gnuplot

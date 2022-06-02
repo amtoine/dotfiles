@@ -46,6 +46,7 @@ flex
 fortune-mod
 gimp
 github-cli
+glow
 guake
 gulp
 helm
