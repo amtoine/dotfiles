@@ -15,4 +15,4 @@
 
 [[ ! -v ICONS ]] && ICONS="/usr/share/icons/a2n-s-icons"
 
-notify-send -t 3500 "$(date '+%a %b %e %r')" --icon="$ICONS/calendar.png"
+notify-send -t 3500 "$(date '+%a %b %e%n%r')" --icon="$ICONS/calendar.png"
