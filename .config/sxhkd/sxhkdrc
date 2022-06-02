@@ -41,20 +41,10 @@ super + @space
 super + Escape
   pkill -USR1 -x sxhkd
 
-super + m; {0-9}
-  $TERM {$SHELL,qtile shell,ptpython,pulsemixer,mocp,termdown -z,lf,ncdu -x /, btop, cava}
-super + m; b; {c, f, n, q, s, v}
-  {chromium,firefox,nyxt,qutebrowser,tabbed -c surf -N -e,tabbed -c vimb -e}
-super + m; c; {c, d, g, i, k, t}
-  {caprine,discord,gmail-desktop,signal-desktop,slack,thunderbird}
-super + m; n; {b, d}
-  {rofi-bluetooth, networkmanager_dmenu -i -c -l 20 -bw 5 -fn "mononoki Nerd Font-20"}
 super + m; d; {c, h, p}
   dunstctl {close-all,history-pop,set-paused-toggle}
 super + m; m; {b,m,n,,p,q,r,s,h,j,k,l}
   mocp {-r,-G,-f,-G,-x,-t repeat,-t shuffle,-k -10,-f,-r,-k +10}
-super + m; m; o
-  $TERM $TERM_FLAGS mocp
 super + m; p; {b,t}
   "$SCRIPTS/pcm.sh" --{blur,toggle} --notify
 super + m; p; d; f
@@ -67,8 +57,8 @@ super + m; r; t
   $TERM $TERM_FLAGS "$SCRIPTS/themes.sh" --dmenu
 super + m; r; w; {f,s}
   {feh --bg-fill --randomize /usr/share/backgrounds/*,"$SCRIPTS/wfzf.sh" --dmenu}
-super + m; z; {a, m, w}
-  $TERM $TERM_FLAGS {ani-cli -q 480,"$SCRIPTS/macho.sh","$SCRIPTS/wtldr.sh"}
+super + m; z; {m, w}
+  $TERM $TERM_FLAGS {"$SCRIPTS/macho.sh","$SCRIPTS/wtldr.sh"}
 
 super + d; {b, e, i, h, k, l, m, n, o, r, s}
  dm-{setbg,confedit,maim,hub,kill,logout,man,note,bookman,reddit,websearch} -fn "mononoki Nerd Font-20"

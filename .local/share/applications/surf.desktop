@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=surf
+Comment=TODO
+Keywords=TODO
+Exec=/usr/bin/tabbed -c surf -N -e %u
+Icon=/usr/share/icons/a2n-s-icons/ok.png
+Terminal=false
+Type=Application

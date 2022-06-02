@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=ani-cli
+Comment=TODO
+Keywords=TODO
+Exec=/usr/bin/ani-cli -q 480
+Icon=/usr/share/icons/a2n-s-icons/ok.png
+Terminal=true
+Type=Application

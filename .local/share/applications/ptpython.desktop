@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=ptpython
+Comment=TODO
+Keywords=TODO
+Exec=$HOME/.local/bin/ptpython
+Icon=/usr/share/icons/a2n-s-icons/ok.png
+Terminal=true
+Type=Application

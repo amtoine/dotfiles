@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=qtile shell
+Comment=TODO
+Keywords=TODO
+Exec=/usr/bin/qtile shell
+Icon=/usr/share/icons/a2n-s-icons/ok.png
+Terminal=true
+Type=Application
