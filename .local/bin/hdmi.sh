@@ -26,6 +26,7 @@ eval set -- "$OPTIONS"
 [ ! -v MAIN ] && MAIN="eDP-1"
 [ ! -v SECOND ] && SECOND="HDMI-2"
 [[ ! -v ICONS ]] && ICONS="/usr/share/icons/a2n-s-icons"
+[ -z "$DUNST_ID" ] && DUNST_ID=5
 
 change_brightness () {
   SIDE="$2"
@@ -86,7 +87,7 @@ wm_restart () {
 }
 
 notify_brightness () {
-  dunstify "Brightness ($1)" -h "int:value:$2" -u low --icon="$ICONS/video-brightness.png"
+  dunstify "hdmi.sh" "Brightness ($1)\n$2" -h "int:value:$2" -u low --icon="$ICONS/video-brightness.png" --replace="$DUNST_ID"
 }
 
 usage () {
@@ -124,9 +125,10 @@ help () {
   echo "     -n/--notify             enable notifications"
   echo ""
   echo "Environment variables:"
-  echo "     MAIN        the name of the main monitor (defaults to 'eDP-1')"
-  echo "     SECOND      the name of the main monitor (defaults to 'HDMI-2')"
+  echo "     MAIN                    the name of the main monitor (defaults to 'eDP-1')"
+  echo "     SECOND                  the name of the main monitor (defaults to 'HDMI-2')"
   echo "     ICONS                   the path the the icons (defaults to '/usr/share/icons/a2n-s-icons')"
+  echo "     DUNST_ID                the id of the sound notification, to replace them properly (defaults to 5)"
   exit 0
 }
 
