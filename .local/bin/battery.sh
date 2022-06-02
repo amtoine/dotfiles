@@ -28,6 +28,7 @@ eval set -- "$OPTIONS"
 [ -z "$LOW" ] && LOW=15
 [ -z "$HIGH" ] && HIGH=85
 [ -z "$ICONS" ] && ICONS="/usr/share/icons/a2n-s-icons"
+[ -z "$DUNST_ID" ] && DUNST_ID=1
 
 # the location of the battery information files
 SUPPLY="/sys/class/power_supply"
@@ -116,15 +117,17 @@ check_battery () {
     state="$(_check_battery_state "$status" "$level")"
 
     # throw a notification only if required.
-    [ -n "$state" ] && {
+    if [ -n "$state" ]; then
         if [ "$state" = "low" ]; then
             icon="$ICONS/battery-critical.png"
         elif [ "$state" = "high" ]; then
             icon="$ICONS/battery-full.png"
         fi
-        dunstify --urgency critical "battery.sh" "$BATTERY is $state" --icon="$icon";
+        dunstify --urgency critical "battery.sh" "$BATTERY is $state" --icon="$icon" --replace="$DUNST_ID";
         print_battery "$status" "$level"
-    }
+    else
+        dunstify "battery.sh" --replace="$DUNST_ID" --timeout 1;
+    fi
 }
 
 usage () {
@@ -156,6 +159,7 @@ help () {
   echo "     LOW                   TODO (defaults to 5)"
   echo "     HIGH                  TODO (defaults to 5)"
   echo "     ICONS                 the path the the icons (defaults to '/usr/share/icons/a2n-s-icons')"
+  echo "     DUNST_ID              the id of the sound notification, to replace them properly (defaults to 1)"
   exit 0
 }
 
