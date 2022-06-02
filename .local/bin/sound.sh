@@ -26,7 +26,6 @@ eval set -- "$OPTIONS"
 [[ ! -v OFF ]] && OFF="off"
 [[ ! -v ICONS ]] && ICONS="/usr/share/icons/a2n-s-icons"
 
-NUM=$(pacmd list-cards | grep -B5 "$DEVICE" | head -1 | sed 's/\s\+index: //')
 
 bluetooth_on () {
     echo "device ($1) on"
@@ -39,11 +38,12 @@ bluetooth_off () {
 }
 
 bluetooth_toggle () {
+    CARD=$(pacmd list-cards | grep -B5 "$DEVICE" | head -1 | sed 's/\s\+index: //')
     if pacmd list-cards | grep -B5 "$DEVICE" | grep 'active profile'
     then
-        bluetooth_off "$1"
+        bluetooth_off "$CARD"
     else
-        bluetooth_on "$1"
+        bluetooth_on "$CARD"
     fi
 }
 
