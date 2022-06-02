@@ -25,6 +25,7 @@ eval set -- "$OPTIONS"
 [[ ! -v ON ]] && ON="a2dp_sink"
 [[ ! -v OFF ]] && OFF="off"
 [[ ! -v ICONS ]] && ICONS="/usr/share/icons/a2n-s-icons"
+[ -z "$DUNST_ID" ] && DUNST_ID=2
 
 
 bluetooth_on () {
@@ -48,22 +49,23 @@ bluetooth_toggle () {
 }
 
 notify () {
-  _volume=$(amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }' | sed 's/%//')
-  dunstify "volume" -h "int:value:$_volume" -u low --icon="$ICONS/audio-volume.png"
+  _volume=$(amixer sget "$1" | grep 'Right:' | awk -F'[][]' '{ print $2 }' | sed 's/%//')
+  dunstify "volume on $1" "$_volume %" -h "int:value:$_volume" -u low --icon="$ICONS/audio-volume.png" --replace "$DUNST_ID"
 }
 mute_notify () {
   if amixer sget "$1" | grep "\[on\]" > /dev/null; then
-    dunstify "$1" "Device unmuted"  --icon="$ICONS/audio-unmute.png"
+    _volume=$(amixer sget "$1" | grep 'Right:' | awk -F'[][]' '{ print $2 }' | sed 's/%//')
+    dunstify -u low "$1" "Device unmuted\n$_volume %" -h "int:value:$_volume"  --icon="$ICONS/audio-unmute.png"
   else
-    dunstify "$1" "Device muted"  --icon="$ICONS/audio-mute.png"
+    dunstify -u low "$1" "Device muted"  --icon="$ICONS/audio-mute.png"
   fi
 }
 bluetooth_notify () {
-  if pacmd list-cards | grep -B5 "JBL Xtreme" | grep 'active profile'
+  if pacmd list-cards | grep -B5 "$DEVICE" | grep 'active profile'
   then
-    dunstify "Bluetooth" "active"  --icon="$ICONS/bluetooth-active.png"
+    dunstify "Bluetooth" "$DEVICE active"  --icon="$ICONS/bluetooth-active.png"
   else
-    dunstify "Bluetooth" "disabled"  --icon="$ICONS/bluetooth-disabled.png"
+    dunstify "Bluetooth" "$DEVICE disabled"  --icon="$ICONS/bluetooth-disabled.png"
   fi
 }
 
@@ -102,6 +104,7 @@ help () {
   echo "     ON                      the 'on' sink related to the \`device\` (defaults to 'a2dp_sink')"
   echo "     OFF                     the 'on' sink related to the \`device\` (defaults to 'off')"
   echo "     ICONS                   the path the the icons (defaults to '/usr/share/icons/a2n-s-icons')"
+  echo "     DUNST_ID                the id of the sound notification, to replace them properly (defaults to 2)"
   exit 0
 }
 
@@ -129,10 +132,10 @@ main () {
   [ "$ACTION" = "up" -a -z "$STEP" ] && usage
   [ "$ACTION" = "down" -a -z "$STEP" ] && usage
   case "$ACTION" in
-    up )        amixer -q sset "$CHANNEL" "$STEP"%+; [[ "$NOTIFY" == "yes" ]] && notify ;;
-    down )      amixer -q sset "$CHANNEL" "$STEP"%-; [[ "$NOTIFY" == "yes" ]] && notify ;;
+    up )        amixer -q sset "$CHANNEL" "$STEP"%+; [[ "$NOTIFY" == "yes" ]] && notify "$CHANNEL";;
+    down )      amixer -q sset "$CHANNEL" "$STEP"%-; [[ "$NOTIFY" == "yes" ]] && notify "$CHANNEL";;
     toggle )    amixer -q sset "$CHANNEL" toggle; [[ "$NOTIFY" == "yes" ]] && mute_notify "$CHANNEL" ;;
-    bluetooth ) echo "$NUM"; bluetooth_toggle "$NUM" ; [[ "$NOTIFY" == "yes" ]] && bluetooth_notify ;;
+    bluetooth ) bluetooth_toggle ; [[ "$NOTIFY" == "yes" ]] && bluetooth_notify ;;
     * ) echo "an error occured (got unexpected '$ACTION')"; exit 1 ;;
   esac
 }
