@@ -28,6 +28,13 @@ eval set -- "$OPTIONS"
 [[ ! -v ICONS ]] && ICONS="/usr/share/icons/a2n-s-icons"
 [ -z "$DUNST_ID" ] && DUNST_ID=5
 
+
+get_curr_bright() {
+  curr_bright=$(xrandr --verbose --current | grep ^"$1" -A5 | tail -n1 | sed 's/.*Brightness: \(.*\)/\1/' )
+  curr_bright=$(awk -vb="$curr_bright" 'BEGIN{printf "%.2f" ,b * 100}')
+  echo "$curr_bright"
+}
+
 change_brightness () {
   SIDE="$2"
   STEP="$3" # Step Up/Down brightness by: 5 = ".05", 10 = ".10", etc.
@@ -154,12 +161,10 @@ main () {
     brightness )
       if [ "$MONITOR" = "$MAIN" ]; then
         brightnessctl s "$BRIGHTNESS" -e 2
-        [ -v NOTIFY ] && notify_brightness "$MONITOR" $(brightnessctl | grep "Current" | sed 's/.*Current.*(\(.*\)%)/\1/')
+        [ -v NOTIFY ] && notify_brightness "$MONITOR" "$(awk -v g="$(brightnessctl g)" -v m="$(brightnessctl m)" 'BEGIN {print 100 * g / m}')"
       elif [ "$MONITOR" = "$SECOND" ]; then
         change_brightness "$MONITOR" "$BRIGHTNESS" 2
-        CurrBright=$(xrandr --verbose --current | grep ^"$MONITOR" -A5 | tail -n1 | sed 's/.*Brightness: \(.*\)/\1/' )
-        CurrBright=$(awk -vb="$CurrBright" 'BEGIN{printf "%.2f" ,b * 100}')
-        [ -v NOTIFY ] && notify_brightness "$MONITOR" "$CurrBright"
+        [ -v NOTIFY ] && notify_brightness "$MONITOR" "$(get_curr_bright "$MONITOR")"
       else
         echo "no monitor selected"
       fi
