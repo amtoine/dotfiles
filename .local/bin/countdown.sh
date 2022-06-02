@@ -13,6 +13,12 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
+# parse the arguments
+OPTIONS=$(getopt -o ht: --long help,time: -n 'countdown.sh' -- "$@")
+if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
+eval set -- "$OPTIONS"
+
+# allow the user to change the environment variables.
 [[ ! -v DUNST_ID ]] && DUNST_ID=4
 
 _compute_progress () {
@@ -49,9 +55,54 @@ countdown () {
 }
 
 
-if [ "$1" -gt 0 ]; then
-    countdown "$1"
-    ring
-else
-    dunstify --urgency critical --timeout 5000 "countdown.sh" "Please provide a time as the only argument"
-fi
+usage () {
+  #
+  # the usage function.
+  #
+  echo "Usage: countdown.sh [-h] -t TIME"
+  echo "Type -h or --help for the full help."
+  exit 0
+}
+
+help () {
+  #
+  # the help function.
+  #
+  echo "battery.sh:"
+  echo "     a script to launch a countdown, displayed as notifications, and with a bell at the end."
+  echo ""
+  echo "Usage:"
+  echo "     countdown.sh [-h] -t TIME"
+  echo ""
+  echo "Switches:"
+  echo "     -h/--help             shows this help."
+  echo "     -t/--time             the total duration of the countdown, in seconds."
+  echo ""
+  echo "Environment variables:"
+  echo "     DUNST_ID              the id of the countdown notifications, to replace them properly (defaults to 4)"
+  exit 0
+}
+
+main () {
+  ACTION=""
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -h | --help )   help ;;
+      -t | --time )   ACTION="count down"; TIME="$2"; shift 2 ;;
+      -- ) shift; break ;;
+      * ) break ;;
+    esac
+  done
+
+  # an action is required
+  [ -z "$ACTION" ] && usage
+  [ -z "$TIME" ] && usage
+  if [ "$TIME" -gt 0 ]; then
+      countdown "$TIME"
+      ring
+  else
+      dunstify --urgency critical --timeout 5000 "countdown.sh" "Please provide a time as the only argument"
+  fi
+}
+
+main "$@"
