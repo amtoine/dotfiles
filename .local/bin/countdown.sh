@@ -13,6 +13,8 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
+[[ ! -v DUNST_ID ]] && DUNST_ID=4
+
 _compute_progress () {
     # Compute the progress of the current countdown.
     #
@@ -40,10 +42,10 @@ ring () {
 countdown () {
     for t in $(seq 0 "$1" | tac); do
         progress=$(_compute_progress "$t" "$1")
-        dunstify --urgency low "countdown.sh" "total:${1}s\nremaining:${t}s" -h "int:value:$progress" --replace 10
+        dunstify --urgency low "countdown.sh" "total:${1}s\nremaining:${t}s" -h "int:value:$progress" --replace "$DUNST_ID"
         sleep 1
     done
-    dunstify --urgency normal "countdown.sh" "time is over" --replace 10
+    dunstify --urgency normal "countdown.sh" "time is over" --replace "$DUNST_ID"
 }
 
 

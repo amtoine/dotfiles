@@ -22,7 +22,7 @@ eval set -- "$OPTIONS"
 
 # environment variables.
 [[ ! -v ICONS ]] && ICONS="/usr/share/icons/a2n-s-icons"
-[[ ! -v FOLLOW_ID ]] && FOLLOW_ID=42
+[[ ! -v DUNST_ID ]] && DUNST_ID=3
 [[ ! -v FOLLOW_SLEEP ]] && FOLLOW_SLEEP=1
 [[ ! -v FOLLOW_LOOPS ]] && FOLLOW_LOOPS=10
 
@@ -83,7 +83,7 @@ show_moc_server_once () {
     total_time=$(_get_mocp_info "TotalTime")
     current_time=$(_get_mocp_info "CurrentTime")
     progress=$(_compute_progress "$current_sec" "$total_sec")
-    dunstify "mocp.sh" "$title\n$current_time/$total_time" -h "int:value:$progress" -u low --icon="$icon" --replace="$FOLLOW_ID"
+    dunstify "mocp.sh" "$title\n$current_time/$total_time" -h "int:value:$progress" -u low --icon="$icon" --replace="$DUNST_ID"
 }
 
 follow () {
@@ -92,7 +92,7 @@ follow () {
         show_moc_server_once
         sleep "$FOLLOW_SLEEP"
     done
-    dunstify "close" --timeout 1 --replace="$FOLLOW_ID"
+    dunstify "close" --timeout 1 --replace="$DUNST_ID"
 }
 
 usage () {
@@ -120,7 +120,7 @@ help () {
   echo ""
   echo "Environment variables:"
   echo "     ICONS                   the path the the icons (defaults to '/usr/share/icons/a2n-s-icons')"
-  echo "     FOLLOW_ID               the id of the dunst notification to be replaced (defaults to 42)"
+  echo "     DUNST_ID                the id of the dunst notification to be replaced (defaults to 3)"
   echo "     FOLLOW_SLEEP            the time to sleep between two server polls when following (defaults to 1)"
   echo "     FOLLOW_LOOPS            the number of time to follow the server (defaults to 10)"
   exit 0
