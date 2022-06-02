@@ -55,9 +55,9 @@ notify () {
 mute_notify () {
   if amixer sget "$1" | grep "\[on\]" > /dev/null; then
     _volume=$(amixer sget "$1" | grep 'Right:' | awk -F'[][]' '{ print $2 }' | sed 's/%//')
-    dunstify -u low "$1" "Device unmuted\n$_volume %" -h "int:value:$_volume"  --icon="$ICONS/audio-unmute.png"
+    dunstify -u low "$1" "Device unmuted\n$_volume %" -h "int:value:$_volume"  --icon="$ICONS/audio-unmute.png" --replace "$DUNST_ID"
   else
-    dunstify -u low "$1" "Device muted"  --icon="$ICONS/audio-mute.png"
+    dunstify -u low "$1" "Device muted"  --icon="$ICONS/audio-mute.png" --replace "$DUNST_ID"
   fi
 }
 bluetooth_notify () {
