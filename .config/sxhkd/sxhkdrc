@@ -38,6 +38,8 @@ super + Return
   $TERM $TERM_FLAGS $TERM_SHELL
 super + @space
   dmenu_run -c -bw 5 -l 10
+super + p
+  passmenu -l 10 -bw 5 -c -fn "mononoki Nerd Font-20"
 super + Escape
   pkill -USR1 -x sxhkd
 
@@ -70,10 +72,6 @@ super + e; {a,b,d,f,i,m,s,v}
 super + e; n
   $TERM $TERM_FLAGS nvim
 
-super + p; p
-  passmenu -l 10 -bw 5 -c -fn "mononoki Nerd Font-20"
-super + p; e
-  "$SCRIPTS/pedit.sh"
 
 super + r; {c, d, f, k, r, s, w}
   rofi -show {combi, drun, filebrowser, keys, run ,ssh, window}
