@@ -37,7 +37,7 @@ super + F12
 super + Return
   $TERM $TERM_FLAGS $TERM_SHELL
 super + @space
-  dmenu_run -c -bw 5 -l 10
+  rofi -show drun
 super + p
   passmenu -l 10 -bw 5 -c -fn "mononoki Nerd Font-20"
 super + Escape
