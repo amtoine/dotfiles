@@ -43,25 +43,6 @@ super + p
 super + Escape
   pkill -USR1 -x sxhkd
 
-super + m; d; {c, h, p}
-  dunstctl {close-all,history-pop,set-paused-toggle}
-super + m; m; {b,m,n,,p,q,r,s,h,j,k,l}
-  mocp {-r,-G,-f,-G,-x,-t repeat,-t shuffle,-k -10,-f,-r,-k +10}
-super + m; p; {b,t}
-  "$SCRIPTS/pcm.sh" --{blur,toggle} --notify
-super + m; p; d; f
-  "$SCRIPTS/pdf.sh"
-super + m; r; e
-  killall emacs; \
-  /usr/bin/emacs --daemon; \
-  dunstify 'Emacs' 'server restart successful'
-super + m; r; t
-  $TERM $TERM_FLAGS "$SCRIPTS/themes.sh" --dmenu
-super + m; r; w; {f,s}
-  {feh --bg-fill --randomize /usr/share/backgrounds/* --no-fehbg,"$SCRIPTS/wfzf.sh" --dmenu}
-super + m; z; {m, w}
-  $TERM $TERM_FLAGS {"$SCRIPTS/macho.sh","$SCRIPTS/wtldr.sh"}
-
 super + d; {b, e, i, h, k, l, m, n, o, r, s}
  dm-{setbg,confedit,maim,hub,kill,logout,man,note,bookman,reddit,websearch} -fn "mononoki Nerd Font-20"
 
@@ -75,9 +56,28 @@ super + r; {c, d, f, k, r, s, w}
 
 super + z; b
   "$SCRIPTS/battery.sh" --print
-super + z; u
-  "$SCRIPTS/update.sh" --update
-super + z; m
+super + z; d; {c, h, p}
+  dunstctl {close-all,history-pop,set-paused-toggle}
+super + z; m; {b,m,n,,p,q,r,s,h,j,k,l}
+  mocp {-r,-G,-f,-G,-x,-t repeat,-t shuffle,-k -10,-f,-r,-k +10}
+super + z; m; f
   "$SCRIPTS/mocp.sh" --follow
+super + z; p; {b,t}
+  "$SCRIPTS/pcm.sh" --{blur,toggle} --notify
+super + z; p; d; f
+  "$SCRIPTS/pdf.sh"
+super + z; r; e
+  killall emacs; \
+  /usr/bin/emacs --daemon; \
+  dunstify 'Emacs' 'server restart successful'
+super + z; r; t
+  $TERM $TERM_FLAGS "$SCRIPTS/themes.sh" --dmenu
+super + z; r; w; {f,s}
+  {feh --bg-fill --randomize /usr/share/backgrounds/* --no-fehbg,"$SCRIPTS/wfzf.sh" --dmenu}
 super + z; {s,t,w}
   "$SCRIPTS/{sys-stats,time-date,weather-get}.sh"
+super + z; u
+  "$SCRIPTS/update.sh" --update
+super + z; z; {m, w}
+  $TERM $TERM_FLAGS {"$SCRIPTS/macho.sh","$SCRIPTS/wtldr.sh"}
+
