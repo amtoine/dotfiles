@@ -116,3 +116,4 @@ if command -v fd &> /dev/null; then
 fi
 
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+alias ninja=$HOME/ghq/github.com/b3nj5m1n/xdg-ninja/xdg-ninja.sh

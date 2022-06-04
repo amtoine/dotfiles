@@ -171,12 +171,15 @@ source "$OSH/oh-my-bash.sh"
 #     /_____/(_)____(_)  /_/ /_/ /_/_/____/\___/
 
 export PATH="$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.cargo/bin:$PATH"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/home/ants/.mujoco/mujoco210/bin"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.mujoco/mujoco210/bin"
 
+# define XDG environment variables.
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
+
+# move all moveable config to the right location, outside $HOME.
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export DOOMDIR="$XDG_CONFIG_HOME/doom"
@@ -226,6 +229,7 @@ export VIRTUALENVWRAPPER_HOOK_DIR="$WORKON_HOME"
 if [[ ! -d $WORKON_HOME ]]; then mkdir -p $WORKON_HOME; fi
 source $HOME/.local/bin/virtualenvwrapper.sh
 
+# disable my broken capslock key.
 xtcl.sh -d -q
 
 # usage: extr <file>
