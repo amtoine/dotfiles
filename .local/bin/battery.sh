@@ -126,7 +126,7 @@ check_battery () {
         dunstify --urgency critical "battery.sh" "$BATTERY is $state" --icon="$icon" --replace="$DUNST_ID";
         print_battery "$status" "$level"
     else
-        dunstify "battery.sh" --replace="$DUNST_ID" --timeout 1;
+        dunstify --close="$DUNST_ID";
     fi
 }
 
