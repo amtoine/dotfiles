@@ -182,7 +182,15 @@ export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export DOOMDIR="$XDG_CONFIG_HOME/doom"
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
-
+export GOPATH="$XDG_DATA_HOME"/go
+export GRIPHOME="$XDG_CONFIG_HOME/grip"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
+export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+export TERMINFO="$XDG_DATA_HOME"/terminfo
+export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 
 # changes the editor in the terminal, to edit long commands.
 export EDITOR='emacsclient -nw -c -a "emacs"'
