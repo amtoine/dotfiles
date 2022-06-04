@@ -69,9 +69,6 @@ super + e; e
   emacsclient -c -a "emacs"
 super + e; {a,b,d,f,i,m,s,v}
   emacsclient -c -a "emacs" --eval "({org-agenda,ibuffer,dired nil,elfeed,erc,mu4e,eshell,+vterm/here nil})"
-super + e; n
-  $TERM $TERM_FLAGS nvim
-
 
 super + r; {c, d, f, k, r, s, w}
   rofi -show {combi, drun, filebrowser, keys, run ,ssh, window}
