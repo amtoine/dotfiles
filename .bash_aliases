@@ -114,3 +114,5 @@ fi
 if command -v fd &> /dev/null; then
   alias find="fd"
 fi
+
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
