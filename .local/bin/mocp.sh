@@ -92,7 +92,7 @@ follow () {
         show_moc_server_once
         sleep "$FOLLOW_SLEEP"
     done
-    dunstify "close" --timeout 1 --replace="$DUNST_ID"
+    dunstify --close="$DUNST_ID"
 }
 
 usage () {
