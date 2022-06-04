@@ -38,6 +38,7 @@ update () {
   # Update the system with pacman in a popup terminal.
   dunstify "update.sh" "please confirm your password in the popup window" --icon="$ICONS/lock-locked.png"
   $TERMINAL sudo pacman -Syyu
+  dunstify "update.sh" "update did complete successfully" --icon="$ICONS/lock-unlocked.png"
   check_updates
 }
 
