@@ -3,11 +3,36 @@ if status is-interactive
   fish_add_path -mP $HOME/.emacs.d/bin
   fish_add_path -mP $HOME/.local/bin
   set -Ux LD_LIBRARY_PATH /home/ants/.mujoco/mujoco210/bin
+
+  # define XDG environment variables.
   set -Ux XDG_DATA_HOME "$HOME/.local/share"
   set -Ux XDG_CONFIG_HOME "$HOME/.config"
   set -Ux XDG_STATE_HOME "$HOME/.local/state"
   set -Ux XDG_CACHE_HOME "$HOME/.cache"
 
+  # move all moveable config to the right location, outside $HOME.
+  set -Ux HISTFILE "$XDG_STATE_HOME"/bash/history
+  set -Ux CARGO_HOME "$XDG_DATA_HOME"/cargo
+  set -Ux DOOMDIR "$XDG_CONFIG_HOME/doom"
+  set -Ux GNUPGHOME "$XDG_DATA_HOME"/gnupg
+  set -Ux PASSWORD_STORE_DIR "$XDG_DATA_HOME"/pass
+  set -Ux GOPATH "$XDG_DATA_HOME"/go
+  set -Ux GRIPHOME "$XDG_CONFIG_HOME/grip"
+  set -Ux GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+  set -Ux JUPYTER_CONFIG_DIR "$XDG_CONFIG_HOME"/jupyter
+  set -Ux LESSHISTFILE "$XDG_CACHE_HOME"/less/history
+  set -Ux TERMINFO "$XDG_DATA_HOME"/terminfo
+  set -Ux TERMINFO_DIRS "$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
+  set -Ux NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history
+  set -Ux NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME"/npm/npmrc
+  set -Ux _JAVA_OPTIONS -Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+  set -Ux PYTHONSTARTUP "$XDG_CONFIG_HOME/python/pythonrc"
+  set -Ux SQLITE_HISTORY "$XDG_CACHE_HOME"/sqlite_history
+  set -Ux XINITRC "$XDG_CONFIG_HOME"/X11/xinitrc
+  set -Ux ZDOTDIR "$XDG_CONFIG_HOME"/zsh
+  set -Ux _Z_DATA "$XDG_DATA_HOME/z"
+
+  # tool function definitions.
   function spark -d "sparkline generator"
     if isatty
       switch "$argv"
@@ -52,6 +77,7 @@ if status is-interactive
       }
     '
   end
+
   #       _ _
   #  __ _| (_)__ _ ___ ___ ___
   # / _` | | / _` (_-</ -_|_-<
@@ -179,6 +205,8 @@ if status is-interactive
 
   # starship init fish | source
   source ~/.local/share/omf/pkg/colorman/init.fish
+
+  set VIRTUAL_FISH_HOME "$XDG_DATA_HOME/virtualenvs"
 
   set CLOUDSDK_PYTHON "/usr/bin/python3"
   if test -f "$HOME/google-cloud-sdk/path.fish.inc"

@@ -180,7 +180,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 # move all moveable config to the right location, outside $HOME.
-export HISTFILE="${XDG_STATE_HOME}"/bash/history
+export HISTFILE="$XDG_STATE_HOME"/bash/history
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export DOOMDIR="$XDG_CONFIG_HOME/doom"
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
@@ -195,10 +195,10 @@ export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
-export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export SQLITE_HISTORY="$XDG_CACHE_HOME"/sqlite_history
 export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
-export ZDOTDIR=$XDG_CONFIG_HOME/zsh
+export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
 export _Z_DATA="$XDG_DATA_HOME/z"
 
 # changes the editor in the terminal, to edit long commands.
