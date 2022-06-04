@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=passmenu
+Comment=TODO
+Keywords=TODO
+Exec=/usr/bin/passmenu -c -l 10 -bw 5 -fn "mononoki Nerd Font-20"
+Icon=/usr/share/icons/a2n-s-icons/ok.png
+Terminal=false
+Type=Application
