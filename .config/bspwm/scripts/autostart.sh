@@ -113,7 +113,7 @@ fi
 
 # choose a random wallpaper
 if does_command_exist feh; then
-  feh --randomize /usr/share/backgrounds/* --bg-fill
+  feh --randomize /usr/share/backgrounds/* --bg-fill --no-fehbg
   error "$?" "wallpaper(s) set" "wallpaper(s) not set"
 fi
 

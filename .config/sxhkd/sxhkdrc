@@ -58,7 +58,7 @@ super + m; r; e
 super + m; r; t
   $TERM $TERM_FLAGS "$SCRIPTS/themes.sh" --dmenu
 super + m; r; w; {f,s}
-  {feh --bg-fill --randomize /usr/share/backgrounds/*,"$SCRIPTS/wfzf.sh" --dmenu}
+  {feh --bg-fill --randomize /usr/share/backgrounds/* --no-fehbg,"$SCRIPTS/wfzf.sh" --dmenu}
 super + m; z; {m, w}
   $TERM $TERM_FLAGS {"$SCRIPTS/macho.sh","$SCRIPTS/wtldr.sh"}
 
