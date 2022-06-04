@@ -3,6 +3,10 @@ if status is-interactive
   fish_add_path -mP $HOME/.emacs.d/bin
   fish_add_path -mP $HOME/.local/bin
   set -Ux LD_LIBRARY_PATH /home/ants/.mujoco/mujoco210/bin
+  set -Ux XDG_DATA_HOME "$HOME/.local/share"
+  set -Ux XDG_CONFIG_HOME "$HOME/.config"
+  set -Ux XDG_STATE_HOME "$HOME/.local/state"
+  set -Ux XDG_CACHE_HOME "$HOME/.cache"
 
   function spark -d "sparkline generator"
     if isatty

@@ -2,6 +2,10 @@
 # VERSION: 3.0
 SETUVAR --export --path LD_LIBRARY_PATH:/home/ants/\x2emujoco/mujoco210/bin
 SETUVAR THEME_EDEN_PROMPT_CHAR:\u00bb
+SETUVAR --export XDG_CACHE_HOME:/home/ants/\x2ecache
+SETUVAR --export XDG_CONFIG_HOME:/home/ants/\x2econfig
+SETUVAR --export XDG_DATA_HOME:/home/ants/\x2elocal/share
+SETUVAR --export XDG_STATE_HOME:/home/ants/\x2elocal/state
 SETUVAR __fish_initialized:3400
 SETUVAR _fisher_PatrickF1_2F_fzf_2E_fish_files:/home/ants/\x2econfig/fish/functions/_fzf_configure_bindings_help\x2efish\x1e/home/ants/\x2econfig/fish/functions/_fzf_extract_var_info\x2efish\x1e/home/ants/\x2econfig/fish/functions/_fzf_preview_file\x2efish\x1e/home/ants/\x2econfig/fish/functions/_fzf_report_file_type\x2efish\x1e/home/ants/\x2econfig/fish/functions/_fzf_search_directory\x2efish\x1e/home/ants/\x2econfig/fish/functions/_fzf_search_git_log\x2efish\x1e/home/ants/\x2econfig/fish/functions/_fzf_search_git_status\x2efish\x1e/home/ants/\x2econfig/fish/functions/_fzf_search_history\x2efish\x1e/home/ants/\x2econfig/fish/functions/_fzf_search_processes\x2efish\x1e/home/ants/\x2econfig/fish/functions/_fzf_search_variables\x2efish\x1e/home/ants/\x2econfig/fish/functions/_fzf_wrapper\x2efish\x1e/home/ants/\x2econfig/fish/functions/fzf_configure_bindings\x2efish\x1e/home/ants/\x2econfig/fish/conf\x2ed/fzf\x2efish\x1e/home/ants/\x2econfig/fish/completions/fzf_configure_bindings\x2efish
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:/home/ants/\x2econfig/fish/functions/fisher\x2efish\x1e/home/ants/\x2econfig/fish/completions/fisher\x2efish
