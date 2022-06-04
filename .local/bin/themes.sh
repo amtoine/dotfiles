@@ -343,7 +343,8 @@ xresources_cfg () {
   done
   # change the name of the theme.
   sed -i "s/\(^! THEME: \).*/\1$2/" "$XRESOURCES"
-  xrdb "$XRESOURCES"
+  xrdb -load "$XDG_CONFIG_HOME/X11/xresources"
+
   [ "$(echo -e "No\nYes" | dmenu -c -l 2 -bw 5 -i -p "Kill all instances of emacs to apply changes: ")" = "Yes" ] && killall emacs
 }
 

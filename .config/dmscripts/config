@@ -122,7 +122,7 @@ confedit_list[tigrc]="$HOME/.config/tigrc"
 confedit_list[vifm]="$HOME/.config/vifm/vifmrc"
 confedit_list[vim]="$HOME/.vimrc"
 confedit_list[xinitrc]="$HOME/.xinitrc"
-confedit_list[xresources]="$HOME/.Xresources"
+confedit_list[xresources]="$XDG_CONFIG_HOME/X11/Xresources"
 
 # dm-reddit config
 declare -a reddit_list=(

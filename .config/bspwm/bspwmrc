@@ -20,7 +20,7 @@ BORDER_RADIUS=8
 BORDER_WIDTH=2
 WINDOW_GAP=2
 
-COLOR_RESOURCES="$HOME/.Xresources"
+COLOR_RESOURCES="$XDG_CONFIG_HOME/X11/Xresources"
 declare -A COLOR_MAP=(
     ["normal_border_color"]="color0"
     ["active_border_color"]="color2"
