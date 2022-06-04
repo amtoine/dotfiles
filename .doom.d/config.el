@@ -88,27 +88,6 @@
        :desc "Clippy describes function under point" "f" #'clippy-describe-function
        :desc "Clippy describes variable under point" "v" #'clippy-describe-variable))
 
-;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; python support ;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;
-;; the base with elpy
-(elpy-enable)
-
-;; flycheck for syntax checking
-(when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
-
-;; autopep8 to format
-;; (require 'py-autopep8)
-;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
-;;
-;; Use IPython for REPL
-;; (setq python-shell-interpreter "jupyter"
-;;       python-shell-interpreter-args "console --simple-prompt"
-;;       python-shell-prompt-detect-failure-warning nil)
-;; (add-to-list 'python-shell-completion-native-disabled-interpreters
-;;              "jupyter")
 (setq erc-prompt (lambda () (concat "[" (buffer-name) "]"))
       erc-server "irc.libera.chat"
       erc-nick "astevan"
