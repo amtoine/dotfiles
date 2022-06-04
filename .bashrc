@@ -217,7 +217,9 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # export MANPAGER="nvim -c 'set ft=man' -"
 
 # activates virtualenvwrapper to manage python virtual environments.
-export WORKON_HOME=$HOME/.virtualenvs
+export WORKON_HOME="$XDG_DATA_HOME/virtualenvs"
+# where to put the binaries of virtualenvwrapper.
+export VIRTUALENVWRAPPER_HOOK_DIR="$WORKON_HOME"
 if [[ ! -d $WORKON_HOME ]]; then mkdir -p $WORKON_HOME; fi
 source $HOME/.local/bin/virtualenvwrapper.sh
 
