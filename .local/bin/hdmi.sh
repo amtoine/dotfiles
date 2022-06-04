@@ -17,7 +17,7 @@
 #               Stevan Antoine (adaptations)
 
 # parse the arguments.
-OPTIONS=$(getopt -o b:dlmrMSnhw --long brightness:,disconnect,left,mirror,right,main,second,notify,restart-wm,help \
+OPTIONS=$(getopt -o b:s:dlmrMSnhw --long brightness:,step:,disconnect,left,mirror,right,main,second,notify,restart-wm,help \
               -n 'hdmi.sh' -- "$@")
 if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
 eval set -- "$OPTIONS"
@@ -90,7 +90,7 @@ usage () {
   #
   # the usage function.
   #
-  echo "Usage: hdmi.sh [-hdlmrMSn] [-b BRIGHTNESS/DELTA]"
+  echo "Usage: hdmi.sh [-hdlmrMSn] [-b BRIGHTNESS/DELTA -s STEP]"
   echo "Type -h or --help for the full help."
   exit 0
 }
@@ -104,13 +104,14 @@ help () {
   echo "     Do not forget to puth it in your PATH."
   echo ""
   echo "Usage:"
-  echo "     hdmi.sh [-hdlmrMSn] [-b BRIGHTNESS/DELTA]"
+  echo "     hdmi.sh [-hdlmrMSn] [-b BRIGHTNESS/DELTA -s STEP]"
   echo ""
   echo "Switches:"
   echo "     -h/--help               shows this help."
+  echo "     -s/--step               the step to change the brightness. Mandatory with the --brightness flag."
   echo "     -b/--brightness         change the brightness of the selected monitor (see -M and -S to select a monitor)."
   echo "                             requires one positional argument after -b."
-  echo "                               the MAIN monitor uses \`brightnessctl\` and thus accepts arguments such as 123 or 16-"
+  echo "                               the MAIN monitor uses \`brightnessctl\` and thus accepts arguments such as + or -"
   echo "                               the SECOND monitor uses \`xrandr\` and thus accepts arguments such as +, - or .7"
   echo "     -d/--disconnect         disconnect the SECOND monitor"
   echo "     -l/--left               connect the SECOND monitor on the left of MAIN"
@@ -132,7 +133,8 @@ main () {
   while [[ $# -gt 0 ]]; do
     case "$1" in
       -h | --help )       help ;;
-      -b | --brightness ) ACTION="brightness"; BRIGHTNESS="$2"; shift 2 ;;
+      -s | --step )       ACTION="brightness"; STEP="$2"; shift 2 ;;
+      -b | --brightness ) ACTION="brightness"; SIGN="$2"; shift 2 ;;
       -d | --disconnect ) ACTION="disconnect"; shift 1 ;;
       -l | --left )       ACTION="left"; shift 1 ;;
       -m | --mirror )     ACTION="mirror"; shift 1 ;;
@@ -148,14 +150,19 @@ main () {
   [ -z "$ACTION" ] && usage
   case "$ACTION" in
     brightness )
+      [ -z "$STEP" ] && usage
       if [ "$MONITOR" = "$MAIN" ]; then
-        brightnessctl s "$BRIGHTNESS" -e 2
-        [ -v NOTIFY ] && notify_brightness "$MONITOR" "$(awk -v g="$(brightnessctl g)" -v m="$(brightnessctl m)" 'BEGIN {print 100 * g / m}')"
+        _STEP="$(awk -v m="$(brightnessctl m)" "BEGIN {print $STEP / 100 * m}")"
+        brightnessctl s "$_STEP$SIGN" -e 2
+        current_brightness="$(awk -v g="$(brightnessctl g)" -v m="$(brightnessctl m)" 'BEGIN {print 100 * g / m}')"
+        [ -v NOTIFY ] && notify_brightness "$MONITOR" "$current_brightness %"
       elif [ "$MONITOR" = "$SECOND" ]; then
-        change_brightness "$MONITOR" "$BRIGHTNESS" 2
-        [ -v NOTIFY ] && notify_brightness "$MONITOR" "$(get_curr_bright "$MONITOR")"
+        change_brightness "$MONITOR" "$SIGN" "$STEP"
+        current_brightness="$(get_curr_bright "$MONITOR" | cut -d. -f1)"
+        [ -v NOTIFY ] && notify_brightness "$MONITOR" "$current_brightness %"
       else
         echo "no monitor selected"
+        exit 1
       fi
       exit 0
       ;;

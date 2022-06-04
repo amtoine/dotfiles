@@ -13,9 +13,9 @@
 # Contributors: Stevan Antoine
 
 XF86MonBrightness{Down,Up}
-  "$SCRIPTS/hdmi.sh" --main --brightness 100{-,+} --notify
+  "$SCRIPTS/hdmi.sh" --main --brightness {-,+} --step 2 --notify
 shift + XF86MonBrightness{Down,Up}
-  "$SCRIPTS/hdmi.sh" --second --brightness {-,+} --notify
+  "$SCRIPTS/hdmi.sh" --second --brightness {-,+} --step 2 --notify
 XF86AudioMute
   "$SCRIPTS/sound.sh" --toggle --channel Master --notify
 ctrl + XF86AudioMute
