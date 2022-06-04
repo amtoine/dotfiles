@@ -179,6 +179,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export DOOMDIR="$XDG_CONFIG_HOME/doom"
 
 # changes the editor in the terminal, to edit long commands.
 export EDITOR='emacsclient -nw -c -a "emacs"'
