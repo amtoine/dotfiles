@@ -4,7 +4,6 @@ adwaita-dark
 alttab-git
 ani-cli
 archlinux-themes-sddm
-arcolinux-betterlockscreen
 arcolinux-logout
 arduino-mk
 aura-bin

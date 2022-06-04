@@ -9,7 +9,6 @@ ani-cli
 arandr
 archlinux-themes-sddm
 archlinux-wallpaper
-arcolinux-betterlockscreen
 arcolinux-logout
 arduino
 arduino-mk
