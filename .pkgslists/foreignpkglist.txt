@@ -1,4 +1,5 @@
 a2n-s-icons
+a2n-s-sounds
 a2n-s-wallpapers
 adwaita-dark
 alttab-git
