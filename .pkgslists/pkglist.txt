@@ -1,6 +1,7 @@
 acpi
 alacritty
 arandr
+arch-wiki-docs
 archlinux-wallpaper
 arduino
 asciinema

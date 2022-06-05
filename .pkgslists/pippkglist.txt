@@ -23,7 +23,7 @@ beautifulsoup4                4.10.0
 black                         22.3.0
 bleach                        4.1.0
 Brlapi                        0.8.3
-btrfsutil                     5.17
+btrfsutil                     5.18
 CacheControl                  0.12.6
 cachetools                    4.2.4
 cairocffi                     1.3.0
@@ -34,7 +34,7 @@ click                         8.1.3
 cloudpickle                   2.0.0
 colorama                      0.4.4
 contextlib2                   0.6.0.post1
-cryptography                  37.0.1
+cryptography                  37.0.2
 csvkit                        1.0.6
 dbfread                       2.0.7
 dbus-next                     0.2.3
@@ -89,7 +89,7 @@ jsonschema                    4.3.3
 jupyter-client                7.1.2
 jupyter-console               6.4.3
 jupyter-core                  4.9.2
-jupyter-packaging             0.12.0
+jupyter-packaging             0.12.1
 jupyter-server                1.17.0
 jupyterlab                    3.4.2
 jupyterlab-pygments           0.1.2
@@ -206,7 +206,7 @@ six                           1.16.0
 sniffio                       1.2.0
 snowballstemmer               2.2.0
 soupsieve                     2.3.1
-Sphinx                        5.0.0
+Sphinx                        5.0.1
 sphinx-rtd-theme              1.0.0
 sphinxcontrib-applehelp       1.0.2
 sphinxcontrib-devhelp         1.0.2
