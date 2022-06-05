@@ -20,7 +20,7 @@ SXHKD_BSPWM="$HOME/.config/bspwm/sxhkd/sxhkdrc"
 
 # the environment variables used by sxhkd.
 export DMFONT="mononoki Nerd Font-20"
-export SCRIPTS="$HOME/.local/bin"
+export SCRIPTS="/usr/local/bin"
 export TERM="st"
 export TERM_FLAGS="-e"
 export TERM_SHELL="fish"
