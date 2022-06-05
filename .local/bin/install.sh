@@ -851,6 +851,17 @@ main () {
     esac
   done
 
+  echo "Massive changes have been implemented in all the repos of my github:"
+  echo "  - repos have been renamed or removed"
+  echo "  - some part of that config have been or are planned to be moved to standalone repos, e.g. ~/.local/bin will be moved shortly to https://github.com/a2n-s/scripts, if not already done"
+  echo "  - PKGBUILD of custom applications have been moved https://github.com/a2n-s/pkgbuild"
+  echo ""
+  echo "In the end, I do not consider this script safe enough for now... So it is disabled for now."
+  echo ""
+  echo "If you really wanted to run that script, please contact me over on Github, the better being"
+  echo "by opening an issue on https://github.com/a2n-s/scripts"
+  exit 0
+
   # check if the action is valid.
   case "$ACTION" in
     all | interactive ) ;;
