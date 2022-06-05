@@ -49,8 +49,8 @@ Dst=$Grn   # destination
 Pmt=$Cyn   # prompt
 Tip=$IGrn  # tip
 
-[[ ! -v REMOTE ]] && REMOTE="a2n-s/themes"
-[[ ! -v BRANCH ]] && BRANCH="main"
+[[ ! -v REMOTE ]] && REMOTE="kovidgoyal/kitty-themes"
+[[ ! -v BRANCH ]] && BRANCH="master"
 CACHE="$HOME/.cache/all-themes"
 colordatabase="$CACHE/themes.csv"
 colorpreview="$CACHE/themes.clr"
@@ -488,8 +488,8 @@ help () {
   echo "     -d/--dmenu          allow to use the script from dmenu"
   echo ""
   echo "Environment variables:"
-  echo "     REMOTE              the remote database (defaults to 'a2n-s/themes)"
-  echo "     BRANCH              the branch to use on the remote (defaults to 'main')"
+  echo "     REMOTE              the remote database (defaults to 'kovidgoyal/kitty-themes)"
+  echo "     BRANCH              the branch to use on the remote (defaults to 'master')"
   echo "     CACHE**             the location of the cache (set to '\$HOME/.cache/all-themes')"
   echo "     QTILE               the path to the qtile config (defaults to '\$HOME/.config/qtile')"
   echo "     DUNST               the path to the dunst config file (defaults to '\$HOME/.config/dunst/dunstrc')"
