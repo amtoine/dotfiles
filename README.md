@@ -46,6 +46,15 @@ If you want more information about *bare* `git` repositories, you can check one 
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## 2. The software I use. [[toc](#table-of-content)]
+**A lot of things have been going on on my *GitHub* account recently, e.g. a lot of refactoring.**
+
+**For now, I consider that part of the README deprecated and thus hide it.**
+
+**But I still chose to keep it in the README anyway as some of the information is probably still relevant.**
+
+<details> 
+  <summary>WORK IN PROGRESS</summary>
+
 The documentation of my dotfiles is scattered across this repo but can be found in a more dedicated fashion on my [personal website][mysite] under the [`config/doc/`][mydoc] domain.  
 In this section, some general ideas are given and the lists of the programs, scripts and other stuff I use are put forward.
 
@@ -178,6 +187,7 @@ In this section, some general ideas are given and the lists of the programs, scr
 
 (\*) comes from another repo.  
 (\*\*) the associated documentation page.
+</details>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## 3. The install process. [[toc](#table-of-content)]
@@ -205,6 +215,13 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - use the automatic install process [below](#33-install-script-toc).
 
 ### 3.3. Install script. [[toc](#table-of-content)]
+**As stated in section 2, a lot of refactoring has been done on my whole *GitHub* account.**
+
+**I keep the following section for those how really know what they are doing, but do not feel comfortable enough to leave it open by default.**
+
+<details> 
+  <summary>WORK IN PROGRESS</summary>
+
 #### 3.3.1. DISCLAIMERS. [[toc](#table-of-content)]
 This is the first time I develop such a complicated and sometimes critical, e.g. when editing `x` or `bspwm` config files, file-modifying-and-removing-and-moving script.  
 It has only been tested a very few times on a fake home directory on my arch linux machine and on a raspberry pi running the `raspberry` distro (previously `raspbian`).
@@ -238,6 +255,7 @@ for a direct full/interactive install process respectively.
 
 #### 3.3.3. Uninstall the config. [[toc](#table-of-content)]
 **NOT AVAILABLE NOW** but should simply be the mirror of the previous.
+</details>
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## 4. Contribute. [[toc](#table-of-content)]
