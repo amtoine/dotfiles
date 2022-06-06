@@ -27,7 +27,7 @@
 #             /____/                                                            /____/                                                          /____/
 
 # Path to your oh-my-bash installation.
-export OSH=$HOME/.oh-my-bash
+export OSH=$XDG_DATA_HOME/oh-my-bash
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
