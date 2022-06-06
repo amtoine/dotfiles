@@ -117,3 +117,5 @@ fi
 
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 alias xdg-ninja=$HOME/ghq/github.com/a2n-s/xdg-ninja/xdg-ninja.sh
+
+alias xonsh="xonsh --rc $XDG_CONFIG_HOME/xonsh/xonshrc"
