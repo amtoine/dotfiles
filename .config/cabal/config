@@ -24,9 +24,9 @@ repository hackage.haskell.org
 -- http-transport:
 -- nix: False
 -- local-no-index-repo:
-remote-repo-cache: /home/ants/.cabal/packages
--- logs-dir: /home/ants/.cabal/logs
-world-file: /home/ants/.cabal/world
+remote-repo-cache: /home/ants/.local/share/cabal/packages
+logs-dir: /home/ants/.local/share/cabal/logs
+world-file: /home/ants/.local/share/cabal/world
 -- store-dir:
 -- active-repositories:
 -- verbose: 1
@@ -62,7 +62,7 @@ executable-dynamic: True
 -- cid:
 -- extra-lib-dirs:
 -- extra-framework-dirs:
-extra-prog-path: /home/ants/.cabal/bin
+extra-prog-path: /home/ants/.local/share/cabal/bin
 -- instantiate-with:
 -- tests: False
 -- coverage: False
@@ -99,7 +99,7 @@ extra-prog-path: /home/ants/.cabal/bin
 -- index-state:
 -- root-cmd:
 -- symlink-bindir:
-build-summary: /home/ants/.cabal/logs/build.log
+build-summary: /home/ants/.local/share/cabal/logs/build.log
 -- build-log:
 remote-build-reporting: none
 -- report-planning-failure: False
@@ -113,7 +113,7 @@ jobs: $ncpus
 -- package-env:
 -- overwrite-policy:
 -- install-method:
-installdir: /home/ants/.cabal/bin
+installdir: /home/ants/.local/share/cabal/bin
 -- username:
 -- password:
 -- password-command:
@@ -147,7 +147,7 @@ init
   -- source-dir: src
 
 install-dirs user
-  -- prefix: /home/ants/.cabal
+  prefix: /home/ants/.local/share/cabal
   -- bindir: $prefix/bin
   -- libdir: $prefix/lib
   -- libsubdir: $abi/$libname
