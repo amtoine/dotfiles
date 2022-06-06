@@ -35,6 +35,7 @@ bluez-utils
 bpytop
 breeze
 brightnessctl
+bsp-layout
 bspwm
 btop
 cabal-install
@@ -60,6 +61,7 @@ dialog
 dictd
 discord
 dmenu-a2ns-git
+dmenu-extended-git
 dmenufm
 dmscripts-git
 docker

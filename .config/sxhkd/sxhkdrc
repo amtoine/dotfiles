@@ -43,6 +43,8 @@ super + p
 super + Escape
   pkill -USR1 -x sxhkd
 
+super + d; d
+  dmenu_run -l 10 -bw 5 -c -fn "mononoki Nerd Font-20"
 super + d; {b, e, i, h, k, l, m, n, o, r, s}
  dm-{setbg,confedit,maim,hub,kill,logout,man,note,bookman,reddit,websearch} -fn "mononoki Nerd Font-20"
 

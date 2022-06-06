@@ -9,11 +9,13 @@ archlinux-themes-sddm
 arcolinux-logout
 arduino-mk
 aura-bin
+bsp-layout
 catppuccin-grub-theme-git
 cava
 conky-lua-nv
 devour
 dmenu-a2ns-git
+dmenu-extended-git
 dmenufm
 dmscripts-git
 downgrade
