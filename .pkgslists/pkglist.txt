@@ -17,6 +17,7 @@ breeze
 brightnessctl
 bspwm
 btop
+cabal-install
 calcurse
 caprine
 catimg
@@ -45,6 +46,7 @@ firefox
 flameshot
 flex
 fortune-mod
+ghc-static
 gimp
 github-cli
 glow

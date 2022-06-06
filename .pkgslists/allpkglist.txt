@@ -37,6 +37,7 @@ breeze
 brightnessctl
 bspwm
 btop
+cabal-install
 calcurse
 caprine
 catimg
@@ -91,6 +92,8 @@ fortune-mod
 fzf
 gcc
 gdb
+ghc
+ghc-static
 ghq
 gimp
 git

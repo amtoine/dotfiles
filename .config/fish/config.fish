@@ -195,6 +195,7 @@ if status is-interactive
   if type -q fd
     alias find="fd"
   end
+  alias xdg-ninja="$HOME/ghq/github.com/a2n-s/xdg-ninja/xdg-ninja.sh"
 
   #        _
   #  _ __ (_)___ __
