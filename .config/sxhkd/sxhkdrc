@@ -61,7 +61,7 @@ super + z; b
 super + z; d; {c, h, p}
   dunstctl {close-all,history-pop,set-paused-toggle}
 super + z; m; {b,m,n,,p,q,r,s,h,j,k,l}
-  mocp {-r,-G,-f,-G,-x,-t repeat,-t shuffle,-k -10,-f,-r,-k +10}
+  mocp {-r,-G,-f,-G,-x,-t repeat,-t shuffle,-k -10,-f,-r,-k +10} -M "$XDG_CONFIG_HOME/moc"
 super + z; m; f
   "$SCRIPTS/mocp.sh" --follow
 super + z; p; {b,t}
