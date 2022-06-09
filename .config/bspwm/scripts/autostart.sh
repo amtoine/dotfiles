@@ -130,6 +130,13 @@ fi
 xset s 0
 xset -dpms
 
+if does_command_exist moc; then
+  if ! pgrep -f "mocp" 1> /dev/null; then
+    mocp -S
+    error "$?" "moc server started successfully" "moc server failed to start"
+  fi
+fi
+
 # start the `emacs` server in the background
 if does_command_exist emacs; then
   if ! pgrep -f "emacs --daemon" 1> /dev/null; then

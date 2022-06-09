@@ -202,6 +202,7 @@ export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
 export _Z_DATA="$XDG_DATA_HOME/z"
 export CABAL_CONFIG="$XDG_CONFIG_HOME"/cabal/config
 export CABAL_DIR="$XDG_DATA_HOME"/cabal
+export KERAS_HOME="$XDG_STATE_HOME/keras"
 
 # changes the editor in the terminal, to edit long commands.
 export EDITOR='emacsclient -nw -c -a "emacs"'

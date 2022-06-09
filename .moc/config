@@ -604,7 +604,7 @@ CanStartInPlaylist	= yes
 #
 # Example:
 #
-OnSongChange = "${XDG_CONFIG_HOME}/moc/on_song_change.sh %a %t %d"
+OnSongChange = "${HOME}/.moc/on_song_change.sh %a %t %d"
 
 # RepeatSongChange.
 # If 'yes' then MOC will execute the 'OnSongChange' command every time a
@@ -617,7 +617,7 @@ OnSongChange = "${XDG_CONFIG_HOME}/moc/on_song_change.sh %a %t %d"
 # Run the following command (full path, no arguments) when MOC changes state
 # to stopped (when user stopped playing or changes a song).
 #
-OnStop = "${XDG_CONFIG_HOME}/moc/on_stop.sh"
+OnStop = "${HOME}/.moc/on_stop.sh"
 
 # This options determines what song to play after finishing all the songs in
 # queue. Setting this to 'yes' causes MOC to play the song which follows the

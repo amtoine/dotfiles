@@ -31,6 +31,9 @@ if status is-interactive
   set -Ux XINITRC "$XDG_CONFIG_HOME"/X11/xinitrc
   set -Ux ZDOTDIR "$XDG_CONFIG_HOME"/zsh
   set -Ux _Z_DATA "$XDG_DATA_HOME/z"
+  set -Ux CABAL_CONFIG "$XDG_CONFIG_HOME"/cabal/config
+  set -Ux CABAL_DIR "$XDG_DATA_HOME"/cabal
+  set -Ux KERAS_HOME "$XDG_STATE_HOME/keras"
 
   # tool function definitions.
   function spark -d "sparkline generator"
@@ -195,7 +198,11 @@ if status is-interactive
   if type -q fd
     alias find="fd"
   end
+  alias wget="wget --hsts-file='$XDG_DATA_HOME/wget-hsts'"
   alias xdg-ninja="$HOME/ghq/github.com/a2n-s/xdg-ninja/xdg-ninja.sh"
+
+  alias xonsh="xonsh --rc $XDG_CONFIG_HOME/xonsh/xonshrc"
+
 
   #        _
   #  _ __ (_)___ __

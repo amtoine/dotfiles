@@ -1,5 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export CABAL_CONFIG:/home/ants/\x2econfig/cabal/config
+SETUVAR --export CABAL_DIR:/home/ants/\x2elocal/share/cabal
 SETUVAR --export CARGO_HOME:/home/ants/\x2elocal/share/cargo
 SETUVAR --export DOOMDIR:/home/ants/\x2econfig/doom
 SETUVAR --export GNUPGHOME:/home/ants/\x2elocal/share/gnupg
@@ -8,6 +10,7 @@ SETUVAR --export GRIPHOME:/home/ants/\x2econfig/grip
 SETUVAR --export GTK2_RC_FILES:/home/ants/\x2econfig/gtk\x2d2\x2e0/gtkrc
 SETUVAR --export HISTFILE:/home/ants/\x2elocal/state/bash/history
 SETUVAR --export JUPYTER_CONFIG_DIR:/home/ants/\x2econfig/jupyter
+SETUVAR --export KERAS_HOME:/home/ants/\x2elocal/state/keras
 SETUVAR --export --path LD_LIBRARY_PATH:/home/ants/\x2emujoco/mujoco210/bin
 SETUVAR --export LESSHISTFILE:/home/ants/\x2ecache/less/history
 SETUVAR --export NODE_REPL_HISTORY:/home/ants/\x2elocal/share/node_repl_history
