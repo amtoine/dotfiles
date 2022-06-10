@@ -98,8 +98,6 @@ if status is-interactive
   alias bmm='blueman-manager'
   # allows to see any csv file directly in the terminal.
   alias seecsv='perl -pe "s/((?<=,)|(?<=^)),/ ,/g;" "$argv" | column -t -s, | less  -F -S -X -K ;'
-  # wrapper around lf to support file preview.
-  alias lf='~/.local/bin/lfrun.sh'
   # a complete diagnostic of the current directory.
   alias diag='du -hs (ls (pwd) -A) | sort -h'
   # the lazycli tool.
@@ -180,7 +178,7 @@ if status is-interactive
   end
 
   if pgrep "qtile" > /dev/null
-    alias qtheme="themes.sh -C=qtile"
+    alias qtheme="a2n-s-themes -C=qtile"
     alias qbar="$HOME/.config/qtile/scripts/bar.sh"
     alias qrestart="qtile cmd-obj -o cmd -f restart"
     alias qcmd="qtile cmd-obj -o cmd -f"
@@ -209,7 +207,7 @@ if status is-interactive
   # | '  \| (_-</ _|
   # |_|_|_|_/__/\__|
   # disables the caps lock key.
-  xtcl.sh -d -q
+  a2n-s-xtcl -d -q
 
   # starship init fish | source
   source ~/.local/share/omf/pkg/colorman/init.fish

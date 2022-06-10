@@ -12,8 +12,6 @@ alias pkgl='tail -n +1 .pkgslists/* | grep -e "==>.*<==" -e'
 alias bmm='blueman-manager'
 # allows to see any csv file directly in the terminal.
 alias seecsv='perl -pe "s/((?<=,)|(?<=^)),/ ,/g;" "$argv" | column -t -s, | less  -F -S -X -K ;'
-# wrapper around lf to support file preview.
-alias lf='~/.local/bin/lfrun.sh'
 # a complete diagnostic of the current directory.
 alias diag='du -hs (ls (pwd) -A) | sort -h'
 # the lazycli tool.
@@ -28,7 +26,7 @@ alias rand="tr -dc 'A-Za-z0-9!@#\$%^&*()' < /dev/urandom  | head -c"
 # alias docker="sudo docker"
 # wrapper around btop to bypass lack of locale.
 alias btop="btop --utf-force"
-alias clear="clear; echo; seq 1 $(tput cols) | sort -R | spark.sh | lolcat -t; echo"
+alias clear="clear; echo; seq 1 $(tput cols) | sort -R | a2n-s-spark | lolcat -t; echo"
 alias repo='cd ~/ghq/$(ghq list | fzf)'
 
 # to list all the git repositiories inside the home directory or gives a full diagnostic with the extra d.
@@ -96,7 +94,7 @@ fi
 
 if pgrep "qtile" > /dev/null
 then
-  alias qtheme="themes.sh -C=qtile"
+  alias qtheme="a2n-s-themes -C=qtile"
   alias qbar="$HOME/.config/qtile/scripts/bar.sh"
   alias qrestart="qtile cmd-obj -o cmd -f restart"
   alias qcmd="qtile cmd-obj -o cmd -f"

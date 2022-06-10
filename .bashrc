@@ -233,7 +233,7 @@ if [[ ! -d $WORKON_HOME ]]; then mkdir -p $WORKON_HOME; fi
 source $HOME/.local/bin/virtualenvwrapper.sh
 
 # disable my broken capslock key.
-xtcl.sh -d -q
+a2n-s-xtcl -d -q
 
 # usage: extr <file>
 extr ()

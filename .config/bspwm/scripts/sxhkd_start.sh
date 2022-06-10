@@ -19,11 +19,11 @@ SXHKD_COMMON="$HOME/.config/sxhkd/sxhkdrc"
 SXHKD_BSPWM="$HOME/.config/bspwm/sxhkd/sxhkdrc"
 
 # the environment variables used by sxhkd.
-export DMFONT="mononoki Nerd Font-20"
-export SCRIPTS="/usr/local/bin"
-export TERM="st"
-export TERM_FLAGS="-e"
-export TERM_SHELL="fish"
+export WM_DMFONT="mononoki Nerd Font-20"
+export WM_SCRIPTS="/usr/local/bin"
+export WM_TERM="st"
+export WM_TERM_FLAGS="-e"
+export WM_TERM_SHELL="bash"
 
 # restart sxhkd.
 killall sxhkd

@@ -13,29 +13,29 @@
 # Contributors: Stevan Antoine
 
 XF86MonBrightness{Down,Up}
-  "$SCRIPTS/hdmi.sh" --main --brightness {-,+} --step 2 --notify
+  "$WM_SCRIPTS/a2n-s-hdmi" --main --brightness {-,+} --step 2 --notify
 shift + XF86MonBrightness{Down,Up}
-  "$SCRIPTS/hdmi.sh" --second --brightness {-,+} --step 2 --notify
+  "$WM_SCRIPTS/a2n-s-hdmi" --second --brightness {-,+} --step 2 --notify
 XF86AudioMute
-  "$SCRIPTS/sound.sh" --toggle --channel Master --notify
+  "$WM_SCRIPTS/a2n-s-sound" --toggle --channel Master --notify
 ctrl + XF86AudioMute
-  "$SCRIPTS/sound.sh" --bluetooth --notify
+  "$WM_SCRIPTS/a2n-s-sound" --bluetooth --notify
 XF86Audio{Lower,Raise}Volume
-  "$SCRIPTS/sound.sh" --{down,up} --channel Master --step 5 --notify
+  "$WM_SCRIPTS/a2n-s-sound" --{down,up} --channel Master --step 5 --notify
 
 super + {_,shift} + F1
   flameshot {gui,launcher}
 super + F2
-  "$SCRIPTS/flameshot-screen.sh"
+  "$WM_SCRIPTS/a2n-s-flameshot-screen"
 super + {F3, F4}
-  $TERM $TERM_FLAGS {lazygit --git-dir="$HOME/.dotfiles" --work-tree="$HOME", "$SCRIPTS/tcfg.sh"}
+  $WM_TERM $WM_TERM_FLAGS {lazygit --git-dir="$HOME/.dotfiles" --work-tree="$HOME", "$WM_SCRIPTS/a2n-s-tcfg"}
 super + {F5,F6}
-  "$SCRIPTS/scrot.sh" {window,full} --notify
+  "$WM_SCRIPTS/a2n-s-scrot" {window,full} --notify
 super + F12
   archlinux-logout
 
 super + Return
-  $TERM $TERM_FLAGS $TERM_SHELL
+  $WM_TERM $WM_TERM_FLAGS $WM_TERM_SHELL
 super + @space
   rofi -show drun
 super + p
@@ -57,29 +57,28 @@ super + r; {c, d, f, k, r, s, w}
   rofi -show {combi, drun, filebrowser, keys, run ,ssh, window}
 
 super + z; b
-  "$SCRIPTS/battery.sh" --print
+  "$WM_SCRIPTS/a2n-s-battery" --print
 super + z; d; {c, h, p}
   dunstctl {close-all,history-pop,set-paused-toggle}
 super + z; m; {b,m,n,,p,q,r,s,h,j,k,l}
   mocp {-r,-G,-f,-G,-x,-t repeat,-t shuffle,-k -10,-f,-r,-k +10}
 super + z; m; f
-  "$SCRIPTS/mocp.sh" --follow
+  "$WM_SCRIPTS/a2n-s-mocp" --follow
 super + z; p; {b,t}
-  "$SCRIPTS/pcm.sh" --{blur,toggle} --notify
+  "$WM_SCRIPTS/a2n-s-pcm" --{blur,toggle} --notify
 super + z; p; d; f
-  "$SCRIPTS/pdf.sh"
+  "$WM_SCRIPTS/a2n-s-pdf"
 super + z; r; e
   killall emacs; \
   /usr/bin/emacs --daemon; \
   dunstify 'Emacs' 'server restart successful'
 super + z; r; t
-  $TERM $TERM_FLAGS "$SCRIPTS/themes.sh" --dmenu
+  $WM_TERM $WM_TERM_FLAGS "$WM_SCRIPTS/a2n-s-themes" --dmenu
 super + z; r; w; {f,s}
-  {feh --bg-fill --randomize /usr/share/backgrounds/* --no-fehbg,"$SCRIPTS/wfzf.sh" --dmenu}
+  {feh --bg-fill --randomize /usr/share/backgrounds/* --no-fehbg,"$WM_SCRIPTS/a2n-s-wfzf" --dmenu}
 super + z; {s,t,w}
-  "$SCRIPTS/{sys-stats,time-date,weather-get}.sh"
+  "$WM_SCRIPTS/a2n-s-{sys-stats,time-date,weather-get}"
 super + z; u
-  "$SCRIPTS/update.sh" --update
+  "$WM_SCRIPTS/a2n-s-update" --update
 super + z; z; {m, w}
-  $TERM $TERM_FLAGS {"$SCRIPTS/macho.sh","$SCRIPTS/wtldr.sh"}
-
+  $WM_TERM $WM_TERM_FLAGS {"$WM_SCRIPTS/a2n-s-macho","$WM_SCRIPTS/a2n-s-wtldr"}
