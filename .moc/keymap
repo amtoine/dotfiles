@@ -64,11 +64,11 @@ quit_client           = q
 quit                  = Q
 
 # Menu and interface control keys:
-go                    = l
+go                    = ENTER
 menu_down             = j
 menu_up               = k
-# menu_page_down        = PAGE_DOWN
-# menu_page_up          = PAGE_UP
+menu_page_down        = ^d
+menu_page_up          = ^u
 # menu_first_item       = g
 # menu_last_item        = G
 search_menu           = /
@@ -128,13 +128,13 @@ toggle_repeat         = R
 # go_to_fast_dir8       = *
 # go_to_fast_dir9       = (
 # go_to_fast_dir10      = )
-go_to_playing_file    = ENTER
+go_to_playing_file    = g
 # go_up                 = U
 
 # Playlist specific keys:
 add_file              = a
 add_directory         = A
-# plist_add_stream      = ^u
+plist_add_stream      = ^f
 delete_from_playlist  = d
 # playlist_full_paths   = P
 # plist_move_down       = j
@@ -152,7 +152,7 @@ clear_queue           = Z
 # history_down          = DOWN
 # delete_to_start       = ^u
 # delete_to_end         = ^k
-cancel                = h
+cancel                = ESCAPE
 # hide_message          = M
 
 # Softmixer specific keys:
