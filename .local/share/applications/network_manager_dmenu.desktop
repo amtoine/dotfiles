@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=NetworkManager dmenu (patched)
-Comment=TODO
-Keywords=TODO
-Exec=/usr/bin/networkmanager_dmenu -i -c -l 20 -bw 5 -fn "mononoki Nerd Font-20"
-Icon=/usr/share/icons/a2n-s-icons/ok.png
-Terminal=false
-Type=Application

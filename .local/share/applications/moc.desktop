@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=mocp
-Comment=TODO
-Keywords=TODO
-Exec=/usr/bin/mocp
-Icon=/usr/share/icons/a2n-s-icons/ok.png
-Terminal=true
-Type=Application

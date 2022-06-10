@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=clock
-Comment=TODO
-Keywords=TODO
-Exec=/usr/bin/termdown -z
-Icon=/usr/share/icons/a2n-s-icons/ok.png
-Terminal=true
-Type=Application

@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=pulsemixer
-Comment=TODO
-Keywords=TODO
-Exec=/usr/bin/pulsemixer
-Icon=/usr/share/icons/a2n-s-icons/ok.png
-Terminal=true
-Type=Application

@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=cava
-Comment=TODO
-Keywords=TODO
-Exec=/usr/bin/cava
-Icon=/usr/share/icons/a2n-s-icons/ok.png
-Terminal=true
-Type=Application
