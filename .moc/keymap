@@ -65,8 +65,8 @@ quit                  = Q
 
 # Menu and interface control keys:
 go                    = ENTER
-menu_down             = j
-menu_up               = k
+menu_down             = j DOWN
+menu_up               = k UP
 menu_page_down        = ^d
 menu_page_up          = ^u
 # menu_first_item       = g
