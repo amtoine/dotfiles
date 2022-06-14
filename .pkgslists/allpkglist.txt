@@ -1,7 +1,8 @@
-a2n-s-icons
-a2n-s-scripts
-a2n-s-sounds
-a2n-s-wallpapers
+a2n-s-applications-git
+a2n-s-icons-git
+a2n-s-scripts-git
+a2n-s-sounds-git
+a2n-s-wallpapers-git
 acpi
 adwaita-dark
 alacritty
@@ -147,7 +148,7 @@ mpv
 mtools
 mu
 multicolor-sddm-theme
-mut-ex-wallpapers
+mut-ex-wallpapers-git
 myman
 ncdu
 ncmpcpp
