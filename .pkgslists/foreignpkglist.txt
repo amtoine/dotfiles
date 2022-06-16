@@ -52,6 +52,7 @@ qtile-extras-git
 quickemu
 reddio
 rofi-bluetooth-git
+rofi-file-browser-extended-git
 sddm-archlinux-theme-git
 sddm-chinese-painting-theme
 sddm-theme-catppuccin-git

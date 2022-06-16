@@ -69,7 +69,7 @@ google-auth-httplib2          0.1.0
 googleapis-common-protos      1.54.0
 greenlet                      1.1.2
 grip                          4.5.2
-guake                         3.8.6.dev0
+guake                         3.9.1.dev0
 html5lib                      1.1
 httplib2                      0.20.2
 idna                          3.3
@@ -206,7 +206,7 @@ rsa                           4.8
 ruamel.yaml                   0.16.13
 Send2Trash                    1.8.0
 setproctitle                  1.2.3
-setuptools                    60.10.0
+setuptools                    61.3.1
 shiboken2                     5.15.4
 shtab                         1.5.4
 six                           1.16.0
@@ -240,6 +240,7 @@ tomlkit                       0.11.0
 tornado                       6.1
 tqdm                          4.64.0
 traitlets                     5.1.1
+trove-classifiers             2022.5.19
 typed-argument-parser         1.7.2
 typing-extensions             3.10.0.2
 typing-inspect                0.7.1
@@ -247,6 +248,7 @@ ueberzug                      18.1.9
 ufw                           0.36.1
 uritemplate                   4.1.1
 urllib3                       1.26.9
+validate-pyproject            0.9
 virtualenv                    20.11.0
 virtualenv-clone              0.5.7
 virtualenvwrapper             4.8.4

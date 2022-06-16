@@ -252,6 +252,7 @@ reddio
 ripgrep
 rofi
 rofi-bluetooth-git
+rofi-file-browser-extended-git
 rogue
 rtorrent
 rust
