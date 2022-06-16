@@ -101,10 +101,3 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
   bspc node -v {-20 0,0 20,0 -20,20 0}
-
-#
-# >>> misc
-#
-# to change layouts
-super + alt + {F10, F11, F12}
-  ~/.config/bspwm/scripts/dynamic-tilling.sh {first_child, longest_side, spiral}
