@@ -36,7 +36,6 @@ bluez-utils
 bpytop
 breeze
 brightnessctl
-bsp-layout
 bspwm
 btop
 cabal-install
@@ -258,6 +257,7 @@ rtorrent
 rust
 sauerbraten
 sc
+screencast
 scrot
 sddm
 sddm-archlinux-theme-git

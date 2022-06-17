@@ -10,7 +10,6 @@ archlinux-themes-sddm
 arcolinux-logout
 arduino-mk
 aura-bin
-bsp-layout
 catppuccin-grub-theme-git
 cava
 conky-lua-nv
@@ -53,6 +52,7 @@ quickemu
 reddio
 rofi-bluetooth-git
 rofi-file-browser-extended-git
+screencast
 sddm-archlinux-theme-git
 sddm-chinese-painting-theme
 sddm-theme-catppuccin-git
