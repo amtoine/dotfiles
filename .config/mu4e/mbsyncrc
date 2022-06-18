@@ -1,3 +1,4 @@
+# ============================================ MAIN ACCOUNT ============================================
 IMAPAccount gmail-stevan.antoine
 Host imap.gmail.com
 User stevan.antoine@gmail.com
@@ -21,6 +22,7 @@ Create Both
 SyncState *
 
 
+# ============================================ SECOND ACCOUNT ============================================
 IMAPAccount gmail-antoineulk17
 Host imap.gmail.com
 User antoineulk17@gmail.com
@@ -44,6 +46,7 @@ Create Both
 SyncState *
 
 
+# ============================================ INSTADEEP ACCOUNT ============================================
 IMAPAccount gmail-instadeep
 Host imap.gmail.com
 User a.stevan@instadeep.com
