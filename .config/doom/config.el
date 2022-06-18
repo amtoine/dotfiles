@@ -149,6 +149,10 @@
         ("/gmail/stevan.antoine/[Gmail]/Drafts"    . ?d)
         ("/gmail/stevan.antoine/[Gmail]/All Mail"  . ?a)))
 
+
+  (setq mml-secure-openpgp-signers '("ACBC686587C0B5C602A183F7B3A3111EF03B47C2"))
+  (add-hook 'message-send-hook 'mml-secure-message-sign-pgpmime)
+
   (setq smtpmail-smtp-server "smtp.gmail.com"
         smtpmail-smtp-service 465
         smtpmail-stream-type 'ssl)
