@@ -42,3 +42,26 @@ Near :gmail-antoineulk17-local:
 Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail" "[Gmail]/Trash"
 Create Both
 SyncState *
+
+
+IMAPAccount gmail-instadeep
+Host imap.gmail.com
+User a.stevan@instadeep.com
+PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/mu4e/a.stevan@instadeep.com.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-instadeep-remote
+Account gmail-instadeep
+
+MaildirStore gmail-instadeep-local
+Subfolders Verbatim
+Path ~/mail/gmail/instadeep/
+Inbox ~/mail/gmail/instadeep/inbox
+
+Channel gmail-instadeep
+Far :gmail-instadeep-remote:
+Near :gmail-instadeep-local:
+Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail" "[Gmail]/Trash"
+Create Both
+SyncState *

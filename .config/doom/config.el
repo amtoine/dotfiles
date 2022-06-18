@@ -140,7 +140,20 @@
                   (mu4e-drafts-folder  . "/gmail/antoineulk17/[Gmail]/Drafts")
                   (mu4e-sent-folder  . "/gmail/antoineulk17/[Gmail]/Sent Mail")
                   (mu4e-refile-folder  . "/gmail/antoineulk17/[Gmail]/All Mail")
-                  (mu4e-trash-folder  . "/gmail/antoineulk17/[Gmail]/Trash")))))
+                  (mu4e-trash-folder  . "/gmail/antoineulk17/[Gmail]/Trash")))
+         ;; instadeep account
+         (make-mu4e-context
+          :name "Instadeep"
+          :match-func
+            (lambda (msg)
+              (when msg
+                (string-prefix-p "/gmail/instadeep" (mu4e-message-field msg :maildir))))
+          :vars '((user-mail-address . "a.stevan@instadeep.com")
+                  (user-full-name    . "Antoine Stevan (Instadeep)")
+                  (mu4e-drafts-folder  . "/gmail/instadeep/[Gmail]/Drafts")
+                  (mu4e-sent-folder  . "/gmail/instadeep/[Gmail]/Sent Mail")
+                  (mu4e-refile-folder  . "/gmail/instadeep/[Gmail]/All Mail")
+                  (mu4e-trash-folder  . "/gmail/instadeep/[Gmail]/Trash")))))
 
   (setq mu4e-maildir-shortcuts
       '(("/gmail/stevan.antoine/Inbox"             . ?i)
