@@ -113,17 +113,28 @@
   (setq mu4e-root-maildir "~/mail")
   (setq mu4e-attachment-dir "~/dl")
 
-  (setq mu4e-drafts-folder "/[Gmail]/Drafts")
-  (setq mu4e-sent-folder   "/[Gmail]/Sent Mail")
-  (setq mu4e-refile-folder "/[Gmail]/All Mail")
-  (setq mu4e-trash-folder  "/[Gmail]/Trash")
+  (setq mu4e-contexts
+        (list
+         ;; Main account
+         (make-mu4e-context
+          :name "Main"
+          :match-func
+            (lambda (msg)
+              (when msg
+                (string-prefix-p "/gmail/stevan.antoine" (mu4e-message-field msg :maildir))))
+          :vars '((user-mail-address . "stevan.antoine@gmail.com")
+                  (user-full-name    . "Antoine Stevan")
+                  (mu4e-drafts-folder  . "/gmail/stevan.antoine/[Gmail]/Drafts")
+                  (mu4e-sent-folder  . "/gmail/stevan.antoine/[Gmail]/Sent Mail")
+                  (mu4e-refile-folder  . "/gmail/stevan.antoine/[Gmail]/All Mail")
+                  (mu4e-trash-folder  . "/gmail/stevan.antoine/[Gmail]/Trash")))))
 
   (setq mu4e-maildir-shortcuts
-      '(("/Inbox"             . ?i)
-        ("/[Gmail]/Sent Mail" . ?s)
-        ("/[Gmail]/Trash"     . ?t)
-        ("/[Gmail]/Drafts"    . ?d)
-        ("/[Gmail]/All Mail"  . ?a)))
+      '(("/gmail/stevan.antoine/Inbox"             . ?i)
+        ("/gmail/stevan.antoine/[Gmail]/Sent Mail" . ?s)
+        ("/gmail/stevan.antoine/[Gmail]/Trash"     . ?t)
+        ("/gmail/stevan.antoine/[Gmail]/Drafts"    . ?d)
+        ("/gmail/stevan.antoine/[Gmail]/All Mail"  . ?a)))
 
   (setq smtpmail-smtp-server "smtp.gmail.com"
         smtpmail-smtp-service 465
