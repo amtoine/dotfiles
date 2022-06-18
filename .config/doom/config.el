@@ -149,6 +149,11 @@
         ("/gmail/stevan.antoine/[Gmail]/Drafts"    . ?d)
         ("/gmail/stevan.antoine/[Gmail]/All Mail"  . ?a)))
 
+  (setq mu4e-compose-signature
+        (concat
+         "Antoine\n\n"
+         "a2n-s on GitHub\n"
+         "antoine#1306 on discord"))
 
   (setq mml-secure-openpgp-signers '("ACBC686587C0B5C602A183F7B3A3111EF03B47C2"))
   (add-hook 'message-send-hook 'mml-secure-message-sign-pgpmime)
