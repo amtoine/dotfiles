@@ -127,7 +127,20 @@
                   (mu4e-drafts-folder  . "/gmail/stevan.antoine/[Gmail]/Drafts")
                   (mu4e-sent-folder  . "/gmail/stevan.antoine/[Gmail]/Sent Mail")
                   (mu4e-refile-folder  . "/gmail/stevan.antoine/[Gmail]/All Mail")
-                  (mu4e-trash-folder  . "/gmail/stevan.antoine/[Gmail]/Trash")))))
+                  (mu4e-trash-folder  . "/gmail/stevan.antoine/[Gmail]/Trash")))
+         ;; Second account
+         (make-mu4e-context
+          :name "Second"
+          :match-func
+            (lambda (msg)
+              (when msg
+                (string-prefix-p "/gmail/antoineulk17" (mu4e-message-field msg :maildir))))
+          :vars '((user-mail-address . "antoineulk17@gmail.com")
+                  (user-full-name    . "Antoine Stevan")
+                  (mu4e-drafts-folder  . "/gmail/antoineulk17/[Gmail]/Drafts")
+                  (mu4e-sent-folder  . "/gmail/antoineulk17/[Gmail]/Sent Mail")
+                  (mu4e-refile-folder  . "/gmail/antoineulk17/[Gmail]/All Mail")
+                  (mu4e-trash-folder  . "/gmail/antoineulk17/[Gmail]/Trash")))))
 
   (setq mu4e-maildir-shortcuts
       '(("/gmail/stevan.antoine/Inbox"             . ?i)

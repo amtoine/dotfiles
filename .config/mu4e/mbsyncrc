@@ -19,3 +19,26 @@ Near :gmail-stevan.antoine-local:
 Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail" "[Gmail]/Trash"
 Create Both
 SyncState *
+
+
+IMAPAccount gmail-antoineulk17
+Host imap.gmail.com
+User antoineulk17@gmail.com
+PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/mu4e/antoineulk17@gmail.com.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-antoineulk17-remote
+Account gmail-antoineulk17
+
+MaildirStore gmail-antoineulk17-local
+Subfolders Verbatim
+Path ~/mail/gmail/antoineulk17/
+Inbox ~/mail/gmail/antoineulk17/inbox
+
+Channel gmail-antoineulk17
+Far :gmail-antoineulk17-remote:
+Near :gmail-antoineulk17-local:
+Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail" "[Gmail]/Trash"
+Create Both
+SyncState *
