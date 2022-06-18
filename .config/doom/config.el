@@ -96,3 +96,38 @@
       erc-fill-column 100
       erc-fill-function 'erc-fill-static
       erc-fill-static-center 20)
+
+(require 'smtpmail)
+(use-package mu4e
+  :ensure nil
+  ;; :load-path "/usr/share/emacs/site-lisp/mu4e/"
+  :defer 20 ; Wait until 20 seconds after startup
+  :config
+
+  ;; This is set to 't' to avoid mail syncing issues when using mbsync
+  (setq mu4e-change-filenames-when-moving t)
+
+  ;; Refresh mail using isync every 10 minutes
+  (setq mu4e-update-interval (* 10 60))
+  (setq mu4e-get-mail-command "mbsync -a -c ~/.config/mu4e/mbsyncrc")
+  (setq mu4e-root-maildir "~/mail")
+  (setq mu4e-attachment-dir "~/dl")
+
+  (setq mu4e-drafts-folder "/[Gmail]/Drafts")
+  (setq mu4e-sent-folder   "/[Gmail]/Sent Mail")
+  (setq mu4e-refile-folder "/[Gmail]/All Mail")
+  (setq mu4e-trash-folder  "/[Gmail]/Trash")
+
+  (setq mu4e-maildir-shortcuts
+      '(("/Inbox"             . ?i)
+        ("/[Gmail]/Sent Mail" . ?s)
+        ("/[Gmail]/Trash"     . ?t)
+        ("/[Gmail]/Drafts"    . ?d)
+        ("/[Gmail]/All Mail"  . ?a)))
+
+  (setq smtpmail-smtp-server "smtp.gmail.com"
+        smtpmail-smtp-service 465
+        smtpmail-stream-type 'ssl)
+  (setq message-send-mail-function 'smtpmail-send-it)
+  (setq smtpmail-smtp-user "stevan.antoine@gmail.com")
+  (mu4e t))

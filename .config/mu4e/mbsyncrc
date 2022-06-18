@@ -1,0 +1,21 @@
+IMAPAccount gmail
+Host imap.gmail.com
+User stevan.antoine@gmail.com
+PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/mu4e/stevan.antoine@gmail.com.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Subfolders Verbatim
+Path ~/mail/
+Inbox ~/mail/inbox
+
+Channel gmail
+Far :gmail-remote:
+Near :gmail-local:
+Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail" "[Gmail]/Trash"
+Create Both
+SyncState *
