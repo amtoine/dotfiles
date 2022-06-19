@@ -107,8 +107,6 @@
   ;; This is set to 't' to avoid mail syncing issues when using mbsync
   (setq mu4e-change-filenames-when-moving t)
 
-  ;; Refresh mail using isync every 10 minutes
-  (setq mu4e-update-interval (* 10 60))
   (setq mu4e-get-mail-command "mbsync -a -c ~/.config/mu4e/mbsyncrc")
   (setq mu4e-root-maildir "~/mail")
   (setq mu4e-attachment-dir "~/dl")
