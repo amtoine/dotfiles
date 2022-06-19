@@ -17,7 +17,7 @@ arcolinux-logout
 arduino
 arduino-mk
 asciinema
-aura-bin
+aura
 autoconf
 automake
 autopep8
@@ -36,6 +36,7 @@ bluez-utils
 bpytop
 breeze
 brightnessctl
+bsp-layout
 bspwm
 btop
 cabal-install
@@ -104,6 +105,7 @@ glow
 gmail-desktop
 gnu-netcat
 gnuplot
+go
 grub
 gst-libav
 gst-plugins-good
@@ -278,6 +280,7 @@ spectrwm
 speech-dispatcher
 sshfs
 st-a2ns-git
+stack
 starship
 steam
 sudo
@@ -379,7 +382,7 @@ xsnow
 xterm
 xwallpaper
 yad
-yay-git
+yay
 youtube-dl
 yup
 z

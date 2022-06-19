@@ -32,9 +32,9 @@ certifi                       2021.10.8
 cffi                          1.15.0
 chardet                       4.0.0
 click                         8.1.3
-cloudpickle                   2.0.0
+cloudpickle                   2.1.0
 colorama                      0.4.4
-contextlib2                   0.6.0.post1
+contextlib2                   21.6.0
 cryptography                  37.0.2
 csvkit                        1.0.6
 dbfread                       2.0.7
@@ -170,7 +170,7 @@ pyflakes                      2.4.0
 Pygments                      2.12.0
 PyGObject                     3.42.1
 PyICU                         2.9
-pylint                        2.14.1
+pylint                        2.14.2
 pynvim                        0.4.3
 PyOpenGL                      3.1.6
 pyOpenSSL                     22.0.0
@@ -184,6 +184,7 @@ PySide2                       5.15.4
 pyte                          0.8.0
 pytest                        7.1.2
 python-dateutil               2.8.2
+python-distutils-extra        2.39
 python-slugify                6.1.2
 python-telegram               0.15.0
 python-xlib                   0.31
@@ -213,7 +214,7 @@ six                           1.16.0
 sniffio                       1.2.0
 snowballstemmer               2.2.0
 soupsieve                     2.3.1
-Sphinx                        5.0.1
+Sphinx                        5.0.2
 sphinx-rtd-theme              1.0.0
 sphinxcontrib-applehelp       1.0.2
 sphinxcontrib-devhelp         1.0.2

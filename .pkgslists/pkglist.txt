@@ -50,6 +50,7 @@ ghc-static
 gimp
 github-cli
 glow
+go
 guake
 gulp
 helm
@@ -123,6 +124,7 @@ sl
 sox
 spectrwm
 sshfs
+stack
 starship
 steam
 swig

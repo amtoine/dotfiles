@@ -9,7 +9,8 @@ ani-cli
 archlinux-themes-sddm
 arcolinux-logout
 arduino-mk
-aura-bin
+aura
+bsp-layout
 catppuccin-grub-theme-git
 cava
 conky-lua-nv
@@ -72,5 +73,5 @@ ttf-symbola
 vieb-bin
 xmenu
 xsnow
-yay-git
+yay
 yup
