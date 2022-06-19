@@ -1,3 +1,23 @@
+# install the dependencies: mu, mbsync, emacs, mu4e
+#
+# add the keys and passwords to ~/.config/mu4e/:
+#   - ~/.config/mu4e/stevan.antoine@gmail.com.gpg
+#   - ~/.config/mu4e/antoineulk17@gmail.com.gpg
+#   - ~/.config/mu4e/a.stevan@instadeep.com.gpg
+#   - ~/.config/mu4e/antoine.stevan@student.isae-supaero.fr.gpg
+#
+# commands to setup the different email addresses below
+#
+# ```bash
+# mkdir -p ~/mail/gmail/stevan.antoine
+# mkdir -p ~/mail/gmail/antoineulk17
+# mkdir -p ~/mail/gmail/instadeep
+# mkdir -p ~/mail/isae/supaero
+# mbsync -a -c ~/.config/mu4e/mbsyncrc
+# mu init --maildir=~/mail --my-address=stevan.antoine@gmail.com --my-address=antoineulk17@gmail.com --my-address=a.stevan@instadeep.com --my-address=antoine.stevan@student.isae-supaero.fr
+# mu index
+# ```
+#
 # ============================================ MAIN ACCOUNT ============================================
 IMAPAccount gmail-stevan.antoine
 Host imap.gmail.com
