@@ -68,3 +68,27 @@ Near :gmail-instadeep-local:
 Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail" "[Gmail]/Trash"
 Create Both
 SyncState *
+
+
+# ============================================ SUPAERO ACCOUNT ============================================
+IMAPAccount isae-supaero
+Host email.isae.fr
+User a.stevan
+PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/mu4e/antoine.stevan@student.isae-supaero.fr.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore isae-supaero-remote
+Account isae-supaero
+
+MaildirStore isae-supaero-local
+Subfolders Verbatim
+Path ~/mail/isae/supaero/
+Inbox ~/mail/isae/supaero/inbox
+
+Channel isae-supaero
+Far :isae-supaero-remote:
+Near :isae-supaero-local:
+Patterns *
+Create Both
+SyncState *

@@ -151,7 +151,20 @@
                   (mu4e-drafts-folder  . "/gmail/instadeep/[Gmail]/Drafts")
                   (mu4e-sent-folder  . "/gmail/instadeep/[Gmail]/Sent Mail")
                   (mu4e-refile-folder  . "/gmail/instadeep/[Gmail]/All Mail")
-                  (mu4e-trash-folder  . "/gmail/instadeep/[Gmail]/Trash")))))
+                  (mu4e-trash-folder  . "/gmail/instadeep/[Gmail]/Trash")))
+         ;; supaero account
+         (make-mu4e-context
+          :name "Supaero"
+          :match-func
+            (lambda (msg)
+              (when msg
+                (string-prefix-p "/isae/supaero" (mu4e-message-field msg :maildir))))
+          :vars '((user-mail-address . "antoine.stevan@student.isae-supearo.fr")
+                  (user-full-name    . "Antoine Stevan (ISAE-Supaero)")
+                  (mu4e-drafts-folder  . "/isae/supaero/Drafts")
+                  (mu4e-sent-folder  . "/isae/supaero/Sent")
+                  (mu4e-refile-folder  . "/isae/supaero/Junk")
+                  (mu4e-trash-folder  . "/isae/supaero/Trash")))))
 
   (setq mu4e-maildir-shortcuts
       '(("/gmail/stevan.antoine/Inbox"             . ?i)
