@@ -26,7 +26,23 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-dracula)
+(setq modus-themes-mode-line '(accented borderless)
+      modus-themes-region '(bg-only)
+      modus-themes-completions 'opinionated
+      modus-themes-bold-constructs t
+      modus-themes-italic-constructs t
+      modus-themes-paren-match '(bold intense underline)
+;;      modus-themes-syntax '(alt-syntax)
+;;      modus-themes-syntax '(alt-syntax faint)
+      modus-themes-syntax '(green-strings yellow-comments)
+      modus-themes-headings
+      '((1 . (rainbow background overline 1.4))
+        (2 . (rainbow background 1.3))
+        (3 . (rainbow bold 1.2))
+        (t . (semilight 1.1)))
+      modus-themes-scale-headings t
+      modus-themes-org-blocks 'tinted-background)
+(load-theme 'modus-vivendi t)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
