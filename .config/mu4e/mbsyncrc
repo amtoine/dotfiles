@@ -5,6 +5,7 @@
 #   - ~/.config/mu4e/antoineulk17@gmail.com.gpg
 #   - ~/.config/mu4e/a.stevan@instadeep.com.gpg
 #   - ~/.config/mu4e/antoine.stevan@student.isae-supaero.fr.gpg
+# or inside a single file to avoid entering several times the same passphrase: ~/.config/mu4e/tokens.gpg
 #
 # commands to setup the different email addresses below
 #
@@ -22,7 +23,7 @@
 IMAPAccount gmail-stevan.antoine
 Host imap.gmail.com
 User stevan.antoine@gmail.com
-PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/mu4e/stevan.antoine@gmail.com.gpg"
+PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/mu4e/tokens.gpg | grep stevan.antoine@gmail.com | awk -F: '{print $2}'"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -46,7 +47,7 @@ SyncState *
 IMAPAccount gmail-antoineulk17
 Host imap.gmail.com
 User antoineulk17@gmail.com
-PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/mu4e/antoineulk17@gmail.com.gpg"
+PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/mu4e/tokens.gpg | grep antoineulk17@gmail.com | awk -F: '{print $2}'"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -70,7 +71,7 @@ SyncState *
 IMAPAccount gmail-instadeep
 Host imap.gmail.com
 User a.stevan@instadeep.com
-PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/mu4e/a.stevan@instadeep.com.gpg"
+PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/mu4e/tokens.gpg | grep a.stevan@instadeep.com | awk -F: '{print $2}'"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -94,7 +95,7 @@ SyncState *
 IMAPAccount isae-supaero
 Host email.isae.fr
 User a.stevan
-PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/mu4e/antoine.stevan@student.isae-supaero.fr.gpg"
+PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/mu4e/tokens.gpg | grep antoine.stevan@student.isae-supaero.fr | awk -F: '{print $2}'"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
