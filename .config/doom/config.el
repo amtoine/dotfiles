@@ -104,6 +104,7 @@
        :desc "Clippy describes function under point" "f" #'clippy-describe-function
        :desc "Clippy describes variable under point" "v" #'clippy-describe-variable))
 
+;; IRC support
 (setq erc-prompt (lambda () (concat "[" (buffer-name) "]"))
       erc-server "irc.libera.chat"
       erc-nick "astevan"
@@ -113,6 +114,7 @@
       erc-fill-function 'erc-fill-static
       erc-fill-static-center 20)
 
+;; mail support
 (require 'smtpmail)
 (use-package mu4e
   :ensure nil
