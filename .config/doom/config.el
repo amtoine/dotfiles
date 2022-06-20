@@ -115,9 +115,10 @@
       erc-fill-static-center 20)
 
 ;; mail support
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
 (require 'smtpmail)
 (use-package mu4e
-  :ensure nil
+  :ensure t
   ;; :load-path "/usr/share/emacs/site-lisp/mu4e/"
   :defer 20 ; Wait until 20 seconds after startup
   :config
