@@ -16,3 +16,5 @@ settings:
     global: mononoki Nerd Font
   fonts.default_size:
     global: 15pt
+  zoom.default:
+    global: '150'
