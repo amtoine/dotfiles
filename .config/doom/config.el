@@ -32,8 +32,8 @@
       modus-themes-bold-constructs t
       modus-themes-italic-constructs t
       modus-themes-paren-match '(bold intense underline)
-;;      modus-themes-syntax '(alt-syntax)
-;;      modus-themes-syntax '(alt-syntax faint)
+      ;; modus-themes-syntax '(alt-syntax)
+      ;; modus-themes-syntax '(alt-syntax faint)
       modus-themes-syntax '(green-strings yellow-comments)
       modus-themes-headings
       '((1 . (rainbow background overline 1.4))
