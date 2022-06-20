@@ -10,7 +10,6 @@ archlinux-themes-sddm
 arcolinux-logout
 arduino-mk
 aura
-bsp-layout
 catppuccin-grub-theme-git
 cava
 conky-lua-nv

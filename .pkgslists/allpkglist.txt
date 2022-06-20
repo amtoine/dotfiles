@@ -36,7 +36,6 @@ bluez-utils
 bpytop
 breeze
 brightnessctl
-bsp-layout
 bspwm
 btop
 cabal-install
