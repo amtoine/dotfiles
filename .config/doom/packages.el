@@ -56,7 +56,7 @@
 ;; (package! mu4e)
 (package! xresources-theme :recipe
   (:host github
-   :repo "a2n-s/xresources-theme"
+   :repo "martenlienen/xresources-theme"
    :branch "master"))
 (package! rainbow-mode)
 
