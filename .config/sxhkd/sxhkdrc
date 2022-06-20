@@ -25,12 +25,10 @@ XF86Audio{Lower,Raise}Volume
 
 super + {_,shift} + F1
   flameshot {gui,launcher}
-super + F2
-  "$WM_SCRIPTS/a2n-s-flameshot-screen"
-super + {F3, F4}
-  $WM_TERM $WM_TERM_FLAGS {lazygit --git-dir="$HOME/.dotfiles" --work-tree="$HOME", "$WM_SCRIPTS/a2n-s-tcfg"}
-super + {F5,F6}
+super + {_,shift} + F2
   "$WM_SCRIPTS/a2n-s-scrot" {window,full} --notify
+super + {_,shift} + F3
+  $WM_TERM $WM_TERM_FLAGS {lazygit --git-dir="$HOME/.dotfiles" --work-tree="$HOME", "$WM_SCRIPTS/a2n-s-tcfg"}
 super + F12
   archlinux-logout
 
