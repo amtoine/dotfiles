@@ -63,7 +63,7 @@ super + z; m; {b,m,n,,p,q,r,s,h,j,k,l}
 super + z; m; f
   "$WM_SCRIPTS/a2n-s-mocp" --follow
 super + z; p; {b,t}
-  "$WM_SCRIPTS/a2n-s-pcm" --{blur,toggle} --notify
+  PICOM_EXTRA_FLAGS="--experimental-backends --animations" "$WM_SCRIPTS/a2n-s-pcm" --{blur,toggle} --notify
 super + z; p; d; f
   "$WM_SCRIPTS/a2n-s-pdf"
 super + z; r; e
