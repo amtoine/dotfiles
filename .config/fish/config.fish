@@ -201,6 +201,7 @@ if status is-interactive
 
   alias xonsh="xonsh --rc $XDG_CONFIG_HOME/xonsh/xonshrc"
 
+  alias screencast="screencast --output-dir=$HOME/videos/screencast"
 
   #        _
   #  _ __ (_)___ __
