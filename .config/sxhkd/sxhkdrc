@@ -67,6 +67,7 @@ super + z; p; {b,t}
 super + z; p; d; f
   "$WM_SCRIPTS/a2n-s-pdf"
 super + z; r; e
+  dunstify 'Emacs' 'killing the server' --urgency critical --timeout 5000; \
   killall emacs; \
   /usr/bin/emacs --daemon; \
   dunstify 'Emacs' 'server restart successful'
