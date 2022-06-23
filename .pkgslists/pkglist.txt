@@ -20,7 +20,6 @@ btop
 cabal-install
 calcurse
 caprine
-catimg
 chromium
 clipmenu
 cmake
@@ -70,9 +69,9 @@ mate-backgrounds
 mathomatic
 ncdu
 ncmpcpp
+neofetch
 net-tools
 nethack
-nitrogen
 nmap
 noto-fonts-cjk
 nushell

@@ -152,6 +152,7 @@ mut-ex-wallpapers-git
 myman
 ncdu
 ncmpcpp
+neofetch
 neovim
 nerd-fonts-mononoki
 net-tools

@@ -95,7 +95,7 @@ jsonschema                    4.3.3
 jupyter-client                7.1.2
 jupyter-console               6.4.3
 jupyter-core                  4.9.2
-jupyter-packaging             0.12.1
+jupyter-packaging             0.12.2
 jupyter-server                1.17.1
 jupyterlab                    3.4.3
 jupyterlab-pygments           0.1.2
@@ -197,7 +197,7 @@ qtconsole                     5.2.2
 qtile                         0.21.0
 qtile-extras                  0.1.0
 QtPy                          2.0.0
-qutebrowser                   2.5.1
+qutebrowser                   2.5.2
 ranger-fm                     1.9.3
 requests                      2.27.1
 requests-unixsocket           0.3.0
@@ -209,7 +209,7 @@ Send2Trash                    1.8.0
 setproctitle                  1.2.3
 setuptools                    61.3.1
 shiboken2                     5.15.5
-shtab                         1.5.4
+shtab                         1.5.5
 six                           1.16.0
 sniffio                       1.2.0
 snowballstemmer               2.2.0
