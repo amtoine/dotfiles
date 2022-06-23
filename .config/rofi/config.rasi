@@ -1,13 +1,13 @@
 
 configuration{
     modi: "run,drun,window";
-    lines: 5;
     font: "mononoki Nerd Font 20";
     show-icons: true;
     icon-theme: "Oranchelo";
     terminal: "st";
     drun-display-format: "{icon} {name}";
     location: 0;
+    monitor: "eDP-1";
     disable-history: false;
     hide-scrollbar: true;
     display-drun: "   Apps ";
