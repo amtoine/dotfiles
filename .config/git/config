@@ -116,5 +116,3 @@
 
 [pull]
   rebase = true
-[commit]
-  template = /home/ants/.config/git/commit.template
