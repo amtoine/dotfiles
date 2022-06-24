@@ -67,6 +67,7 @@ lolcat
 lxappearance
 mate-backgrounds
 mathomatic
+minio-client
 ncdu
 ncmpcpp
 neofetch

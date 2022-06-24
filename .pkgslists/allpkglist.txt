@@ -141,6 +141,7 @@ make
 mate-backgrounds
 mathomatic
 mbsync-git
+minio-client
 mk_vpp
 moc
 mpd
