@@ -153,11 +153,7 @@ if status is-interactive
   end
   alias dir='dir --color=auto'
   alias vdir='vdir --color=auto'
-  if type -q rg
-    alias grep='rg'
-  else
-    alias grep='grep --color=auto'
-  end
+  alias grep='grep --color=auto'
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
 
@@ -193,15 +189,13 @@ if status is-interactive
     alias qlog="cat $HOME/.local/share/qtile/qtile.log | less"
   end
 
-  if type -q fd
-    alias find="fd"
-  end
   alias wget="wget --hsts-file='$XDG_DATA_HOME/wget-hsts'"
   alias xdg-ninja="$HOME/ghq/github.com/a2n-s/xdg-ninja/xdg-ninja.sh"
 
   alias xonsh="xonsh --rc $XDG_CONFIG_HOME/xonsh/xonshrc"
 
   alias screencast="screencast --output-dir=$HOME/videos/screencast"
+  alias mcli="mcli --config-dir $HOME/.config/mcli"
 
   #        _
   #  _ __ (_)___ __

@@ -67,11 +67,7 @@ else
 fi
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
-if command -v rg &> /dev/null; then
-  alias grep='rg'
-else
-  alias grep='grep --color=auto'
-fi
+alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
@@ -109,13 +105,10 @@ else
   alias qlog="cat $HOME/.local/share/qtile/qtile.log | less"
 fi
 
-if command -v fd &> /dev/null; then
-  alias find="fd"
-fi
-
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 alias xdg-ninja=$HOME/ghq/github.com/a2n-s/xdg-ninja/xdg-ninja.sh
 
 alias xonsh="xonsh --rc $XDG_CONFIG_HOME/xonsh/xonshrc"
 
 alias screencast="screencast --output-dir=$HOME/videos/screencast"
+alias mcli="mcli --config-dir $HOME/.config/mcli"
