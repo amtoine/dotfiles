@@ -50,7 +50,9 @@ super + d; h
 super + e; e
   emacsclient -c -a "emacs"
 super + e; r
-  [ $(echo -e "yes\nno" | dmenu -c -l 2 -bw 5 -p "Kill emacs?") == "no" ] && exit 0; \
+  choice=$(echo -e "yes\nno" | dmenu -c -l 2 -bw 5 -p "Kill emacs?"); \
+  [ ! "$choice" ] && exit 0; \
+  [ "$choice" == "no" ] && exit 0; \
   dunstify 'Emacs' 'killing the server' --urgency critical --timeout 5000; \
   killall emacs; \
   /usr/bin/emacs --daemon; \
