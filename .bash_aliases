@@ -80,7 +80,6 @@ if command -v devour &> /dev/null; then
     alias ssh="devour alacritty -e ssh $1 > /dev/null"
   fi
 fi
-alias emacs='emacsclient -c -nw -a "emacs"'
 alias pdf='okular $(find "\.pdf$" . | fzf)'
 
 

@@ -166,7 +166,6 @@ if status is-interactive
       alias ssh="devour alacritty -e ssh $1 > /dev/null"
     end
   end
-  alias emacs='emacsclient -c -nw -a "emacs"'
   alias pdf='okular (find "\.pdf\$" . | fzf)'
 
   if [ "$TERM" = "xterm-kitty" ]

@@ -205,8 +205,8 @@ export CABAL_DIR="$XDG_DATA_HOME"/cabal
 export KERAS_HOME="$XDG_STATE_HOME/keras"
 
 # changes the editor in the terminal, to edit long commands.
-export EDITOR='emacsclient -nw -c -a "emacs"'
-export VISAL='emacsclient -nw -c -a "emacs"'
+export EDITOR='vim'
+export VISAL='vim'
 set -o vi
 
 ### SET MANPAGER
