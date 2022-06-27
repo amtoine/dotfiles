@@ -34,25 +34,30 @@ super + F12
 
 super + Return
   $WM_TERM $WM_TERM_FLAGS $WM_TERM_SHELL
-super + @space
-  rofi -show drun
+super + {_,shift,alt} + @space
+  rofi -show {drun,run,window}
 super + p
-  passmenu -l 10 -bw 5 -c -fn "mononoki Nerd Font-20"
+  passmenu -l 10 -bw 5 -c -fn "mononoki Nerd Font-20" 1> /tmp/passmenu.msg; \
+  dunstify "$(cat /tmp/passmenu.msg)"
 super + Escape
   pkill -USR1 -x sxhkd
 
 super + d; d
   dmenu_run -l 10 -bw 5 -c -fn "mononoki Nerd Font-20"
-super + d; {b, e, i, h, k, l, m, n, o, r, s}
- dm-{setbg,confedit,maim,hub,kill,logout,man,note,bookman,reddit,websearch} -fn "mononoki Nerd Font-20"
+super + d; h
+ dm-hub -fn "mononoki Nerd Font-20"
 
 super + e; e
   emacsclient -c -a "emacs"
-super + e; {a,b,d,f,i,m,s,v}
-  emacsclient -c -a "emacs" --eval "({org-agenda,ibuffer,dired nil,elfeed,erc,mu4e,eshell,+vterm/here nil})"
-
-super + r; {c, d, f, k, r, s, w}
-  rofi -show {combi, drun, filebrowser, keys, run ,ssh, window}
+super + e; r
+  [ $(echo -e "yes\nno" | dmenu -c -l 2 -bw 5 -p "Kill emacs?") == "no" ] && exit 0; \
+  dunstify 'Emacs' 'killing the server' --urgency critical --timeout 5000; \
+  killall emacs; \
+  /usr/bin/emacs --daemon; \
+  dunstify 'Emacs' 'server restart successful'
+super + e; h
+  option=$(echo -e "org-agenda\nibuffer\ndired nil\nelfeed\nerc\nmu4e\neshell\n+vterm/here nil" | dmenu -c -l 10 -bw 5 -p "Choose an option to launch emacs with:"); \
+  emacsclient -c -a "emacs" --eval "($option)"
 
 super + z; b
   "$WM_SCRIPTS/a2n-s-battery" --print
@@ -66,11 +71,6 @@ super + z; p; {b,t}
   PICOM_EXTRA_FLAGS="--experimental-backends --animations" "$WM_SCRIPTS/a2n-s-pcm" --{blur,toggle} --notify
 super + z; p; d; f
   "$WM_SCRIPTS/a2n-s-pdf"
-super + z; r; e
-  dunstify 'Emacs' 'killing the server' --urgency critical --timeout 5000; \
-  killall emacs; \
-  /usr/bin/emacs --daemon; \
-  dunstify 'Emacs' 'server restart successful'
 super + z; r; t
   $WM_TERM $WM_TERM_FLAGS "$WM_SCRIPTS/a2n-s-themes" --dmenu
 super + z; r; w; {f,s}
