@@ -130,6 +130,10 @@ libreoffice-still
 librsync
 libspeechd
 libvterm
+lightdm
+lightdm-gtk-greeter
+lightdm-webkit-theme-litarvan
+lightdm-webkit2-greeter
 links
 linux
 linux-firmware
@@ -293,6 +297,7 @@ tabbed-a2ns-git
 telegram-tg
 termdown
 texinfo
+thunar
 thunderbird
 tig
 tk
@@ -305,6 +310,7 @@ trayer
 tree
 ttf-iosevka-nerd
 ttf-symbola
+udiskie
 ueberzug
 ufw
 unzip

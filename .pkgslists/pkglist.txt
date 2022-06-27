@@ -62,6 +62,7 @@ kvantum
 lazygit
 libreoffice-still
 libvterm
+lightdm-webkit-theme-litarvan
 links
 lolcat
 lxappearance
@@ -129,11 +130,13 @@ starship
 steam
 swig
 termdown
+thunar
 thunderbird
 tig
 tldr
 tokei
 trayer
+udiskie
 ufw
 vi
 vifm
@@ -155,7 +158,6 @@ xorg-fonts-75dpi
 xorg-iceauth
 xorg-mkfontscale
 xorg-server-devel
-xorg-server-xephyr
 xorg-server-xnest
 xorg-server-xvfb
 xorg-sessreg
