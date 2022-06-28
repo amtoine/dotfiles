@@ -12,6 +12,9 @@
 # License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
+# general system control bindings.
+# these do not require super as they are not really related to any
+# window manager or workflow in particular.
 XF86MonBrightness{Down,Up}
   a2n-s-hdmi --main --brightness {-,+} --step 5 --notify
 shift + XF86MonBrightness{Down,Up}
@@ -23,6 +26,8 @@ ctrl + XF86AudioMute
 XF86Audio{Lower,Raise}Volume
   a2n-s-sound --{down,up} --channel Master --step 5 --notify
 
+# function bindings, such as taking screeshots, doing version control on the dotfiles,
+# logging out of the window manager...
 super + {_,shift} + F1
   flameshot {gui,launcher}
 super + {_,shift} + F2
@@ -32,6 +37,7 @@ super + {_,shift} + F3
 super + F12
   archlinux-logout
 
+# general one-key bindings, mainly to run applications quickly.
 super + Return
   $WM_TERM $WM_TERM_FLAGS $WM_TERM_SHELL
 super + {_,shift,alt} + @space
@@ -42,11 +48,13 @@ super + p
 super + Escape
   pkill -USR1 -x sxhkd
 
+# dmenu-related bindings.
 super + d; d
   dmenu_run -l 10 -bw 5 -c -fn "mononoki Nerd Font-20"
 super + d; h
  dm-hub -fn "mononoki Nerd Font-20"
 
+# Emacs-related bindings.
 super + e; e
   emacsclient -c -a "emacs"
 super + e; r
@@ -61,6 +69,7 @@ super + e; h
   option=$(echo -e "org-agenda\nibuffer\ndired nil\nelfeed\nerc\nmu4e\neshell\n+vterm/here nil" | dmenu -c -l 10 -bw 5 -p "Choose an option to launch emacs with:"); \
   emacsclient -c -a "emacs" --eval "($option)"
 
+# everything else that does not fit in any particular dedicated category.
 super + z; b
   a2n-s-battery --print
 super + z; d; {c, h, p}
