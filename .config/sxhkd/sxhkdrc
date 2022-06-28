@@ -13,22 +13,22 @@
 # Contributors: Stevan Antoine
 
 XF86MonBrightness{Down,Up}
-  "$WM_SCRIPTS/a2n-s-hdmi" --main --brightness {-,+} --step 2 --notify
+  a2n-s-hdmi --main --brightness {-,+} --step 5 --notify
 shift + XF86MonBrightness{Down,Up}
-  "$WM_SCRIPTS/a2n-s-hdmi" --second --brightness {-,+} --step 2 --notify
+  a2n-s-hdmi --second --brightness {-,+} --step 5 --notify
 XF86AudioMute
-  "$WM_SCRIPTS/a2n-s-sound" --toggle --channel Master --notify
+  a2n-s-sound --toggle --channel Master --notify
 ctrl + XF86AudioMute
-  "$WM_SCRIPTS/a2n-s-sound" --bluetooth --notify
+  a2n-s-sound --bluetooth --notify
 XF86Audio{Lower,Raise}Volume
-  "$WM_SCRIPTS/a2n-s-sound" --{down,up} --channel Master --step 5 --notify
+  a2n-s-sound --{down,up} --channel Master --step 5 --notify
 
 super + {_,shift} + F1
   flameshot {gui,launcher}
 super + {_,shift} + F2
-  "$WM_SCRIPTS/a2n-s-scrot" {window,full} --notify
+  a2n-s-scrot {window,full} --notify
 super + {_,shift} + F3
-  $WM_TERM $WM_TERM_FLAGS {lazygit --git-dir="$HOME/.dotfiles" --work-tree="$HOME", "$WM_SCRIPTS/a2n-s-tcfg"}
+  $WM_TERM $WM_TERM_FLAGS {lazygit --git-dir="$HOME/.dotfiles" --work-tree="$HOME", a2n-s-tcfg}
 super + F12
   archlinux-logout
 
@@ -62,24 +62,24 @@ super + e; h
   emacsclient -c -a "emacs" --eval "($option)"
 
 super + z; b
-  "$WM_SCRIPTS/a2n-s-battery" --print
+  a2n-s-battery --print
 super + z; d; {c, h, p}
   dunstctl {close-all,history-pop,set-paused-toggle}
 super + z; m; {b,m,n,,p,q,r,s,h,j,k,l}
   mocp {-r,-G,-f,-G,-x,-t repeat,-t shuffle,-k -10,-f,-r,-k +10}
 super + z; m; f
-  "$WM_SCRIPTS/a2n-s-mocp" --follow
+  a2n-s-mocp --follow
 super + z; p; {b,t}
-  PICOM_EXTRA_FLAGS="--experimental-backends --animations" "$WM_SCRIPTS/a2n-s-pcm" --{blur,toggle} --notify
+  PICOM_EXTRA_FLAGS="--experimental-backends --animations" a2n-s-pcm --{blur,toggle} --notify
 super + z; p; d; f
-  "$WM_SCRIPTS/a2n-s-pdf"
+  a2n-s-pdf
 super + z; r; t
-  $WM_TERM $WM_TERM_FLAGS "$WM_SCRIPTS/a2n-s-themes" --dmenu
+  $WM_TERM $WM_TERM_FLAGS a2n-s-themes --dmenu
 super + z; r; w; {f,s}
-  {feh --bg-fill --randomize /usr/share/backgrounds/* --no-fehbg,"$WM_SCRIPTS/a2n-s-wfzf" --dmenu}
+  {feh --bg-fill --randomize /usr/share/backgrounds/* --no-fehbg,a2n-s-wfzf --dmenu}
 super + z; {s,t,w}
-  "$WM_SCRIPTS/a2n-s-{sys-stats,time-date,weather-get}"
+  a2n-s-{sys-stats,time-date,weather-get}
 super + z; u
-  "$WM_SCRIPTS/a2n-s-update" --update
+  a2n-s-update --update
 super + z; z; {m, w}
-  $WM_TERM $WM_TERM_FLAGS {"$WM_SCRIPTS/a2n-s-macho","$WM_SCRIPTS/a2n-s-wtldr"}
+  $WM_TERM $WM_TERM_FLAGS {a2n-s-macho,a2n-s-wtldr}
