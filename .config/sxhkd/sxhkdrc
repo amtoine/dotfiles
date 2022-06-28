@@ -17,12 +17,18 @@
 # window manager or workflow in particular.
 XF86MonBrightness{Down,Up}
   a2n-s-hdmi --main --brightness {-,+} --step 5 --notify
+XF86MonBrightness{Down,Up} + control
+  a2n-s-hdmi --main --brightness {-,+} --step 1 --notify
 shift + XF86MonBrightness{Down,Up}
   a2n-s-hdmi --second --brightness {-,+} --step 5 --notify
+shift + control + XF86MonBrightness{Down,Up}
+  a2n-s-hdmi --second --brightness {-,+} --step 1 --notify
 XF86AudioMute
   a2n-s-sound --toggle --channel Master --notify
 ctrl + XF86AudioMute
   a2n-s-sound --bluetooth --notify
+XF86Audio{Lower,Raise}Volume + control
+  a2n-s-sound --{down,up} --channel Master --step 1 --notify
 XF86Audio{Lower,Raise}Volume
   a2n-s-sound --{down,up} --channel Master --step 5 --notify
 
