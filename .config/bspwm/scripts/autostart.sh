@@ -67,8 +67,9 @@ run_conky () {
   fi
 }
 
-
-bash "$HOME/.config/bspwm/scripts/sxhkd_start.sh"
+# restart sxhkd.
+killall sxhkd
+sxhkd -c "$WM_SXHKD_COMMON" "$WM_SXHKD_BSPWM" &
 
 # start the `dunst` notification server in the background
 if does_command_exist dunst; then

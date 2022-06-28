@@ -43,6 +43,16 @@ export WM_LOCKER="$HOME/.local/bin/slock.sh"
 export WM_PLAY_STARTUP_SOUND="yes"
 export WM_NOTIFY_AT_STARTUP="yes"
 
+# the configuration files.
+export WM_SXHKD_COMMON="$HOME/.config/sxhkd/sxhkdrc"
+export WM_SXHKD_BSPWM="$HOME/.config/bspwm/sxhkd/sxhkdrc"
+
+# the environment variables used by sxhkd.
+export WM_DMFONT="mononoki Nerd Font-20"
+export WM_TERM="st"
+export WM_TERM_FLAGS="-e"
+export WM_TERM_SHELL="bash"
+
 
 # tool functions.
 _build_workspaces () {
