@@ -59,7 +59,7 @@ super + Escape
 super + d; d
   dmenu_run -l 10 -bw 5 -c -fn "mononoki Nerd Font-20"
 super + d; h
- dm-hub -fn "mononoki Nerd Font-20"
+  dm-hub -fn "mononoki Nerd Font-20"
 
 # Emacs-related bindings.
 super + e; e
