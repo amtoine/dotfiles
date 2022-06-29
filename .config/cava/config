@@ -22,8 +22,8 @@ sensitivity = 100
 # The number of bars (0-200). 0 sets it to auto (fill up console).
 # Bars' width and space between bars in number of characters.
 bars = 0
-bar_width = 1
-bar_spacing = 0
+bar_width = 2
+bar_spacing = 1
 
 
 # Lower and higher cutoff frequencies for lowest and highest bars
@@ -116,7 +116,7 @@ mono_option = average
 # if supported, ncurses mode will be forced on if user defined colors are used.
 # default is to keep current terminal color
 background = black
-foreground = magenta
+foreground = black
 
 # Gradient mode, only hex defined colors (and thereby ncurses mode) are supported,
 # background must also be defined in hex  or remain commented out. 1 = on, 0 = off.
