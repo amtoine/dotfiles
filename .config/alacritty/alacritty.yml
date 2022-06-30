@@ -273,29 +273,45 @@ draw_bold_text_with_bright_colors: true
 colors:
   # COLORSCHEME: Dracula
   primary:
-    background: '0x282a36' # PRIMARY
-    foreground: '0xf8f8f2' # PRIMARY
+#+ BEGIN:primary
+#+ format:    {name}: '{color}'
+#+ names:background,foreground
+    background: '#282a36' # PRIMARY
+    foreground: '#f8f8f2' # PRIMARY
+#+ END:primary
   cursor:
-    text: '0x44475a'   # CURSOR
-    cursor: '0xffffff' # CURSOR
+#+ BEGIN:cursor
+#+ format:    {name}: '{color}'
+#+ names:text,cursor
+    text: '#44475a'   # CURSOR
+    cursor: '#ffffff' # CURSOR
+#+ END:cursor
   normal:
-    black: '0x21222c'   # NORMAL
-    red: '0xff5555'     # NORMAL
-    green: '0x50fa7b'   # NORMAL
-    yellow: '0xf1fa8c'  # NORMAL
-    blue: '0xbd93f9'    # NORMAL
-    magenta: '0xff79c6' # NORMAL
-    cyan: '0x8be9fd'    # NORMAL
-    white: '0xf8f8f2'   # NORMAL
+#+ BEGIN:normal
+#+ format:    {name}: '{color}'
+#+ names:black,red,green,yellow,blue,magenta,cyan,white
+    black: '#21222c'   # NORMAL
+    red: '#ff5555'     # NORMAL
+    green: '#50fa7b'   # NORMAL
+    yellow: '#f1fa8c'  # NORMAL
+    blue: '#bd93f9'    # NORMAL
+    magenta: '#ff79c6' # NORMAL
+    cyan: '#8be9fd'    # NORMAL
+    white: '#f8f8f2'   # NORMAL
+#+ END:normal
   bright:
-    black: '0x6272a4'   # BRIGHT
-    red: '0xff6e6e'     # BRIGHT
-    green: '0x69ff94'   # BRIGHT
-    yellow: '0xffffa5'  # BRIGHT
-    blue: '0xd6acff'    # BRIGHT
-    magenta: '0xff92df' # BRIGHT
-    cyan: '0xa4ffff'    # BRIGHT
-    white: '0xffffff'   # BRIGHT
+#+ BEGIN:bright
+#+ format:    {name}: '{color}'
+#+ names:black,red,green,yellow,blue,magenta,cyan,white
+    black: '#6272a4'   # BRIGHT
+    red: '#ff6e6e'     # BRIGHT
+    green: '#69ff94'   # BRIGHT
+    yellow: '#ffffa5'  # BRIGHT
+    blue: '#d6acff'    # BRIGHT
+    magenta: '#ff92df' # BRIGHT
+    cyan: '#a4ffff'    # BRIGHT
+    white: '#ffffff'   # BRIGHT
+#+ END:bright
 
 # >>> Visual Bell.
 #

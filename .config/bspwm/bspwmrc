@@ -22,11 +22,15 @@ WINDOW_GAP=2
 
 COLOR_RESOURCES="$XDG_CONFIG_HOME/X11/Xresources"
 declare -A COLOR_MAP=(
-    ["normal_border_color"]="color0"
-    ["active_border_color"]="color2"
-    ["focused_border_color"]="color1"
-    ["presel_feedback_color"]="color9"
-    ["urgent_border_color"]="color5"
+#+ BEGIN:color-theme
+#+ format:    [{name}]="{color}"
+#+ names:normal_border_color,active_border_color,focused_border_color,presel_feedback_color,urgent_border_color
+    [normal_border_color]="#0e2878"
+    [active_border_color]="#b303f6"
+    [focused_border_color]="#fcb087"
+    [presel_feedback_color]="#7758c6"
+    [urgent_border_color]="#272559"
+#+ END:color-theme
 )
 
 AUTOSTART="$HOME/.config/bspwm/scripts/autostart.sh"
@@ -108,7 +112,7 @@ _get_color () {
 apply_colors () {
     # TODO.
     for config in "${!COLOR_MAP[@]}"; do
-        bspc config "$config" "$(_get_color "${COLOR_MAP[$config]}")"
+        bspc config "$config" "${COLOR_MAP[$config]}"
     done
 }
 
