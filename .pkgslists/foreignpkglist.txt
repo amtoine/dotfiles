@@ -64,6 +64,7 @@ slock-a2ns-git
 solarized-sddm-theme
 st-a2ns-git
 surf-a2ns-git
+syndrizzle-wallpapers-git
 tabbed-a2ns-git
 telegram-tg
 toilet

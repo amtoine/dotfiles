@@ -130,6 +130,15 @@ starship
 steam
 swig
 termdown
+texlive-bibtexextra
+texlive-fontsextra
+texlive-formatsextra
+texlive-games
+texlive-humanities
+texlive-music
+texlive-pstricks
+texlive-publishers
+texlive-science
 thunar
 thunderbird
 tig
