@@ -124,18 +124,16 @@ foreground = black
 gradient = 1
 gradient_count = 8
 
-#+ BEGIN:color-theme
-#+ format:{name} = '{color}'
-#+ names:gradient_color_1,gradient_color_2,gradient_color_3,gradient_color_4,gradient_color_5,gradient_color_6,gradient_color_7,gradient_color_8
-gradient_color_1 = '#943560'
-gradient_color_2 = '#a14076'
-gradient_color_3 = '#ae4b8d'
-gradient_color_4 = '#bb56a4'
-gradient_color_5 = '#c861ba'
-gradient_color_6 = '#d56cd1'
-gradient_color_7 = '#e277e8'
-gradient_color_8 = '#ef82ff'
-#+ END:color-theme
+#+ BEGIN:palette
+gradient_color_1 = '#d38578'
+gradient_color_2 = '#c6956c'
+gradient_color_3 = '#b9a560'
+gradient_color_4 = '#acb555'
+gradient_color_5 = '#9fc649'
+gradient_color_6 = '#92d63e'
+gradient_color_7 = '#85e632'
+gradient_color_8 = '#78f727'
+#+ END:palette
 
 [smoothing]
 

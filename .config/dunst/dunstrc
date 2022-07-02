@@ -282,35 +282,29 @@
 # IMPORTANT: colors have to be defined in quotation marks.
 # Otherwise the "#" and following would be interpreted as a comment.
 [urgency_low]
-#+ BEGIN:urgency-low
-#+ format:    {name} = "{color}"
-#+ names:background,foreground
+#+ BEGIN:low
     background = "#282a36"  # LOW
     foreground = "#f8f8f2"  # LOW
-#+ END:urgency-low
+#+ END:low
     timeout = 3
     # Icon for notifications with low urgency, uncomment to enable
     default_icon = /usr/share/icons/a2n-s-icons-git/dark/128x128/notification/normal.png
 
 [urgency_normal]
-#+ BEGIN:urgency-normal
-#+ format:    {name} = "{color}"
-#+ names:background,foreground
+#+ BEGIN:normal
     background = "#282a36"  # NORMAL
     foreground = "#bd93f9"  # NORMAL
-#+ END:urgency-normal
+#+ END:normal
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     default_icon = /usr/share/icons/a2n-s-icons-git/dark/128x128/notification/normal.png
 
 [urgency_critical]
-#+ BEGIN:urgency-critical
-#+ format:    {name} = "{color}"
-#+ names:background,foreground,frame_color
+#+ BEGIN:critical
     background =  "#282a36"  # CRITICAL
     foreground =  "#ff5555"  # CRITICAL
     frame_color = "#ffffa5"  # CRITICAL
-#+ END:urgency-critical
+#+ END:critical
     timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable
     default_icon = /usr/share/icons/a2n-s-icons-git/dark/128x128/notification/critical.png

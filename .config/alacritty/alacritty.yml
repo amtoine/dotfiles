@@ -274,22 +274,16 @@ colors:
   # COLORSCHEME: Dracula
   primary:
 #+ BEGIN:primary
-#+ format:    {name}: '{color}'
-#+ names:background,foreground
     background: '#282a36' # PRIMARY
     foreground: '#f8f8f2' # PRIMARY
 #+ END:primary
   cursor:
 #+ BEGIN:cursor
-#+ format:    {name}: '{color}'
-#+ names:text,cursor
     text: '#44475a'   # CURSOR
     cursor: '#ffffff' # CURSOR
 #+ END:cursor
   normal:
 #+ BEGIN:normal
-#+ format:    {name}: '{color}'
-#+ names:black,red,green,yellow,blue,magenta,cyan,white
     black: '#21222c'   # NORMAL
     red: '#ff5555'     # NORMAL
     green: '#50fa7b'   # NORMAL
@@ -301,8 +295,6 @@ colors:
 #+ END:normal
   bright:
 #+ BEGIN:bright
-#+ format:    {name}: '{color}'
-#+ names:black,red,green,yellow,blue,magenta,cyan,white
     black: '#6272a4'   # BRIGHT
     red: '#ff6e6e'     # BRIGHT
     green: '#69ff94'   # BRIGHT
