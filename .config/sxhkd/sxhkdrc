@@ -40,7 +40,7 @@ super + {_,shift} + F1
 super + {_,shift} + F2
   a2n-s-scrot {window,full} --notify
 super + {_,shift} + F3
-  GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" $WM_TERM $WM_TERM_FLAGS {tig --all, lazygit --git-dir="$HOME/.dotfiles" --work-tree="$HOME"}
+  TIGRC_USER="$HOME/.dotfiles/tigrc" GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" $WM_TERM $WM_TERM_FLAGS {tig --all, lazygit --git-dir="$HOME/.dotfiles" --work-tree="$HOME"}
 super + F12
   archlinux-logout
 
