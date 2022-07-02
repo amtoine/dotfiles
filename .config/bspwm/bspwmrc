@@ -32,6 +32,7 @@ declare -A COLOR_MAP=(
 )
 
 AUTOSTART="$HOME/.config/bspwm/scripts/autostart.sh"
+SCRATCHPAD="$HOME/.config/bspwm/scripts/scratchpad.sh"
 export WM_STARTUP_SOUND="/usr/share/sounds/a2n-s-sounds-git/startup.16.mp3"
 export WM_CONKY_HELP="$HOME/.config/conky/bspwm.conkyrc"
 export WM_CONKY_CLOCK="$HOME/.config/conky/vision/Z333-vision.conkyrc"
@@ -123,6 +124,16 @@ apply_rules () {
     for app in "discord" "Caprine" "Slack" "Signal" "Thunderbird" "Gmail Desktop"; do
         bspc rule -a "$app" desktop="^$NB_WORKSPACES_PER_MONITOR" state=tiled focus=off follow=off manage=on
     done
+}
+
+
+setup_scratchpads () {
+    bspc rule -a scratchpad sticky=on state=floating hidden=on
+    # check scratchpad already running
+    [ "$(ps -x | grep -c 'scratchpad')" -eq "1" ] && st -c scratchpad -e "$SCRATCHPAD" &
+
+    bspc rule -a dropdown sticky=on state=floating hidden=on
+    st -c dropdown -e bash &
 }
 
 

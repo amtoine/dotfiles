@@ -99,3 +99,10 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
   bspc node --move {-20 0,0 20,0 -20,20 0}
+
+
+# super + shift + Return
+#   id=$(cat /tmp/scratchid);\
+#   bspc node $id --flag hidden;bspc node -f $id
+# super + control + Return
+#   bash "$HOME/.config/bspwm/scripts/dropdown.sh" dropdown
