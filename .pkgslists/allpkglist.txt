@@ -295,6 +295,7 @@ sxhkd
 syndrizzle-wallpapers-git
 sysstat
 tabbed-a2ns-git
+tdrop-git
 telegram-tg
 termdown
 texinfo

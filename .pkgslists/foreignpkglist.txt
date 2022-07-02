@@ -66,6 +66,7 @@ st-a2ns-git
 surf-a2ns-git
 syndrizzle-wallpapers-git
 tabbed-a2ns-git
+tdrop-git
 telegram-tg
 toilet
 tomb
