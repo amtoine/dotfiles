@@ -12,6 +12,7 @@ arandr                        0.1.10
 argcomplete                   2.0.0
 argon2-cffi                   21.3.0
 argon2-cffi-bindings          21.2.0
+asciidoc                      10.2.0
 asciinema                     2.2.0
 astroid                       2.11.6
 asttokens                     2.0.5

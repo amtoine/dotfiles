@@ -41,6 +41,7 @@ btop
 cabal-install
 calcurse
 caprine
+catch2
 catimg
 catppuccin-grub-theme-git
 cava
@@ -64,6 +65,7 @@ dmenu-a2ns-git
 dmenu-extended-git
 dmenufm
 dmscripts-git
+docbook2x
 docker
 docker-compose
 dosfstools
@@ -176,6 +178,8 @@ ntfs-3g
 nushell
 nyxt
 okular
+openjade
+opensp
 orca
 os-prober
 pacgraph
@@ -189,7 +193,19 @@ patchelf
 pavucontrol
 pcmanfm
 peco
+perl-alien-build
+perl-alien-libxml2
+perl-capture-tiny
+perl-ffi-checklib
+perl-file-chdir
 perl-file-mimeinfo
+perl-path-tiny
+perl-sgmls
+perl-xml-libxml
+perl-xml-namespacesupport
+perl-xml-sax
+perl-xml-sax-base
+perl-xml-sax-expat
 pfetch
 picom-animations-git
 pixterm
@@ -273,6 +289,7 @@ sddm-theme-catppuccin-git
 sekiro-grub-theme-git
 sfm-a2ns-git
 sfml
+sgml-common
 shell-color-scripts
 shellcheck
 signal-desktop
@@ -326,6 +343,7 @@ ttf-symbola
 udiskie
 ueberzug
 ufw
+unclutter
 unzip
 vi
 vieb-bin
