@@ -42,8 +42,9 @@ set mouse-scroll        = 3
 set mouse-wheel-cursor  = no
 set pgrp                = no
 bind main    C  ?git cherry-pick %(commit)
-bind main    P  !git push origin %(branch)
+bind main    P  ?git push origin %(branch)
 bind status  C  !git commit
+bind status  x  ?git checkout -- %(file)
 bind stash   A  ?git stash apply %(stash)
 bind stash   P  ?git stash pop %(stash)
 bind stash   !  ?git stash drop %(stash)
