@@ -127,6 +127,12 @@ if does_command_exist xautolock; then
   [ -n "$WM_NOTIFY_AT_STARTUP" ] && notify-send -u low -t 10000 -- 'LOCK is OFF by default'
 fi
 
+if does_command_exist unclutter; then
+  kill_if_running unclutter
+  unclutter --timeout 2 --jitter 100 --start-hidden
+  error "$?" "unclutter started successfully" "unclutter failed to start"
+fi
+
 # removes the auto saver of x as it makes my laptop crash
 xset s 0
 xset -dpms
