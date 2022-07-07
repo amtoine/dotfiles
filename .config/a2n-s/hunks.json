@@ -6,17 +6,17 @@
     {
       "palette":
       {
-        "format": "{name} = '{color}'",
-        "names":
+        "format": "{key} = '{value}'",
+        "mapping":
         [
-          "gradient_color_1",
-          "gradient_color_2",
-          "gradient_color_3",
-          "gradient_color_4",
-          "gradient_color_5",
-          "gradient_color_6",
-          "gradient_color_7",
-          "gradient_color_8"
+          "gradient_color_1:g1",
+          "gradient_color_2:g2",
+          "gradient_color_3:g3",
+          "gradient_color_4:g4",
+          "gradient_color_5:g5",
+          "gradient_color_6:g6",
+          "gradient_color_7:g7",
+          "gradient_color_8:g8"
         ]
       }
     }
@@ -28,14 +28,14 @@
     {
       "palette":
       {
-        "format": "    [{name}]=\"{color}\"",
-        "names":
+        "format": "    [{key}]=\"{value}\"",
+        "mapping":
         [
-          "normal_border_color",
-          "active_border_color",
-          "focused_border_color",
-          "presel_feedback_color",
-          "urgent_border_color"
+          "normal_border_color:xxx",
+          "active_border_color:xxx",
+          "focused_border_color:xxx",
+          "presel_feedback_color:xxx",
+          "urgent_border_color:xxx"
         ]
       }
     }
@@ -47,29 +47,29 @@
     {
       "palette":
       {
-        "format": "  \"{name}\": \"{color}\",",
-        "names":
+        "format": "  \"{key}\": \"{value}\",",
+        "mapping":
         [
-          "fg",
-          "bg",
-          "sel_fg",
-          "sel_bg",
-          "color0",
-          "color1",
-          "color2",
-          "color3",
-          "color4",
-          "color5",
-          "color6",
-          "color7",
-          "color8",
-          "color9",
-          "color10",
-          "color11",
-          "color12",
-          "color13",
-          "color14",
-          "color15"
+          "fg:xxx",
+          "bg:xxx",
+          "sel_fg:xxx",
+          "sel_bg:xxx",
+          "color0:xxx",
+          "color1:xxx",
+          "color2:xxx",
+          "color3:xxx",
+          "color4:xxx",
+          "color5:xxx",
+          "color6:xxx",
+          "color7:xxx",
+          "color8:xxx",
+          "color9:xxx",
+          "color10:xxx",
+          "color11:xxx",
+          "color12:xxx",
+          "color13:xxx",
+          "color14:xxx",
+          "color15:xxx"
         ]
       }
     }
@@ -81,30 +81,30 @@
     {
       "low":
       {
-        "format": "    {name} = \"{color}\"",
-        "names":
+        "format": "    {key} = \"{value}\"",
+        "mapping":
         [
-          "background",
-          "foreground"
+          "background:xxx",
+          "foreground:xxx"
         ]
       },
       "normal":
       {
-        "format": "    {name} = \"{color}\"",
-        "names":
+        "format": "    {key} = \"{value}\"",
+        "mapping":
         [
-          "background",
-          "foreground"
+          "background:xxx",
+          "foreground:xxx"
         ]
       },
       "critical":
       {
-        "format": "    {name} = \"{color}\"",
-        "names":
+        "format": "    {key} = \"{value}\"",
+        "mapping":
         [
-          "background",
-          "foreground",
-          "frame_color"
+          "background:xxx",
+          "foreground:xxx",
+          "frame_color:xxx"
         ]
       }
     }
@@ -116,50 +116,50 @@
     {
       "primary":
       {
-        "format": "    {name}: '{color}'",
-        "names":
+        "format": "    {key}: '{value}'",
+        "mapping":
         [
-          "background",
-          "foreground"
+          "background:xxx",
+          "foreground:xxx"
         ]
       },
       "cursor":
       {
-        "format": "    {name}: '{color}'",
-        "names":
+        "format": "    {key}: '{value}'",
+        "mapping":
         [
-          "text",
-          "cursor"
+          "text:xxx",
+          "cursor:xxx"
         ]
       },
       "normal":
       {
-        "format": "    {name}: '{color}'",
-        "names":
+        "format": "    {key}: '{value}'",
+        "mapping":
         [
-          "black",
-          "red",
-          "green",
-          "yellow",
-          "blue",
-          "magenta",
-          "cyan",
-          "white"
+          "black:xxx",
+          "red:xxx",
+          "green:xxx",
+          "yellow:xxx",
+          "blue:xxx",
+          "magenta:xxx",
+          "cyan:xxx",
+          "white:xxx"
         ]
       },
       "bright":
       {
-        "format": "    {name}: '{color}'",
-        "names":
+        "format": "    {key}: '{value}'",
+        "mapping":
         [
-          "black",
-          "red",
-          "green",
-          "yellow",
-          "blue",
-          "magenta",
-          "cyan",
-          "white"
+          "black:xxx",
+          "red:xxx",
+          "green:xxx",
+          "yellow:xxx",
+          "blue:xxx",
+          "magenta:xxx",
+          "cyan:xxx",
+          "white:xxx"
         ]
       }
     }
@@ -171,30 +171,30 @@
     {
       "palette":
       {
-        "format": "{name} {color}",
-        "names":
+        "format": "{key} {value}",
+        "mapping":
         [
-          "foreground",
-          "background",
-          "selection_foreground",
-          "selection_background",
-          "cursor",
-          "color0",
-          "color1",
-          "color2",
-          "color3",
-          "color4",
-          "color5",
-          "color6",
-          "color7",
-          "color8",
-          "color9",
-          "color10",
-          "color11",
-          "color12",
-          "color13",
-          "color14",
-          "color15"
+          "foreground:xxx",
+          "background:xxx",
+          "selection_foreground:xxx",
+          "selection_background:xxx",
+          "cursor:xxx",
+          "color0:xxx",
+          "color1:xxx",
+          "color2:xxx",
+          "color3:xxx",
+          "color4:xxx",
+          "color5:xxx",
+          "color6:xxx",
+          "color7:xxx",
+          "color8:xxx",
+          "color9:xxx",
+          "color10:xxx",
+          "color11:xxx",
+          "color12:xxx",
+          "color13:xxx",
+          "color14:xxx",
+          "color15:xxx"
         ]
       }
     }
@@ -206,31 +206,31 @@
     {
       "palette":
       {
-        "format": "*{name}: {color}",
-        "names":
+        "format": "*{key}: {value}",
+        "mapping":
         [
-          "foreground",
-          "background",
-          "pointerColorForeground",
-          "pointerColorBackground",
-          "cursorColor",
-          "fadeColor",
-          "color0",
-          "color1",
-          "color2",
-          "color3",
-          "color4",
-          "color5",
-          "color6",
-          "color7",
-          "color8",
-          "color9",
-          "color10",
-          "color11",
-          "color12",
-          "color13",
-          "color14",
-          "color15"
+          "foreground:xxx",
+          "background:xxx",
+          "pointerColorForeground:xxx",
+          "pointerColorBackground:xxx",
+          "cursorColor:xxx",
+          "fadeColor:xxx",
+          "color0:xxx",
+          "color1:xxx",
+          "color2:xxx",
+          "color3:xxx",
+          "color4:xxx",
+          "color5:xxx",
+          "color6:xxx",
+          "color7:xxx",
+          "color8:xxx",
+          "color9:xxx",
+          "color10:xxx",
+          "color11:xxx",
+          "color12:xxx",
+          "color13:xxx",
+          "color14:xxx",
+          "color15:xxx"
         ]
       }
     }
