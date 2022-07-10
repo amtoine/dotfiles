@@ -20,7 +20,6 @@ btop
 cabal-install
 calcurse
 caprine
-catch2
 chromium
 clipmenu
 cmake
@@ -31,7 +30,6 @@ csvkit
 ctags
 dictd
 discord
-docbook2x
 docker
 docker-compose
 dstat
@@ -87,7 +85,6 @@ patch
 patchelf
 pavucontrol
 peco
-perl-xml-libxml
 polybar
 ponysay
 prettier
@@ -99,6 +96,7 @@ python-flake8-black
 python-mpi4py
 python-nose
 python-pipenv
+python-poetry
 python-pylint
 python-pytest
 python-tqdm
