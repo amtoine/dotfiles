@@ -175,9 +175,9 @@
         "mapping":
         [
           "foreground:fg",
-          "background:fg",
+          "background:bg",
           "selection_foreground:sel_fg",
-          "selection_background:self_bg",
+          "selection_background:sel_bg",
           "cursor:fg",
           "color0:cl0",
           "color1:cl1",
