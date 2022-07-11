@@ -41,8 +41,18 @@ export WM_POLYBAR_THEME="forest"
 export WM_LOCKER="$HOME/.local/bin/slock.sh"
 
 # comment any of the following lines to change the behaviour of the startup of bspwm.
+export WM_USE_DUNST="yes"
 # export WM_USE_POLYBAR="yes"
+# export WM_USE_CONKY="yes"
 # export WM_USE_SYSTRAY="yes"
+export WM_USE_PICOM="yes"
+export WM_SET_WALLPAPERS="yes"
+# export WM_USE_AUTOLOCK="yes"
+export WM_USE_UNCLUTTER="yes"
+# export WM_USE_AUTOSAVER="yes"
+export WM_USE_MOC="yes"
+export WM_USE_EMACS="yes"
+
 export WM_PLAY_STARTUP_SOUND="yes"
 export WM_NOTIFY_AT_STARTUP="yes"
 
