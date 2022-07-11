@@ -56,6 +56,8 @@ export WM_TERM="st"
 export WM_TERM_FLAGS="-e"
 export WM_TERM_SHELL="bash"
 
+source "$HOME/.config/bspwm/scripts/utils.sh"
+
 
 # tool functions.
 _build_workspaces () {
@@ -90,15 +92,20 @@ _build_workspaces () {
 connect_monitors () {
     # Connect all the monitors to the bspwm socket through bspc.
 
+    log_info "connecting the monitors..." "[bspwmrc.connect_monitors]"
+
     # get the list of all the monitors
     monitors=($(polybar -m | awk -F: '{ print $1 }' | tr '\n' ' '))
 
     # for each monitor, build the list of numbered monitors and connect if with
     # bspc monitor <nanme> -n <id> -d <workspace 1> <workspace 2>...
     for (( i = 0; i < "${#monitors[@]}"; i++ )); do
+        log_info "connecting ${monitors[$i]}..." "[bspwmrc.connect_monitors]"
         workspaces=($(_build_workspaces "$i" "$NB_WORKSPACES_PER_MONITOR"))
         bspc monitor "${monitors[$i]}" -n "$i" -d ${workspaces[@]}
+        log_ok "${monitors[$i]} connected!" "[bspwmrc.connect_monitors]"
     done
+    log_ok "monitors connected!" "[bspwmrc.connect_monitors]"
 }
 
 
@@ -110,32 +117,41 @@ _get_color () {
 
 apply_colors () {
     # TODO.
+    log_info "applying the colors..." "[bspwmrc.apply_colors]"
     for config in "${!COLOR_MAP[@]}"; do
         bspc config "$config" "${COLOR_MAP[$config]}"
     done
+    log_ok "colors applied!" "[bspwmrc.apply_colors]"
 }
 
 
 apply_rules () {
     # TODO.
+    log_info "applying the desktop rules..." "[bspwmrc.apply_rules]"
     # force emacs to tile as it does not by default.
     bspc rule -a Emacs state=tiled focus=on follow=on manage=on
     # send any chat client to the last workspace of the main monitor, without focus.
     for app in "discord" "Caprine" "Slack" "Signal" "Thunderbird" "Gmail Desktop"; do
         bspc rule -a "$app" desktop="^$NB_WORKSPACES_PER_MONITOR" state=tiled focus=off follow=off manage=on
     done
+    log_ok "desktop rules applied!" "[bspwmrc.apply_rules]"
 }
 
 
 setup_scratchpads () {
+    log_info "seting up the scratchpad..." "[bspwmrc.setup_scratchpads]"
     bspc rule -a scratchpad sticky=on state=floating hidden=on
     # check scratchpad already running
     [ "$(ps -x | grep -c 'scratchpad')" -eq "1" ] && st -c scratchpad -e "$SCRATCHPAD" &
 
     bspc rule -a dropdown sticky=on state=floating hidden=on
     st -c dropdown -e bash &
+    log_ok "scratchpad set up!" "[bspwmrc.setup_scratchpads]"
 }
 
+log_info "====================================================================="
+log_info "== Starting bspwm... ================================================"
+log_info "====================================================================="
 
 # the top padding needs to adapt depending on whether a bar is used.
 if [ -n "$WM_USE_POLYBAR" ]; then
@@ -148,6 +164,7 @@ fi
 # configure bspwm.
 connect_monitors
 
+log_info "starting configuration..." "[bspwmrc]"
 bspc config border_radius                 "$BORDER_RADIUS"
 bspc config border_width                  "$BORDER_WIDTH"
 bspc config window_gap                    "$WINDOW_GAP"
@@ -170,7 +187,13 @@ bspc config pointer_action1 move
 bspc config pointer_action2 resize_side
 bspc config pointer_action3 resize_corner
 bspc config ignore_ewmh_focus true
+log_info "configuration done!" "[bspwmrc]"
 
 apply_colors
 apply_rules
 bash "$AUTOSTART"
+
+# bspwm has been completely started
+log_ok "bspwm has been fully loaded!"
+[ -n "$WM_NOTIFY_AT_STARTUP" ] && dunstify -u normal -t 10000 -- "bspwm has been fully loaded!"
+[ -n "$WM_PLAY_STARTUP_SOUND" ] && mpv --no-video "$WM_STARTUP_SOUND" &

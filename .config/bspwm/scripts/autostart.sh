@@ -14,21 +14,16 @@
 # Contributors: Stevan Antoine
 
 
+source "$HOME/.config/bspwm/scripts/utils.sh"
 
-error () {
-  # Print an error or a success message depending on last command's success.
-  #
-  # Args:
-  #   $1: the last exit signal.
-  #   $2: the success message.
-  #   $3: the error message.
-  #
-  if [ "$1" = 0 ];
-  then
-    [ -n "$WM_NOTIFY_AT_STARTUP" ] && dunstify -u low -t 10000 -- "$2"
-  else
-    [ -n "$WM_NOTIFY_AT_STARTUP" ] && dunstify -u critical -t 10000 -- "$3"
-  fi
+notify_ok () {
+  [ -n "$WM_NOTIFY_AT_STARTUP" ] && dunstify -u low -t 10000 -- "$1"
+  log_ok "$1" "[scripts.autostart]"
+}
+
+notify_err () {
+  [ -n "$WM_NOTIFY_AT_STARTUP" ] && dunstify -u critical -t 10000 -- "$1"
+  log_err "$1" "[scripts.autostart]"
 }
 
 does_command_exist () {
@@ -73,32 +68,54 @@ sxhkd -c "$WM_SXHKD_COMMON" "$WM_SXHKD_BSPWM" &
 
 # start the `dunst` notification server in the background
 if does_command_exist dunst; then
+  log_info "dunst..." "[scripts.autostart]"
   kill_if_running dunst
-  dunst -conf ~/.config/dunst/dunstrc &
-  error "$?" "dunst started successfully" "dunst failed to start"
+  if dunst -conf ~/.config/dunst/dunstrc &
+  then
+    notify_ok "dunst started successfully"
+  else
+    notify_err "dunst failed to start"
+  fi
 fi
 
 if does_command_exist polybar && [ -n "$WM_USE_POLYBAR" ]; then
-  bash "$WM_POLYBAR" --"$WM_POLYBAR_THEME" &
-  error "$?" "polybar started successfully" "polybar failed to start"
+  log_info "polybar..." "[scripts.autostart]"
+  if bash "$WM_POLYBAR" --"$WM_POLYBAR_THEME" &
+  then
+    notify_ok "polybar started successfully"
+  else
+    notify_err "polybar failed to start"
+  fi
 fi
 
 # open the help only when first time
 if does_command_exist conky; then
+  log_info "conky..." "[scripts.autostart]"
   kill_if_running conky
   run_conky
+  log_ok "conky done!" "[scripts.autostart]"
 fi
 
 if [ -n "$WM_USE_SYSTRAY" ]; then
   if does_command_exist nm-applet; then
-    kill_if_running nm-applt
-    nm-applt &
-    error "$?" "nm-applet started successfully" "nm-applet failed to start"
+    log_info "nm-applet..." "[scripts.autostart]"
+    kill_if_running nm-applet
+    if nm-applet &
+    then
+      notify_ok "nm-applet started successfully"
+    else
+      notify_err "nm-applet failed to start"
+    fi
   fi
   if does_command_exist volumeicon; then
+    log_info "volumeicon..." "[scripts.autostart]"
     kill_if_running volumeicon
-    volumeicon &
-    error "$?" "volumeicon started successfully" "volumeicon failed to start"
+    if volumeicon &
+    then
+      notify_ok "volumeicon started successfully"
+    else
+      notify_err "volumeicon failed to start"
+    fi
   fi
 else
     kill_if_running nm-applt
@@ -107,51 +124,78 @@ fi
 
 # start the compositor
 if does_command_exist picom; then
+  log_info "picom..." "[scripts.autostart]"
   kill_if_running picom
-  picom --experimental-backends --daemon --animations
-  error "$?" "picom started successfully" "picom failed to start"
+  if picom --experimental-backends --daemon --animations
+  then
+    notify_ok "picom started successfully"
+  else
+    notify_err "picom failed to start"
+  fi
 fi
 
 # choose a random wallpaper
 if does_command_exist feh; then
-  feh --randomize /usr/share/backgrounds/* --bg-fill --no-fehbg
-  error "$?" "wallpaper(s) set" "wallpaper(s) not set"
+  log_info "feh..." "[scripts.autostart]"
+  if feh --randomize /usr/share/backgrounds/* --bg-fill --no-fehbg
+  then
+    notify_ok "wallpaper(s) set"
+  else
+    notify_err "wallpaper(s) not set"
+  fi
 fi
 
-# start the autolock
-if does_command_exist xautolock; then
-  xautolock -exit
-  xautolock -time 15 -locker "$LOCKER" &
-  error "$?" "xautolock started successfully" "xautolock failed to start"
-  xautolock -disable
-  [ -n "$WM_NOTIFY_AT_STARTUP" ] && notify-send -u low -t 10000 -- 'LOCK is OFF by default'
-fi
+# # start the autolock
+# if does_command_exist xautolock; then
+#   xautolock -exit
+#   xautolock -time 15 -locker "$LOCKER" &
+#   error "$?" "xautolock started successfully" "xautolock failed to start"
+#   xautolock -disable
+#   [ -n "$WM_NOTIFY_AT_STARTUP" ] && notify-send -u low -t 10000 -- 'LOCK is OFF by default'
+# fi
 
 if does_command_exist unclutter; then
+  log_info "unclutter..." "[scripts.autostart]"
   kill_if_running unclutter
-  unclutter --timeout 2 --jitter 100 --start-hidden
-  error "$?" "unclutter started successfully" "unclutter failed to start"
+  if unclutter --timeout 2 --jitter 100 --start-hidden &
+  then
+    notify_ok "unclutter started successfully"
+  else
+    notify_err "unclutter failed to start"
+  fi
 fi
 
 # removes the auto saver of x as it makes my laptop crash
+log_info "xset..." "[scripts.autostart]"
 xset s 0
 xset -dpms
+log_ok "xset done!" "[scripts.autostart]"
 
 if does_command_exist moc; then
   if ! pgrep -f "mocp" 1> /dev/null; then
-    mocp -S
-    error "$?" "moc server started successfully" "moc server failed to start"
+    log_info "moc..." "[scripts.autostart]"
+    if mocp -S
+    then
+      notify_ok "moc server started successfully"
+    else
+      notify_err "moc server failed to start"
+    fi
+  else
+    notify_ok "moc server already running"
   fi
 fi
 
 # start the `emacs` server in the background
 if does_command_exist emacs; then
   if ! pgrep -f "emacs --daemon" 1> /dev/null; then
-    emacs --daemon &
-    error "$?" "emacs server started successfully" "emacs server failed to start"
+    log_info "emacs..." "[scripts.autostart]"
+    if emacs --daemon &
+    then
+      notify_ok "emacs server started successfully"
+    else
+      notify_err "emacs server failed to start"
+    fi
+  else
+    notify_ok "emacs server already running"
   fi
 fi
-
-# bspwm has been completely started
-[ -n "$WM_NOTIFY_AT_STARTUP" ] && dunstify -u normal -t 10000 -- "bspwm has been fully loaded"
-[ -n "$WM_PLAY_STARTUP_SOUND" ] && mpv --no-video "$WM_STARTUP_SOUND" &
