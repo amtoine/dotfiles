@@ -1,4 +1,5 @@
 Installed Commands:
+    add                  Add dependencies to a Cargo.toml manifest file
     b                    alias: build
     bench                Execute all benchmarks of a local package
     build                Compile a local package and all of its dependencies

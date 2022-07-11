@@ -14,6 +14,7 @@ catppuccin-grub-theme-git
 cava
 conky-lua-nv
 devour
+dive
 dmenu-a2ns-git
 dmenu-extended-git
 dmenufm

@@ -30,7 +30,6 @@ csvkit
 ctags
 dictd
 discord
-docker
 docker-compose
 dstat
 dunst
@@ -96,7 +95,6 @@ python-flake8-black
 python-mpi4py
 python-nose
 python-pipenv
-python-poetry
 python-pylint
 python-pytest
 python-tqdm
