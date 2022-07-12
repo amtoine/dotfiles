@@ -170,9 +170,6 @@ source "$OSH/oh-my-bash.sh"
 #      ____/ /_ / __/_    / / / / / / (__  ) /__
 #     /_____/(_)____(_)  /_/ /_/ /_/_/____/\___/
 
-export PATH="$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.cargo/bin:$PATH"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.mujoco/mujoco210/bin"
-
 # define XDG environment variables.
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -203,6 +200,11 @@ export _Z_DATA="$XDG_DATA_HOME/z"
 export CABAL_CONFIG="$XDG_CONFIG_HOME"/cabal/config
 export CABAL_DIR="$XDG_DATA_HOME"/cabal
 export KERAS_HOME="$XDG_STATE_HOME/keras"
+export EMACS_HOME="$HOME/.emacs.d"
+export MUJOCO_BIN="$HOME/.mujoco/mujoco210/bin"
+
+export PATH="$HOME/.local/bin:$EMACS_HOME/bin:$CARGO_HOME/bin:$PATH"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$MUJOCO_BIN"
 
 # changes the editor in the terminal, to edit long commands.
 export EDITOR='vim'
