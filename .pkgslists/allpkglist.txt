@@ -124,6 +124,7 @@ kitty
 kolourpaint
 ktorrent
 kvantum
+latex-mk
 lazygit
 lf
 libappindicator-gtk3
