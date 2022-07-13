@@ -125,14 +125,14 @@ gradient = 1
 gradient_count = 8
 
 #+ BEGIN:palette
-gradient_color_1 = '#d38578'
-gradient_color_2 = '#c6956c'
-gradient_color_3 = '#b9a560'
-gradient_color_4 = '#acb555'
-gradient_color_5 = '#9fc649'
-gradient_color_6 = '#92d63e'
-gradient_color_7 = '#85e632'
-gradient_color_8 = '#78f727'
+gradient_color_3 = '#5f9f00'
+gradient_color_2 = '#3fbf00'
+gradient_color_1 = '#1fdf00'
+gradient_color_7 = '#df1f00'
+gradient_color_6 = '#bf3f00'
+gradient_color_5 = '#9f5f00'
+gradient_color_4 = '#7f7f00'
+gradient_color_8 = '#ff0000'
 #+ END:palette
 
 [smoothing]

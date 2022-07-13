@@ -283,8 +283,8 @@
 # Otherwise the "#" and following would be interpreted as a comment.
 [urgency_low]
 #+ BEGIN:low
-    background = "#282a36"  # LOW
-    foreground = "#f8f8f2"  # LOW
+    background = "#333333"
+    foreground = "#cccccc"
 #+ END:low
     timeout = 3
     # Icon for notifications with low urgency, uncomment to enable
@@ -292,8 +292,8 @@
 
 [urgency_normal]
 #+ BEGIN:normal
-    background = "#282a36"  # NORMAL
-    foreground = "#bd93f9"  # NORMAL
+    background = "#333333"
+    foreground = "#00cccc"
 #+ END:normal
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
@@ -301,9 +301,9 @@
 
 [urgency_critical]
 #+ BEGIN:critical
-    background =  "#282a36"  # CRITICAL
-    foreground =  "#ff5555"  # CRITICAL
-    frame_color = "#ffffa5"  # CRITICAL
+    frame_color = "#ffff00"
+    background = "#282828"
+    foreground = "#ff0000"
 #+ END:critical
     timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable

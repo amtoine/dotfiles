@@ -274,35 +274,35 @@ colors:
   # COLORSCHEME: Dracula
   primary:
 #+ BEGIN:primary
-    background: '#282a36' # PRIMARY
-    foreground: '#f8f8f2' # PRIMARY
+    background: '#191919'
+    foreground: '#ffffff'
 #+ END:primary
   cursor:
 #+ BEGIN:cursor
-    text: '#44475a'   # CURSOR
-    cursor: '#ffffff' # CURSOR
+    cursor: '#ffffff'
+    text: '#ffffff'
 #+ END:cursor
   normal:
 #+ BEGIN:normal
-    black: '#21222c'   # NORMAL
-    red: '#ff5555'     # NORMAL
-    green: '#50fa7b'   # NORMAL
-    yellow: '#f1fa8c'  # NORMAL
-    blue: '#bd93f9'    # NORMAL
-    magenta: '#ff79c6' # NORMAL
-    cyan: '#8be9fd'    # NORMAL
-    white: '#f8f8f2'   # NORMAL
+    magenta: '#cc00cc'
+    green: '#00cc00'
+    white: '#cccccc'
+    red: '#cc0000'
+    blue: '#0000cc'
+    yellow: '#cccc00'
+    cyan: '#00cccc'
+    black: '#282828'
 #+ END:normal
   bright:
 #+ BEGIN:bright
-    black: '#6272a4'   # BRIGHT
-    red: '#ff6e6e'     # BRIGHT
-    green: '#69ff94'   # BRIGHT
-    yellow: '#ffffa5'  # BRIGHT
-    blue: '#d6acff'    # BRIGHT
-    magenta: '#ff92df' # BRIGHT
-    cyan: '#a4ffff'    # BRIGHT
-    white: '#ffffff'   # BRIGHT
+    magenta: '#ff00ff'
+    green: '#00ff00'
+    white: '#ffffff'
+    red: '#ff0000'
+    blue: '#0000ff'
+    yellow: '#ffff00'
+    cyan: '#00ffff'
+    black: '#333333'
 #+ END:bright
 
 # >>> Visual Bell.

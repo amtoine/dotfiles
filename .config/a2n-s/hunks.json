@@ -9,14 +9,14 @@
         "format": "{key} = '{value}'",
         "mapping":
         [
-          "gradient_color_1:gd0",
-          "gradient_color_2:gd2",
-          "gradient_color_3:gd4",
-          "gradient_color_4:gd6",
-          "gradient_color_5:gd8",
-          "gradient_color_6:gd10",
-          "gradient_color_7:gd12",
-          "gradient_color_8:gd14"
+          "gradient_color_1:gd14",
+          "gradient_color_2:gd12",
+          "gradient_color_3:gd10",
+          "gradient_color_4:gd8",
+          "gradient_color_5:gd6",
+          "gradient_color_6:gd4",
+          "gradient_color_7:gd2",
+          "gradient_color_8:gd0"
         ]
       }
     }
@@ -31,11 +31,11 @@
         "format": "    [{key}]=\"{value}\"",
         "mapping":
         [
-          "normal_border_color:cl1",
-          "active_border_color:cl2",
-          "focused_border_color:cl3",
-          "presel_feedback_color:cl4",
-          "urgent_border_color:cl5"
+          "normal_border_color:cl9",
+          "active_border_color:cl11",
+          "focused_border_color:cl10",
+          "presel_feedback_color:cl6",
+          "urgent_border_color:cl13"
         ]
       }
     }
@@ -84,7 +84,7 @@
         "format": "    {key} = \"{value}\"",
         "mapping":
         [
-          "background:cl0",
+          "background:cl8",
           "foreground:cl7"
         ]
       },
@@ -93,8 +93,8 @@
         "format": "    {key} = \"{value}\"",
         "mapping":
         [
-          "background:cl0",
-          "foreground:cl5"
+          "background:cl8",
+          "foreground:cl6"
         ]
       },
       "critical":
@@ -103,7 +103,7 @@
         "mapping":
         [
           "background:cl0",
-          "foreground:cl1",
+          "foreground:cl9",
           "frame_color:cl11"
         ]
       }

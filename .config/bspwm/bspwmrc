@@ -23,11 +23,11 @@ WINDOW_GAP=2
 COLOR_RESOURCES="$XDG_CONFIG_HOME/X11/Xresources"
 declare -A COLOR_MAP=(
 #+ BEGIN:palette
-    [normal_border_color]="#0e2878"
-    [active_border_color]="#b303f6"
-    [focused_border_color]="#fcb087"
-    [presel_feedback_color]="#7758c6"
-    [urgent_border_color]="#272559"
+    [focused_border_color]="#00ff00"
+    [active_border_color]="#ffff00"
+    [presel_feedback_color]="#00cccc"
+    [normal_border_color]="#ff0000"
+    [urgent_border_color]="#ff00ff"
 #+ END:palette
 )
 
