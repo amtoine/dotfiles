@@ -45,7 +45,6 @@ flameshot
 flex
 fortune-mod
 ghc-static
-gimp
 github-cli
 glow
 go
