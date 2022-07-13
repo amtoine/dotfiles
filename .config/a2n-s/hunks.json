@@ -9,14 +9,14 @@
         "format": "{key} = '{value}'",
         "mapping":
         [
-          "gradient_color_1:gd14",
-          "gradient_color_2:gd12",
-          "gradient_color_3:gd10",
-          "gradient_color_4:gd8",
-          "gradient_color_5:gd6",
-          "gradient_color_6:gd4",
-          "gradient_color_7:gd2",
-          "gradient_color_8:gd0"
+          "gradient_color_1:gd0",
+          "gradient_color_2:gd2",
+          "gradient_color_3:gd4",
+          "gradient_color_4:gd6",
+          "gradient_color_5:gd8",
+          "gradient_color_6:gd10",
+          "gradient_color_7:gd12",
+          "gradient_color_8:gd14"
         ]
       }
     }
