@@ -116,6 +116,7 @@ rtorrent
 rust
 sauerbraten
 sc
+screenkey
 sfml
 shellcheck
 signal-desktop

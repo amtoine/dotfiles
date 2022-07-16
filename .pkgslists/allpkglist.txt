@@ -27,6 +27,7 @@ bashtop
 bat
 bc
 bemenu
+biber
 bind
 binutils
 bison
@@ -267,6 +268,7 @@ rust
 sauerbraten
 sc
 screencast
+screenkey
 scrot
 sddm
 sddm-archlinux-theme-git
