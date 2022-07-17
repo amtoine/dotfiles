@@ -6,6 +6,15 @@
 
 config_version: 2
 settings:
+  aliases:
+    global:
+      q: close
+      qa: quit
+      w: session-save
+      wq: quit --save
+      wqa: quit --save
+  auto_save.session:
+    global: false
   colors.webpage.preferred_color_scheme:
     global: dark
   content.register_protocol_handler:
