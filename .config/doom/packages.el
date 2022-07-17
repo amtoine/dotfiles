@@ -70,3 +70,5 @@
 (package! dired-single)
 (package! dired-hide-dotfiles)
 (package! all-the-icons-dired)
+
+(package! org-bullets)
