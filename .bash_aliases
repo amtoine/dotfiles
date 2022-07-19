@@ -76,9 +76,6 @@ if command -v devour &> /dev/null; then
   alias mpv='devour mpv'
   alias okular='devour okular'
   alias kolourpaint='devour kolourpaint'
-  if command -v alacritty &> /dev/null; then
-    alias ssh="devour alacritty -e ssh $1 > /dev/null"
-  fi
 fi
 alias pdf='okular $(find "\.pdf$" . | fzf)'
 

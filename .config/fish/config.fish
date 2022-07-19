@@ -162,9 +162,6 @@ if status is-interactive
     alias mpv='devour mpv'
     alias okular='devour okular'
     alias kolourpaint='devour kolourpaint'
-    if type -q alacritty
-      alias ssh="devour alacritty -e ssh $1 > /dev/null"
-    end
   end
   alias pdf='okular (find "\.pdf\$" . | fzf)'
 
