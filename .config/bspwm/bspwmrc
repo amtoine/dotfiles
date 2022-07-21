@@ -144,6 +144,7 @@ apply_rules () {
     for app in "discord" "Caprine" "Slack" "Signal" "Thunderbird" "Gmail Desktop"; do
         bspc rule -a "$app" desktop="^$NB_WORKSPACES_PER_MONITOR" state=tiled focus=off follow=off manage=on
     done
+    bspc rule -a "qutebrowser-filepicker" state=floating focus=on follow=on manage=on
     log_ok "desktop rules applied!" "[bspwmrc.apply_rules]"
 }
 
