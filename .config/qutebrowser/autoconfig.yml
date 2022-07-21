@@ -19,6 +19,8 @@ settings:
     global: true
   colors.webpage.preferred_color_scheme:
     global: dark
+  content.notifications.enabled:
+    https://gitlab.com: false
   content.register_protocol_handler:
     https://wali-m.isae.fr#!/Mail/0/INBOX/new?%25s: false
   content.user_stylesheets:
@@ -29,5 +31,9 @@ settings:
     global: mononoki Nerd Font
   fonts.default_size:
     global: 15pt
+  statusbar.show:
+    global: always
+  tabs.show:
+    global: always
   zoom.default:
     global: '150'
