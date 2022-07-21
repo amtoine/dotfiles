@@ -2328,6 +2328,11 @@ for binding, theme in theme_bindings.items():
     theme_path = f'{css_path}/{theme}/{theme}-all-sites.css' if theme else "\"\""
     config.bind(binding, f'{command} {theme_path}')
 
+config.bind('M', 'hint links spawn mpv --ytdl-format="bestvideo[height<=480]+bestaudio[ext=m4a]" {hint-url}')
+config.bind('P', 'hint links spawn mpv --ytdl-format="bestaudio[ext=m4a]" {hint-url} --no-video')
+config.bind('F', 'hint links spawn firefox {hint-url}')
+config.bind('Z', 'hint links spawn st -c qutebrowser-ytdl-download -e youtube-dl {hint-url}')
+
 config.bind('xb', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show always never')
 config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
