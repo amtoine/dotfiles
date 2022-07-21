@@ -21,6 +21,7 @@ aura
 autoconf
 automake
 autopep8
+aws-cli
 base
 bash-completion
 bashtop

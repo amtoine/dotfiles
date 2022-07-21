@@ -8,6 +8,7 @@ asciinema
 autoconf
 automake
 autopep8
+aws-cli
 base
 bashtop
 bison
