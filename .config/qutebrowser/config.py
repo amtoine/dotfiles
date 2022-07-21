@@ -2328,6 +2328,9 @@ for binding, theme in theme_bindings.items():
     theme_path = f'{css_path}/{theme}/{theme}-all-sites.css' if theme else "\"\""
     config.bind(binding, f'{command} {theme_path}')
 
+config.bind('xb', 'config-cycle statusbar.show always never')
+config.bind('xt', 'config-cycle tabs.show always never')
+config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
 
 ## Bindings for caret mode
 # config.bind('$', 'move-to-end-of-line', mode='caret')
