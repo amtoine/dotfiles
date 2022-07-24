@@ -24,7 +24,7 @@ settings:
   content.register_protocol_handler:
     https://wali-m.isae.fr#!/Mail/0/INBOX/new?%25s: false
   content.user_stylesheets:
-    global: null
+    global: ~/ghq/github.com/alphapapa/solarized-everything-css/css/darculized/darculized-all-sites.css
   downloads.location.directory:
     global: ~/dl
   fonts.default_family:
