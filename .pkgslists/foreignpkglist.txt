@@ -31,7 +31,6 @@ lf
 mbsync-git
 mk_vpp
 mu
-multicolor-sddm-theme
 mut-ex-wallpapers-git
 myman
 nerd-fonts-mononoki
@@ -60,7 +59,6 @@ sddm-chinese-painting-theme
 sddm-theme-catppuccin-git
 sekiro-grub-theme-git
 sfm-a2ns-git
-shell-color-scripts
 slack-desktop
 slock-a2ns-git
 solarized-sddm-theme
@@ -72,6 +70,7 @@ tdrop-git
 telegram-tg
 toilet
 tomb
+topgrade
 ttf-symbola
 vieb-bin
 xmenu

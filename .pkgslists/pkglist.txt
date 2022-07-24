@@ -33,6 +33,7 @@ dictd
 discord
 docker-compose
 dstat
+dtos-sounds
 dunst
 dust
 dwarffortress
@@ -68,6 +69,7 @@ lxappearance
 mate-backgrounds
 mathomatic
 minio-client
+multicolor-sddm-theme
 ncdu
 ncmpcpp
 neofetch
@@ -119,6 +121,7 @@ sauerbraten
 sc
 screenkey
 sfml
+shell-color-scripts
 shellcheck
 signal-desktop
 sl

@@ -72,6 +72,7 @@ docker-compose
 dosfstools
 downgrade
 dstat
+dtos-sounds
 dunst
 dust
 dwarffortress
@@ -324,6 +325,7 @@ tmux
 toilet
 tokei
 tomb
+topgrade
 trayer
 tree
 ttf-iosevka-nerd
