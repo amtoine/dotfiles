@@ -46,6 +46,7 @@ caprine
 catimg
 catppuccin-grub-theme-git
 cava
+cbonsai
 chafa
 chromium
 clang
@@ -197,6 +198,7 @@ peco
 perl-file-mimeinfo
 pfetch
 picom-animations-git
+pipes.sh
 pixterm
 pkgconf
 pokemon-colorscripts-git

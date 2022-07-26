@@ -12,6 +12,7 @@ arduino-mk
 aura
 catppuccin-grub-theme-git
 cava
+cbonsai
 conky-lua-nv
 devour
 dive
@@ -43,6 +44,7 @@ pass-import
 pass-tomb
 pfetch
 picom-animations-git
+pipes.sh
 pixterm
 pokemon-colorscripts-git
 python-pygmo

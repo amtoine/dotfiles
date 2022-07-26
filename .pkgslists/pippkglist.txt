@@ -159,7 +159,7 @@ pep517                        0.12.0
 pexpect                       4.8.0
 pickleshare                   0.7.5
 Pillow                        9.2.0
-pip                           22.1.2
+pip                           22.2
 pipenv                        2022.7.4
 pkgconfig                     1.5.5
 pkginfo                       1.8.3
@@ -191,7 +191,7 @@ Pygments                      2.12.0
 PyGObject                     3.42.2
 PyICU                         2.9
 pylev                         1.4.0
-pylint                        2.14.4
+pylint                        2.14.5
 pynvim                        0.4.3
 PyOpenGL                      3.1.6
 pyOpenSSL                     22.0.0
@@ -230,7 +230,7 @@ rsa                           4.8
 ruamel.yaml                   0.16.13
 s3transfer                    0.6.0
 screenkey                     1.5
-SecretStorage                 3.3.1
+SecretStorage                 3.3.2
 Send2Trash                    1.8.0
 setproctitle                  1.2.3
 setuptools                    61.3.1
@@ -269,7 +269,7 @@ tomlkit                       0.11.1
 tornado                       6.1
 tqdm                          4.64.0
 traitlets                     5.1.1
-trove-classifiers             2022.6.26
+trove-classifiers             2022.7.22
 typed-argument-parser         1.7.2
 typing-extensions             3.10.0.2
 typing-inspect                0.7.1
