@@ -1,6 +1,6 @@
-#           ___                       personal page: https://a2n-s.github.io/ 
-#      __ _|_  )_ _    ___   ___      github   page: https://github.com/a2n-s 
-#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/a2n-s/dotfiles 
+#           ___                       personal page: https://amtoine.github.io/ 
+#      __ _|_  )_ _    ___   ___      github   page: https://github.com/amtoine 
+#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/amtoine/dotfiles 
 #     \__,_/___|_||_|       /__/
 #                 __           __     _        _
 #          __    / /  __ _    / /  __| |_ _  _| |___   _ __ _  _
@@ -11,7 +11,7 @@
 # Description:  this is the most uesr friendly config file for qtile, where
 #               one might want to modify things the most.
 # Dependencies: nerd-fonts-mononoki
-# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
+# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
 from theme import theme

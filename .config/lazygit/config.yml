@@ -1,7 +1,7 @@
 #             ___
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+#       ____ |__ \ ____              _____      personal page: https://amtoine.github.io/ 
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/amtoine 
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/amtoine/dotfiles 
 #     \__,_/____/_/ /_/           /____/
 #                               _____             __   __                        _ __        __                    _____                                __
 #             _________  ____  / __(_)___ _     _/_/  / /___ _____  __  ______ _(_) /_     _/_/  _________  ____  / __(_)___ _         __  ______ ___  / /
@@ -12,7 +12,7 @@
 #
 # Description:  the config for the lazygit tool.
 # Dependencies: git
-# License:      https://github.com/a2n-s/dotfiles/LICENSE 
+# License:      https://github.com/amtoine/dotfiles/LICENSE 
 # Contributors: Stevan Antoine
 
 gui:                                                           # stuff relating to the UI
@@ -23,7 +23,7 @@ gui:                                                           # stuff relating 
   mainPanelSplitMode:              'flexible'                  # one of 'horizontal' | 'flexible' | 'vertical'
   language:                        'auto'                      # one of 'auto' | 'en' | 'zh' | 'pl' | 'nl'
   authorColors:
-    'a2n-s':                       '#ff0000'
+    'amtoine':                       '#ff0000'
     '*':                           '#0000ff'
   theme:
     lightTheme:                    false                       # For terminals with a light background

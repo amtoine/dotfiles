@@ -26,7 +26,7 @@ alias rand="tr -dc 'A-Za-z0-9!@#\$%^&*()' < /dev/urandom  | head -c"
 # alias docker="sudo docker"
 # wrapper around btop to bypass lack of locale.
 alias btop="btop --utf-force"
-alias clear="clear; echo; seq 1 $(tput cols) | sort -R | a2n-s-spark | lolcat -t; echo"
+alias clear="clear; echo; seq 1 $(tput cols) | sort -R | amtoine-spark | lolcat -t; echo"
 alias repo='cd ~/ghq/$(ghq list | fzf)'
 
 # to list all the git repositiories inside the home directory or gives a full diagnostic with the extra d.
@@ -86,7 +86,7 @@ fi
 
 if pgrep "qtile" > /dev/null
 then
-  alias qtheme="a2n-s-themes -C=qtile"
+  alias qtheme="amtoine-themes -C=qtile"
   alias qbar="$HOME/.config/qtile/scripts/bar.sh"
   alias qrestart="qtile cmd-obj -o cmd -f restart"
   alias qcmd="qtile cmd-obj -o cmd -f"
@@ -102,7 +102,7 @@ else
 fi
 
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
-alias xdg-ninja=$HOME/ghq/github.com/a2n-s/xdg-ninja/xdg-ninja.sh
+alias xdg-ninja=$HOME/ghq/github.com/amtoine/xdg-ninja/xdg-ninja.sh
 
 alias xonsh="xonsh --rc $XDG_CONFIG_HOME/xonsh/xonshrc"
 

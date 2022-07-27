@@ -1,8 +1,8 @@
 #! /usr/bin/bash
 #             ___
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+#       ____ |__ \ ____              _____      personal page: https://amtoine.github.io/ 
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/amtoine 
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/amtoine/dotfiles 
 #     \__,_/____/_/ /_/           /____/
 #                               _____             __                   ____      __                  _       __             __       __                                               _               __
 #             _________  ____  / __(_)___ _     _/_/  _______  _______/ __/    _/_/  _______________(_)___  / /______     _/_/  ____/ /___ ___  ___  ____  __  __         __  _______(_)        _____/ /_
@@ -13,7 +13,7 @@
 #
 # Description:  Opens the history to allow the user to go back in time with surf.
 # Dependencies: tac, dmenu
-# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
+# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 DMFONT="mononoki Nerd Font-15"

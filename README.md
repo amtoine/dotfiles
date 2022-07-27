@@ -200,7 +200,7 @@ The idea is to manually:
 - copy mine in replacement.
 
 For instance, let us say that you want to replace your `vim` config with mine, you can directly:
-- clone the repo with `git clone https://github.com/a2n-s/dotfiles.git` or `git clone git@github.com:a2n-s/dotfiles.git`.
+- clone the repo with `git clone https://github.com/amtoine/dotfiles.git` or `git clone git@github.com:amtoine/dotfiles.git`.
 - place your version of the `.vimrc` file inside a backup directory or archive.
 - copy my `.vimrc` file in replacement of yours.
 - follow additional instructions in the dedicated section ([here][mydoc-vim]).
@@ -227,7 +227,7 @@ This is the first time I develop such a complicated and sometimes critical, e.g.
 It has only been tested a very few times on a fake home directory on my arch linux machine and on a raspberry pi running the `raspberry` distro (previously `raspbian`).
 It looks pretty functional to me as a first draft, however:
   - (1) I plan on testing this a lot more, with testers from relatives of mine (**if YOU want to contribute, see the [contribute section](#4-contribute-toc)**).
-  - (2) this first draft is far from perfect and might not be super user-friendly nor understandable right away, though I tried to make it so. If you have any idea to enhance it, feel free to [contact me](https://a2n-s.github.io/public/contact)!
+  - (2) this first draft is far from perfect and might not be super user-friendly nor understandable right away, though I tried to make it so. If you have any idea to enhance it, feel free to [contact me](https://amtoine.github.io/public/contact)!
   - (3) there might be, I hope not too many, bugs in the script. As it can be pretty critical depending on the part of the installation where the bug happens (if any ;)), I warn you: **RUNNING THIS SCRIPT ON YOUR PERSONAL MACHINE IS NOT MY RESPONSIBILITY** by any means. If **ANYTHING BAD HAPPENS**, I would **NOT BE TAKEN AS RESPONSIBLE**. However, I would be very pleased to help you if anything unexpected happens, it almost goes without saying ;).
 
 Oh my, I might look a bit dramatical on this ^^  
@@ -237,19 +237,19 @@ But as it is the first time, as I said, that I do such a thing in public, I do n
 **THE INSTALLATION SCRIPT IS FINALLY THERE!!**  
 Simply run:
 ```bash
-curl -fsFLo /tmp/a2n-s.install.sh https://raw.githubusercontent.com/a2n-s/dotfiles/main/.local/bin/install.sh
-chmod +x /tmp/a2n-s.install.sh
-/tmp/a2n-s.install.sh --help
+curl -fsFLo /tmp/amtoine.install.sh https://raw.githubusercontent.com/amtoine/dotfiles/main/.local/bin/install.sh
+chmod +x /tmp/amtoine.install.sh
+/tmp/amtoine.install.sh --help
 ```
 to pull the script down and directly show the help message, and then
 ```bash
-/tmp/a2n-s.install.sh [switches]
+/tmp/amtoine.install.sh [switches]
 ```
 to run the install process.
 Or one can directly run
 ```bash
-curl -fsFLo /tmp/a2n-s.install.sh https://raw.githubusercontent.com/a2n-s/dotfiles/main/.local/bin/install.sh; /tmp/a2n-s.install.sh --all
-curl -fsFLo /tmp/a2n-s.install.sh https://raw.githubusercontent.com/a2n-s/dotfiles/main/.local/bin/install.sh; /tmp/a2n-s.install.sh --interactive
+curl -fsFLo /tmp/amtoine.install.sh https://raw.githubusercontent.com/amtoine/dotfiles/main/.local/bin/install.sh; /tmp/amtoine.install.sh --all
+curl -fsFLo /tmp/amtoine.install.sh https://raw.githubusercontent.com/amtoine/dotfiles/main/.local/bin/install.sh; /tmp/amtoine.install.sh --interactive
 ```
 for a direct full/interactive install process respectively.
 
@@ -264,7 +264,7 @@ YOU can contribute to this project in the wonderfull world of linux, arch and co
 - if you like this config, please share it to whoever could be interested.
 - if you stumble upon bugs, ideas, new amazing color palettes or alternatives,
 - if you want to be part of the testers for my install script.
-do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either via email, github issues or pull requests!
+do not hesitate to [contact me](https://amtoine.github.io/public/contact), either via email, github issues or pull requests!
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## 5. Gallery. [[toc](#table-of-content)]
@@ -329,41 +329,41 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [fireship-dotfiles]:    https://www.youtube.com/watch?v=r_MpUP6aKiQ
 [bare-repo-blog]:       https://www.atlassian.com/git/tutorials/dotfiles
 [bare-repo-dt]:         https://www.youtube.com/watch?v=tBoLDpTWVOM&t=879s
-[mysite]:               https://a2n-s.github.io/public
-[mydoc]:                https://a2n-s.github.io/public/doc/config
+[mysite]:               https://amtoine.github.io/public
+[mydoc]:                https://amtoine.github.io/public/doc/config
 
 <!-- programs -->
-[mydoc-alacritty]:      https://a2n-s.github.io/public/doc/config/dotfiles/alacritty
-[mydoc-bash]:           https://a2n-s.github.io/public/doc/config/dotfiles/bash
-[mydoc-bspwm]:          https://a2n-s.github.io/public/doc/config/dotfiles/bspwm
-[mydoc-bashtop]:        https://a2n-s.github.io/public/doc/config/dotfiles/bashtop
-[mydoc-bpytop]:         https://a2n-s.github.io/public/doc/config/dotfiles/bpytop
-[mydoc-btop]:           https://a2n-s.github.io/public/doc/config/dotfiles/btop
-[mydoc-dmenufm]:        https://a2n-s.github.io/public/doc/config/dotfiles/dmenufm
-[mydoc-fish]:           https://a2n-s.github.io/public/doc/config/dotfiles/fish
-[mydoc-git]:            https://a2n-s.github.io/public/doc/config/dotfiles/git
-[mydoc-htop]:           https://a2n-s.github.io/public/doc/config/dotfiles/htop
-[mydoc-lf]:             https://a2n-s.github.io/public/doc/config/dotfiles/lf
-[mydoc-lazygit]:        https://a2n-s.github.io/public/doc/config/dotfiles/lazygit
-[mydoc-lazycli]:        https://a2n-s.github.io/public/doc/config/dotfiles/lazycli
-[mydoc-mpd]:            https://a2n-s.github.io/public/doc/config/dotfiles/mpd
-[mydoc-moc]:            https://a2n-s.github.io/public/doc/config/dotfiles/moc
-[mydoc-mpv]:            https://a2n-s.github.io/public/doc/config/dotfiles/mpv
-[mydoc-ncmcpp]:         https://a2n-s.github.io/public/doc/config/dotfiles/ncmcpp
-[mydoc-neofetch]:       https://a2n-s.github.io/public/doc/config/dotfiles/neofetch
-[mydoc-nitrogen]:       https://a2n-s.github.io/public/doc/config/dotfiles/nitrogen
-[mydoc-qtile]:          https://a2n-s.github.io/public/doc/config/dotfiles/qtile
-[mydoc-rofi]:           https://a2n-s.github.io/public/doc/config/dotfiles/rofi
-[mydoc-spectrwm]:       https://a2n-s.github.io/public/doc/config/dotfiles/spectrwm
-[mydoc-sxhkd]:          https://a2n-s.github.io/public/doc/config/dotfiles/sxhkd
-[mydoc-starship]:       https://a2n-s.github.io/public/doc/config/dotfiles/starship
-[mydoc-tig]:            https://a2n-s.github.io/public/doc/config/dotfiles/tig
-[mydoc-tmux]:           https://a2n-s.github.io/public/doc/config/dotfiles/tmux
-[mydoc-vifm]:           https://a2n-s.github.io/public/doc/config/dotfiles/vifm
-[mydoc-vim]:            https://a2n-s.github.io/public/doc/config/dotfiles/vim
-[mydoc-x]:              https://a2n-s.github.io/public/doc/config/dotfiles/x
-[mydoc-xscreensaver]:   https://a2n-s.github.io/public/doc/config/dotfiles/xscreensaver
-[mydoc-zsh]:            https://a2n-s.github.io/public/doc/config/dotfiles/zsh
+[mydoc-alacritty]:      https://amtoine.github.io/public/doc/config/dotfiles/alacritty
+[mydoc-bash]:           https://amtoine.github.io/public/doc/config/dotfiles/bash
+[mydoc-bspwm]:          https://amtoine.github.io/public/doc/config/dotfiles/bspwm
+[mydoc-bashtop]:        https://amtoine.github.io/public/doc/config/dotfiles/bashtop
+[mydoc-bpytop]:         https://amtoine.github.io/public/doc/config/dotfiles/bpytop
+[mydoc-btop]:           https://amtoine.github.io/public/doc/config/dotfiles/btop
+[mydoc-dmenufm]:        https://amtoine.github.io/public/doc/config/dotfiles/dmenufm
+[mydoc-fish]:           https://amtoine.github.io/public/doc/config/dotfiles/fish
+[mydoc-git]:            https://amtoine.github.io/public/doc/config/dotfiles/git
+[mydoc-htop]:           https://amtoine.github.io/public/doc/config/dotfiles/htop
+[mydoc-lf]:             https://amtoine.github.io/public/doc/config/dotfiles/lf
+[mydoc-lazygit]:        https://amtoine.github.io/public/doc/config/dotfiles/lazygit
+[mydoc-lazycli]:        https://amtoine.github.io/public/doc/config/dotfiles/lazycli
+[mydoc-mpd]:            https://amtoine.github.io/public/doc/config/dotfiles/mpd
+[mydoc-moc]:            https://amtoine.github.io/public/doc/config/dotfiles/moc
+[mydoc-mpv]:            https://amtoine.github.io/public/doc/config/dotfiles/mpv
+[mydoc-ncmcpp]:         https://amtoine.github.io/public/doc/config/dotfiles/ncmcpp
+[mydoc-neofetch]:       https://amtoine.github.io/public/doc/config/dotfiles/neofetch
+[mydoc-nitrogen]:       https://amtoine.github.io/public/doc/config/dotfiles/nitrogen
+[mydoc-qtile]:          https://amtoine.github.io/public/doc/config/dotfiles/qtile
+[mydoc-rofi]:           https://amtoine.github.io/public/doc/config/dotfiles/rofi
+[mydoc-spectrwm]:       https://amtoine.github.io/public/doc/config/dotfiles/spectrwm
+[mydoc-sxhkd]:          https://amtoine.github.io/public/doc/config/dotfiles/sxhkd
+[mydoc-starship]:       https://amtoine.github.io/public/doc/config/dotfiles/starship
+[mydoc-tig]:            https://amtoine.github.io/public/doc/config/dotfiles/tig
+[mydoc-tmux]:           https://amtoine.github.io/public/doc/config/dotfiles/tmux
+[mydoc-vifm]:           https://amtoine.github.io/public/doc/config/dotfiles/vifm
+[mydoc-vim]:            https://amtoine.github.io/public/doc/config/dotfiles/vim
+[mydoc-x]:              https://amtoine.github.io/public/doc/config/dotfiles/x
+[mydoc-xscreensaver]:   https://amtoine.github.io/public/doc/config/dotfiles/xscreensaver
+[mydoc-zsh]:            https://amtoine.github.io/public/doc/config/dotfiles/zsh
 
 <!-- other stuff -->
 [`scripts`]:            .local/bin
@@ -380,37 +380,37 @@ do not hesitate to [contact me](https://a2n-s.github.io/public/contact), either 
 [surf]:                 https://git.suckless.org/surf/
 [tabbed]:               https://git.suckless.org/tabbed/
 [slock]:                https://git.suckless.org/slock/
-[my-wallpapers]:        https://github.com/a2n-s/wallpapers
-[my-dmenu]:             https://github.com/a2n-s/dmenu
-[my-dmscripts]:         https://github.com/a2n-s/dmscripts
-[my-kitty]:             https://github.com/a2n-s/kitty
-[my-oh-my-bash]:        https://github.com/a2n-s/oh-my-bash
-[my-oh-my-fish]:        https://github.com/a2n-s/oh-my-fish
-[my-oh-my-zsh]:         https://github.com/a2n-s/ohmyzsh
-[my-neovim]:            https://github.com/a2n-s/neovim
-[my-polybar-themes]:    https://github.com/a2n-s/polybar-themes
-[my-surf]:              https://github.com/a2n-s/surf
-[my-tabbed]:            https://github.com/a2n-s/tabbed
-[my-slock]:             https://github.com/a2n-s/slock
-[mydoc-wallpapers]:     https://a2n-s.github.io/public/doc/config/wallpapers
-[mydoc-dmenu]:          https://a2n-s.github.io/public/doc/config/dmenu
-[mydoc-dmscripts]:      https://a2n-s.github.io/public/doc/config/dmscripts
-[mydoc-kitty]:          https://a2n-s.github.io/public/doc/config/kitty
-[mydoc-oh-my-bash]:     https://a2n-s.github.io/public/doc/config/bash
-[mydoc-oh-my-fish]:     https://a2n-s.github.io/public/doc/config/fish
-[mydoc-oh-my-zsh]:      https://a2n-s.github.io/public/doc/config/zsh
-[mydoc-neovim]:         https://a2n-s.github.io/public/doc/config/neovim
-[mydoc-polybar-themes]: https://a2n-s.github.io/public/doc/config/polybar
-[mydoc-surf]:           https://a2n-s.github.io/public/doc/config/surf
-[mydoc-tabbed]:         https://a2n-s.github.io/public/doc/config/tabbed
-[mydoc-slock]:          https://a2n-s.github.io/public/doc/config/slock
+[my-wallpapers]:        https://github.com/amtoine/wallpapers
+[my-dmenu]:             https://github.com/amtoine/dmenu
+[my-dmscripts]:         https://github.com/amtoine/dmscripts
+[my-kitty]:             https://github.com/amtoine/kitty
+[my-oh-my-bash]:        https://github.com/amtoine/oh-my-bash
+[my-oh-my-fish]:        https://github.com/amtoine/oh-my-fish
+[my-oh-my-zsh]:         https://github.com/amtoine/ohmyzsh
+[my-neovim]:            https://github.com/amtoine/neovim
+[my-polybar-themes]:    https://github.com/amtoine/polybar-themes
+[my-surf]:              https://github.com/amtoine/surf
+[my-tabbed]:            https://github.com/amtoine/tabbed
+[my-slock]:             https://github.com/amtoine/slock
+[mydoc-wallpapers]:     https://amtoine.github.io/public/doc/config/wallpapers
+[mydoc-dmenu]:          https://amtoine.github.io/public/doc/config/dmenu
+[mydoc-dmscripts]:      https://amtoine.github.io/public/doc/config/dmscripts
+[mydoc-kitty]:          https://amtoine.github.io/public/doc/config/kitty
+[mydoc-oh-my-bash]:     https://amtoine.github.io/public/doc/config/bash
+[mydoc-oh-my-fish]:     https://amtoine.github.io/public/doc/config/fish
+[mydoc-oh-my-zsh]:      https://amtoine.github.io/public/doc/config/zsh
+[mydoc-neovim]:         https://amtoine.github.io/public/doc/config/neovim
+[mydoc-polybar-themes]: https://amtoine.github.io/public/doc/config/polybar
+[mydoc-surf]:           https://amtoine.github.io/public/doc/config/surf
+[mydoc-tabbed]:         https://amtoine.github.io/public/doc/config/tabbed
+[mydoc-slock]:          https://amtoine.github.io/public/doc/config/slock
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 <!-- gallery -->
-[mygallery-nitrogen]:   https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-nitrogen.png
-[mygallery-bar]:        https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-bar.png
-[mygallery-spectrwm1]:  https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-spectrwm1.png
-[mygallery-spectrwm2]:  https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-spectrwm2.png
-[mygallery-htop]:       https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-htop.png
-[mygallery-git]:        https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-git.png
-[mygallery-vim]:        https://a2n-s.github.io/public/res/doc/config/dotfiles/gallery-vim.png
+[mygallery-nitrogen]:   https://amtoine.github.io/public/res/doc/config/dotfiles/gallery-nitrogen.png
+[mygallery-bar]:        https://amtoine.github.io/public/res/doc/config/dotfiles/gallery-bar.png
+[mygallery-spectrwm1]:  https://amtoine.github.io/public/res/doc/config/dotfiles/gallery-spectrwm1.png
+[mygallery-spectrwm2]:  https://amtoine.github.io/public/res/doc/config/dotfiles/gallery-spectrwm2.png
+[mygallery-htop]:       https://amtoine.github.io/public/res/doc/config/dotfiles/gallery-htop.png
+[mygallery-git]:        https://amtoine.github.io/public/res/doc/config/dotfiles/gallery-git.png
+[mygallery-vim]:        https://amtoine.github.io/public/res/doc/config/dotfiles/gallery-vim.png

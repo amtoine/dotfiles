@@ -1,6 +1,6 @@
-#           ___                       personal page: https://a2n-s.github.io/ 
-#      __ _|_  )_ _    ___   ___      github   page: https://github.com/a2n-s 
-#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/a2n-s/dotfiles 
+#           ___                       personal page: https://amtoine.github.io/ 
+#      __ _|_  )_ _    ___   ___      github   page: https://github.com/amtoine 
+#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/amtoine/dotfiles 
 #     \__,_/___|_||_|       /__/
 #                 __           __
 #          __    / /  __ _    / /  ___ __ _ _ ___ ___ _ _  ___  _ __ _  _
@@ -10,7 +10,7 @@
 #
 # Description:  configure the virtual screens used byt qtile
 # Dependencies: none
-# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
+# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
 from libqtile import bar

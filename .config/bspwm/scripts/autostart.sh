@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 #           ___
-#      __ _|_  )_ _ ___ ___   personal page: https://a2n-s.github.io/
-#     / _` |/ /| ' \___(_-<   github   page: https://github.com/a2n-s
-#     \__,_/___|_||_|  /__/   my   dotfiles: https://github.com/a2n-s/dotfiles
+#      __ _|_  )_ _ ___ ___   personal page: https://amtoine.github.io/
+#     / _` |/ /| ' \___(_-<   github   page: https://github.com/amtoine
+#     \__,_/___|_||_|  /__/   my   dotfiles: https://github.com/amtoine/dotfiles
 #               __  _        __         __            _          _            _        _
 #        __    / / | |__    / /  ___   / /  __ _ _  _| |_ ___ __| |_ __ _ _ _| |_   __| |_
 #      _/ _|  / /  | '_ \  / /  (_-<  / /  / _` | || |  _/ _ (_-<  _/ _` | '_|  _|_(_-< ' \
@@ -10,7 +10,7 @@
 #
 # Description:  my autostart script for bspwm.
 # Dependencies: feh, emacs, polybar, dunst, mpv
-# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
+# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
 

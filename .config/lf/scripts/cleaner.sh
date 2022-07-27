@@ -1,8 +1,8 @@
 #!/bin/sh
 #             ___
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+#       ____ |__ \ ____              _____      personal page: https://amtoine.github.io/ 
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/amtoine 
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/amtoine/dotfiles 
 #     \__,_/____/_/ /_/           /____/
 #                               _____             __   ______      __                  _       __             __        __                                         __
 #             _________  ____  / __(_)___ _     _/_/  / / __/    _/_/  _______________(_)___  / /______     _/_/  _____/ /__  ____ _____  ___  _____         _____/ /_
@@ -13,7 +13,7 @@
 #
 # Description:  cleans the current preview for next one or other graphical applications.
 # Dependencies: implicitely ueberzug
-# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
+# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 #               cirala -> https://github.com/cirala/lfimg/blob/master/cleaner 
 

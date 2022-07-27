@@ -170,7 +170,7 @@ if status is-interactive
   end
 
   if pgrep "qtile" > /dev/null
-    alias qtheme="a2n-s-themes -C=qtile"
+    alias qtheme="amtoine-themes -C=qtile"
     alias qbar="$HOME/.config/qtile/scripts/bar.sh"
     alias qrestart="qtile cmd-obj -o cmd -f restart"
     alias qcmd="qtile cmd-obj -o cmd -f"
@@ -186,7 +186,7 @@ if status is-interactive
   end
 
   alias wget="wget --hsts-file='$XDG_DATA_HOME/wget-hsts'"
-  alias xdg-ninja="$HOME/ghq/github.com/a2n-s/xdg-ninja/xdg-ninja.sh"
+  alias xdg-ninja="$HOME/ghq/github.com/amtoine/xdg-ninja/xdg-ninja.sh"
 
   alias xonsh="xonsh --rc $XDG_CONFIG_HOME/xonsh/xonshrc"
 
@@ -198,7 +198,7 @@ if status is-interactive
   # | '  \| (_-</ _|
   # |_|_|_|_/__/\__|
   # disables the caps lock key.
-  a2n-s-xtcl -d -q
+  amtoine-xtcl -d -q
 
   # starship init fish | source
   source ~/.local/share/omf/pkg/colorman/init.fish

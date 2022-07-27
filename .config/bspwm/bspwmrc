@@ -1,8 +1,8 @@
 #! /usr/bin/bash
 #           ___
-#      __ _|_  )_ _ ___ ___   personal page: https://a2n-s.github.io/
-#     / _` |/ /| ' \___(_-<   github   page: https://github.com/a2n-s
-#     \__,_/___|_||_|  /__/   my   dotfiles: https://github.com/a2n-s/dotfiles
+#      __ _|_  )_ _ ___ ___   personal page: https://amtoine.github.io/
+#     / _` |/ /| ' \___(_-<   github   page: https://github.com/amtoine
+#     \__,_/___|_||_|  /__/   my   dotfiles: https://github.com/amtoine/dotfiles
 #               __  _        __  _
 #        __    / / | |__    / / | |__ ____ ____ __ ___ __  _ _ __
 #      _/ _|  / /  | '_ \  / /  | '_ (_-< '_ \ V  V / '  \| '_/ _|
@@ -10,7 +10,7 @@
 #                                       |_|
 # Description:  my config for bspwm.
 # Dependencies: sxhkd, polybar
-# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
+# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 # some handy variables.
@@ -33,7 +33,7 @@ declare -A COLOR_MAP=(
 
 AUTOSTART="$HOME/.config/bspwm/scripts/autostart.sh"
 SCRATCHPAD="$HOME/.config/bspwm/scripts/scratchpad.sh"
-export WM_STARTUP_SOUND="/usr/share/sounds/a2n-s-sounds-git/startup.16.mp3"
+export WM_STARTUP_SOUND="/usr/share/sounds/amtoine-sounds-git/startup.16.mp3"
 export WM_CONKY_HELP="$HOME/.config/conky/bspwm.conkyrc"
 export WM_CONKY_CLOCK="$HOME/.config/conky/vision/Z333-vision.conkyrc"
 export WM_POLYBAR="$HOME/.config/polybar/launch.sh"

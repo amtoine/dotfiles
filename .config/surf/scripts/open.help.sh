@@ -1,8 +1,8 @@
 #!/bin/sh
 #             ___
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+#       ____ |__ \ ____              _____      personal page: https://amtoine.github.io/ 
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/amtoine 
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/amtoine/dotfiles 
 #     \__,_/____/_/ /_/           /____/
 #                               _____             __                   ____      __                  _       __             __                                   __         __                    __
 #             _________  ____  / __(_)___ _     _/_/  _______  _______/ __/    _/_/  _______________(_)___  / /______     _/_/  ____  ____  ___  ____           / /_  ___  / /___           _____/ /_
@@ -13,7 +13,7 @@
 #
 # Description:  Open a help file in a text editor, shows key bindings...
 # Dependencies: kitty
-# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
+# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 configfile="$HOME/repos/surf/config.def.h"
@@ -24,9 +24,9 @@ cat << EOF > "$tmpfile"
 This is the help file of my surf rice.
 Below are some key bindings of the surf web browser I user.
 
-my personal page: https://a2n-s.github.io/ 
-my github   page: https://github.com/a2n-s 
-my      dotfiles: https://github.com/a2n-s/dotfiles 
+my personal page: https://amtoine.github.io/ 
+my github   page: https://github.com/amtoine 
+my      dotfiles: https://github.com/amtoine/dotfiles 
 
 EOF
 cat "$configfile" | grep -e "#define MOD" | sed "s/#define MODKEY GDK_\(\w*\)_MASK/modkey: \1/g" >> "$tmpfile"

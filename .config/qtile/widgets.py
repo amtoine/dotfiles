@@ -1,6 +1,6 @@
-#           ___                       personal page: https://a2n-s.github.io/ 
-#      __ _|_  )_ _    ___   ___      github   page: https://github.com/a2n-s 
-#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/a2n-s/dotfiles 
+#           ___                       personal page: https://amtoine.github.io/ 
+#      __ _|_  )_ _    ___   ___      github   page: https://github.com/amtoine 
+#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/amtoine/dotfiles 
 #     \__,_/___|_||_|       /__/
 #                 __           __         _    _          _
 #          __    / /  __ _    / / __ __ _(_)__| |__ _ ___| |_ ___  _ __ _  _
@@ -11,7 +11,7 @@
 # Description:  a collection of custom widgets and wrappers around built-in
 #               widgets.
 # Dependencies: psutil, dbus-next, iwlib, subprocess, moc
-# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
+# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
 import os
@@ -590,7 +590,7 @@ def wallpaper(bg="#000000", fg="#ffffff"):
     """
     return widget.Wallpaper(
         background=bg,                               # Widget background color
-        directory='~/ghq/github.com/a2n-s/wallpapers/wallpapers/',  # Wallpaper Directory
+        directory='~/ghq/github.com/amtoine/wallpapers/wallpapers/',  # Wallpaper Directory
         fmt='{}',                                    # How to format the text
         font=FONT,                                   # Default font
         fontshadow=None,                             # font shadow color, default is None(no shadow)

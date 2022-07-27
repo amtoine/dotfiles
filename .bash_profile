@@ -1,7 +1,7 @@
 #             ___
-#       ____ |__ \ ____              _____      personal page: https://a2n-s.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/a2n-s 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/a2n-s/dotfiles 
+#       ____ |__ \ ____              _____      personal page: https://amtoine.github.io/ 
+#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/amtoine 
+#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/amtoine/dotfiles 
 #     \__,_/____/_/ /_/           /____/
 #          _               _                                 __ _ _
 #         | |             | |                               / _(_) |
@@ -14,7 +14,7 @@
 #
 # Description:  my bash profile.
 # Dependencies:
-# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE 
+# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
 echo "$HOME/.bash_profile"

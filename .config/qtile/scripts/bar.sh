@@ -1,7 +1,7 @@
 #! /usr/bin/bash
-#           ___                       personal page: https://a2n-s.github.io/ 
-#      __ _|_  )_ _    ___   ___      github   page: https://github.com/a2n-s 
-#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/a2n-s/dotfiles 
+#           ___                       personal page: https://amtoine.github.io/ 
+#      __ _|_  )_ _    ___   ___      github   page: https://github.com/amtoine 
+#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/amtoine/dotfiles 
 #     \__,_/___|_||_|       /__/
 #                 __           __         __  _                  _    
 #          __    / /  __ _    / /  ___   / / | |__  __ _ _ _  __| |_  
@@ -11,7 +11,7 @@
 #
 # Description:  changes the qtile bar with dmenu.
 # Dependencies: dmenu, qtile
-# License:      https://github.com/a2n-s/dotfiles/blob/main/LICENSE
+# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE
 # Contributors: Stevan Antoine
 
 # ask the user for the size of the bar.

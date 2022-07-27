@@ -1,10 +1,10 @@
-a2n-s-applications-git
-a2n-s-icons-git
-a2n-s-scripts-git
-a2n-s-sounds-git
-a2n-s-wallpapers-git
 adwaita-dark
 alttab-git
+amtoine-applications-git
+amtoine-icons-git
+amtoine-scripts-git
+amtoine-sounds-git
+amtoine-wallpapers-git
 ani-cli
 archlinux-themes-sddm
 arcolinux-logout
