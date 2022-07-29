@@ -337,6 +337,7 @@ ueberzug
 ufw
 unclutter
 unzip
+uutils-coreutils
 vi
 vieb-bin
 vifm

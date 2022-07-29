@@ -151,6 +151,7 @@ trayer
 udiskie
 ufw
 unclutter
+uutils-coreutils
 vi
 vifm
 vimb
