@@ -116,6 +116,7 @@ gst-plugins-good
 gtk4
 guake
 gulp
+helix
 helm
 htim
 hugo
@@ -345,6 +346,7 @@ vim
 vimb
 virtualbox
 virtualbox-host-modules-arch
+viu
 vnstat
 volumeicon
 vulkan-tools

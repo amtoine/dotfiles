@@ -52,6 +52,7 @@ glow
 go
 guake
 gulp
+helix
 helm
 hugo
 jgmenu
@@ -156,6 +157,7 @@ vi
 vifm
 vimb
 virtualbox
+viu
 vnstat
 volumeicon
 vulkan-tools
