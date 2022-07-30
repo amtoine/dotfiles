@@ -590,21 +590,24 @@ key_bindings:
     # (Windows, Linux, and BSD only)
   - {key: V, mods: Alt, action: Paste}
   - {key: C, mods: Alt, action: Copy}
+
   - {key: U, mods: Alt, action: ScrollPageUp}
   - {key: D, mods: Alt, action: ScrollPageDown}
   - {key: K, mods: Alt, action: ScrollLineUp}
   - {key: J, mods: Alt, action: ScrollLineDown}
   - {key: G, mods: Alt, action: ScrollToTop}
   - {key: G, mods: Alt|Shift, action: ScrollToBottom}
+
   - {key: Q, mods: Alt, action: Quit}
   - {key: C, mods: Alt|Shift, action: Quit}
+
   - {key: F, mods: Alt, action: ToggleFullscreen}
   - {key: N, mods: Alt, action: SpawnNewInstance}
-  - {key: I, mods: Alt, action: ResetFontSize}
-  - {key: O, mods: Alt, action: IncreaseFontSize}
-  - {key: U, mods: Alt, action: DecreaseFontSize}
-  - {key: F11, mods: None, action: ToggleFullscreen}
-  - {key: N, mods: Alt, action: SpawnNewInstance}
+
+  - {key: I, mods: Alt|Control, action: ResetFontSize}
+  - {key: O, mods: Alt|Control, action: IncreaseFontSize}
+  - {key: U, mods: Alt|Control, action: DecreaseFontSize}
+
   - {key: M, mods: Alt, command: {program: dmenu_run, args: [-fn, mononoki Nerd Font-20]}}
   # - {key: L, mods: Control|Shift, action: ClearLogNotice}
   # - {key: L, mods: Control|Shift, chars: "\f"}
