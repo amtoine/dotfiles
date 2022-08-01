@@ -19,6 +19,8 @@ settings:
     global: true
   colors.webpage.preferred_color_scheme:
     global: dark
+  content.javascript.enabled:
+    global: true
   content.notifications.enabled:
     https://gitlab.com: false
   content.register_protocol_handler:
