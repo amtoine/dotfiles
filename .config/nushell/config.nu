@@ -384,3 +384,68 @@ let-env config = {
     }
   ]
 }
+
+
+###########
+# ALIASES #
+#################################################################
+alias cfg = ^git --git-dir ($env.HOME | path join ".dotfiles") --work-tree $env.HOME
+
+
+#############
+# FUNCTIONS #
+#################################################################
+def clip [] {
+    # put the end of a pipe into the clipboard.
+    # 
+    # the function is cross-platform and will work on windows.
+    #
+    # dependencies:
+    #   - xclip on linux
+    #   - clip.exe on windows
+    #
+    # author: Reilly on
+    #   https://discord.com/channels/601130461678272522/615253963645911060/1000921565686415410
+    #
+    let input = $in;
+
+    if not (which clip.exe | empty?) {
+        $input | clip.exe
+    } else {
+        $input | xclip -sel clip
+    }
+}
+
+
+def-env repo [] {
+    # jump to any repo registered with ghq.
+    #
+    # the function will:
+    #   - (1) do nothing and abort when selecting no repo.
+    #   - (2) jump to the selected repo and print the content of the repo.
+    #
+    # dependencies:
+    #   - ghq
+    #   - fzf
+    #
+    let choice = (ghq list | fzf)
+
+    # compute the directory to jump to.
+    let path = if ($choice | empty?) {
+        $env.PWD
+    } else {
+        (ghq root | into string | path split | path join $choice | tr '\n' ' ' | sed 's/ //g')
+    }
+    cd $path
+
+    # print a little message.
+    if ($choice | empty?) {
+        echo "User choose to exit..."
+    } else {
+        echo $"Jumping to ($path)"
+        ls
+        ^git status --short
+        ^git stash list
+        ^git log --graph --all --oneline --decorate --simplify-by-decoration -n 10
+    }
+}
