@@ -13,6 +13,7 @@ aura
 catppuccin-grub-theme-git
 cava
 cbonsai
+clifm
 conky-lua-nv
 devour
 dive

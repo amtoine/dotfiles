@@ -50,6 +50,7 @@ cbonsai
 chafa
 chromium
 clang
+clifm
 clipmenu
 cmake
 cmatrix
