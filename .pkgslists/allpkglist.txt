@@ -102,7 +102,7 @@ gcc
 gdb
 ghc
 ghc-static
-ghq
+ghq-bin
 gimp
 git
 github-cli

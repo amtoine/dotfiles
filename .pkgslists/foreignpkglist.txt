@@ -24,7 +24,7 @@ dmscripts-git
 downgrade
 dwm-a2ns-git
 espeak
-ghq
+ghq-bin
 gmail-desktop
 htim
 irony-mode
