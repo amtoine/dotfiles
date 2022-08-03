@@ -461,11 +461,29 @@ def-env repo [] {
         print "User choose to exit..."
     } else {
         print $"Jumping to ($path)"
+
+        # the content of the repo.
+        print "\nCONTENT:"
         ls
-        print "\nSTATUS:"
-        ^git status --short
-        print "\nSTASHES:"
-        ^git stash list
+
+        # the status of the repo, in short format,
+        # if anything to report.
+        if not (^git status --short | empty?) {
+            print "\nSTATUS:"
+            ^git status --short
+        } else {
+            print "\nEVERYTHING UP TO DATE!"
+        }
+
+        # the list of stashes, if any.
+        if not (^git stash list | empty?) {
+            print "\nSTASHES:"
+            ^git stash list
+        } else {
+            print "\nNO STASH..."
+        }
+
+        # the current tree in compact form.
         print "\nLOG:"
         ^git log --graph --all --oneline --decorate --simplify-by-decoration -n 10
     }
