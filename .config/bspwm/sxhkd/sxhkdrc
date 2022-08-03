@@ -15,9 +15,9 @@
 
 # >>> bspwm hotkeys
 #
-# quit/restart bspwm
-super + alt + {q,r}
-  bspc {quit,wm --restart}
+# restart bspwm
+super + shift + r
+  bspc wm --restart
 # close and kill
 super + {_,shift + }w
   bspc node --{close,kill}
