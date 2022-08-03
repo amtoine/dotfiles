@@ -28,6 +28,6 @@ set tabstop=4 shiftwidth=4 expandtab
 set list
 
 " key bindings.
-nmap t :!tig --all<CR>
-nmap T :!TIGRC_USER="$HOME/.config/tig/.dotfiles" GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" tig --all<CR>
-nmap ,s :source ~/.config/vim/vimrc<CR>
+nmap ,gt :!tig --all<CR>
+nmap ,gd :!TIGRC_USER="$HOME/.config/tig/.dotfiles" GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" tig --all<CR>
+nmap ,vs :source ~/.config/vim/vimrc<CR>
