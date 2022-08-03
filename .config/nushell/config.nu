@@ -445,12 +445,15 @@ def-env repo [] {
 
     # print a little message.
     if ($choice | empty?) {
-        echo "User choose to exit..."
+        print "User choose to exit..."
     } else {
-        echo $"Jumping to ($path)"
+        print $"Jumping to ($path)"
         ls
+        print "\nSTATUS:"
         ^git status --short
+        print "\nSTASHES:"
         ^git stash list
+        print "\nLOG:"
         ^git log --graph --all --oneline --decorate --simplify-by-decoration -n 10
     }
 }
