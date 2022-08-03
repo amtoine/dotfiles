@@ -39,6 +39,7 @@
   defaultBranch = main
 [core]
   editor = nvim
+  pager = less -FRX
 [ghq "https://git.example.com/repos/"]
   vcs = git
 [alias]
@@ -67,7 +68,7 @@
   mg      = merge
 
 ; to inspect the commit tree.
-  ga      = log --graph --all          
+  ga      = log --graph --all
   tr      = log --graph --all --oneline --decorate
   trm     = log --graph --all --oneline --decorate --stat
   trs     = log --graph --all --oneline --decorate --simplify-by-decoration
