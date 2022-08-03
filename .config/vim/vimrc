@@ -27,6 +27,9 @@ set hlsearch
 set tabstop=4 shiftwidth=4 expandtab
 set list
 
+highlight RedundantSpaces ctermbg=red guibg=red
+match RedundantSpaces /\s\+$/
+
 " key bindings.
 nmap ,gt :!tig --all<CR>
 nmap ,gd :!TIGRC_USER="$HOME/.config/tig/.dotfiles" GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" tig --all<CR>
