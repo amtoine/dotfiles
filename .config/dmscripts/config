@@ -45,8 +45,7 @@ DMEDITOR="emacsclient -c -a emacs"
 # DMEDITOR="${DMTERM} nvim"
 
 # TODO: Rename this variable to something more traditional
-# logout_locker='slock'
-logout_locker="$HOME/scripts/slock.sh"
+logout_locker="slock"
 # logout_locker='xscreensaver-command -lock'
 # logout_locker='dm-tool lock'
 
