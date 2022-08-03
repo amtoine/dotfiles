@@ -340,7 +340,7 @@ let-env config = {
       name: history_menu
       modifier: control
       keycode: char_x
-      mode: emacs
+      mode: [emacs, vi_normal, vi_insert]
       event: {
         until: [
           { send: menu name: history_menu }
@@ -352,7 +352,7 @@ let-env config = {
       name: history_previous
       modifier: control
       keycode: char_z
-      mode: emacs
+      mode: [emacs, vi_normal, vi_insert]
       event: {
         until: [
           { send: menupageprevious }
