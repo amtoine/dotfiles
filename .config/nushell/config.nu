@@ -434,7 +434,12 @@ def-env repo [] {
     let path = if ($choice | empty?) {
         $env.PWD
     } else {
-        (ghq root | into string | path split | path join $choice | tr '\n' ' ' | sed 's/ //g')
+        (
+            ghq root
+               | into string
+               | path join $choice
+               | str replace --all '\n' ''
+        )
     }
     cd $path
 
