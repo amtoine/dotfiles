@@ -442,7 +442,7 @@ def-env repo [] {
     #   - ghq
     #   - fzf
     #
-    let choice = (ghq list | fzf)
+    let choice = (ghq list | fzf | str trim)
 
     # compute the directory to jump to.
     let path = if ($choice | empty?) {
@@ -450,9 +450,8 @@ def-env repo [] {
     } else {
         (
             ghq root
-               | into string
+               | str trim
                | path join $choice
-               | str replace --all '\n' ''
         )
     }
     cd $path
