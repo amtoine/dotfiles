@@ -30,4 +30,7 @@ set list
 " key bindings.
 nmap ,gt :!tig --all<CR>
 nmap ,gd :!TIGRC_USER="$HOME/.config/tig/.dotfiles" GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" tig --all<CR>
+nmap ,gl :!lazygit<CR>
 nmap ,vs :source ~/.config/vim/vimrc<CR>
+nmap ,cl :w<CR>:!latexmk -C; latexmk -pdf main.tex
+nmap ,nh :nohlsearch<CR>
