@@ -223,11 +223,11 @@ python-nose
 python-opengl
 python-pip
 python-pipenv
+python-pipx
 python-pygmo
 python-pylint
 python-pytest
 python-tqdm
-python-virtualenv
 python2
 python35
 python38

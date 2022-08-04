@@ -8,7 +8,11 @@ kio-extras
 mpdecimal
 pandoc
 python-dnspython
+python-html5lib
+python-keyring
+python-lockfile
 python-markdown
+python-requests-toolbelt
 qt6-svg
 unixodbc
 wireplumber

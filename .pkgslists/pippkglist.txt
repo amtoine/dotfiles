@@ -1,5 +1,5 @@
 Package                       Version
------------------------------ -------------------
+----------------------------- ---------------------
 agate                         1.6.3
 agate-dbf                     0.2.2
 agate-excel                   0.2.5
@@ -280,7 +280,7 @@ ufw                           0.36.1
 uritemplate                   4.1.1
 urllib3                       1.26.9
 validate-pyproject            0.9
-virtualenv                    20.11.0
+virtualenv                    20.16.3.dev3+gb18f733
 virtualenv-clone              0.5.7
 virtualenvwrapper             4.8.4
 virtualfish                   2.5.4
