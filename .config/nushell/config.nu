@@ -470,7 +470,7 @@ def-env repo [] {
         # if anything to report.
         if not (^git status --short | empty?) {
             print "\nSTATUS:"
-            ^git status --short
+            ^git --no-pager status --short
         } else {
             print "\nEVERYTHING UP TO DATE!"
         }
@@ -478,13 +478,13 @@ def-env repo [] {
         # the list of stashes, if any.
         if not (^git stash list | empty?) {
             print "\nSTASHES:"
-            ^git stash list
+            ^git --no-pager stash list
         } else {
             print "\nNO STASH..."
         }
 
         # the current tree in compact form.
         print "\nLOG:"
-        ^git log --graph --all --oneline --decorate --simplify-by-decoration -n 10
+        ^git --no-pager log --graph --all --oneline --decorate --simplify-by-decoration -n 10
     }
 }
