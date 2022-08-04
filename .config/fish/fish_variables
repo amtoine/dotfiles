@@ -3,6 +3,7 @@
 SETUVAR --export CABAL_CONFIG:/home/ants/\x2econfig/cabal/config
 SETUVAR --export CABAL_DIR:/home/ants/\x2elocal/share/cabal
 SETUVAR --export CARGO_HOME:/home/ants/\x2elocal/share/cargo
+SETUVAR --export CLOUDSDK_PYTHON:/usr/bin/python3
 SETUVAR --export DOOMDIR:/home/ants/\x2econfig/doom
 SETUVAR --export GNUPGHOME:/home/ants/\x2elocal/share/gnupg
 SETUVAR --export --path GOPATH:/home/ants/\x2elocal/share/go
@@ -21,6 +22,7 @@ SETUVAR --export SQLITE_HISTORY:/home/ants/\x2ecache/sqlite_history
 SETUVAR --export TERMINFO:/home/ants/\x2elocal/share/terminfo
 SETUVAR --export TERMINFO_DIRS:/home/ants/\x2elocal/share/terminfo\x3a/usr/share/terminfo
 SETUVAR THEME_EDEN_PROMPT_CHAR:\u00bb
+SETUVAR --export VIRTUALFISH_HOME:/home/ants/\x2elocal/share/virtualenvs
 SETUVAR --export XDG_CACHE_HOME:/home/ants/\x2ecache
 SETUVAR --export XDG_CONFIG_HOME:/home/ants/\x2econfig
 SETUVAR --export XDG_DATA_HOME:/home/ants/\x2elocal/share

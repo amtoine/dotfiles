@@ -203,9 +203,9 @@ if status is-interactive
   # starship init fish | source
   source ~/.local/share/omf/pkg/colorman/init.fish
 
-  set VIRTUAL_FISH_HOME "$XDG_DATA_HOME/virtualenvs"
+  set -Ux VIRTUALFISH_HOME "$XDG_DATA_HOME/virtualenvs"
 
-  set CLOUDSDK_PYTHON "/usr/bin/python3"
+  set -Ux CLOUDSDK_PYTHON "/usr/bin/python3"
   if test -f "$HOME/google-cloud-sdk/path.fish.inc"
     . "$HOME/google-cloud-sdk/path.fish.inc"
   end
