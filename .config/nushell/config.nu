@@ -411,7 +411,7 @@ alias cfg = ^git --git-dir ($env.HOME | path join ".dotfiles") --work-tree $env.
 #################################################################
 def clip [] {
     # put the end of a pipe into the clipboard.
-    # 
+    #
     # the function is cross-platform and will work on windows.
     #
     # dependencies:
@@ -488,3 +488,9 @@ def-env repo [] {
         ^git --no-pager log --graph --all --oneline --decorate --simplify-by-decoration -n 10
     }
 }
+
+
+###############
+# FINAL TOUCH #
+#################################################################
+pokemon-colorscripts -r
