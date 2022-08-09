@@ -12,6 +12,7 @@ ani-cli
 arandr
 arch-wiki-docs
 archlinux-themes-sddm
+archlinux-tweak-tool-git
 archlinux-wallpaper
 arcolinux-logout
 arduino
@@ -98,6 +99,7 @@ flameshot
 flex
 fortune-mod
 fzf
+gameshell
 gcc
 gdb
 ghc
@@ -279,6 +281,8 @@ scrot
 sddm
 sddm-archlinux-theme-git
 sddm-chinese-painting-theme
+sddm-sugar-candy-git
+sddm-sugar-dark
 sddm-theme-catppuccin-git
 sekiro-grub-theme-git
 sfm-a2ns-git

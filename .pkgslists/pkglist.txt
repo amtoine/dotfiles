@@ -1,5 +1,4 @@
 acpi
-alacritty
 arandr
 arch-wiki-docs
 archlinux-wallpaper
@@ -73,7 +72,6 @@ minio-client
 multicolor-sddm-theme
 ncdu
 ncmpcpp
-neofetch
 net-tools
 nethack
 nmap
