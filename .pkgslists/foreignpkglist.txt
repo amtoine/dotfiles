@@ -31,6 +31,7 @@ gmail-desktop
 htim
 irony-mode
 latex-mk
+lazydocker
 lf
 mbsync-git
 mk_vpp

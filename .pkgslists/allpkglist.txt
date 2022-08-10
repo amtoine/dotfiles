@@ -133,6 +133,7 @@ kolourpaint
 ktorrent
 kvantum
 latex-mk
+lazydocker
 lazygit
 lf
 libappindicator-gtk3
