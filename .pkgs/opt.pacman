@@ -14,5 +14,6 @@ python-lockfile
 python-markdown
 python-requests-toolbelt
 qt6-svg
+sndio
 unixodbc
 wireplumber

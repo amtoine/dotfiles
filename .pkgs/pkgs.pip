@@ -43,7 +43,7 @@ cloudpickle                   2.1.0
 colorama                      0.4.5
 commonmark                    0.9.1
 contextlib2                   21.6.0
-crashtest                     0.3.1
+crashtest                     0.4.0
 cryptography                  37.0.4
 csvkit                        1.0.6
 dbfread                       2.0.7
@@ -238,7 +238,7 @@ SecretStorage                 3.3.2
 Send2Trash                    1.8.0
 setproctitle                  1.2.3
 setuptools                    61.3.1
-shellingham                   1.4.0
+shellingham                   1.5.0
 shiboken2                     5.15.5
 shtab                         1.5.5
 six                           1.16.0
@@ -269,11 +269,11 @@ tinycss2                      1.1.1
 tldr                          3.1.0
 toml                          0.10.2
 tomli                         2.0.1
-tomlkit                       0.11.1
+tomlkit                       0.11.2
 tornado                       6.1
 tqdm                          4.64.0
 traitlets                     5.1.1
-trove-classifiers             2022.7.22
+trove-classifiers             2022.8.7
 typed-argument-parser         1.7.2
 types-toml                    0.10.8
 typing-extensions             3.10.0.2
