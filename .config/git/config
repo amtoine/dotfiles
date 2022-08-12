@@ -37,11 +37,19 @@
   email = 44101798+AntoineStevan@users.noreply.github.com
 [init]
   defaultBranch = main
+
 [core]
-  editor = nvim
-  pager = less -FRX
+  editor = vim
+  pager = delta
+
+[delta]
+  side-by-side = true
+  line-numbers = true
+  light = false
+
 [ghq "https://git.example.com/repos/"]
   vcs = git
+
 [alias]
 ; basic aliases.
   i       = init
