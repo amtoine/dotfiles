@@ -44,9 +44,9 @@ GRUB_DISABLE_RECOVERY=true
 #GRUB_COLOR_HIGHLIGHT="light-cyan/blue"
 
 # Uncomment one of them for the gfx desired, a image background or a gfxtheme
-#GRUB_BACKGROUND="/path/to/wallpaper"
+GRUB_BACKGROUND="/usr/share/backgrounds/amtoine-wallpapers-git/0228_girl-academia-himiko-white-black.png"
 # https://github.com/catppuccin/grub
-GRUB_THEME="/usr/share/grub/themes/sekiro/theme.txt"
+#GRUB_THEME="/usr/share/grub/themes/sekiro/theme.txt"
 
 # Uncomment to get a beep at GRUB start
 #GRUB_INIT_TUNE="480 440 1"
