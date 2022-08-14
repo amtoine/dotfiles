@@ -10,6 +10,9 @@
 ##   qute://help/configuring.html
 ##   qute://help/settings.html
 
+ALACRITTY = 0
+ST = 1
+
 ## This is here so configs done via the GUI are still loaded.
 ## Remove it to not load settings done via the GUI.
 config.load_autoconfig(True)
@@ -1194,16 +1197,29 @@ config.load_autoconfig(True)
 ## Type: Bool
 # c.editor.remove_file = True
 
-terminal = "st"
+terminal = ST
+
+if terminal == ALACRITTY:
+    terminal = "alacritty"
+    flags = ["--class", "qutebrowser-filepicker,qutebrowser-filepicker"]
+elif terminal == ST:
+    terminal = "st"
+    flags = ["-c", "qutebrowser-filepicker", "-n", "qutebrowser-filepicker"]
+else:
+    terminal = "alacritty"
+    flags = ["--class", "qutebrowser-filepicker,qutebrowser-filepicker"]
+
 filepicker = "ranger"
-filepicker_class = "qutebrowser-filepicker"
+
+filepicker_cmd = [terminal, *flags, "-e", filepicker]
+
 ## Command (and arguments) to use for selecting a single folder in forms.
 ## The command should write the selected folder path to the specified
 ## file or stdout. The following placeholders are defined: * `{}`:
 ## Filename of the file to be written to. If not contained in any
 ## argument, the   standard output of the command is read instead.
 ## Type: ShellCommand
-c.fileselect.folder.command = [terminal, '-c', filepicker_class, '-e', filepicker, '--choosedir={}']
+c.fileselect.folder.command = filepicker_cmd + ['--choosedir={}']
 
 ## Handler for selecting file(s) in forms. If `external`, then the
 ## commands specified by `fileselect.single_file.command` and
@@ -1222,7 +1238,7 @@ c.fileselect.handler = 'external'
 ## contained in any argument, the   standard output of the command is
 ## read instead.
 ## Type: ShellCommand
-c.fileselect.multiple_files.command = [terminal, '-c', filepicker_class, '-e', filepicker, '--choosefiles={}']
+c.fileselect.multiple_files.command = filepicker_cmd + ['--choosefiles={}']
 
 ## Command (and arguments) to use for selecting a single file in forms.
 ## The command should write the selected file path to the specified file
@@ -1230,7 +1246,7 @@ c.fileselect.multiple_files.command = [terminal, '-c', filepicker_class, '-e', f
 ## the file to be written to. If not contained in any argument, the
 ## standard output of the command is read instead.
 ## Type: ShellCommand
-c.fileselect.single_file.command = [terminal, '-c', filepicker_class, '-e', filepicker, '--choosefile={}']
+c.fileselect.single_file.command = filepicker_cmd + ['--choosefile={}']
 
 ## Font used in the completion categories.
 ## Type: Font
