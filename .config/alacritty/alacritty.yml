@@ -585,8 +585,8 @@ mouse:
 # a no-op if you do not wish to receive input characters for that binding.
 key_bindings:
     # (Windows, Linux, and BSD only)
-  - {key: V, mods: Alt, action: Paste}
-  - {key: C, mods: Alt, action: Copy}
+  - {key: V, mods: Control|Shift, action: Paste}
+  - {key: C, mods: Control|Shift, action: Copy}
 
   - {key: U, mods: Alt, action: ScrollPageUp}
   - {key: D, mods: Alt, action: ScrollPageDown}
