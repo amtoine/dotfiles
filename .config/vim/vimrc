@@ -27,6 +27,8 @@ set hlsearch
 set tabstop=4 shiftwidth=4 expandtab
 set list
 
+set clipboard=unnamedplus
+
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$/
 

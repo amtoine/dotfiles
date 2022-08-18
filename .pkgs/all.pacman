@@ -349,7 +349,7 @@ uutils-coreutils
 vi
 vieb-bin
 vifm
-vim
+vim-git
 vimb
 virtualbox
 virtualbox-host-modules-arch
