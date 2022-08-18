@@ -84,3 +84,4 @@ nushell-book https://www.nushell.sh/book/
 rust-doc https://docs.rs/
 nushell-repo https://github.com/nushell/nushell
 nushell-io https://github.com/nushell/nushell.github.io
+nushell-scripts https://github.com/nushell/nu_scripts
