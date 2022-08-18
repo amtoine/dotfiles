@@ -97,6 +97,8 @@
   ftop    = fetch origin -p
   ftu     = fetch upstream
   ftup    = fetch upstream -p
+  fta     = fetch --all
+  ftap    = fetch --all -p
   pl      = pull
   plaf    = pull          --autostash --ff
   plo     = pull origin
