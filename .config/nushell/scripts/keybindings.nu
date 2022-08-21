@@ -78,4 +78,37 @@ export alias keybindings = [
       { send: Enter }
     ]
   }
+  {
+    name: yank
+    modifier: control
+    keycode: char_y
+    mode: emacs
+    event: {
+      until: [
+        {edit: pastecutbufferafter}
+      ]
+    }
+  }
+  {
+    name: unix-line-discard
+    modifier: control
+    keycode: char_u
+    mode: [emacs, vi_normal, vi_insert]
+    event: {
+      until: [
+        {edit: cutfromlinestart}
+      ]
+    }
+  }
+  {
+    name: kill-line
+    modifier: control
+    keycode: char_k
+    mode: [emacs, vi_normal, vi_insert]
+    event: {
+      until: [
+        {edit: cuttolineend}
+      ]
+    }
+  }
 ]

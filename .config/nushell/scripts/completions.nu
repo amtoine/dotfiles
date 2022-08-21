@@ -13,7 +13,8 @@ def "nu-complete git remotes" [] {
 
 # Download objects and refs from another repository
 export extern "git fetch" [
-  repository?: string@"nu-complete git remotes" # name of the branch to fetch
+  repository?: string@"nu-complete git remotes" # name of the repository to fetch
+  branch?: string@"nu-complete git branches" # name of the branch to fetch
   --all                                         # Fetch all remotes
   --append(-a)                                  # Append ref names and object names to .git/FETCH_HEAD
   --atomic                                      # Use an atomic transaction to update local refs.
@@ -57,6 +58,7 @@ export extern "git fetch" [
   --no-show-forced-updates                      # Don't check if a branch is force-updated
   -4                                            # Use IPv4 addresses, ignore IPv6 addresses
   -6                                            # Use IPv6 addresses, ignore IPv4 addresses
+  --help                                        # Display this help message
 ]
 
 # Check out git branches and files
@@ -83,6 +85,7 @@ export extern "git checkout" [
   -b: string                                      # create and checkout a new branch
   -B: string                                      # create/reset and checkout a branch
   -l                                              # create reflog for new branch
+  --help                                          # Display this help message
 ]
 
 # Push changes
@@ -114,5 +117,6 @@ export extern "git push" [
   --tags                                          # push tags (can't be used with --all or --mirror)
   --thin                                          # use thin pack
   --verbose(-v)                                   # be more verbose
+  --help                                          # Display this help message
 ]
 
