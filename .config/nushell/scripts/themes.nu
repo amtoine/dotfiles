@@ -1,6 +1,6 @@
 # for more information on themes see
 # https://www.nushell.sh/book/coloring_and_theming.html
-export alias dark_theme = {
+export alias dark = {
     # color for nushell primitives
     separator: white
     leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
@@ -51,7 +51,7 @@ export alias dark_theme = {
     shape_nothing: light_cyan
 }
 
-export alias light_theme = {
+export alias light = {
     # color for nushell primitives
     separator: dark_gray
     leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
