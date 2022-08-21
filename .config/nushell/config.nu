@@ -1,3 +1,5 @@
+# base up-to-date with Nushell version 0.67.0
+
 use completions.nu *
 use themes.nu
 use hooks.nu *
