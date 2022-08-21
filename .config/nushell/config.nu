@@ -6,13 +6,14 @@ use hooks.nu *
 use menus.nu *
 use keybindings.nu *
 
+
 # The default config record. This is where much of your global configuration is setup.
 let-env config = {
   filesize_metric: false
   table_mode: rounded # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
   use_ls_colors: true
   rm_always_trash: false
-  color_config: (themes dark) # if you want a light theme, replace `(themes dark)` to `(themes light)`
+  color_config: (themes base16) # if you want a light theme, replace `(themes dark)` to `(themes light)`
   use_grid_icons: true
   footer_mode: "25" # always, never, number_of_rows, auto
   quick_completions: true  # set this to false to prevent auto-selecting completions when only one remains
