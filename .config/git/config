@@ -107,6 +107,7 @@
   plafu   = pull upstream --autostash --ff
 ;   up stream
   ps      = push
+  psf     = push --force
   pom     = push origin main
   pso     = push origin
   psu     = push upstream
