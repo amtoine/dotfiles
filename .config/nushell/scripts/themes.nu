@@ -1,3 +1,5 @@
+use colors.nu *
+
 # for more information on themes see
 # https://www.nushell.sh/book/coloring_and_theming.html
 export def dark [] {
@@ -103,5 +105,46 @@ export def light [] {
         shape_flag: blue_bold
         shape_custom: green
         shape_nothing: light_cyan
+    }
+}
+
+export def base16 [] {
+    {
+        separator: (base03)
+        leading_trailing_space_bg: (base04)
+        header: (base0b)
+        date: (base0e)
+        filesize: (base0d)
+        row_index: (base0c)
+        bool: (base08)
+        int: (base0b)
+        duration: (base08)
+        range: (base08)
+        float: (base08)
+        string: (base04)
+        nothing: (base08)
+        binary: (base08)
+        cellpath: (base08)
+        hints: dark_gray
+
+        # shape_garbage: { fg: (base07) bg: (base08) attr: b} # base16 white on red
+        # but i like the regular white on red for parse errors
+        shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b}
+        shape_bool: (base0d)
+        shape_int: { fg: (base0e) attr: b}
+        shape_float: { fg: (base0e) attr: b}
+        shape_range: { fg: (base0a) attr: b}
+        shape_internalcall: { fg: (base0c) attr: b}
+        shape_external: (base0c)
+        shape_externalarg: { fg: (base0b) attr: b}
+        shape_literal: (base0d)
+        shape_operator: (base0a)
+        shape_signature: { fg: (base0b) attr: b}
+        shape_string: (base0b)
+        shape_filepath: (base0d)
+        shape_globpattern: { fg: (base0d) attr: b}
+        shape_variable: (base0e)
+        shape_flag: { fg: (base0d) attr: b}
+        shape_custom: {attr: b}
     }
 }
