@@ -36,8 +36,9 @@ match RedundantSpaces /\s\+$/
 nmap ,gt :!tig --all<CR>
 nmap ,gd :!TIGRC_USER="$HOME/.config/tig/.dotfiles" GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" tig --all<CR>
 nmap ,gl :!lazygit<CR>
-nmap ,vs :source ~/.config/vim/vimrc<CR>
+nmap ,so :source ~/.config/vim/vimrc<CR>
 nmap ,cl :w<CR>:!latexmk -C; latexmk -shell-escape -pdf main.tex
 nmap ,nh :nohlsearch<CR>
 nmap ,, :!
 nmap ,W :w !sudo tee %
+nmap ,e :Ex<CR>
