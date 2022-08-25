@@ -41,3 +41,4 @@ nmap ,cl :w<CR>:!latexmk -C; latexmk -shell-escape -pdf main.tex
 nmap ,nh :nohlsearch<CR>
 nmap ,, :!
 nmap ,W :w !sudo tee %
+nmap ,e :Ex<CR>
