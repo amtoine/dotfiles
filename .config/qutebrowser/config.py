@@ -2356,6 +2356,8 @@ config.bind(',xb', 'config-cycle statusbar.show always never')
 config.bind(',xt', 'config-cycle tabs.show always never')
 config.bind(',xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
 
+config.bind(',<ESC>', 'fake-key <ESC>')
+
 ## Bindings for caret mode
 # config.bind('$', 'move-to-end-of-line', mode='caret')
 # config.bind('0', 'move-to-start-of-line', mode='caret')
