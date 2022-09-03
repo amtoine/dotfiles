@@ -118,6 +118,9 @@ def yt-dl-names [
         $"https://www.youtube.com/playlist?list=($id)"
     }
 
+    if (ls | find $path | empty?) {
+        mkdir $path
+    }
     let file = ($path | path join $"($id).csv")
 
     print $"Downloading from '($url)' to ($file)..."
