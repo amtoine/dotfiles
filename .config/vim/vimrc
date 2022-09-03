@@ -65,13 +65,17 @@ colorscheme slate
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$/
 
+
 " key bindings.
-nmap ,gt :!tig --all<CR>
-nmap ,gd :!TIGRC_USER="$HOME/.config/tig/.dotfiles" GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" tig --all<CR>
-nmap ,gl :!lazygit<CR>
-nmap ,so :source ~/.config/vim/vimrc<CR>
-nmap ,cl :w<CR>:!latexmk -C; latexmk -shell-escape -pdf main.tex
-nmap ,nh :nohlsearch<CR>
-nmap ,, :!
-nmap ,W :w !sudo tee %
-nmap ,e :Ex<CR>
+let mapleader = " "
+set timeoutlen=500
+
+nmap <leader>gt :!tig --all<CR>
+nmap <leader>gd :!TIGRC_USER="$HOME/.config/tig/.dotfiles" GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" tig --all<CR>
+nmap <leader>gl :!lazygit<CR>
+nmap <leader>so :source ~/.config/vim/vimrc<CR>
+nmap <leader>cl :w<CR>:!latexmk -C; latexmk -shell-escape -pdf main.tex
+map  <leader>h :noh<CR>
+nmap <leader><leader> :!
+nmap <leader>W :w !sudo tee %
+nmap <leader>e :Ex<CR>
