@@ -65,5 +65,69 @@ let-env NU_PLUGIN_DIRS = [
     ($nu.config-path | path dirname | path join 'plugins')
 ]
 
+let-env XDG_DATA_HOME = $"($env.HOME)/.local/share"
+let-env XDG_CONFIG_HOME = $"($env.HOME)/.config"
+let-env XDG_STATE_HOME = $"($env.HOME)/.local/state"
+let-env XDG_CACHE_HOME = $"($env.HOME)/.cache"
+
+# move all moveable config to the right location, outside $HOME.
+let-env HISTFILE = $"($env.XDG_STATE_HOME)/bash/history"
+let-env CARGO_HOME = $"($env.XDG_DATA_HOME)/cargo"
+let-env DOOMDIR = $"($env.XDG_CONFIG_HOME)/doom"
+let-env GNUPGHOME = $"($env.XDG_DATA_HOME)/gnupg"
+let-env PASSWORD_STORE_DIR = $"($env.XDG_DATA_HOME)/pass"
+let-env GOPATH = $"($env.XDG_DATA_HOME)/go"
+let-env GRIPHOME = $"($env.XDG_CONFIG_HOME)/grip"
+let-env GTK2_RC_FILES = $"($env.XDG_CONFIG_HOME)/gtk-2.0/gtkrc"
+let-env JUPYTER_CONFIG_DIR = $"($env.XDG_CONFIG_HOME)/jupyter"
+let-env LESSHISTFILE = $"($env.XDG_CACHE_HOME)/less/history"
+let-env TERMINFO = $"($env.XDG_DATA_HOME)/terminfo"
+let-env TERMINFO_DIRS = $"($env.XDG_DATA_HOME)/terminfo:/usr/share/terminfo"
+let-env NODE_REPL_HISTORY = $"($env.XDG_DATA_HOME)/node_repl_history"
+let-env NPM_CONFIG_USERCONFIG = $"($env.XDG_CONFIG_HOME)/npm/npmrc"
+let-env _JAVA_OPTIONS = $"-Djava.util.prefs.userRoot=($env.XDG_CONFIG_HOME)/java"
+let-env PYTHONSTARTUP = $"($env.XDG_CONFIG_HOME)/python/pythonrc"
+let-env SQLITE_HISTORY = $"($env.XDG_CACHE_HOME)/sqlite_history"
+let-env XINITRC = $"($env.XDG_CONFIG_HOME)/X11/xinitrc"
+let-env ZDOTDIR = $"($env.XDG_CONFIG_HOME)/zsh"
+let-env _Z_DATA = $"($env.XDG_DATA_HOME)/z"
+let-env CABAL_CONFIG = $"($env.XDG_CONFIG_HOME)/cabal/config"
+let-env CABAL_DIR = $"($env.XDG_DATA_HOME)/cabal"
+let-env KERAS_HOME = $"($env.XDG_STATE_HOME)/keras"
+let-env EMACS_HOME = $"($env.HOME)/.emacs.d"
+let-env MUJOCO_BIN = $"($env.HOME)/.mujoco/mujoco210/bin"
+let-env VIMINIT = 'let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+
+# changes the editor in the terminal, to edit long commands.
+let-env EDITOR = 'vim'
+let-env VISAL = 'vim'
+
+### SET MANPAGER
+### Uncomment only one of these!
+# make "less" man pages prettier
+#let-env LESS_TERMCAP_mb = $(tput bold; tput setaf 2)  # green
+#let-env LESS_TERMCAP_md = $(tput bold; tput setaf 2)  # green
+#let-env LESS_TERMCAP_so = $(tput bold; tput rev; tput setaf 3)  # yellow
+#let-env LESS_TERMCAP_se = $(tput smul; tput sgr0)
+#let-env LESS_TERMCAP_us = $(tput bold; tput bold; tput setaf 1)  # red
+#let-env LESS_TERMCAP_me = $(tput sgr0)
+### "bat" as manpager
+let-env MANPAGER = "sh -c 'col -bx | bat -l man -p'"
+### "vim" as manpager
+# export MANPAGER = '/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
+### "nvim" as manpager
+# export MANPAGER = "nvim -c 'set ft=man' -"
+
+# activates virtualenvwrapper to manage python virtual environments.
+let-env WORKON_HOME = $"($env.XDG_DATA_HOME)/virtualenvs"
+
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
+let-env PATH = ($env.PATH | split row (char esep) |
+    prepend $"($env.HOME)/.local/bin" |
+    prepend $"($env.EMACS_HOME)/bin" |
+    prepend $"($env.CARGO_HOME)/bin"
+)
+let-env LD_LIBRARY_PATH = ($env.LD_LIBRARY_PATH | split row (char esep) |
+    prepend $"($env.MUJOCO_BIN)"
+)
