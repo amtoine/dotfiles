@@ -77,3 +77,43 @@ def-env repo [] {
         ^git --no-pager log --graph --all --oneline --decorate --simplify-by-decoration -n 10
     }
 }
+
+
+def-env vcfg [] {
+    # jump to any config file with vim
+    #
+    # the function will:
+    #   - (1) do nothing and abort when selecting no config file.
+    #   - (2) jump to the selected file and start it in a vim buffer
+    #
+    # dependencies:
+    #   - vim
+    #   - fzf
+    #
+    let choice = (
+        cfg lf ~ |
+        fzf |
+        str trim
+    )
+
+    if ($choice | empty?) {
+        print "User choose to exit..."
+    } else {
+        vim $choice
+    }
+}
+
+
+def "nu-complete help categories" [] {
+    help commands | get category | uniq
+}
+
+
+# credit to @maximum
+# https://discord.com/channels/601130461678272522/615253963645911060/1015477201359093851
+def hc [category?: string@"nu-complete help categories"] {
+    help commands |
+        select name category usage |
+        move usage --after name |
+        where category =~ $category
+}
