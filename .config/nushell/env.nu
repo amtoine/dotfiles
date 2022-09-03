@@ -7,7 +7,13 @@ def create_left_prompt [] {
         $"(ansi green_bold)($env.PWD)"
     }
 
-    $path_segment
+    let branch = (do -i { git branch --show-current } | str trim)
+
+    if $branch == '' {
+        $path_segment
+    } else {
+        $path_segment + $" (ansi reset)\((ansi yellow_bold)($branch)(ansi reset)\)"
+    }
 }
 
 def create_right_prompt [] {
