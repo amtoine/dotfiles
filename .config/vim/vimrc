@@ -57,6 +57,8 @@ set list
 
 set clipboard=unnamedplus
 
+colorscheme slate
+
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$/
 
