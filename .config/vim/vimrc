@@ -79,3 +79,7 @@ map  <leader>h :noh<CR>
 nmap <leader><leader> :!
 nmap <leader>W :w !sudo tee %
 nmap <leader>e :Ex<CR>
+
+map  <leader>r :call ToggleLineNumber()<CR>
+map  <leader>vd :call ToggleThemeMode('dark')<CR>
+map  <leader>va :call ToggleThemeMode('')<CR>
