@@ -21,7 +21,7 @@ def create_right_prompt [] {
         (date now | date format '%m/%d/%Y %r')
     ] | str collect)
 
-    $time_segment
+    #$time_segment
 }
 
 
