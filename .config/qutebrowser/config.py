@@ -13,6 +13,13 @@
 ALACRITTY = 0
 ST = 1
 
+CSS_COMMAND = "set content.user_stylesheets"
+CSS_PATH = "~/ghq/github.com/alphapapa/solarized-everything-css/css"
+
+DEFAULT_PAGE = "file:///home/ants/.config/www/html/homepage.html"
+
+FILEPICKER = "ranger"
+
 ## This is here so configs done via the GUI are still loaded.
 ## Remove it to not load settings done via the GUI.
 config.load_autoconfig(True)
@@ -1209,9 +1216,7 @@ else:
     terminal = "alacritty"
     flags = ["--class", "qutebrowser-filepicker,qutebrowser-filepicker"]
 
-filepicker = "ranger"
-
-filepicker_cmd = [terminal, *flags, "-e", filepicker]
+filepicker_cmd = [terminal, *flags, "-e", FILEPICKER]
 
 ## Command (and arguments) to use for selecting a single folder in forms.
 ## The command should write the selected folder path to the specified
@@ -2055,7 +2060,7 @@ c.fileselect.single_file.command = filepicker_cmd + ['--choosefile={}']
 ## Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
 ## for a blank page.
 ## Type: FuzzyUrl
-c.url.default_page = "file:///home/ants/.config/www/html/homepage.html"
+c.url.default_page = DEFAULT_PAGE
 
 ## URL segments where `:navigate increment/decrement` will search for a
 ## number.
@@ -2096,7 +2101,7 @@ c.url.default_page = "file:///home/ants/.config/www/html/homepage.html"
 
 ## Page(s) to open at the start.
 ## Type: List of FuzzyUrl, or FuzzyUrl
-c.url.start_pages = ["file:///home/ants/.config/www/html/homepage.html"]
+c.url.start_pages = [DEFAULT_PAGE]
 
 ## URL parameters to strip with `:yank url`.
 ## Type: List of String
@@ -2328,10 +2333,8 @@ c.url.start_pages = ["file:///home/ants/.config/www/html/homepage.html"]
 # config.bind('{{', 'navigate prev -t')
 # config.bind('}}', 'navigate next -t')
 
-config.bind(",cs", "config-source")
+config.bind(",so", "config-source")
 
-command = "set content.user_stylesheets"
-css_path = "~/ghq/github.com/alphapapa/solarized-everything-css/css"
 theme_bindings = {
     ",ap": "apprentice",
     ",dr": "darculized",
@@ -2341,8 +2344,8 @@ theme_bindings = {
     ",,": "",
 }
 for binding, theme in theme_bindings.items():
-    theme_path = f'{css_path}/{theme}/{theme}-all-sites.css' if theme else "\"\""
-    config.bind(binding, f'{command} {theme_path}')
+    theme_path = f'{CSS_PATH}/{theme}/{theme}-all-sites.css' if theme else "\"\""
+    config.bind(binding, f'{CSS_COMMAND} {theme_path}')
 
 config.bind(',M', 'hint links spawn mpv --ytdl-format="bestvideo[height<=480]+bestaudio[ext=m4a]" {hint-url}')
 config.bind(',P', 'hint links spawn mpv --ytdl-format="bestaudio[ext=m4a]" {hint-url} --no-video')
