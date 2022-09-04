@@ -130,6 +130,7 @@ def yt-dl-names [
         $url
         --get-filename
         --skip-download
+        --verbose
     ) |
     from csv --noheaders |
     rename playlist "playlist id" "playlist index" uploader title id |
