@@ -104,6 +104,44 @@ def-env vcfg [] {
 }
 
 
+def yt-dl-names [
+    --id (-i): string  # the id of the playlist
+    --channel (-c): string  # the id of the channel
+    --path (-p): string = .  # the path where to store to final `.csv` file
+    --all (-a)  # download all the playlists from the channel when raised
+] {
+    let format = '"%(playlist)s",%(playlist_id)s,%(playlist_index)s,"%(uploader)s","%(title)s",%(id)s'
+
+    let url = if $all {
+        $"https://www.youtube.com/channel/($channel)/playlists"
+      } else {
+        $"https://www.youtube.com/playlist?list=($id)"
+    }
+
+    if (ls | find $path | empty?) {
+        mkdir $path
+    }
+    let file = ($path | path join $"($id).csv")
+
+    print $"Downloading from '($url)' to ($file)..."
+
+    (youtube-dl
+        -o $format
+        $url
+        --get-filename
+        --skip-download
+        --verbose
+    ) |
+    from csv --noheaders |
+    rename playlist "playlist id" "playlist index" uploader title id |
+    insert url {
+        |it|
+        $'https://www.youtube.com/watch?v=($it.id)&list=($it."playlist id")'
+    } |
+    save $file
+}
+
+
 def "nu-complete help categories" [] {
     help commands | get category | uniq
 }
