@@ -61,6 +61,7 @@
   cmm     = commit -m
   cma     = commit --amend
   cme     = commit --allow-empty
+  cmn     = commit --no-verify
   sw      = switch
   swc     = switch -c
   co      = checkout
@@ -74,6 +75,9 @@
   cp      = cherry-pick
   rb      = rebase
   rbi     = rebase -i
+  rbc     = rebase --continue
+  rbs     = rebase --skip
+  rba     = rebase --abort
   mg      = merge
 
 ; to inspect the commit tree.
