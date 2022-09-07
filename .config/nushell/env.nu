@@ -1,20 +1,23 @@
 # Nushell Environment Config File
 
 def create_left_prompt [] {
+    let simplified_pwd = ($env.PWD | str replace $nu.home-path '~' -s)
+
     let path_segment = if (is-admin) {
-        $"(ansi red_bold)($env.PWD)"
+        $"(ansi red_bold)($simplified_pwd)"
     } else {
-        $"(ansi green_bold)($env.PWD)"
+        $"(ansi green_bold)($simplified_pwd)"
     }
 
     let branch = (do -i { git branch --show-current } | str trim)
 
-    if $branch == '' {
+    if ($branch == '') {
         $path_segment
     } else {
         $path_segment + $" (ansi reset)\((ansi yellow_bold)($branch)(ansi reset)\)"
     }
 }
+
 
 def create_right_prompt [] {
     let time_segment = ([
