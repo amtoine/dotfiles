@@ -106,3 +106,7 @@ oberon-obnc http://miasap.se/obnc/
 mostly-oberon https://rsdoiel.github.io/blog/2020/04/11/Mostly-Oberon.html
 oberon-oakwood-guidelines http://www.edm2.com/index.php/The_Oakwood_Guidelines_for_Oberon-2_Compiler_Developers
 ghN https://github.com/new
+llvm.org https://llvm.org/
+asm-syscalls https://www.tutorialspoint.com/assembly_programming/assembly_system_calls.htm
+llvm-opt https://www.llvm.org/docs/CommandGuide/opt.html#cmdoption-opt-help
+llvm-docs https://llvm.org/docs/index.html
