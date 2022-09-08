@@ -45,7 +45,7 @@ colorama                      0.4.5
 commonmark                    0.9.1
 contextlib2                   21.6.0
 crashtest                     0.4.0
-cryptography                  37.0.4
+cryptography                  38.0.0
 csvkit                        1.0.7
 Cython                        0.29.32
 dbfread                       2.0.7
@@ -168,7 +168,7 @@ pexpect                       4.8.0
 pickleshare                   0.7.5
 Pillow                        9.2.0
 pip                           22.2.2
-pipenv                        2022.8.24
+pipenv                        2022.9.4
 pipx                          1.1.0
 pkgconfig                     1.5.5
 pkginfo                       1.8.3
