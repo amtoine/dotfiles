@@ -42,7 +42,6 @@ breeze
 brightnessctl
 bspwm
 btop
-cabal-install
 calcurse
 caprine
 catimg
@@ -129,7 +128,6 @@ irony-mode
 jgmenu
 jq
 junnunkarim-wallpapers-git
-jupyter-notebook
 kitty
 kolourpaint
 ktorrent
@@ -301,7 +299,6 @@ spectrwm
 speech-dispatcher
 sshfs
 st-a2ns-git
-stack
 starship
 steam
 sudo

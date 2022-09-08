@@ -10,6 +10,7 @@ autopep8
 aws-cli
 base
 bashtop
+bc
 bison
 blueman
 bluez-plugins
@@ -18,7 +19,6 @@ breeze
 brightnessctl
 bspwm
 btop
-cabal-install
 calcurse
 caprine
 clipmenu
@@ -86,6 +86,7 @@ patch
 patchelf
 pavucontrol
 peco
+pkgconf
 polybar
 ponysay
 prettier
@@ -128,7 +129,6 @@ sl
 sox
 spectrwm
 sshfs
-stack
 starship
 steam
 swig

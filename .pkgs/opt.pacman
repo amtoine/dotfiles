@@ -2,11 +2,8 @@ ebook-tools
 ffmpeg4.4
 gcc-fortran
 gvfs
-jupyter-widgetsnbextension
-jupyter_console
 kio-extras
 mpdecimal
-pandoc
 python-dnspython
 python-httplib2
 python-markdown
