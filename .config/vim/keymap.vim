@@ -13,6 +13,10 @@ nmap <leader>e :Ex<CR>
 
 map  <leader>r :call ToggleLineNumber()<CR>
 map  <leader>vd :call ToggleThemeMode('dark')<CR>
+
 map  <leader>va :call ToggleThemeMode('')<CR>
 nmap <leader>f :FZF<CR>
 "nmap <leader>f :call fzf#run()<CR>
+
+nmap <C-d> <C-d>zz
+nmap <C-u> <C-u>zz
