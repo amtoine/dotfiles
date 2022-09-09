@@ -22,6 +22,7 @@ source $XDG_CONFIG_HOME/vim/plugins.vim
 source $XDG_CONFIG_HOME/vim/options.vim
 source $XDG_CONFIG_HOME/vim/functions.vim
 source $XDG_CONFIG_HOME/vim/keymap.vim
+source $XDG_CONFIG_HOME/vim/statusline.vim
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.config/vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
