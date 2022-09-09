@@ -83,6 +83,7 @@
 ; to inspect the commit tree.
   ga      = log --graph --all
   tr      = log --graph --all --oneline --decorate
+  trb     = log --graph       --oneline --decorate
   trd     = log --graph --all --decorate --color=always --pretty='%C(auto)%h %Cred -%ch- %C(auto)%d %s'
   trm     = log --graph --all --oneline --decorate --stat
   trs     = log --graph --all --oneline --decorate --simplify-by-decoration
