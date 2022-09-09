@@ -18,7 +18,14 @@ set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&viewdir,   'p')
 
 if !has('nvim') | set viminfofile=$XDG_STATE_HOME/vim/viminfo | endif
 
+source $XDG_CONFIG_HOME/vim/plugins.vim
 source $XDG_CONFIG_HOME/vim/options.vim
 source $XDG_CONFIG_HOME/vim/functions.vim
 source $XDG_CONFIG_HOME/vim/keymap.vim
-source $XDG_CONFIG_HOME/vim/plugins.vim
+source $XDG_CONFIG_HOME/vim/statusline.vim
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.config/vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif

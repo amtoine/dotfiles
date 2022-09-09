@@ -7,3 +7,5 @@ function fish_user_key_bindings
   bind -M default \cf peco_change_directory
   bind -M visual \cf peco_change_directory
 end
+
+fzf_key_bindings
