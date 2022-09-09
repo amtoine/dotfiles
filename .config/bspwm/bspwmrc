@@ -141,7 +141,7 @@ apply_rules () {
     # force emacs to tile as it does not by default.
     bspc rule -a Emacs state=tiled focus=on follow=on manage=on
     # send any chat client to the last workspace of the main monitor, without focus.
-    for app in "discord" "Caprine" "Slack" "Signal" "Thunderbird" "Gmail Desktop"; do
+    for app in "discord" "Caprine" "Slack" "Signal" "thunderbird" "Gmail Desktop"; do
         bspc rule -a "$app" desktop="^$NB_WORKSPACES_PER_MONITOR" state=tiled focus=off follow=off manage=on
     done
     for qute_floating in "filepicker" "ytdl-download"; do
