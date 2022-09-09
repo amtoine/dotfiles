@@ -17,3 +17,8 @@ function! ToggleThemeMode(style)
         AirlineTheme tomorrow
     en
 endfunction
+
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
