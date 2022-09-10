@@ -81,7 +81,7 @@
 
 set blame-view   = id:yes,color file-name:auto author:full date:default line-number:yes,interval=1 text
 set grep-view    = file-name:no line-number:yes,interval=1 text
-set main-view    = line-number:no,interval=5 id:no date:default author:full commit-title:yes,graph,refs,overflow=no
+set main-view    = line-number:no,interval=5 id:no date:no author:full commit-title:yes,graph,refs,overflow=no
 set reflog-view  = line-number:no,interval=5 id:yes date:no author:no commit-title:yes,refs,overflow=no
 set refs-view    = line-number:no id:no date:default author:full ref commit-title
 set stash-view   = line-number:no,interval=5 id:no date:default author:full commit-title
@@ -391,7 +391,7 @@ color default                        default default normal
 color cursor                         white   green   bold
 color status                         green   default
 color delimiter                      magenta default
-color date                           blue    default
+color date                           cyan    default
 color mode                           cyan    default
 color id                             magenta default
 color overflow                       red     default
@@ -419,7 +419,7 @@ color stat-unstaged                  magenta default
 color stat-untracked                 magenta default
 color help-group                     blue    default
 color help-action                    yellow  default
-color diff-stat                      blue    default
+color diff-stat                      cyan    default
 color diff-add-highlight             green   default standout
 color diff-del-highlight             red     default standout
 color palette-0                      magenta default
@@ -436,7 +436,7 @@ color palette-10                     green   default bold
 color palette-11                     default default bold
 color palette-12                     white   default bold
 color palette-13                     red     default bold
-color graph-commit                   blue    default
+color graph-commit                   cyan    default
 color search-result                  black   yellow
 
 # Mappings for colors read from git configuration.
