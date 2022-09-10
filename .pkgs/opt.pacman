@@ -2,7 +2,7 @@ ebook-tools 0.2.2-7
 ffmpeg4.4 4.4.2-3
 gcc-fortran 12.2.0-1
 gvfs 1.50.2-1
-kio-extras 22.08.0-1
+kio-extras 22.08.1-1
 mpdecimal 2.5.1-1
 python-dnspython 1:2.2.1-1
 python-httplib2 0.20.4-1
