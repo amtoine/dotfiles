@@ -1,14 +1,14 @@
-ebook-tools
-ffmpeg4.4
-gcc-fortran
-gvfs
-kio-extras
-mpdecimal
-python-dnspython
-python-httplib2
-python-markdown
-python-pyopenssl
-qt6-svg
-sndio
-unixodbc
-wireplumber
+ebook-tools 0.2.2-7
+ffmpeg4.4 4.4.2-3
+gcc-fortran 12.2.0-1
+gvfs 1.50.2-1
+kio-extras 22.08.0-1
+mpdecimal 2.5.1-1
+python-dnspython 1:2.2.1-1
+python-httplib2 0.20.4-1
+python-markdown 3.4.1-1
+python-pyopenssl 22.0.0-1
+qt6-svg 6.3.1-1
+sndio 1.9.0-1
+unixodbc 2.3.11-1
+wireplumber 0.4.11-4

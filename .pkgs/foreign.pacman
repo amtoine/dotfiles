@@ -1,90 +1,90 @@
-adwaita-dark
-alttab-git
-amtoine-applications-git
-amtoine-icons-git
-amtoine-scripts-git
-amtoine-sounds-git
-amtoine-wallpapers-git
-ani-cli
-archlinux-themes-sddm
-archlinux-tweak-tool-git
-arcolinux-logout
-arduino-mk
-aura
-catppuccin-grub-theme-git
-cava
-cbonsai
-clifm
-conky-lua-nv
-devour
-dive
-dmenu-a2ns-git
-dmenu-extended-git
-dmenufm
-dmscripts-git
-downgrade
-dwm-a2ns-git
-espeak
-gameshell
-ghq-bin
-gmail-desktop
-htim
-irony-mode
-junnunkarim-wallpapers-git
-latex-mk
-lazydocker
-lf
-mbsync-git
-mk_vpp
-mu
-mut-ex-wallpapers-git
-myman
-nerd-fonts-mononoki
-networkmanager-dmenu-git
-ngrok
-notion-app-enhanced
-nsxiv
-paru
-pass-import
-pass-tomb
-pfetch
-picom-animations-git
-pipes.sh
-pixterm
-pokemon-colorscripts-git
-python-pygmo
-python35
-python38
-qtile-extras-git
-quickemu
-reddio
-rofi-bluetooth-git
-rofi-file-browser-extended-git
-screencast
-sddm-archlinux-theme-git
-sddm-chinese-painting-theme
-sddm-sugar-candy-git
-sddm-sugar-dark
-sddm-theme-catppuccin-git
-sekiro-grub-theme-git
-sfm-a2ns-git
-slack-desktop
-slock-a2ns-git
-solarized-sddm-theme
-st-a2ns-git
-surf-a2ns-git
-syndrizzle-wallpapers-git
-tabbed-a2ns-git
-tdrop-git
-telegram-tg
-theprimeagen-anime-wallpapers-git
-toilet
-tomb
-topgrade
-ttf-symbola
-vieb-bin
-vim-clipboard
-xmenu
-xsnow
-yay
-yup
+adwaita-dark 1.0-1
+alttab-git v1.6.1.10.g2ed36d5-1
+amtoine-applications-git 1.0.r6.27242df-1
+amtoine-icons-git r21.7cc7ce2-1
+amtoine-scripts-git r28.72d52d7-1
+amtoine-sounds-git r4.5d10643-1
+amtoine-wallpapers-git r32.e5ba1e1-1
+ani-cli 2.1-1
+archlinux-themes-sddm 2.0-1
+archlinux-tweak-tool-git r880.e752a4a-1
+arcolinux-logout 22.05_27-1
+arduino-mk 1.6.0-1
+aura 3.2.9-1
+catppuccin-grub-theme-git r24.3f62cd4-3
+cava 0.8.2-4
+cbonsai 1.3.1-3
+clifm 1.7-1
+conky-lua-nv 1.12.2-2
+devour 12-2
+dive 0.10.0-1
+dmenu-a2ns-git 5.0.r.-1
+dmenu-extended-git r421.7ad25c0-1
+dmenufm 2.2-1
+dmscripts-git 1.0.r422.57284f8-1
+downgrade 11.2.1-1
+dwm-a2ns-git 5.0.r.-1
+espeak 1:1.48.04-4
+gameshell 0.4.1-1
+ghq-bin 1.3.0-1
+gmail-desktop 3.0.0.alpha.35-2
+htim 3.2.0-9
+irony-mode 1.5.0-1
+junnunkarim-wallpapers-git r4.9893042-1
+latex-mk 2.1-4
+lazydocker 0.18.1-1
+lf 27-1
+mbsync-git 1306.65cd442-1
+mk_vpp 3.07-2
+mu 1.8.9-1
+mut-ex-wallpapers-git r36.849587d-1
+myman 0.7.0-6
+nerd-fonts-mononoki 2.1.0-2
+networkmanager-dmenu-git r161.d1ae627-1
+ngrok 3.0.7-2
+notion-app-enhanced 2.0.18-1
+nsxiv 30-2
+paru 1.11.1-1
+pass-import 3.2-1
+pass-tomb 1.3-1
+pfetch 0.6.0-3
+picom-animations-git 1770_Next.208.g51b2135_2022.05.29-1
+pipes.sh 1.3.0-1
+pixterm 1.3.1-1
+pokemon-colorscripts-git r108.3dc0b2e-1
+python-pygmo 2.18.0-1
+python35 3.5.10-3
+python38 3.8.13-2
+qtile-extras-git r146.caee19b-1
+quickemu 4.1-2
+reddio 0.52-1
+rofi-bluetooth-git r20.893db1f-1
+rofi-file-browser-extended-git 1.3.1.r5.g44e5f0a-1
+screencast 1.6.0-1
+sddm-archlinux-theme-git 0.1.r13.ge2054bd-1
+sddm-chinese-painting-theme 0.1.2-1
+sddm-sugar-candy-git r53.2b72ef6-1
+sddm-sugar-dark 1.2-1
+sddm-theme-catppuccin-git r40.da92da8-1
+sekiro-grub-theme-git r1.39c5f4d-1
+sfm-a2ns-git 5.0.r.-1
+slack-desktop 4.28.171-1
+slock-a2ns-git 5.0.r132.e94a096-1
+solarized-sddm-theme 0.1.8-1
+st-a2ns-git 5.0.r.-1
+surf-a2ns-git 5.0.r.-1
+syndrizzle-wallpapers-git r17.aa9afbfec-1
+tabbed-a2ns-git 5.0.r.-1
+tdrop-git 0.5.0.r2.gbf50ede-1
+telegram-tg 0.19.0-3
+theprimeagen-anime-wallpapers-git r15.e9c77b0-1
+toilet 0.3.r155.3eb9d58-1
+tomb 2.9-3
+topgrade 9.0.1-1
+ttf-symbola 13.00-8
+vieb-bin 9.0.0-1
+vim-clipboard 9.0.0354-1
+xmenu 4.5.5-3
+xsnow 3.5.2-2
+yay 11.3.0-1
+yup 1.1.8-3
