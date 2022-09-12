@@ -134,3 +134,8 @@ let-env PATH = ($env.PATH | split row (char esep) |
 let-env LD_LIBRARY_PATH = ($env.LD_LIBRARY_PATH | split row (char esep) |
     prepend $"($env.MUJOCO_BIN)"
 )
+
+
+# disable or enable final configuration commands in ./scripts/final.nu
+#
+let-env USE_FINAL_CONFIG_HOOK = false
