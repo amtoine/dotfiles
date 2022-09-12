@@ -81,6 +81,8 @@ super + z; b
   amtoine-battery --print
 super + z; d; {c, h, p}
   dunstctl {close-all,history-pop,set-paused toggle}
+super + z; g
+  amtoine-gh-notify
 super + z; m; {b,m,n,,p,q,r,s,h,j,k,l}
   mocp {-r,-G,-f,-G,-x,-t repeat,-t shuffle,-k -10,-f,-r,-k +10}
 super + z; m; f
@@ -95,7 +97,7 @@ super + z; r; w; {f,s}
   {feh --bg-fill --randomize /usr/share/backgrounds/* --no-fehbg,amtoine-wfzf --dmenu}
 super + z; {s,t,w}
   amtoine-{sys-stats,time-date,weather-get}
-super + z; u
-  amtoine-update --update
+super + z; u; {c, u}
+  amtoine-update --{check,update}
 super + z; z; {m, w}
   $WM_TERM $WM_TERM_FLAGS {amtoine-macho,amtoine-wtldr}
