@@ -8,7 +8,6 @@ python-dnspython 1:2.2.1-1
 python-httplib2 0.20.4-1
 python-markdown 3.4.1-1
 python-pyopenssl 22.0.0-1
-qt6-svg 6.3.1-1
-sndio 1.9.0-1
+qt6-svg 6.3.2-1
 unixodbc 2.3.11-1
 wireplumber 0.4.11-4

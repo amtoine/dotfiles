@@ -13,7 +13,7 @@ aws-cli 1.25.71-1
 base 3-1
 bash-completion 2.11-2
 bashtop 0.9.25-1
-bat 0.22.0-1
+bat 0.22.1-1
 bc 1.07.1-4
 bemenu 0.6.10-1
 biber 1:2.17-2
@@ -45,7 +45,7 @@ ctags 1:5.9.20220828.0-1
 dialog 1:1.3_20220728-1
 dictd 1.13.1-2
 discord 0.0.19-1
-docker 1:20.10.17-1
+docker 1:20.10.18-1
 docker-compose 2.10.2-1
 dosfstools 4.2-2
 dstat 0.7.4-5
@@ -55,7 +55,7 @@ dust 0.8.3-1
 dwarffortress 0.47.05-2
 ed 1.18-1
 efibootmgr 18-1
-emacs 28.1-7
+emacs 28.2-1
 eog 42.3-1
 exa 0.10.1-6
 expac 10-5
@@ -171,7 +171,7 @@ python-mpi4py 3.1.3-2
 python-nose 1.3.7-14
 python-opengl 3.1.6-1
 python-pip 22.2.2-2
-python-pipenv 2022.9.4-1
+python-pipenv 2022.9.8-1
 python-pipx 1.1.0-1
 python-pylint 2.14.5-1
 python-pytest 7.1.3-1
@@ -218,7 +218,7 @@ screenkey 1.5-2
 scrot 1.7-1
 sddm 0.19.0-8
 sfml 2.5.1-2
-shellcheck 0.8.0-193
+shellcheck 0.8.0-196
 signal-desktop 5.58.0-1
 sl 5.05-3
 sox 14.4.2-7
@@ -252,7 +252,7 @@ tldr 3.1.0-2
 tmux 3.3_a-2
 tokei 12.1.2-1
 trayer 1.1.8-2
-tree 2.0.2-2
+tree 2.0.4-1
 ttf-iosevka-nerd 2.2.1-1
 udiskie 2.4.2-1
 ueberzug 18.1.9-4

@@ -128,7 +128,7 @@ nest-asyncio                  1.5.4
 netsnmp-python                1.0a1
 nose                          1.3.7
 nspektr                       0.4.0
-numpy                         1.23.2
+numpy                         1.23.3
 oauth2client                  4.1.3
 olefile                       0.46
 openpyxl                      3.0.10
@@ -137,7 +137,6 @@ packaging                     21.3
 pandocfilters                 1.5.0
 parsedatetime                 2.6
 parso                         0.8.3
-pass-import                   3.2
 path-and-address              2.0.1
 pathspec                      0.10.1
 pbr                           5.8.0
@@ -145,7 +144,7 @@ pexpect                       4.8.0
 pickleshare                   0.7.5
 Pillow                        9.2.0
 pip                           22.2.2
-pipenv                        2022.9.4
+pipenv                        2022.9.8
 pipx                          1.1.0
 pkgconfig                     1.5.5
 pkginfo                       1.8.3
@@ -202,7 +201,7 @@ PyYAML                        6.0
 pyzmq                         22.3.0
 qtconsole                     5.2.2
 qtile                         0.21.0
-qtile-extras                  0.1.dev146+gcaee19b
+qtile-extras                  0.1.dev151+g0df616c
 QtPy                          2.0.0
 qutebrowser                   2.5.2
 ranger-fm                     1.9.3
@@ -216,6 +215,7 @@ SecretStorage                 3.3.3
 Send2Trash                    1.8.0
 setproctitle                  1.3.1
 setuptools                    62.3.4
+setuptools-scm                7.0.5
 shellingham                   1.5.0
 shiboken2                     5.15.6
 shtab                         1.5.5
@@ -234,7 +234,7 @@ stack-data                    0.1.4
 stevedore                     3.5.0
 TBB                           0.2
 team                          1.0
-termcolor                     1.1.0
+termcolor                     2.0.0
 termdown                      1.18.0
 terminado                     0.12.1
 testpath                      0.5.0
@@ -266,6 +266,7 @@ virtualfish                   2.5.4
 wcwidth                       0.2.5
 webencodings                  0.5.1
 Werkzeug                      2.0.2
+wheel                         0.37.1
 widgetsnbextension            3.5.2
 wrapt                         1.14.1
 xcffib                        0.11.1

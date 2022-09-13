@@ -5,7 +5,7 @@ alsa-utils 1.2.7-1
 alttab-git v1.6.1.10.g2ed36d5-1
 amtoine-applications-git 1.0.r6.27242df-1
 amtoine-icons-git r21.7cc7ce2-1
-amtoine-scripts-git r28.72d52d7-1
+amtoine-scripts-git r32.7f1c5e6-1
 amtoine-sounds-git r4.5d10643-1
 amtoine-wallpapers-git r32.e5ba1e1-1
 ani-cli 2.1-1
@@ -26,7 +26,7 @@ aws-cli 1.25.71-1
 base 3-1
 bash-completion 2.11-2
 bashtop 0.9.25-1
-bat 0.22.0-1
+bat 0.22.1-1
 bc 1.07.1-4
 bemenu 0.6.10-1
 biber 1:2.17-2
@@ -46,7 +46,7 @@ calcurse 4.8.0-1
 caprine 2.56.1-2
 catimg 2.7.0-1
 catppuccin-grub-theme-git r24.3f62cd4-3
-cava 0.8.2-4
+cava 0.8.2-5
 cbonsai 1.3.1-3
 chafa 1.12.3-1
 clang 14.0.6-2
@@ -69,7 +69,7 @@ dmenu-a2ns-git 5.0.r.-1
 dmenu-extended-git r421.7ad25c0-1
 dmenufm 2.2-1
 dmscripts-git 1.0.r422.57284f8-1
-docker 1:20.10.17-1
+docker 1:20.10.18-1
 docker-compose 2.10.2-1
 dosfstools 4.2-2
 downgrade 11.2.1-1
@@ -81,7 +81,7 @@ dwarffortress 0.47.05-2
 dwm-a2ns-git 5.0.r.-1
 ed 1.18-1
 efibootmgr 18-1
-emacs 28.1-7
+emacs 28.2-1
 eog 42.3-1
 espeak 1:1.48.04-4
 exa 0.10.1-6
@@ -193,7 +193,6 @@ pacgraph 20110629-5
 pacman-contrib 1.7.1-1
 paru 1.11.1-1
 pass 1.7.4-3
-pass-import 3.2-1
 pass-tomb 1.3-1
 patch 2.7.6-8
 patchelf 0.15.0-1
@@ -225,7 +224,7 @@ python-mpi4py 3.1.3-2
 python-nose 1.3.7-14
 python-opengl 3.1.6-1
 python-pip 22.2.2-2
-python-pipenv 2022.9.4-1
+python-pipenv 2022.9.8-1
 python-pipx 1.1.0-1
 python-pygmo 2.18.0-1
 python-pylint 2.14.5-1
@@ -261,7 +260,7 @@ qt5-webview 5.15.6+kde+r0-1
 qt5-xmlpatterns 5.15.6+kde+r0-1
 qt5ct 1.5-2
 qtile 0.21.0-1
-qtile-extras-git r146.caee19b-1
+qtile-extras-git r151.0df616c-1
 quickemu 4.1-2
 qutebrowser 2.5.2-1
 ranger 1.9.3-4
@@ -269,7 +268,7 @@ read-edid 3.0.2-3
 reddio 0.52-1
 ripgrep 13.0.0-2
 rofi 1.7.5-1
-rofi-bluetooth-git r20.893db1f-1
+rofi-bluetooth-git r22.0c07719-1
 rofi-file-browser-extended-git 1.3.1.r5.g44e5f0a-1
 rogue 5.4.4-7
 rtorrent 0.9.8-3
@@ -288,7 +287,7 @@ sddm-theme-catppuccin-git r40.da92da8-1
 sekiro-grub-theme-git r1.39c5f4d-1
 sfm-a2ns-git 5.0.r.-1
 sfml 2.5.1-2
-shellcheck 0.8.0-193
+shellcheck 0.8.0-196
 signal-desktop 5.58.0-1
 sl 5.05-3
 slack-desktop 4.28.171-1
@@ -335,7 +334,7 @@ tokei 12.1.2-1
 tomb 2.9-3
 topgrade 9.0.1-1
 trayer 1.1.8-2
-tree 2.0.2-2
+tree 2.0.4-1
 ttf-iosevka-nerd 2.2.1-1
 ttf-symbola 13.00-8
 udiskie 2.4.2-1
