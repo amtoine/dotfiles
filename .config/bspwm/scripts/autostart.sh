@@ -262,3 +262,21 @@ if [ -n "$WM_USE_EMACS" ]; then
 else
   log_info "do not use emacs"
 fi
+
+
+if [ -n "$WM_PULL_GITHUB" ]; then
+    if does_command_exist amtoine-gh-notify; then
+        amtoine-gh-notify
+    else
+        log_warning "amtoine-gh-notify not found in \$PATH"
+    fi
+fi
+
+
+if [ -n "$WM_PULL_UPDATES" ]; then
+    if does_command_exist amtoine-update; then
+        amtoine-update --check
+    else
+        log_warning "amtoine-update not found in \$PATH"
+    fi
+fi
