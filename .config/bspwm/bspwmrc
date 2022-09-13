@@ -51,7 +51,7 @@ export WM_SET_WALLPAPERS="yes"
 export WM_USE_UNCLUTTER="yes"
 # export WM_USE_AUTOSAVER="yes"
 export WM_USE_MOC="yes"
-export WM_USE_EMACS="yes"
+# export WM_USE_EMACS="yes"
 
 export WM_PULL_GITHUB="yes"
 export WM_PULL_UPDATES="yes"
