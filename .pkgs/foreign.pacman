@@ -2,7 +2,7 @@ adwaita-dark 1.0-1
 alttab-git v1.6.1.10.g2ed36d5-1
 amtoine-applications-git 1.0.r6.27242df-1
 amtoine-icons-git r21.7cc7ce2-1
-amtoine-scripts-git r32.7f1c5e6-1
+amtoine-scripts-git r33.978e6c8-1
 amtoine-sounds-git r4.5d10643-1
 amtoine-wallpapers-git r32.e5ba1e1-1
 ani-cli 2.1-1
@@ -44,7 +44,7 @@ networkmanager-dmenu-git r161.d1ae627-1
 ngrok 3.0.7-2
 notion-app-enhanced 2.0.18-1
 nsxiv 30-2
-otf-monocraft 1.2-1
+otf-monocraft 1.3-1
 paru 1.11.1-1
 pass-tomb 1.3-1
 pfetch 0.6.0-3
@@ -55,7 +55,7 @@ pokemon-colorscripts-git r108.3dc0b2e-1
 python-pygmo 2.18.0-1
 python35 3.5.10-3
 python38 3.8.14-2
-qtile-extras-git r151.0df616c-1
+qtile-extras-git r152.a89e5b8-1
 quickemu 4.1-2
 reddio 0.52-1
 rofi-bluetooth-git r22.0c07719-1

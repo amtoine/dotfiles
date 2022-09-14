@@ -5,7 +5,7 @@ alsa-utils 1.2.7-1
 alttab-git v1.6.1.10.g2ed36d5-1
 amtoine-applications-git 1.0.r6.27242df-1
 amtoine-icons-git r21.7cc7ce2-1
-amtoine-scripts-git r32.7f1c5e6-1
+amtoine-scripts-git r33.978e6c8-1
 amtoine-sounds-git r4.5d10643-1
 amtoine-wallpapers-git r32.e5ba1e1-1
 ani-cli 2.1-1
@@ -52,7 +52,7 @@ chafa 1.12.3-1
 clang 14.0.6-2
 clifm 1.7-1
 clipmenu 6.2.0-2
-cmake 3.24.1-1
+cmake 3.24.2-1
 cmatrix 2.0-2
 cmus 2.10.0-2
 conky-lua-nv 1.12.2-2
@@ -146,7 +146,7 @@ lightdm-gtk-greeter 1:2.0.8-3
 lightdm-webkit-theme-litarvan 3.1.0-1
 lightdm-webkit2-greeter 2.2.5-6
 links 2.27-1
-linux 5.19.7.arch1-1
+linux 5.19.8.arch1-1
 linux-firmware 20220815.8413c63-1
 lolcat 100.0.1-1
 lxappearance 0.6.3-4
@@ -181,7 +181,7 @@ nitrogen 1.6.1-4
 nmap 7.92-1
 notion-app-enhanced 2.0.18-1
 noto-fonts-cjk 20220126-1
-npm 8.19.1-1
+npm 8.19.2-1
 nsxiv 30-2
 ntfs-3g 2022.5.17-1
 nushell 0.67.0-1
@@ -189,7 +189,7 @@ nyxt 3-1
 okular 22.08.1-1
 orca 42.3-1
 os-prober 1.80-1
-otf-monocraft 1.2-1
+otf-monocraft 1.3-1
 pacgraph 20110629-5
 pacman-contrib 1.7.1-1
 paru 1.11.1-1
@@ -261,7 +261,7 @@ qt5-webview 5.15.6+kde+r0-1
 qt5-xmlpatterns 5.15.6+kde+r0-1
 qt5ct 1.5-2
 qtile 0.21.0-1
-qtile-extras-git r151.0df616c-1
+qtile-extras-git r152.a89e5b8-1
 quickemu 4.1-2
 qutebrowser 2.5.2-1
 ranger 1.9.3-4
@@ -288,7 +288,7 @@ sddm-theme-catppuccin-git r40.da92da8-1
 sekiro-grub-theme-git r1.39c5f4d-1
 sfm-a2ns-git 5.0.r.-1
 sfml 2.5.1-2
-shellcheck 0.8.0-196
+shellcheck 0.8.0-197
 signal-desktop 5.58.0-1
 sl 5.05-3
 slack-desktop 4.28.171-1
@@ -336,7 +336,7 @@ tomb 2.9-3
 topgrade 9.0.1-1
 trayer 1.1.8-2
 tree 2.0.4-1
-ttf-iosevka-nerd 2.2.1-1
+ttf-iosevka-nerd 2.2.2-1
 ttf-symbola 13.00-8
 udiskie 2.4.2-1
 ueberzug 18.1.9-4
@@ -350,7 +350,7 @@ vifm 0.12-1
 vim-clipboard 9.0.0354-1
 vimb 3.6.0-2
 virtualbox 6.1.38-1
-virtualbox-host-modules-arch 6.1.38-3
+virtualbox-host-modules-arch 6.1.38-4
 viu 1.4.0-2
 vnstat 2.9-1
 volumeicon 0.5.1-5
