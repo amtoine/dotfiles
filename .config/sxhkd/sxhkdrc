@@ -87,6 +87,8 @@ super + z; m; {b,m,n,,p,q,r,s,h,j,k,l}
   mocp {-r,-G,-f,-G,-x,-t repeat,-t shuffle,-k -10,-f,-r,-k +10}
 super + z; m; f
   amtoine-mocp --follow
+super + z; n
+  $WM_TERM $WM_TERM_FLAGS ping google.com
 super + z; p; {b,t}
   PICOM_EXTRA_FLAGS="--experimental-backends --animations" amtoine-pcm --{blur,toggle} --notify
 super + z; p; d; f
