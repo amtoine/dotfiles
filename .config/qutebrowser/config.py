@@ -9,6 +9,7 @@
 ## Documentation:
 ##   qute://help/configuring.html
 ##   qute://help/settings.html
+import os
 
 ALACRITTY = 0
 ST = 1
@@ -16,7 +17,8 @@ ST = 1
 CSS_COMMAND = "set content.user_stylesheets"
 CSS_PATH = "~/ghq/github.com/alphapapa/solarized-everything-css/css"
 
-DEFAULT_PAGE = "file:///home/ants/.config/www/html/homepage.html"
+USER = os.environ.get("USER")
+DEFAULT_PAGE = f"file:///home/{USER}/.config/www/html/homepage.html"
 
 FILEPICKER = "ranger"
 
