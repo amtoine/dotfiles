@@ -100,7 +100,7 @@ kubii https://www.kubii.fr/
 python-evdev https://python-evdev.readthedocs.io/en/latest/index.html
 python-rich https://rich.readthedocs.io/en/stable/index.html
 pynput https://pynput.readthedocs.io/en/latest/index.html
-obero-project http://www.projectoberon.com/
+oberon-project http://www.projectoberon.com/
 niklaus-wirth https://people.inf.ethz.ch/wirth/
 oberon-obnc http://miasap.se/obnc/
 mostly-oberon https://rsdoiel.github.io/blog/2020/04/11/Mostly-Oberon.html
@@ -117,3 +117,4 @@ yt-lib https://www.youtube.com/feed/library
 yt-hist https://www.youtube.com/feed/history
 timechef https://timechef.elior.com/
 obncc https://github.com/amtoine/obncc
+xdg-settings-default https://dev.to/haxnet/default-web-browser-in-arch-linux-11em
