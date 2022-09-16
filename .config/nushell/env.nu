@@ -139,3 +139,4 @@ let-env LD_LIBRARY_PATH = ($env.LD_LIBRARY_PATH | split row (char esep) |
 # disable or enable final configuration commands in ./scripts/final.nu
 #
 let-env USE_FINAL_CONFIG_HOOK = false
+let-env QT_QPA_PLATFORMTHEME = "qt5ct"

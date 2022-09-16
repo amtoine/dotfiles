@@ -155,6 +155,8 @@ def hc [category?: string@"nu-complete help categories"] {
         move usage --after name |
         where category =~ $category
 }
+
+
 # credit to @/dev/adrien#4649
 # https://discord.com/channels/601130461678272522/615253963645911060/1019056732841967647
 def-env up [nb: int = 1] {
@@ -179,5 +181,43 @@ def set-screen [side: string = "right"] {
         xrandr --output HDMI-2 --auto --left-of eDP-1
     } else {
         print "Side argument should be either \"right\" or \"left\"."
+    }
+}
+
+
+# Asks for an entry name in a password store and opens the store.
+#
+# Uses $env.PASSWORD_STORE_DIR as the store location, asks for
+# a passphrase with pinentry-gtk and copies the credentials to
+# the system clipboard..
+def pass-menu [
+    --path (-p): string = "/usr/share/rofi/themes/"  # the path to the themes (default to '/usr/share/rofi/themes/')
+    --theme (-t): string = "sidebar"  # the theme to apply (defaults to 'sidebar')
+    --list-themes (-l)  # list all available themes in --path
+] {
+    if ($list_themes) {
+        ls $path |
+            select name |
+            rename theme |
+            str replace $"^($path)" "" theme |
+            str replace ".rasi$" "" theme
+    } else {
+        let entry = (
+            ls $"($env.PASSWORD_STORE_DIR)/**/*" |
+            where type == file |
+            select name |
+            str replace $"^($env.PASSWORD_STORE_DIR)/" "" name |
+            str replace ".gpg$" "" name |
+            to csv |
+            rofi -config $"($path)($theme).rasi" -show -dmenu |
+            str trim
+        )
+
+        if not ($entry | empty?) {
+            pass show $entry -c
+            dunstify $entry "Copied to clipboard for 45 seconds."
+        } else {
+            print "User choose to exit..."
+        }
     }
 }
