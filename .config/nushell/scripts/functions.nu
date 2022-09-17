@@ -155,3 +155,29 @@ def hc [category?: string@"nu-complete help categories"] {
         move usage --after name |
         where category =~ $category
 }
+# credit to @/dev/adrien#4649
+# https://discord.com/channels/601130461678272522/615253963645911060/1019056732841967647
+def-env up [nb: int = 1] {
+    let path = (1..$nb | each {|_| ".."} | reduce {|it, acc| $acc + "/" + $it})
+    cd $path
+}
+
+
+# credit to @/dev/adrien#4649
+# https://discord.com/channels/601130461678272522/615253963645911060/1019056732841967647
+def-env mkcd [name: path] {
+    cd (mkdir $name -s | first)
+}
+
+
+# credit to @/dev/adrien#4649
+# https://discord.com/channels/601130461678272522/615253963645911060/1020549933792768060
+def set-screen [side: string = "right"] {
+    if $side == "right" {
+        xrandr --output HDMI-2 --auto --right-of eDP-1
+    } else if $side == "left" {
+        xrandr --output HDMI-2 --auto --left-of eDP-1
+    } else {
+        print "Side argument should be either \"right\" or \"left\"."
+    }
+}
