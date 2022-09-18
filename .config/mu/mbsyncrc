@@ -1,11 +1,7 @@
-# install the dependencies: mu, mbsync, emacs, mu4e
+# install the dependencies: mu, mbsync, emacs, mu
 #
-# add the keys and passwords to ~/.config/mu4e/:
-#   - ~/.config/mu4e/stevan.antoine@gmail.com.gpg
-#   - ~/.config/mu4e/antoineulk17@gmail.com.gpg
-#   - ~/.config/mu4e/a.stevan@instadeep.com.gpg
-#   - ~/.config/mu4e/antoine.stevan@student.isae-supaero.fr.gpg
-# or inside a single file to avoid entering several times the same passphrase: ~/.config/mu4e/tokens.gpg
+# add all the keys to your `pass` password store
+# using the `pass` command.
 #
 # commands to setup the different email addresses below
 #
@@ -14,7 +10,7 @@
 # mkdir -p ~/mail/gmail/antoineulk17
 # mkdir -p ~/mail/gmail/instadeep
 # mkdir -p ~/mail/isae/supaero
-# mbsync -a -c ~/.config/mu4e/mbsyncrc
+# mbsync -a -c ~/.config/mu/mbsyncrc
 # mu init --maildir=~/mail --my-address=stevan.antoine@gmail.com --my-address=antoineulk17@gmail.com --my-address=a.stevan@instadeep.com --my-address=antoine.stevan@student.isae-supaero.fr
 # mu index
 # ```
@@ -23,7 +19,7 @@
 IMAPAccount gmail-stevan.antoine
 Host imap.gmail.com
 User stevan.antoine@gmail.com
-PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/mu4e/tokens.gpg | grep stevan.antoine@gmail.com | awk -F: '{print $2}'"
+PassCmd "pass show admin/google/stevan.antoine/application-password"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -47,7 +43,7 @@ SyncState *
 IMAPAccount gmail-antoineulk17
 Host imap.gmail.com
 User antoineulk17@gmail.com
-PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/mu4e/tokens.gpg | grep antoineulk17@gmail.com | awk -F: '{print $2}'"
+PassCmd "pass show admin/google/antoineulk17/application-password"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -67,35 +63,11 @@ Create Both
 SyncState *
 
 
-# ============================================ INSTADEEP ACCOUNT ============================================
-IMAPAccount gmail-instadeep
-Host imap.gmail.com
-User a.stevan@instadeep.com
-PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/mu4e/tokens.gpg | grep a.stevan@instadeep.com | awk -F: '{print $2}'"
-SSLType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
-
-IMAPStore gmail-instadeep-remote
-Account gmail-instadeep
-
-MaildirStore gmail-instadeep-local
-Subfolders Verbatim
-Path ~/mail/gmail/instadeep/
-Inbox ~/mail/gmail/instadeep/inbox
-
-Channel gmail-instadeep
-Far :gmail-instadeep-remote:
-Near :gmail-instadeep-local:
-Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail" "[Gmail]/Trash"
-Create Both
-SyncState *
-
-
 # ============================================ SUPAERO ACCOUNT ============================================
 IMAPAccount isae-supaero
 Host email.isae.fr
 User a.stevan
-PassCmd "gpg2 --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/mu4e/tokens.gpg | grep antoine.stevan@student.isae-supaero.fr | awk -F: '{print $2}'"
+PassCmd "pass show admin/iris.isae-supaero/password"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
