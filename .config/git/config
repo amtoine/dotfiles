@@ -73,6 +73,12 @@
   brm     = branch -m
   brd     = branch -D
 
+; to stash changes
+  sh      = stash
+  shp     = stash pop
+  shl     = stash list
+  shd     = stash drop
+
 ; to move branches and commits around.
   cp      = cherry-pick
   rb      = rebase
