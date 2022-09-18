@@ -118,3 +118,7 @@ yt-hist https://www.youtube.com/feed/history
 timechef https://timechef.elior.com/
 obncc https://github.com/amtoine/obncc
 xdg-settings-default https://dev.to/haxnet/default-web-browser-in-arch-linux-11em
+lms-functional-programming https://lms.isae.fr/course/view.php?id=1255
+adn-functional-programming https://adn.isae-supaero.fr/course/view.php?id=790
+archinstall https://archinstall.readthedocs.io/index.html
+arch-device-encryption https://wiki.archlinux.org/title/Dm-crypt/Device_encryption#Cryptsetup_actions_specific_for_LUKS
