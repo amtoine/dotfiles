@@ -88,7 +88,7 @@ super + z; m; {b,m,n,,p,q,r,s,h,j,k,l}
 super + z; m; f
   amtoine-mocp --follow
 super + z; n
-  $WM_TERM $WM_TERM_FLAGS ping google.com
+  $WM_TERM $WM_TERM_FLAGS bash -c "nmcli d | grep -w 'connected' | sed 's/\s\+/ /g'| cut -d' ' -f4; echo -e '\n\n'; ping google.com"
 super + z; p; {b,t}
   PICOM_EXTRA_FLAGS="--experimental-backends --animations" amtoine-pcm --{blur,toggle} --notify
 super + z; p; d; f
