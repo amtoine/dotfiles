@@ -28,3 +28,5 @@ set smartcase
 set showcmd
 set showmode
 set showmatch
+
+set shell=/usr/bin/nu
