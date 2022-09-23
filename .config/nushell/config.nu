@@ -5,6 +5,7 @@ use themes.nu
 use hooks.nu *
 use menus.nu *
 use keybindings.nu *
+use job.nu
 
 
 # The default config record. This is where much of your global configuration is setup.
