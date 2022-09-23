@@ -5,7 +5,6 @@ use themes.nu
 use hooks.nu *
 use menus.nu *
 use keybindings.nu *
-use job.nu
 
 
 # The default config record. This is where much of your global configuration is setup.
@@ -50,5 +49,6 @@ let-env config = {
 
 
 source aliases.nu
-source functions.nu
+use functions.nu *
+use job.nu
 source final.nu

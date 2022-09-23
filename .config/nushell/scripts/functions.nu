@@ -1,4 +1,4 @@
-def clip [] {
+export def clip [] {
     # put the end of a pipe into the clipboard.
     #
     # the function is cross-platform and will work on windows.
@@ -20,7 +20,7 @@ def clip [] {
 }
 
 
-def-env repo [] {
+export def-env repo [] {
     # jump to any repo registered with ghq.
     #
     # the function will:
@@ -79,7 +79,7 @@ def-env repo [] {
 }
 
 
-def-env vcfg [] {
+export def-env vcfg [] {
     # jump to any config file with vim
     #
     # the function will:
@@ -104,7 +104,7 @@ def-env vcfg [] {
 }
 
 
-def yt-dl-names [
+export def yt-dl-names [
     --id (-i): string  # the id of the playlist
     --channel (-c): string  # the id of the channel
     --path (-p): string = .  # the path where to store to final `.csv` file
@@ -142,14 +142,14 @@ def yt-dl-names [
 }
 
 
-def "nu-complete help categories" [] {
+export def "nu-complete help categories" [] {
     help commands | get category | uniq
 }
 
 
 # credit to @maximum
 # https://discord.com/channels/601130461678272522/615253963645911060/1015477201359093851
-def hc [category?: string@"nu-complete help categories"] {
+export def hc [category?: string@"nu-complete help categories"] {
     help commands |
         select name category usage |
         move usage --after name |
@@ -159,7 +159,7 @@ def hc [category?: string@"nu-complete help categories"] {
 
 # credit to @/dev/adrien#4649
 # https://discord.com/channels/601130461678272522/615253963645911060/1019056732841967647
-def-env up [nb: int = 1] {
+export def-env up [nb: int = 1] {
     let path = (1..$nb | each {|_| ".."} | reduce {|it, acc| $acc + "/" + $it})
     cd $path
 }
@@ -167,14 +167,14 @@ def-env up [nb: int = 1] {
 
 # credit to @/dev/adrien#4649
 # https://discord.com/channels/601130461678272522/615253963645911060/1019056732841967647
-def-env mkcd [name: path] {
+export def-env mkcd [name: path] {
     cd (mkdir $name -s | first)
 }
 
 
 # credit to @/dev/adrien#4649
 # https://discord.com/channels/601130461678272522/615253963645911060/1020549933792768060
-def set-screen [side: string = "right"] {
+export def set-screen [side: string = "right"] {
     if $side == "right" {
         xrandr --output HDMI-2 --auto --right-of eDP-1
     } else if $side == "left" {
@@ -190,7 +190,7 @@ def set-screen [side: string = "right"] {
 # Uses $env.PASSWORD_STORE_DIR as the store location, asks for
 # a passphrase with pinentry-gtk and copies the credentials to
 # the system clipboard..
-def pass-menu [
+export def pass-menu [
     --path (-p): string = "/usr/share/rofi/themes/"  # the path to the themes (default to '/usr/share/rofi/themes/')
     --theme (-t): string = "sidebar"  # the theme to apply (defaults to 'sidebar')
     --list-themes (-l)  # list all available themes in --path
@@ -225,7 +225,7 @@ def pass-menu [
 
 # credit to @jon
 # https://discord.com/channels/601130461678272522/615253963645911060/1022699054452461568
-def show_banner [] {
+export def show_banner [] {
     let ellie = [
         "     __  ,"
         " .--()°'.'"
