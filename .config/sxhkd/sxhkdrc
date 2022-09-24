@@ -48,12 +48,12 @@ super + Return
 super + {_,shift,alt} + @space
   rofi -show {drun,run,window}
 super + p
-  passmenu -l 10 -bw 5 -c -fn "mononoki Nerd Font-20" 1> /tmp/passmenu.msg; \
+  passmenu -l 10 -bw 5 -fn "mononoki Nerd Font-20" 1> /tmp/passmenu.msg; \
   [ -s /tmp/passmenu.msg ] && { dunstify "$(cat /tmp/passmenu.msg)"; rm /tmp/passmenu.msg; }
 super + Escape
   pkill -USR1 -x sxhkd
 super + shift + q
-  dm-logout
+  dm-logout -fn "mononoki Nerd Font-20"
 
 # dmenu-related bindings.
 super + d; d
