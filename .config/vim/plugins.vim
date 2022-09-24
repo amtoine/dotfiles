@@ -4,6 +4,7 @@ call plug#begin()
     Plug 'dense-analysis/ale'
     Plug 'preservim/nerdtree'
     Plug 'rakr/vim-one'
+    Plug 'chrisbra/Colorizer'
 call plug#end()
 
 function! s:build_quickfix_list(lines)
