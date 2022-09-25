@@ -91,7 +91,7 @@ export def-env vcfg [] {
     #   - fzf
     #
     let choice = (
-        cfg lf ~ |
+        ^git --git-dir ($env.HOME | path join ".dotfiles") --work-tree $env.HOME lf ~ |
         fzf |
         str trim
     )
