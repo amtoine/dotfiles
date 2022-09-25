@@ -76,6 +76,7 @@
 ; to stash changes
   sh      = stash
   shp     = stash pop
+  sha     = stash apply
   shl     = stash list
   shd     = stash drop
 
