@@ -207,6 +207,10 @@ package = "catppuccin-gtk-theme-frappe"
 version = "0.2.7-2"
 
 [[pkgs.pacman.all]]
+package = "cava"
+version = "0.8.2-5"
+
+[[pkgs.pacman.all]]
 package = "cdparanoia"
 version = "10.2-8"
 
@@ -893,6 +897,10 @@ version = "5.98.0-1"
 [[pkgs.pacman.all]]
 package = "kxmlgui"
 version = "5.98.0-1"
+
+[[pkgs.pacman.all]]
+package = "kyotocabinet"
+version = "1.2.79-1"
 
 [[pkgs.pacman.all]]
 package = "l-smash"
@@ -1747,6 +1755,10 @@ package = "lua"
 version = "5.4.4-2"
 
 [[pkgs.pacman.all]]
+package = "lua53"
+version = "5.3.6-1"
+
+[[pkgs.pacman.all]]
 package = "luajit"
 version = "2.1.0.beta3.r439.g633f265f-1"
 
@@ -1879,6 +1891,10 @@ package = "ndctl"
 version = "74-1"
 
 [[pkgs.pacman.all]]
+package = "neomutt"
+version = "20220429-1"
+
+[[pkgs.pacman.all]]
 package = "nerd-fonts-mononoki"
 version = "2.1.0-2"
 
@@ -1897,6 +1913,10 @@ version = "1.40.0-1"
 [[pkgs.pacman.all]]
 package = "nm-connection-editor"
 version = "1.28.0-1"
+
+[[pkgs.pacman.all]]
+package = "notmuch-runtime"
+version = "0.37-2"
 
 [[pkgs.pacman.all]]
 package = "noto-fonts"
@@ -2763,6 +2783,10 @@ package = "serd"
 version = "0.30.16-1"
 
 [[pkgs.pacman.all]]
+package = "sfsexp"
+version = "1.4.0-1"
+
+[[pkgs.pacman.all]]
 package = "shaderc"
 version = "2022.1-4"
 
@@ -2809,6 +2833,10 @@ version = "4.17.0-1"
 [[pkgs.pacman.all]]
 package = "snappy"
 version = "1.1.9-2"
+
+[[pkgs.pacman.all]]
+package = "sndio"
+version = "1.9.0-1"
 
 [[pkgs.pacman.all]]
 package = "solid"
@@ -3487,6 +3515,10 @@ package = "catppuccin-gtk-theme-frappe"
 version = "0.2.7-2"
 
 [[pkgs.pacman.explicit]]
+package = "cava"
+version = "0.8.2-5"
+
+[[pkgs.pacman.explicit]]
 package = "clang"
 version = "14.0.6-2"
 
@@ -3681,6 +3713,10 @@ version = "r36.849587d-1"
 [[pkgs.pacman.explicit]]
 package = "ncmpcpp"
 version = "0.9.2-8"
+
+[[pkgs.pacman.explicit]]
+package = "neomutt"
+version = "20220429-1"
 
 [[pkgs.pacman.explicit]]
 package = "nerd-fonts-mononoki"
@@ -4075,6 +4111,10 @@ package = "catppuccin-gtk-theme-frappe"
 version = "0.2.7-2"
 
 [[pkgs.pacman.foreign]]
+package = "cava"
+version = "0.8.2-5"
+
+[[pkgs.pacman.foreign]]
 package = "dmscripts-git"
 version = "1.0.r442.9b7cd8a-1"
 
@@ -4369,6 +4409,10 @@ version = "0.23.9-3"
 [[pkgs.pacman.native]]
 package = "ncmpcpp"
 version = "0.9.2-8"
+
+[[pkgs.pacman.native]]
+package = "neomutt"
+version = "20220429-1"
 
 [[pkgs.pacman.native]]
 package = "networkmanager"
