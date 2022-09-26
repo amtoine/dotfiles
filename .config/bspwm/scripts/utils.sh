@@ -64,6 +64,7 @@ does_command_exist () {
   command -v "$1" &> /dev/null
 }
 
+
 kill_if_running () {
   # Kill a program only if running.
   #
@@ -76,7 +77,7 @@ kill_if_running () {
 }
 
 
-NO_BEGINNER="$HOME/.local/share/bspwm/nobeginner"
+NO_BEGINNER="$XDG_STATE/bspwm/nobeginner"
 run_conky () {
   # Run all the conky needed by bspwm, only once.
   #
