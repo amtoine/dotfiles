@@ -13,7 +13,9 @@
 # License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
-source "$HOME/.config/bspwm/scripts/autostart.sh"
+XDG_CONFIG=${XDG_CONFIG_HOME:-$HOME/.config}
+
+source "$XDG_CONFIG/bspwm/scripts/autostart.sh"
 
 # some handy variables.
 NB_WORKSPACES_PER_MONITOR=3
@@ -22,7 +24,7 @@ BORDER_RADIUS=8
 BORDER_WIDTH=4
 WINDOW_GAP=4
 
-COLOR_RESOURCES="$XDG_CONFIG_HOME/X11/Xresources"
+COLOR_RESOURCES="$XDG_CONFIG/X11/Xresources"
 declare -A COLOR_MAP=(
 #+ BEGIN:palette
     [focused_border_color]="#00ff00"
@@ -33,12 +35,12 @@ declare -A COLOR_MAP=(
 #+ END:palette
 )
 
-AUTOSTART="$HOME/.config/bspwm/scripts/autostart.sh"
-SCRATCHPAD="$HOME/.config/bspwm/scripts/scratchpad.sh"
+AUTOSTART="$XDG_CONFIG/bspwm/scripts/autostart.sh"
+SCRATCHPAD="$XDG_CONFIG/bspwm/scripts/scratchpad.sh"
 export WM_STARTUP_SOUND="/usr/share/sounds/amtoine-sounds-git/startup.16.mp3"
-export WM_CONKY_HELP="$HOME/.config/conky/bspwm.conkyrc"
-export WM_CONKY_CLOCK="$HOME/.config/conky/vision/Z333-vision.conkyrc"
-export WM_POLYBAR="$HOME/.config/polybar/launch.sh"
+export WM_CONKY_HELP="$XDG_CONFIG/conky/bspwm.conkyrc"
+export WM_CONKY_CLOCK="$XDG_CONFIG/conky/vision/Z333-vision.conkyrc"
+export WM_POLYBAR="$XDG_CONFIG/polybar/launch.sh"
 export WM_POLYBAR_THEME="forest"
 export WM_LOCKER="$HOME/.local/bin/slock.sh"
 
@@ -62,8 +64,8 @@ export WM_PLAY_STARTUP_SOUND="yes"
 export WM_NOTIFY_AT_STARTUP="yes"
 
 # the configuration files.
-export WM_SXHKD_COMMON="$HOME/.config/sxhkd/sxhkdrc"
-export WM_SXHKD_BSPWM="$HOME/.config/bspwm/sxhkd/sxhkdrc"
+export WM_SXHKD_COMMON="$XDG_CONFIG/sxhkd/sxhkdrc"
+export WM_SXHKD_BSPWM="$XDG_CONFIG/bspwm/sxhkd/sxhkdrc"
 
 # the environment variables used by sxhkd.
 export WM_DMFONT="mononoki Nerd Font-20"
@@ -71,7 +73,7 @@ export WM_TERM="alacritty"
 export WM_TERM_FLAGS="-e"
 export WM_TERM_SHELL="nu"
 
-source "$HOME/.config/bspwm/scripts/utils.sh"
+source "$XDG_CONFIG/bspwm/scripts/utils.sh"
 
 
 # tool functions.
