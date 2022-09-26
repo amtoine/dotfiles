@@ -40,14 +40,10 @@ If you want more information about *bare* `git` repositories, you can check one 
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## 2. The software I use. [[toc](#table-of-content)]
-**A lot of things have been going on on my *GitHub* account recently, e.g. a lot of refactoring.**
-
 **COMING SOON**
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## 3. The install process. [[toc](#table-of-content)]
-**As stated in section 2, a lot of refactoring has been done on my whole *GitHub* account.**
-
 **COMING SOON**
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
