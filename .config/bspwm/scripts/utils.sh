@@ -39,3 +39,54 @@ log_info () {
 log_ok () {
     log_any "OK....." "$1" "$2"
 }
+
+
+notify_ok () {
+  [ -n "$WM_NOTIFY_AT_STARTUP" ] && dunstify -u low -t 10000 -- "$1"
+  log_ok "$1" "[scripts.autostart]"
+}
+
+
+notify_err () {
+  [ -n "$WM_NOTIFY_AT_STARTUP" ] && dunstify -u critical -t 10000 -- "$1"
+  log_err "$1" "[scripts.autostart]"
+}
+
+
+does_command_exist () {
+  # Check if a command exist on the system.
+  #
+  # Args:
+  #   $1: the name of the command.
+  #
+  # Returns:
+  #   code: the same error code, saying whether the command exists or not.
+  command -v "$1" &> /dev/null
+}
+
+kill_if_running () {
+  # Kill a program only if running.
+  #
+  # Args:
+  #   $1: the program to kill.
+  #
+  if pgrep -f "$1" 1> /dev/null; then
+    killall "$1"
+  fi
+}
+
+
+NO_BEGINNER="$HOME/.local/share/bspwm/nobeginner"
+run_conky () {
+  # Run all the conky needed by bspwm, only once.
+  #
+  # Now, there is a help conky at $CONKY_HELP and a clock at $CONKY_CLOCK.
+  #
+  if [ ! -f "$NO_BEGINNER" ]; then
+    conky --config "$WM_CONKY_HELP" --daemonize
+    conky --config "$WM_CONKY_CLOCK" --daemonize
+    mkdir -p "$(dirname "$NO_BEGINNER")"
+    touch "$NO_BEGINNER"
+  fi
+}
+

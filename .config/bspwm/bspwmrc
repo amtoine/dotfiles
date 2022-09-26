@@ -13,6 +13,8 @@
 # License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE 
 # Contributors: Stevan Antoine
 
+source "$HOME/.config/bspwm/scripts/autostart.sh"
+
 # some handy variables.
 NB_WORKSPACES_PER_MONITOR=3
 
@@ -207,9 +209,12 @@ log_info "configuration done!" "[bspwmrc]"
 
 apply_colors
 apply_rules
-bash "$AUTOSTART"
+
+autostart
 
 # bspwm has been completely started
 log_ok "bspwm has been fully loaded!"
 [ -n "$WM_NOTIFY_AT_STARTUP" ] && dunstify -u normal -t 10000 -- "bspwm has been fully loaded!"
 [ -n "$WM_PLAY_STARTUP_SOUND" ] && mpv --no-video "$WM_STARTUP_SOUND" &
+
+poststart
