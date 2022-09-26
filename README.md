@@ -191,6 +191,13 @@ In this section, some general ideas are given and the lists of the programs, scr
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## 3. The install process. [[toc](#table-of-content)]
+**As stated in section 2, a lot of refactoring has been done on my whole *GitHub* account.**
+
+**I keep the following section for those how really know what they are doing, but do not feel comfortable enough to leave it open by default.**
+
+<details> 
+  <summary>WORK IN PROGRESS</summary>
+
 One has two ways to install the configs of this repo, the [manual way](#31-manual-installation-deprecated-see-the-automatic-install-instead-toc) and the [automatic way](#33-install-script-toc).  
 One is encouraged to create a Virtual Machine, e.g. with `virtualbox`, clone the minimal arch installation to have backup machines, and then try out the config from there.
 
@@ -215,13 +222,6 @@ containing the command. Then issue `pacman -S <package>` or `yay -S <package>` t
 - use the automatic install process [below](#33-install-script-toc).
 
 ### 3.3. Install script. [[toc](#table-of-content)]
-**As stated in section 2, a lot of refactoring has been done on my whole *GitHub* account.**
-
-**I keep the following section for those how really know what they are doing, but do not feel comfortable enough to leave it open by default.**
-
-<details> 
-  <summary>WORK IN PROGRESS</summary>
-
 #### 3.3.1. DISCLAIMERS. [[toc](#table-of-content)]
 This is the first time I develop such a complicated and sometimes critical, e.g. when editing `x` or `bspwm` config files, file-modifying-and-removing-and-moving script.  
 It has only been tested a very few times on a fake home directory on my arch linux machine and on a raspberry pi running the `raspberry` distro (previously `raspbian`).
