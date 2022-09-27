@@ -59,9 +59,11 @@
   ap      = add -p
   aup     = add -up
   st      = status --short
+  sti     = status --short --ignored
   cm      = commit
   cmm     = commit -m
   cma     = commit --amend
+  cmane   = commit --amend --no-edit
   cme     = commit --allow-empty
   cmn     = commit --no-verify
   sw      = switch
@@ -141,6 +143,11 @@
   rmtv    = remote -v
   rmta    = remote add
   rmtsu   = remote set-url
+
+; worktree actions.
+  wa      = worktree add
+  wrm     = worktree remove
+  wls     = worktree list
 
 [pull]
   rebase = true
