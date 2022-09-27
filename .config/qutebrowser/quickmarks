@@ -1,6 +1,5 @@
 iris https://iris.isae.fr/acces-aux-ressources-de-calcul-de-l-isae-supaero
 dt dotfiles https://gitlab.com/dwt1/dotfiles
-amtoine dotfiles https://github.com/amtoine/dotfiles
 yt https://www.youtube.com/
 wl https://www.youtube.com/playlist?list=WL
 gh https://github.com/
@@ -137,3 +136,8 @@ vim-adventures https://vim-adventures.com/
 neomutt https://neomutt.org/
 eggnog https://madgarden.itch.io/eggnogg
 open-classroom https://openclassrooms.com/en/
+llvm-ir https://llvm.org/docs/LangRef.html
+hacktoberfest https://hacktoberfest.com/
+dotfiles https://github.com/amtoine/dotfiles
+magit https://magit.vc/
+rust-book https://doc.rust-lang.org/stable/book/
