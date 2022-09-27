@@ -30,3 +30,5 @@ set showmode
 set showmatch
 
 set shell=/usr/bin/nu
+
+set noswapfile
