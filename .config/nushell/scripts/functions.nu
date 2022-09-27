@@ -99,7 +99,7 @@ export def-env vcfg [] {
     if ($choice | empty?) {
         print "User choose to exit..."
     } else {
-        vim $choice
+        ^$env.EDITOR $choice
     }
 }
 
