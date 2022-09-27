@@ -45,7 +45,9 @@
 [delta]
   side-by-side = true
   line-numbers = true
+  file-style = cyan
   light = false
+  hunk-header-line-number-style = cyan
 
 [ghq "https://git.example.com/repos/"]
   vcs = git
