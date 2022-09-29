@@ -9,7 +9,7 @@ sudo pacman -S git nushell
 git clone --bare https://github.com/atxr/dotfiles-1 .dotfiles
 git clone https://github.com/amtoine/pkgbuilds
 alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-cfg --reset hard
+cfg reset --hard
 cfg config --local status.showUntrackedFiles no
 cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 
