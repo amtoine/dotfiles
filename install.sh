@@ -27,7 +27,7 @@ nu -c 'paru -S (open pkgs.toml | get pkgs.pacman.native.package)'
 git clone https://github.com/bakkeby/dmenu-flexipatch dmenu
 cp .config/dmenu-flexipatch/patches.h dmenu
 cd dmenu 
-make clean install
+sudo make clean install
 cd 
 sudo rm -r dmenu
 
