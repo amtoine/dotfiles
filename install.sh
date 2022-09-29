@@ -5,7 +5,7 @@ sudo pacman -S archlinux-keyring
 sudo pacman -Syu
 
 # Install tools for building dependencies
-sudo pacman -S git nushell
+sudo pacman -S git nushell cargo
 
 # Clone dotfiles
 git clone --bare https://github.com/atxr/dotfiles-1 .dotfiles
