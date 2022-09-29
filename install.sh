@@ -15,7 +15,7 @@ cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 
 # Build pkgbuilds
 cd pkgbuilds
-./install.sh paru x86_64/amtoine-scripts-git/ x86_64/amtoine-sounds-git/ x86_64/amtoine-wallpapers-git/ x86_64/amtoine-applications-git/ x86_64/amtoine-icons-git/
+./install.sh x86_64/paru x86_64/amtoine-scripts-git/ x86_64/amtoine-sounds-git/ x86_64/amtoine-wallpapers-git/ x86_64/amtoine-applications-git/ x86_64/amtoine-icons-git/
 cd
 sudo rm -r pkgbuilds
 
