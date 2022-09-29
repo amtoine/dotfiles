@@ -62,12 +62,12 @@
   aup     = add -up
   st      = status --short
   sti     = status --short --ignored
-  cm      = commit
-  cmm     = commit -m
-  cma     = commit --amend
-  cmane   = commit --amend --no-edit
-  cme     = commit --allow-empty
-  cmn     = commit --no-verify
+  cm      = commit --verbose
+  cmm     = commit --verbose -m
+  cma     = commit --verbose --amend
+  cmane   = commit --verbose --amend --no-edit
+  cme     = commit --verbose --allow-empty
+  cmn     = commit --verbose --no-verify
   sw      = switch
   swc     = switch -c
   co      = checkout
@@ -109,6 +109,7 @@
   lfsh    = !git ls-files | xargs ls -1 | sort -nrk5 | head -n  # show the n biggest tracked files.
   df      = diff
   dfh     = diff HEAD
+  dfs     = diff --stat
 
 ; interact with remote repos.
 ;   down stream;
