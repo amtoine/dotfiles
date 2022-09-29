@@ -5,15 +5,14 @@ sudo pacman -S archlinux-keyring
 sudo pacman -Syu
 
 # Install tools for building dependencies
-sudo pacman -S git nushell cargo
+sudo pacman -S git nushell cargo feh
 
 # Clone dotfiles
 git clone --bare https://github.com/atxr/dotfiles-1 .dotfiles
 git clone https://github.com/amtoine/pkgbuilds
-alias cfg='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-cfg reset --hard
-cfg config --local status.showUntrackedFiles no
-cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME reset --hard
+/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME config --local status.showUntrackedFiles no
+/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 
 # Build pkgbuilds
 cd pkgbuilds
