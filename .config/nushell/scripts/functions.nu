@@ -74,7 +74,7 @@ export def-env repo [] {
 
         # the current tree in compact form.
         print "\nLOG:"
-        ^git --no-pager log --graph --all --oneline --decorate --simplify-by-decoration -n 10
+        ^git --no-pager log --graph --branches --remotes --tags --oneline --decorate --simplify-by-decoration -n 10
     }
 }
 

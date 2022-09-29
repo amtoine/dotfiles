@@ -94,13 +94,14 @@
   mg      = merge
 
 ; to inspect the commit tree.
-  ga      = log --graph --all
-  tr      = log --graph --all --oneline --decorate
+  ga      = log --graph --branches --remotes --tags
+  tr      = log --graph --branches --remotes=origin --tags --oneline --decorate
+  tra     = log --graph --branches --remotes --tags --oneline --decorate
   trb     = log --graph       --oneline --decorate
-  trd     = log --graph --all --decorate --color=always --pretty='%C(auto)%h %Cred -%ch- %C(auto)%d %s'
-  trm     = log --graph --all --oneline --decorate --stat
-  trs     = log --graph --all --oneline --decorate --simplify-by-decoration
-  trl     = log --graph --all --oneline --decorate --branches --not --remotes=*
+  trd     = log --graph --branches --remotes --tags --decorate --color=always --pretty='%C(auto)%h %Cred -%ch- %C(auto)%d %s'
+  trm     = log --graph --branches --remotes --tags --oneline --decorate --stat
+  trs     = log --graph --branches --remotes --tags --oneline --decorate --simplify-by-decoration
+  trl     = log --graph --branches --remotes --tags --oneline --decorate --branches --not --remotes=*
 
 ; to inspect the tracked files.
   lf      = ls-files                                            # list tracked files.
