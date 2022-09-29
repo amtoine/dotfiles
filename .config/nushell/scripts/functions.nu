@@ -91,15 +91,16 @@ export def-env vcfg [] {
     #   - fzf
     #
     let choice = (
-        ^git --git-dir ($env.HOME | path join ".dotfiles") --work-tree $env.HOME lf ~ |
+        ^git --git-dir ($env.HOME | path join ".dotfiles") --work-tree $env.HOME lf --full-name ~ |
         fzf |
         str trim
     )
+    let path = ($env.HOME | path join $choice)
 
     if ($choice | empty?) {
         print "User choose to exit..."
     } else {
-        ^$env.EDITOR $choice
+        ^$env.EDITOR $path
     }
 }
 
