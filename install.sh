@@ -16,19 +16,19 @@ git clone https://github.com/amtoine/pkgbuilds
 
 # Build pkgbuilds
 cd pkgbuilds
-./install.sh x86_64/paru x86_64/amtoine-scripts-git/ x86_64/amtoine-sounds-git/ x86_64/amtoine-wallpapers-git/ x86_64/amtoine-applications-git/ x86_64/amtoine-icons-git/
+./install.sh x86_64/paru x86_64/amtoine-scripts-git/ x86_64/amtoine-sounds-git/ x86_64/amtoine-wallpapers-git/ x86_64/amtoine-applications-git/ x86_64/amtoine-icons-git/ x86_64/junnunkarim-wallpapers-git x86_64/mut-ex-wallpapers-git
 cd
 sudo rm -r pkgbuilds
 
 # Install dependencies
-nu -c 'paru -S (open pkgs.toml | get pkgs.pacman.native.package)'
+nu -c 'paru -S (open pkgs.toml | get pkgs.pacman.explicit.package | find --invert --regex "amtoine|wallpapers")'
 
 # Install dmenu-flexipatch
 git clone https://github.com/bakkeby/dmenu-flexipatch dmenu
 cp .config/dmenu-flexipatch/patches.h dmenu
-cd dmenu 
+cd dmenu
 sudo make clean install
-cd 
+cd
 sudo rm -r dmenu
 
 # Activate useful system
