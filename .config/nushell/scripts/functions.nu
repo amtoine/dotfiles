@@ -263,7 +263,7 @@ export def-env cfgw [
 ] {
     let choice = (
         git --git-dir ($env.HOME | path join $bare) --work-tree $env.HOME worktree list |
-        str collect "\n" |
+        str replace --all $"($env.HOME)" "~" |
         fzf --prompt "Please choose a worktree to jump to: " |
         str trim
     )
@@ -276,6 +276,7 @@ export def-env cfgw [
         lines |
         split column "  " |
         get column1 |
+        str replace --all "~" $"($env.HOME)" |
         to text
     }
     cd $path
