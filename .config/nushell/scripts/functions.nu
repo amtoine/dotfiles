@@ -239,3 +239,68 @@ export def show_banner [] {
     print $"(ansi green)($ellie.2)  (ansi light_blue) (ansi light_blue_bold)RAM (ansi reset)(ansi light_blue)($s.mem.used) / ($s.mem.total)(ansi reset)"
     print $"(ansi green)($ellie.3)  (ansi light_purple)ﮫ (ansi light_purple_bold)Uptime (ansi reset)(ansi light_purple)($s.host.uptime)(ansi reset)"
 }
+
+
+# jump to any worktree of your dotfiles with fzf
+#
+#  . for an introduction to what `git` *worktrees* are:
+#        https://youtu.be/2uEqYw-N8uE
+#
+#  . this will only work for dotfiles managed with a *bare*
+#    `git` repository, e.g. with `git` directory at `~/.dotfiles`
+#    and a working directory at `~`, i.e. my current setup.
+#
+#  . in the following, `cfg` is an alias for:
+#        git --git-dir ($env.HOME | path join ".dotfiles") --work-tree $env.HOME
+#
+#  . worktrees can be added with, for instance:
+#        let path = some/path/to/worktrees
+#        let branch = my_branch
+#        cfg worktree add $"(env.HOME)/($worktrees)/($branch)" $branch
+#
+#  . and then `cfgw --path some/path/to/worktrees` will let you pick
+#    one of the worktrees
+export def-env cfgw [
+    --path (-p): string = "worktrees"  # the path to the worktrees, relative to your `$env.HOME`
+    --debug (-d)
+] {
+    let worktrees_path = $"($env.HOME)/($path)"
+
+    let worktrees = (
+        ls $"($worktrees_path)/**/.git" |
+        get name |
+        str replace $"($worktrees_path)/" "" |
+        str replace "/.git" "" |
+        sort |
+        to text
+    )
+    let default = "this is the default"
+
+    let choice = (
+        [$default $worktrees] |
+        str collect "\n" |
+        fzf --prompt "Please choose a worktree to jump to: " |
+        str trim
+    )
+
+    # compute the directory to jump to.
+    let path = if ($choice | empty?) {
+        $env.PWD
+    } else {
+        if ($choice == $default) {
+            $env.HOME
+        } else {
+            $"($worktrees_path)/($choice)"
+        }
+    }
+    cd $path
+
+    if ($choice | empty?) {
+        print "User choose to exit..."
+    } else {
+        if ($debug) {
+            $"path: ($path)"
+        }
+    }
+
+}
