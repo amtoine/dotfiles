@@ -1,0 +1,50 @@
+## France
+Server = https://mirror.sysa.tech/archlinux/$repo/os/$arch
+## France
+Server = https://mirroir.labhouse.fr/arch/$repo/os/$arch
+## France
+Server = https://arch.yourlabs.org/$repo/os/$arch
+## France
+Server = https://archlinux.mailtunnel.eu/$repo/os/$arch
+## France
+Server = https://mirror.wormhole.eu/archlinux/$repo/os/$arch
+## France
+Server = https://mirror.thekinrar.fr/archlinux/$repo/os/$arch
+## France
+Server = https://mirror.ibakerserver.pt/Arch/$repo/os/$arch
+## France
+Server = https://mirrors.celianvdb.fr/archlinux/$repo/os/$arch
+## France
+Server = https://mirrors.eric.ovh/arch/$repo/os/$arch
+## France
+Server = https://mirror.theo546.fr/archlinux/$repo/os/$arch
+## France
+Server = https://mirrors.gandi.net/archlinux/$repo/os/$arch
+## France
+Server = https://mirror.cyberbits.eu/archlinux/$repo/os/$arch
+## France
+Server = http://mirrors.standaloneinstaller.com/archlinux/$repo/os/$arch
+## France
+Server = http://mir.archlinux.fr/$repo/os/$arch
+## France
+Server = http://archlinux.mailtunnel.eu/$repo/os/$arch
+## France
+Server = http://mirrors.gandi.net/archlinux/$repo/os/$arch
+## France
+Server = http://archlinux.datagr.am/$repo/os/$arch
+## France
+Server = http://mirroir.labhouse.fr/arch/$repo/os/$arch
+## France
+Server = http://archlinux.mirrors.ovh.net/archlinux/$repo/os/$arch
+## France
+Server = http://mirror.theo546.fr/archlinux/$repo/os/$arch
+## France
+Server = http://mirrors.celianvdb.fr/archlinux/$repo/os/$arch
+## France
+Server = http://mirror.cyberbits.eu/archlinux/$repo/os/$arch
+## France
+Server = http://ftp.u-strasbg.fr/linux/distributions/archlinux/$repo/os/$arch
+## France
+Server = http://arch.yourlabs.org/$repo/os/$arch
+## France
+Server = http://mirror.archlinux.ikoula.com/archlinux/$repo/os/$arch
