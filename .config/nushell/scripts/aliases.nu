@@ -1,8 +1,15 @@
+# git
 alias cfg = ^git --git-dir ($env.HOME | path join ".dotfiles") --work-tree $env.HOME
 alias lg = ^lazygit
-alias cb = ^cbonsai --infinite --live --base=1 --wait=2 --time=10
+
+# exit the shell
 alias ":q" = exit
 alias "q" = exit
+
+# be more verbose
 alias cp = cp --verbose
 alias rm = rm --verbose
 alias mv = mv --verbose
+
+# misc
+alias cb = ^cbonsai --infinite --live --base=1 --wait=2 --time=10
