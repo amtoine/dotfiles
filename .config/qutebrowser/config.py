@@ -1208,10 +1208,7 @@ config.load_autoconfig(True)
 ## Type: Bool
 # c.editor.remove_file = True
 
-if terminal == ALACRITTY:
-    terminal = "alacritty"
-    flags = ["--class", "qutebrowser-filepicker,qutebrowser-filepicker"]
-elif terminal == ST:
+if terminal == ST:
     terminal = "st"
     flags = ["-c", "qutebrowser-filepicker", "-n", "qutebrowser-filepicker"]
 else:
