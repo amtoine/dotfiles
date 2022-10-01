@@ -14,6 +14,8 @@ import os
 ALACRITTY = 0
 ST = 1
 
+terminal = ALACRITTY
+
 CSS_COMMAND = "set content.user_stylesheets"
 CSS_PATH = "~/ghq/github.com/alphapapa/solarized-everything-css/css"
 
@@ -1205,8 +1207,6 @@ config.load_autoconfig(True)
 ## Delete the temporary file upon closing the editor.
 ## Type: Bool
 # c.editor.remove_file = True
-
-terminal = ST
 
 if terminal == ALACRITTY:
     terminal = "alacritty"
