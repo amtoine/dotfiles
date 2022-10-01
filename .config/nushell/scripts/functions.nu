@@ -254,30 +254,15 @@ export def show_banner [] {
 #        git --git-dir ($env.HOME | path join ".dotfiles") --work-tree $env.HOME
 #
 #  . worktrees can be added with, for instance:
-#        let path = some/path/to/worktrees
-#        let branch = my_branch
-#        cfg worktree add $"(env.HOME)/($worktrees)/($branch)" $branch
+#        cfg worktree add some/path/to/worktree my_branch
 #
-#  . and then `cfgw --path some/path/to/worktrees` will let you pick
-#    one of the worktrees
+#  . and then `cfgw` will let you pick one of the worktrees
 export def-env cfgw [
-    --path (-p): string = "worktrees"  # the path to the worktrees, relative to your `$env.HOME`
+    --bare (-b): string = ".dotfiles"  # the path to the *bare* repository (defaults to ".dotfiles")
     --debug (-d)
 ] {
-    let worktrees_path = $"($env.HOME)/($path)"
-
-    let worktrees = (
-        ls $"($worktrees_path)/**/.git" |
-        get name |
-        str replace $"($worktrees_path)/" "" |
-        str replace "/.git" "" |
-        sort |
-        to text
-    )
-    let default = "this is the default"
-
     let choice = (
-        [$default $worktrees] |
+        git --git-dir ($env.HOME | path join $bare) --work-tree $env.HOME worktree list |
         str collect "\n" |
         fzf --prompt "Please choose a worktree to jump to: " |
         str trim
@@ -287,11 +272,11 @@ export def-env cfgw [
     let path = if ($choice | empty?) {
         $env.PWD
     } else {
-        if ($choice == $default) {
-            $env.HOME
-        } else {
-            $"($worktrees_path)/($choice)"
-        }
+        $choice |
+        lines |
+        split column "  " |
+        get column1 |
+        to text
     }
     cd $path
 
@@ -299,7 +284,7 @@ export def-env cfgw [
         print "User choose to exit..."
     } else {
         if ($debug) {
-            $"path: ($path)"
+            $"path: '($path)'"
         }
     }
 
