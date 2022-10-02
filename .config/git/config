@@ -39,7 +39,7 @@
   defaultBranch = main
 
 [core]
-  editor = vim
+  editor = helix
   pager = delta
 
 [delta]

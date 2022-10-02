@@ -89,14 +89,14 @@ export def-env repo [] {
 
 
 export def-env vcfg [] {
-    # jump to any config file with vim
+    # jump to any config file with $env.EDITOR
     #
     # the function will:
     #   - (1) do nothing and abort when selecting no config file.
-    #   - (2) jump to the selected file and start it in a vim buffer
+    #   - (2) jump to the selected file and start it in a buffer
     #
     # dependencies:
-    #   - vim
+    #   - $env.EDITOR
     #   - fzf
     #
     let choice = (

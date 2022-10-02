@@ -102,8 +102,8 @@ let-env MUJOCO_BIN = $"($env.HOME)/.mujoco/mujoco210/bin"
 let-env VIMINIT = 'let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
 # changes the editor in the terminal, to edit long commands.
-let-env EDITOR = 'vim'
-let-env VISAL = 'vim'
+let-env EDITOR = 'helix'
+let-env VISAL = 'helix'
 
 ### SET MANPAGER
 ### Uncomment only one of these!

@@ -67,9 +67,9 @@ URL_VIEW = 'urlview'
 VIEW_TEXT_CMD = "less"
 FZF = "fzf"
 
-LONG_MSG_CMD = "vim + -c 'startinsert' {file_path}"
-# LONG_MSG_CMD = "devour emacsclient -c -a 'emacs' {file_path}"
 EDITOR = os.environ.get("EDITOR", "vi")
+LONG_MSG_CMD = f"{EDITOR}" + " + -c 'startinsert' {file_path}"
+# LONG_MSG_CMD = "devour emacsclient -c -a 'emacs' {file_path}"
 
 # Specifies range of colors to use for drawing users with
 # different colors
