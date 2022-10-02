@@ -25,3 +25,5 @@ if [[ $(fgconsole 2> /dev/null) == 1 ]]; then
 else
   [[ -f ~/.bashrc ]] && . ~/.bashrc
 fi
+
+source /home/amtoine/.config/broot/launcher/bash/br
