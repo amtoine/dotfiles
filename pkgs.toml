@@ -683,6 +683,10 @@ package = "harfbuzz-icu"
 version = "5.2.0-1"
 
 [[pkgs.pacman.all]]
+package = "helix"
+version = "22.08.1-1"
+
+[[pkgs.pacman.all]]
 package = "hicolor-icon-theme"
 version = "0.17-2"
 
@@ -3991,6 +3995,10 @@ package = "gzip"
 version = "1.12-1"
 
 [[pkgs.pacman.explicit]]
+package = "helix"
+version = "22.08.1-1"
+
+[[pkgs.pacman.explicit]]
 package = "intel-media-driver"
 version = "22.4.4-2"
 
@@ -4797,6 +4805,10 @@ version = "1:0.3.58-1"
 [[pkgs.pacman.native]]
 package = "gzip"
 version = "1.12-1"
+
+[[pkgs.pacman.native]]
+package = "helix"
+version = "22.08.1-1"
 
 [[pkgs.pacman.native]]
 package = "intel-media-driver"
