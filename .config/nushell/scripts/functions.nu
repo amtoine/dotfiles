@@ -31,7 +31,16 @@ export def-env repo [] {
     #   - ghq
     #   - fzf
     #
-    let choice = (ghq list | fzf | str trim)
+    let choice = (
+        ghq list |
+        lines |
+        str replace ".com/" ": " |
+        sort --insensitive |
+        to text |
+        fzf |
+        str trim |
+        str replace ": " ".com/"
+    )
 
     # compute the directory to jump to.
     let path = if ($choice | empty?) {
