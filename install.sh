@@ -21,12 +21,12 @@ git clone https://github.com/amtoine/pkgbuilds /tmp/pkgbuilds
 nu -c 'paru -S (open pkgs.toml | get pkgs.pacman.explicit.package | find --invert --regex "amtoine|wallpapers")'
 
 # Install dmenu-flexipatch
-{
+(
     git clone https://github.com/bakkeby/dmenu-flexipatch /tmp/dmenu
     cp .config/dmenu-flexipatch/patches.h /tmp/dmenu
     cd /tmp/dmenu
     sudo make clean install
-}
+)
 
 # Activate useful system
 sudo systemctl enable sddm
