@@ -149,9 +149,9 @@
   rmtsu   = remote set-url
 
 ; worktree actions.
-  wa      = worktree add
-  wrm     = worktree remove
-  wls     = worktree list
+  wta     = worktree add
+  wtrm    = worktree remove
+  wtls    = worktree list
 
 [pull]
   rebase = true
