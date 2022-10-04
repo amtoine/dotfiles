@@ -3,6 +3,34 @@ theme = "dracula"
 [editor]
 line-number = "relative"
 mouse = false
+scrolloff	= 3
+middle-click-paste = false
+scroll-lines = 3
+shell = ["nu", "-c"]
+cursorline = false
+gutters	= ["diagnostics", "line-numbers"]
+auto-completion = true
+auto-format = false
+idle-timeout = 400
+completion-trigger-len = 2
+auto-info = true
+true-color = false
+rulers = []
+color-modes = false
+auto-pairs = true
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = [
+  "diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"
+]
+separator = "│"
+
+[editor.lsp]
+display-messages = false
+auto-signature-help = true
+display-signature-help-docs = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -10,4 +38,27 @@ normal = "block"
 select = "underline"
 
 [editor.file-picker]
-hidden = false
+hidden = true
+parents	= true
+ignore = true
+git-ignore = true
+git-global = true
+git-exclude	= true
+
+[editor.search]
+smart-case = true
+wrap-around = true
+
+[editor.whitespace]
+render = "all"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+tab = "→"
+newline = "⏎"
+tabpad = "·" # Tabs will look like "→···" (depending on tab width)
+
+[editor.indent-guides]
+render = true
+character = "│"
