@@ -15,7 +15,14 @@ git clone https://github.com/amtoine/pkgbuilds /tmp/pkgbuilds
 /usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 
 # Build pkgbuilds
-/tmp/pkgbuilds/install.sh x86_64/paru x86_64/amtoine-scripts-git/ x86_64/amtoine-sounds-git/ x86_64/amtoine-wallpapers-git/ x86_64/amtoine-applications-git/ x86_64/amtoine-icons-git/ x86_64/junnunkarim-wallpapers-git x86_64/mut-ex-wallpapers-git
+/tmp/pkgbuilds/install.sh x86_64/paru
+/tmp/pkgbuilds/install.sh x86_64/amtoine-scripts-git/
+/tmp/pkgbuilds/install.sh x86_64/amtoine-sounds-git/
+/tmp/pkgbuilds/install.sh x86_64/amtoine-wallpapers-git/
+/tmp/pkgbuilds/install.sh x86_64/amtoine-applications-git/
+/tmp/pkgbuilds/install.sh x86_64/amtoine-icons-git/
+/tmp/pkgbuilds/install.sh x86_64/junnunkarim-wallpapers-git
+/tmp/pkgbuilds/install.sh x86_64/mut-ex-wallpapers-git
 
 # Install dependencies
 nu -c 'paru -S (open pkgs.toml | get pkgs.pacman.explicit.package | find --invert --regex "amtoine|wallpapers")'
