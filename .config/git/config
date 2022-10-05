@@ -83,6 +83,7 @@
   sha     = stash apply
   shl     = stash list
   shd     = stash drop
+  shs     = stash show
 
 ; to move branches and commits around.
   cp      = cherry-pick
