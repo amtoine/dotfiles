@@ -60,5 +60,5 @@ newline = "⏎"
 tabpad = "·" # Tabs will look like "→···" (depending on tab width)
 
 [editor.indent-guides]
-render = true
+render = false
 character = "│"
