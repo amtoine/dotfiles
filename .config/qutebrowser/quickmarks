@@ -146,7 +146,7 @@ oryx https://configure.zsa.io/
 zsa https://www.zsa.io/planck/
 broot https://dystroy.org/broot/
 conventionalcommits https://www.conventionalcommits.org/en/v1.0.0/
-helix https://helix-editor.com/
+helix https://github.com/helix-editor/helix/wiki
 suckless https://suckless.org/
 ghpr https://github.com/pulls
 gho https://github.com/settings/organizations
