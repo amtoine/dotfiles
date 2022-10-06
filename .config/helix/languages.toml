@@ -1,0 +1,3 @@
+[[language]]
+name = "pascal"
+file-types = ["pas", "pp", "inc", "lpr", "lfm", "obn", "mod", "Mod"]
