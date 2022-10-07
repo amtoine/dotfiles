@@ -1,3 +1,9 @@
 [[language]]
-name = "pascal"
-file-types = ["pas", "pp", "inc", "lpr", "lfm", "obn", "mod", "Mod"]
+name = "oberon"
+scope = "source.oberon"
+injection-regex = "oberon"
+file-types = ["obn", "Mod", "mod"]
+roots = []
+comment-token = "(*"
+indent = { tab-width = 4, unit = "  " }
+grammar = "pascal"
