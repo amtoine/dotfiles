@@ -39,7 +39,7 @@
   defaultBranch = main
 
 [core]
-  editor = helix
+  editor = hx
   pager = delta
 
 [delta]

@@ -13,7 +13,6 @@ alias mv = mv --verbose
 
 # misc
 alias cb = ^cbonsai --infinite --live --base=1 --wait=2 --time=10
-alias hx = helix
 
 # credit to @azzamsa
 # https://discord.com/channels/601130461678272522/988303282931912704/1026019048254873651
