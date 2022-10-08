@@ -79,6 +79,8 @@ super + e; h
 # everything else that does not fit in any particular dedicated category.
 super + z; b
   amtoine-battery --print
+super + z; c; {w,b}
+  {networkmanager_dmenu -l 30 -bw 5 -i -fn "mononoki Nerd Font-20",rofi-bluetooth}
 super + z; d; {c, h, p}
   dunstctl {close-all,history-pop,set-paused toggle}
 super + z; g
