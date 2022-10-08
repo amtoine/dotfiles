@@ -2123,6 +2123,10 @@ package = "networkmanager"
 version = "1.40.0-1"
 
 [[pkgs.pacman.all]]
+package = "networkmanager-dmenu-git"
+version = "r163.e980256-1"
+
+[[pkgs.pacman.all]]
 package = "nm-connection-editor"
 version = "1.28.0-1"
 
@@ -3135,6 +3139,10 @@ package = "startup-notification"
 version = "0.12-7"
 
 [[pkgs.pacman.all]]
+package = "strace"
+version = "5.19-1"
+
+[[pkgs.pacman.all]]
 package = "sudo"
 version = "1.9.11.p3-1"
 
@@ -4111,6 +4119,10 @@ package = "networkmanager"
 version = "1.40.0-1"
 
 [[pkgs.pacman.explicit]]
+package = "networkmanager-dmenu-git"
+version = "r163.e980256-1"
+
+[[pkgs.pacman.explicit]]
 package = "nm-connection-editor"
 version = "1.28.0-1"
 
@@ -4261,6 +4273,10 @@ version = "5.05-3"
 [[pkgs.pacman.explicit]]
 package = "slock"
 version = "1.4-6"
+
+[[pkgs.pacman.explicit]]
+package = "strace"
+version = "5.19-1"
 
 [[pkgs.pacman.explicit]]
 package = "sudo"
@@ -4597,6 +4613,10 @@ version = "r36.849587d-1"
 [[pkgs.pacman.foreign]]
 package = "nerd-fonts-mononoki"
 version = "2.1.0-2"
+
+[[pkgs.pacman.foreign]]
+package = "networkmanager-dmenu-git"
+version = "r163.e980256-1"
 
 [[pkgs.pacman.foreign]]
 package = "otf-monocraft"
@@ -5021,6 +5041,10 @@ version = "5.05-3"
 [[pkgs.pacman.native]]
 package = "slock"
 version = "1.4-6"
+
+[[pkgs.pacman.native]]
+package = "strace"
+version = "5.19-1"
 
 [[pkgs.pacman.native]]
 package = "sudo"
