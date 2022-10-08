@@ -1,5 +1,4 @@
 iris https://iris.isae.fr/acces-aux-ressources-de-calcul-de-l-isae-supaero
-dt dotfiles https://gitlab.com/dwt1/dotfiles
 yt https://www.youtube.com/
 wl https://www.youtube.com/playlist?list=WL
 gh https://github.com/
@@ -138,7 +137,7 @@ eggnog https://madgarden.itch.io/eggnogg
 open-classroom https://openclassrooms.com/en/
 llvm-ir https://llvm.org/docs/LangRef.html
 hacktoberfest https://hacktoberfest.com/
-dotfiles https://github.com/amtoine/dotfiles
+goatfiles https://github.com/goatfiles
 magit https://magit.vc/
 rust-book https://doc.rust-lang.org/stable/book/
 cheat https://cheat.sh/
@@ -151,3 +150,16 @@ suckless https://suckless.org/
 ghpr https://github.com/pulls
 gho https://github.com/settings/organizations
 oberonproject https://github.com/oberonproject
+oberonproject.github.io https://oberonproject.github.io/
+ghd https://github.com/discussions
+git-tools https://github.com/magit/magit/wiki/Other-Tools
+thingiverse https://www.thingiverse.com/
+toonify https://toonify.photos/
+ieee-convert https://baseconvert.com/ieee-754-floating-point
+rust-ref https://doc.rust-lang.org/stable/reference/
+semver https://semver.org/
+rust-doc-stable https://doc.rust-lang.org/stable/
+proto.school https://proto.school/
+cp-system https://fabiensanglard.net/cpsb/index.html
+pastebin https://pastebin.com/
+ameli https://assure.ameli.fr
