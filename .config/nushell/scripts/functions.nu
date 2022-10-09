@@ -1,3 +1,8 @@
+def user_choose_to_exit_context [] {
+    {msg: "User choose to exit...", label: {text: "User choose to exit..."}}
+}
+
+
 export def clip [] {
     # put the end of a pipe into the clipboard.
     #
@@ -42,49 +47,45 @@ export def-env repo [] {
         str replace ": " ".com/"
     )
 
-    # compute the directory to jump to.
-    let path = if ($choice | empty?) {
-        $env.PWD
-    } else {
-        (
-            ghq root
-               | str trim
-               | path join $choice
-        )
+    if ($choice | empty?) {
+        error make (user_choose_to_exit_context)
     }
+
+    # compute the directory to jump to.
+    let path = (
+        ghq root
+           | str trim
+           | path join $choice
+        )
     cd $path
 
     # print a little message.
-    if ($choice | empty?) {
-        print "User choose to exit..."
+    print $"Jumping to ($path)"
+
+    # the content of the repo.
+    print "\nCONTENT:"
+    ls
+
+    # the status of the repo, in short format,
+    # if anything to report.
+    if not (^git status --short | empty?) {
+        print "\nSTATUS:"
+        ^git --no-pager status --short
     } else {
-        print $"Jumping to ($path)"
-
-        # the content of the repo.
-        print "\nCONTENT:"
-        ls
-
-        # the status of the repo, in short format,
-        # if anything to report.
-        if not (^git status --short | empty?) {
-            print "\nSTATUS:"
-            ^git --no-pager status --short
-        } else {
-            print "\nEVERYTHING UP TO DATE!"
-        }
-
-        # the list of stashes, if any.
-        if not (^git stash list | empty?) {
-            print "\nSTASHES:"
-            ^git --no-pager stash list
-        } else {
-            print "\nNO STASH..."
-        }
-
-        # the current tree in compact form.
-        print "\nLOG:"
-        ^git --no-pager log --graph --branches --remotes --tags --oneline --decorate --simplify-by-decoration -n 10
+        print "\nEVERYTHING UP TO DATE!"
     }
+
+    # the list of stashes, if any.
+    if not (^git stash list | empty?) {
+        print "\nSTASHES:"
+        ^git --no-pager stash list
+    } else {
+        print "\nNO STASH..."
+    }
+
+    # the current tree in compact form.
+    print "\nLOG:"
+    ^git --no-pager log --graph --branches --remotes --tags --oneline --decorate --simplify-by-decoration -n 10
 }
 
 
@@ -104,13 +105,18 @@ export def-env vcfg [] {
         fzf |
         str trim
     )
-    let path = ($env.HOME | path join $choice)
 
     if ($choice | empty?) {
-        print "User choose to exit..."
-    } else {
-        ^$env.EDITOR $path
+        error make (user_choose_to_exit_context)
     }
+
+    let path = ($env.HOME | path join $choice)
+    let directory = (dirname $path | str trim)
+    let filename = (basename $path | str trim)
+
+    cd $directory
+    ^$env.EDITOR $filename
+    cd -
 }
 
 
@@ -277,25 +283,23 @@ export def-env cfgw [
         str trim
     )
 
+    if ($choice | empty?) {
+        error make (user_choose_to_exit_context)
+    }
+
     # compute the directory to jump to.
-    let path = if ($choice | empty?) {
-        $env.PWD
-    } else {
+    let path = (
         $choice |
         lines |
         split column "  " |
         get column1 |
         str replace --all "~" $"($env.HOME)" |
         to text
-    }
+    )
     cd $path
 
-    if ($choice | empty?) {
-        print "User choose to exit..."
-    } else {
-        if ($debug) {
-            $"path: '($path)'"
-        }
+    if ($debug) {
+        $"path: '($path)'"
     }
 
 }
