@@ -299,3 +299,18 @@ export def-env cfgw [
     }
 
 }
+
+
+# credit to @azzamsa
+# https://discord.com/channels/601130461678272522/988303282931912704/1026019048254873651
+#
+# slightly improved:
+#   - does not use an extra br_cmd and alias
+#   - allows the use of extra arguments, e.g. `br "-s"`
+export def-env br [args = "."] {
+    let cmd_file = (^mktemp | str trim);
+    ^broot --outcmd $cmd_file $args;
+    let cmd = ((open $cmd_file) | str trim);
+    ^rm $cmd_file;
+    cd ($cmd | str replace "cd" "" | str trim)
+}
