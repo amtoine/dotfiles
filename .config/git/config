@@ -154,6 +154,12 @@
   wtrm    = worktree remove
   wtls    = worktree list
 
+; bisection
+  bis     = bisect start
+  big     = bisect good
+  bib     = bisect bad
+  bir     = bisect reset
+
 [pull]
   rebase = true
 [push]
