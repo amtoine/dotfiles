@@ -67,9 +67,15 @@ super + {o,i}
   bspc wm --record-history off; \
   bspc node {older,newer} --focus; \
   bspc wm --record-history on
-# focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-  bspc {desktop --focus,node --to-desktop} '^{1-9,10}'
+# focus the given desktop
+super + {1-9,0}
+  bspc desktop --focus '^{1-9,10}'; \
+  dunstify "bspwm/sxhkd"  "Switching to $(bspc query --desktops --desktop --names)" --timeout=1000 --replace=128
+# send to the given desktop
+super + shift + {1-9,0}
+  node="{1-9,10}"; \
+  bspc node --to-desktop "^$node"; \
+  dunstify "bspwm/sxhkd"  "Sending to $node" --timeout=1000 --replace=128
 
 #
 # >>> preselect
