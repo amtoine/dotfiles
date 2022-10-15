@@ -96,16 +96,25 @@ super + ctrl + shift + space
 #
 # >>> move/resize
 #
-# expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
-  bspc node --resize {left -20 0,bottom 0 20,top 0 -20,right 20 0}
-# contract a window by moving one of its side inward
-super + alt + shift + {h,j,k,l}
-  bspc node --resize {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 # move a floating window
 super + {Left,Down,Up,Right}
   bspc node --move {-20 0,0 20,0 -20,20 0}
-
+super + alt + {h,j,k,l}
+  n=40; \
+  { d1=left;   d2=right;  dx=-$n; dy=0;   \
+  , d1=bottom; d2=top;    dx=0;   dy=$n;  \
+  , d1=top;    d2=bottom; dx=0;   dy=-$n; \
+  , d1=right;  d2=left;   dx=$n;  dy=0;   \
+  } \
+  bspc node --resize $d1 $dx $dy || bspc node --resize $d2 $dx $dy
+super + ctrl + alt + {h,j,k,l}
+  n=5; \
+  { d1=left;   d2=right;  dx=-$n; dy=0;   \
+  , d1=bottom; d2=top;    dx=0;   dy=$n;  \
+  , d1=top;    d2=bottom; dx=0;   dy=-$n; \
+  , d1=right;  d2=left;   dx=$n;  dy=0;   \
+  } \
+  bspc node --resize $d1 $dx $dy || bspc node --resize $d2 $dx $dy
 
 # super + shift + Return
 #   id=$(cat /tmp/scratchid);\
