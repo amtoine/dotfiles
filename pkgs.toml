@@ -3007,6 +3007,14 @@ package = "rust"
 version = "1:1.64.0-1"
 
 [[pkgs.pacman.all]]
+package = "rust-analyzer"
+version = "20221010-1"
+
+[[pkgs.pacman.all]]
+package = "rust-src"
+version = "1:1.64.0-1"
+
+[[pkgs.pacman.all]]
 package = "sane"
 version = "1.1.1-1"
 
@@ -4271,6 +4279,10 @@ package = "rust"
 version = "1:1.64.0-1"
 
 [[pkgs.pacman.explicit]]
+package = "rust-analyzer"
+version = "20221010-1"
+
+[[pkgs.pacman.explicit]]
 package = "scrot"
 version = "1.7-1"
 
@@ -5045,6 +5057,10 @@ version = "1.7.5-1"
 [[pkgs.pacman.native]]
 package = "rust"
 version = "1:1.64.0-1"
+
+[[pkgs.pacman.native]]
+package = "rust-analyzer"
+version = "20221010-1"
 
 [[pkgs.pacman.native]]
 package = "scrot"
