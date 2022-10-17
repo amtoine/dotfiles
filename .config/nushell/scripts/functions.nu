@@ -318,3 +318,13 @@ export def-env br [args = "."] {
     ^rm $cmd_file;
     cd ($cmd | str replace "cd" "" | str trim)
 }
+
+
+export def alarm [
+    time: string
+    message: string
+] {
+    termdown -e $time --title $message
+    dunstify "termdown" $message --urgency critical --timeout 0
+    print $message
+}
