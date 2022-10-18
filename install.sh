@@ -16,14 +16,17 @@ $cfg config --local status.showUntrackedFiles no
 $cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 
 # Build pkgbuilds
-/tmp/pkgbuilds/install.sh x86_64/paru
-/tmp/pkgbuilds/install.sh x86_64/amtoine-scripts-git/
-/tmp/pkgbuilds/install.sh x86_64/amtoine-sounds-git/
-/tmp/pkgbuilds/install.sh x86_64/amtoine-wallpapers-git/
-/tmp/pkgbuilds/install.sh x86_64/amtoine-applications-git/
-/tmp/pkgbuilds/install.sh x86_64/amtoine-icons-git/
-/tmp/pkgbuilds/install.sh x86_64/junnunkarim-wallpapers-git
-/tmp/pkgbuilds/install.sh x86_64/mut-ex-wallpapers-git
+(
+    cd /tmp/pkgbuilds
+    ./install.sh x86_64/paru
+    ./install.sh x86_64/amtoine-scripts-git/
+    ./install.sh x86_64/amtoine-sounds-git/
+    ./install.sh x86_64/amtoine-wallpapers-git/
+    ./install.sh x86_64/amtoine-applications-git/
+    ./install.sh x86_64/amtoine-icons-git/
+    ./install.sh x86_64/junnunkarim-wallpapers-git
+    ./install.sh x86_64/mut-ex-wallpapers-git
+)
 
 # Install dependencies
 nu -c 'paru -S (open pkgs.toml | get pkgs.pacman.explicit.package | find --invert --regex "amtoine|wallpapers")'
