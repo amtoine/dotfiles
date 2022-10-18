@@ -8,8 +8,8 @@ sudo pacman -Syu
 sudo pacman -S git nushell cargo feh
 
 # Clone dotfiles
-git clone --bare https://github.com/atxr/dotfiles-1 .dotfiles
-git clone https://github.com/amtoine/pkgbuilds /tmp/pkgbuilds
+git clone --bare https://github.com/goatfiles/dotfiles .dotfiles
+git clone https://github.com/goatfiles/pkgbuilds /tmp/pkgbuilds
 cfg="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 $cfg reset --hard
 $cfg config --local status.showUntrackedFiles no
