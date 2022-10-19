@@ -8,7 +8,7 @@ sudo pacman -Syu
 sudo pacman -S git nushell cargo feh
 
 # Clone dotfiles
-git clone --bare https://github.com/goatfiles/dotfiles .dotfiles
+git clone --bare https://github.com/goatfiles/dotfiles $HOME/dotfiles
 git clone https://github.com/goatfiles/pkgbuilds /tmp/pkgbuilds
 cfg="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 $cfg reset --hard
@@ -29,7 +29,7 @@ $cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 )
 
 # Install dependencies
-nu -c 'paru -S (open pkgs.toml | get pkgs.pacman.explicit.package | find --invert --regex "amtoine|wallpapers")'
+nu -c "paru -S (open $HOME/pkgs.toml | get pkgs.pacman.explicit.package | find --invert --regex 'amtoine|wallpapers')"
 
 # Install dmenu-flexipatch
 (
