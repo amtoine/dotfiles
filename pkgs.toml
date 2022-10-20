@@ -5666,6 +5666,14 @@ package = "broot"
 version = "1.15.0"
 
 [[pkgs.rust.cargo]]
+package = "gex"
+version = "0.3.3"
+
+[[pkgs.rust.cargo]]
+package = "gitui"
+version = "0.21.0"
+
+[[pkgs.rust.cargo]]
 package = "heh"
 version = "0.2.0"
 
