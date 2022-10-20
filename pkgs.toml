@@ -423,6 +423,10 @@ package = "fftw"
 version = "3.3.10-3"
 
 [[pkgs.pacman.all]]
+package = "figlet"
+version = "2.2.5-4"
+
+[[pkgs.pacman.all]]
 package = "file"
 version = "5.43-1"
 
@@ -3963,6 +3967,10 @@ package = "feh"
 version = "3.9.1-2"
 
 [[pkgs.pacman.explicit]]
+package = "figlet"
+version = "2.2.5-4"
+
+[[pkgs.pacman.explicit]]
 package = "file"
 version = "5.43-1"
 
@@ -4801,6 +4809,10 @@ version = "8.4.0-1"
 [[pkgs.pacman.native]]
 package = "feh"
 version = "3.9.1-2"
+
+[[pkgs.pacman.native]]
+package = "figlet"
+version = "2.2.5-4"
 
 [[pkgs.pacman.native]]
 package = "file"
