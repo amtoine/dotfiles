@@ -6,12 +6,12 @@
 # commands to setup the different email addresses below
 #
 # ```bash
-# mkdir -p ~/mail/gmail/stevan.antoine
-# mkdir -p ~/mail/gmail/antoineulk17
-# mkdir -p ~/mail/gmail/instadeep
-# mkdir -p ~/mail/isae/supaero
+# mkdir -p ~/.local/share/mail/gmail/stevan.antoine
+# mkdir -p ~/.local/share/mail/gmail/antoineulk17
+# mkdir -p ~/.local/share/mail/gmail/instadeep
+# mkdir -p ~/.local/share/mail/isae/supaero
 # mbsync -a -c ~/.config/mu/mbsyncrc
-# mu init --maildir=~/mail --my-address=stevan.antoine@gmail.com --my-address=antoineulk17@gmail.com --my-address=a.stevan@instadeep.com --my-address=antoine.stevan@student.isae-supaero.fr
+# mu init --maildir=~/.local/share/mail --my-address=stevan.antoine@gmail.com --my-address=antoineulk17@gmail.com --my-address=a.stevan@instadeep.com --my-address=antoine.stevan@student.isae-supaero.fr
 # mu index
 # ```
 #
@@ -28,8 +28,8 @@ Account gmail-stevan.antoine
 
 MaildirStore gmail-stevan.antoine-local
 Subfolders Verbatim
-Path ~/mail/gmail/stevan.antoine/
-Inbox ~/mail/gmail/stevan.antoine/inbox
+Path ~/.local/share/mail/gmail/stevan.antoine/
+Inbox ~/.local/share/mail/gmail/stevan.antoine/inbox
 
 Channel gmail-stevan.antoine
 Far :gmail-stevan.antoine-remote:
@@ -52,8 +52,8 @@ Account gmail-antoineulk17
 
 MaildirStore gmail-antoineulk17-local
 Subfolders Verbatim
-Path ~/mail/gmail/antoineulk17/
-Inbox ~/mail/gmail/antoineulk17/inbox
+Path ~/.local/share/mail/gmail/antoineulk17/
+Inbox ~/.local/share/mail/gmail/antoineulk17/inbox
 
 Channel gmail-antoineulk17
 Far :gmail-antoineulk17-remote:
@@ -76,8 +76,8 @@ Account isae-supaero
 
 MaildirStore isae-supaero-local
 Subfolders Verbatim
-Path ~/mail/isae/supaero/
-Inbox ~/mail/isae/supaero/inbox
+Path ~/.local/share/mail/isae/supaero/
+Inbox ~/.local/share/mail/isae/supaero/inbox
 
 Channel isae-supaero
 Far :isae-supaero-remote:
