@@ -5370,6 +5370,10 @@ package = "asciinema"
 version = "2.2.0"
 
 [[pkgs.python.pip]]
+package = "attrs"
+version = "22.1.0"
+
+[[pkgs.python.pip]]
 package = "autocommand"
 version = "2.2.1"
 
@@ -5382,8 +5386,20 @@ package = "btrfsutil"
 version = "5.19.1"
 
 [[pkgs.python.pip]]
+package = "CacheControl"
+version = "0.12.11"
+
+[[pkgs.python.pip]]
+package = "cachy"
+version = "0.3.0"
+
+[[pkgs.python.pip]]
 package = "certifi"
 version = "2022.9.14"
+
+[[pkgs.python.pip]]
+package = "cffi"
+version = "1.15.1"
 
 [[pkgs.python.pip]]
 package = "cfgv"
@@ -5392,6 +5408,10 @@ version = "3.3.1"
 [[pkgs.python.pip]]
 package = "charset-normalizer"
 version = "2.1.1"
+
+[[pkgs.python.pip]]
+package = "cleo"
+version = "1.0.0a5"
 
 [[pkgs.python.pip]]
 package = "click"
@@ -5406,8 +5426,20 @@ package = "commonmark"
 version = "0.9.1"
 
 [[pkgs.python.pip]]
+package = "crashtest"
+version = "0.3.1"
+
+[[pkgs.python.pip]]
+package = "cryptography"
+version = "38.0.1"
+
+[[pkgs.python.pip]]
 package = "Cython"
 version = "0.29.32"
+
+[[pkgs.python.pip]]
+package = "distlib"
+version = "0.3.6"
 
 [[pkgs.python.pip]]
 package = "distro"
@@ -5418,12 +5450,28 @@ package = "docopt"
 version = "0.6.2"
 
 [[pkgs.python.pip]]
+package = "dulwich"
+version = "0.20.46"
+
+[[pkgs.python.pip]]
+package = "filelock"
+version = "3.8.0"
+
+[[pkgs.python.pip]]
+package = "flake8"
+version = "5.0.4"
+
+[[pkgs.python.pip]]
 package = "Flask"
 version = "2.2.2"
 
 [[pkgs.python.pip]]
 package = "grip"
 version = "4.6.1"
+
+[[pkgs.python.pip]]
+package = "html5lib"
+version = "1.1"
 
 [[pkgs.python.pip]]
 package = "identify"
@@ -5442,6 +5490,10 @@ package = "itsdangerous"
 version = "2.1.2"
 
 [[pkgs.python.pip]]
+package = "jaraco.classes"
+version = "3.2.3"
+
+[[pkgs.python.pip]]
 package = "jaraco.context"
 version = "4.1.2"
 
@@ -5454,8 +5506,20 @@ package = "jaraco.text"
 version = "3.9.1"
 
 [[pkgs.python.pip]]
+package = "jeepney"
+version = "0.8.0"
+
+[[pkgs.python.pip]]
 package = "Jinja2"
 version = "3.1.2"
+
+[[pkgs.python.pip]]
+package = "jsonschema"
+version = "4.16.0"
+
+[[pkgs.python.pip]]
+package = "keyring"
+version = "23.9.3"
 
 [[pkgs.python.pip]]
 package = "libfdt"
@@ -5466,6 +5530,10 @@ package = "lit"
 version = "14.0.6.dev0"
 
 [[pkgs.python.pip]]
+package = "lockfile"
+version = "0.12.2"
+
+[[pkgs.python.pip]]
 package = "Markdown"
 version = "3.4.1"
 
@@ -5474,8 +5542,16 @@ package = "MarkupSafe"
 version = "2.1.1"
 
 [[pkgs.python.pip]]
+package = "mccabe"
+version = "0.7.0"
+
+[[pkgs.python.pip]]
 package = "more-itertools"
 version = "8.14.0"
+
+[[pkgs.python.pip]]
+package = "msgpack"
+version = "1.0.4"
 
 [[pkgs.python.pip]]
 package = "mypy-extensions"
@@ -5514,8 +5590,16 @@ package = "pbr"
 version = "5.10.0"
 
 [[pkgs.python.pip]]
+package = "pexpect"
+version = "4.8.0"
+
+[[pkgs.python.pip]]
 package = "pipx"
 version = "1.1.0"
+
+[[pkgs.python.pip]]
+package = "pkginfo"
+version = "1.8.3"
 
 [[pkgs.python.pip]]
 package = "platformdirs"
@@ -5526,12 +5610,36 @@ package = "ply"
 version = "3.11"
 
 [[pkgs.python.pip]]
+package = "poetry"
+version = "1.2.2"
+
+[[pkgs.python.pip]]
+package = "poetry-core"
+version = "1.3.2"
+
+[[pkgs.python.pip]]
+package = "poetry-plugin-export"
+version = "1.1.2"
+
+[[pkgs.python.pip]]
+package = "ptyprocess"
+version = "0.7.0"
+
+[[pkgs.python.pip]]
 package = "pulsemixer"
 version = "1.5.1"
 
 [[pkgs.python.pip]]
 package = "pycairo"
 version = "1.21.0"
+
+[[pkgs.python.pip]]
+package = "pycodestyle"
+version = "2.9.1"
+
+[[pkgs.python.pip]]
+package = "pycparser"
+version = "2.21"
 
 [[pkgs.python.pip]]
 package = "pydantic"
@@ -5542,12 +5650,20 @@ package = "pyfiglet"
 version = "0.8.post1"
 
 [[pkgs.python.pip]]
+package = "pyflakes"
+version = "2.5.0"
+
+[[pkgs.python.pip]]
 package = "Pygments"
 version = "2.13.0"
 
 [[pkgs.python.pip]]
 package = "PyGObject"
 version = "3.42.2"
+
+[[pkgs.python.pip]]
+package = "pylev"
+version = "1.4.0"
 
 [[pkgs.python.pip]]
 package = "pyparsing"
@@ -5564,6 +5680,10 @@ version = "12.11.0"
 [[pkgs.python.pip]]
 package = "PyQtWebEngine"
 version = "5.15.6"
+
+[[pkgs.python.pip]]
+package = "pyrsistent"
+version = "0.18.1"
 
 [[pkgs.python.pip]]
 package = "python-dateutil"
@@ -5588,6 +5708,18 @@ version = "1.9.3"
 [[pkgs.python.pip]]
 package = "requests"
 version = "2.28.1"
+
+[[pkgs.python.pip]]
+package = "requests-toolbelt"
+version = "0.9.1"
+
+[[pkgs.python.pip]]
+package = "SecretStorage"
+version = "3.3.3"
+
+[[pkgs.python.pip]]
+package = "shellingham"
+version = "1.5.0"
 
 [[pkgs.python.pip]]
 package = "shtab"
@@ -5626,6 +5758,10 @@ package = "tomli"
 version = "2.0.1"
 
 [[pkgs.python.pip]]
+package = "tomlkit"
+version = "0.11.5"
+
+[[pkgs.python.pip]]
 package = "trove-classifiers"
 version = "2022.9.26"
 
@@ -5646,12 +5782,20 @@ package = "validate-pyproject"
 version = "0.10.1"
 
 [[pkgs.python.pip]]
+package = "virtualenv"
+version = "20.16.5"
+
+[[pkgs.python.pip]]
 package = "virtualenv-clone"
 version = "0.5.7"
 
 [[pkgs.python.pip]]
 package = "virtualenvwrapper"
 version = "4.8.4"
+
+[[pkgs.python.pip]]
+package = "webencodings"
+version = "0.5.1"
 
 [[pkgs.python.pip]]
 package = "Werkzeug"
