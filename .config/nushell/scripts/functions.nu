@@ -328,3 +328,32 @@ export def alarm [
     dunstify "termdown" $message --urgency critical --timeout 0
     print $message
 }
+
+
+export def cfgf [
+    regex: string
+    --files-only (-f): bool
+    --edit (-e): bool
+] {
+    print $"Looking for config files matching '($regex)'..."
+    let matches = (
+        ^git --git-dir ($env.HOME | path join ".dotfiles") --work-tree $env.HOME lf --full-name ~ |
+            | lines 
+            | each {
+                |it|
+                grep -w $regex -H $it
+              }
+            | lines
+            | str replace ":" ":GOATFILES-CFGF:"
+            | split column ":GOATFILES-CFGF:"
+            | rename file match
+    )
+
+    if ($edit) {
+        ^$env.EDITOR ($matches | get file | sort | uniq)
+    } else if ($files_only) {
+        $matches | get file | sort | uniq
+    } else {
+        $matches
+    }
+}
