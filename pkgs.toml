@@ -183,6 +183,10 @@ package = "bzip2"
 version = "1.0.8-4"
 
 [[pkgs.pacman.all]]
+package = "c-ares"
+version = "1.18.1-1"
+
+[[pkgs.pacman.all]]
 package = "ca-certificates"
 version = "20220905-1"
 
@@ -2135,6 +2139,18 @@ package = "nm-connection-editor"
 version = "1.28.0-1"
 
 [[pkgs.pacman.all]]
+package = "node-gyp"
+version = "9.3.0-1"
+
+[[pkgs.pacman.all]]
+package = "nodejs"
+version = "19.0.0-2"
+
+[[pkgs.pacman.all]]
+package = "nodejs-nopt"
+version = "6.0.0-1"
+
+[[pkgs.pacman.all]]
 package = "notmuch-runtime"
 version = "0.37-2"
 
@@ -2145,6 +2161,10 @@ version = "20220810-1"
 [[pkgs.pacman.all]]
 package = "noto-fonts-cjk"
 version = "20220126-1"
+
+[[pkgs.pacman.all]]
+package = "npm"
+version = "8.19.2-1"
 
 [[pkgs.pacman.all]]
 package = "npth"
@@ -3049,6 +3069,10 @@ version = "1.16.0-3"
 [[pkgs.pacman.all]]
 package = "sed"
 version = "4.8-1"
+
+[[pkgs.pacman.all]]
+package = "semver"
+version = "7.3.8-1"
 
 [[pkgs.pacman.all]]
 package = "serd"
@@ -4171,6 +4195,10 @@ package = "noto-fonts-cjk"
 version = "20220126-1"
 
 [[pkgs.pacman.explicit]]
+package = "npm"
+version = "8.19.2-1"
+
+[[pkgs.pacman.explicit]]
 package = "ntfs-3g"
 version = "2022.5.17-1"
 
@@ -4977,6 +5005,10 @@ version = "20220810-1"
 [[pkgs.pacman.native]]
 package = "noto-fonts-cjk"
 version = "20220126-1"
+
+[[pkgs.pacman.native]]
+package = "npm"
+version = "8.19.2-1"
 
 [[pkgs.pacman.native]]
 package = "ntfs-3g"
