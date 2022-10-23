@@ -111,4 +111,30 @@ export alias keybindings = [
       ]
     }
   }
+  {
+    name: open_repo
+    modifier: control
+    keycode: char_g
+    mode: [emacs, vi_insert, vi_normal]
+    event: [
+      {
+        edit: insertString
+        value: "repo"
+      }
+      { send: Enter }
+    ]
+  }
+  {
+    name: edit_config
+    modifier: control
+    keycode: char_v
+    mode: [emacs, vi_insert, vi_normal]
+    event: [
+      {
+        edit: insertString
+        value: "vcfg"
+      }
+      { send: Enter }
+    ]
+  }
 ]
