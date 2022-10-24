@@ -126,6 +126,8 @@ let-env WORKON_HOME = $"($env.XDG_DATA_HOME)/virtualenvs"
 
 let-env GHQ_ROOT = $"($env.XDG_DATA_HOME)/ghq"
 
+let-env QUICKEMU_HOME = ($env.XDG_DATA_HOME | path join "quickemu")
+
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 let-env PATH = ($env.PATH | split row (char esep) |
