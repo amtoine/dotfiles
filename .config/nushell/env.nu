@@ -68,37 +68,37 @@ let-env NU_PLUGIN_DIRS = [
     ($nu.config-path | path dirname | path join 'plugins')
 ]
 
-let-env XDG_DATA_HOME = $"($env.HOME)/.local/share"
-let-env XDG_CONFIG_HOME = $"($env.HOME)/.config"
-let-env XDG_STATE_HOME = $"($env.HOME)/.local/state"
-let-env XDG_CACHE_HOME = $"($env.HOME)/.cache"
+let-env XDG_DATA_HOME = ($env.HOME | path join ".local" "share")
+let-env XDG_CONFIG_HOME = ($env.HOME | path join ".config")
+let-env XDG_STATE_HOME = ($env.HOME | path join ".local" "state")
+let-env XDG_CACHE_HOME = ($env.HOME | path join ".cache")
 
 # move all moveable config to the right location, outside $HOME.
-let-env HISTFILE = $"($env.XDG_STATE_HOME)/bash/history"
-let-env CARGO_HOME = $"($env.XDG_DATA_HOME)/cargo"
-let-env DOOMDIR = $"($env.XDG_CONFIG_HOME)/doom"
-let-env GNUPGHOME = $"($env.XDG_DATA_HOME)/gnupg"
-let-env PASSWORD_STORE_DIR = $"($env.XDG_DATA_HOME)/pass"
-let-env GOPATH = $"($env.XDG_DATA_HOME)/go"
-let-env GRIPHOME = $"($env.XDG_CONFIG_HOME)/grip"
-let-env GTK2_RC_FILES = $"($env.XDG_CONFIG_HOME)/gtk-2.0/gtkrc"
-let-env JUPYTER_CONFIG_DIR = $"($env.XDG_CONFIG_HOME)/jupyter"
-let-env LESSHISTFILE = $"($env.XDG_CACHE_HOME)/less/history"
-let-env TERMINFO = $"($env.XDG_DATA_HOME)/terminfo"
-let-env TERMINFO_DIRS = $"($env.XDG_DATA_HOME)/terminfo:/usr/share/terminfo"
-let-env NODE_REPL_HISTORY = $"($env.XDG_DATA_HOME)/node_repl_history"
-let-env NPM_CONFIG_USERCONFIG = $"($env.XDG_CONFIG_HOME)/npm/npmrc"
-let-env _JAVA_OPTIONS = $"-Djava.util.prefs.userRoot=($env.XDG_CONFIG_HOME)/java"
-let-env PYTHONSTARTUP = $"($env.XDG_CONFIG_HOME)/python/pythonrc"
-let-env SQLITE_HISTORY = $"($env.XDG_CACHE_HOME)/sqlite_history"
-let-env XINITRC = $"($env.XDG_CONFIG_HOME)/X11/xinitrc"
-let-env ZDOTDIR = $"($env.XDG_CONFIG_HOME)/zsh"
-let-env _Z_DATA = $"($env.XDG_DATA_HOME)/z"
-let-env CABAL_CONFIG = $"($env.XDG_CONFIG_HOME)/cabal/config"
-let-env CABAL_DIR = $"($env.XDG_DATA_HOME)/cabal"
-let-env KERAS_HOME = $"($env.XDG_STATE_HOME)/keras"
-let-env EMACS_HOME = $"($env.HOME)/.emacs.d"
-let-env MUJOCO_BIN = $"($env.HOME)/.mujoco/mujoco210/bin"
+let-env TERMINFO_DIRS = $"($env.XDG_DATA_HOME | path join terminfo):/usr/share/terminfo"
+let-env _JAVA_OPTIONS = $"-Djava.util.prefs.userRoot=($env.XDG_CONFIG_HOME | path join java)"
+let-env HISTFILE = ($env.XDG_STATE_HOME | path join "bash" "history")
+let-env CARGO_HOME = ($env.XDG_DATA_HOME | path join "cargo")
+let-env DOOMDIR = ($env.XDG_CONFIG_HOME | path join "doom")
+let-env GNUPGHOME = ($env.XDG_DATA_HOME | path join "gnupg")
+let-env PASSWORD_STORE_DIR = ($env.XDG_DATA_HOME | path join "pass")
+let-env GOPATH = ($env.XDG_DATA_HOME | path join "go")
+let-env GRIPHOME = ($env.XDG_CONFIG_HOME | path join "grip")
+let-env GTK2_RC_FILES = ($env.XDG_CONFIG_HOME | path join "gtk-2.0" "gtkrc")
+let-env JUPYTER_CONFIG_DIR = ($env.XDG_CONFIG_HOME | path join "jupyter")
+let-env LESSHISTFILE = ($env.XDG_CACHE_HOME | path join "less" "history")
+let-env TERMINFO = ($env.XDG_DATA_HOME | path join "terminfo")
+let-env NODE_REPL_HISTORY = ($env.XDG_DATA_HOME | path join "node_repl_history")
+let-env NPM_CONFIG_USERCONFIG = ($env.XDG_CONFIG_HOME | path join "npm" "npmrc")
+let-env PYTHONSTARTUP = ($env.XDG_CONFIG_HOME | path join "python" "pythonrc")
+let-env SQLITE_HISTORY = ($env.XDG_CACHE_HOME | path join "sqlite_history")
+let-env XINITRC = ($env.XDG_CONFIG_HOME | path join "X11" "xinitrc")
+let-env ZDOTDIR = ($env.XDG_CONFIG_HOME | path join "zsh")
+let-env _Z_DATA = ($env.XDG_DATA_HOME | path join "z")
+let-env CABAL_CONFIG = ($env.XDG_CONFIG_HOME | path join "cabal" "config")
+let-env CABAL_DIR = ($env.XDG_DATA_HOME | path join "cabal")
+let-env KERAS_HOME = ($env.XDG_STATE_HOME | path join "keras")
+let-env EMACS_HOME = ($env.HOME | path join ".emacs.d")
+let-env MUJOCO_BIN = ($env.HOME | path join ".mujoco" "mujoco210" "bin")
 let-env VIMINIT = 'let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
 # changes the editor in the terminal, to edit long commands.
@@ -122,21 +122,21 @@ let-env MANPAGER = "sh -c 'col -bx | bat -l man -p'"
 # export MANPAGER = "nvim -c 'set ft=man' -"
 
 # activates virtualenvwrapper to manage python virtual environments.
-let-env WORKON_HOME = $"($env.XDG_DATA_HOME)/virtualenvs"
+let-env WORKON_HOME = ($env.XDG_DATA_HOME | path join "virtualenvs")
 
-let-env GHQ_ROOT = $"($env.XDG_DATA_HOME)/ghq"
+let-env GHQ_ROOT = ($env.XDG_DATA_HOME | path join "ghq")
 
 let-env QUICKEMU_HOME = ($env.XDG_DATA_HOME | path join "quickemu")
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 let-env PATH = ($env.PATH | split row (char esep) |
-    prepend $"($env.HOME)/.local/bin" |
-    prepend $"($env.EMACS_HOME)/bin" |
-    prepend $"($env.CARGO_HOME)/bin"
+    prepend ($env.HOME | path join ".local" "bin") |
+    prepend ($env.EMACS_HOME | path join "bin") |
+    prepend ($env.CARGO_HOME | path join "bin")
 )
 let-env LD_LIBRARY_PATH = ($env.LD_LIBRARY_PATH | split row (char esep) |
-    prepend $"($env.MUJOCO_BIN)"
+    prepend $env.MUJOCO_BIN
 )
 
 
