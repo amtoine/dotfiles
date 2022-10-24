@@ -1,4 +1,8 @@
 [[pkgs.pacman.all]]
+package = "7-zip"
+version = "22.01-2"
+
+[[pkgs.pacman.all]]
 package = "aalib"
 version = "1.4rc5-14"
 
@@ -405,10 +409,6 @@ version = "2.10.0-1"
 [[pkgs.pacman.all]]
 package = "fakeroot"
 version = "1.29-1"
-
-[[pkgs.pacman.all]]
-package = "fd"
-version = "8.4.0-1"
 
 [[pkgs.pacman.all]]
 package = "feh"
@@ -2031,6 +2031,10 @@ package = "mesa"
 version = "22.1.7-1"
 
 [[pkgs.pacman.all]]
+package = "meson"
+version = "0.63.3-1"
+
+[[pkgs.pacman.all]]
 package = "minizip"
 version = "1:1.2.12-2"
 
@@ -2133,6 +2137,10 @@ version = "1.40.0-1"
 [[pkgs.pacman.all]]
 package = "networkmanager-dmenu-git"
 version = "r165.60c12b5-1"
+
+[[pkgs.pacman.all]]
+package = "ninja"
+version = "1.11.1-1"
 
 [[pkgs.pacman.all]]
 package = "nm-connection-editor"
@@ -3363,6 +3371,10 @@ package = "tzdata"
 version = "2022d-1"
 
 [[pkgs.pacman.all]]
+package = "uasm"
+version = "2.55-2"
+
+[[pkgs.pacman.all]]
 package = "uchardet"
 version = "0.0.7-1"
 
@@ -3839,6 +3851,10 @@ package = "zziplib"
 version = "0.13.72-1"
 
 [[pkgs.pacman.explicit]]
+package = "7-zip"
+version = "22.01-2"
+
+[[pkgs.pacman.explicit]]
 package = "alacritty"
 version = "0.10.1-2"
 
@@ -3981,10 +3997,6 @@ version = "0.10.1-6"
 [[pkgs.pacman.explicit]]
 package = "fakeroot"
 version = "1.29-1"
-
-[[pkgs.pacman.explicit]]
-package = "fd"
-version = "8.4.0-1"
 
 [[pkgs.pacman.explicit]]
 package = "feh"
@@ -4615,6 +4627,10 @@ package = "zsa-wally"
 version = "2.1.3-4"
 
 [[pkgs.pacman.foreign]]
+package = "7-zip"
+version = "22.01-2"
+
+[[pkgs.pacman.foreign]]
 package = "amtoine-applications-git"
 version = "1.0.r6.27242df-1"
 
@@ -4829,10 +4845,6 @@ version = "0.10.1-6"
 [[pkgs.pacman.native]]
 package = "fakeroot"
 version = "1.29-1"
-
-[[pkgs.pacman.native]]
-package = "fd"
-version = "8.4.0-1"
 
 [[pkgs.pacman.native]]
 package = "feh"
@@ -5578,6 +5590,10 @@ package = "mccabe"
 version = "0.7.0"
 
 [[pkgs.python.pip]]
+package = "meson"
+version = "0.63.3"
+
+[[pkgs.python.pip]]
 package = "more-itertools"
 version = "8.14.0"
 
@@ -5842,6 +5858,10 @@ package = "broot"
 version = "1.15.0"
 
 [[pkgs.rust.cargo]]
+package = "fd-find"
+version = "8.4.0"
+
+[[pkgs.rust.cargo]]
 package = "gex"
 version = "0.3.3"
 
@@ -5852,6 +5872,14 @@ version = "0.21.0"
 [[pkgs.rust.cargo]]
 package = "heh"
 version = "0.2.0"
+
+[[pkgs.rust.cargo]]
+package = "ripgrep"
+version = "13.0.0"
+
+[[pkgs.rust.cargo]]
+package = "sd"
+version = "0.7.6"
 
 [[pkgs.rust.cargo]]
 package = "toipe"
