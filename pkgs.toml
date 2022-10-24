@@ -595,6 +595,10 @@ package = "gobject-introspection-runtime"
 version = "1.74.0-1"
 
 [[pkgs.pacman.all]]
+package = "gperftools"
+version = "2.10-1"
+
+[[pkgs.pacman.all]]
 package = "gpgme"
 version = "1.18.0-1"
 
@@ -699,6 +703,10 @@ package = "hidapi"
 version = "0.12.0-1"
 
 [[pkgs.pacman.all]]
+package = "highway"
+version = "1.0.1-1"
+
+[[pkgs.pacman.all]]
 package = "http-parser"
 version = "2.9.4-1"
 
@@ -729,6 +737,10 @@ version = "72.1-1"
 [[pkgs.pacman.all]]
 package = "ijs"
 version = "0.35-4"
+
+[[pkgs.pacman.all]]
+package = "imath"
+version = "3.1.5-3"
 
 [[pkgs.pacman.all]]
 package = "imlib2"
@@ -1309,6 +1321,10 @@ version = "0.17.0-3"
 [[pkgs.pacman.all]]
 package = "libjpeg-turbo"
 version = "2.1.4-2"
+
+[[pkgs.pacman.all]]
+package = "libjxl"
+version = "0.7.0-3"
 
 [[pkgs.pacman.all]]
 package = "libkexiv2"
@@ -2199,6 +2215,10 @@ package = "opencore-amr"
 version = "0.1.6-1"
 
 [[pkgs.pacman.all]]
+package = "openexr"
+version = "3.1.5-1"
+
+[[pkgs.pacman.all]]
 package = "openjpeg2"
 version = "2.5.0-1"
 
@@ -2711,6 +2731,10 @@ package = "qemu-ui-opengl"
 version = "7.1.0-10"
 
 [[pkgs.pacman.all]]
+package = "qemu-ui-sdl"
+version = "7.1.0-10"
+
+[[pkgs.pacman.all]]
 package = "qemu-ui-spice-app"
 version = "7.1.0-10"
 
@@ -3069,6 +3093,10 @@ version = "r53.2b72ef6-1"
 [[pkgs.pacman.all]]
 package = "sdl2"
 version = "2.24.1-1"
+
+[[pkgs.pacman.all]]
+package = "sdl2_image"
+version = "2.6.2-2"
 
 [[pkgs.pacman.all]]
 package = "seabios"
@@ -4291,6 +4319,10 @@ package = "python-pipx"
 version = "1.1.0-1"
 
 [[pkgs.pacman.explicit]]
+package = "qemu-ui-sdl"
+version = "7.1.0-10"
+
+[[pkgs.pacman.explicit]]
 package = "qt5ct"
 version = "1.5-2"
 
@@ -5081,6 +5113,10 @@ version = "22.3-1"
 [[pkgs.pacman.native]]
 package = "python-pipx"
 version = "1.1.0-1"
+
+[[pkgs.pacman.native]]
+package = "qemu-ui-sdl"
+version = "7.1.0-10"
 
 [[pkgs.pacman.native]]
 package = "qt5ct"
