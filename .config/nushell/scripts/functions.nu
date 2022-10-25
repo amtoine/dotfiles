@@ -426,6 +426,20 @@ export def "vm get" [] {
 }
 
 
+export def "vm list" [] {
+    ls $"($env.QUICKEMU_HOME)/*/*" |
+        where type == dir |
+        get name |
+        each {
+            |it|
+            basename $it | str trim
+        } |
+        str replace "-" "%%%" |
+        split column "%%%" |
+        rename "os" "release"
+}
+
+
 export def match [input:string matchers:record default?: block] {
     if (($matchers | get -i $input) != null) {
          $matchers | get $input | do $in
