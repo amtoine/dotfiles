@@ -22,7 +22,6 @@ set scrolloff=10
 
 set hlsearch
 set incsearch
-set ignorecase
 set smartcase
 
 set showcmd
