@@ -386,11 +386,6 @@ export def "vm get" [] {
         get exit_code) != 0
     ) {
         mkdir $vm_directory
-    } else {
-        error make {
-            msg: "fish here",
-            label: {text: $"($vm_directory) already exists..."}
-        }
     }
 
     let choice = (
