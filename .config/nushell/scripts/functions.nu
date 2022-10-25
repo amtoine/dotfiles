@@ -357,3 +357,12 @@ export def cfgf [
         $matches
     }
 }
+
+
+export def match [input:string matchers:record default?: block] {
+    if (($matchers | get -i $input) != null) {
+         $matchers | get $input | do $in
+    } else if ($default != null) {
+        do $default
+    }
+}
