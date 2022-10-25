@@ -440,6 +440,33 @@ export def "vm list" [] {
 }
 
 
+export def "vm remove" [] {
+    let choice = (
+        vm list |
+        each {
+            |it|
+            $"($it.os)-($it.release)"
+        } |
+        sort --insensitive |
+        uniq |
+        to text |
+        fzf --prompt "Please choose a vm to remove: " |
+        str trim
+    )
+
+    if ($choice | empty?) {
+        error make (user_choose_to_exit_context)
+    }
+
+    let vm = $choice
+    let os = ($vm | split column "-" | get column1 | to text)
+    let path = ($env.QUICKEMU_HOME | path join $os $vm)
+
+    rm -rvfi $path
+    rm -rvfi $"($path).conf"
+}
+
+
 export def match [input:string matchers:record default?: block] {
     if (($matchers | get -i $input) != null) {
          $matchers | get $input | do $in
