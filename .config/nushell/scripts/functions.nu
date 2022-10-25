@@ -359,6 +359,73 @@ export def cfgf [
 }
 
 
+export def "vm get" [] {
+    print "Pulling the list of available images..."
+    let choice = (
+        quickget list |
+        from csv |
+        get OS |
+        sort |
+        uniq |
+        sort --insensitive |
+        to text |
+        fzf --prompt "Please choose an OS: "|
+        str trim
+    )
+
+    if ($choice | empty?) {
+        error make (user_choose_to_exit_context)
+    }
+
+    let os = $choice
+    let vm_directory = ($env.QUICKEMU_HOME | path join $os)
+
+    if (
+        (do -i {^ls $vm_directory} |
+        complete |
+        get exit_code) != 0
+    ) {
+        mkdir $vm_directory
+    } else {
+        error make {
+            msg: "fish here",
+            label: {text: $"($vm_directory) already exists..."}
+        }
+    }
+
+    let choice = (
+        do -i {
+            quickget $os
+        } |
+        complete |
+        get stdout |
+        lines |
+        find "- Releases" |
+        str trim |
+        str replace " *- Releases: " "" |
+        split column " " |
+        transpose |
+        get column1 |
+        sort --insensitive |
+        uniq |
+        to text |
+        fzf --prompt $"Please choose a release for ($os):" |
+        str trim
+    )
+
+    if ($choice | empty?) {
+        error make (user_choose_to_exit_context)
+    }
+
+    let release = $choice
+
+    print $"Pulling ($os)-($release) to ($vm_directory)..."
+    cd $vm_directory
+    quickget $os $release
+    cd -
+}
+
+
 export def match [input:string matchers:record default?: block] {
     if (($matchers | get -i $input) != null) {
          $matchers | get $input | do $in
