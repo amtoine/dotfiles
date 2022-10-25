@@ -467,6 +467,35 @@ export def "vm remove" [] {
 }
 
 
+export def "vm run" [] {
+    let choice = (
+        vm list |
+        each {
+            |it|
+            $"($it.os)-($it.release)"
+        } |
+        sort --insensitive |
+        uniq |
+        to text |
+        fzf --prompt "Please choose a vm to run: " |
+        str trim
+    )
+
+    if ($choice | empty?) {
+        error make (user_choose_to_exit_context)
+    }
+
+    let vm = $choice
+    let os = ($vm | split column "-" | get column1 | to text)
+    let path = ($env.QUICKEMU_HOME | path join $os)
+
+    print $"Running ($vm)..."
+    cd $path
+    quickemu --vm $"($vm).conf"
+    cd -
+}
+
+
 export def match [input:string matchers:record default?: block] {
     if (($matchers | get -i $input) != null) {
          $matchers | get $input | do $in
