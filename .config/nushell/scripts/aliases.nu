@@ -1,5 +1,5 @@
 # git
-alias cfg = ^git --git-dir ($env.HOME | path join ".dotfiles") --work-tree $env.HOME
+alias cfg = ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE
 alias lg = ^lazygit
 
 # exit the shell

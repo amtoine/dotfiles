@@ -101,7 +101,7 @@ export def-env vcfg [] {
     #   - fzf
     #
     let choice = (
-        ^git --git-dir ($env.HOME | path join ".dotfiles") --work-tree $env.HOME lf --full-name ~ |
+        ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE lf --full-name ~ |
         fzf |
         str trim
     )
@@ -266,19 +266,19 @@ export def show_banner [] {
 #    and a working directory at `~`, i.e. my current setup.
 #
 #  . in the following, `cfg` is an alias for:
-#        git --git-dir ($env.HOME | path join ".dotfiles") --work-tree $env.HOME
+#        git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE
 #
 #  . worktrees can be added with, for instance:
 #        cfg worktree add some/path/to/worktree my_branch
 #
 #  . and then `cfgw` will let you pick one of the worktrees
 export def-env cfgw [
-    --bare (-b): string = ".dotfiles"  # the path to the *bare* repository (defaults to ".dotfiles")
+    --bare (-b): string = $"($env.DOTFILES_GIT_DIR)"  # the path to the *bare* repository (defaults to $env.DOTFILES_GIT_DIR)
     --debug (-d)
 ] {
     let choice = (
-        git --git-dir ($env.HOME | path join $bare) --work-tree $env.HOME worktree list |
-        str replace --all $"($env.HOME)" "~" |
+        git --git-dir $bare --work-tree $env.DOTFILES_WORKTREE worktree list |
+        str replace --all $"($env.DOTFILES_WORKTREE)" "~~" |
         fzf --prompt "Please choose a worktree to jump to: " |
         str trim
     )
@@ -293,7 +293,7 @@ export def-env cfgw [
         lines |
         split column "  " |
         get column1 |
-        str replace --all "~" $"($env.HOME)" |
+        str replace --all "~~" $"($env.DOTFILES_WORKTREE)" |
         to text
     )
     cd $path
@@ -339,7 +339,7 @@ export def cfgf [
 ] {
     print $"Looking for config files matching '($regex)'..."
     let matches = (
-        ^git --git-dir ($env.HOME | path join ".dotfiles") --work-tree $env.HOME lf --full-name ~ |
+        ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE lf --full-name ~ |
             | lines 
             | each {
                 |it|
