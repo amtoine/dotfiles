@@ -49,7 +49,6 @@ let-env config = {
 
 source personal/aliases.nu
 
-use scripts/functions.nu *
 use scripts/misc.nu *
 use scripts/dotfiles.nu
 use scripts/vm.nu
