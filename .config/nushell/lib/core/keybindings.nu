@@ -53,7 +53,7 @@ export alias keybindings = [
     event: [
       {
         edit: insertString
-        value: "vcfg"
+        value: "dotfiles edit"
       }
       { send: Enter }
     ]
