@@ -1,4 +1,4 @@
-use scripts/utils.nu *
+use scripts/context.nu
 
 
 # TODO
