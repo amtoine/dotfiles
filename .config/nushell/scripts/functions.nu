@@ -320,6 +320,7 @@ export def-env br [args = "."] {
 }
 
 
+# TODO
 export def alarm [
     time: string
     message: string
@@ -330,6 +331,7 @@ export def alarm [
 }
 
 
+# TODO
 export def cfgf [
     regex: string
     --files-only (-f): bool
@@ -359,6 +361,7 @@ export def cfgf [
 }
 
 
+# TODO
 export def "vm get" [] {
     print "Pulling the list of available images..."
     let choice = (
@@ -421,6 +424,7 @@ export def "vm get" [] {
 }
 
 
+# TODO
 export def "vm list" [] {
     ls $"($env.QUICKEMU_HOME)/*/*" |
         where type == dir |
@@ -435,6 +439,7 @@ export def "vm list" [] {
 }
 
 
+# TODO
 export def "vm remove" [] {
     let choice = (
         vm list |
@@ -462,6 +467,7 @@ export def "vm remove" [] {
 }
 
 
+# TODO
 export def "vm run" [] {
     let choice = (
         vm list |
@@ -491,7 +497,12 @@ export def "vm run" [] {
 }
 
 
-export def match [input:string matchers:record default?: block] {
+# TODO
+export def match [
+    input:string
+    matchers:record
+    default?: block
+] {
     if (($matchers | get -i $input) != null) {
          $matchers | get $input | do $in
     } else if ($default != null) {
