@@ -1,11 +1,10 @@
 # base up-to-date with Nushell version 0.67.0
 
-use completions.nu *
-use themes.nu
-use hooks.nu *
-use menus.nu *
-use keybindings.nu *
-
+use core/completions.nu *
+use core/themes.nu
+use core/hooks.nu *
+use core/menus.nu *
+use core/keybindings.nu *
 
 # The default config record. This is where much of your global configuration is setup.
 let-env config = {
@@ -48,7 +47,7 @@ let-env config = {
 }
 
 
-source aliases.nu
-use functions.nu *
-use job.nu
-source final.nu
+source personal/aliases.nu
+use scripts/functions.nu *
+use scripts/job.nu
+source personal/final.nu
