@@ -1,3 +1,8 @@
+def user_choose_to_exit_context [] {
+    {msg: "User choose to exit...", label: {text: "User choose to exit..."}}
+}
+
+
 export def-env edit [] {
     # jump to any config file with $env.EDITOR
     #

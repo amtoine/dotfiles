@@ -1,3 +1,8 @@
+def user_choose_to_exit_context [] {
+    {msg: "User choose to exit...", label: {text: "User choose to exit..."}}
+}
+
+
 # TODO
 export def pull [] {
     print "Pulling the list of available images..."
