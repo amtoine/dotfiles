@@ -1,6 +1,4 @@
-def user_choose_to_exit_context [] {
-    {msg: "User choose to exit...", label: {text: "User choose to exit..."}}
-}
+use scripts/utils.nu *
 
 
 # TODO
@@ -19,7 +17,7 @@ export def pull [] {
     )
 
     if ($choice | empty?) {
-        error make (user_choose_to_exit_context)
+        error make (context user_choose_to_exit)
     }
 
     let os = $choice
@@ -54,7 +52,7 @@ export def pull [] {
     )
 
     if ($choice | empty?) {
-        error make (user_choose_to_exit_context)
+        error make (context user_choose_to_exit)
     }
 
     let release = $choice
@@ -97,7 +95,7 @@ export def remove [] {
     )
 
     if ($choice | empty?) {
-        error make (user_choose_to_exit_context)
+        error make (context user_choose_to_exit)
     }
 
     let vm = $choice
@@ -125,7 +123,7 @@ export def run [] {
     )
 
     if ($choice | empty?) {
-        error make (user_choose_to_exit_context)
+        error make (context user_choose_to_exit)
     }
 
     let vm = $choice

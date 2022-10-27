@@ -1,6 +1,4 @@
-def user_choose_to_exit_context [] {
-    {msg: "User choose to exit...", label: {text: "User choose to exit..."}}
-}
+use scripts/utils.nu *
 
 
 export def clip [] {
@@ -48,7 +46,7 @@ export def-env repo [] {
     )
 
     if ($choice | empty?) {
-        error make (user_choose_to_exit_context)
+        error make (context user_choose_to_exit)
     }
 
     # compute the directory to jump to.
