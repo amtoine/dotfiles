@@ -2375,6 +2375,10 @@ package = "pkgconf"
 version = "1.8.0-1"
 
 [[pkgs.pacman.all]]
+package = "pokemon-colorscripts-git"
+version = "r110.d52b2af-1"
+
+[[pkgs.pacman.all]]
 package = "polkit"
 version = "121-1"
 
@@ -4295,6 +4299,10 @@ package = "pkgconf"
 version = "1.8.0-1"
 
 [[pkgs.pacman.explicit]]
+package = "pokemon-colorscripts-git"
+version = "r110.d52b2af-1"
+
+[[pkgs.pacman.explicit]]
 package = "polybar"
 version = "3.6.3-2"
 
@@ -4745,6 +4753,10 @@ version = "1770_Next.208.g51b2135_2022.05.29-1"
 [[pkgs.pacman.foreign]]
 package = "pinentry-git"
 version = "1.2.1.r4.gbc11554-1"
+
+[[pkgs.pacman.foreign]]
+package = "pokemon-colorscripts-git"
+version = "r110.d52b2af-1"
 
 [[pkgs.pacman.foreign]]
 package = "quickemu"
