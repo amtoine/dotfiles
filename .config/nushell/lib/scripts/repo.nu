@@ -64,3 +64,15 @@ export def-env goto [] {
     print "\nLOG:"
     ^git --no-pager log --graph --branches --remotes --tags --oneline --decorate --simplify-by-decoration -n 10
 }
+
+
+# TODO
+export def pull [] {
+    gh repo list
+}
+
+
+# TODO
+export def remove [] {
+    ghq list
+}
