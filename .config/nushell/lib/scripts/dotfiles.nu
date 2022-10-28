@@ -1,4 +1,6 @@
-use scripts/context.nu
+use scripts/prompt.nu
+
+alias GIT = ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE
 
 
 # TODO
@@ -14,14 +16,9 @@ export def-env edit [] {
     #   - fzf
     #
     let choice = (
-        ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE lf --full-name ~ |
-        fzf |
-        str trim
+        GIT lf --full-name ~ |
+        prompt fzf_ask "foo"
     )
-
-    if ($choice | empty?) {
-        error make (context user_choose_to_exit)
-    }
 
     let path = ($env.HOME | path join $choice)
     let directory = (dirname $path | str trim)
@@ -41,7 +38,7 @@ export def find [
 ] {
     print $"Looking for config files matching '($regex)'..."
     let matches = (
-        ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE lf --full-name ~ |
+        GIT lf --full-name ~
             | lines 
             | each {
                 |it|
@@ -86,13 +83,8 @@ export def-env worktree [
     let choice = (
         git --git-dir $bare --work-tree $env.DOTFILES_WORKTREE worktree list |
         str replace --all $"($env.DOTFILES_WORKTREE)" "~~" |
-        fzf --prompt "Please choose a worktree to jump to: " |
-        str trim
+        prompt fzf_ask "Please choose a worktree to jump to: "
     )
-
-    if ($choice | empty?) {
-        error make (context user_choose_to_exit)
-    }
 
     # compute the directory to jump to.
     let path = (
