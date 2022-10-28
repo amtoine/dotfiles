@@ -1,4 +1,21 @@
-use scripts/context.nu
+use scripts/prompt.nu
+
+
+# TODO
+def pick_repo [
+    prompt: string
+] {
+    let choice = (
+        ghq list |
+        lines |
+        str replace ".com/" ": " |
+        sort --insensitive |
+        prompt fzf_ask $prompt |
+        str replace ": " ".com/"
+    )
+
+    $choice
+}
 
 
 # TODO
@@ -13,20 +30,7 @@ export def-env goto [] {
     #   - ghq
     #   - fzf
     #
-    let choice = (
-        ghq list |
-        lines |
-        str replace ".com/" ": " |
-        sort --insensitive |
-        to text |
-        fzf |
-        str trim |
-        str replace ": " ".com/"
-    )
-
-    if ($choice | empty?) {
-        error make (context user_choose_to_exit)
-    }
+    let choice = (pick_repo "Please choose a repo to jump to: ")
 
     # compute the directory to jump to.
     let path = (
