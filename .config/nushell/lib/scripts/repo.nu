@@ -71,12 +71,27 @@ export def-env goto [] {
 
 
 # TODO
-export def pull [] {
-    gh repo list
+export def pull [owner: string] {
+    let choice = (
+        gh repo list $owner --json name |
+        from json |
+        get name |
+        sort --insensitive |
+        uniq |
+        prompt fzf_ask $"Please choose a repo to pull from https://github.com/($owner)"
+    )
+
+    let repository = ([$owner $choice] | str collect "/")
+
+    ghq get -p $repository
 }
 
 
 # TODO
 export def remove [] {
-    ghq list
+    let repo = (pick_repo "Please choose a repo to remove: ")
+
+    let path = ($env.GHQ_ROOT | path join $repo)
+
+    rm --interactive --recursive $path
 }
