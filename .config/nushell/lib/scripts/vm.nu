@@ -1,24 +1,43 @@
-use scripts/context.nu
+use scripts/prompt.nu
+
+
+# TODO
+def list_remote_os [] {
+    quickget list |
+    from csv |
+    get OS |
+    sort |
+    uniq |
+    sort --insensitive
+}
+
+
+# TODO
+def list_release_for_os [os: string] {
+    do -i {
+        quickget $os
+    } |
+    complete |
+    get stdout |
+    lines |
+    find "- Releases" |
+    str trim |
+    str replace " *- Releases: " "" |
+    split column " " |
+    transpose |
+    get column1 |
+    sort --insensitive |
+    uniq
+}
 
 
 # TODO
 export def pull [] {
     print "Pulling the list of available images..."
     let choice = (
-        quickget list |
-        from csv |
-        get OS |
-        sort |
-        uniq |
-        sort --insensitive |
-        to text |
-        fzf --prompt "Please choose an OS: "|
-        str trim
+        list_remote_os |
+        prompt fzf_ask "Please choose an OS: "
     )
-
-    if ($choice | empty?) {
-        error make (context user_choose_to_exit)
-    }
 
     let os = $choice
     let vm_directory = ($env.QUICKEMU_HOME | path join $os)
@@ -32,28 +51,9 @@ export def pull [] {
     }
 
     let choice = (
-        do -i {
-            quickget $os
-        } |
-        complete |
-        get stdout |
-        lines |
-        find "- Releases" |
-        str trim |
-        str replace " *- Releases: " "" |
-        split column " " |
-        transpose |
-        get column1 |
-        sort --insensitive |
-        uniq |
-        to text |
-        fzf --prompt $"Please choose a release for ($os):" |
-        str trim
+        list_release_for_os $os |
+        prompt fzf_ask $"Please choose a release for ($os):"
     )
-
-    if ($choice | empty?) {
-        error make (context user_choose_to_exit)
-    }
 
     let release = $choice
 
@@ -65,38 +65,31 @@ export def pull [] {
 
 
 # TODO
-export def list [] {
+def base_list [] {
     ls $"($env.QUICKEMU_HOME)/*/*" |
-        where type == dir |
-        get name |
-        each {
-            |it|
-            basename $it | str trim
-        } |
-        str replace "-" "%%%" |
-        split column "%%%" |
-        rename "os" "release"
+    where type == dir |
+    get name |
+    each {
+        |it|
+        basename $it | str trim
+    } |
+    sort --insensitive |
+    uniq
+}
+
+
+# TODO
+export def list [] {
+    base_list | parse "{os}-{release}"
 }
 
 
 # TODO
 export def remove [] {
     let choice = (
-        list |
-        each {
-            |it|
-            $"($it.os)-($it.release)"
-        } |
-        sort --insensitive |
-        uniq |
-        to text |
-        fzf --prompt "Please choose a vm to remove: " |
-        str trim
+        base_list |
+        prompt fzf_ask "Please choose a vm to remove: "
     )
-
-    if ($choice | empty?) {
-        error make (context user_choose_to_exit)
-    }
 
     let vm = $choice
     let os = ($vm | split column "-" | get column1 | to text)
@@ -110,21 +103,9 @@ export def remove [] {
 # TODO
 export def run [] {
     let choice = (
-        list |
-        each {
-            |it|
-            $"($it.os)-($it.release)"
-        } |
-        sort --insensitive |
-        uniq |
-        to text |
-        fzf --prompt "Please choose a vm to run: " |
-        str trim
+        base_list |
+            prompt fzf_ask "Please choose a vm to run: "
     )
-
-    if ($choice | empty?) {
-        error make (context user_choose_to_exit)
-    }
 
     let vm = $choice
     let os = ($vm | split column "-" | get column1 | to text)
