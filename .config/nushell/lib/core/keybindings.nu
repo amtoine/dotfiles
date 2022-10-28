@@ -40,7 +40,7 @@ export alias keybindings = [
     event: [
       {
         edit: insertString
-        value: "repo"
+        value: "repo goto"
       }
       { send: Enter }
     ]

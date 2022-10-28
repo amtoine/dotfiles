@@ -53,5 +53,6 @@ use scripts/misc.nu *
 use scripts/dotfiles.nu
 use scripts/vm.nu
 use scripts/job.nu
+use scripts/repo.nu
 
 source personal/final.nu
