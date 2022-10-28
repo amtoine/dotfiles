@@ -40,7 +40,9 @@ super + {_,shift} + F1
 super + {_,shift} + F2
   amtoine-scrot {window,full} --notify
 super + {_,shift} + F3
-  TIGRC_USER="$XDG_CONFIG_HOME/tig/.dotfiles" GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" $WM_TERM $WM_TERM_FLAGS {tig --all, lazygit --git-dir="$HOME/.dotfiles" --work-tree="$HOME"}
+  git_dir="$XDG_DATA_HOME/ghq/github.com/goatfiles/dotfiles"; \
+  work_tree="$HOME"; \
+  TIGRC_USER="$XDG_CONFIG_HOME/tig/.dotfiles" GIT_DIR="$git_dir" GIT_WORK_TREE="$work_tree" $WM_TERM $WM_TERM_FLAGS {tig --all, lazygit --git-dir="$gir_dir" --work-tree="$work_tree"}
 
 # general one-key bindings, mainly to run applications quickly.
 super + Return
