@@ -1,6 +1,7 @@
 use scripts/context.nu
 
 
+# TODO
 export def-env goto [] {
     # jump to any repo registered with ghq.
     #
