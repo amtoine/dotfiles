@@ -60,6 +60,17 @@ export def find [
 }
 
 
+# TODO
+def pick_worktree [
+    bare: string
+    prompt: string
+] {
+    git --git-dir $bare --work-tree $env.DOTFILES_WORKTREE worktree list |
+    str replace --all $"($env.DOTFILES_WORKTREE)" "~~" |
+    prompt fzf_ask $prompt
+}
+
+
 # jump to any worktree of your dotfiles with fzf
 #
 #  . for an introduction to what `git` *worktrees* are:
@@ -80,15 +91,11 @@ export def-env "worktree goto" [
     --bare (-b): string = $"($env.DOTFILES_GIT_DIR)"  # the path to the *bare* repository (defaults to $env.DOTFILES_GIT_DIR)
     --debug (-d)
 ] {
-    let choice = (
-        git --git-dir $bare --work-tree $env.DOTFILES_WORKTREE worktree list |
-        str replace --all $"($env.DOTFILES_WORKTREE)" "~~" |
-        prompt fzf_ask "Please choose a worktree to jump to: "
-    )
+    let worktree = (pick_worktree $bare "Please choose a worktree to jump to: ")
 
     # compute the directory to jump to.
     let path = (
-        $choice |
+        $worktree |
         lines |
         split column "  " |
         get column1 |
@@ -134,11 +141,7 @@ export def "worktree add" [
 export def "worktree remove" [
     --bare (-b): string = $"($env.DOTFILES_GIT_DIR)"  # the path to the *bare* repository (defaults to $env.DOTFILES_GIT_DIR)
 ] {
-    let worktree = (
-        git --git-dir $bare --work-tree $env.DOTFILES_WORKTREE worktree list |
-        str replace --all $"($env.DOTFILES_WORKTREE)" "~~" |
-        prompt fzf_ask "Please choose a worktree to remove: "
-    )
+    let worktree = (pick_worktree $bare "Please choose a worktree to remove: ")
 
     let path = (
         $worktree |
