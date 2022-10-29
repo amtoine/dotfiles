@@ -76,7 +76,7 @@ export def find [
 #        cfg worktree add some/path/to/worktree my_branch
 #
 #  . and then `dotfiles worktree` will let you pick one of the worktrees
-export def-env worktree [
+export def-env "worktree goto" [
     --bare (-b): string = $"($env.DOTFILES_GIT_DIR)"  # the path to the *bare* repository (defaults to $env.DOTFILES_GIT_DIR)
     --debug (-d)
 ] {
@@ -101,4 +101,51 @@ export def-env worktree [
         $"path: '($path)'"
     }
 
+}
+
+
+# TODO
+export def "worktree add" [
+    --all (-a)
+] {
+    let branches = if ($all) {
+        GIT branch --all | lines
+    } else {
+        GIT branch | lines
+    }
+
+    let branch = (
+        $branches |
+        str replace "  " "" |
+        sort --insensitive |
+        to text |
+        sd "\* (.*)" $"(ansi red)\$1(ansi reset)" |
+        sd "\+ (.*)" $"(ansi yellow)\$1(ansi reset)" |
+        prompt fzf_ask "Please choose a branch to create a worktree from: "
+    )
+
+    let path = ($env.DOTFILES_GIT_DIR | path join "worktrees" $branch)
+
+    GIT worktree add $path $branch
+}
+
+
+# TODO
+export def "worktree remove" [
+    --bare (-b): string = $"($env.DOTFILES_GIT_DIR)"  # the path to the *bare* repository (defaults to $env.DOTFILES_GIT_DIR)
+] {
+    let worktree = (
+        git --git-dir $bare --work-tree $env.DOTFILES_WORKTREE worktree list |
+        str replace --all $"($env.DOTFILES_WORKTREE)" "~~" |
+        prompt fzf_ask "Please choose a worktree to remove: "
+    )
+
+    let path = (
+        $worktree |
+        parse "{path} {rest}" |
+        get path |
+        str replace "~~" $"($env.DOTFILES_WORKTREE)" |
+        to text
+    )
+    GIT worktree remove $path
 }

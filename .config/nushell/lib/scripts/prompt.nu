@@ -8,7 +8,7 @@ export def fzf_ask [
     let choice = (
         $in |
         to text |
-        fzf --prompt $prompt |
+        fzf --prompt $prompt --ansi |
         str trim
     )
 
