@@ -71,7 +71,9 @@ export def-env goto [] {
 
 
 # TODO
-export def pull [owner: string] {
+export def pull [
+    owner: string = $"(git config --get user.name | str trim)"
+] {
     let choice = (
         gh repo list $owner --json name |
         from json |
