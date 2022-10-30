@@ -114,7 +114,7 @@ frame.work https://frame.work/fr/en
 yt-lib https://www.youtube.com/feed/library
 yt-hist https://www.youtube.com/feed/history
 timechef https://timechef.elior.com/
-obncc https://github.com/amtoine/obncc
+oberon-compiler https://github.com/oberonproject/compiler
 xdg-settings-default https://dev.to/haxnet/default-web-browser-in-arch-linux-11em
 lms-functional-programming https://lms.isae.fr/course/view.php?id=1255
 adn-functional-programming https://adn.isae-supaero.fr/course/view.php?id=790
@@ -163,3 +163,9 @@ proto.school https://proto.school/
 cp-system https://fabiensanglard.net/cpsb/index.html
 pastebin https://pastebin.com/
 ameli https://assure.ameli.fr
+ghns https://github.com/notifications?query=is%3Asaved
+ghna https://github.com/notifications?query=
+awesome-rust https://awesome-rust.com/
+rustonomicon https://doc.rust-lang.org/stable/nomicon/
+google https://www.google.com/
+gmail https://mail.google.com/mail/u/0/#inbox
