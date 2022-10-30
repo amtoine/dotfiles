@@ -17,7 +17,7 @@ export def-env edit [] {
     #
     let choice = (
         GIT lf --full-name ~ |
-        prompt fzf_ask "foo"
+        prompt fzf_ask "Please choose a config file to edit: "
     )
 
     let path = ($env.HOME | path join $choice)
