@@ -1,3 +1,4 @@
+# TODO
 export def clip [] {
     # put the end of a pipe into the clipboard.
     #
@@ -20,6 +21,7 @@ export def clip [] {
 }
 
 
+# TODO
 export def yt-dl-names [
     --id (-i): string  # the id of the playlist
     --channel (-c): string  # the id of the channel

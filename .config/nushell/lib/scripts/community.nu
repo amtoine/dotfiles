@@ -1,3 +1,4 @@
+# TODO
 export def "nu-complete help categories" [] {
     help commands | get category | uniq
 }
