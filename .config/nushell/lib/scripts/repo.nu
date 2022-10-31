@@ -49,7 +49,7 @@ export def-env goto [] {
 
     # the status of the repo, in short format,
     # if anything to report.
-    if not (^git status --short | empty?) {
+    if not (^git status --short | is-empty) {
         print "\nSTATUS:"
         ^git --no-pager status --short
     } else {
@@ -57,7 +57,7 @@ export def-env goto [] {
     }
 
     # the list of stashes, if any.
-    if not (^git stash list | empty?) {
+    if not (^git stash list | is-empty) {
         print "\nSTASHES:"
         ^git --no-pager stash list
     } else {

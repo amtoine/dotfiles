@@ -12,7 +12,7 @@ export def fzf_ask [
         str trim
     )
 
-    if ($choice | empty?) {
+    if ($choice | is-empty) {
         error make (context user_choose_to_exit)
     }
 

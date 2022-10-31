@@ -13,7 +13,7 @@ export def clip [] {
     #
     let input = $in;
 
-    if not (which clip.exe | empty?) {
+    if not (which clip.exe | is-empty) {
         $input | clip.exe
     } else {
         $input | xclip -sel clip
@@ -36,7 +36,7 @@ export def yt-dl-names [
         $"https://www.youtube.com/playlist?list=($id)"
     }
 
-    if (ls | find $path | empty?) {
+    if (ls | find $path | is-empty) {
         mkdir $path
     }
     let file = ($path | path join $"($id).csv")
@@ -88,7 +88,7 @@ export def pass-menu [
             str trim
         )
 
-        if not ($entry | empty?) {
+        if not ($entry | is-empty) {
             pass show $entry -c
             dunstify $entry "Copied to clipboard for 45 seconds."
         } else {
