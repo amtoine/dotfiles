@@ -30,6 +30,7 @@ def has-env [variable: string] {
 }
 
 
+let eprompt_format_separator = ":|:"
 # credit to @Eldyj
 # https://discord.com/channels/601130461678272522/615253963645911060/1036274988950487060
 def eprompt [
@@ -46,22 +47,22 @@ def eprompt [
     let colors_cache = ($cache | path join "colors.txt")
     let prompt_cache = ($cache | path join "prompt.txt")
 
-    $segments | get 0 | split row ":|:" | get 0 | save $colors_cache
+    $segments | get 0 | split row $eprompt_format_separator | get 0 | save $colors_cache
     $"(ansi reset)" | save $prompt_cache
     for segment in $segments {
-        let parts = ($segment | split row ":|:")
+        let parts = ($segment | split row $eprompt_format_separator)
         let bg = $parts.0
         let fg = $parts.1
         let text = $parts.2
         if ($segment != $segments.0) {
-            $"(ansi -e {fg:(open $colors_cache),bg: $bg})($separator)" |
+            $"(ansi -e {fg: (open $colors_cache), bg: $bg})($separator)" |
             save --append $prompt_cache
         }
-        $"(ansi -e {fg:$fg ,bg:$bg}) ($text) (ansi reset)" |
+        $"(ansi -e {fg: $fg, bg: $bg}) ($text) (ansi reset)" |
         save --append $prompt_cache
         $bg | save $colors_cache
     }
-    $"(ansi reset)(ansi {fg:(open $colors_cache),bg:''})($separator)(ansi reset) " |
+    $"(ansi reset)(ansi {fg: (open $colors_cache), bg: ''})($separator)(ansi reset) " |
     save --append $prompt_cache
     open $prompt_cache
 }
@@ -89,13 +90,21 @@ def create_left_prompt [] {
 # credit to @Eldyj
 # https://discord.com/channels/601130461678272522/615253963645911060/1036274988950487060
 def create_left_prompt_eldyj [] {
+    let user_bg = "#2e3440"
+    let user_fg = "#88c0d0"
+    let pwd_bg = "#3b4252"
+    let pwd_fg = "#81a1c1"
+    let git_bg = "#434C5E"
+    let git_fg = "#A3BE8C"
+
     let segments = ([
-       $"#2e3440:|:#88c0d0:|:($env.USER)"
-       $"#3b4252:|:#81a1c1:|:(spwd)"
+        ([$user_bg $user_fg $env.USER] | str collect $eprompt_format_separator)
+        ([$pwd_bg $pwd_fg $"(spwd)"] | str collect $eprompt_format_separator)
       ] | if ((do -i { git branch --show-current } | complete | get stderr) == "") {
-          append $"#434C5E:|:#A3BE8C:|:(git branch --show-current | str replace --all "\n" "")"
+          append ([$git_bg $git_fg (git branch --show-current | str replace --all "\n" "")] | str collect $eprompt_format_separator)
       } else { $in }
     )
+
     let arrow = "\uE0B0"
     eprompt $arrow $segments
 }
