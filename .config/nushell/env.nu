@@ -27,25 +27,33 @@ def spwd [] {
 
 # credit to @Eldyj
 # https://discord.com/channels/601130461678272522/615253963645911060/1036274988950487060
-def eprompt [separator: string segments: list] {
-    $segments | get 0 | split row ":|:" | get 0 | save ~/.config/nushell/colors.cache
-    $"(ansi reset)" | save ~/.config/nushell/prompt.cache
+def eprompt [
+    separator: string
+    segments: list
+    cache: string = $"($env.XDG_CACHE_HOME | path join 'nushell')"
+] {
+    mkdir $cache
+    let colors_cache = ($cache | path join "colors.txt")
+    let prompt_cache = ($cache | path join "prompt.txt")
+
+    $segments | get 0 | split row ":|:" | get 0 | save $colors_cache
+    $"(ansi reset)" | save $prompt_cache
     for segment in $segments {
         let parts = ($segment | split row ":|:")
         let bg = $parts.0
         let fg = $parts.1
         let text = $parts.2
         if ($segment != $segments.0) {
-            $"(ansi -e {fg:(open ~/.config/nushell/colors.cache),bg: $bg})($separator)" |
-            save --append ~/.config/nushell/prompt.cache
+            $"(ansi -e {fg:(open $colors_cache),bg: $bg})($separator)" |
+            save --append $prompt_cache
         }
         $"(ansi -e {fg:$fg ,bg:$bg}) ($text) (ansi reset)" |
-        save --append ~/.config/nushell/prompt.cache
-        $bg | save ~/.config/nushell/colors.cache
+        save --append $prompt_cache
+        $bg | save $colors_cache
     }
-    $"(ansi reset)(ansi {fg:(open ~/.config/nushell/colors.cache),bg:''})($separator)(ansi reset) " |
-    save --append ~/.config/nushell/prompt.cache
-    open ~/.config/nushell/prompt.cache
+    $"(ansi reset)(ansi {fg:(open $colors_cache),bg:''})($separator)(ansi reset) " |
+    save --append $prompt_cache
+    open $prompt_cache
 }
 
 
