@@ -39,7 +39,7 @@ def eprompt [
     let cache = if (has-env "XDG_CACHE_HOME") {
         $env.XDG_CACHE_HOME | path join "nushell"
     } else {
-        $env.HOME | path join ".config" "nushell" "cache"
+        $env.HOME | path join ".cache" "nushell"
     }
 
     mkdir $cache
