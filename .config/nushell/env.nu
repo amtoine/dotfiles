@@ -78,7 +78,8 @@ def create_left_prompt_eldyj [] {
           append $"#434C5E:|:#A3BE8C:|:(git branch --show-current | str replace --all "\n" "")"
       } else { $in }
     )
-    eprompt "\uE0B0" $segments
+    let arrow = "\uE0B0"
+    eprompt $arrow $segments
 }
 
 
@@ -87,20 +88,23 @@ def create_right_prompt [] {
         (date now | date format '%m/%d/%Y %r')
     ] | str collect)
 
-    #$time_segment
+    $time_segment
 }
 
 
 # Use nushell functions to define your right and left prompt
-# let-env PROMPT_COMMAND = { create_left_prompt }
-let-env PROMPT_COMMAND = { create_left_prompt_eldyj }
-let-env PROMPT_COMMAND_RIGHT = { create_right_prompt }
+let eldyj = true
+let right = false
+let-env PROMPT_COMMAND = if ($eldyj) { {create_left_prompt_eldyj} } else { {create_left_prompt} }
+let-env PROMPT_COMMAND_RIGHT = if ($right) { {create_right_prompt} } else { "" }
 
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
-let-env PROMPT_INDICATOR = { "〉" }
-let-env PROMPT_INDICATOR_VI_INSERT = { ": " }
-let-env PROMPT_INDICATOR_VI_NORMAL = { "〉" }
+let indicator = false
+let-env PROMPT_INDICATOR = if ($indicator) { "〉" } else { "" }
+let-env PROMPT_INDICATOR_VI_INSERT = if ($indicator) { ": " } else { "" }
+let-env PROMPT_INDICATOR_VI_NORMAL = if ($indicator) { "〉" } else { "" }
+
 let-env PROMPT_MULTILINE_INDICATOR = { "::: " }
 
 # Specifies how environment variables are:
