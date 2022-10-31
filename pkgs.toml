@@ -2192,7 +2192,7 @@ version = "2.0.16-1"
 
 [[pkgs.pacman.all]]
 package = "nushell"
-version = "0.67.0-1"
+version = "0.70.0-1"
 
 [[pkgs.pacman.all]]
 package = "ocl-icd"
@@ -4240,7 +4240,7 @@ version = "2022.5.17-1"
 
 [[pkgs.pacman.explicit]]
 package = "nushell"
-version = "0.67.0-1"
+version = "0.70.0-1"
 
 [[pkgs.pacman.explicit]]
 package = "okular"
@@ -5060,7 +5060,7 @@ version = "2022.5.17-1"
 
 [[pkgs.pacman.native]]
 package = "nushell"
-version = "0.67.0-1"
+version = "0.70.0-1"
 
 [[pkgs.pacman.native]]
 package = "okular"
