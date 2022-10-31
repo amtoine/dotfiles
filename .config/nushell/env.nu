@@ -25,13 +25,23 @@ def spwd [] {
 }
 
 
+def has-env [variable: string] {
+    $variable in (env).name
+}
+
+
 # credit to @Eldyj
 # https://discord.com/channels/601130461678272522/615253963645911060/1036274988950487060
 def eprompt [
     separator: string
     segments: list
-    cache: string = $"($env.XDG_CACHE_HOME | path join 'nushell')"
 ] {
+    let cache = if (has-env "XDG_CACHE_HOME") {
+        $env.XDG_CACHE_HOME | path join "nushell"
+    } else {
+        $env.HOME | path join ".config" "nushell" "cache"
+    }
+
     mkdir $cache
     let colors_cache = ($cache | path join "colors.txt")
     let prompt_cache = ($cache | path join "prompt.txt")
