@@ -243,6 +243,10 @@ package = "clucene"
 version = "2.3.3.4-12"
 
 [[pkgs.pacman.all]]
+package = "cmake"
+version = "3.24.2-1"
+
+[[pkgs.pacman.all]]
 package = "cmus"
 version = "2.10.0-3"
 
@@ -2851,6 +2855,10 @@ package = "rest"
 version = "0.8.1+r4+ge5ee6ef-1"
 
 [[pkgs.pacman.all]]
+package = "rhash"
+version = "1.4.2-1"
+
+[[pkgs.pacman.all]]
 package = "rofi"
 version = "1.7.5-1"
 
@@ -3979,6 +3987,10 @@ package = "clang"
 version = "14.0.6-3"
 
 [[pkgs.pacman.explicit]]
+package = "cmake"
+version = "3.24.2-1"
+
+[[pkgs.pacman.explicit]]
 package = "cmus"
 version = "2.10.0-3"
 
@@ -4845,6 +4857,10 @@ version = "0.9.10-2"
 [[pkgs.pacman.native]]
 package = "clang"
 version = "14.0.6-3"
+
+[[pkgs.pacman.native]]
+package = "cmake"
+version = "3.24.2-1"
 
 [[pkgs.pacman.native]]
 package = "cmus"
@@ -5900,6 +5916,10 @@ version = "8.4.0"
 [[pkgs.rust.cargo]]
 package = "gex"
 version = "0.3.3"
+
+[[pkgs.rust.cargo]]
+package = "gitoxide"
+version = "0.16.0"
 
 [[pkgs.rust.cargo]]
 package = "gitui"
