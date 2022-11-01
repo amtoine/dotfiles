@@ -30,22 +30,31 @@ def has-env [variable: string] {
 }
 
 
-def ansi-style [
+let CACHE = "/tmp/nushell-prompt.cache"
+def build-prompt [
     style: record
     text: string
     --reset (-r): bool
     --space (-s): bool
+    --append (-a): bool
 ] {
-    print -n $"(ansi -e $style)"
-
-    if ($space) {
-        print -n $" ($text) "
+    let text = if ($space) {
+        $" ($text) "
     } else {
-        print -n $text
+        $text
     }
 
-    if ($reset) {
-        print -n $"(ansi reset)"
+    let end = if ($reset) {
+        $"(ansi reset)"
+    } else {
+        ""
+    }
+
+    let prompt = $"(ansi -e $style)($text)($end)"
+    if ($append) {
+        $prompt | save --append $CACHE
+    } else {
+        $prompt | save $CACHE
     }
 }
 
@@ -58,14 +67,15 @@ def eprompt [
 ] {
     let len = ($segments | length)
 
-    ansi-style {fg: $segments.0.fg, bg: $segments.0.bg} ($segments | get 0 | get text) --reset --space
+    build-prompt {fg: $segments.0.fg, bg: $segments.0.bg} ($segments | get 0 | get text) --reset --space
 
     for i in (seq 1 ($len - 1)) {
-      ansi-style {fg: ($segments | get ($i - 1) | get bg), bg: ($segments | get $i | get bg)} $separator
-      ansi-style {fg: ($segments | get $i | get fg), bg: ($segments | get $i | get bg)} ($segments | get $i | get text) --reset --space
+      build-prompt {fg: ($segments | get ($i - 1) | get bg), bg: ($segments | get $i | get bg)} $separator --append
+      build-prompt {fg: ($segments | get $i | get fg), bg: ($segments | get $i | get bg)} ($segments | get $i | get text) --reset --space --append
     }
 
-    ansi-style {fg: ($segments | get ($len - 1) | get bg), bg: ''} $separator --reset
+    build-prompt {fg: ($segments | get ($len - 1) | get bg), bg: ''} $separator --reset --append
+    open $CACHE
 }
 
 
