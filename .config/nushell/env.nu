@@ -25,11 +25,6 @@ def spwd [] {
 }
 
 
-def has-env [variable: string] {
-    $variable in (env).name
-}
-
-
 let CACHE = "/tmp/nushell-prompt.cache"
 def add-to-prompt [
     style: record
