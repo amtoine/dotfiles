@@ -36,6 +36,7 @@ def build-prompt [
     text: string
     --reset (-r): bool
     --space (-s): bool
+    --trailing (-t): bool
     --append (-a): bool
 ] {
     let text = if ($space) {
@@ -48,6 +49,11 @@ def build-prompt [
         $"(ansi reset)"
     } else {
         ""
+    }
+    let end = if ($trailing) {
+        $"($end) "
+    } else {
+        $end
     }
 
     let prompt = $"(ansi -e $style)($text)($end)"
@@ -74,7 +80,7 @@ def eprompt [
       build-prompt {fg: ($segments | get $i | get fg), bg: ($segments | get $i | get bg)} ($segments | get $i | get text) --reset --space --append
     }
 
-    build-prompt {fg: ($segments | get ($len - 1) | get bg), bg: ''} $separator --reset --append
+    build-prompt {fg: ($segments | get ($len - 1) | get bg), bg: ''} $separator --reset --append --trailing
     open $CACHE
 }
 
