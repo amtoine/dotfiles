@@ -31,7 +31,7 @@ def has-env [variable: string] {
 
 
 let CACHE = "/tmp/nushell-prompt.cache"
-def build-prompt [
+def add-to-prompt [
     style: record
     text: string
     --reset (-r): bool
@@ -67,20 +67,20 @@ def build-prompt [
 
 # credit to @Eldyj
 # https://discord.com/channels/601130461678272522/615253963645911060/1036274988950487060
-def eprompt [
+def build-prompt [
     separator: string
     segments: table
 ] {
     let len = ($segments | length)
 
-    build-prompt {fg: $segments.0.fg, bg: $segments.0.bg} ($segments | get 0 | get text) --reset --space
+    add-to-prompt {fg: $segments.0.fg, bg: $segments.0.bg} ($segments | get 0 | get text) --reset --space
 
     for i in (seq 1 ($len - 1)) {
-      build-prompt {fg: ($segments | get ($i - 1) | get bg), bg: ($segments | get $i | get bg)} $separator --append
-      build-prompt {fg: ($segments | get $i | get fg), bg: ($segments | get $i | get bg)} ($segments | get $i | get text) --reset --space --append
+      add-to-prompt {fg: ($segments | get ($i - 1) | get bg), bg: ($segments | get $i | get bg)} $separator --append
+      add-to-prompt {fg: ($segments | get $i | get fg), bg: ($segments | get $i | get bg)} ($segments | get $i | get text) --reset --space --append
     }
 
-    build-prompt {fg: ($segments | get ($len - 1) | get bg), bg: ''} $separator --reset --append --trailing
+    add-to-prompt {fg: ($segments | get ($len - 1) | get bg), bg: ''} $separator --reset --append --trailing
     open $CACHE
 }
 
@@ -130,7 +130,7 @@ def create_left_prompt_eldyj [] {
     }
 
     let arrow = "\uE0B0"
-    eprompt $arrow $segments
+    build-prompt $arrow $segments
 }
 
 
