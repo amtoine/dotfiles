@@ -144,10 +144,10 @@ let-env PROMPT_COMMAND_RIGHT = if ($right) { {create_right_prompt} } else { "" }
 
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
-let indicator = false
-let-env PROMPT_INDICATOR = if ($indicator) { "〉" } else { "" }
-let-env PROMPT_INDICATOR_VI_INSERT = if ($indicator) { ": " } else { "" }
-let-env PROMPT_INDICATOR_VI_NORMAL = if ($indicator) { "〉" } else { "" }
+let show_prompt_indicator = not $eldyj
+let-env PROMPT_INDICATOR = if ($show_prompt_indicator) { "〉" } else { "" }
+let-env PROMPT_INDICATOR_VI_INSERT = if ($show_prompt_indicator) { ": " } else { "" }
+let-env PROMPT_INDICATOR_VI_NORMAL = if ($show_prompt_indicator) { "〉" } else { "" }
 
 let-env PROMPT_MULTILINE_INDICATOR = { "::: " }
 
