@@ -35,7 +35,7 @@ let eprompt_format_separator = ":|:"
 # https://discord.com/channels/601130461678272522/615253963645911060/1036274988950487060
 def eprompt [
     separator: string
-    segments: list
+    segments: table
 ] {
     let cache = if (has-env "XDG_CACHE_HOME") {
         $env.XDG_CACHE_HOME | path join "nushell"
@@ -47,20 +47,15 @@ def eprompt [
     let colors_cache = ($cache | path join "colors.txt")
     let prompt_cache = ($cache | path join "prompt.txt")
 
-    $segments | get 0 | split row $eprompt_format_separator | get 0 | save $colors_cache
     $"(ansi reset)" | save $prompt_cache
     for segment in $segments {
-        let parts = ($segment | split row $eprompt_format_separator)
-        let bg = $parts.0
-        let fg = $parts.1
-        let text = $parts.2
         if ($segment != $segments.0) {
-            $"(ansi -e {fg: (open $colors_cache), bg: $bg})($separator)" |
+            $"(ansi -e {fg: (open $colors_cache), bg: $segment.bg})($separator)" |
             save --append $prompt_cache
         }
-        $"(ansi -e {fg: $fg, bg: $bg}) ($text) (ansi reset)" |
+        $"(ansi -e {fg: $segment.fg, bg: $segment.bg}) ($segment.text) (ansi reset)" |
         save --append $prompt_cache
-        $bg | save $colors_cache
+        $segment.bg | save $colors_cache
     }
     $"(ansi reset)(ansi {fg: (open $colors_cache), bg: ''})($separator)(ansi reset) " |
     save --append $prompt_cache
@@ -97,13 +92,20 @@ def create_left_prompt_eldyj [] {
     let git_bg = "#434C5E"
     let git_fg = "#A3BE8C"
 
-    let segments = ([
-        ([$user_bg $user_fg $env.USER] | str collect $eprompt_format_separator)
-        ([$pwd_bg $pwd_fg $"(spwd)"] | str collect $eprompt_format_separator)
-      ] | if ((do -i { git branch --show-current } | complete | get stderr) == "") {
-          append ([$git_bg $git_fg (git branch --show-current | str replace --all "\n" "")] | str collect $eprompt_format_separator)
-      } else { $in }
-    )
+    let segments = if ((do -i { git branch --show-current } | complete | get stderr) == "") {
+        [
+            [bg fg text];
+            [$user_bg $user_fg $env.USER]
+            [$pwd_bg $pwd_fg $"(spwd)"]
+            [$git_bg $git_fg (git branch --show-current | str replace --all "\n" "")]
+        ]
+    } else {
+        [
+            [bg fg text];
+            [$user_bg $user_fg $env.USER]
+            [$pwd_bg $pwd_fg $"(spwd)"]
+        ]
+    }
 
     let arrow = "\uE0B0"
     eprompt $arrow $segments
