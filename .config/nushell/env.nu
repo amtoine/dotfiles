@@ -30,7 +30,22 @@ def has-env [variable: string] {
 }
 
 
-let eprompt_format_separator = ":|:"
+def ansi-style [
+    style: record
+    text: string
+    --reset (-r): bool
+    --space (-s): bool
+] {
+    print -n $"(ansi -e $style)($text)"
+    if ($space) {
+        print -n " "
+    }
+    if ($reset) {
+        print -n $"(ansi reset)"
+    }
+}
+
+
 # credit to @Eldyj
 # https://discord.com/channels/601130461678272522/615253963645911060/1036274988950487060
 def eprompt [
@@ -39,24 +54,14 @@ def eprompt [
 ] {
     let len = ($segments | length)
 
-    print -n $"(ansi reset)"
-    let style = {fg: $segments.0.fg, bg: $segments.0.bg}
-    let text = $segments.0.text
-    print -n $"(ansi -e $style) ($text) (ansi reset)"
+    ansi-style {fg: $segments.0.fg, bg: $segments.0.bg} ($segments | get 0 | get text) --reset
 
     for i in (seq 1 ($len - 1)) {
-      let style = {fg: ($segments | get ($i - 1) | get bg), bg: ($segments | get $i | get bg)}
-      let text = $separator
-      print -n $"(ansi -e $style)($text)"
-
-      let style = {fg: ($segments | get $i | get fg), bg: ($segments | get $i | get bg)}
-      let text = ($segments | get $i | get text)
-      print -n $"(ansi -e $style) ($text)(ansi reset)"
+      ansi-style {fg: ($segments | get ($i - 1) | get bg), bg: ($segments | get $i | get bg)} $separator --space
+      ansi-style {fg: ($segments | get $i | get fg), bg: ($segments | get $i | get bg)} ($segments | get $i | get text) --reset
     }
 
-    let style = {fg: ($segments | get ($len - 1) | get bg), bg: ''}
-    let text = $separator
-    print -n $"(ansi -e $style)($text)(ansi reset) "
+    ansi-style {fg: ($segments | get ($len - 1) | get bg), bg: ''} $separator --reset --space
 }
 
 
