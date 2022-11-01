@@ -37,29 +37,26 @@ def eprompt [
     separator: string
     segments: table
 ] {
-    let cache = if (has-env "XDG_CACHE_HOME") {
-        $env.XDG_CACHE_HOME | path join "nushell"
-    } else {
-        $env.HOME | path join ".cache" "nushell"
+    let len = ($segments | length)
+
+    print -n $"(ansi reset)"
+    let style = {fg: $segments.0.fg, bg: $segments.0.bg}
+    let text = $segments.0.text
+    print -n $"(ansi -e $style) ($text) (ansi reset)"
+
+    for i in (seq 1 ($len - 1)) {
+      let style = {fg: ($segments | get ($i - 1) | get bg), bg: ($segments | get $i | get bg)}
+      let text = $separator
+      print -n $"(ansi -e $style)($text)"
+
+      let style = {fg: ($segments | get $i | get fg), bg: ($segments | get $i | get bg)}
+      let text = ($segments | get $i | get text)
+      print -n $"(ansi -e $style) ($text)(ansi reset)"
     }
 
-    mkdir $cache
-    let colors_cache = ($cache | path join "colors.txt")
-    let prompt_cache = ($cache | path join "prompt.txt")
-
-    $"(ansi reset)" | save $prompt_cache
-    for segment in $segments {
-        if ($segment != $segments.0) {
-            $"(ansi -e {fg: (open $colors_cache), bg: $segment.bg})($separator)" |
-            save --append $prompt_cache
-        }
-        $"(ansi -e {fg: $segment.fg, bg: $segment.bg}) ($segment.text) (ansi reset)" |
-        save --append $prompt_cache
-        $segment.bg | save $colors_cache
-    }
-    $"(ansi reset)(ansi {fg: (open $colors_cache), bg: ''})($separator)(ansi reset) " |
-    save --append $prompt_cache
-    open $prompt_cache
+    let style = {fg: ($segments | get ($len - 1) | get bg), bg: ''}
+    let text = $separator
+    print -n $"(ansi -e $style)($text)(ansi reset) "
 }
 
 
