@@ -36,10 +36,14 @@ def ansi-style [
     --reset (-r): bool
     --space (-s): bool
 ] {
-    print -n $"(ansi -e $style)($text)"
+    print -n $"(ansi -e $style)"
+
     if ($space) {
-        print -n " "
+        print -n $" ($text) "
+    } else {
+        print -n $text
     }
+
     if ($reset) {
         print -n $"(ansi reset)"
     }
@@ -54,14 +58,14 @@ def eprompt [
 ] {
     let len = ($segments | length)
 
-    ansi-style {fg: $segments.0.fg, bg: $segments.0.bg} ($segments | get 0 | get text) --reset
+    ansi-style {fg: $segments.0.fg, bg: $segments.0.bg} ($segments | get 0 | get text) --reset --space
 
     for i in (seq 1 ($len - 1)) {
-      ansi-style {fg: ($segments | get ($i - 1) | get bg), bg: ($segments | get $i | get bg)} $separator --space
-      ansi-style {fg: ($segments | get $i | get fg), bg: ($segments | get $i | get bg)} ($segments | get $i | get text) --reset
+      ansi-style {fg: ($segments | get ($i - 1) | get bg), bg: ($segments | get $i | get bg)} $separator
+      ansi-style {fg: ($segments | get $i | get fg), bg: ($segments | get $i | get bg)} ($segments | get $i | get text) --reset --space
     }
 
-    ansi-style {fg: ($segments | get ($len - 1) | get bg), bg: ''} $separator --reset --space
+    ansi-style {fg: ($segments | get ($len - 1) | get bg), bg: ''} $separator --reset
 }
 
 
