@@ -105,19 +105,21 @@ def create_left_prompt_eldyj [] {
     let git_bg = "#434C5E"
     let git_fg = "#A3BE8C"
 
+    let common = [
+        [bg fg text];
+        [$user_bg $user_fg $env.USER]
+        [$pwd_bg $pwd_fg $"(spwd)"]
+    ]
+
     let segments = if ((do -i { git branch --show-current } | complete | get stderr) == "") {
-        [
-            [bg fg text];
-            [$user_bg $user_fg $env.USER]
-            [$pwd_bg $pwd_fg $"(spwd)"]
-            [$git_bg $git_fg (git branch --show-current | str replace --all "\n" "")]
-        ]
+        let git_branch = {
+            bg: $git_bg,
+            fg: $git_fg,
+            text: (git branch --show-current | str replace --all "\n" "")
+        }
+        $common | append $git_branch
     } else {
-        [
-            [bg fg text];
-            [$user_bg $user_fg $env.USER]
-            [$pwd_bg $pwd_fg $"(spwd)"]
-        ]
+        $common
     }
 
     let arrow = "\uE0B0"
