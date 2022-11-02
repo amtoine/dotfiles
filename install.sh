@@ -35,9 +35,9 @@ git clone https://github.com/goatfiles/pkgbuilds /tmp/pkgbuilds
 nu -c 'open $"($env.HOME)/pkgs.toml" | get pkgs.pacman.explicit.package | find --invert --regex "amtoine|wallpapers"'
 
 # Install dmenu-flexipatch
+git clone https://github.com/bakkeby/dmenu-flexipatch /tmp/dmenu
+cp $HOME/.config/dmenu-flexipatch/patches.h /tmp/dmenu
 (
-    git clone https://github.com/bakkeby/dmenu-flexipatch /tmp/dmenu
-    cp .config/dmenu-flexipatch/patches.h /tmp/dmenu
     cd /tmp/dmenu
     sudo make clean install
 )
