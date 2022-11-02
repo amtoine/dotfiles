@@ -24,10 +24,12 @@ alias disk = (
   update Size {|it| $it.Size | into filesize} |
   update Used {|it| $it.Used | into filesize} |
   update Avail {|it| $it.Avail | into filesize} |
-  update "Use%" {|it| $it."Use%" | str replace "%" "" | into int}
+  update "Use%" {|it| $it."Use%" | str replace "%" "" | into int} |
+  rename filesystem size used avail used% mountepoint
 )
 alias devices = (
   lsblk -lp |
   detect columns |
-  update SIZE {|it| $it.SIZE | into filesize}
+  update SIZE {|it| $it.SIZE | into filesize} |
+  rename name maj min RM size RO type mountpoints
 )
