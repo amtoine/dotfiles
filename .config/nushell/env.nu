@@ -3,13 +3,18 @@
 
 # credit to @Eldyj
 # https://discord.com/channels/601130461678272522/615253963645911060/1036225475288252446
-# revised in
+# revised by @eldyj in
 # https://discord.com/channels/601130461678272522/615253963645911060/1037327061481701468
+# revised by @fdncred in
+# https://discord.com/channels/601130461678272522/615253963645911060/1037354164147200050
 def spwd [] {
+  let home = (if ($nu.os-info.name == windows) { $env.USERPROFILE } else { $env.HOME })
+  let sep = (if ($nu.os-info.name == windows) { "\\" } else { "/" })
+
   let spwd_paths = (
     $"!/($env.PWD)" |
-      str replace $"!/($env.HOME)" "~" |
-      split row "/"
+      str replace $"!/($home)" ~ -s |
+      split row $sep
   )
 
   let spwd_len = (($spwd_paths | length) - 1)
@@ -25,7 +30,7 @@ def spwd [] {
       $"($spwd_src.0)"
     }
   } |
-  str join "/"
+  str join $sep
 }
 
 
