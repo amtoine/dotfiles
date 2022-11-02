@@ -16,3 +16,18 @@ alias cb = ^cbonsai --infinite --live --base=1 --wait=2 --time=10
 
 alias sl = sl -aw -20
 alias bash = sl
+
+alias disk = (
+  df -h |
+  sd "\\s+ " " " |
+  lines |
+  split column " " Filesystem Size Used Avail Use% "Mounted on" |
+  skip 1
+)
+alias devices = (
+  lsblk -lp |
+  sd "\\s+ " " " |
+  lines |
+  split column " " NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS |
+  skip 1
+)
