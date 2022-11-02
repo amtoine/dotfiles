@@ -727,6 +727,10 @@ package = "highway"
 version = "1.0.1-1"
 
 [[pkgs.pacman.all]]
+package = "htop"
+version = "3.2.1-1"
+
+[[pkgs.pacman.all]]
 package = "http-parser"
 version = "2.9.4-1"
 
@@ -4147,8 +4151,8 @@ package = "gzip"
 version = "1.12-1"
 
 [[pkgs.pacman.explicit]]
-package = "helix"
-version = "22.08.1-1"
+package = "htop"
+version = "3.2.1-1"
 
 [[pkgs.pacman.explicit]]
 package = "intel-media-driver"
@@ -5007,8 +5011,8 @@ package = "gzip"
 version = "1.12-1"
 
 [[pkgs.pacman.native]]
-package = "helix"
-version = "22.08.1-1"
+package = "htop"
+version = "3.2.1-1"
 
 [[pkgs.pacman.native]]
 package = "intel-media-driver"
