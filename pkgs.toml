@@ -163,10 +163,6 @@ package = "box2d"
 version = "2.4.1-1"
 
 [[pkgs.pacman.all]]
-package = "bridge-utils"
-version = "1.7.1-1"
-
-[[pkgs.pacman.all]]
 package = "brightnessctl"
 version = "0.5.1-2"
 
@@ -263,10 +259,6 @@ package = "conky"
 version = "1.12.2-2"
 
 [[pkgs.pacman.all]]
-package = "containerd"
-version = "1.6.9-1"
-
-[[pkgs.pacman.all]]
 package = "coreutils"
 version = "9.1-1"
 
@@ -349,14 +341,6 @@ version = "1.0.r442.9b7cd8a-1"
 [[pkgs.pacman.all]]
 package = "dnssec-anchors"
 version = "20190629-3"
-
-[[pkgs.pacman.all]]
-package = "docker"
-version = "1:20.10.21-1"
-
-[[pkgs.pacman.all]]
-package = "docker-compose"
-version = "2.12.2-1"
 
 [[pkgs.pacman.all]]
 package = "dosfstools"
@@ -3091,10 +3075,6 @@ package = "run-parts"
 version = "5.5-1"
 
 [[pkgs.pacman.all]]
-package = "runc"
-version = "1.1.4-1"
-
-[[pkgs.pacman.all]]
 package = "rust"
 version = "1:1.64.0-1"
 
@@ -4039,14 +4019,6 @@ package = "dmscripts-git"
 version = "1.0.r442.9b7cd8a-1"
 
 [[pkgs.pacman.explicit]]
-package = "docker"
-version = "1:20.10.21-1"
-
-[[pkgs.pacman.explicit]]
-package = "docker-compose"
-version = "2.12.2-1"
-
-[[pkgs.pacman.explicit]]
 package = "downgrade"
 version = "11.2.1-1"
 
@@ -4909,14 +4881,6 @@ version = "1.6.1-1"
 [[pkgs.pacman.native]]
 package = "discord"
 version = "0.0.21-1"
-
-[[pkgs.pacman.native]]
-package = "docker"
-version = "1:20.10.21-1"
-
-[[pkgs.pacman.native]]
-package = "docker-compose"
-version = "2.12.2-1"
 
 [[pkgs.pacman.native]]
 package = "doxygen"
