@@ -29,7 +29,8 @@ alias disk = (
 )
 alias devices = (
   lsblk -lp |
+  str replace --all ":" " " |
   detect columns |
   update SIZE {|it| $it.SIZE | into filesize} |
-  rename name maj min RM size RO type mountpoints
+  rename name major minor RM size RO type mountpoints
 )
