@@ -25,35 +25,6 @@ def spwd [] {
 }
 
 
-def add-to-prompt [
-    style: record
-    text: string
-    --reset (-r): bool
-    --space (-s): bool
-    --trailing (-t): bool
-] {
-    let text = if ($space) {
-        $" ($text) "
-    } else {
-        $text
-    }
-
-    let end = if ($reset) {
-        $"(ansi reset)"
-    } else {
-        ""
-    }
-    let end = if ($trailing) {
-        $"($end) "
-    } else {
-        $end
-    }
-
-    let prompt = $"(ansi -e $style)($text)($end)"
-    $prompt
-}
-
-
 # credit to @Eldyj
 # https://discord.com/channels/601130461678272522/615253963645911060/1036274988950487060
 def build-prompt [
@@ -61,22 +32,47 @@ def build-prompt [
     segments: table
 ] {
     let len = ($segments | length)
-    let prompt = ""
 
-    let token = (add-to-prompt {fg: $segments.0.fg, bg: $segments.0.bg} ($segments | get 0 | get text) --reset --space)
-    let prompt = $"($prompt)($token)"
-
-    for i in (seq 1 ($len - 1)) {
-      let tokens = [
-          (add-to-prompt {fg: ($segments | get ($i - 1) | get bg), bg: ($segments | get $i | get bg)} $separator)
-          (add-to-prompt {fg: ($segments | get $i | get fg), bg: ($segments | get $i | get bg)} ($segments | get $i | get text) --reset --space)
-      ]
-      let prompt = $"($prompt)($tokens.0)($tokens.1)"
+    let first = {
+      fg: ($segments.0.fg),
+      bg: ($segments.0.bg),
+      text: $" ($segments.0.text) "
     }
 
-    let token = (add-to-prompt {fg: ($segments | get ($len - 1) | get bg), bg: ''} $separator --reset --trailing)
-    let prompt = $"($prompt)($token)"
-    $prompt
+    let tokens = (
+        for i in (seq 1 ($len - 1)) {
+          let sep = {
+            fg: ($segments | get ($i - 1) | get bg),
+            bg: ($segments | get $i | get bg),
+            text: $separator
+          }
+          let text = {
+            fg: ($segments | get $i | get fg),
+            bg: ($segments | get $i | get bg),
+            text: $" ($segments | get $i | get text) "
+          }
+          $sep | append $text
+        } |
+        flatten
+    )
+
+    let last = {
+        fg: ($segments | get ($len - 1) | get bg),
+        bg: '',
+        text: $separator
+    }
+
+    let prompt = (
+        $first |
+        append $tokens |
+        append $last |
+        each {
+            |it|
+            $"(ansi reset)(ansi -e {fg: $it.fg, bg: $it.bg})($it.text)"
+        } |
+        str collect
+    )
+    $"($prompt)(ansi reset) "
 }
 
 
