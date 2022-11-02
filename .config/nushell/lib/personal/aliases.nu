@@ -19,15 +19,15 @@ alias bash = sl
 
 alias disk = (
   df -h |
-  sd "\\s+ " " " |
   lines |
+  str replace --all "\\s+ " " " |
   split column " " Filesystem Size Used Avail Use% "Mounted on" |
   skip 1
 )
 alias devices = (
   lsblk -lp |
-  sd "\\s+ " " " |
   lines |
+  str replace --all "\\s+ " " " |
   split column " " NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS |
   skip 1
 )
