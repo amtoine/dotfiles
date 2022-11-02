@@ -9,11 +9,14 @@ sudo pacman -S git nushell cargo feh
 
 # Clone dotfiles
 git clone --bare https://github.com/goatfiles/dotfiles $HOME/.dotfiles
-git clone https://github.com/goatfiles/pkgbuilds /tmp/pkgbuilds
 cfg="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 $cfg reset --hard
 $cfg config --local status.showUntrackedFiles no
 $cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+
+# Clean and clone pkgbuilds
+if [[ -d /tmp/pkgbuilds ]]; then sudo rm -r /tmp/pkgbuilds; fi
+git clone https://github.com/goatfiles/pkgbuilds /tmp/pkgbuilds
 
 # Build pkgbuilds
 (
