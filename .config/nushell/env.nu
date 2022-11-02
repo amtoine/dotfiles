@@ -25,14 +25,12 @@ def spwd [] {
 }
 
 
-let CACHE = "/tmp/nushell-prompt.cache"
 def add-to-prompt [
     style: record
     text: string
     --reset (-r): bool
     --space (-s): bool
     --trailing (-t): bool
-    --append (-a): bool
 ] {
     let text = if ($space) {
         $" ($text) "
@@ -52,11 +50,7 @@ def add-to-prompt [
     }
 
     let prompt = $"(ansi -e $style)($text)($end)"
-    if ($append) {
-        $prompt | save --append $CACHE
-    } else {
-        $prompt | save $CACHE
-    }
+    $prompt
 }
 
 
@@ -67,16 +61,22 @@ def build-prompt [
     segments: table
 ] {
     let len = ($segments | length)
+    let prompt = ""
 
-    add-to-prompt {fg: $segments.0.fg, bg: $segments.0.bg} ($segments | get 0 | get text) --reset --space
+    let token = (add-to-prompt {fg: $segments.0.fg, bg: $segments.0.bg} ($segments | get 0 | get text) --reset --space)
+    let prompt = $"($prompt)($token)"
 
     for i in (seq 1 ($len - 1)) {
-      add-to-prompt {fg: ($segments | get ($i - 1) | get bg), bg: ($segments | get $i | get bg)} $separator --append
-      add-to-prompt {fg: ($segments | get $i | get fg), bg: ($segments | get $i | get bg)} ($segments | get $i | get text) --reset --space --append
+      let tokens = [
+          (add-to-prompt {fg: ($segments | get ($i - 1) | get bg), bg: ($segments | get $i | get bg)} $separator)
+          (add-to-prompt {fg: ($segments | get $i | get fg), bg: ($segments | get $i | get bg)} ($segments | get $i | get text) --reset --space)
+      ]
+      let prompt = $"($prompt)($tokens.0)($tokens.1)"
     }
 
-    add-to-prompt {fg: ($segments | get ($len - 1) | get bg), bg: ''} $separator --reset --append --trailing
-    open $CACHE
+    let token = (add-to-prompt {fg: ($segments | get ($len - 1) | get bg), bg: ''} $separator --reset --trailing)
+    let prompt = $"($prompt)($token)"
+    $prompt
 }
 
 
