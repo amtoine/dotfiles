@@ -3,25 +3,29 @@
 
 # credit to @Eldyj
 # https://discord.com/channels/601130461678272522/615253963645911060/1036225475288252446
+# revised in
+# https://discord.com/channels/601130461678272522/615253963645911060/1037327061481701468
 def spwd [] {
   let spwd_paths = (
     $"!/($env.PWD)" |
       str replace $"!/($env.HOME)" "~" |
       split row "/"
   )
+
   let spwd_len = (($spwd_paths | length) - 1)
 
-  for i in $spwd_paths {
-    let spwd_src = ($i | split chars)
-    if ($i == $"($spwd_paths | get $spwd_len)") {
-      $i
+  for -n i in $spwd_paths {
+    let spwd_src = ($i.item | split chars)
+
+    if ($i.index == $spwd_len) {
+      $i.item
     } else if ($spwd_src.0 == ".") {
       $".($spwd_src.1)"
     } else {
       $"($spwd_src.0)"
     }
   } |
-  str collect "/"
+  str join "/"
 }
 
 
