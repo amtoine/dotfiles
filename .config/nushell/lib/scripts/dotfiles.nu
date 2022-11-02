@@ -126,8 +126,8 @@ export def "worktree add" [
         str replace "  " "" |
         sort --insensitive |
         to text |
-        sd "\\* (.*)" $"(ansi red)\$1(ansi reset)" |
-        sd "\\+ (.*)" $"(ansi yellow)\$1(ansi reset)" |
+        str replace --all "\\* (.*)" $"(ansi red)\$1(ansi reset)" |
+        str replace --all "\\+ (.*)" $"(ansi yellow)\$1(ansi reset)" |
         prompt fzf_ask "Please choose a branch to create a worktree from: "
     )
 
