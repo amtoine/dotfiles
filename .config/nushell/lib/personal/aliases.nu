@@ -25,7 +25,7 @@ alias disk = (
   update size {|it| $it.size | into filesize} |
   update used {|it| $it.used | into filesize} |
   update avail {|it| $it.avail | into filesize} |
-  update used% {|it| $it."used%" | str replace "%" "" | into int}
+  upsert used% {|it| 100 * (1 - $it.avail / $it.size)}
 )
 alias devices = (
   lsblk -lp |
