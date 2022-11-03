@@ -131,8 +131,7 @@ def create_left_prompt_eldyj [] {
         $common
     }
 
-    let arrow = "\uE0B0"
-    build-prompt $arrow $segments
+    build-prompt (char nf_left_segment) $segments
 }
 
 
