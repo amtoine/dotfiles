@@ -25,7 +25,7 @@ alias disk = (
   update Used {|it| $it.Used | into filesize} |
   update Avail {|it| $it.Avail | into filesize} |
   update "Use%" {|it| $it."Use%" | str replace "%" "" | into int} |
-  rename filesystem size used avail used% mountepoint
+  rename filesystem size used avail used% mountpoint
 )
 alias devices = (
   lsblk -lp |
