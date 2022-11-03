@@ -21,16 +21,16 @@ alias disk = (
   df -h |
   str replace "Mounted on" "Mountpoint" |
   detect columns |
-  update Size {|it| $it.Size | into filesize} |
-  update Used {|it| $it.Used | into filesize} |
-  update Avail {|it| $it.Avail | into filesize} |
-  update "Use%" {|it| $it."Use%" | str replace "%" "" | into int} |
-  rename filesystem size used avail used% mountpoint
+  rename filesystem size used avail used% mountpoint |
+  update size {|it| $it.size | into filesize} |
+  update used {|it| $it.used | into filesize} |
+  update avail {|it| $it.avail | into filesize} |
+  update used% {|it| $it."used%" | str replace "%" "" | into int}
 )
 alias devices = (
   lsblk -lp |
   str replace --all ":" " " |
   detect columns |
-  update SIZE {|it| $it.SIZE | into filesize} |
-  rename name major minor RM size RO type mountpoints
+  rename name major minor RM size RO type mountpoints |
+  update size {|it| $it.size| into filesize}
 )
