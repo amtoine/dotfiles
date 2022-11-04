@@ -5934,6 +5934,10 @@ package = "heh"
 version = "0.2.0"
 
 [[pkgs.rust.cargo]]
+package = "helix-term"
+version = "0.6.0 (/home/amtoine/.local/share/ghq/github.com/amtoine/helix/helix-term)"
+
+[[pkgs.rust.cargo]]
 package = "ripgrep"
 version = "13.0.0"
 
