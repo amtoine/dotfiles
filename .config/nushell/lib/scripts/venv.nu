@@ -20,9 +20,9 @@ export def list [] {
 export def new [
   name: string
 ] {
-  let venv = (realpath ([$env.VIRTUALENVWRAPPER_HOOK_DIR $name] | path join) | str trim)
+  let venv = ([$env.VIRTUALENVWRAPPER_HOOK_DIR $name] | path join | path expand)
 
-  if ((dirname $venv | str trim) != $env.VIRTUALENVWRAPPER_HOOK_DIR) {
+  if (($venv | path dirname) != $env.VIRTUALENVWRAPPER_HOOK_DIR) {
     print -n $"venv new: (ansi red)error(ansi reset): "
     $"venv should be one directory inside ($env.VIRTUALENVWRAPPER_HOOK_DIR)"
   } else {

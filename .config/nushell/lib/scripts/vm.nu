@@ -71,7 +71,7 @@ def base_list [] {
     get name |
     each {
         |it|
-        basename $it | str trim
+        $it | path basename
     } |
     sort --insensitive |
     uniq

@@ -21,8 +21,8 @@ export def-env edit [] {
     )
 
     let path = ($env.HOME | path join $choice)
-    let directory = (dirname $path | str trim)
-    let filename = (basename $path | str trim)
+    let directory = ($path | path dirname)
+    let filename = ($path | path basename)
 
     cd $directory
     ^$env.EDITOR $filename
