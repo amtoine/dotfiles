@@ -86,3 +86,14 @@ export def match [
         do $default
     }
 }
+
+
+# TODO
+# credit to @Eldyj
+# https://discord.com/channels/601130461678272522/614593951969574961/1039518281108815942
+def mvr [
+  path: string
+  moveto: string
+] {
+  mv $path ($moveto | str replace % ($path | path dirname))
+}
