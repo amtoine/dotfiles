@@ -15,6 +15,14 @@ hash=$(echo {} | \\
 "
 alias FZF_STASH_PREVIEW = "git stash show --all --color=always $(echo {1} | sd ':' '')"
 
+alias FZF_CHECKOUT_PREVIEW = "
+branch=$(echo {} | \\
+  sd -s '*' '' | \\
+  sd '^\\s*' '' | \\
+  sd ' .*' '' \\
+)
+git log --graph --decorate --oneline --color=always $branch
+"
 
 # TODO
 def log_error [message: string] {
@@ -109,8 +117,37 @@ export def stash [
 
 
 # TODO
-export def checkout [] {
-  log_error "checkout unsupported"
+export def checkout [
+  --debug (-d): bool
+] {
+  let choice = (
+    git branch --list --color=always | lines |
+    append (
+      git branch --remote --color=always | lines
+    ) |
+    sort -r |
+    to text |
+    FZF --preview (FZF_CHECKOUT_PREVIEW) |
+    str trim
+  )
+
+  # do not try to show the checkout to a branch if none has been selected!
+  if ($choice | is-empty) {
+    error make (context user_choose_to_exit)
+  }
+
+  let branch = (
+    $choice |
+    str replace -as "*" "" |
+    str replace "^\\s*" "" |
+    str replace " .*" ""
+  )
+
+  if ($debug) {
+    log_debug $"git checkout ($branch)"
+  } else {
+    git checkout $branch
+  }
 }
 
 
