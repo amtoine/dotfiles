@@ -17,6 +17,12 @@ alias FZF_STASH_PREVIEW = "git stash show --all --color=always $(echo {1} | sd '
 
 
 # TODO
+def log_debug [message: string] {
+  print $"gf: (ansi yellow_bold)debug(ansi reset): ($message)"
+}
+
+
+# TODO
 def ungraph [
   commitish: string = "HEAD"
 ] {
@@ -31,6 +37,7 @@ def ungraph [
 export def log [
   commitish: string = "HEAD"
   --all (-a): bool
+  --debug (-d): bool
 ] {
   alias GIT_LOG = git log --graph --oneline --decorate --color=always
 
@@ -56,13 +63,19 @@ export def log [
       parse "* {hash} {rest}" |
       get hash
     )
-    git show --color=always $hash
+    if ($debug) {
+      log_debug $"git show --color=always ($hash)"
+    } else {
+      git show --color=always $hash
+    }
   }
 }
 
 
 # TODO
-export def stash [] {
+export def stash [
+  --debug (-d): bool
+] {
   let choice = (
     git stash list --color=always |
     FZF --preview (FZF_STASH_PREVIEW) |
@@ -79,5 +92,9 @@ export def stash [] {
     parse "{stash}: {rest}" |
     get stash
   )
-  git stash show --all --color=always $stash_id
+  if ($debug) {
+    log_debug $"git stash show --all --color=always ($stash_id)"
+  } else {
+    git stash show --all --color=always $stash_id
+  }
 }
