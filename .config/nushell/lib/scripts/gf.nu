@@ -2,6 +2,17 @@ use scripts/context.nu
 
 
 # TODO
+def ungraph [
+  commitish: string = "HEAD"
+] {
+  str replace -as "|" "" |
+  str replace -as '\' "" |
+  str replace -as "/" "" |
+  str replace "^\\s*" ""
+}
+
+
+# TODO
 export def log [
   commitish: string = "HEAD"
   --all (-a): bool
@@ -14,7 +25,7 @@ export def log [
     } else {
       GIT_LOG $commitish
     } |
-    fzf --ansi --color --reverse --preview 'git show --color=always {2}'
+    fzf --ansi --color --reverse --preview "git show --color=always $(echo {} | sd -s '|' '' | sd -s '\' '' | sd -s '/' '' | sd '^\\s*\\*\\s*' '' | awk '{print $1}')"
   )
 
   # do not try to show the commit if none has been selected!
@@ -22,7 +33,12 @@ export def log [
     error make (context user_choose_to_exit)
   }
 
-  let hash = ($commit | parse "* {hash} {rest}" | get hash)
+  let hash = (
+    $commit |
+    ungraph |
+    parse "* {hash} {rest}" |
+    get hash
+  )
   git show --color=always $hash
 }
 
