@@ -17,6 +17,12 @@ alias FZF_STASH_PREVIEW = "git stash show --all --color=always $(echo {1} | sd '
 
 
 # TODO
+def log_error [message: string] {
+  print $"gf: (ansi red_bold)error(ansi reset): ($message)"
+}
+
+
+# TODO
 def log_debug [message: string] {
   print $"gf: (ansi yellow_bold)debug(ansi reset): ($message)"
 }
@@ -68,6 +74,8 @@ export def log [
     } else {
       git show --color=always $hash
     }
+  } else {
+    log_error "not a commit"
   }
 }
 
