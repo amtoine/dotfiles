@@ -90,7 +90,7 @@ export def stash [
     str trim
   )
 
-  # do not try to show the commit if none has been selected!
+  # do not try to show the stash if none has been selected!
   if ($choice | is-empty) {
     error make (context user_choose_to_exit)
   }
