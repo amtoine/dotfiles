@@ -34,7 +34,7 @@ export def log [
 ] {
   alias GIT_LOG = git log --graph --oneline --decorate --color=always
 
-  let commit = (
+  let choice = (
     if ($all) {
       GIT_LOG --branches --remotes=origin
     } else {
@@ -45,17 +45,19 @@ export def log [
   )
 
   # do not try to show the commit if none has been selected!
-  if ($commit | is-empty) {
+  if ($choice | is-empty) {
     error make (context user_choose_to_exit)
   }
 
-  let hash = (
-    $commit |
-    ungraph |
-    parse "* {hash} {rest}" |
-    get hash
-  )
-  git show --color=always $hash
+  let commit = ($choice | ungraph)
+  if not ($commit | is-empty) {
+    let hash = (
+      $commit |
+      parse "* {hash} {rest}" |
+      get hash
+    )
+    git show --color=always $hash
+  }
 }
 
 
