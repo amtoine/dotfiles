@@ -1,6 +1,12 @@
 use scripts/context.nu
 
 
+alias FZF = fzf --ansi --color --reverse
+
+alias FZF_LOG_PREVIEW = "git show --color=always $(echo {} | sd -s '|' '' | sd -s '\\' '' | sd -s '/' '' | sd '^\\s*\\*\\s*' '' | awk '{print $1}')"
+alias FZF_STASH_PREVIEW = "git stash show --all --color=always $(echo {1} | sd ':' '')"
+
+
 # TODO
 def ungraph [
   commitish: string = "HEAD"
@@ -25,7 +31,8 @@ export def log [
     } else {
       GIT_LOG $commitish
     } |
-    fzf --ansi --color --reverse --preview "git show --color=always $(echo {} | sd -s '|' '' | sd -s '\' '' | sd -s '/' '' | sd '^\\s*\\*\\s*' '' | awk '{print $1}')"
+    FZF --preview (FZF_LOG_PREVIEW) |
+    str trim
   )
 
   # do not try to show the commit if none has been selected!
@@ -47,7 +54,8 @@ export def log [
 export def stash [] {
   let choice = (
     git stash list --color=always |
-    fzf --ansi --color --reverse --preview "git stash show --all --color=always $(echo {1} | sd ':' '')"
+    FZF --preview (FZF_STASH_PREVIEW) |
+    str trim
   )
 
   # do not try to show the commit if none has been selected!
@@ -55,5 +63,10 @@ export def stash [] {
     error make (context user_choose_to_exit)
   }
 
-  git stash show --all --color=always ($choice| parse "{stash}: {rest}" | get stash)
+  let stash_id = (
+    $choice |
+    parse "{stash}: {rest}" |
+    get stash
+  )
+  git stash show --all --color=always $stash_id
 }
