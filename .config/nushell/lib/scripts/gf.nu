@@ -106,3 +106,15 @@ export def stash [
     git stash show --all --color=always $stash_id
   }
 }
+
+
+# TODO
+export def checkout [] {
+  log_error "checkout unsupported"
+}
+
+
+# TODO
+export def branch [] {
+  log_error "branch unsupported"
+}
