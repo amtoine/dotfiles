@@ -22,9 +22,7 @@ alias disk = (
   str replace "Mounted on" "Mountpoint" |
   detect columns |
   rename filesystem size used avail used% mountpoint |
-  update size {|it| $it.size | into filesize} |
-  update used {|it| $it.used | into filesize} |
-  update avail {|it| $it.avail | into filesize} |
+  into filesize size used avail |
   upsert used% {|it| 100 * (1 - $it.avail / $it.size)}
 )
 alias devices = (
@@ -32,5 +30,5 @@ alias devices = (
   str replace --all ":" " " |
   detect columns |
   rename name major minor RM size RO type mountpoints |
-  update size {|it| $it.size| into filesize}
+  into filesize size
 )
