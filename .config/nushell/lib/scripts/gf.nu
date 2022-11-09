@@ -8,7 +8,7 @@ def ungraph [
   str replace -as "|" "" |
   str replace -as '\' "" |
   str replace -as "/" "" |
-  str replace "^\\s*" ""
+  str replace "^\\s*\\*\\s*" "* "
 }
 
 
