@@ -3,7 +3,16 @@ use scripts/context.nu
 
 alias FZF = fzf --ansi --color --reverse
 
-alias FZF_LOG_PREVIEW = "git show --color=always $(echo {} | sd -s '|' '' | sd -s '\\' '' | sd -s '/' '' | sd '^\\s*\\*\\s*' '' | awk '{print $1}')"
+alias FZF_LOG_PREVIEW = "
+hash=$(echo {} | \\
+  sd -s '|' '' | \\
+  sd -s '\\' '' | \\
+  sd -s '/' '' | \\
+  sd '^\\s*\\*\\s*' '' | \\
+  awk '{print $1}'\\
+)
+[ -z $hash ] || git show --color=always $hash
+"
 alias FZF_STASH_PREVIEW = "git stash show --all --color=always $(echo {1} | sd ':' '')"
 
 
