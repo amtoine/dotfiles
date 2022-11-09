@@ -254,6 +254,15 @@ let-env QUICKEMU_HOME = ($env.XDG_DATA_HOME | path join "quickemu")
 let-env DOTFILES_GIT_DIR = ($env.GHQ_ROOT| path join "github.com" "goatfiles" "dotfiles")
 let-env DOTFILES_WORKTREE = $env.HOME
 
+let-env FZF_DEFAULT_OPTS = "
+--bind ctrl-d:half-page-down
+--bind ctrl-u:half-page-up
+--bind shift-right:preview-half-page-down
+--bind shift-left:preview-half-page-up
+--bind shift-down:preview-down
+--bind shift-up:preview-up
+"
+
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 let-env PATH = ($env.PATH | split row (char esep) |
