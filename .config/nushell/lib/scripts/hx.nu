@@ -1,3 +1,4 @@
+# TODO: documentation
 export def "get info" [] {
   hx --health |
   lines |
@@ -7,6 +8,7 @@ export def "get info" [] {
 }
 
 
+# TODO: documentation
 export def "get languages" [] {
   hx --health languages |
   lines |
@@ -16,6 +18,7 @@ export def "get languages" [] {
 }
 
 
+# TODO: documentation
 export def "get lsp progress" [] {
   let languages = (get languages)
 
@@ -37,6 +40,7 @@ export def "get lsp progress" [] {
 }
 
 
+# TODO: documentation
 export def "get lsp" [] {
   for language in (get languages) {
     {language: $language} |
@@ -47,6 +51,7 @@ export def "get lsp" [] {
 }
 
 
+# TODO: documentation
 export def "get health" [] {
   {
     info: (get info)
