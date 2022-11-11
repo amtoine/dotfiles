@@ -10,8 +10,9 @@
 ;*
 
 [user]
-  name = amtoine
-  email = 44101798+amtoine@users.noreply.github.com
+  name = atxr
+  email = alexandre.tullot@protonmail.com
+
 [init]
   defaultBranch = main
 
