@@ -1,4 +1,4 @@
-def get_info [] {
+export def "get info" [] {
   hx --health |
   lines |
   take 6 |
@@ -7,7 +7,7 @@ def get_info [] {
 }
 
 
-def get_languages [] {
+export def "get languages" [] {
   hx --health languages |
   lines |
   skip 1 |
@@ -16,8 +16,8 @@ def get_languages [] {
 }
 
 
-def get_lsp_progress [] {
-  let languages = (get_languages)
+export def "get lsp progress" [] {
+  let languages = (get languages)
 
   let lsp = (
     for language -n in $languages {
@@ -37,8 +37,8 @@ def get_lsp_progress [] {
 }
 
 
-def get_lsp [] {
-  for language in (get_languages) {
+export def "get lsp" [] {
+  for language in (get languages) {
     {language: $language} |
     merge {
       hx --health $language | lines | split column ": " | transpose -ird
@@ -47,10 +47,10 @@ def get_lsp [] {
 }
 
 
-export def get_health [] {
+export def "get health" [] {
   {
-    info: (get_info)
-    languages: (get_languages)
-    lsp: (get_lsp_progress)
+    info: (get info)
+    languages: (get languages)
+    lsp: (get lsp progress)
   }
 }
