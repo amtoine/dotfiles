@@ -279,4 +279,7 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-source /home/amtoine/.config/broot/launcher/bash/br
+source $HOME/.config/broot/launcher/bash/br
+
+# Bind Ctrl L to clear screen and ls
+bind -x '"\C-l": clear; ls'

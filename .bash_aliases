@@ -103,7 +103,6 @@ fi
 
 if command -v bat &> /dev/null; then
   alias qlog="bat $HOME/.local/share/qtile/qtile.log"
-  alias cat="bat"
 else
   alias qlog="cat $HOME/.local/share/qtile/qtile.log | less"
 fi
@@ -115,3 +114,7 @@ alias xonsh="xonsh --rc $XDG_CONFIG_HOME/xonsh/xonshrc"
 
 alias screencast="screencast --output-dir=$HOME/videos/screencast"
 alias mcli="mcli --config-dir $HOME/.config/mcli"
+
+# vim aliases
+alias vim="nvim -u $XDG_CONFIG_HOME/nvim/init.vim"
+alias nvim="nvim -u $XDG_CONFIG_HOME/nvim/init.vim"
