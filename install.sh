@@ -32,7 +32,7 @@ git clone https://github.com/goatfiles/pkgbuilds /tmp/pkgbuilds
 )
 
 # Install dependencies
-nu -c 'open $"($env.HOME)/pkgs.toml" | get pkgs.pacman.explicit.package | find --invert --regex "amtoine|wallpapers" | paru -S'
+nu -c 'paru -S (open $"($env.HOME)/pkgs.toml" | get pkgs.pacman.explicit.package | find --invert --regex "amtoine|wallpapers")'
 
 # Install dmenu-flexipatch
 git clone https://github.com/bakkeby/dmenu-flexipatch /tmp/dmenu
