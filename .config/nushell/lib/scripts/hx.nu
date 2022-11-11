@@ -19,13 +19,17 @@ export def "get languages" [] {
 
 
 # TODO: documentation
-export def "get lsp progress" [] {
+export def "get lsp" [
+  --progress (-p): bool
+] {
   let languages = (get languages)
 
   let lsp = (
     for language -n in $languages {
-      print -n $"(ansi erase_line)"
-      print -n $"loading language support [($language.index + 1) / ($languages | length)]: ($language.item)\r"
+      if ($progress) {
+        print -n $"(ansi erase_line)"
+        print -n $"loading language support [($language.index + 1) / ($languages | length)]: ($language.item)\r"
+      }
 
       {language: $language.item} |
       merge {
@@ -33,21 +37,12 @@ export def "get lsp progress" [] {
       }
     }
   )
-  print -n $"(ansi erase_line)"
-  print "loading language support [done]"
+  if ($progress) {
+    print -n $"(ansi erase_line)"
+    print "loading language support [done]"
+  }
 
   $lsp
-}
-
-
-# TODO: documentation
-export def "get lsp" [] {
-  for language in (get languages) {
-    {language: $language} |
-    merge {
-      hx --health $language | lines | split column ": " | transpose -ird
-    }
-  }
 }
 
 
@@ -56,6 +51,6 @@ export def "get health" [] {
   {
     info: (get info)
     languages: (get languages)
-    lsp: (get lsp progress)
+    lsp: (get lsp --progress)
   }
 }
