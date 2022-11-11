@@ -40,22 +40,22 @@ super + {_,shift} + F3
 
 # general one-key bindings, mainly to run applications quickly.
 super + Return
-  $WM_TERM $WM_TERM_FLAGS $WM_TERM_SHELL
+  $WM_TERM 
 super + {_,shift,alt} + @space
   rofi -show {drun,run,window}
 super + p
-  passmenu -l 10 -bw 5 -fn "mononoki Nerd Font-20" 1> /tmp/passmenu.msg; \
+  passmenu -l 10 -bw 5 -fn "Fira Code-20" 1> /tmp/passmenu.msg; \
   [ -s /tmp/passmenu.msg ] && { dunstify "$(cat /tmp/passmenu.msg)"; rm /tmp/passmenu.msg; }
 super + Escape
   pkill -USR1 -x sxhkd
 super + shift + q
-  dm-logout -fn "mononoki Nerd Font-20"
+  dm-logout -fn "Fira Code-20"
 
 # dmenu-related bindings.
 super + d; d
-  dmenu_run -l 10 -bw 5 -c -fn "mononoki Nerd Font-20"
+  dmenu_run -l 10 -bw 5 -c -fn "Fira Code-20"
 super + d; h
-  dm-hub -fn "mononoki Nerd Font-20"
+  dm-hub -fn "Fira Code-20"
 
 # Emacs-related bindings.
 super + e; e

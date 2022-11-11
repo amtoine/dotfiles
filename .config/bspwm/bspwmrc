@@ -17,17 +17,17 @@ source "$XDG_CONFIG/bspwm/scripts/autostart.sh"
 # some handy variables.
 NB_WORKSPACES_PER_MONITOR=3
 
-BORDER_RADIUS=8
-BORDER_WIDTH=4
-WINDOW_GAP=4
+BORDER_RADIUS=15
+BORDER_WIDTH=2
+WINDOW_GAP=10
 
 COLOR_RESOURCES="$XDG_CONFIG/X11/Xresources"
 declare -A COLOR_MAP=(
 #+ BEGIN:palette
-    [focused_border_color]="#00ff00"
-    [active_border_color]="#ffff00"
+    [focused_border_color]="#E57C46"
+    [active_border_color]="#42A5F5"
     [presel_feedback_color]="#00cccc"
-    [normal_border_color]="#ff0000"
+    [normal_border_color]="#212B30"
     [urgent_border_color]="#ff00ff"
 #+ END:palette
 )
@@ -43,12 +43,12 @@ export WM_LOCKER="$HOME/.local/bin/slock.sh"
 
 # comment any of the following lines to change the behaviour of the startup of bspwm.
 export WM_USE_DUNST="yes"
-# export WM_USE_POLYBAR="yes"
+export WM_USE_POLYBAR="yes"
 # export WM_USE_CONKY="yes"
 # export WM_USE_SYSTRAY="yes"
 export WM_USE_PICOM="yes"
 export WM_SET_WALLPAPERS="yes"
-# export WM_USE_AUTOLOCK="yes"
+export WM_USE_AUTOLOCK="yes"
 export WM_USE_UNCLUTTER="yes"
 # export WM_USE_AUTOSAVER="yes"
 # export WM_USE_MOC="yes"
@@ -65,10 +65,8 @@ export WM_SXHKD_COMMON="$XDG_CONFIG/sxhkd/sxhkdrc"
 export WM_SXHKD_BSPWM="$XDG_CONFIG/bspwm/sxhkd/sxhkdrc"
 
 # the environment variables used by sxhkd.
-export WM_DMFONT="mononoki Nerd Font-20"
+export WM_DMFONT="Fira Code-20"
 export WM_TERM="alacritty"
-export WM_TERM_FLAGS="-e"
-export WM_TERM_SHELL="nu"
 
 source "$XDG_CONFIG/bspwm/scripts/utils.sh"
 
