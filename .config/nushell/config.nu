@@ -56,5 +56,6 @@ use scripts/venv.nu
 use scripts/job.nu
 use scripts/repo.nu
 use scripts/gf.nu
+use scripts/hx.nu
 
 source personal/final.nu
