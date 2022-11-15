@@ -14,6 +14,8 @@ import os
 ALACRITTY = 0
 ST = 1
 
+terminal = ALACRITTY
+
 CSS_COMMAND = "set content.user_stylesheets"
 CSS_PATH = "~/ghq/github.com/alphapapa/solarized-everything-css/css"
 
@@ -1206,12 +1208,7 @@ config.load_autoconfig(True)
 ## Type: Bool
 # c.editor.remove_file = True
 
-terminal = ST
-
-if terminal == ALACRITTY:
-    terminal = "alacritty"
-    flags = ["--class", "qutebrowser-filepicker,qutebrowser-filepicker"]
-elif terminal == ST:
+if terminal == ST:
     terminal = "st"
     flags = ["-c", "qutebrowser-filepicker", "-n", "qutebrowser-filepicker"]
 else:

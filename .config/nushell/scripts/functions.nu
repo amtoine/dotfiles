@@ -31,7 +31,16 @@ export def-env repo [] {
     #   - ghq
     #   - fzf
     #
-    let choice = (ghq list | fzf | str trim)
+    let choice = (
+        ghq list |
+        lines |
+        str replace ".com/" ": " |
+        sort --insensitive |
+        to text |
+        fzf |
+        str trim |
+        str replace ": " ".com/"
+    )
 
     # compute the directory to jump to.
     let path = if ($choice | empty?) {
@@ -74,7 +83,7 @@ export def-env repo [] {
 
         # the current tree in compact form.
         print "\nLOG:"
-        ^git --no-pager log --graph --all --oneline --decorate --simplify-by-decoration -n 10
+        ^git --no-pager log --graph --branches --remotes --tags --oneline --decorate --simplify-by-decoration -n 10
     }
 }
 
@@ -91,15 +100,16 @@ export def-env vcfg [] {
     #   - fzf
     #
     let choice = (
-        ^git --git-dir ($env.HOME | path join ".dotfiles") --work-tree $env.HOME lf ~ |
+        ^git --git-dir ($env.HOME | path join ".dotfiles") --work-tree $env.HOME lf --full-name ~ |
         fzf |
         str trim
     )
+    let path = ($env.HOME | path join $choice)
 
     if ($choice | empty?) {
         print "User choose to exit..."
     } else {
-        vim $choice
+        ^$env.EDITOR $path
     }
 }
 
@@ -237,4 +247,55 @@ export def show_banner [] {
     print $"(ansi green)($ellie.1)  (ansi yellow) (ansi yellow_bold)Nushell (ansi reset)(ansi yellow)v(version | get version)(ansi reset)"
     print $"(ansi green)($ellie.2)  (ansi light_blue) (ansi light_blue_bold)RAM (ansi reset)(ansi light_blue)($s.mem.used) / ($s.mem.total)(ansi reset)"
     print $"(ansi green)($ellie.3)  (ansi light_purple)ﮫ (ansi light_purple_bold)Uptime (ansi reset)(ansi light_purple)($s.host.uptime)(ansi reset)"
+}
+
+
+# jump to any worktree of your dotfiles with fzf
+#
+#  . for an introduction to what `git` *worktrees* are:
+#        https://youtu.be/2uEqYw-N8uE
+#
+#  . this will only work for dotfiles managed with a *bare*
+#    `git` repository, e.g. with `git` directory at `~/.dotfiles`
+#    and a working directory at `~`, i.e. my current setup.
+#
+#  . in the following, `cfg` is an alias for:
+#        git --git-dir ($env.HOME | path join ".dotfiles") --work-tree $env.HOME
+#
+#  . worktrees can be added with, for instance:
+#        cfg worktree add some/path/to/worktree my_branch
+#
+#  . and then `cfgw` will let you pick one of the worktrees
+export def-env cfgw [
+    --bare (-b): string = ".dotfiles"  # the path to the *bare* repository (defaults to ".dotfiles")
+    --debug (-d)
+] {
+    let choice = (
+        git --git-dir ($env.HOME | path join $bare) --work-tree $env.HOME worktree list |
+        str replace --all $"($env.HOME)" "~" |
+        fzf --prompt "Please choose a worktree to jump to: " |
+        str trim
+    )
+
+    # compute the directory to jump to.
+    let path = if ($choice | empty?) {
+        $env.PWD
+    } else {
+        $choice |
+        lines |
+        split column "  " |
+        get column1 |
+        str replace --all "~" $"($env.HOME)" |
+        to text
+    }
+    cd $path
+
+    if ($choice | empty?) {
+        print "User choose to exit..."
+    } else {
+        if ($debug) {
+            $"path: '($path)'"
+        }
+    }
+
 }

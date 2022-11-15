@@ -1,6 +1,5 @@
 iris https://iris.isae.fr/acces-aux-ressources-de-calcul-de-l-isae-supaero
 dt dotfiles https://gitlab.com/dwt1/dotfiles
-amtoine dotfiles https://github.com/amtoine/dotfiles
 yt https://www.youtube.com/
 wl https://www.youtube.com/playlist?list=WL
 gh https://github.com/
@@ -56,7 +55,7 @@ iscsc.fr https://iscsc.fr/
 gh-actions https://docs.github.com/en/actions
 pgmorl https://gitlab.com/instadeep/interns-projects/pgmorl
 ghn https://github.com/notifications
-ghp https://github.com/pulls
+ghp https://github.com/amtoine
 ghi https://github.com/issues
 ghia https://github.com/issues/assigned
 ghs https://github.com/amtoine?tab=stars
@@ -100,7 +99,7 @@ kubii https://www.kubii.fr/
 python-evdev https://python-evdev.readthedocs.io/en/latest/index.html
 python-rich https://rich.readthedocs.io/en/stable/index.html
 pynput https://pynput.readthedocs.io/en/latest/index.html
-oberon-project http://www.projectoberon.com/
+project-oberon http://www.projectoberon.com/
 niklaus-wirth https://people.inf.ethz.ch/wirth/
 oberon-obnc http://miasap.se/obnc/
 mostly-oberon https://rsdoiel.github.io/blog/2020/04/11/Mostly-Oberon.html
@@ -137,3 +136,18 @@ vim-adventures https://vim-adventures.com/
 neomutt https://neomutt.org/
 eggnog https://madgarden.itch.io/eggnogg
 open-classroom https://openclassrooms.com/en/
+llvm-ir https://llvm.org/docs/LangRef.html
+hacktoberfest https://hacktoberfest.com/
+dotfiles https://github.com/amtoine/dotfiles
+magit https://magit.vc/
+rust-book https://doc.rust-lang.org/stable/book/
+cheat https://cheat.sh/
+oryx https://configure.zsa.io/
+zsa https://www.zsa.io/planck/
+broot https://dystroy.org/broot/
+conventionalcommits https://www.conventionalcommits.org/en/v1.0.0/
+helix https://github.com/helix-editor/helix/wiki
+suckless https://suckless.org/
+ghpr https://github.com/pulls
+gho https://github.com/settings/organizations
+oberonproject https://github.com/oberonproject

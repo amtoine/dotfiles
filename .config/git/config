@@ -34,7 +34,7 @@
 
 [user]
   name = amtoine
-  email = 44101798+AntoineStevan@users.noreply.github.com
+  email = 44101798+amtoine@users.noreply.github.com
 [init]
   defaultBranch = main
 
@@ -45,7 +45,9 @@
 [delta]
   side-by-side = true
   line-numbers = true
+  file-style = cyan
   light = false
+  hunk-header-line-number-style = cyan
 
 [ghq "https://git.example.com/repos/"]
   vcs = git
@@ -59,11 +61,13 @@
   ap      = add -p
   aup     = add -up
   st      = status --short
-  cm      = commit
-  cmm     = commit -m
-  cma     = commit --amend
-  cme     = commit --allow-empty
-  cmn     = commit --no-verify
+  sti     = status --short --ignored
+  cm      = commit --verbose
+  cmm     = commit --verbose -m
+  cma     = commit --verbose --amend
+  cmane   = commit --verbose --amend --no-edit
+  cme     = commit --verbose --allow-empty
+  cmn     = commit --verbose --no-verify
   sw      = switch
   swc     = switch -c
   co      = checkout
@@ -79,6 +83,7 @@
   sha     = stash apply
   shl     = stash list
   shd     = stash drop
+  shs     = stash show
 
 ; to move branches and commits around.
   cp      = cherry-pick
@@ -90,13 +95,14 @@
   mg      = merge
 
 ; to inspect the commit tree.
-  ga      = log --graph --all
-  tr      = log --graph --all --oneline --decorate
+  ga      = log --graph --branches --remotes --tags
+  tr      = log --graph --branches --remotes=origin --tags --oneline --decorate
+  tra     = log --graph --branches --remotes --tags --oneline --decorate
   trb     = log --graph       --oneline --decorate
-  trd     = log --graph --all --decorate --color=always --pretty='%C(auto)%h %Cred -%ch- %C(auto)%d %s'
-  trm     = log --graph --all --oneline --decorate --stat
-  trs     = log --graph --all --oneline --decorate --simplify-by-decoration
-  trl     = log --graph --all --oneline --decorate --branches --not --remotes=*
+  trd     = log --graph --branches --remotes --tags --decorate --color=always --pretty='%C(auto)%h %Cred -%ch- %C(auto)%d %s'
+  trm     = log --graph --branches --remotes --tags --oneline --decorate --stat
+  trs     = log --graph --branches --remotes --tags --oneline --decorate --simplify-by-decoration
+  trl     = log --graph --branches --remotes --tags --oneline --decorate --branches --not --remotes=*
 
 ; to inspect the tracked files.
   lf      = ls-files                                            # list tracked files.
@@ -104,6 +110,7 @@
   lfsh    = !git ls-files | xargs ls -1 | sort -nrk5 | head -n  # show the n biggest tracked files.
   df      = diff
   dfh     = diff HEAD
+  dfs     = diff --stat
 
 ; interact with remote repos.
 ;   down stream;
@@ -141,6 +148,11 @@
   rmtv    = remote -v
   rmta    = remote add
   rmtsu   = remote set-url
+
+; worktree actions.
+  wta     = worktree add
+  wtrm    = worktree remove
+  wtls    = worktree list
 
 [pull]
   rebase = true

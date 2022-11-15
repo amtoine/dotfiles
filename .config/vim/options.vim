@@ -30,3 +30,10 @@ set showmode
 set showmatch
 
 set shell=/usr/bin/nu
+
+set noswapfile
+
+set showbreak=+++
+
+set splitbelow
+set splitright

@@ -75,6 +75,10 @@ package = "argon2"
 version = "20190702-4"
 
 [[pkgs.pacman.all]]
+package = "asciinema"
+version = "2.2.0-2"
+
+[[pkgs.pacman.all]]
 package = "at-spi2-atk"
 version = "2.38.0-1"
 
@@ -159,6 +163,10 @@ package = "boost-libs"
 version = "1.80.0-2"
 
 [[pkgs.pacman.all]]
+package = "box2d"
+version = "2.4.1-1"
+
+[[pkgs.pacman.all]]
 package = "brightnessctl"
 version = "0.5.1-2"
 
@@ -173,6 +181,10 @@ version = "0.9.10-2"
 [[pkgs.pacman.all]]
 package = "btrfs-progs"
 version = "5.19.1-1"
+
+[[pkgs.pacman.all]]
+package = "bubblewrap"
+version = "0.6.2-1"
 
 [[pkgs.pacman.all]]
 package = "bzip2"
@@ -229,6 +241,10 @@ version = "7.0-1"
 [[pkgs.pacman.all]]
 package = "clang"
 version = "14.0.6-2"
+
+[[pkgs.pacman.all]]
+package = "clucene"
+version = "2.3.3.4-12"
 
 [[pkgs.pacman.all]]
 package = "cmus"
@@ -289,6 +305,10 @@ version = "0.26-2"
 [[pkgs.pacman.all]]
 package = "device-mapper"
 version = "2.03.16-2"
+
+[[pkgs.pacman.all]]
+package = "devour"
+version = "12-2"
 
 [[pkgs.pacman.all]]
 package = "diffutils"
@@ -363,6 +383,14 @@ package = "efivar"
 version = "38-2"
 
 [[pkgs.pacman.all]]
+package = "enchant"
+version = "2.3.3-1"
+
+[[pkgs.pacman.all]]
+package = "exa"
+version = "0.10.1-6"
+
+[[pkgs.pacman.all]]
 package = "exiv2"
 version = "0.27.5-3"
 
@@ -385,6 +413,10 @@ version = "8.4.0-1"
 [[pkgs.pacman.all]]
 package = "feh"
 version = "3.9.1-2"
+
+[[pkgs.pacman.all]]
+package = "ffcall"
+version = "2.4-2"
 
 [[pkgs.pacman.all]]
 package = "ffmpeg"
@@ -647,6 +679,14 @@ package = "harfbuzz"
 version = "5.2.0-1"
 
 [[pkgs.pacman.all]]
+package = "harfbuzz-icu"
+version = "5.2.0-1"
+
+[[pkgs.pacman.all]]
+package = "helix"
+version = "22.08.1-1"
+
+[[pkgs.pacman.all]]
 package = "hicolor-icon-theme"
 version = "0.17-2"
 
@@ -659,12 +699,20 @@ package = "http-parser"
 version = "2.9.4-1"
 
 [[pkgs.pacman.all]]
+package = "hunspell"
+version = "1.7.1-1"
+
+[[pkgs.pacman.all]]
 package = "hwdata"
 version = "0.362-2"
 
 [[pkgs.pacman.all]]
 package = "hwloc"
 version = "2.8.0-1"
+
+[[pkgs.pacman.all]]
+package = "hyphen"
+version = "2.8.8-4"
 
 [[pkgs.pacman.all]]
 package = "iana-etc"
@@ -919,6 +967,10 @@ package = "lame"
 version = "3.100-4"
 
 [[pkgs.pacman.all]]
+package = "latex-mk"
+version = "2.1-4"
+
+[[pkgs.pacman.all]]
 package = "lazygit"
 version = "0.35-1"
 
@@ -937,6 +989,10 @@ version = "1.8.3-1"
 [[pkgs.pacman.all]]
 package = "less"
 version = "1:608-1"
+
+[[pkgs.pacman.all]]
+package = "libabw"
+version = "0.1.3-3"
 
 [[pkgs.pacman.all]]
 package = "libaccounts-glib"
@@ -973,6 +1029,10 @@ version = "1:0.8+r3+g68cd5af-1"
 [[pkgs.pacman.all]]
 package = "libatasmart"
 version = "0.19-5"
+
+[[pkgs.pacman.all]]
+package = "libatomic_ops"
+version = "7.6.14-1"
 
 [[pkgs.pacman.all]]
 package = "libavc1394"
@@ -1039,6 +1099,10 @@ package = "libcdio-paranoia"
 version = "10.2+2.0.1-2"
 
 [[pkgs.pacman.all]]
+package = "libcdr"
+version = "0.1.7-4"
+
+[[pkgs.pacman.all]]
 package = "libcloudproviders"
 version = "0.3.1-2"
 
@@ -1091,6 +1155,10 @@ package = "libdvdread"
 version = "6.1.3-1"
 
 [[pkgs.pacman.all]]
+package = "libe-book"
+version = "0.1.3-11"
+
+[[pkgs.pacman.all]]
 package = "libedit"
 version = "20210910_3.1-1"
 
@@ -1101,6 +1169,14 @@ version = "0.187-2"
 [[pkgs.pacman.all]]
 package = "libepoxy"
 version = "1.5.10-1"
+
+[[pkgs.pacman.all]]
+package = "libepubgen"
+version = "0.1.1-3"
+
+[[pkgs.pacman.all]]
+package = "libetonyek"
+version = "0.1.10-2"
 
 [[pkgs.pacman.all]]
 package = "libev"
@@ -1119,6 +1195,10 @@ package = "libexif"
 version = "0.6.24-1"
 
 [[pkgs.pacman.all]]
+package = "libexttextcat"
+version = "3.4.6-1"
+
+[[pkgs.pacman.all]]
 package = "libfdk-aac"
 version = "2.0.2-1"
 
@@ -1133,6 +1213,10 @@ version = "1.1.6-1"
 [[pkgs.pacman.all]]
 package = "libfreeaptx"
 version = "0.1.1-1"
+
+[[pkgs.pacman.all]]
+package = "libfreehand"
+version = "0.1.2-4"
 
 [[pkgs.pacman.all]]
 package = "libgcrypt"
@@ -1215,6 +1299,10 @@ package = "libisl"
 version = "0.25-1"
 
 [[pkgs.pacman.all]]
+package = "libixion"
+version = "0.17.0-3"
+
+[[pkgs.pacman.all]]
 package = "libjpeg-turbo"
 version = "2.1.4-2"
 
@@ -1231,6 +1319,10 @@ package = "libksba"
 version = "1.6.0-1"
 
 [[pkgs.pacman.all]]
+package = "liblangtag"
+version = "0.6.4-1"
+
+[[pkgs.pacman.all]]
 package = "libldac"
 version = "2.0.2.3-1"
 
@@ -1239,8 +1331,16 @@ package = "libldap"
 version = "2.6.3-1"
 
 [[pkgs.pacman.all]]
+package = "libluv"
+version = "1.44.2_1-1"
+
+[[pkgs.pacman.all]]
 package = "libmad"
 version = "0.15.1b-9"
+
+[[pkgs.pacman.all]]
+package = "libmanette"
+version = "0.2.6-3"
 
 [[pkgs.pacman.all]]
 package = "libmaxminddb"
@@ -1285,6 +1385,14 @@ version = "1:0.1+r475-3"
 [[pkgs.pacman.all]]
 package = "libmpdclient"
 version = "2.20-2"
+
+[[pkgs.pacman.all]]
+package = "libmspub"
+version = "0.1.4-12"
+
+[[pkgs.pacman.all]]
+package = "libmwaw"
+version = "0.3.21-2"
 
 [[pkgs.pacman.all]]
 package = "libndp"
@@ -1339,6 +1447,14 @@ package = "libnsl"
 version = "2.0.0-2"
 
 [[pkgs.pacman.all]]
+package = "libnumbertext"
+version = "1.0.10-1"
+
+[[pkgs.pacman.all]]
+package = "libodfgen"
+version = "0.1.8-1"
+
+[[pkgs.pacman.all]]
 package = "libogg"
 version = "1.3.5-1"
 
@@ -1351,8 +1467,16 @@ package = "libopenmpt"
 version = "0.6.5-2"
 
 [[pkgs.pacman.all]]
+package = "liborcus"
+version = "0.17.2-3"
+
+[[pkgs.pacman.all]]
 package = "libp11-kit"
 version = "0.24.1-1"
+
+[[pkgs.pacman.all]]
+package = "libpagemaker"
+version = "0.0.4-3"
 
 [[pkgs.pacman.all]]
 package = "libpaper"
@@ -1399,8 +1523,20 @@ package = "libpulse"
 version = "16.1-1"
 
 [[pkgs.pacman.all]]
+package = "libqxp"
+version = "0.0.2-8"
+
+[[pkgs.pacman.all]]
 package = "libraw1394"
 version = "2.1.2-3"
+
+[[pkgs.pacman.all]]
+package = "libreoffice-fresh"
+version = "7.4.1-3"
+
+[[pkgs.pacman.all]]
+package = "librevenge"
+version = "0.0.4-4"
 
 [[pkgs.pacman.all]]
 package = "librsvg"
@@ -1429,6 +1565,10 @@ version = "1:2.4.6-1"
 [[pkgs.pacman.all]]
 package = "libsidplayfp"
 version = "2.3.1-1"
+
+[[pkgs.pacman.all]]
+package = "libsigsegv"
+version = "2.14-1"
 
 [[pkgs.pacman.all]]
 package = "libslirp"
@@ -1471,8 +1611,16 @@ package = "libssh2"
 version = "1.10.0-1"
 
 [[pkgs.pacman.all]]
+package = "libstaroffice"
+version = "0.0.7-2"
+
+[[pkgs.pacman.all]]
 package = "libstemmer"
 version = "2.2.0-2"
+
+[[pkgs.pacman.all]]
+package = "libsynctex"
+version = "2022.62885-1"
 
 [[pkgs.pacman.all]]
 package = "libsysprof-capture"
@@ -1485,6 +1633,10 @@ version = "4.19.0-1"
 [[pkgs.pacman.all]]
 package = "libteam"
 version = "1.31-5"
+
+[[pkgs.pacman.all]]
+package = "libtermkey"
+version = "0.22-2"
 
 [[pkgs.pacman.all]]
 package = "libthai"
@@ -1501,6 +1653,10 @@ version = "4.4.0-4"
 [[pkgs.pacman.all]]
 package = "libtirpc"
 version = "1.3.3-1"
+
+[[pkgs.pacman.all]]
+package = "libtommath"
+version = "1.2.0-3"
 
 [[pkgs.pacman.all]]
 package = "libtool"
@@ -1563,6 +1719,10 @@ package = "libverto"
 version = "0.3.2-4"
 
 [[pkgs.pacman.all]]
+package = "libvisio"
+version = "0.1.7-7"
+
+[[pkgs.pacman.all]]
 package = "libvisual"
 version = "0.4.0-8"
 
@@ -1575,12 +1735,32 @@ package = "libvpx"
 version = "1.12.0-1"
 
 [[pkgs.pacman.all]]
+package = "libvterm01"
+version = "0.1.4-2"
+
+[[pkgs.pacman.all]]
 package = "libwacom"
 version = "2.4.0-1"
 
 [[pkgs.pacman.all]]
 package = "libwebp"
 version = "1.2.4-1"
+
+[[pkgs.pacman.all]]
+package = "libwpd"
+version = "0.10.3-3"
+
+[[pkgs.pacman.all]]
+package = "libwpe"
+version = "1.14.0-1"
+
+[[pkgs.pacman.all]]
+package = "libwpg"
+version = "0.3.3-3"
+
+[[pkgs.pacman.all]]
+package = "libwps"
+version = "0.4.12-1"
 
 [[pkgs.pacman.all]]
 package = "libx11"
@@ -1723,6 +1903,10 @@ package = "libyuv"
 version = "r2322+3aebf69d-1"
 
 [[pkgs.pacman.all]]
+package = "libzmf"
+version = "0.0.2-12"
+
+[[pkgs.pacman.all]]
 package = "licenses"
 version = "20220125-1"
 
@@ -1761,6 +1945,10 @@ version = "1:3.6.0.r41.g31d1f125-1"
 [[pkgs.pacman.all]]
 package = "lmdb"
 version = "0.9.29-1"
+
+[[pkgs.pacman.all]]
+package = "lpsolve"
+version = "5.5.2.11-1"
 
 [[pkgs.pacman.all]]
 package = "lua"
@@ -1871,6 +2059,10 @@ package = "mpv"
 version = "1:0.34.1-5"
 
 [[pkgs.pacman.all]]
+package = "msgpack-c"
+version = "4.0.0-1"
+
+[[pkgs.pacman.all]]
 package = "mtdev"
 version = "1.1.6-2"
 
@@ -1905,6 +2097,14 @@ version = "74-1"
 [[pkgs.pacman.all]]
 package = "neomutt"
 version = "20220429-1"
+
+[[pkgs.pacman.all]]
+package = "neon"
+version = "0.32.4-1"
+
+[[pkgs.pacman.all]]
+package = "neovim"
+version = "0.7.2-3"
 
 [[pkgs.pacman.all]]
 package = "nerd-fonts-mononoki"
@@ -2079,6 +2279,10 @@ package = "perl-error"
 version = "0.17029-4"
 
 [[pkgs.pacman.all]]
+package = "perl-file-which"
+version = "1.27-2"
+
+[[pkgs.pacman.all]]
 package = "perl-mailtools"
 version = "2.21-6"
 
@@ -2163,6 +2367,10 @@ package = "portaudio"
 version = "1:19.7.0-1"
 
 [[pkgs.pacman.all]]
+package = "potrace"
+version = "1.16-2"
+
+[[pkgs.pacman.all]]
 package = "procps-ng"
 version = "3.3.17-1"
 
@@ -2209,6 +2417,10 @@ version = "1.21.0-1"
 [[pkgs.pacman.all]]
 package = "python-click"
 version = "8.1.3-1"
+
+[[pkgs.pacman.all]]
+package = "python-colorama"
+version = "0.4.5-1"
 
 [[pkgs.pacman.all]]
 package = "python-dateutil"
@@ -2315,8 +2527,16 @@ package = "python-setuptools"
 version = "1:62.3.4-1"
 
 [[pkgs.pacman.all]]
+package = "python-shtab"
+version = "1.5.5-1"
+
+[[pkgs.pacman.all]]
 package = "python-six"
 version = "1.16.0-6"
+
+[[pkgs.pacman.all]]
+package = "python-termcolor"
+version = "2.0.0-1"
 
 [[pkgs.pacman.all]]
 package = "python-tomli"
@@ -2531,6 +2751,14 @@ package = "ranger"
 version = "1.9.3-4"
 
 [[pkgs.pacman.all]]
+package = "raptor"
+version = "2.0.15-19"
+
+[[pkgs.pacman.all]]
+package = "rasqal"
+version = "1:0.9.33-5"
+
+[[pkgs.pacman.all]]
 package = "rav1e"
 version = "0.5.1-2"
 
@@ -2541,6 +2769,10 @@ version = "1:20220601-1"
 [[pkgs.pacman.all]]
 package = "readline"
 version = "8.1.002-1"
+
+[[pkgs.pacman.all]]
+package = "redland"
+version = "1:1.0.17-8"
 
 [[pkgs.pacman.all]]
 package = "rest"
@@ -2935,6 +3167,10 @@ package = "systemd-sysvcompat"
 version = "251.4-1"
 
 [[pkgs.pacman.all]]
+package = "t1lib"
+version = "5.1.2-8"
+
+[[pkgs.pacman.all]]
 package = "taglib"
 version = "1.12-2"
 
@@ -2963,6 +3199,58 @@ package = "texinfo"
 version = "6.8-2"
 
 [[pkgs.pacman.all]]
+package = "texlive-bibtexextra"
+version = "2022.63023-1"
+
+[[pkgs.pacman.all]]
+package = "texlive-bin"
+version = "2022.62885-1"
+
+[[pkgs.pacman.all]]
+package = "texlive-core"
+version = "2022.63035-1"
+
+[[pkgs.pacman.all]]
+package = "texlive-fontsextra"
+version = "2022.62977-1"
+
+[[pkgs.pacman.all]]
+package = "texlive-formatsextra"
+version = "2022.62529-1"
+
+[[pkgs.pacman.all]]
+package = "texlive-games"
+version = "2022.62102-1"
+
+[[pkgs.pacman.all]]
+package = "texlive-humanities"
+version = "2022.62929-1"
+
+[[pkgs.pacman.all]]
+package = "texlive-latexextra"
+version = "2022.63034-1"
+
+[[pkgs.pacman.all]]
+package = "texlive-music"
+version = "2022.62533-1"
+
+[[pkgs.pacman.all]]
+package = "texlive-pictures"
+version = "2022.62992-1"
+
+[[pkgs.pacman.all]]
+package = "texlive-pstricks"
+version = "2022.62977-1"
+
+[[pkgs.pacman.all]]
+package = "texlive-publishers"
+version = "2022.63013-1"
+
+[[pkgs.pacman.all]]
+package = "texlive-science"
+version = "2022.62977-1"
+
+[[pkgs.pacman.all]]
 package = "thin-provisioning-tools"
 version = "0.9.0-1"
 
@@ -2973,6 +3261,10 @@ version = "5.98.0-1"
 [[pkgs.pacman.all]]
 package = "tig"
 version = "2.5.7-1"
+
+[[pkgs.pacman.all]]
+package = "tldr"
+version = "3.1.0-2"
 
 [[pkgs.pacman.all]]
 package = "tmux"
@@ -2989,6 +3281,10 @@ version = "3.3.3-1"
 [[pkgs.pacman.all]]
 package = "tree"
 version = "2.0.4-1"
+
+[[pkgs.pacman.all]]
+package = "tree-sitter"
+version = "0.20.7-1"
 
 [[pkgs.pacman.all]]
 package = "tslib"
@@ -3017,6 +3313,14 @@ version = "2.9.4-1"
 [[pkgs.pacman.all]]
 package = "unclutter"
 version = "1:1.6-2"
+
+[[pkgs.pacman.all]]
+package = "unibilium"
+version = "2.1.1-1"
+
+[[pkgs.pacman.all]]
+package = "unzip"
+version = "6.0-19"
 
 [[pkgs.pacman.all]]
 package = "upower"
@@ -3091,6 +3395,10 @@ package = "wayland"
 version = "1.21.0-1"
 
 [[pkgs.pacman.all]]
+package = "webkit2gtk"
+version = "2.38.0-2"
+
+[[pkgs.pacman.all]]
 package = "webrtc-audio-processing"
 version = "0.3.1-3"
 
@@ -3115,12 +3423,20 @@ package = "wireplumber"
 version = "0.4.11-4"
 
 [[pkgs.pacman.all]]
+package = "woff2"
+version = "1.0.2-4"
+
+[[pkgs.pacman.all]]
 package = "wolfssl"
 version = "5.5.0-1"
 
 [[pkgs.pacman.all]]
 package = "wpa_supplicant"
 version = "2:2.10-5"
+
+[[pkgs.pacman.all]]
+package = "wpebackend-fdo"
+version = "1.14.0-1"
 
 [[pkgs.pacman.all]]
 package = "x264"
@@ -3171,6 +3487,10 @@ package = "xclip"
 version = "0.13-3"
 
 [[pkgs.pacman.all]]
+package = "xdg-dbus-proxy"
+version = "0.1.4-1"
+
+[[pkgs.pacman.all]]
 package = "xdg-user-dirs"
 version = "0.18-1"
 
@@ -3197,6 +3517,10 @@ version = "5.19.0-1"
 [[pkgs.pacman.all]]
 package = "xkeyboard-config"
 version = "2.36+89+g382c5feb-1"
+
+[[pkgs.pacman.all]]
+package = "xmlsec"
+version = "1.2.34-2"
 
 [[pkgs.pacman.all]]
 package = "xorg-bdftopcf"
@@ -3435,6 +3759,14 @@ package = "zram-generator"
 version = "1.1.2-1"
 
 [[pkgs.pacman.all]]
+package = "zsa-udev"
+version = "2.1.3-4"
+
+[[pkgs.pacman.all]]
+package = "zsa-wally"
+version = "2.1.3-4"
+
+[[pkgs.pacman.all]]
 package = "zstd"
 version = "1.5.2-7"
 
@@ -3479,6 +3811,10 @@ package = "archlinux-keyring"
 version = "20220831-1"
 
 [[pkgs.pacman.explicit]]
+package = "asciinema"
+version = "2.2.0-2"
+
+[[pkgs.pacman.explicit]]
 package = "autoconf"
 version = "2.71-1"
 
@@ -3551,6 +3887,10 @@ package = "cronie"
 version = "1.6.1-1"
 
 [[pkgs.pacman.explicit]]
+package = "devour"
+version = "12-2"
+
+[[pkgs.pacman.explicit]]
 package = "discord"
 version = "0.0.20-1"
 
@@ -3569,6 +3909,10 @@ version = "1.9.0-1"
 [[pkgs.pacman.explicit]]
 package = "efibootmgr"
 version = "18-1"
+
+[[pkgs.pacman.explicit]]
+package = "exa"
+version = "0.10.1-6"
 
 [[pkgs.pacman.explicit]]
 package = "fakeroot"
@@ -3651,6 +3995,10 @@ package = "gzip"
 version = "1.12-1"
 
 [[pkgs.pacman.explicit]]
+package = "helix"
+version = "22.08.1-1"
+
+[[pkgs.pacman.explicit]]
 package = "intel-media-driver"
 version = "22.4.4-2"
 
@@ -3667,6 +4015,10 @@ package = "kolourpaint"
 version = "22.08.1-1"
 
 [[pkgs.pacman.explicit]]
+package = "latex-mk"
+version = "2.1-4"
+
+[[pkgs.pacman.explicit]]
 package = "lazygit"
 version = "0.35-1"
 
@@ -3677,6 +4029,10 @@ version = "0.8.1-1"
 [[pkgs.pacman.explicit]]
 package = "libpulse"
 version = "16.1-1"
+
+[[pkgs.pacman.explicit]]
+package = "libreoffice-fresh"
+version = "7.4.1-3"
 
 [[pkgs.pacman.explicit]]
 package = "libtool"
@@ -3741,6 +4097,10 @@ version = "0.9.2-8"
 [[pkgs.pacman.explicit]]
 package = "neomutt"
 version = "20220429-1"
+
+[[pkgs.pacman.explicit]]
+package = "neovim"
+version = "0.7.2-3"
 
 [[pkgs.pacman.explicit]]
 package = "nerd-fonts-mononoki"
@@ -3919,8 +4279,60 @@ package = "texinfo"
 version = "6.8-2"
 
 [[pkgs.pacman.explicit]]
+package = "texlive-bibtexextra"
+version = "2022.63023-1"
+
+[[pkgs.pacman.explicit]]
+package = "texlive-core"
+version = "2022.63035-1"
+
+[[pkgs.pacman.explicit]]
+package = "texlive-fontsextra"
+version = "2022.62977-1"
+
+[[pkgs.pacman.explicit]]
+package = "texlive-formatsextra"
+version = "2022.62529-1"
+
+[[pkgs.pacman.explicit]]
+package = "texlive-games"
+version = "2022.62102-1"
+
+[[pkgs.pacman.explicit]]
+package = "texlive-humanities"
+version = "2022.62929-1"
+
+[[pkgs.pacman.explicit]]
+package = "texlive-latexextra"
+version = "2022.63034-1"
+
+[[pkgs.pacman.explicit]]
+package = "texlive-music"
+version = "2022.62533-1"
+
+[[pkgs.pacman.explicit]]
+package = "texlive-pictures"
+version = "2022.62992-1"
+
+[[pkgs.pacman.explicit]]
+package = "texlive-pstricks"
+version = "2022.62977-1"
+
+[[pkgs.pacman.explicit]]
+package = "texlive-publishers"
+version = "2022.63013-1"
+
+[[pkgs.pacman.explicit]]
+package = "texlive-science"
+version = "2022.62977-1"
+
+[[pkgs.pacman.explicit]]
 package = "tig"
 version = "2.5.7-1"
+
+[[pkgs.pacman.explicit]]
+package = "tldr"
+version = "3.1.0-2"
 
 [[pkgs.pacman.explicit]]
 package = "tmux"
@@ -3933,6 +4345,10 @@ version = "185.f2f847c-1"
 [[pkgs.pacman.explicit]]
 package = "unclutter"
 version = "1:1.6-2"
+
+[[pkgs.pacman.explicit]]
+package = "unzip"
+version = "6.0-19"
 
 [[pkgs.pacman.explicit]]
 package = "vim-clipboard"
@@ -4110,6 +4526,10 @@ version = "1.0.6-1"
 package = "zram-generator"
 version = "1.1.2-1"
 
+[[pkgs.pacman.explicit]]
+package = "zsa-wally"
+version = "2.1.3-4"
+
 [[pkgs.pacman.foreign]]
 package = "amtoine-applications-git"
 version = "1.0.r6.27242df-1"
@@ -4139,6 +4559,10 @@ package = "cava"
 version = "0.8.2-5"
 
 [[pkgs.pacman.foreign]]
+package = "devour"
+version = "12-2"
+
+[[pkgs.pacman.foreign]]
 package = "dmscripts-git"
 version = "1.0.r442.9b7cd8a-1"
 
@@ -4153,6 +4577,10 @@ version = "1.3.0-1"
 [[pkgs.pacman.foreign]]
 package = "junnunkarim-wallpapers-git"
 version = "r4.9893042-1"
+
+[[pkgs.pacman.foreign]]
+package = "latex-mk"
+version = "2.1-4"
 
 [[pkgs.pacman.foreign]]
 package = "mbsync-git"
@@ -4219,6 +4647,10 @@ package = "archlinux-keyring"
 version = "20220831-1"
 
 [[pkgs.pacman.native]]
+package = "asciinema"
+version = "2.2.0-2"
+
+[[pkgs.pacman.native]]
 package = "autoconf"
 version = "2.71-1"
 
@@ -4293,6 +4725,10 @@ version = "1.9.0-1"
 [[pkgs.pacman.native]]
 package = "efibootmgr"
 version = "18-1"
+
+[[pkgs.pacman.native]]
+package = "exa"
+version = "0.10.1-6"
 
 [[pkgs.pacman.native]]
 package = "fakeroot"
@@ -4371,6 +4807,10 @@ package = "gzip"
 version = "1.12-1"
 
 [[pkgs.pacman.native]]
+package = "helix"
+version = "22.08.1-1"
+
+[[pkgs.pacman.native]]
 package = "intel-media-driver"
 version = "22.4.4-2"
 
@@ -4393,6 +4833,10 @@ version = "0.8.1-1"
 [[pkgs.pacman.native]]
 package = "libpulse"
 version = "16.1-1"
+
+[[pkgs.pacman.native]]
+package = "libreoffice-fresh"
+version = "7.4.1-3"
 
 [[pkgs.pacman.native]]
 package = "libtool"
@@ -4445,6 +4889,10 @@ version = "0.9.2-8"
 [[pkgs.pacman.native]]
 package = "neomutt"
 version = "20220429-1"
+
+[[pkgs.pacman.native]]
+package = "neovim"
+version = "0.7.2-3"
 
 [[pkgs.pacman.native]]
 package = "networkmanager"
@@ -4591,8 +5039,60 @@ package = "texinfo"
 version = "6.8-2"
 
 [[pkgs.pacman.native]]
+package = "texlive-bibtexextra"
+version = "2022.63023-1"
+
+[[pkgs.pacman.native]]
+package = "texlive-core"
+version = "2022.63035-1"
+
+[[pkgs.pacman.native]]
+package = "texlive-fontsextra"
+version = "2022.62977-1"
+
+[[pkgs.pacman.native]]
+package = "texlive-formatsextra"
+version = "2022.62529-1"
+
+[[pkgs.pacman.native]]
+package = "texlive-games"
+version = "2022.62102-1"
+
+[[pkgs.pacman.native]]
+package = "texlive-humanities"
+version = "2022.62929-1"
+
+[[pkgs.pacman.native]]
+package = "texlive-latexextra"
+version = "2022.63034-1"
+
+[[pkgs.pacman.native]]
+package = "texlive-music"
+version = "2022.62533-1"
+
+[[pkgs.pacman.native]]
+package = "texlive-pictures"
+version = "2022.62992-1"
+
+[[pkgs.pacman.native]]
+package = "texlive-pstricks"
+version = "2022.62977-1"
+
+[[pkgs.pacman.native]]
+package = "texlive-publishers"
+version = "2022.63013-1"
+
+[[pkgs.pacman.native]]
+package = "texlive-science"
+version = "2022.62977-1"
+
+[[pkgs.pacman.native]]
 package = "tig"
 version = "2.5.7-1"
+
+[[pkgs.pacman.native]]
+package = "tldr"
+version = "3.1.0-2"
 
 [[pkgs.pacman.native]]
 package = "tmux"
@@ -4601,6 +5101,10 @@ version = "3.3_a-2"
 [[pkgs.pacman.native]]
 package = "unclutter"
 version = "1:1.6-2"
+
+[[pkgs.pacman.native]]
+package = "unzip"
+version = "6.0-19"
 
 [[pkgs.pacman.native]]
 package = "vulkan-intel"
@@ -4773,6 +5277,10 @@ version = "1.0.6-1"
 [[pkgs.pacman.native]]
 package = "zram-generator"
 version = "1.1.2-1"
+
+[[pkgs.pacman.native]]
+package = "zsa-wally"
+version = "2.1.3-4"
 [[pkgs.python.pip]]
 package = "appdirs"
 version = "1.4.4"
@@ -4780,6 +5288,10 @@ version = "1.4.4"
 [[pkgs.python.pip]]
 package = "argcomplete"
 version = "2.0.0"
+
+[[pkgs.python.pip]]
+package = "asciinema"
+version = "2.2.0"
 
 [[pkgs.python.pip]]
 package = "autocommand"
@@ -4808,6 +5320,10 @@ version = "2.1.1"
 [[pkgs.python.pip]]
 package = "click"
 version = "8.1.3"
+
+[[pkgs.python.pip]]
+package = "colorama"
+version = "0.4.5"
 
 [[pkgs.python.pip]]
 package = "commonmark"
@@ -4998,6 +5514,10 @@ package = "requests"
 version = "2.28.1"
 
 [[pkgs.python.pip]]
+package = "shtab"
+version = "1.5.5"
+
+[[pkgs.python.pip]]
 package = "six"
 version = "1.16.0"
 
@@ -5010,8 +5530,16 @@ package = "team"
 version = "1.0"
 
 [[pkgs.python.pip]]
+package = "termcolor"
+version = "2.0.0"
+
+[[pkgs.python.pip]]
 package = "termdown"
 version = "1.18.0"
+
+[[pkgs.python.pip]]
+package = "tldr"
+version = "3.1.0"
 
 [[pkgs.python.pip]]
 package = "toml"
@@ -5057,6 +5585,10 @@ version = "2.2.2"
 package = "virtualenv"
 python = "3.10.7"
 version = "20.16.5"
+[[pkgs.rust.cargo]]
+package = "broot"
+version = "1.15.0"
+
 [[pkgs.rust.cargo]]
 package = "heh"
 version = "0.2.0"

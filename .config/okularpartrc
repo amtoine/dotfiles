@@ -1,0 +1,13 @@
+[Dlg Accessibility]
+HighlightLinks=true
+
+[Document]
+ChangeColors=true
+PaperColor=42,42,42
+RenderMode=InvertLightness
+
+[PageView]
+MouseMode=TextSelect
+
+[Reviews]
+QuickAnnotationTools=<tool type="highlight" id="1" default="true" name="Yellow Highlighter"><engine type="TextSelector" color="#ffff00"><annotation type="Highlight" color="#ffffff00"/></engine><shortcut>1</shortcut></tool>,<tool type="highlight" id="2" default="true" name="Green Highlighter"><engine type="TextSelector" color="#00ff00"><annotation type="Highlight" color="#ff00ff00"/></engine><shortcut>2</shortcut></tool>,<tool type="underline" id="3"><engine type="TextSelector" color="#ff0000"><annotation type="Underline" color="#ffff0000"/></engine><shortcut>3</shortcut></tool>,<tool type="typewriter" id="4" default="true" name="Insert Text"><engine type="PickPoint" block="true"><annotation type="Typewriter" textColor="#000000" width="0" color="#00ffffff"/></engine><shortcut>4</shortcut></tool>,<tool type="note-inline" id="5"><engine type="PickPoint" hoverIcon="tool-note-inline" color="#ffff00" block="true"><annotation type="FreeText" textColor="#ff000000" color="#ffffff00"/></engine><shortcut>5</shortcut></tool>,<tool type="note-linked" id="6"><engine type="PickPoint" hoverIcon="tool-note" color="#ffff00"><annotation type="Text" icon="Note" color="#ffffff00"/></engine><shortcut>6</shortcut></tool>
