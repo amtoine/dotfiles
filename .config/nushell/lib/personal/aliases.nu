@@ -15,7 +15,6 @@ alias mv = mv --verbose
 alias cb = ^cbonsai --infinite --live --base=1 --wait=2 --time=10
 
 alias sl = sl -aw -20
-alias bash = sl
 
 alias disk = (
   df -h |
