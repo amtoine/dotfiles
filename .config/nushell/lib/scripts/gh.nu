@@ -1,6 +1,3 @@
-alias GH_API = gh api --paginate
-
-
 # TODO: documentation
 def unpack-pages [] {
     sd -s "}][{" "},{"
@@ -11,9 +8,9 @@ def unpack-pages [] {
 def pull [
   endpoint: string
 ] {
-    GH_API $endpoint    # get all the raw data
-        | unpack-pages  # split the pages into a single one
-        | from json     # convert to JSON internally
+    gh api --paginate $endpoint  # get all the raw data
+        | unpack-pages           # split the pages into a single one
+        | from json              # convert to JSON internally
 }
 
 
