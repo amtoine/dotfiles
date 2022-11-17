@@ -57,5 +57,6 @@ use scripts/job.nu
 use scripts/repo.nu
 use scripts/gf.nu
 use scripts/hx.nu
+use scripts/gh.nu
 
 source personal/final.nu
