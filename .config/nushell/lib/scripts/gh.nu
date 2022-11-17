@@ -16,7 +16,7 @@ def pull [
 
 # TODO: documentation
 export def "me notifications" [] {
-  pull notifications
+    pull notifications
 }
 
 
