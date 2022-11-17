@@ -34,9 +34,11 @@ export def "me starred" [] {
 
 # TODO: documentation
 export def "me repos" [
-  org: string
+  owner: string
+  --user (-u): bool
 ] {
-    pull $"/orgs/($org)/repos"
+    let root = if ($user) { "users" } else { "orgs" }
+    pull $"/($root)/($owner)/repos"
 }
 
 
