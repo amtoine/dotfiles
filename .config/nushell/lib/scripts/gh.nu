@@ -16,19 +16,19 @@ def pull [
 
 # TODO: documentation
 export def "me notifications" [] {
-    pull notifications
+    pull /notifications
 }
 
 
 # TODO: documentation
 export def "me issues" [] {
-    pull issues
+    pull /issues
 }
 
 
 # TODO: documentation
 export def "me starred" [] {
-    pull user/starred
+    pull /user/starred
 }
 
 
