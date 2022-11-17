@@ -38,3 +38,13 @@ export def "me repos" [
 ] {
     pull $"/orgs/($org)/repos"
 }
+
+
+# TODO: documentation
+export def "me protection" [
+  owner: string
+  repo: string
+  branch: string
+] {
+    pull (["" "repos" $owner $repo "branches" $branch "protection"] | str collect "/")
+}
