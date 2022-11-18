@@ -1,24 +1,3 @@
-#             ___
-#       ____ |__ \ ____              _____      personal page: https://amtoine.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/amtoine 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/amtoine/dotfiles 
-#     \__,_/____/_/ /_/           /____/
-#          _               _
-#         | |             | |
-#         | |__   __ _ ___| |__  _ __ ___
-#         | '_ \ / _` / __| '_ \| '__/ __|
-#      _  | |_) | (_| \__ \ | | | | | (__
-#     (_) |_.__/ \__,_|___/_| |_|_|  \___|
-#
-# Description:  ~/.bashrc: executed by bash(1) for non-login shells.
-#               see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-#               for examples
-# Dependencies: cal, xtcl.sh, _shortwd.sh & _parse_git_info.sh at https://github.com/amtoine/dotfiles/tree/main/scripts
-#               colorscript at https://gitlab.com/dwt1/shell-color-scripts, starship
-#               fortune, ponysay, virtualenvwrapper, nvim, bash-insulter
-# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE 
-# Contributors: Stevan Antoine
-
 #        ___                                       __         __                                __               __                 __  __  _
 #       <  /     ____ ____  ____  ___  _________ _/ /  ____  / /_        ____ ___  __  __      / /_  ____ ______/ /_     ________  / /_/ /_(_)___  ____ ______
 #       / /     / __ `/ _ \/ __ \/ _ \/ ___/ __ `/ /  / __ \/ __ \______/ __ `__ \/ / / /_____/ __ \/ __ `/ ___/ __ \   / ___/ _ \/ __/ __/ / __ \/ __ `/ ___/

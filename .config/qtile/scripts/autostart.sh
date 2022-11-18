@@ -1,18 +1,4 @@
 #! /usr/bin/bash
-#           ___                       personal page: https://amtoine.github.io/ 
-#      __ _|_  )_ _    ___   ___      github   page: https://github.com/amtoine 
-#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/amtoine/dotfiles 
-#     \__,_/___|_||_|       /__/
-#                 __           __         __            _          _            _        _
-#          __    / /  __ _    / /  ___   / /  __ _ _  _| |_ ___ __| |_ __ _ _ _| |_   __| |_
-#      _  / _|  / /  / _` |  / /  (_-<  / /  / _` | || |  _/ _ (_-<  _/ _` | '_|  _|_(_-< ' \
-#     (_) \__| /_/   \__, | /_/   /__/ /_/   \__,_|\_,_|\__\___/__/\__\__,_|_|  \__(_)__/_||_|
-#                       |_|
-#
-# Description:  autostarts some process in the background
-# Dependencies: picom, feh, emacs, dunst
-# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE
-# Contributors: Stevan Antoine
 
 _notify="yes"
 

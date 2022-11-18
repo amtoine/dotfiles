@@ -1,7 +1,3 @@
-#       _ _
-#  __ _| (_)__ _ ___ ___ ___
-# / _` | | / _` (_-</ -_|_-<
-# \__,_|_|_\__,_/__/\___/__/
 # shows all the media devices connected.
 alias dfm='df -h | grep media | sed "s/\s\+/ /g" | cut -d" " -f6,1'
 # automatic copy from terminal output with xclip.

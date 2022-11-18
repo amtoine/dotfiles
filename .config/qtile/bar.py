@@ -1,18 +1,3 @@
-#           ___                       personal page: https://amtoine.github.io/ 
-#      __ _|_  )_ _    ___   ___      github   page: https://github.com/amtoine 
-#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/amtoine/dotfiles 
-#     \__,_/___|_||_|       /__/
-#                 __           __  _
-#          __    / /  __ _    / / | |__  __ _ _ _  _ __ _  _
-#      _  / _|  / /  / _` |  / /  | '_ \/ _` | '_|| '_ \ || |
-#     (_) \__| /_/   \__, | /_/   |_.__/\__,_|_|(_) .__/\_, |
-#                       |_|                       |_|   |__/
-#
-# Description:  constructs the bar based on widgets and geometry
-# Dependencies: none
-# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE
-# Contributors: Stevan Antoine
-
 import libqtile
 
 from theme import theme

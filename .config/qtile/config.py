@@ -1,19 +1,3 @@
-#           ___                       personal page: https://amtoine.github.io/ 
-#      __ _|_  )_ _    ___   ___      github   page: https://github.com/amtoine 
-#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/amtoine/dotfiles 
-#     \__,_/___|_||_|       /__/
-#                 __           __               __ _
-#          __    / /  __ _    / /  __ ___ _ _  / _(_)__ _   _ __ _  _
-#      _  / _|  / /  / _` |  / /  / _/ _ \ ' \|  _| / _` |_| '_ \ || |
-#     (_) \__| /_/   \__, | /_/   \__\___/_||_|_| |_\__, (_) .__/\_, |
-#                       |_|                         |___/  |_|   |__/
-#
-# Description:  this is the script called by `qtile` when it starts.
-# Dependencies: all `qtile` dependencies.
-# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE
-# Contributors: Stevan Antoine
-
-
 from libqtile import hook
 from libqtile import qtile
 from libqtile import layout

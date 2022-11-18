@@ -1,24 +1,3 @@
-#           ___                       personal page: https://amtoine.github.io/ 
-#      __ _|_  )_ _    ___   ___      github   page: https://github.com/amtoine 
-#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/amtoine/dotfiles 
-#     \__,_/___|_||_|       /__/
-#                 __           __  _
-#          __    / /  __ _    / / | |_____ _  _ ___  _ __ _  _
-#      _  / _|  / /  / _` |  / /  | / / -_) || (_-<_| '_ \ || |
-#     (_) \__| /_/   \__, | /_/   |_\_\___|\_, /__(_) .__/\_, |
-#                       |_|                |__/     |_|   |__/
-#
-# Description:  constructs the whole keymap for `qtile`
-# Dependencies: qtile will run without them as they are called lazily, but they
-#               will be needed for a complete experience of my config:
-#      dmenu_run, passmenu, nvim, emacsclient, tabbed, killall, xautolock,
-#      checkupdates, pacman, ncdu, df, htop, cal, nmcli, bat, conky, discord,
-#      slack, caprine, signal-desktop, thunderbird, alsamixer, python, btop,
-#      htop, dunstctl, lazygit, scripts, blueman-manager, chromium, firefox,
-#      dmscripts, emacs, moc, my scripts
-# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE
-# Contributors: Stevan Antoine
-
 import os
 
 from libqtile.config import Key

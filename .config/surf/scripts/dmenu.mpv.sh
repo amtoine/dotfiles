@@ -1,23 +1,4 @@
 #!/usr/bin/env sh
-#             ___
-#       ____ |__ \ ____              _____      personal page: https://amtoine.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/amtoine 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/amtoine/dotfiles 
-#     \__,_/____/_/ /_/           /____/
-#                               _____             __                   ____      __                  _       __             __       __                                                                       __
-#             _________  ____  / __(_)___ _     _/_/  _______  _______/ __/    _/_/  _______________(_)___  / /______     _/_/  ____/ /___ ___  ___  ____  __  __         ____ ___  ____ _   __         _____/ /_
-#            / ___/ __ \/ __ \/ /_/ / __ `/   _/_/   / ___/ / / / ___/ /_    _/_/   / ___/ ___/ ___/ / __ \/ __/ ___/   _/_/   / __  / __ `__ \/ _ \/ __ \/ / / /        / __ `__ \/ __ \ | / /        / ___/ __ \
-#      _    / /__/ /_/ / / / / __/ / /_/ /  _/_/    (__  ) /_/ / /  / __/  _/_/    (__  ) /__/ /  / / /_/ / /_(__  )  _/_/    / /_/ / / / / / /  __/ / / / /_/ /   _    / / / / / / /_/ / |/ /   _    (__  ) / / /
-#     (_)   \___/\____/_/ /_/_/ /_/\__, /  /_/     /____/\__,_/_/  /_/    /_/     /____/\___/_/  /_/ .___/\__/____/  /_/      \__,_/_/ /_/ /_/\___/_/ /_/\__,_/   (_)  /_/ /_/ /_/ .___/|___/   (_)  /____/_/ /_/
-#                                 /____/                                                          /_/                                                                           /_/
-#
-# Description:  Meant to be used from surf: asks the user to choose a video quality and then opens
-#               mpv instance with the video or the playlist. When a playlist is selected, the dmenu asks the user
-#               whether to shuffle the playlist or not, about the loop option on the playlist and the start index.
-#               One can simply abort the process at any time by pressing escape.
-# Dependencies: mpv, youtube-dl, dmenu
-# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE 
-# Contributors: Stevan Antoine
 
 DMFONT="mononoki Nerd Font-15"
 

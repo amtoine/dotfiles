@@ -1,19 +1,3 @@
-#           ___                       personal page: https://amtoine.github.io/ 
-#      __ _|_  )_ _    ___   ___      github   page: https://github.com/amtoine 
-#     / _` |/ /| ' \  |___| (_-<      my   dotfiles: https://github.com/amtoine/dotfiles 
-#     \__,_/___|_||_|       /__/
-#                 __           __         _    _          _
-#          __    / /  __ _    / / __ __ _(_)__| |__ _ ___| |_ ___  _ __ _  _
-#      _  / _|  / /  / _` |  / /  \ V  V / / _` / _` / -_)  _(_-<_| '_ \ || |
-#     (_) \__| /_/   \__, | /_/    \_/\_/|_\__,_\__, \___|\__/__(_) .__/\_, |
-#                       |_|                     |___/             |_|   |__/
-#
-# Description:  a collection of custom widgets and wrappers around built-in
-#               widgets.
-# Dependencies: psutil, dbus-next, iwlib, subprocess, moc
-# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE
-# Contributors: Stevan Antoine
-
 import os
 
 from libqtile import bar
