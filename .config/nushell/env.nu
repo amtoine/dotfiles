@@ -1,3 +1,4 @@
+# a header could go here
 # Nushell Environment Config File
 
 def create_left_prompt [] {

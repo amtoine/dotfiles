@@ -1,3 +1,4 @@
+# a header could go here
 # Readline keybindings for CliFM
 
 # For the complete list of Readline options see:

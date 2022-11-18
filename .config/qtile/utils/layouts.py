@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# a header could go here
+
 from collections import namedtuple
 from .colorscheme import ColorScheme
 

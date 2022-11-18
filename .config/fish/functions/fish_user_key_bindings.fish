@@ -1,3 +1,4 @@
+# a header could go here
 function fish_user_key_bindings
   # peco
   bind -M insert \cr peco_select_history # Bind for peco select history to Ctrl+R

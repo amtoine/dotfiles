@@ -1,3 +1,4 @@
+# a header could go here
 # XONSH WEBCONFIG START
 $PROMPT = '{BOLD_GREEN}{cwd_base}{RESET} ) '
 $XONSH_COLOR_STYLE = 'dracula'

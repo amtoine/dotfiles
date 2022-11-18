@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# a header could go here
+
 from collections import namedtuple
 
 # a coloscheme is a structure made of background, foreground colors

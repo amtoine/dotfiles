@@ -1,3 +1,4 @@
+# a header could go here
 export alias hooks = {
   pre_prompt: [{
     $nothing  # replace with source code to run before the prompt is shown

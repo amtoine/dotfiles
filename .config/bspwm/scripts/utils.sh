@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# a header could go here
 
 XDG_STATE=${XDG_STATE_HOME:-$HOME/.local/state}
 [ ! -d "$XDG_STATE/bspwm/" ] && mkdir "$XDG_STATE/bspwm/"

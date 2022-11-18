@@ -1,3 +1,4 @@
+# a header could go here
                   ###################################
                   #   Configuration file for Lira   #
                   #     CliFM's resource opener     #

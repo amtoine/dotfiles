@@ -1,3 +1,4 @@
+# a header could go here
 #####################################
 # Remotes management file for CliFM #
 #####################################

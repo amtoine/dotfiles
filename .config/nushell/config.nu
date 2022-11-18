@@ -1,3 +1,4 @@
+# a header could go here
 # base up-to-date with Nushell version 0.67.0
 
 use completions.nu *

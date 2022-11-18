@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+# a header could go here
 
 # Update
 sudo pacman -S archlinux-keyring

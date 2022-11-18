@@ -1,3 +1,4 @@
+# a header could go here
 export def clip [] {
     # put the end of a pipe into the clipboard.
     #

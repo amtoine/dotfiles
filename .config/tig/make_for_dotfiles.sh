@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# a header could go here
 
 original="$HOME/.config/tig/config"
 dotfiles="$HOME/.config/tig/.dotfiles"

@@ -1,3 +1,4 @@
+" a header could go here
 "" Clear status line when vimrc is reloaded.
 "set statusline=
 "

@@ -1,3 +1,4 @@
+# a header could go here
 # git
 alias cfg = ^git --git-dir ($env.HOME | path join ".dotfiles") --work-tree $env.HOME
 alias lg = ^lazygit

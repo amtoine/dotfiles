@@ -1,3 +1,4 @@
+" a header could go here
 let mapleader = " "
 set timeoutlen=500
 

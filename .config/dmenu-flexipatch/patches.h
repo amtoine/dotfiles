@@ -1,3 +1,4 @@
+// a header could go here
 /* Patches */
 
 /* The alpha patch adds transparency for the dmenu window.

@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# a header could go here
+
 if [ -z $1 ]; then
   echo "Usage: $0 <name of hidden scratchpad window>"
   exit 1

@@ -1,3 +1,4 @@
+" a header could go here
 function! ToggleLineNumber()
   if v:version > 703
     set relativenumber!

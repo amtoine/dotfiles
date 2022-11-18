@@ -1,3 +1,4 @@
+# a header could go here
 # bindings for MOC commands by creating your own keymap file and setting
 # the 'Keymap' option in ~/.moc/config.
 #

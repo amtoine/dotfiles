@@ -1,3 +1,4 @@
+# a header could go here
 function _peco_change_directory
   if [ (count $argv) ]
     peco --layout=bottom-up --query "$argv "| perl -pe 's/([ ()])/\\\\$1/g' | read foo

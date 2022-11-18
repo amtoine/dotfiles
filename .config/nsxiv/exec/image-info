@@ -1,4 +1,5 @@
 #!/bin/sh
+# a header could go here
 
 # Example for $XDG_CONFIG_HOME/nsxiv/exec/image-info
 # Called by nsxiv(1) whenever an image gets loaded.

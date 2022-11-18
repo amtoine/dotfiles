@@ -1,3 +1,4 @@
+# a header could go here
 use colors.nu *
 
 # for more information on themes see

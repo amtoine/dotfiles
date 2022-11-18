@@ -1,3 +1,4 @@
+# a header could go here
 """
 Configuration example for ``ptpython``.
 

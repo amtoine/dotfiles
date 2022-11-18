@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# a header could go here
+
 from collections import namedtuple
 
 # a wrapper to make the change of the

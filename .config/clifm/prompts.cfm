@@ -1,3 +1,4 @@
+# a header could go here
 # This file is part of CliFM
 
 # Prompts for CliFM

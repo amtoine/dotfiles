@@ -1,3 +1,4 @@
+# a header could go here
 set -l commands help install sync env upgrade build purge ci doctor info version compile clean run
 
 complete -c doom -f

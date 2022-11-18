@@ -1,3 +1,4 @@
+# a header could go here
 
 function __log --description 'Logs to a file for debugging'
 # Uncomment this line to enable debug logging:

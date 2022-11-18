@@ -1,3 +1,5 @@
+# a header could go here
+
 # If a config.py file exists, this file is ignored unless it's explicitly loaded
 # via config.load_autoconfig(). For more information, see:
 # https://github.com/qutebrowser/qutebrowser/blob/master/doc/help/configuring.asciidoc#loading-autoconfigyml

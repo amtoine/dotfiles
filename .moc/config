@@ -1,3 +1,4 @@
+# a header could go here
 # This is a configuration file for the MOC player.  It should be named
 # 'config' and placed in the ~/.moc directory.  As this file can specify
 # commands which invoke other applications, MOC will refuse to start if it

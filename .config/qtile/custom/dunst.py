@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# a header could go here
+
 import subprocess
 from libqtile import widget
 

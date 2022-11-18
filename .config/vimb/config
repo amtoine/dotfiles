@@ -1,3 +1,4 @@
+# a header could go here
 # Homepage that vimb opens if started without a URI.
 set home-page=about:blank
 

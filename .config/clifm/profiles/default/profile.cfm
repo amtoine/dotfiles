@@ -1,3 +1,4 @@
+# a header could go here
 # This is CliFM's profile file
 #
 # Write here the commands you want to be executed at startup

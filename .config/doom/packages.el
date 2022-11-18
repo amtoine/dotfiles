@@ -1,3 +1,4 @@
+;; a header could go here
 ;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
 

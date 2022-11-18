@@ -1,3 +1,4 @@
+# a header could go here
 ### This is the bookmarks file for clifm ###
 
 # Empty and commented lines are ommited

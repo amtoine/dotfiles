@@ -1,3 +1,4 @@
+# a header could go here
 export alias menus = [
   # Configuration for default nushell menus
   # Note the lack of souce parameter

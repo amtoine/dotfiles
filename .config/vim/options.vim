@@ -1,3 +1,4 @@
+" a header could go here
 set number
 set relativenumber
 syntax on

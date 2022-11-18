@@ -1,3 +1,4 @@
+# a header could go here
 export alias base00 = "#181818" # Default Background
 export alias base01 = "#282828" # Lighter Background (Used for status bars, line number and folding marks)
 export alias base02 = "#383838" # Selection Background

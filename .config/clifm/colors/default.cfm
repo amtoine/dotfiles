@@ -1,3 +1,4 @@
+# a header could go here
 # Theme file for CliFM
 # Theme name: clifm
 # Author: L. Abramovich

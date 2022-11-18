@@ -1,3 +1,4 @@
+# a header could go here
 # style name or JSON path (default "auto")
 style: "auto"
 # show local files only; no network (TUI-mode only)

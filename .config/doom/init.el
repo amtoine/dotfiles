@@ -1,3 +1,4 @@
+;; a header could go here
 ;;; init.el -*- lexical-binding: t; -*-
 
 ;; This file controls what Doom modules are enabled and what order they load

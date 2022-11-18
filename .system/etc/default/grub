@@ -1,3 +1,4 @@
+# a header could go here
 # GRUB boot loader configuration
 
 GRUB_DEFAULT=0

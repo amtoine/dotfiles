@@ -1,3 +1,4 @@
+# a header could go here
 # Custom completions for external commands (those outside of Nushell)
 # Each completions has two parts: the form of the external command, including its flags and parameters
 # and a helper command that knows how to complete values for those flags and parameters

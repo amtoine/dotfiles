@@ -1,3 +1,4 @@
+" a header could go here
 call plug#begin()
     Plug 'junegunn/fzf', { 'dir': '~/.local/share/fzf', 'do': './install --all' }
     Plug 'wellle/context.vim'

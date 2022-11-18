@@ -1,4 +1,5 @@
 #!/bin/sh
+# a header could go here
 
 [[ ! -v ICONS ]] && ICONS="/usr/share/icons/amtoine-icons-git/stickers/100x100"
 

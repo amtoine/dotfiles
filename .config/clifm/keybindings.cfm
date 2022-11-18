@@ -1,3 +1,4 @@
+# a header could go here
 # Keybindings file for CliFM
 
 # Use the 'kbgen' plugin (compile it first: gcc -o kbgen kbgen.c) to 

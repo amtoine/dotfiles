@@ -1,3 +1,4 @@
+# a header could go here
 if status is-interactive
   fish_add_path -mP $HOME/.cargo/bin
   fish_add_path -mP $HOME/.emacs.d/bin
