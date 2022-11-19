@@ -179,9 +179,6 @@ let-env ENV_CONVERSIONS = {
 # By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIRS = [
     ($nu.config-path | path dirname | path join 'lib')
-    ($nu.config-path | path dirname | path join 'lib' "core")
-    ($nu.config-path | path dirname | path join 'lib' "scripts")
-    ($nu.config-path | path dirname | path join 'lib' "personal")
 ]
 
 # Directories to search for plugin binaries when calling register
