@@ -198,7 +198,7 @@ if status is-interactive
   # | '  \| (_-</ _|
   # |_|_|_|_/__/\__|
   # disables the caps lock key.
-  amtoine-xtcl -d -q
+  gxtcl -d -q
 
   # starship init fish | source
   source ~/.local/share/omf/pkg/colorman/init.fish
