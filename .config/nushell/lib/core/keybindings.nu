@@ -23,39 +23,29 @@ export alias keybindings = [
     modifier: control
     keycode: char_r
     mode: [ emacs vi_insert vi_normal ]
-    event: [
-      { edit: clear }
-      {
-        edit: insertString
-        value: $"source ($nu.env-path); source ($nu.config-path)"
-      }
-      { send: Enter }
-    ]
+    event: {
+      send: executehostcommand,
+      cmd: $"source ($nu.env-path); source ($nu.config-path)"
+    }
   }
   {
     name: open_repo
     modifier: control
     keycode: char_g
     mode: [emacs, vi_insert, vi_normal]
-    event: [
-      {
-        edit: insertString
-        value: "repo goto"
-      }
-      { send: Enter }
-    ]
+    event: {
+      send: executehostcommand
+      cmd: "repo goto"
+    }
   }
   {
     name: edit_config
     modifier: control
     keycode: char_v
     mode: [emacs, vi_insert, vi_normal]
-    event: [
-      {
-        edit: insertString
-        value: "dotfiles edit"
-      }
-      { send: Enter }
-    ]
+    event: {
+      send: executehostcommand
+      cmd: "dotfiles edit"
+    }
   }
 ]
