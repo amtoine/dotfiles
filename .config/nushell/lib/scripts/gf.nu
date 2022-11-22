@@ -155,3 +155,21 @@ export def checkout [
 export def branch [] {
   log_error "branch unsupported"
 }
+
+
+# TODO
+def "git branch wipe" [
+  branch: string
+  --remote (-r): string = "origin"
+] {
+  let res = (do -i {
+    git rev-parse --verify $branch
+  } | complete)
+
+  if ($res.exit_code != 0) {
+    print $"wip: (ansi red_bold)error(ansi reset): '($branch)' does not exist..."
+  } else {
+    git branch --delete --force $branch
+    git push $remote $":($branch)"
+  }
+}
