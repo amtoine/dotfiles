@@ -31,3 +31,13 @@ alias devices = (
   rename name major minor RM size RO type mountpoints |
   into filesize size
 )
+
+alias vuln = (
+  ls /sys/devices/system/cpu/vulnerabilities
+  | each {|it|
+    {
+      name: ($it.name | path basename),
+      migitation: (open $it.name | str trim)
+    }
+  }
+)
