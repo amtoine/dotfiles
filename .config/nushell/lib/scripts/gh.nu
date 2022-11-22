@@ -27,8 +27,15 @@ export def "me issues" [] {
 
 
 # TODO: documentation
-export def "me starred" [] {
-    pull /user/starred
+export def "me starred" [
+    --reduce (-r): bool
+] {
+    if ($reduce) {
+        pull /user/starred
+        | select -i id name description owner.login clone_url fork license.name created_at pushed_at homepage archived topics size stargazers_count language
+    } else {
+        pull /user/starred
+    }
 }
 
 
