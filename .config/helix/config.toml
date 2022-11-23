@@ -73,3 +73,8 @@ tabpad = "·" # Tabs will look like "→···" (depending on tab width)
 [editor.indent-guides]
 render = false
 character = "│"
+
+[keys.normal]
+C-c = ":config-reload"
+C-e = ":config-open"
+C-r = ":reload"
