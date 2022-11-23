@@ -62,6 +62,8 @@ export def uptime [] {
 # TODO: documentation
 # credit to terminally_online#9473
 # https://discord.com/channels/601130461678272522/615253963645911060/1044604359213858816
+# updated in
+# https://discord.com/channels/601130461678272522/615253963645911060/1045037215484498041
 export def mounts [
   --parse (-p)
 ] {
@@ -74,8 +76,15 @@ export def mounts [
   if ($parse) {
     $mounts
     | update options {|it|
-      $it.options | split row "," | split column "=" | rename option value
-    } 
+      $it.options
+      | split row ","
+      | split column "="
+      | if ($in | columns | any $it == column2) {
+        transpose -i -r -d
+      } else {
+        get column1
+      }
+    }
   } else {
     $mounts
   }
