@@ -114,7 +114,7 @@ frame.work https://frame.work/fr/en
 yt-lib https://www.youtube.com/feed/library
 yt-hist https://www.youtube.com/feed/history
 timechef https://timechef.elior.com/
-oberon-compiler https://github.com/oberonproject/compiler
+oberon-compiler https://github.com/oberonforall/compiler
 xdg-settings-default https://dev.to/haxnet/default-web-browser-in-arch-linux-11em
 lms-functional-programming https://lms.isae.fr/course/view.php?id=1255
 adn-functional-programming https://adn.isae-supaero.fr/course/view.php?id=790
@@ -149,8 +149,8 @@ helix https://github.com/helix-editor/helix/wiki
 suckless https://suckless.org/
 ghpr https://github.com/pulls
 gho https://github.com/settings/organizations
-oberonproject https://github.com/oberonproject
-oberonproject.github.io https://oberonproject.github.io/
+oberonforall https://github.com/oberonforall
+oberonforall.github.io https://oberonforall.github.io/
 ghd https://github.com/discussions
 git-tools https://github.com/magit/magit/wiki/Other-Tools
 thingiverse https://www.thingiverse.com/
@@ -169,3 +169,14 @@ awesome-rust https://awesome-rust.com/
 rustonomicon https://doc.rust-lang.org/stable/nomicon/
 google https://www.google.com/
 gmail https://mail.google.com/mail/u/0/#inbox
+ggh https://gist.github.com/amtoine
+gghs https://gist.github.com/amtoine/starred
+git-workflows https://www.atlassian.com/git/tutorials/comparing-workflows
+bluetooth-error https://wonkodv.github.io/bluetooth-error/
+gdb https://sourceware.org/gdb/current/onlinedocs/gdb/index.html
+fork-exec-wait-exit https://percona.community/blog/2021/01/04/fork-exec-wait-and-exit/
+bluetooth-ps3 https://wiki.archlinux.org/title/Gamepad#PlayStation_3_controller
+gpg-without-key https://tinyapps.org/blog/201705300700_gpg_without_keys.html
+aoc-cookie https://github.com/wimglenn/advent-of-code-wim/issues/1
+nushell-blog https://www.nushell.sh/blog/
+tomb https://dyne.org/software/tomb/
