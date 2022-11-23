@@ -69,5 +69,6 @@ use scripts/repo.nu
 use scripts/gf.nu
 use scripts/hx.nu
 use scripts/gh.nu
+use scripts/sys.nu
 
 source personal/final.nu
