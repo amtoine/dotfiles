@@ -1,18 +1,14 @@
 #!/usr/bin/bash
-#           ___
-#      __ _|_  )_ _ ___ ___   personal page: https://amtoine.github.io/
-#     / _` |/ /| ' \___(_-<   github   page: https://github.com/amtoine
-#     \__,_/___|_||_|  /__/   my   dotfiles: https://github.com/amtoine/dotfiles
-#               __  _        __         __            _          _            _        _
-#        __    / / | |__    / /  ___   / /  __ _ _  _| |_ ___ __| |_ __ _ _ _| |_   __| |_
-#      _/ _|  / /  | '_ \  / /  (_-<  / /  / _` | || |  _/ _ (_-<  _/ _` | '_|  _|_(_-< ' \
-#     (_)__| /_/   |_.__/ /_/   /__/ /_/   \__,_|\_,_|\__\___/__/\__\__,_|_|  \__(_)__/_||_|
-#
-# Description:  my autostart script for bspwm.
-# Dependencies: feh, emacs, polybar, dunst, mpv
-# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE
-# Contributors: Stevan Antoine
-
+#*
+#*                  _    __ _ _
+#*   __ _ ___  __ _| |_ / _(_) |___ ___  WEBSITE: https://goatfiles.github.io
+#*  / _` / _ \/ _` |  _|  _| | / -_|_-<  REPOS:   https://github.com/goatfiles
+#*  \__, \___/\__,_|\__|_| |_|_\___/__/  LICENCE: https://github.com/goatfiles/dotfiles/blob/main/LICENSE
+#*  |___/
+#*          MAINTAINERS:
+#*              AMTOINE: https://github.com/amtoine antoine#1306 7C5EE50BA27B86B7F9D5A7BA37AAE9B486CFF1AB
+#*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
+#*
 
 source "$HOME/.config/bspwm/scripts/utils.sh"
 

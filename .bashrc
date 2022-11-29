@@ -1,23 +1,13 @@
-#             ___
-#       ____ |__ \ ____              _____      personal page: https://amtoine.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/amtoine 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/amtoine/dotfiles 
-#     \__,_/____/_/ /_/           /____/
-#          _               _
-#         | |             | |
-#         | |__   __ _ ___| |__  _ __ ___
-#         | '_ \ / _` / __| '_ \| '__/ __|
-#      _  | |_) | (_| \__ \ | | | | | (__
-#     (_) |_.__/ \__,_|___/_| |_|_|  \___|
-#
-# Description:  ~/.bashrc: executed by bash(1) for non-login shells.
-#               see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-#               for examples
-# Dependencies: cal, xtcl.sh, _shortwd.sh & _parse_git_info.sh at https://github.com/amtoine/dotfiles/tree/main/scripts
-#               colorscript at https://gitlab.com/dwt1/shell-color-scripts, starship
-#               fortune, ponysay, virtualenvwrapper, nvim, bash-insulter
-# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE 
-# Contributors: Stevan Antoine
+#*
+#*                  _    __ _ _
+#*   __ _ ___  __ _| |_ / _(_) |___ ___  WEBSITE: https://goatfiles.github.io
+#*  / _` / _ \/ _` |  _|  _| | / -_|_-<  REPOS:   https://github.com/goatfiles
+#*  \__, \___/\__,_|\__|_| |_|_\___/__/  LICENCE: https://github.com/goatfiles/dotfiles/blob/main/LICENSE
+#*  |___/
+#*          MAINTAINERS:
+#*              AMTOINE: https://github.com/amtoine antoine#1306 7C5EE50BA27B86B7F9D5A7BA37AAE9B486CFF1AB
+#*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
+#*
 
 #        ___                                       __         __                                __               __                 __  __  _
 #       <  /     ____ ____  ____  ___  _________ _/ /  ____  / /_        ____ ___  __  __      / /_  ____ ______/ /_     ________  / /_/ /_(_)___  ____ ______
