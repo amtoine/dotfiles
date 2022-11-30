@@ -80,7 +80,7 @@ export def pull [
         get name |
         sort --ignore-case |
         uniq |
-        prompt fzf_ask $"Please choose a repo to pull from https://github.com/($owner)"
+        prompt fzf_ask $"Please choose a repo to pull from https://github.com/($owner): "
     )
 
     let repository = ([$owner $choice] | str collect "/")
