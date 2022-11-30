@@ -1,0 +1,94 @@
+# TODO: documentation
+def poll_gpg [
+  key: string = ""
+] {
+  if ($key == "") {
+    gpg --list-keys --with-colons
+  } else {
+    gpg --list-keys --with-colons $key
+  }
+}
+
+
+# TODO: documentation
+def get_gpg_tru [] {
+  poll_gpg | lines | find --regex "^tru" | split column ":" --collapse-empty a b c d e f g
+  
+}
+
+
+# TODO: documentation
+def get_gpg_keys [] {
+  poll_gpg | lines | find --regex "^pub" | parse "{pub}:{1}:{2}:{3}:{key}:{rest}" | get key
+}
+
+
+# TODO: documentation
+def get_section [
+  section: string
+  context: int = 1
+] {
+  grep $"^($section)" -A $context | str trim
+}
+
+
+# TODO: documentation
+def format_section [
+  section: list  # list<string>
+] {
+  {
+    main: ($section | get 0 | split column ":" --collapse-empty a b c d e f g h i j k)
+    fpr: ($section | get 1 | split column ":" --collapse-empty a b)
+  }
+}
+
+
+# TODO: documentation
+def get_gpg_pub [
+  key: string
+] {
+  let pub = (poll_gpg $key | get_section "pub" | lines)
+  format_section $pub
+}
+
+
+# TODO: documentation
+def get_gpg_sub [
+  key: string
+] {
+  let sub = (poll_gpg $key | get_section "sub" | lines)
+  format_section $sub
+}
+
+
+# TODO: documentation
+def get_gpg_uid [
+  key: string
+] {
+  poll_gpg $key | get_section "uid" | split column ":" --collapse-empty a b c d name e f g h i j
+}
+
+
+# TODO: documentation
+def get_gpg_keys_data [] {
+  (get_gpg_keys)
+  | each {|key|
+    {
+      key: $key
+      data: {
+        pub: (get_gpg_pub $key)
+        sub: (get_gpg_sub $key)
+        uid: (get_gpg_uid $key)
+      }
+    }
+  }
+}
+
+
+# TODO: documentation
+export def list [] {
+  {
+    tru: (get_gpg_tru)
+    keys: (get_gpg_keys_data)
+  }
+}
