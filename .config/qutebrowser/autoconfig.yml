@@ -41,7 +41,7 @@ settings:
   downloads.location.directory:
     global: ~/dl
   fonts.default_family:
-    global: mononoki Nerd Font
+    global: Fira Code
   fonts.default_size:
     global: 15pt
   statusbar.show:

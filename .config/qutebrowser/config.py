@@ -1284,7 +1284,7 @@ c.fileselect.single_file.command = filepicker_cmd + ['--choosefile={}']
 ## font setting, it's replaced with the fonts listed here. If set to an
 ## empty value, a system-specific monospace default is used.
 ## Type: List of Font, or Font
-c.fonts.default_family = ["Monocraft"]
+c.fonts.default_family = ["Fira Code"]
 
 ## Default font size to use. Whenever "default_size" is used in a font
 ## setting, it's replaced with the size listed here. Valid values are

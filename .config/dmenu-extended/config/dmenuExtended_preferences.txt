@@ -23,7 +23,7 @@
         "-b",
         "-i",
         "-fn",
-        "mononoki Nerd Font-20",
+        "Fira Code-20",
         "-l",
         "10"
     ],

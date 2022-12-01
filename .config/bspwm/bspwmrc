@@ -102,8 +102,10 @@ _build_workspaces () {
 
 
 connect_monitors () {
-    # Connect all the monitors to the bspwm socket through bspc.
+    # Put the monitors in the right order
+    /home/alex/.screenlayout/home.sh
 
+    # Connect all the monitors to the bspwm socket through bspc.
     log_info "connecting the monitors..." "[bspwmrc.connect_monitors]"
 
     # get the list of all the monitors

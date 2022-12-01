@@ -194,7 +194,7 @@ export EMACS_HOME="$HOME/.emacs.d"
 export MUJOCO_BIN="$HOME/.mujoco/mujoco210/bin"
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
-export PATH="$HOME/.local/bin:$EMACS_HOME/bin:$CARGO_HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$EMACS_HOME/bin:$CARGO_HOME/bin:/home/atxr/.local/share/gem/ruby/3.0.0/bin:/home/atxr/.local/share/npm/bin:$PATH"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$MUJOCO_BIN"
 
 # changes the editor in the terminal, to edit long commands.

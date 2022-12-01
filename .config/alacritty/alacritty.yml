@@ -8,7 +8,6 @@
 #*              AMTOINE: https://github.com/amtoine antoine#1306 7C5EE50BA27B86B7F9D5A7BA37AAE9B486CFF1AB
 #*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
 #*
-
 #
 # >>> General.
 #
@@ -24,7 +23,6 @@ env:
   # available, otherwise `xterm-256color` is used.
   TERM: xterm-256color
 
-#
 # >>> Window.
 #
 window:
@@ -37,7 +35,6 @@ window:
     columns: 40
     lines: 40
 
-  #
   # >>> Window position (changes require restart)
   #
   # Specified in number of pixels.
@@ -45,7 +42,6 @@ window:
   #position:
   #  x: 0
   #  y: 0
-
   #
   # >>> Window padding (changes require restart)
   #
@@ -58,7 +54,6 @@ window:
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
 
-  #
   # >>> Window decorations
   #
   # Values for `decorations`:
@@ -70,7 +65,6 @@ window:
   #     - buttonless: Title bar, transparent background, but no title bar buttons
   decorations: full
 
-  #
   # >>> Startup Mode (changes require restart)
   #
   # Values for `startup_mode`:
@@ -96,9 +90,8 @@ window:
   #
   # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
   # Set this to `None` to use the default theme variant.
-  gtk_theme_variant: dark
+  window.decorations_theme_variant: dark
 
-#
 # >>> scrolling.
 #
 scrolling:
@@ -121,7 +114,6 @@ scrolling:
 # To prevent unexpected behavior in these applications, it's also required to
 # change the `it` value in terminfo when altering this setting.
 #tabspaces: 8
-
 #
 # >>> Font configuration.
 #
@@ -143,7 +135,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
-    family: Monocraft
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -163,8 +155,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
-    family: Mononoki Nerd Font
-
+    family: Fira Code
     # The `style` can be specified to pick a specific face.
     style: Bold
 
@@ -183,7 +174,7 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
-    family: Mononoki Nerd Font
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -203,27 +194,25 @@ font:
     # family: UbuntuMono Nerd Font
     # family: Monofuritalic Nerd Font Mono
     # family: TerminessTTF Nerd Font
-    family: Mononoki Nerd Font
+    family: Fira Code
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
 
   # Point size
-  size: 12.0
+  size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
     x: 0
     y: 0
-
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
   #glyph_offset:
   #  x: 0
   #  y: 0
-
   # Thin stroke font rendering (macOS only)
   #
   # Thin strokes are suitable for retina displays, but for non-retina screens
@@ -239,48 +228,8 @@ font:
   # This is a global setting and will require a log out or restart to take
   # effect.
   #use_thin_strokes: true
-
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
-
-#
-# >>> Colors
-#
-#
-colors:
-  # COLORSCHEME: Dracula
-  primary:
-#+ BEGIN:primary
-    background: '#191919'
-    foreground: '#ffffff'
-#+ END:primary
-  cursor:
-#+ BEGIN:cursor
-    cursor: '#ffffff'
-    text: '#ffffff'
-#+ END:cursor
-  normal:
-#+ BEGIN:normal
-    magenta: '#cc00cc'
-    green: '#00cc00'
-    white: '#cccccc'
-    red: '#cc0000'
-    blue: '#0000cc'
-    yellow: '#cccc00'
-    cyan: '#00cccc'
-    black: '#282828'
-#+ END:normal
-  bright:
-#+ BEGIN:bright
-    magenta: '#ff00ff'
-    green: '#00ff00'
-    white: '#ffffff'
-    red: '#ff0000'
-    blue: '#0000ff'
-    yellow: '#ffff00'
-    cyan: '#00ffff'
-    black: '#333333'
-#+ END:bright
 
 # >>> Visual Bell.
 #
@@ -308,25 +257,20 @@ bell:
   animation: EaseOutCirc
   duration: 10
   color: '0x111111'
-
-#
-# >>> Background opacity
-#
-#
-# Window opacity as a floating point number from `0.0` to `1.0`.
-# The value `0.0` is completely transparent and `1.0` is opaque.
-# window.opacity: 1.0
-
-#
-#selection:
+  # >>> Background opacity
+  #
+  #
+  # Window opacity as a floating point number from `0.0` to `1.0`.
+  # The value `0.0` is completely transparent and `1.0` is opaque.
+  # window.opacity: 1.0
+  #
+  #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
-
   # When set to `true`, selected text will be copied to the primary clipboard.
   #save_to_clipboard: false
 
 # Allow terminal applications to change Alacritty's window title.
 #dynamic_title: true
-
 cursor:
   # Cursor style
   #
@@ -342,7 +286,6 @@ cursor:
 
 # Live config reload (changes require restart)
 #live_config_reload: true
-
 #
 # >>> Shell.
 #
@@ -355,9 +298,7 @@ cursor:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /usr/bin/fish
-  args:
-    - --login
+  program: /usr/bin/bash
 
 # Startup directory
 #
@@ -374,10 +315,8 @@ working_directory: None
 # Setting this option to `true` makes Alacritty use the legacy WinPTY backend,
 # even if the ConPTY backend is available.
 #winpty_backend: false
-
 # Send ESC (\x1b) before characters when alt is pressed.
 #alt_send_esc: true
-
 debug:
   # Display the time it takes to redraw each frame.
   render_timer: false
@@ -398,7 +337,6 @@ debug:
 
   # Print all received window events.
   print_events: true
-
   # Record all characters and escape sequences as test data.
   #ref_test: false
 
@@ -408,8 +346,8 @@ mouse:
   # The `double_click` and `triple_click` settings control the time
   # alacritty should wait for accepting multiple clicks as one double
   # or triple click.
-  double_click: {threshold: 300}
-  triple_click: {threshold: 300}
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
 
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: true
@@ -436,7 +374,6 @@ mouse:
     # on them. The available modifiers are documented in the key binding section.
     modifiers: None
 
-#
 # >>> Mouse bindings
 #
 # Mouse bindings are specified as a list of objects, much like the key
@@ -458,7 +395,6 @@ mouse:
 # - `mods` (see key bindings)
 #mouse_bindings:
 #  - { mouse: Middle, action: PasteSelection }
-
 #
 # >>> Key bindings
 #
@@ -561,27 +497,63 @@ mouse:
 # be mapped to the `ReceiveChar` action. Alternatively, you can use `None` for
 # a no-op if you do not wish to receive input characters for that binding.
 key_bindings:
-    # (Windows, Linux, and BSD only)
-  - {key: V, mods: Control|Shift, action: Paste}
-  - {key: C, mods: Control|Shift, action: Copy}
+  # (Windows, Linux, and BSD only)
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
 
-  - {key: U, mods: Alt, action: ScrollPageUp}
-  - {key: D, mods: Alt, action: ScrollPageDown}
-  - {key: K, mods: Alt, action: ScrollLineUp}
-  - {key: J, mods: Alt, action: ScrollLineDown}
-  - {key: G, mods: Alt, action: ScrollToTop}
-  - {key: G, mods: Alt|Shift, action: ScrollToBottom}
+  - { key: U, mods: Alt, action: ScrollPageUp }
+  - { key: D, mods: Alt, action: ScrollPageDown }
+  - { key: K, mods: Alt, action: ScrollLineUp }
+  - { key: J, mods: Alt, action: ScrollLineDown }
+  - { key: G, mods: Alt, action: ScrollToTop }
+  - { key: G, mods: Alt|Shift, action: ScrollToBottom }
 
-  - {key: Q, mods: Alt, action: Quit}
-  - {key: C, mods: Alt|Shift, action: Quit}
+  - { key: Q, mods: Alt, action: Quit }
+  - { key: C, mods: Alt|Shift, action: Quit }
 
-  - {key: F, mods: Alt, action: ToggleFullscreen}
-  - {key: N, mods: Alt, action: SpawnNewInstance}
+  - { key: F, mods: Alt, action: ToggleFullscreen }
+  - { key: N, mods: Alt, action: SpawnNewInstance }
 
-  - {key: I, mods: Alt|Control, action: ResetFontSize}
-  - {key: O, mods: Alt|Control, action: IncreaseFontSize}
-  - {key: U, mods: Alt|Control, action: DecreaseFontSize}
+  - { key: I, mods: Alt|Control, action: ResetFontSize }
+  - { key: O, mods: Alt|Control, action: IncreaseFontSize }
+  - { key: U, mods: Alt|Control, action: DecreaseFontSize }
 
-  - {key: M, mods: Alt, command: {program: dmenu_run, args: [-fn, mononoki Nerd Font-20]}}
-  # - {key: L, mods: Control|Shift, action: ClearLogNotice}
-  # - {key: L, mods: Control|Shift, chars: "\f"}
+  - { key: L, mods: Control, chars: "\f" }
+  - { key: L, mods: Control, action: ClearLogNotice }
+  #- {key: L, mods: Control, chars: "\f"}
+  - {
+      key: M,
+      mods: Alt,
+      command: { program: dmenu_run, args: [ -fn, Fira Code-20 ] }
+    }
+
+theme: Gruvbox-Dark
+colors:
+  # Default colors
+  primary:
+    # hard contrast: background = '#1d2021'
+    background: '#282828'
+    # soft contrast: background = '#32302f'
+    foreground: '#ebdbb2'
+
+  # Normal colors
+  normal:
+    black: '#282828'
+    red: '#cc241d'
+    green: '#98971a'
+    yellow: '#d79921'
+    blue: '#458588'
+    magenta: '#b16286'
+    cyan: '#689d6a'
+    white: '#a89984'
+
+  # Bright colors
+  bright:
+    black: '#928374'
+    red: '#fb4934'
+    green: '#b8bb26'
+    yellow: '#fabd2f'
+    blue: '#83a598'
+    magenta: '#d3869b'
+    cyan: '#8ec07c'
+    white: '#ebdbb2'

@@ -1,36 +1,36 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export CABAL_CONFIG:/home/ants/\x2econfig/cabal/config
-SETUVAR --export CABAL_DIR:/home/ants/\x2elocal/share/cabal
-SETUVAR --export CARGO_HOME:/home/ants/\x2elocal/share/cargo
+SETUVAR --export CABAL_CONFIG:/home/atxr/\x2econfig/cabal/config
+SETUVAR --export CABAL_DIR:/home/atxr/\x2elocal/share/cabal
+SETUVAR --export CARGO_HOME:/home/atxr/\x2elocal/share/cargo
 SETUVAR --export CLOUDSDK_PYTHON:/usr/bin/python3
-SETUVAR --export DOOMDIR:/home/ants/\x2econfig/doom
-SETUVAR --export GNUPGHOME:/home/ants/\x2elocal/share/gnupg
-SETUVAR --export --path GOPATH:/home/ants/\x2elocal/share/go
-SETUVAR --export GRIPHOME:/home/ants/\x2econfig/grip
-SETUVAR --export GTK2_RC_FILES:/home/ants/\x2econfig/gtk\x2d2\x2e0/gtkrc
-SETUVAR --export HISTFILE:/home/ants/\x2elocal/state/bash/history
-SETUVAR --export JUPYTER_CONFIG_DIR:/home/ants/\x2econfig/jupyter
-SETUVAR --export KERAS_HOME:/home/ants/\x2elocal/state/keras
+SETUVAR --export DOOMDIR:/home/atxr/\x2econfig/doom
+SETUVAR --export GNUPGHOME:/home/atxr/\x2elocal/share/gnupg
+SETUVAR --export --path GOPATH:/home/atxr/\x2elocal/share/go
+SETUVAR --export GRIPHOME:/home/atxr/\x2econfig/grip
+SETUVAR --export GTK2_RC_FILES:/home/atxr/\x2econfig/gtk\x2d2\x2e0/gtkrc
+SETUVAR --export HISTFILE:/home/atxr/\x2elocal/state/bash/history
+SETUVAR --export JUPYTER_CONFIG_DIR:/home/atxr/\x2econfig/jupyter
+SETUVAR --export KERAS_HOME:/home/atxr/\x2elocal/state/keras
 SETUVAR --export --path LD_LIBRARY_PATH:/home/ants/\x2emujoco/mujoco210/bin
-SETUVAR --export LESSHISTFILE:/home/ants/\x2ecache/less/history
-SETUVAR --export NODE_REPL_HISTORY:/home/ants/\x2elocal/share/node_repl_history
-SETUVAR --export NPM_CONFIG_USERCONFIG:/home/ants/\x2econfig/npm/npmrc
-SETUVAR --export PASSWORD_STORE_DIR:/home/ants/\x2elocal/share/pass
-SETUVAR --export PYTHONSTARTUP:/home/ants/\x2econfig/python/pythonrc
-SETUVAR --export SQLITE_HISTORY:/home/ants/\x2ecache/sqlite_history
-SETUVAR --export TERMINFO:/home/ants/\x2elocal/share/terminfo
-SETUVAR --export TERMINFO_DIRS:/home/ants/\x2elocal/share/terminfo\x3a/usr/share/terminfo
+SETUVAR --export LESSHISTFILE:/home/atxr/\x2ecache/less/history
+SETUVAR --export NODE_REPL_HISTORY:/home/atxr/\x2elocal/share/node_repl_history
+SETUVAR --export NPM_CONFIG_USERCONFIG:/home/atxr/\x2econfig/npm/npmrc
+SETUVAR --export PASSWORD_STORE_DIR:/home/atxr/\x2elocal/share/pass
+SETUVAR --export PYTHONSTARTUP:/home/atxr/\x2econfig/python/pythonrc
+SETUVAR --export SQLITE_HISTORY:/home/atxr/\x2ecache/sqlite_history
+SETUVAR --export TERMINFO:/home/atxr/\x2elocal/share/terminfo
+SETUVAR --export TERMINFO_DIRS:/home/atxr/\x2elocal/share/terminfo\x3a/usr/share/terminfo
 SETUVAR THEME_EDEN_PROMPT_CHAR:\u00bb
-SETUVAR --export VIRTUALFISH_HOME:/home/ants/\x2elocal/share/virtualenvs
-SETUVAR --export XDG_CACHE_HOME:/home/ants/\x2ecache
-SETUVAR --export XDG_CONFIG_HOME:/home/ants/\x2econfig
-SETUVAR --export XDG_DATA_HOME:/home/ants/\x2elocal/share
-SETUVAR --export XDG_STATE_HOME:/home/ants/\x2elocal/state
-SETUVAR --export XINITRC:/home/ants/\x2econfig/X11/xinitrc
-SETUVAR --export ZDOTDIR:/home/ants/\x2econfig/zsh
-SETUVAR --export _JAVA_OPTIONS:\x2dDjava\x2eutil\x2eprefs\x2euserRoot\x3d/home/ants/\x2econfig/java
-SETUVAR --export _Z_DATA:/home/ants/\x2elocal/share/z
+SETUVAR --export VIRTUALFISH_HOME:/home/atxr/\x2elocal/share/virtualenvs
+SETUVAR --export XDG_CACHE_HOME:/home/atxr/\x2ecache
+SETUVAR --export XDG_CONFIG_HOME:/home/atxr/\x2econfig
+SETUVAR --export XDG_DATA_HOME:/home/atxr/\x2elocal/share
+SETUVAR --export XDG_STATE_HOME:/home/atxr/\x2elocal/state
+SETUVAR --export XINITRC:/home/atxr/\x2econfig/X11/xinitrc
+SETUVAR --export ZDOTDIR:/home/atxr/\x2econfig/zsh
+SETUVAR --export _JAVA_OPTIONS:\x2dDjava\x2eutil\x2eprefs\x2euserRoot\x3d/home/atxr/\x2econfig/java
+SETUVAR --export _Z_DATA:/home/atxr/\x2elocal/share/z
 SETUVAR __fish_initialized:3400
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_patrickf1_2F_fzf_2E_fish_files:\x7e/\x2econfig/fish/functions/_fzf_configure_bindings_help\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_extract_var_info\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_changed_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_diff_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_file_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_directory\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_log\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_status\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_history\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_processes\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_variables\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_wrapper\x2efish\x1e\x7e/\x2econfig/fish/functions/fzf_configure_bindings\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/fzf\x2efish\x1e\x7e/\x2econfig/fish/completions/fzf_configure_bindings\x2efish
@@ -77,7 +77,7 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/home/ants/\x2econfig/fzf/bin\x1e/home/ants/\x2elocal/share/fzf/bin
+SETUVAR fish_user_paths:/home/ants/\x2econfig/fzf/bin\x1e/home/ants/\x2elocal/share/fzf/bin\x1e/home/atxr/\x2elocal/share/fzf/bin
 SETUVAR pure_begin_prompt_with_current_directory:true
 SETUVAR pure_check_for_new_release:false
 SETUVAR pure_color_at_sign:pure_color_mute
