@@ -107,3 +107,35 @@ export def alarm [
     dunstify "termdown" $message --urgency critical --timeout 0
     print $message
 }
+
+
+# TODO
+#
+# encryption:
+# ```bash
+# > gpg --symmetric --armor --cipher-algo <algo> <file>
+# ```
+#
+# example login file:
+# ```toml
+# cookie = "my-cookie: see https://github.com/wimglenn/advent-of-code-wim/issues/1"
+# mail = "my_mail@domain.foo"
+# ```
+#
+export def "aoc fetch" [
+  day: int
+  login: string
+] {
+  let url = $'https://adventofcode.com/2022/day/($day)/input'
+
+  let aoc_login = (
+    gpg --decrypt ($login | path expand)
+    | from toml
+  )
+  let header = [
+    Cookie $'session=($aoc_login.cookie)'
+    User-Agent $'email: ($aoc_login.mail)'
+  ]
+
+  fetch -H $header $url
+}
