@@ -124,7 +124,7 @@ export def "worktree add" [
     let branch = (
         $branches |
         str replace "  " "" |
-        sort --insensitive |
+        sort --ignore-case |
         to text |
         str replace --all "\\* (.*)" $"(ansi red)\$1(ansi reset)" |
         str replace --all "\\+ (.*)" $"(ansi yellow)\$1(ansi reset)" |

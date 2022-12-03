@@ -9,7 +9,7 @@ def pick_repo [
         ghq list |
         lines |
         str replace ".com/" ": " |
-        sort --insensitive |
+        sort --ignore-case |
         prompt fzf_ask $prompt |
         str replace ": " ".com/"
     )
@@ -78,7 +78,7 @@ export def pull [
         gh repo list $owner --json name |
         from json |
         get name |
-        sort --insensitive |
+        sort --ignore-case |
         uniq |
         prompt fzf_ask $"Please choose a repo to pull from https://github.com/($owner)"
     )

@@ -8,7 +8,7 @@ def list_remote_os [] {
     get OS |
     sort |
     uniq |
-    sort --insensitive
+    sort --ignore-case
 }
 
 
@@ -26,7 +26,7 @@ def list_release_for_os [os: string] {
     split column " " |
     transpose |
     get column1 |
-    sort --insensitive |
+    sort --ignore-case |
     uniq
 }
 
@@ -73,7 +73,7 @@ def base_list [] {
         |it|
         $it | path basename
     } |
-    sort --insensitive |
+    sort --ignore-case |
     uniq
 }
 
