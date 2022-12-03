@@ -355,7 +355,7 @@ cursor:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /usr/bin/nu
+  program: nu
   args:
     - --login
 
