@@ -122,7 +122,7 @@ export def alarm [
 # mail = "my_mail@domain.foo"
 # ```
 #
-export def "aoc fetch" [
+export def "aoc fetch input" [
   day: int
   login: string
 ] {
