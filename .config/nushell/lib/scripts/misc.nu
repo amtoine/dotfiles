@@ -139,3 +139,31 @@ export def "aoc fetch" [
 
   fetch -H $header $url
 }
+
+
+export def "aoc fetch answers" [
+  day: int
+  login: string
+] {
+  let url = $'https://adventofcode.com/2022/day/($day)'
+
+  let aoc_login = (
+    gpg --quiet --decrypt ($login | path expand)
+    | from toml
+  )
+  let header = [
+    Cookie $'session=($aoc_login.cookie)'
+    User-Agent $'email: ($aoc_login.mail)'
+  ]
+
+  let answers = (
+    fetch -H $header $url
+    | lines
+    | parse "<p>Your puzzle answer was <code>{answer}</code>{rest}"
+    | get answer
+  )
+  {
+    silver: $answers.0
+    gold: $answers.1
+  }
+}
