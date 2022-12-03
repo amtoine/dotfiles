@@ -158,7 +158,7 @@ def create_right_prompt [] {
 
 
 # Use nushell functions to define your right and left prompt
-let eldyj = false
+let eldyj = true
 let right = false
 let-env PROMPT_COMMAND = if ($eldyj) { {create_left_prompt_eldyj} } else { {create_left_prompt} }
 let-env PROMPT_COMMAND_RIGHT = if ($right) { {create_right_prompt} } else { "" }
