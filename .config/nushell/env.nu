@@ -40,8 +40,8 @@ def spwd [] {
     } else {
       $"($spwd_src.0)"
     }
-  } |
-  str join $sep
+  }
+  #| str join $sep
 }
 
 
@@ -72,8 +72,8 @@ def build-prompt [
             text: $" ($segments | get $i | get text) "
           }
           $sep | append $text
-        } |
-        flatten
+        }
+        #| flatten
     )
 
     let last = {
