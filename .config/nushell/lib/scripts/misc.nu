@@ -110,6 +110,23 @@ export def alarm [
 
 
 # TODO
+def get-aoc-header [
+  login: string
+] {
+  let aoc_login = (
+    gpg --quiet --decrypt ($login | path expand)
+    | from toml
+  )
+  let header = [
+    Cookie $'session=($aoc_login.cookie)'
+    User-Agent $'email: ($aoc_login.mail)'
+  ]
+
+  $header
+}
+
+
+# TODO
 #
 # encryption:
 # ```bash
@@ -128,16 +145,7 @@ export def "aoc fetch input" [
 ] {
   let url = $'https://adventofcode.com/2022/day/($day)/input'
 
-  let aoc_login = (
-    gpg --quiet --decrypt ($login | path expand)
-    | from toml
-  )
-  let header = [
-    Cookie $'session=($aoc_login.cookie)'
-    User-Agent $'email: ($aoc_login.mail)'
-  ]
-
-  fetch -H $header $url
+  fetch -H (get-aoc-header $login) $url
 }
 
 
@@ -148,17 +156,8 @@ export def "aoc fetch answers" [
 ] {
   let url = $'https://adventofcode.com/2022/day/($day)'
 
-  let aoc_login = (
-    gpg --quiet --decrypt ($login | path expand)
-    | from toml
-  )
-  let header = [
-    Cookie $'session=($aoc_login.cookie)'
-    User-Agent $'email: ($aoc_login.mail)'
-  ]
-
   let answers = (
-    fetch -H $header $url
+    fetch -H (get-aoc-header $login) $url
     | lines
     | parse "<p>Your puzzle answer was <code>{answer}</code>{rest}"
     | get answer
