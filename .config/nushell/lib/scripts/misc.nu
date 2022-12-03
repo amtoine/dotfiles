@@ -156,14 +156,19 @@ export def "aoc fetch answers" [
 ] {
   let url = $'https://adventofcode.com/2022/day/($day)'
 
+  let result = (fetch -H (get-aoc-header $login) $url)
   let answers = (
-    fetch -H (get-aoc-header $login) $url
+    $result
     | lines
     | parse "<p>Your puzzle answer was <code>{answer}</code>{rest}"
-    | get answer
   )
-  {
-    silver: $answers.0
-    gold: $answers.1
+
+  if ($answers | is-empty) {
+    $result | str trim
+  } else {
+    {
+      silver: $answers.answer.0
+      gold: $answers.answer.1
+    }
   }
 }
