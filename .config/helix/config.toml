@@ -75,6 +75,6 @@ render = false
 character = "│"
 
 [keys.normal]
-C-c = ":config-reload"
-C-e = ":config-open"
-C-r = ":reload"
+"A-c" = ":config-reload"
+"A-e" = ":config-open"
+"A-r" = ":reload"
