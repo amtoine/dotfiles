@@ -1,5 +1,20 @@
 use applications/prompt.nu
 
+alias FZF_PICK_PREVIEW = "
+path=$(ghq root)/$(echo {} | sed 's/: /.com\\//')
+echo "TREE:"
+git -C $path --no-pager log --graph --branches --remotes --tags --oneline --decorate --simplify-by-decoration -n 10 --color=always
+echo ""
+echo "STATUS:"
+git -C $path --no-pager status --short
+echo ""
+echo "STASHES:"
+git -C $path --no-pager stash list
+echo ""
+echo "FILES:"
+ls -la --color=always $path | awk '{print $1,$9}'
+"
+
 
 # TODO
 def pick_repo [
@@ -10,7 +25,7 @@ def pick_repo [
         lines |
         str replace ".com/" ": " |
         sort --ignore-case |
-        prompt fzf_ask $prompt |
+        prompt fzf_ask $prompt (FZF_PICK_PREVIEW) |
         str replace ": " ".com/"
     )
 
@@ -39,34 +54,6 @@ export def-env goto [] {
            | path join $choice
         )
     cd $path
-
-    # print a little message.
-    print $"Jumping to ($path)"
-
-    # the content of the repo.
-    print "\nCONTENT:"
-    ls
-
-    # the status of the repo, in short format,
-    # if anything to report.
-    if not (^git status --short | is-empty) {
-        print "\nSTATUS:"
-        ^git --no-pager status --short
-    } else {
-        print "\nEVERYTHING UP TO DATE!"
-    }
-
-    # the list of stashes, if any.
-    if not (^git stash list | is-empty) {
-        print "\nSTASHES:"
-        ^git --no-pager stash list
-    } else {
-        print "\nNO STASH..."
-    }
-
-    # the current tree in compact form.
-    print "\nLOG:"
-    ^git --no-pager log --graph --branches --remotes --tags --oneline --decorate --simplify-by-decoration -n 10
 }
 
 
