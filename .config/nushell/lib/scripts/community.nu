@@ -69,7 +69,7 @@ export def-env br [args = "."] {
     let cmd_file = (^mktemp | str trim);
     ^broot --outcmd $cmd_file $args;
     let cmd = ((open $cmd_file) | str trim);
-    ^rm $cmd_file;
+    ^rm --trash $cmd_file;
     cd ($cmd | str replace "cd" "" | str trim)
 }
 

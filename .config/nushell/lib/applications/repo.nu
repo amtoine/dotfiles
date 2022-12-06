@@ -95,5 +95,5 @@ export def remove [] {
 
     let path = ($env.GHQ_ROOT | path join $repo)
 
-    rm --interactive --recursive $path
+    rm --trash --interactive --recursive $path
 }

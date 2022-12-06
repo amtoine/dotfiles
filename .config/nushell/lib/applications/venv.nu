@@ -59,5 +59,5 @@ export def remove [] {
 
   let path = ($env.VIRTUALENVWRAPPER_HOOK_DIR | path join $venv)
 
-  rm --interactive --recursive $path
+  rm --trash --interactive --recursive $path
 }
