@@ -2,6 +2,7 @@ use applications/prompt.nu
 
 alias GIT = ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE
 
+alias FZF_EDIT_PREVIEW = "bat $HOME/{} --color always"
 
 # TODO
 export def-env edit [] {
@@ -17,7 +18,7 @@ export def-env edit [] {
     #
     let choice = (
         GIT lf --full-name ~ |
-        prompt fzf_ask "Please choose a config file to edit: "
+        prompt fzf_ask "Please choose a config file to edit: " (FZF_EDIT_PREVIEW)
     )
 
     let path = ($env.HOME | path join $choice)
