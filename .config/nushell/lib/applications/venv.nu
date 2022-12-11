@@ -26,7 +26,7 @@ export def new [
     print -n $"venv new: (ansi red)error(ansi reset): "
     $"venv should be one directory inside ($env.VIRTUALENVWRAPPER_HOOK_DIR)"
   } else {
-    if ((do -i {^ls $venv} | complete | get exit_code) != 0) {
+    if not ($venv | path exists) {
       virtualenv $venv
     } else {
       print -n $"venv new: (ansi red)error(ansi reset): "
