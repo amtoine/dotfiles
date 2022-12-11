@@ -18,6 +18,9 @@ export def clip [] {
     } else {
         $input | xclip -sel clip
     }
+
+    echo "saved to clipboard"
+    dunstify "nushell.lib.misc.clip" "saved to clipboard"
 }
 
 
