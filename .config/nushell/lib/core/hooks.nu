@@ -18,7 +18,7 @@ export alias hooks = {
   }]
   env_change: {
     PWD: [{|before, after|
-      $nothing  # replace with source code to run if the PWD environment is different since the last repl input
+      print (ls | sort-by type name -i | grid -c | str trim)  # replace with source code to run if the PWD environment is different since the last repl input
     }]
   }
 }
