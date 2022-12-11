@@ -194,6 +194,11 @@ let-env NU_LIB_DIRS = [
     ($nu.config-path | path dirname | path join 'lib')
 ]
 
+let-env DEFAULT_CONFIG_FILE = (
+  $env.NU_LIB_DIRS.0
+  | path join "default_config.nu"
+)
+
 # Directories to search for plugin binaries when calling register
 #
 # By default, <nushell-config-dir>/plugins is added
