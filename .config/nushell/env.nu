@@ -289,3 +289,6 @@ let-env LD_LIBRARY_PATH = ($env.LD_LIBRARY_PATH | split row (char esep) |
 #
 let-env USE_FINAL_CONFIG_HOOK = false
 let-env QT_QPA_PLATFORMTHEME = "qt5ct"
+
+let-env LS_THEME = "dracula"
+let-env LS_COLORS = (vivid generate $env.LS_THEME)
