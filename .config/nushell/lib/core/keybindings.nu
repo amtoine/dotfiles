@@ -48,4 +48,14 @@ export alias keybindings = [
       cmd: "dotfiles edit"
     }
   }
+  {
+    name: clear_and_ls
+    modifier: control
+    keycode: char_l
+    mode: [emacs, vi_normal, vi_insert]
+    event: {
+      send: executehostcommand
+      cmd: "clear; lsg"
+    }
+  }
 ]
