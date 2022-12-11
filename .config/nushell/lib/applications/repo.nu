@@ -34,7 +34,9 @@ def pick_repo [
 
 
 # TODO
-export def-env goto [] {
+export def-env goto [
+    --clear (-c): bool  # TODO
+] {
     # jump to any repo registered with ghq.
     #
     # the function will:
@@ -54,6 +56,10 @@ export def-env goto [] {
            | path join $choice
         )
     cd $path
+
+    if ($clear) {
+        clear
+    }
 }
 
 

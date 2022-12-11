@@ -35,7 +35,7 @@ export alias keybindings = [
     mode: [emacs, vi_insert, vi_normal]
     event: {
       send: executehostcommand
-      cmd: "repo goto"
+      cmd: "repo goto --clear"
     }
   }
   {
