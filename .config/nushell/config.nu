@@ -11,6 +11,8 @@
 
 # base up-to-date with Nushell version 0.67.0
 
+source personal/aliases.nu
+
 use core/completions.nu *
 use core/themes.nu
 use core/hooks.nu *
@@ -88,8 +90,6 @@ let-env config = {
   keybindings: (keybindings)
 }
 
-
-source personal/aliases.nu
 
 use scripts/misc.nu *
 use scripts/community.nu *
