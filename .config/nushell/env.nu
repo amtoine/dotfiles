@@ -11,6 +11,91 @@
 
 # Nushell Environment Config File
 
+
+# credit to @Eldyj
+# https://discord.com/channels/601130461678272522/615253963645911060/1036225475288252446
+# revised by @eldyj in
+# https://discord.com/channels/601130461678272522/615253963645911060/1037327061481701468
+# revised by @fdncred in
+# https://discord.com/channels/601130461678272522/615253963645911060/1037354164147200050
+def spwd [] {
+  let home = (if ($nu.os-info.name == windows) { $env.USERPROFILE } else { $env.HOME })
+  let sep = (if ($nu.os-info.name == windows) { "\\" } else { "/" })
+
+  let spwd_paths = (
+    $"!/($env.PWD)" |
+      str replace $"!/($home)" ~ -s |
+      split row $sep
+  )
+
+  let spwd_len = (($spwd_paths | length) - 1)
+
+  for -n i in $spwd_paths {
+    let spwd_src = ($i.item | split chars)
+
+    if ($i.index == $spwd_len) {
+      $i.item
+    } else if ($spwd_src.0 == ".") {
+      $".($spwd_src.1)"
+    } else {
+      $"($spwd_src.0)"
+    }
+  } |
+  str join $sep
+}
+
+
+# credit to @Eldyj
+# https://discord.com/channels/601130461678272522/615253963645911060/1036274988950487060
+def build-prompt [
+    separator: string
+    segments: table
+] {
+    let len = ($segments | length)
+
+    let first = {
+      fg: ($segments.0.fg),
+      bg: ($segments.0.bg),
+      text: $" ($segments.0.text) "
+    }
+
+    let tokens = (
+        for i in (seq 1 ($len - 1)) {
+          let sep = {
+            fg: ($segments | get ($i - 1) | get bg),
+            bg: ($segments | get $i | get bg),
+            text: $separator
+          }
+          let text = {
+            fg: ($segments | get $i | get fg),
+            bg: ($segments | get $i | get bg),
+            text: $" ($segments | get $i | get text) "
+          }
+          $sep | append $text
+        } |
+        flatten
+    )
+
+    let last = {
+        fg: ($segments | get ($len - 1) | get bg),
+        bg: '',
+        text: $separator
+    }
+
+    let prompt = (
+        $first |
+        append $tokens |
+        append $last |
+        each {
+            |it|
+            $"(ansi reset)(ansi -e {fg: $it.fg, bg: $it.bg})($it.text)"
+        } |
+        str collect
+    )
+    $"($prompt)(ansi reset) "
+}
+
+
 def create_left_prompt [] {
     let simplified_pwd = ($env.PWD | str replace $nu.home-path '~' -s)
 
@@ -30,24 +115,59 @@ def create_left_prompt [] {
 }
 
 
+# credit to @Eldyj
+# https://discord.com/channels/601130461678272522/615253963645911060/1036274988950487060
+def create_left_prompt_eldyj [] {
+    let user_bg = "#2e3440"
+    let user_fg = "#88c0d0"
+    let pwd_bg = "#3b4252"
+    let pwd_fg = "#81a1c1"
+    let git_bg = "#434C5E"
+    let git_fg = "#A3BE8C"
+
+    let common = [
+        [bg fg text];
+        [$user_bg $user_fg $env.USER]
+        [$pwd_bg $pwd_fg $"(spwd)"]
+    ]
+
+    let segments = if ((do -i { git branch --show-current } | complete | get stderr) == "") {
+        let git_branch = {
+            bg: $git_bg,
+            fg: $git_fg,
+            text: (git branch --show-current | str replace --all "\n" "")
+        }
+        $common | append $git_branch
+    } else {
+        $common
+    }
+
+    build-prompt (char nf_left_segment) $segments
+}
+
+
 def create_right_prompt [] {
     let time_segment = ([
         (date now | date format '%m/%d/%Y %r')
     ] | str collect)
 
-    #$time_segment
+    $time_segment
 }
 
 
 # Use nushell functions to define your right and left prompt
-let-env PROMPT_COMMAND = { create_left_prompt }
-let-env PROMPT_COMMAND_RIGHT = { create_right_prompt }
+let eldyj = true
+let right = false
+let-env PROMPT_COMMAND = if ($eldyj) { {create_left_prompt_eldyj} } else { {create_left_prompt} }
+let-env PROMPT_COMMAND_RIGHT = if ($right) { {create_right_prompt} } else { "" }
 
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
-let-env PROMPT_INDICATOR = { "〉" }
-let-env PROMPT_INDICATOR_VI_INSERT = { ": " }
-let-env PROMPT_INDICATOR_VI_NORMAL = { "〉" }
+let show_prompt_indicator = not $eldyj
+let-env PROMPT_INDICATOR = if ($show_prompt_indicator) { "〉" } else { "" }
+let-env PROMPT_INDICATOR_VI_INSERT = if ($show_prompt_indicator) { ": " } else { "" }
+let-env PROMPT_INDICATOR_VI_NORMAL = if ($show_prompt_indicator) { "〉" } else { "" }
+
 let-env PROMPT_MULTILINE_INDICATOR = { "::: " }
 
 # Specifies how environment variables are:
@@ -69,7 +189,7 @@ let-env ENV_CONVERSIONS = {
 #
 # By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIRS = [
-    ($nu.config-path | path dirname | path join 'scripts')
+    ($nu.config-path | path dirname | path join 'lib')
 ]
 
 # Directories to search for plugin binaries when calling register
@@ -79,37 +199,37 @@ let-env NU_PLUGIN_DIRS = [
     ($nu.config-path | path dirname | path join 'plugins')
 ]
 
-let-env XDG_DATA_HOME = $"($env.HOME)/.local/share"
-let-env XDG_CONFIG_HOME = $"($env.HOME)/.config"
-let-env XDG_STATE_HOME = $"($env.HOME)/.local/state"
-let-env XDG_CACHE_HOME = $"($env.HOME)/.cache"
+let-env XDG_DATA_HOME = ($env.HOME | path join ".local" "share")
+let-env XDG_CONFIG_HOME = ($env.HOME | path join ".config")
+let-env XDG_STATE_HOME = ($env.HOME | path join ".local" "state")
+let-env XDG_CACHE_HOME = ($env.HOME | path join ".cache")
 
 # move all moveable config to the right location, outside $HOME.
-let-env HISTFILE = $"($env.XDG_STATE_HOME)/bash/history"
-let-env CARGO_HOME = $"($env.XDG_DATA_HOME)/cargo"
-let-env DOOMDIR = $"($env.XDG_CONFIG_HOME)/doom"
-let-env GNUPGHOME = $"($env.XDG_DATA_HOME)/gnupg"
-let-env PASSWORD_STORE_DIR = $"($env.XDG_DATA_HOME)/pass"
-let-env GOPATH = $"($env.XDG_DATA_HOME)/go"
-let-env GRIPHOME = $"($env.XDG_CONFIG_HOME)/grip"
-let-env GTK2_RC_FILES = $"($env.XDG_CONFIG_HOME)/gtk-2.0/gtkrc"
-let-env JUPYTER_CONFIG_DIR = $"($env.XDG_CONFIG_HOME)/jupyter"
-let-env LESSHISTFILE = $"($env.XDG_CACHE_HOME)/less/history"
-let-env TERMINFO = $"($env.XDG_DATA_HOME)/terminfo"
-let-env TERMINFO_DIRS = $"($env.XDG_DATA_HOME)/terminfo:/usr/share/terminfo"
-let-env NODE_REPL_HISTORY = $"($env.XDG_DATA_HOME)/node_repl_history"
-let-env NPM_CONFIG_USERCONFIG = $"($env.XDG_CONFIG_HOME)/npm/npmrc"
-let-env _JAVA_OPTIONS = $"-Djava.util.prefs.userRoot=($env.XDG_CONFIG_HOME)/java"
-let-env PYTHONSTARTUP = $"($env.XDG_CONFIG_HOME)/python/pythonrc"
-let-env SQLITE_HISTORY = $"($env.XDG_CACHE_HOME)/sqlite_history"
-let-env XINITRC = $"($env.XDG_CONFIG_HOME)/X11/xinitrc"
-let-env ZDOTDIR = $"($env.XDG_CONFIG_HOME)/zsh"
-let-env _Z_DATA = $"($env.XDG_DATA_HOME)/z"
-let-env CABAL_CONFIG = $"($env.XDG_CONFIG_HOME)/cabal/config"
-let-env CABAL_DIR = $"($env.XDG_DATA_HOME)/cabal"
-let-env KERAS_HOME = $"($env.XDG_STATE_HOME)/keras"
-let-env EMACS_HOME = $"($env.HOME)/.emacs.d"
-let-env MUJOCO_BIN = $"($env.HOME)/.mujoco/mujoco210/bin"
+let-env TERMINFO_DIRS = $"($env.XDG_DATA_HOME | path join terminfo):/usr/share/terminfo"
+let-env _JAVA_OPTIONS = $"-Djava.util.prefs.userRoot=($env.XDG_CONFIG_HOME | path join java)"
+let-env HISTFILE = ($env.XDG_STATE_HOME | path join "bash" "history")
+let-env CARGO_HOME = ($env.XDG_DATA_HOME | path join "cargo")
+let-env DOOMDIR = ($env.XDG_CONFIG_HOME | path join "doom")
+let-env GNUPGHOME = ($env.XDG_DATA_HOME | path join "gnupg")
+let-env PASSWORD_STORE_DIR = ($env.XDG_DATA_HOME | path join "pass")
+let-env GOPATH = ($env.XDG_DATA_HOME | path join "go")
+let-env GRIPHOME = ($env.XDG_CONFIG_HOME | path join "grip")
+let-env GTK2_RC_FILES = ($env.XDG_CONFIG_HOME | path join "gtk-2.0" "gtkrc")
+let-env JUPYTER_CONFIG_DIR = ($env.XDG_CONFIG_HOME | path join "jupyter")
+let-env LESSHISTFILE = ($env.XDG_CACHE_HOME | path join "less" "history")
+let-env TERMINFO = ($env.XDG_DATA_HOME | path join "terminfo")
+let-env NODE_REPL_HISTORY = ($env.XDG_DATA_HOME | path join "node_repl_history")
+let-env NPM_CONFIG_USERCONFIG = ($env.XDG_CONFIG_HOME | path join "npm" "npmrc")
+let-env PYTHONSTARTUP = ($env.XDG_CONFIG_HOME | path join "python" "pythonrc")
+let-env SQLITE_HISTORY = ($env.XDG_CACHE_HOME | path join "sqlite_history")
+let-env XINITRC = ($env.XDG_CONFIG_HOME | path join "X11" "xinitrc")
+let-env ZDOTDIR = ($env.XDG_CONFIG_HOME | path join "zsh")
+let-env _Z_DATA = ($env.XDG_DATA_HOME | path join "z")
+let-env CABAL_CONFIG = ($env.XDG_CONFIG_HOME | path join "cabal" "config")
+let-env CABAL_DIR = ($env.XDG_DATA_HOME | path join "cabal")
+let-env KERAS_HOME = ($env.XDG_STATE_HOME | path join "keras")
+let-env EMACS_HOME = ($env.HOME | path join ".emacs.d")
+let-env MUJOCO_BIN = ($env.HOME | path join ".mujoco" "mujoco210" "bin")
 let-env VIMINIT = 'let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
 # changes the editor in the terminal, to edit long commands.
@@ -133,17 +253,33 @@ let-env MANPAGER = "sh -c 'col -bx | bat -l man -p'"
 # export MANPAGER = "nvim -c 'set ft=man' -"
 
 # activates virtualenvwrapper to manage python virtual environments.
-let-env WORKON_HOME = $"($env.XDG_DATA_HOME)/virtualenvs"
+let-env WORKON_HOME = ($env.XDG_DATA_HOME | path join "virtualenvs")
+
+let-env GHQ_ROOT = ($env.XDG_DATA_HOME | path join "ghq")
+
+let-env QUICKEMU_HOME = ($env.XDG_DATA_HOME | path join "quickemu")
+
+let-env DOTFILES_GIT_DIR = ($env.GHQ_ROOT| path join "github.com" "goatfiles" "dotfiles")
+let-env DOTFILES_WORKTREE = $env.HOME
+
+let-env FZF_DEFAULT_OPTS = "
+--bind ctrl-d:half-page-down
+--bind ctrl-u:half-page-up
+--bind shift-right:preview-half-page-down
+--bind shift-left:preview-half-page-up
+--bind shift-down:preview-down
+--bind shift-up:preview-up
+"
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 let-env PATH = ($env.PATH | split row (char esep) |
-    prepend $"($env.HOME)/.local/bin" |
-    prepend $"($env.EMACS_HOME)/bin" |
-    prepend $"($env.CARGO_HOME)/bin"
+    prepend ($env.HOME | path join ".local" "bin") |
+    prepend ($env.EMACS_HOME | path join "bin") |
+    prepend ($env.CARGO_HOME | path join "bin")
 )
 let-env LD_LIBRARY_PATH = ($env.LD_LIBRARY_PATH | split row (char esep) |
-    prepend $"($env.MUJOCO_BIN)"
+    prepend $env.MUJOCO_BIN
 )
 
 

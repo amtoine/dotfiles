@@ -29,6 +29,7 @@ export def spawn [
     {"job_id": $job_id}
 }
 
+# TODO
 export def log [
     id: int   # id to fetch log
 ] {
