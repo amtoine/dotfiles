@@ -16,7 +16,7 @@
   defaultBranch = main
 
 [core]
-  editor = hx
+  editor = helix
   pager = delta
 
 [delta]
