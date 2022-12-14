@@ -36,8 +36,8 @@
     "path_shellCommand": "~/.dmenuEextended_shellCommand.sh",
     "prompt": "Open:",
     "scan_hidden_folders": false,
-    "terminal": "st",
-    "terminal_editor": "vim",
+    "terminal": "alacritty",
+    "terminal_editor": "helix",
     "valid_extensions": [
         "py",
         "svg",

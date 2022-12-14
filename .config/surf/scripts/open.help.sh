@@ -1,20 +1,14 @@
 #!/bin/sh
-#             ___
-#       ____ |__ \ ____              _____      personal page: https://amtoine.github.io/ 
-#      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/amtoine 
-#     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/amtoine/dotfiles 
-#     \__,_/____/_/ /_/           /____/
-#                               _____             __                   ____      __                  _       __             __                                   __         __                    __
-#             _________  ____  / __(_)___ _     _/_/  _______  _______/ __/    _/_/  _______________(_)___  / /______     _/_/  ____  ____  ___  ____           / /_  ___  / /___           _____/ /_
-#            / ___/ __ \/ __ \/ /_/ / __ `/   _/_/   / ___/ / / / ___/ /_    _/_/   / ___/ ___/ ___/ / __ \/ __/ ___/   _/_/   / __ \/ __ \/ _ \/ __ \         / __ \/ _ \/ / __ \         / ___/ __ \
-#      _    / /__/ /_/ / / / / __/ / /_/ /  _/_/    (__  ) /_/ / /  / __/  _/_/    (__  ) /__/ /  / / /_/ / /_(__  )  _/_/    / /_/ / /_/ /  __/ / / /   _    / / / /  __/ / /_/ /   _    (__  ) / / /
-#     (_)   \___/\____/_/ /_/_/ /_/\__, /  /_/     /____/\__,_/_/  /_/    /_/     /____/\___/_/  /_/ .___/\__/____/  /_/      \____/ .___/\___/_/ /_/   (_)  /_/ /_/\___/_/ .___/   (_)  /____/_/ /_/
-#                                 /____/                                                          /_/                             /_/                                    /_/
-#
-# Description:  Open a help file in a text editor, shows key bindings...
-# Dependencies: kitty
-# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE 
-# Contributors: Stevan Antoine
+#*
+#*                  _    __ _ _
+#*   __ _ ___  __ _| |_ / _(_) |___ ___  WEBSITE: https://goatfiles.github.io
+#*  / _` / _ \/ _` |  _|  _| | / -_|_-<  REPOS:   https://github.com/goatfiles
+#*  \__, \___/\__,_|\__|_| |_|_\___/__/  LICENCE: https://github.com/goatfiles/dotfiles/blob/main/LICENSE
+#*  |___/
+#*          MAINTAINERS:
+#*              AMTOINE: https://github.com/amtoine antoine#1306 7C5EE50BA27B86B7F9D5A7BA37AAE9B486CFF1AB
+#*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
+#*
 
 configfile="$HOME/repos/surf/config.def.h"
 tmpfile=$(mktemp /tmp/surf-help.XXXXXX)

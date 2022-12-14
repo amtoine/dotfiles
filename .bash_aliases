@@ -1,7 +1,14 @@
-#       _ _
-#  __ _| (_)__ _ ___ ___ ___
-# / _` | | / _` (_-</ -_|_-<
-# \__,_|_|_\__,_/__/\___/__/
+#*
+#*                  _    __ _ _
+#*   __ _ ___  __ _| |_ / _(_) |___ ___  WEBSITE: https://goatfiles.github.io
+#*  / _` / _ \/ _` |  _|  _| | / -_|_-<  REPOS:   https://github.com/goatfiles
+#*  \__, \___/\__,_|\__|_| |_|_\___/__/  LICENCE: https://github.com/goatfiles/dotfiles/blob/main/LICENSE
+#*  |___/
+#*          MAINTAINERS:
+#*              AMTOINE: https://github.com/amtoine antoine#1306 7C5EE50BA27B86B7F9D5A7BA37AAE9B486CFF1AB
+#*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
+#*
+
 # shows all the media devices connected.
 alias dfm='df -h | grep media | sed "s/\s\+/ /g" | cut -d" " -f6,1'
 # automatic copy from terminal output with xclip.
@@ -26,7 +33,7 @@ alias rand="tr -dc 'A-Za-z0-9!@#\$%^&*()' < /dev/urandom  | head -c"
 # alias docker="sudo docker"
 # wrapper around btop to bypass lack of locale.
 alias btop="btop --utf-force"
-alias clear="clear; echo; seq 1 $(tput cols) | sort -R | amtoine-spark | lolcat -t; echo"
+alias clear="clear; echo; seq 1 $(tput cols) | sort -R | gspark | lolcat -t; echo"
 alias repo='cd $(ghq root)/$(ghq list | fzf)'
 
 # to list all the git repositiories inside the home directory or gives a full diagnostic with the extra d.

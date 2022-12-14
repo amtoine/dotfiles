@@ -683,10 +683,6 @@ package = "harfbuzz-icu"
 version = "5.2.0-1"
 
 [[pkgs.pacman.all]]
-package = "helix"
-version = "22.08.1-1"
-
-[[pkgs.pacman.all]]
 package = "hicolor-icon-theme"
 version = "0.17-2"
 
@@ -3995,10 +3991,6 @@ package = "gzip"
 version = "1.12-1"
 
 [[pkgs.pacman.explicit]]
-package = "helix"
-version = "22.08.1-1"
-
-[[pkgs.pacman.explicit]]
 package = "intel-media-driver"
 version = "22.4.4-2"
 
@@ -4807,10 +4799,6 @@ package = "gzip"
 version = "1.12-1"
 
 [[pkgs.pacman.native]]
-package = "helix"
-version = "22.08.1-1"
-
-[[pkgs.pacman.native]]
 package = "intel-media-driver"
 version = "22.4.4-2"
 
@@ -5582,6 +5570,11 @@ package = "Werkzeug"
 version = "2.2.2"
 
 [[pkgs.python.pipx]]
+package = "python-lsp-server"
+python = "3.10.7"
+version = "1.5.0"
+
+[[pkgs.python.pipx]]
 package = "virtualenv"
 python = "3.10.7"
 version = "20.16.5"
@@ -5592,6 +5585,10 @@ version = "1.15.0"
 [[pkgs.rust.cargo]]
 package = "heh"
 version = "0.2.0"
+
+[[pkgs.rust.cargo]]
+package = "helix-term"
+version = "0.6.0 (/home/amtoine/ghq/github.com/helix-editor/helix/helix-term)"
 
 [[pkgs.rust.cargo]]
 package = "toipe"
