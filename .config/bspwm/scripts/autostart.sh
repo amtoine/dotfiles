@@ -217,19 +217,19 @@ autostart () {
 
 poststart () {
     if [ -n "$WM_PULL_GITHUB" ]; then
-        if does_command_exist amtoine-gh-notify; then
-            amtoine-gh-notify
+        if does_command_exist gghn; then
+            gghn
         else
-            log_warning "amtoine-gh-notify not found in \$PATH"
+            log_warning "gghn not found in \$PATH"
         fi
     fi
 
 
     if [ -n "$WM_PULL_UPDATES" ]; then
-        if does_command_exist amtoine-update; then
-            amtoine-update --check
+        if does_command_exist gsupdate; then
+            gsupdate --check
         else
-            log_warning "amtoine-update not found in \$PATH"
+            log_warning "gsupdate not found in \$PATH"
         fi
     fi
 }

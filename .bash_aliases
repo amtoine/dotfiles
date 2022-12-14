@@ -33,7 +33,7 @@ alias rand="tr -dc 'A-Za-z0-9!@#\$%^&*()' < /dev/urandom  | head -c"
 # alias docker="sudo docker"
 # wrapper around btop to bypass lack of locale.
 alias btop="btop --utf-force"
-alias clear="clear; echo; seq 1 $(tput cols) | sort -R | amtoine-spark | lolcat -t; echo"
+alias clear="clear; echo; seq 1 $(tput cols) | sort -R | gspark | lolcat -t; echo"
 alias repo='cd $(ghq root)/$(ghq list | fzf)'
 
 # to list all the git repositiories inside the home directory or gives a full diagnostic with the extra d.
