@@ -1,17 +1,14 @@
 #! /usr/bin/bash
-#           ___
-#      __ _|_  )_ _ ___ ___   personal page: https://amtoine.github.io/
-#     / _` |/ /| ' \___(_-<   github   page: https://github.com/amtoine
-#     \__,_/___|_||_|  /__/   my   dotfiles: https://github.com/amtoine/dotfiles
-#               __  _        __  _
-#        __    / / | |__    / / | |__ ____ ____ __ ___ __  _ _ __
-#      _/ _|  / /  | '_ \  / /  | '_ (_-< '_ \ V  V / '  \| '_/ _|
-#     (_)__| /_/   |_.__/ /_/   |_.__/__/ .__/\_/\_/|_|_|_|_| \__|
-#                                       |_|
-# Description:  my config for bspwm.
-# Dependencies: sxhkd, polybar
-# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE 
-# Contributors: Stevan Antoine
+#*
+#*                  _    __ _ _
+#*   __ _ ___  __ _| |_ / _(_) |___ ___  WEBSITE: https://goatfiles.github.io
+#*  / _` / _ \/ _` |  _|  _| | / -_|_-<  REPOS:   https://github.com/goatfiles
+#*  \__, \___/\__,_|\__|_| |_|_\___/__/  LICENCE: https://github.com/goatfiles/dotfiles/blob/main/LICENSE
+#*  |___/
+#*          MAINTAINERS:
+#*              AMTOINE: https://github.com/amtoine antoine#1306 7C5EE50BA27B86B7F9D5A7BA37AAE9B486CFF1AB
+#*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
+#*
 
 XDG_CONFIG=${XDG_CONFIG_HOME:-$HOME/.config}
 
@@ -37,7 +34,7 @@ declare -A COLOR_MAP=(
 
 AUTOSTART="$XDG_CONFIG/bspwm/scripts/autostart.sh"
 SCRATCHPAD="$XDG_CONFIG/bspwm/scripts/scratchpad.sh"
-export WM_STARTUP_SOUND="/usr/share/sounds/amtoine-sounds-git/startup.16.mp3"
+export WM_STARTUP_SOUND="/usr/share/sounds/goat-sounds-git/startup.16.mp3"
 export WM_CONKY_HELP="$XDG_CONFIG/conky/bspwm.conkyrc"
 export WM_CONKY_CLOCK="$XDG_CONFIG/conky/vision/Z333-vision.conkyrc"
 export WM_POLYBAR="$XDG_CONFIG/polybar/launch.sh"

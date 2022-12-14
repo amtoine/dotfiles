@@ -1,36 +1,13 @@
-;             ___
-;       ____ |__ \ ____              _____      personal page: https://amtoine.github.io/
-;      / __ `/_/ // __ \   ______   / ___/      github   page: https://github.com/amtoine
-;     / /_/ / __// / / /  /_____/  (__  )       my   dotfiles: https://github.com/amtoine/dotfiles
-;     \__,_/____/_/ /_/           /____/
-;                    _ __                   _____
-;             ____ _(_) /__________  ____  / __(_)___ _
-;            / __ `/ / __/ ___/ __ \/ __ \/ /_/ / __ `/
-;      _    / /_/ / / /_/ /__/ /_/ / / / / __/ / /_/ /
-;     (_)   \__, /_/\__/\___/\____/_/ /_/_/ /_/\__, /
-;          /____/                             /____/
-;
-; Description:  my personal git config with some aliases.
-; Dependencies: git, vim
-; License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE
-; Contributors: Stevan Antoine
-;
-;               Table of Content:
-;                 user
-;                 init
-;                 core
-;                 alias
-;                   basic aliases.
-;                   to move branches and commits around.
-;                   to inspect the commit tree.
-;                   to inspect the tracked files.
-;                   interact with remote repos.
-;                     down;
-;                     up
-;                   undo and clean the tree.
-;                   remote links actions.
-;                 pull
-
+;*
+;*                  _    __ _ _
+;*   __ _ ___  __ _| |_ / _(_) |___ ___  WEBSITE: https://goatfiles.github.io
+;*  / _` / _ \/ _` |  _|  _| | / -_|_-<  REPOS:   https://github.com/goatfiles
+;*  \__, \___/\__,_|\__|_| |_|_\___/__/  LICENCE: https://github.com/goatfiles/dotfiles/blob/main/LICENSE
+;*  |___/
+;*          MAINTAINERS:
+;*              AMTOINE: https://github.com/amtoine antoine#1306 7C5EE50BA27B86B7F9D5A7BA37AAE9B486CFF1AB
+;*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
+;*
 
 [user]
   name = amtoine
@@ -39,7 +16,7 @@
   defaultBranch = main
 
 [core]
-  editor = vim
+  editor = helix
   pager = delta
 
 [delta]
@@ -153,6 +130,12 @@
   wta     = worktree add
   wtrm    = worktree remove
   wtls    = worktree list
+
+; bisection
+  bis     = bisect start
+  big     = bisect good
+  bib     = bisect bad
+  bir     = bisect reset
 
 [pull]
   rebase = true

@@ -1,3 +1,14 @@
+#*
+#*                  _    __ _ _
+#*   __ _ ___  __ _| |_ / _(_) |___ ___  WEBSITE: https://goatfiles.github.io
+#*  / _` / _ \/ _` |  _|  _| | / -_|_-<  REPOS:   https://github.com/goatfiles
+#*  \__, \___/\__,_|\__|_| |_|_\___/__/  LICENCE: https://github.com/goatfiles/dotfiles/blob/main/LICENSE
+#*  |___/
+#*          MAINTAINERS:
+#*              AMTOINE: https://github.com/amtoine antoine#1306 7C5EE50BA27B86B7F9D5A7BA37AAE9B486CFF1AB
+#*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
+#*
+
 # GRUB boot loader configuration
 
 GRUB_DEFAULT=0
@@ -44,7 +55,7 @@ GRUB_DISABLE_RECOVERY=true
 #GRUB_COLOR_HIGHLIGHT="light-cyan/blue"
 
 # Uncomment one of them for the gfx desired, a image background or a gfxtheme
-GRUB_BACKGROUND="/usr/share/backgrounds/amtoine-wallpapers-git/0228_girl-academia-himiko-white-black.png"
+GRUB_BACKGROUND="/usr/share/backgrounds/goat-wallpapers-git/0228_girl-academia-himiko-white-black.png"
 # https://github.com/catppuccin/grub
 #GRUB_THEME="/usr/share/grub/themes/sekiro/theme.txt"
 
