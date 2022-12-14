@@ -65,7 +65,14 @@ super + {o,i}
   bspc wm --record-history on
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-  bspc {desktop --focus,node --to-desktop} '^{1-9,10}'
+  { action="desktop --focus"; message="Switching to"; \
+  , action="node --to-desktop"; message="Sending to"; \
+  } \
+  node="{1-9,10}"; \
+  bspc $action "^$node"; \
+  if [ "$?" = 0 ]; then \
+    dunstify "bspwm/sxhkd"  "$message $node" --timeout=1000 --replace=128; \
+  fi
 
 #
 # >>> preselect
@@ -86,16 +93,19 @@ super + ctrl + shift + space
 #
 # >>> move/resize
 #
-# expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
-  bspc node --resize {left -20 0,bottom 0 20,top 0 -20,right 20 0}
-# contract a window by moving one of its side inward
-super + alt + shift + {h,j,k,l}
-  bspc node --resize {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 # move a floating window
 super + {Left,Down,Up,Right}
   bspc node --move {-20 0,0 20,0 -20,20 0}
-
+super + {_,ctrl + }alt + {h,j,k,l}
+  { n=135; \
+  , n=10; \
+  } \
+  { d1=left;   d2=right;  dx=-$n; dy=0;   \
+  , d1=bottom; d2=top;    dx=0;   dy=$n;  \
+  , d1=top;    d2=bottom; dx=0;   dy=-$n; \
+  , d1=right;  d2=left;   dx=$n;  dy=0;   \
+  } \
+  bspc node --resize $d1 $dx $dy || bspc node --resize $d2 $dx $dy
 
 # super + shift + Return
 #   id=$(cat /tmp/scratchid);\
