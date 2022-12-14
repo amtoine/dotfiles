@@ -1,44 +1,40 @@
-#           ___
-#      __ _|_  )_ _ ___ ___   personal page: https://amtoine.github.io/
-#     / _` |/ /| ' \___(_-<   github   page: https://github.com/amtoine
-#     \__,_/___|_||_|  /__/   my   dotfiles: https://github.com/amtoine/dotfiles
-#               __         __         _    _      _
-#        __    / /  ___   / /  ____ _| |_ | |____| |_ _ __
-#      _/ _|  / /  (_-<  / /  (_-< \ / ' \| / / _` | '_/ _|
-#     (_)__| /_/   /__/ /_/   /__/_\_\_||_|_\_\__,_|_| \__|
-#
-# Description:  WM-agnostic key-bindings.
-# Dependencies: amtoine-scripts-git, lazygit, tig, archlinux-logout, rofi, dmenu,
-#               passmenu and pass, dmscripts, emacs, dunst.
-# License:      https://github.com/amtoine/dotfiles/blob/main/LICENSE 
-# Contributors: Stevan Antoine
+#*
+#*                  _    __ _ _
+#*   __ _ ___  __ _| |_ / _(_) |___ ___  WEBSITE: https://goatfiles.github.io
+#*  / _` / _ \/ _` |  _|  _| | / -_|_-<  REPOS:   https://github.com/goatfiles
+#*  \__, \___/\__,_|\__|_| |_|_\___/__/  LICENCE: https://github.com/goatfiles/dotfiles/blob/main/LICENSE
+#*  |___/
+#*          MAINTAINERS:
+#*              AMTOINE: https://github.com/amtoine antoine#1306 7C5EE50BA27B86B7F9D5A7BA37AAE9B486CFF1AB
+#*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
+#*
 
 # general system control bindings.
 # these do not require super as they are not really related to any
 # window manager or workflow in particular.
 XF86MonBrightness{Down,Up}
-  amtoine-hdmi --main --brightness {-,+} --step 5 --notify
+  grandr --main --brightness {-,+} --step 5 --notify
 XF86MonBrightness{Down,Up} + control
-  amtoine-hdmi --main --brightness {-,+} --step 1 --notify
+  grandr --main --brightness {-,+} --step 1 --notify
 shift + XF86MonBrightness{Down,Up}
-  amtoine-hdmi --second --brightness {-,+} --step 5 --notify
+  grandr --second --brightness {-,+} --step 5 --notify
 shift + control + XF86MonBrightness{Down,Up}
-  amtoine-hdmi --second --brightness {-,+} --step 1 --notify
+  grandr --second --brightness {-,+} --step 1 --notify
 XF86AudioMute
-  amtoine-sound --toggle --channel Master --notify
+  gmixer --toggle --channel Master --notify
 ctrl + XF86AudioMute
-  amtoine-sound --bluetooth --notify
+  gmixer --bluetooth --notify
 XF86Audio{Lower,Raise}Volume + control
-  amtoine-sound --{down,up} --channel Master --step 1 --notify
+  gmixer --{down,up} --channel Master --step 1 --notify
 XF86Audio{Lower,Raise}Volume
-  amtoine-sound --{down,up} --channel Master --step 5 --notify
+  gmixer --{down,up} --channel Master --step 5 --notify
 
 # function bindings, such as taking screeshots, doing version control on the dotfiles,
 # logging out of the window manager...
 super + {_,shift} + F1
   flameshot {gui,launcher}
 super + {_,shift} + F2
-  amtoine-scrot {window,full} --notify
+  gshot {window,full} --notify
 super + {_,shift} + F3
   TIGRC_USER="$XDG_CONFIG_HOME/tig/.dotfiles" GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" $WM_TERM $WM_TERM_FLAGS {tig --all, lazygit --git-dir="$HOME/.dotfiles" --work-tree="$HOME"}
 
@@ -78,28 +74,28 @@ super + e; h
 
 # everything else that does not fit in any particular dedicated category.
 super + z; b
-  amtoine-battery --print
+  gbat --print
 super + z; d; {c, h, p}
   dunstctl {close-all,history-pop,set-paused toggle}
 super + z; g
-  amtoine-gh-notify
+  gghn
 super + z; m; {b,m,n,,p,q,r,s,h,j,k,l}
   mocp {-r,-G,-f,-G,-x,-t repeat,-t shuffle,-k -10,-f,-r,-k +10}
 super + z; m; f
-  amtoine-mocp --follow
+  gmocp --follow
 super + z; n
   $WM_TERM $WM_TERM_FLAGS bash -c "nmcli d | grep -w 'connected' | sed 's/\s\+/ /g'| cut -d' ' -f4; echo -e '\n\n'; ping google.com"
 super + z; p; {b,t}
-  PICOM_EXTRA_FLAGS="--experimental-backends --animations" amtoine-pcm --{blur,toggle} --notify
+  PICOM_EXTRA_FLAGS="--experimental-backends --animations" gpcm --{blur,toggle} --notify
 super + z; p; d; f
-  amtoine-pdf
+  gpdf
 super + z; r; t
   $WM_TERM $WM_TERM_FLAGS amtoine-themes --dmenu
 super + z; r; w; {f,s}
-  {feh --bg-fill --randomize /usr/share/backgrounds/* --no-fehbg,amtoine-wfzf --dmenu}
+  {feh --bg-fill --randomize /usr/share/backgrounds/* --no-fehbg,gwfzf --dmenu}
 super + z; {s,t,w}
   amtoine-{sys-stats,time-date,weather-get}
 super + z; u; {c, u}
-  amtoine-update --{check,update}
+  gsupdate --{check,update}
 super + z; z; {m, w}
-  $WM_TERM $WM_TERM_FLAGS {amtoine-macho,amtoine-wtldr}
+  $WM_TERM $WM_TERM_FLAGS {gmacho,gwtldr}
