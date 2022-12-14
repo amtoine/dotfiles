@@ -1,3 +1,14 @@
+#*
+#*                  _    __ _ _
+#*   __ _ ___  __ _| |_ / _(_) |___ ___  WEBSITE: https://goatfiles.github.io
+#*  / _` / _ \/ _` |  _|  _| | / -_|_-<  REPOS:   https://github.com/goatfiles
+#*  \__, \___/\__,_|\__|_| |_|_\___/__/  LICENCE: https://github.com/goatfiles/dotfiles/blob/main/LICENSE
+#*  |___/
+#*          MAINTAINERS:
+#*              AMTOINE: https://github.com/amtoine antoine#1306 7C5EE50BA27B86B7F9D5A7BA37AAE9B486CFF1AB
+#*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
+#*
+
 # See dunst(5) for all configuration options
 
 [global]
@@ -288,7 +299,7 @@
 #+ END:low
     timeout = 3
     # Icon for notifications with low urgency, uncomment to enable
-    default_icon = /usr/share/icons/amtoine-icons-git/stickers/100x100/notification/low-priority.png
+    default_icon = /usr/share/icons/goat-icons-git/stickers/100x100/notification/low-priority.png
 
 [urgency_normal]
 #+ BEGIN:normal
@@ -297,7 +308,7 @@
 #+ END:normal
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
-    default_icon = /usr/share/icons/amtoine-icons-git/stickers/100x100/notification/notification.png
+    default_icon = /usr/share/icons/goat-icons-git/stickers/100x100/notification/notification.png
 
 [urgency_critical]
 #+ BEGIN:critical
@@ -307,7 +318,7 @@
 #+ END:critical
     timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable
-    default_icon = /usr/share/icons/amtoine-icons-git/stickers/100x100/notification/high-importance.png
+    default_icon = /usr/share/icons/goat-icons-git/stickers/100x100/notification/high-importance.png
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
