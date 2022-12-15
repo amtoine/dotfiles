@@ -98,7 +98,7 @@ super + z; r; t
 super + z; r; w; {f,s}
   {feh --bg-fill --randomize /usr/share/backgrounds/* --no-fehbg,gwfzf --dmenu}
 super + z; {s,t,w}
-  amtoine-{sys-stats,time-date,weather-get}
+  g{sstats,date,weather}
 super + z; u; {c, u}
   gsupdate --{check,update}
 super + z; z; {m, w}
