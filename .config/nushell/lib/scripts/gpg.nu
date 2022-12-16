@@ -13,7 +13,6 @@ def poll_gpg [
 # TODO: documentation
 def get_gpg_tru [] {
   poll_gpg | lines | find --regex "^tru" | split column ":" --collapse-empty a b c d e f g
-  
 }
 
 
