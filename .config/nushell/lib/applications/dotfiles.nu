@@ -1,4 +1,4 @@
-use scripts/prompt.nu
+use applications/prompt.nu
 
 alias GIT = ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE
 

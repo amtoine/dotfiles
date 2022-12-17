@@ -1,4 +1,4 @@
-use scripts/prompt.nu
+use applications/prompt.nu
 
 
 # TODO
