@@ -192,6 +192,7 @@ let-env ENV_CONVERSIONS = {
 # By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIRS = [
     ($nu.config-path | path dirname | path join 'lib')
+    ("~/.local/share/ghq/github.com/goatfiles/nu_scripts" | path expand)
 ]
 
 let-env DEFAULT_CONFIG_FILE = (
