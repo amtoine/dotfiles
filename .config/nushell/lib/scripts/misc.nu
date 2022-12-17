@@ -107,3 +107,68 @@ export def alarm [
     dunstify "termdown" $message --urgency critical --timeout 0
     print $message
 }
+
+
+# TODO
+def get-aoc-header [
+  login: string
+] {
+  let aoc_login = (
+    gpg --quiet --decrypt ($login | path expand)
+    | from toml
+  )
+  let header = [
+    Cookie $'session=($aoc_login.cookie)'
+    User-Agent $'email: ($aoc_login.mail)'
+  ]
+
+  $header
+}
+
+
+# TODO
+#
+# encryption:
+# ```bash
+# > gpg --symmetric --armor --cipher-algo <algo> <file>
+# ```
+#
+# example login file:
+# ```toml
+# cookie = "my-cookie: see https://github.com/wimglenn/advent-of-code-wim/issues/1"
+# mail = "my_mail@domain.foo"
+# ```
+#
+export def "aoc fetch input" [
+  day: int
+  login: string
+] {
+  let url = $'https://adventofcode.com/2022/day/($day)/input'
+
+  fetch -H (get-aoc-header $login) $url
+}
+
+
+# TODO
+export def "aoc fetch answers" [
+  day: int
+  login: string
+] {
+  let url = $'https://adventofcode.com/2022/day/($day)'
+
+  let result = (fetch -H (get-aoc-header $login) $url)
+  let answers = (
+    $result
+    | lines
+    | parse "<p>Your puzzle answer was <code>{answer}</code>{rest}"
+  )
+
+  if ($answers | is-empty) {
+    $result | str trim
+  } else {
+    {
+      silver: $answers.answer.0
+      gold: $answers.answer.1
+    }
+  }
+}
