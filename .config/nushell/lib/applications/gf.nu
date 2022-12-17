@@ -1,4 +1,4 @@
-use scripts/context.nu
+use applications/context.nu
 
 
 alias FZF = fzf --ansi --color --reverse
