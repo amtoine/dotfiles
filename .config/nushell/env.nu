@@ -30,18 +30,19 @@ def spwd [] {
 
   let spwd_len = (($spwd_paths | length) - 1)
 
-  for -n i in $spwd_paths {
-    let spwd_src = ($i.item | split chars)
+  $spwd_paths
+  | each {|el id|
+    let spwd_src = ($el | split chars)
 
-    if ($i.index == $spwd_len) {
-      $i.item
+    if ($id == $spwd_len) {
+      $el
     } else if ($spwd_src.0 == ".") {
       $".($spwd_src.1)"
     } else {
       $"($spwd_src.0)"
     }
-  } |
-  str join $sep
+  }
+  | str collect $sep
 }
 
 
@@ -60,7 +61,8 @@ def build-prompt [
     }
 
     let tokens = (
-        for i in (seq 1 ($len - 1)) {
+        seq 1 ($len - 1)
+        | each {|i|
           let sep = {
             fg: ($segments | get ($i - 1) | get bg),
             bg: ($segments | get $i | get bg),
@@ -72,8 +74,8 @@ def build-prompt [
             text: $" ($segments | get $i | get text) "
           }
           $sep | append $text
-        } |
-        flatten
+        }
+        | flatten
     )
 
     let last = {
