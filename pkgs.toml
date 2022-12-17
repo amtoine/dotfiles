@@ -15,20 +15,24 @@ package = "adobe-source-code-pro-fonts"
 version = "2.038ro+1.058it+1.018var-1"
 
 [[pkgs.pacman.all]]
+package = "adwaita-cursors"
+version = "43-2"
+
+[[pkgs.pacman.all]]
 package = "adwaita-icon-theme"
-version = "42.0+r1+gc144c3d75-1"
+version = "43-2"
 
 [[pkgs.pacman.all]]
 package = "alacritty"
-version = "0.10.1-2"
+version = "0.11.0-2"
 
 [[pkgs.pacman.all]]
 package = "alsa-card-profiles"
-version = "1:0.3.58-1"
+version = "1:0.3.61-1"
 
 [[pkgs.pacman.all]]
 package = "alsa-lib"
-version = "1.2.7.2-1"
+version = "1.2.8-1"
 
 [[pkgs.pacman.all]]
 package = "alsa-topology-conf"
@@ -36,59 +40,35 @@ version = "1.2.5.1-1"
 
 [[pkgs.pacman.all]]
 package = "alsa-ucm-conf"
-version = "1.2.7.2-1"
+version = "1.2.8-1"
 
 [[pkgs.pacman.all]]
 package = "alsa-utils"
-version = "1.2.7-1"
-
-[[pkgs.pacman.all]]
-package = "amtoine-applications-git"
-version = "1.0.r6.27242df-1"
-
-[[pkgs.pacman.all]]
-package = "amtoine-icons-git"
-version = "r21.7cc7ce2-1"
-
-[[pkgs.pacman.all]]
-package = "amtoine-scripts-git"
-version = "r37.189592d-1"
-
-[[pkgs.pacman.all]]
-package = "amtoine-sounds-git"
-version = "r4.5d10643-1"
-
-[[pkgs.pacman.all]]
-package = "amtoine-wallpapers-git"
-version = "r32.e5ba1e1-1"
+version = "1.2.8-1"
 
 [[pkgs.pacman.all]]
 package = "aom"
-version = "3.4.0-1"
+version = "3.5.0-1"
 
 [[pkgs.pacman.all]]
 package = "archlinux-keyring"
-version = "20220831-1"
+version = "20221123-1"
 
 [[pkgs.pacman.all]]
 package = "argon2"
 version = "20190702-4"
 
 [[pkgs.pacman.all]]
+package = "asciidoc"
+version = "10.2.0-2"
+
+[[pkgs.pacman.all]]
 package = "asciinema"
 version = "2.2.0-2"
 
 [[pkgs.pacman.all]]
-package = "at-spi2-atk"
-version = "2.38.0-1"
-
-[[pkgs.pacman.all]]
 package = "at-spi2-core"
-version = "2.44.1-1"
-
-[[pkgs.pacman.all]]
-package = "atk"
-version = "2.38.0-1"
+version = "2.46.0-2"
 
 [[pkgs.pacman.all]]
 package = "attr"
@@ -128,11 +108,11 @@ version = "0.22.1-1"
 
 [[pkgs.pacman.all]]
 package = "bind"
-version = "9.18.7-1"
+version = "9.18.9-1"
 
 [[pkgs.pacman.all]]
 package = "binutils"
-version = "2.39-3"
+version = "2.39-4"
 
 [[pkgs.pacman.all]]
 package = "bison"
@@ -140,31 +120,27 @@ version = "3.8.2-4"
 
 [[pkgs.pacman.all]]
 package = "blueman"
-version = "2.3.2-1"
+version = "2.3.5-1"
 
 [[pkgs.pacman.all]]
 package = "bluez"
-version = "5.65-3"
+version = "5.66-1"
 
 [[pkgs.pacman.all]]
 package = "bluez-libs"
-version = "5.65-3"
+version = "5.66-1"
 
 [[pkgs.pacman.all]]
 package = "bluez-plugins"
-version = "5.65-3"
+version = "5.66-1"
 
 [[pkgs.pacman.all]]
 package = "bluez-utils"
-version = "5.65-3"
+version = "5.66-1"
 
 [[pkgs.pacman.all]]
 package = "boost-libs"
-version = "1.80.0-2"
-
-[[pkgs.pacman.all]]
-package = "box2d"
-version = "2.4.1-1"
+version = "1.80.0-3"
 
 [[pkgs.pacman.all]]
 package = "brightnessctl"
@@ -172,7 +148,7 @@ version = "0.5.1-2"
 
 [[pkgs.pacman.all]]
 package = "brotli"
-version = "1.0.9-8"
+version = "1.0.9-9"
 
 [[pkgs.pacman.all]]
 package = "bspwm"
@@ -180,15 +156,19 @@ version = "0.9.10-2"
 
 [[pkgs.pacman.all]]
 package = "btrfs-progs"
-version = "5.19.1-1"
+version = "6.0.2-1"
 
 [[pkgs.pacman.all]]
 package = "bubblewrap"
-version = "0.6.2-1"
+version = "0.7.0-1"
 
 [[pkgs.pacman.all]]
 package = "bzip2"
-version = "1.0.8-4"
+version = "1.0.8-5"
+
+[[pkgs.pacman.all]]
+package = "c-ares"
+version = "1.18.1-1"
 
 [[pkgs.pacman.all]]
 package = "ca-certificates"
@@ -196,7 +176,7 @@ version = "20220905-1"
 
 [[pkgs.pacman.all]]
 package = "ca-certificates-mozilla"
-version = "3.83-1"
+version = "3.85-1"
 
 [[pkgs.pacman.all]]
 package = "ca-certificates-utils"
@@ -216,11 +196,15 @@ version = "4.0.2-6"
 
 [[pkgs.pacman.all]]
 package = "catppuccin-gtk-theme-frappe"
-version = "0.2.7-2"
+version = "0.4.0-1"
 
 [[pkgs.pacman.all]]
 package = "cava"
-version = "0.8.2-5"
+version = "0.8.3-1"
+
+[[pkgs.pacman.all]]
+package = "ccache"
+version = "4.7.4-2"
 
 [[pkgs.pacman.all]]
 package = "cdparanoia"
@@ -232,7 +216,7 @@ version = "3.02a09-5"
 
 [[pkgs.pacman.all]]
 package = "chromaprint"
-version = "1.5.1-4"
+version = "1.5.1-5"
 
 [[pkgs.pacman.all]]
 package = "cifs-utils"
@@ -240,11 +224,11 @@ version = "7.0-1"
 
 [[pkgs.pacman.all]]
 package = "clang"
-version = "14.0.6-2"
+version = "14.0.6-4"
 
 [[pkgs.pacman.all]]
-package = "clucene"
-version = "2.3.3.4-12"
+package = "cmake"
+version = "3.25.1-1"
 
 [[pkgs.pacman.all]]
 package = "cmus"
@@ -256,11 +240,11 @@ version = "14.0.6-1"
 
 [[pkgs.pacman.all]]
 package = "conky"
-version = "1.12.2-2"
+version = "1.15.0-1"
 
 [[pkgs.pacman.all]]
 package = "coreutils"
-version = "9.1-1"
+version = "9.1-3"
 
 [[pkgs.pacman.all]]
 package = "cronie"
@@ -268,11 +252,11 @@ version = "1.6.1-1"
 
 [[pkgs.pacman.all]]
 package = "cryptsetup"
-version = "2.5.0-1"
+version = "2.6.0-1"
 
 [[pkgs.pacman.all]]
 package = "curl"
-version = "7.85.0-2"
+version = "7.86.0-4"
 
 [[pkgs.pacman.all]]
 package = "cython"
@@ -288,7 +272,7 @@ version = "5.3.28-5"
 
 [[pkgs.pacman.all]]
 package = "dbus"
-version = "1.14.0-1"
+version = "1.14.4-1"
 
 [[pkgs.pacman.all]]
 package = "dbus-glib"
@@ -296,7 +280,15 @@ version = "0.112-2"
 
 [[pkgs.pacman.all]]
 package = "dconf"
-version = "0.40.0-1"
+version = "0.40.0-2"
+
+[[pkgs.pacman.all]]
+package = "debugedit"
+version = "5.0-4"
+
+[[pkgs.pacman.all]]
+package = "default-cursors"
+version = "1-1"
 
 [[pkgs.pacman.all]]
 package = "desktop-file-utils"
@@ -304,7 +296,7 @@ version = "0.26-2"
 
 [[pkgs.pacman.all]]
 package = "device-mapper"
-version = "2.03.16-2"
+version = "2.03.17-1"
 
 [[pkgs.pacman.all]]
 package = "devour"
@@ -316,7 +308,7 @@ version = "3.8-1"
 
 [[pkgs.pacman.all]]
 package = "discord"
-version = "0.0.20-1"
+version = "0.0.22-1"
 
 [[pkgs.pacman.all]]
 package = "discount"
@@ -328,11 +320,11 @@ version = "3.5.28-3"
 
 [[pkgs.pacman.all]]
 package = "dmenu"
-version = "5.1-1"
+version = "5.2-1"
 
 [[pkgs.pacman.all]]
 package = "dmraid"
-version = "1.0.0.rc16.3-13"
+version = "1.0.0.rc16.3-14"
 
 [[pkgs.pacman.all]]
 package = "dmscripts-git"
@@ -341,6 +333,14 @@ version = "1.0.r442.9b7cd8a-1"
 [[pkgs.pacman.all]]
 package = "dnssec-anchors"
 version = "20190629-3"
+
+[[pkgs.pacman.all]]
+package = "docbook-xml"
+version = "4.5-9"
+
+[[pkgs.pacman.all]]
+package = "docbook-xsl"
+version = "1.79.2-7"
 
 [[pkgs.pacman.all]]
 package = "dosfstools"
@@ -372,7 +372,7 @@ version = "1.46.5-4"
 
 [[pkgs.pacman.all]]
 package = "edk2-ovmf"
-version = "202208-1"
+version = "202211-3"
 
 [[pkgs.pacman.all]]
 package = "efibootmgr"
@@ -383,8 +383,16 @@ package = "efivar"
 version = "38-2"
 
 [[pkgs.pacman.all]]
+package = "efl"
+version = "1.26.3-2"
+
+[[pkgs.pacman.all]]
+package = "emacs"
+version = "28.2-1"
+
+[[pkgs.pacman.all]]
 package = "enchant"
-version = "2.3.3-1"
+version = "2.3.3-2"
 
 [[pkgs.pacman.all]]
 package = "exa"
@@ -396,19 +404,19 @@ version = "0.27.5-3"
 
 [[pkgs.pacman.all]]
 package = "expat"
-version = "2.4.8-1"
+version = "2.5.0-1"
 
 [[pkgs.pacman.all]]
 package = "faad2"
-version = "2.10.0-1"
+version = "2.10.1-1"
 
 [[pkgs.pacman.all]]
 package = "fakeroot"
-version = "1.29-1"
+version = "1.30.1-1"
 
 [[pkgs.pacman.all]]
 package = "fd"
-version = "8.4.0-1"
+version = "8.6.0-1"
 
 [[pkgs.pacman.all]]
 package = "feh"
@@ -420,7 +428,7 @@ version = "2.4-2"
 
 [[pkgs.pacman.all]]
 package = "ffmpeg"
-version = "2:5.1.1-3"
+version = "2:5.1.2-1"
 
 [[pkgs.pacman.all]]
 package = "fftw"
@@ -432,7 +440,7 @@ version = "5.43-1"
 
 [[pkgs.pacman.all]]
 package = "filesystem"
-version = "2021.12.07-1"
+version = "2022.10.18-1"
 
 [[pkgs.pacman.all]]
 package = "findutils"
@@ -440,11 +448,11 @@ version = "4.9.0-1"
 
 [[pkgs.pacman.all]]
 package = "firefox"
-version = "105.0-2"
+version = "107.0.1-1"
 
 [[pkgs.pacman.all]]
 package = "flac"
-version = "1.4.1-1"
+version = "1.4.2-1"
 
 [[pkgs.pacman.all]]
 package = "flex"
@@ -452,15 +460,19 @@ version = "2.6.4-3"
 
 [[pkgs.pacman.all]]
 package = "fluidsynth"
-version = "2.2.9-2"
+version = "2.3.0-2"
 
 [[pkgs.pacman.all]]
 package = "fmt"
-version = "9.1.0-1"
+version = "9.1.0-2"
 
 [[pkgs.pacman.all]]
 package = "fontconfig"
-version = "2:2.14.0-1"
+version = "2:2.14.1-2"
+
+[[pkgs.pacman.all]]
+package = "freeglut"
+version = "3.4.0-1"
 
 [[pkgs.pacman.all]]
 package = "freetype2"
@@ -484,11 +496,11 @@ version = "3.12.0-1"
 
 [[pkgs.pacman.all]]
 package = "fzf"
-version = "0.33.0-1"
+version = "0.35.1-1"
 
 [[pkgs.pacman.all]]
 package = "gawk"
-version = "5.2.0-3"
+version = "5.2.1-1"
 
 [[pkgs.pacman.all]]
 package = "gc"
@@ -504,11 +516,23 @@ version = "12.2.0-1"
 
 [[pkgs.pacman.all]]
 package = "gcr"
-version = "3.41.1-2"
+version = "3.41.1-3"
+
+[[pkgs.pacman.all]]
+package = "gcr-4"
+version = "4.0.0-1"
 
 [[pkgs.pacman.all]]
 package = "gd"
-version = "2.3.3-4"
+version = "2.3.3-5"
+
+[[pkgs.pacman.all]]
+package = "gdb"
+version = "12.1-2"
+
+[[pkgs.pacman.all]]
+package = "gdb-common"
+version = "12.1-2"
 
 [[pkgs.pacman.all]]
 package = "gdbm"
@@ -516,15 +540,19 @@ version = "1.23-1"
 
 [[pkgs.pacman.all]]
 package = "gdk-pixbuf2"
-version = "2.42.9-1"
+version = "2.42.10-1"
 
 [[pkgs.pacman.all]]
 package = "gettext"
-version = "0.21-2"
+version = "0.21.1-2"
+
+[[pkgs.pacman.all]]
+package = "ghc-libs"
+version = "9.0.2-1"
 
 [[pkgs.pacman.all]]
 package = "ghostscript"
-version = "9.56.1-1"
+version = "10.0.0-2"
 
 [[pkgs.pacman.all]]
 package = "ghq"
@@ -536,15 +564,19 @@ version = "5.2.1-2"
 
 [[pkgs.pacman.all]]
 package = "git"
-version = "2.37.3-1"
+version = "2.38.2-1"
 
 [[pkgs.pacman.all]]
 package = "git-delta"
-version = "0.14.0-2"
+version = "0.15.1-1"
 
 [[pkgs.pacman.all]]
 package = "github-cli"
-version = "2.15.0-1"
+version = "2.20.2-1"
+
+[[pkgs.pacman.all]]
+package = "glew"
+version = "2.2.0-6"
 
 [[pkgs.pacman.all]]
 package = "glib-networking"
@@ -552,11 +584,11 @@ version = "1:2.74.0-1"
 
 [[pkgs.pacman.all]]
 package = "glib2"
-version = "2.74.0-1"
+version = "2.74.3-1"
 
 [[pkgs.pacman.all]]
 package = "glibc"
-version = "2.36-4"
+version = "2.36-6"
 
 [[pkgs.pacman.all]]
 package = "glow"
@@ -565,6 +597,10 @@ version = "1.4.1-3"
 [[pkgs.pacman.all]]
 package = "glslang"
 version = "11.11.0-1"
+
+[[pkgs.pacman.all]]
+package = "glu"
+version = "9.0.2-3"
 
 [[pkgs.pacman.all]]
 package = "gmime3"
@@ -579,20 +615,52 @@ package = "gnome-themes-extra"
 version = "3.28+r6+g45b1d457-1"
 
 [[pkgs.pacman.all]]
-package = "gnu-free-fonts"
-version = "20120503-8"
-
-[[pkgs.pacman.all]]
 package = "gnupg"
-version = "2.2.39-1"
+version = "2.2.40-1"
 
 [[pkgs.pacman.all]]
 package = "gnutls"
-version = "3.7.7-3"
+version = "3.7.8-4"
+
+[[pkgs.pacman.all]]
+package = "go"
+version = "2:1.19.4-1"
+
+[[pkgs.pacman.all]]
+package = "goat-applications-git"
+version = "1.0.r7.14bb72a-1"
+
+[[pkgs.pacman.all]]
+package = "goat-icons-git"
+version = "r22.a2864f9-1"
+
+[[pkgs.pacman.all]]
+package = "goat-junnunkarim-wallpapers-git"
+version = "r5.ed614bd-1"
+
+[[pkgs.pacman.all]]
+package = "goat-mut-ex-wallpapers-git"
+version = "r36.849587d-1"
+
+[[pkgs.pacman.all]]
+package = "goat-remote-git"
+version = "r21.c32f4bb-1"
+
+[[pkgs.pacman.all]]
+package = "goat-scripts-git"
+version = "r41.70ca3a3-1"
+
+[[pkgs.pacman.all]]
+package = "goat-sounds-git"
+version = "r5.0f05e4f-1"
+
+[[pkgs.pacman.all]]
+package = "goat-wallpapers-git"
+version = "r33.52e7e25-1"
 
 [[pkgs.pacman.all]]
 package = "gobject-introspection-runtime"
-version = "1.72.0-1"
+version = "1.74.0-1"
 
 [[pkgs.pacman.all]]
 package = "gpgme"
@@ -604,7 +672,7 @@ version = "1.20.7.r38.ge82d1a6-4"
 
 [[pkgs.pacman.all]]
 package = "gptfdisk"
-version = "1.0.9-1"
+version = "1.0.9-2"
 
 [[pkgs.pacman.all]]
 package = "graphene"
@@ -624,7 +692,7 @@ version = "1.22.4-7"
 
 [[pkgs.pacman.all]]
 package = "gsettings-desktop-schemas"
-version = "42.0-1"
+version = "43.0-1"
 
 [[pkgs.pacman.all]]
 package = "gsm"
@@ -632,23 +700,23 @@ version = "1.0.22-1"
 
 [[pkgs.pacman.all]]
 package = "gst-plugin-pipewire"
-version = "1:0.3.58-1"
+version = "1:0.3.61-1"
 
 [[pkgs.pacman.all]]
 package = "gst-plugins-base"
-version = "1.20.3-2"
+version = "1.20.4-3"
 
 [[pkgs.pacman.all]]
 package = "gst-plugins-base-libs"
-version = "1.20.3-2"
+version = "1.20.4-3"
 
 [[pkgs.pacman.all]]
 package = "gst-plugins-good"
-version = "1.20.3-2"
+version = "1.20.4-3"
 
 [[pkgs.pacman.all]]
 package = "gstreamer"
-version = "1.20.3-2"
+version = "1.20.4-3"
 
 [[pkgs.pacman.all]]
 package = "gtk-engine-murrine"
@@ -656,7 +724,7 @@ version = "0.98.2-4"
 
 [[pkgs.pacman.all]]
 package = "gtk-update-icon-cache"
-version = "1:4.8.1-1"
+version = "1:4.8.2-1"
 
 [[pkgs.pacman.all]]
 package = "gtk2"
@@ -664,11 +732,11 @@ version = "2.24.33-2"
 
 [[pkgs.pacman.all]]
 package = "gtk3"
-version = "1:3.24.34-1"
+version = "1:3.24.35-2"
 
 [[pkgs.pacman.all]]
 package = "guile"
-version = "2.2.7-2"
+version = "3.0.8-3"
 
 [[pkgs.pacman.all]]
 package = "gzip"
@@ -676,11 +744,815 @@ version = "1.12-1"
 
 [[pkgs.pacman.all]]
 package = "harfbuzz"
-version = "5.2.0-1"
+version = "5.3.1-3"
 
 [[pkgs.pacman.all]]
 package = "harfbuzz-icu"
-version = "5.2.0-1"
+version = "5.3.1-3"
+
+[[pkgs.pacman.all]]
+package = "haskell-aeson"
+version = "2.1.1.0-3"
+
+[[pkgs.pacman.all]]
+package = "haskell-aeson-pretty"
+version = "0.8.9-102"
+
+[[pkgs.pacman.all]]
+package = "haskell-ansi-terminal"
+version = "0.11.3-37"
+
+[[pkgs.pacman.all]]
+package = "haskell-ansi-wl-pprint"
+version = "0.6.9-354"
+
+[[pkgs.pacman.all]]
+package = "haskell-appar"
+version = "0.1.8-13"
+
+[[pkgs.pacman.all]]
+package = "haskell-asn1-encoding"
+version = "0.9.6-196"
+
+[[pkgs.pacman.all]]
+package = "haskell-asn1-parse"
+version = "0.9.5-196"
+
+[[pkgs.pacman.all]]
+package = "haskell-asn1-types"
+version = "0.3.4-175"
+
+[[pkgs.pacman.all]]
+package = "haskell-assoc"
+version = "1.0.2-169"
+
+[[pkgs.pacman.all]]
+package = "haskell-async"
+version = "2.2.4-128"
+
+[[pkgs.pacman.all]]
+package = "haskell-attoparsec"
+version = "0.14.4-42"
+
+[[pkgs.pacman.all]]
+package = "haskell-attoparsec-iso8601"
+version = "1.1.0.0-18"
+
+[[pkgs.pacman.all]]
+package = "haskell-auto-update"
+version = "0.1.6-283"
+
+[[pkgs.pacman.all]]
+package = "haskell-base-compat"
+version = "0.12.2-1"
+
+[[pkgs.pacman.all]]
+package = "haskell-base-compat-batteries"
+version = "0.12.2-22"
+
+[[pkgs.pacman.all]]
+package = "haskell-base-orphans"
+version = "0.8.7-29"
+
+[[pkgs.pacman.all]]
+package = "haskell-base16-bytestring"
+version = "1.0.2.0-48"
+
+[[pkgs.pacman.all]]
+package = "haskell-base64"
+version = "0.4.2.4-34"
+
+[[pkgs.pacman.all]]
+package = "haskell-base64-bytestring"
+version = "1.2.1.0-70"
+
+[[pkgs.pacman.all]]
+package = "haskell-basement"
+version = "0.0.15-1"
+
+[[pkgs.pacman.all]]
+package = "haskell-bifunctors"
+version = "5.5.14-1"
+
+[[pkgs.pacman.all]]
+package = "haskell-bitvec"
+version = "1.1.3.0-21"
+
+[[pkgs.pacman.all]]
+package = "haskell-blaze-builder"
+version = "0.4.2.2-2"
+
+[[pkgs.pacman.all]]
+package = "haskell-blaze-html"
+version = "0.9.1.2-192"
+
+[[pkgs.pacman.all]]
+package = "haskell-blaze-markup"
+version = "0.8.2.8-98"
+
+[[pkgs.pacman.all]]
+package = "haskell-boring"
+version = "0.2-4"
+
+[[pkgs.pacman.all]]
+package = "haskell-bsb-http-chunked"
+version = "0.0.0.4-327"
+
+[[pkgs.pacman.all]]
+package = "haskell-byteable"
+version = "0.1.1-25"
+
+[[pkgs.pacman.all]]
+package = "haskell-byteorder"
+version = "1.0.4-24"
+
+[[pkgs.pacman.all]]
+package = "haskell-call-stack"
+version = "0.4.0-121"
+
+[[pkgs.pacman.all]]
+package = "haskell-case-insensitive"
+version = "1.2.1.0-171"
+
+[[pkgs.pacman.all]]
+package = "haskell-cereal"
+version = "0.5.8.3-1"
+
+[[pkgs.pacman.all]]
+package = "haskell-citeproc"
+version = "0.8.0.2-11"
+
+[[pkgs.pacman.all]]
+package = "haskell-cmdargs"
+version = "0.10.21-4"
+
+[[pkgs.pacman.all]]
+package = "haskell-colour"
+version = "2.3.6-146"
+
+[[pkgs.pacman.all]]
+package = "haskell-commonmark"
+version = "0.2.2-24"
+
+[[pkgs.pacman.all]]
+package = "haskell-commonmark-extensions"
+version = "0.2.3.3-7"
+
+[[pkgs.pacman.all]]
+package = "haskell-commonmark-pandoc"
+version = "0.2.1.2-95"
+
+[[pkgs.pacman.all]]
+package = "haskell-comonad"
+version = "5.0.8-170"
+
+[[pkgs.pacman.all]]
+package = "haskell-conduit"
+version = "1.3.4.3-12"
+
+[[pkgs.pacman.all]]
+package = "haskell-conduit-extra"
+version = "1.3.6-44"
+
+[[pkgs.pacman.all]]
+package = "haskell-connection"
+version = "0.3.1-224"
+
+[[pkgs.pacman.all]]
+package = "haskell-constraints"
+version = "0.13.4-17"
+
+[[pkgs.pacman.all]]
+package = "haskell-contravariant"
+version = "1.5.5-3"
+
+[[pkgs.pacman.all]]
+package = "haskell-cookie"
+version = "0.4.5-12"
+
+[[pkgs.pacman.all]]
+package = "haskell-cryptonite"
+version = "0.30-39"
+
+[[pkgs.pacman.all]]
+package = "haskell-data-default"
+version = "0.7.1.1-258"
+
+[[pkgs.pacman.all]]
+package = "haskell-data-default-class"
+version = "0.1.2.0-24"
+
+[[pkgs.pacman.all]]
+package = "haskell-data-default-instances-containers"
+version = "0.0.1-36"
+
+[[pkgs.pacman.all]]
+package = "haskell-data-default-instances-dlist"
+version = "0.0.1-271"
+
+[[pkgs.pacman.all]]
+package = "haskell-data-default-instances-old-locale"
+version = "0.0.1-36"
+
+[[pkgs.pacman.all]]
+package = "haskell-data-fix"
+version = "0.3.2-70"
+
+[[pkgs.pacman.all]]
+package = "haskell-dec"
+version = "0.0.5-1"
+
+[[pkgs.pacman.all]]
+package = "haskell-digest"
+version = "0.0.1.3-2"
+
+[[pkgs.pacman.all]]
+package = "haskell-distributive"
+version = "0.6.2.1-173"
+
+[[pkgs.pacman.all]]
+package = "haskell-dlist"
+version = "1.0-193"
+
+[[pkgs.pacman.all]]
+package = "haskell-doclayout"
+version = "0.4-19"
+
+[[pkgs.pacman.all]]
+package = "haskell-doctemplates"
+version = "0.10.0.2-31"
+
+[[pkgs.pacman.all]]
+package = "haskell-easy-file"
+version = "0.2.2-19"
+
+[[pkgs.pacman.all]]
+package = "haskell-emojis"
+version = "0.1.2-42"
+
+[[pkgs.pacman.all]]
+package = "haskell-erf"
+version = "2.0.0.0-24"
+
+[[pkgs.pacman.all]]
+package = "haskell-fast-logger"
+version = "3.1.1-62"
+
+[[pkgs.pacman.all]]
+package = "haskell-file-embed"
+version = "0.0.15.0-1"
+
+[[pkgs.pacman.all]]
+package = "haskell-generically"
+version = "0.1-1"
+
+[[pkgs.pacman.all]]
+package = "haskell-ghc-bignum-orphans"
+version = "0.1.1-1"
+
+[[pkgs.pacman.all]]
+package = "haskell-glob"
+version = "0.10.2-58"
+
+[[pkgs.pacman.all]]
+package = "haskell-gridtables"
+version = "0.1.0.0-6"
+
+[[pkgs.pacman.all]]
+package = "haskell-haddock-library"
+version = "1.10.0-185"
+
+[[pkgs.pacman.all]]
+package = "haskell-hashable"
+version = "1.4.1.0-34"
+
+[[pkgs.pacman.all]]
+package = "haskell-hourglass"
+version = "0.2.12-214"
+
+[[pkgs.pacman.all]]
+package = "haskell-hslua"
+version = "2.2.1-17"
+
+[[pkgs.pacman.all]]
+package = "haskell-hslua-aeson"
+version = "2.2.1-18"
+
+[[pkgs.pacman.all]]
+package = "haskell-hslua-classes"
+version = "2.2.0-34"
+
+[[pkgs.pacman.all]]
+package = "haskell-hslua-core"
+version = "2.2.1-28"
+
+[[pkgs.pacman.all]]
+package = "haskell-hslua-marshalling"
+version = "2.2.1-22"
+
+[[pkgs.pacman.all]]
+package = "haskell-hslua-module-doclayout"
+version = "1.0.4-67"
+
+[[pkgs.pacman.all]]
+package = "haskell-hslua-module-path"
+version = "1.0.3-26"
+
+[[pkgs.pacman.all]]
+package = "haskell-hslua-module-system"
+version = "1.0.2-22"
+
+[[pkgs.pacman.all]]
+package = "haskell-hslua-module-text"
+version = "1.0.2-24"
+
+[[pkgs.pacman.all]]
+package = "haskell-hslua-module-version"
+version = "1.0.3-23"
+
+[[pkgs.pacman.all]]
+package = "haskell-hslua-objectorientation"
+version = "2.2.1-18"
+
+[[pkgs.pacman.all]]
+package = "haskell-hslua-packaging"
+version = "2.2.1-14"
+
+[[pkgs.pacman.all]]
+package = "haskell-hsyaml"
+version = "0.2.1.1-26"
+
+[[pkgs.pacman.all]]
+package = "haskell-http-api-data"
+version = "0.5-8"
+
+[[pkgs.pacman.all]]
+package = "haskell-http-client"
+version = "0.7.13.1-23"
+
+[[pkgs.pacman.all]]
+package = "haskell-http-client-tls"
+version = "0.3.6.1-67"
+
+[[pkgs.pacman.all]]
+package = "haskell-http-date"
+version = "0.0.11-104"
+
+[[pkgs.pacman.all]]
+package = "haskell-http-media"
+version = "0.8.0.0-173"
+
+[[pkgs.pacman.all]]
+package = "haskell-http-types"
+version = "0.12.3-276"
+
+[[pkgs.pacman.all]]
+package = "haskell-http2"
+version = "3.0.3-11"
+
+[[pkgs.pacman.all]]
+package = "haskell-hunit"
+version = "1.6.2.0-163"
+
+[[pkgs.pacman.all]]
+package = "haskell-indexed-traversable"
+version = "0.1.2-2"
+
+[[pkgs.pacman.all]]
+package = "haskell-indexed-traversable-instances"
+version = "0.1.1.1-22"
+
+[[pkgs.pacman.all]]
+package = "haskell-integer-logarithms"
+version = "1.0.3.1-6"
+
+[[pkgs.pacman.all]]
+package = "haskell-iproute"
+version = "1.7.12-46"
+
+[[pkgs.pacman.all]]
+package = "haskell-ipynb"
+version = "0.2-63"
+
+[[pkgs.pacman.all]]
+package = "haskell-jira-wiki-markup"
+version = "1.4.0-81"
+
+[[pkgs.pacman.all]]
+package = "haskell-juicypixels"
+version = "3.3.7-38"
+
+[[pkgs.pacman.all]]
+package = "haskell-lexer"
+version = "1.1-11"
+
+[[pkgs.pacman.all]]
+package = "haskell-libyaml"
+version = "0.1.2-266"
+
+[[pkgs.pacman.all]]
+package = "haskell-lpeg"
+version = "1.0.3-17"
+
+[[pkgs.pacman.all]]
+package = "haskell-lua"
+version = "2.2.1-18"
+
+[[pkgs.pacman.all]]
+package = "haskell-memory"
+version = "0.17.0-35"
+
+[[pkgs.pacman.all]]
+package = "haskell-mime-types"
+version = "0.1.1.0-1"
+
+[[pkgs.pacman.all]]
+package = "haskell-mmorph"
+version = "1.2.0-5"
+
+[[pkgs.pacman.all]]
+package = "haskell-monad-control"
+version = "1.0.3.1-70"
+
+[[pkgs.pacman.all]]
+package = "haskell-mono-traversable"
+version = "1.0.15.3-97"
+
+[[pkgs.pacman.all]]
+package = "haskell-network"
+version = "3.1.2.7-46"
+
+[[pkgs.pacman.all]]
+package = "haskell-network-byte-order"
+version = "0.1.6-146"
+
+[[pkgs.pacman.all]]
+package = "haskell-network-uri"
+version = "2.6.4.1-104"
+
+[[pkgs.pacman.all]]
+package = "haskell-old-locale"
+version = "1.0.0.7-30"
+
+[[pkgs.pacman.all]]
+package = "haskell-old-time"
+version = "1.1.0.3-30"
+
+[[pkgs.pacman.all]]
+package = "haskell-onetuple"
+version = "0.3.1-43"
+
+[[pkgs.pacman.all]]
+package = "haskell-optparse-applicative"
+version = "0.17.0.0-19"
+
+[[pkgs.pacman.all]]
+package = "haskell-pandoc-lua-marshal"
+version = "0.1.7-24"
+
+[[pkgs.pacman.all]]
+package = "haskell-pandoc-types"
+version = "1.22.2.1-22"
+
+[[pkgs.pacman.all]]
+package = "haskell-pem"
+version = "0.2.4-252"
+
+[[pkgs.pacman.all]]
+package = "haskell-pretty-show"
+version = "1.10-13"
+
+[[pkgs.pacman.all]]
+package = "haskell-primitive"
+version = "0.7.4.0-47"
+
+[[pkgs.pacman.all]]
+package = "haskell-psqueues"
+version = "0.2.7.3-50"
+
+[[pkgs.pacman.all]]
+package = "haskell-quickcheck"
+version = "2.14.2-376"
+
+[[pkgs.pacman.all]]
+package = "haskell-random"
+version = "1.2.1.1-74"
+
+[[pkgs.pacman.all]]
+package = "haskell-recv"
+version = "0.0.0-7"
+
+[[pkgs.pacman.all]]
+package = "haskell-resourcet"
+version = "1.2.6-18"
+
+[[pkgs.pacman.all]]
+package = "haskell-safe"
+version = "0.3.19-8"
+
+[[pkgs.pacman.all]]
+package = "haskell-safe-exceptions"
+version = "0.1.7.3-26"
+
+[[pkgs.pacman.all]]
+package = "haskell-scientific"
+version = "0.3.7.0-81"
+
+[[pkgs.pacman.all]]
+package = "haskell-semialign"
+version = "1.2.0.1-89"
+
+[[pkgs.pacman.all]]
+package = "haskell-semigroupoids"
+version = "5.3.7-73"
+
+[[pkgs.pacman.all]]
+package = "haskell-servant"
+version = "0.19.1-5"
+
+[[pkgs.pacman.all]]
+package = "haskell-servant-server"
+version = "0.19.2-7"
+
+[[pkgs.pacman.all]]
+package = "haskell-sha"
+version = "1.6.4.4-19"
+
+[[pkgs.pacman.all]]
+package = "haskell-simple-sendfile"
+version = "0.2.30-327"
+
+[[pkgs.pacman.all]]
+package = "haskell-singleton-bool"
+version = "0.1.6-7"
+
+[[pkgs.pacman.all]]
+package = "haskell-skylighting"
+version = "0.13.1.1-7"
+
+[[pkgs.pacman.all]]
+package = "haskell-skylighting-core"
+version = "0.13.1.1-7"
+
+[[pkgs.pacman.all]]
+package = "haskell-skylighting-format-ansi"
+version = "0.1-21"
+
+[[pkgs.pacman.all]]
+package = "haskell-skylighting-format-blaze-html"
+version = "0.1.1-17"
+
+[[pkgs.pacman.all]]
+package = "haskell-skylighting-format-latex"
+version = "0.1-21"
+
+[[pkgs.pacman.all]]
+package = "haskell-socks"
+version = "0.6.1-200"
+
+[[pkgs.pacman.all]]
+package = "haskell-some"
+version = "1.0.4.1-1"
+
+[[pkgs.pacman.all]]
+package = "haskell-sop-core"
+version = "0.5.0.2-1"
+
+[[pkgs.pacman.all]]
+package = "haskell-split"
+version = "0.2.3.5-14"
+
+[[pkgs.pacman.all]]
+package = "haskell-splitmix"
+version = "0.1.0.4-112"
+
+[[pkgs.pacman.all]]
+package = "haskell-statevar"
+version = "1.2.2-2"
+
+[[pkgs.pacman.all]]
+package = "haskell-streaming-commons"
+version = "0.2.2.5-4"
+
+[[pkgs.pacman.all]]
+package = "haskell-strict"
+version = "0.4.0.1-143"
+
+[[pkgs.pacman.all]]
+package = "haskell-string-conversions"
+version = "0.4.0.1-139"
+
+[[pkgs.pacman.all]]
+package = "haskell-syb"
+version = "0.7.2.2-13"
+
+[[pkgs.pacman.all]]
+package = "haskell-tagged"
+version = "0.8.6.1-5"
+
+[[pkgs.pacman.all]]
+package = "haskell-tagsoup"
+version = "0.14.8-194"
+
+[[pkgs.pacman.all]]
+package = "haskell-temporary"
+version = "1.3-485"
+
+[[pkgs.pacman.all]]
+package = "haskell-texmath"
+version = "0.12.5.4-9"
+
+[[pkgs.pacman.all]]
+package = "haskell-text-conversions"
+version = "0.3.1.1-29"
+
+[[pkgs.pacman.all]]
+package = "haskell-text-icu"
+version = "0.8.0.2-17"
+
+[[pkgs.pacman.all]]
+package = "haskell-text-short"
+version = "0.1.5-47"
+
+[[pkgs.pacman.all]]
+package = "haskell-th-abstraction"
+version = "0.4.5.0-1"
+
+[[pkgs.pacman.all]]
+package = "haskell-th-compat"
+version = "0.1.4-11"
+
+[[pkgs.pacman.all]]
+package = "haskell-th-lift"
+version = "0.8.2-13"
+
+[[pkgs.pacman.all]]
+package = "haskell-th-lift-instances"
+version = "0.1.20-13"
+
+[[pkgs.pacman.all]]
+package = "haskell-these"
+version = "1.1.1.1-170"
+
+[[pkgs.pacman.all]]
+package = "haskell-time-compat"
+version = "1.9.6.1-65"
+
+[[pkgs.pacman.all]]
+package = "haskell-time-manager"
+version = "0.0.0-280"
+
+[[pkgs.pacman.all]]
+package = "haskell-tls"
+version = "1.6.0-22"
+
+[[pkgs.pacman.all]]
+package = "haskell-transformers-base"
+version = "0.4.6-70"
+
+[[pkgs.pacman.all]]
+package = "haskell-transformers-compat"
+version = "0.7.2-1"
+
+[[pkgs.pacman.all]]
+package = "haskell-type-equality"
+version = "1-12"
+
+[[pkgs.pacman.all]]
+package = "haskell-typed-process"
+version = "0.2.10.1-22"
+
+[[pkgs.pacman.all]]
+package = "haskell-unicode-collation"
+version = "0.1.3.3-7"
+
+[[pkgs.pacman.all]]
+package = "haskell-unicode-data"
+version = "0.4.0-5"
+
+[[pkgs.pacman.all]]
+package = "haskell-unicode-transforms"
+version = "0.4.0.1-37"
+
+[[pkgs.pacman.all]]
+package = "haskell-uniplate"
+version = "1.6.13-161"
+
+[[pkgs.pacman.all]]
+package = "haskell-unix-compat"
+version = "0.6-39"
+
+[[pkgs.pacman.all]]
+package = "haskell-unix-time"
+version = "0.4.8-10"
+
+[[pkgs.pacman.all]]
+package = "haskell-unliftio"
+version = "0.2.23.0-3"
+
+[[pkgs.pacman.all]]
+package = "haskell-unliftio-core"
+version = "0.2.0.1-9"
+
+[[pkgs.pacman.all]]
+package = "haskell-unordered-containers"
+version = "0.2.19.1-45"
+
+[[pkgs.pacman.all]]
+package = "haskell-utf8-string"
+version = "1.0.2-118"
+
+[[pkgs.pacman.all]]
+package = "haskell-uuid-types"
+version = "1.0.5-85"
+
+[[pkgs.pacman.all]]
+package = "haskell-vault"
+version = "0.3.1.5-124"
+
+[[pkgs.pacman.all]]
+package = "haskell-vector"
+version = "0.13.0.0-14"
+
+[[pkgs.pacman.all]]
+package = "haskell-vector-algorithms"
+version = "0.9.0.1-21"
+
+[[pkgs.pacman.all]]
+package = "haskell-vector-stream"
+version = "0.1.0.0-1"
+
+[[pkgs.pacman.all]]
+package = "haskell-wai"
+version = "3.2.3-162"
+
+[[pkgs.pacman.all]]
+package = "haskell-wai-app-static"
+version = "3.1.7.4-97"
+
+[[pkgs.pacman.all]]
+package = "haskell-wai-extra"
+version = "3.1.13.0-12"
+
+[[pkgs.pacman.all]]
+package = "haskell-wai-logger"
+version = "2.4.0-163"
+
+[[pkgs.pacman.all]]
+package = "haskell-warp"
+version = "3.3.23-16"
+
+[[pkgs.pacman.all]]
+package = "haskell-witherable"
+version = "0.4.2-30"
+
+[[pkgs.pacman.all]]
+package = "haskell-word8"
+version = "0.1.3-22"
+
+[[pkgs.pacman.all]]
+package = "haskell-x509"
+version = "1.7.7-25"
+
+[[pkgs.pacman.all]]
+package = "haskell-x509-store"
+version = "1.6.9-50"
+
+[[pkgs.pacman.all]]
+package = "haskell-x509-system"
+version = "1.6.7-53"
+
+[[pkgs.pacman.all]]
+package = "haskell-x509-validation"
+version = "1.6.12-55"
+
+[[pkgs.pacman.all]]
+package = "haskell-xml"
+version = "1.3.14-30"
+
+[[pkgs.pacman.all]]
+package = "haskell-xml-conduit"
+version = "1.9.1.1-158"
+
+[[pkgs.pacman.all]]
+package = "haskell-xml-types"
+version = "0.3.8-8"
+
+[[pkgs.pacman.all]]
+package = "haskell-yaml"
+version = "0.11.8.0-74"
+
+[[pkgs.pacman.all]]
+package = "haskell-zip-archive"
+version = "0.4.2.2-8"
+
+[[pkgs.pacman.all]]
+package = "haskell-zlib"
+version = "0.6.3.0-28"
+
+[[pkgs.pacman.all]]
+package = "helix"
+version = "22.12-1"
 
 [[pkgs.pacman.all]]
 package = "hicolor-icon-theme"
@@ -691,16 +1563,28 @@ package = "hidapi"
 version = "0.12.0-1"
 
 [[pkgs.pacman.all]]
+package = "highlight"
+version = "4.4-2"
+
+[[pkgs.pacman.all]]
+package = "hiredis"
+version = "1.1.0-1"
+
+[[pkgs.pacman.all]]
+package = "htop"
+version = "3.2.1-1"
+
+[[pkgs.pacman.all]]
 package = "http-parser"
 version = "2.9.4-1"
 
 [[pkgs.pacman.all]]
-package = "hunspell"
-version = "1.7.1-1"
+package = "hugo"
+version = "0.108.0-1"
 
 [[pkgs.pacman.all]]
 package = "hwdata"
-version = "0.362-2"
+version = "0.365-1"
 
 [[pkgs.pacman.all]]
 package = "hwloc"
@@ -708,23 +1592,31 @@ version = "2.8.0-1"
 
 [[pkgs.pacman.all]]
 package = "hyphen"
-version = "2.8.8-4"
+version = "2.8.8-5"
 
 [[pkgs.pacman.all]]
 package = "iana-etc"
-version = "20220915-1"
+version = "20221107-1"
 
 [[pkgs.pacman.all]]
 package = "icu"
-version = "71.1-1"
+version = "72.1-2"
+
+[[pkgs.pacman.all]]
+package = "ijq"
+version = "0.4.1-1"
 
 [[pkgs.pacman.all]]
 package = "ijs"
-version = "0.35-4"
+version = "0.35-5"
 
 [[pkgs.pacman.all]]
 package = "imlib2"
 version = "1.9.1-2"
+
+[[pkgs.pacman.all]]
+package = "inetutils"
+version = "2.3-1"
 
 [[pkgs.pacman.all]]
 package = "iniparser"
@@ -740,11 +1632,11 @@ version = "22.4.4-2"
 
 [[pkgs.pacman.all]]
 package = "intel-ucode"
-version = "20220809-1"
+version = "20221108-1"
 
 [[pkgs.pacman.all]]
 package = "iproute2"
-version = "5.19.0-1"
+version = "6.0.0-1"
 
 [[pkgs.pacman.all]]
 package = "iptables"
@@ -752,15 +1644,19 @@ version = "1:1.8.8-2"
 
 [[pkgs.pacman.all]]
 package = "iputils"
-version = "20211215-1"
+version = "20221126-1"
 
 [[pkgs.pacman.all]]
 package = "iso-codes"
-version = "4.11.0-2"
+version = "4.12.0-1"
 
 [[pkgs.pacman.all]]
 package = "jansson"
 version = "2.14-2"
+
+[[pkgs.pacman.all]]
+package = "jasper"
+version = "4.0.0-1"
 
 [[pkgs.pacman.all]]
 package = "jbig2dec"
@@ -787,24 +1683,20 @@ package = "jsoncpp"
 version = "1.9.5-2"
 
 [[pkgs.pacman.all]]
-package = "junnunkarim-wallpapers-git"
-version = "r4.9893042-1"
-
-[[pkgs.pacman.all]]
 package = "kaccounts-integration"
-version = "22.08.1-1"
+version = "22.12.0-1"
 
 [[pkgs.pacman.all]]
 package = "kactivities"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "karchive"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kauth"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kbd"
@@ -812,47 +1704,47 @@ version = "2.5.1-1"
 
 [[pkgs.pacman.all]]
 package = "kbookmarks"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kcmutils"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kcodecs"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kcompletion"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kconfig"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kconfigwidgets"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kcoreaddons"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kcrash"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kdbusaddons"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kdeclarative"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kded"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "keyutils"
@@ -860,95 +1752,95 @@ version = "1.6.3-1"
 
 [[pkgs.pacman.all]]
 package = "kglobalaccel"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kguiaddons"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "ki18n"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kiconthemes"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kio"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kirigami2"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kitemviews"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kjobwidgets"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kjs"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kmod"
-version = "30-1"
+version = "30-3"
 
 [[pkgs.pacman.all]]
 package = "knotifications"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kolourpaint"
-version = "22.08.1-1"
+version = "22.12.0-1"
 
 [[pkgs.pacman.all]]
 package = "kpackage"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kparts"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kpty"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "krb5"
-version = "1.19.3-3"
+version = "1.20.1-1"
 
 [[pkgs.pacman.all]]
 package = "ksanecore"
-version = "22.08.1-1"
+version = "22.12.0-1"
 
 [[pkgs.pacman.all]]
 package = "kservice"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "ktextwidgets"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kwallet"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kwidgetsaddons"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kwindowsystem"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kxmlgui"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "kyotocabinet"
@@ -968,11 +1860,11 @@ version = "2.1-4"
 
 [[pkgs.pacman.all]]
 package = "lazygit"
-version = "0.35-1"
+version = "0.36.0-1"
 
 [[pkgs.pacman.all]]
 package = "lcms2"
-version = "2.13.1-1"
+version = "2.14-1"
 
 [[pkgs.pacman.all]]
 package = "ldb"
@@ -980,15 +1872,11 @@ version = "2:2.6.1-1"
 
 [[pkgs.pacman.all]]
 package = "ldns"
-version = "1.8.3-1"
+version = "1.8.3-2"
 
 [[pkgs.pacman.all]]
 package = "less"
 version = "1:608-1"
-
-[[pkgs.pacman.all]]
-package = "libabw"
-version = "0.1.3-3"
 
 [[pkgs.pacman.all]]
 package = "libaccounts-glib"
@@ -1008,11 +1896,11 @@ version = "1.2.2-5"
 
 [[pkgs.pacman.all]]
 package = "libarchive"
-version = "3.6.1-2"
+version = "3.6.2-2"
 
 [[pkgs.pacman.all]]
 package = "libass"
-version = "0.16.0-1"
+version = "0.17.0-1"
 
 [[pkgs.pacman.all]]
 package = "libassuan"
@@ -1020,15 +1908,11 @@ version = "2.5.5-1"
 
 [[pkgs.pacman.all]]
 package = "libasyncns"
-version = "1:0.8+r3+g68cd5af-1"
+version = "1:0.8+r3+g68cd5af-2"
 
 [[pkgs.pacman.all]]
 package = "libatasmart"
 version = "0.19-5"
-
-[[pkgs.pacman.all]]
-package = "libatomic_ops"
-version = "7.6.14-1"
 
 [[pkgs.pacman.all]]
 package = "libavc1394"
@@ -1036,7 +1920,7 @@ version = "0.5.4-4"
 
 [[pkgs.pacman.all]]
 package = "libavif"
-version = "0.10.1-2"
+version = "0.11.1-1"
 
 [[pkgs.pacman.all]]
 package = "libblockdev"
@@ -1044,11 +1928,11 @@ version = "2.28-1"
 
 [[pkgs.pacman.all]]
 package = "libbluray"
-version = "1.3.3-1"
+version = "1.3.4-1"
 
 [[pkgs.pacman.all]]
 package = "libbpf"
-version = "0.8.1-1"
+version = "1.0.1-1"
 
 [[pkgs.pacman.all]]
 package = "libbs2b"
@@ -1056,7 +1940,7 @@ version = "3.1.0-8"
 
 [[pkgs.pacman.all]]
 package = "libbsd"
-version = "0.11.6-2"
+version = "0.11.7-1"
 
 [[pkgs.pacman.all]]
 package = "libbytesize"
@@ -1071,36 +1955,32 @@ package = "libcacard"
 version = "2.7.0-2"
 
 [[pkgs.pacman.all]]
+package = "libcamera"
+version = "0.0.2-1"
+
+[[pkgs.pacman.all]]
 package = "libcanberra"
-version = "1:0.30+r2+gc0620e4-1"
+version = "1:0.30+r2+gc0620e4-2"
 
 [[pkgs.pacman.all]]
 package = "libcap"
-version = "2.65-1"
+version = "2.66-1"
 
 [[pkgs.pacman.all]]
 package = "libcap-ng"
 version = "0.8.3-1"
 
 [[pkgs.pacman.all]]
-package = "libcddb"
-version = "1.3.2-6"
-
-[[pkgs.pacman.all]]
 package = "libcdio"
-version = "2.1.0-2"
+version = "2.1.0-3"
 
 [[pkgs.pacman.all]]
 package = "libcdio-paranoia"
 version = "10.2+2.0.1-2"
 
 [[pkgs.pacman.all]]
-package = "libcdr"
-version = "0.1.7-4"
-
-[[pkgs.pacman.all]]
 package = "libcloudproviders"
-version = "0.3.1-2"
+version = "0.3.1+r8+g3a229ee-1"
 
 [[pkgs.pacman.all]]
 package = "libcolord"
@@ -1120,7 +2000,7 @@ version = "0.14-5"
 
 [[pkgs.pacman.all]]
 package = "libdatrie"
-version = "0.2.13-1"
+version = "0.2.13-2"
 
 [[pkgs.pacman.all]]
 package = "libdbusmenu-qt5"
@@ -1128,15 +2008,15 @@ version = "0.9.3+16.04.20160218-6"
 
 [[pkgs.pacman.all]]
 package = "libde265"
-version = "1.0.8-2"
+version = "1.0.9-1"
 
 [[pkgs.pacman.all]]
 package = "libdiscid"
-version = "0.6.2-3"
+version = "0.6.2-4"
 
 [[pkgs.pacman.all]]
 package = "libdrm"
-version = "2.4.113-2"
+version = "2.4.114-1"
 
 [[pkgs.pacman.all]]
 package = "libdv"
@@ -1151,32 +2031,20 @@ package = "libdvdread"
 version = "6.1.3-1"
 
 [[pkgs.pacman.all]]
-package = "libe-book"
-version = "0.1.3-11"
-
-[[pkgs.pacman.all]]
 package = "libedit"
-version = "20210910_3.1-1"
+version = "20210910_3.1-2"
 
 [[pkgs.pacman.all]]
 package = "libelf"
-version = "0.187-2"
+version = "0.188-1"
 
 [[pkgs.pacman.all]]
 package = "libepoxy"
 version = "1.5.10-1"
 
 [[pkgs.pacman.all]]
-package = "libepubgen"
-version = "0.1.1-3"
-
-[[pkgs.pacman.all]]
-package = "libetonyek"
-version = "0.1.10-2"
-
-[[pkgs.pacman.all]]
 package = "libev"
-version = "4.33-1"
+version = "4.33-2"
 
 [[pkgs.pacman.all]]
 package = "libevdev"
@@ -1184,15 +2052,11 @@ version = "1.13.0-1"
 
 [[pkgs.pacman.all]]
 package = "libevent"
-version = "2.1.12-2"
+version = "2.1.12-4"
 
 [[pkgs.pacman.all]]
 package = "libexif"
 version = "0.6.24-1"
-
-[[pkgs.pacman.all]]
-package = "libexttextcat"
-version = "3.4.6-1"
 
 [[pkgs.pacman.all]]
 package = "libfdk-aac"
@@ -1200,27 +2064,23 @@ version = "2.0.2-1"
 
 [[pkgs.pacman.all]]
 package = "libffi"
-version = "3.4.2-5"
+version = "3.4.4-1"
 
 [[pkgs.pacman.all]]
 package = "libfontenc"
-version = "1.1.6-1"
+version = "1.1.7-1"
 
 [[pkgs.pacman.all]]
 package = "libfreeaptx"
 version = "0.1.1-1"
 
 [[pkgs.pacman.all]]
-package = "libfreehand"
-version = "0.1.2-4"
-
-[[pkgs.pacman.all]]
 package = "libgcrypt"
-version = "1.10.1-1"
+version = "1.10.1-2"
 
 [[pkgs.pacman.all]]
 package = "libgit2"
-version = "1:1.5.0-1"
+version = "1:1.5.0-2"
 
 [[pkgs.pacman.all]]
 package = "libglvnd"
@@ -1232,7 +2092,7 @@ version = "0.6.3-1"
 
 [[pkgs.pacman.all]]
 package = "libgpg-error"
-version = "1.45-2"
+version = "1.46-2"
 
 [[pkgs.pacman.all]]
 package = "libgphoto2"
@@ -1244,15 +2104,15 @@ version = "237-2"
 
 [[pkgs.pacman.all]]
 package = "libheif"
-version = "1.13.0-2"
+version = "1.14.0-1"
 
 [[pkgs.pacman.all]]
 package = "libical"
-version = "3.0.14-3"
+version = "3.0.16-2"
 
 [[pkgs.pacman.all]]
 package = "libice"
-version = "1.0.10-4"
+version = "1.1.1-1"
 
 [[pkgs.pacman.all]]
 package = "libid3tag"
@@ -1264,7 +2124,7 @@ version = "1.41-1"
 
 [[pkgs.pacman.all]]
 package = "libidn2"
-version = "2.3.3-1"
+version = "2.3.4-3"
 
 [[pkgs.pacman.all]]
 package = "libiec61883"
@@ -1284,7 +2144,7 @@ version = "56-1"
 
 [[pkgs.pacman.all]]
 package = "libinput"
-version = "1.21.0-1"
+version = "1.22.0-1"
 
 [[pkgs.pacman.all]]
 package = "libinstpatch"
@@ -1295,28 +2155,20 @@ package = "libisl"
 version = "0.25-1"
 
 [[pkgs.pacman.all]]
-package = "libixion"
-version = "0.17.0-3"
-
-[[pkgs.pacman.all]]
 package = "libjpeg-turbo"
 version = "2.1.4-2"
 
 [[pkgs.pacman.all]]
 package = "libkexiv2"
-version = "22.08.1-1"
+version = "22.12.0-1"
 
 [[pkgs.pacman.all]]
 package = "libksane"
-version = "22.08.1-1"
+version = "22.12.0-1"
 
 [[pkgs.pacman.all]]
 package = "libksba"
-version = "1.6.0-1"
-
-[[pkgs.pacman.all]]
-package = "liblangtag"
-version = "0.6.4-1"
+version = "1.6.2-1"
 
 [[pkgs.pacman.all]]
 package = "libldac"
@@ -1324,11 +2176,11 @@ version = "2.0.2.3-1"
 
 [[pkgs.pacman.all]]
 package = "libldap"
-version = "2.6.3-1"
+version = "2.6.3-2"
 
 [[pkgs.pacman.all]]
 package = "libluv"
-version = "1.44.2_1-1"
+version = "1.44.2_1-2"
 
 [[pkgs.pacman.all]]
 package = "libmad"
@@ -1340,7 +2192,7 @@ version = "0.2.6-3"
 
 [[pkgs.pacman.all]]
 package = "libmaxminddb"
-version = "1.6.0-3"
+version = "1.7.1-1"
 
 [[pkgs.pacman.all]]
 package = "libmd"
@@ -1356,7 +2208,7 @@ version = "3.3.11.1-6"
 
 [[pkgs.pacman.all]]
 package = "libmm-glib"
-version = "1.18.12-1"
+version = "1.20.2-1"
 
 [[pkgs.pacman.all]]
 package = "libmms"
@@ -1372,7 +2224,7 @@ version = "0.8.9.0-3"
 
 [[pkgs.pacman.all]]
 package = "libmpc"
-version = "1.2.1-2"
+version = "1.3.0-1"
 
 [[pkgs.pacman.all]]
 package = "libmpcdec"
@@ -1381,14 +2233,6 @@ version = "1:0.1+r475-3"
 [[pkgs.pacman.all]]
 package = "libmpdclient"
 version = "2.20-2"
-
-[[pkgs.pacman.all]]
-package = "libmspub"
-version = "0.1.4-12"
-
-[[pkgs.pacman.all]]
-package = "libmwaw"
-version = "0.3.21-2"
 
 [[pkgs.pacman.all]]
 package = "libndp"
@@ -1400,7 +2244,7 @@ version = "1.0.9-1"
 
 [[pkgs.pacman.all]]
 package = "libnewt"
-version = "0.52.21-8"
+version = "0.52.23-1"
 
 [[pkgs.pacman.all]]
 package = "libnfnetlink"
@@ -1412,11 +2256,11 @@ version = "5.0.2-1"
 
 [[pkgs.pacman.all]]
 package = "libnftnl"
-version = "1.2.3-1"
+version = "1.2.4-1"
 
 [[pkgs.pacman.all]]
 package = "libnghttp2"
-version = "1.49.0-1"
+version = "1.51.0-1"
 
 [[pkgs.pacman.all]]
 package = "libnl"
@@ -1424,15 +2268,15 @@ version = "3.7.0-1"
 
 [[pkgs.pacman.all]]
 package = "libnm"
-version = "1.40.0-1"
+version = "1.40.6-1"
 
 [[pkgs.pacman.all]]
 package = "libnma"
-version = "1.10.2-1"
+version = "1.10.4-3"
 
 [[pkgs.pacman.all]]
 package = "libnma-common"
-version = "1.10.2-1"
+version = "1.10.4-3"
 
 [[pkgs.pacman.all]]
 package = "libnotify"
@@ -1441,14 +2285,6 @@ version = "0.8.1-1"
 [[pkgs.pacman.all]]
 package = "libnsl"
 version = "2.0.0-2"
-
-[[pkgs.pacman.all]]
-package = "libnumbertext"
-version = "1.0.10-1"
-
-[[pkgs.pacman.all]]
-package = "libodfgen"
-version = "0.1.8-1"
 
 [[pkgs.pacman.all]]
 package = "libogg"
@@ -1460,19 +2296,15 @@ version = "0.9.3-3"
 
 [[pkgs.pacman.all]]
 package = "libopenmpt"
-version = "0.6.5-2"
+version = "0.6.6-2"
 
 [[pkgs.pacman.all]]
-package = "liborcus"
-version = "0.17.2-3"
+package = "libotf"
+version = "0.9.16-3"
 
 [[pkgs.pacman.all]]
 package = "libp11-kit"
 version = "0.24.1-1"
-
-[[pkgs.pacman.all]]
-package = "libpagemaker"
-version = "0.0.4-3"
 
 [[pkgs.pacman.all]]
 package = "libpaper"
@@ -1484,7 +2316,7 @@ version = "1.10.1-2"
 
 [[pkgs.pacman.all]]
 package = "libpciaccess"
-version = "0.16-4"
+version = "0.17-1"
 
 [[pkgs.pacman.all]]
 package = "libpgm"
@@ -1492,7 +2324,7 @@ version = "5.3.128-2"
 
 [[pkgs.pacman.all]]
 package = "libpipeline"
-version = "1.5.6-1"
+version = "1.5.7-1"
 
 [[pkgs.pacman.all]]
 package = "libplacebo"
@@ -1504,7 +2336,7 @@ version = "2.2.0-5"
 
 [[pkgs.pacman.all]]
 package = "libpng"
-version = "1.6.38-1"
+version = "1.6.39-1"
 
 [[pkgs.pacman.all]]
 package = "libproxy"
@@ -1512,31 +2344,23 @@ version = "0.4.18-1"
 
 [[pkgs.pacman.all]]
 package = "libpsl"
-version = "0.21.1-1"
+version = "0.21.1-3"
 
 [[pkgs.pacman.all]]
 package = "libpulse"
-version = "16.1-1"
+version = "16.1-3"
 
 [[pkgs.pacman.all]]
-package = "libqxp"
-version = "0.0.2-8"
+package = "libraw"
+version = "0.20.2-3"
 
 [[pkgs.pacman.all]]
 package = "libraw1394"
 version = "2.1.2-3"
 
 [[pkgs.pacman.all]]
-package = "libreoffice-fresh"
-version = "7.4.1-3"
-
-[[pkgs.pacman.all]]
-package = "librevenge"
-version = "0.0.4-4"
-
-[[pkgs.pacman.all]]
 package = "librsvg"
-version = "2:2.54.5-1"
+version = "2:2.55.1-1"
 
 [[pkgs.pacman.all]]
 package = "libsamplerate"
@@ -1544,7 +2368,7 @@ version = "0.2.2-1"
 
 [[pkgs.pacman.all]]
 package = "libsasl"
-version = "2.1.28-1"
+version = "2.1.28-3"
 
 [[pkgs.pacman.all]]
 package = "libseccomp"
@@ -1556,11 +2380,11 @@ version = "0.20.5-2"
 
 [[pkgs.pacman.all]]
 package = "libshout"
-version = "1:2.4.6-1"
+version = "1:2.4.6-2"
 
 [[pkgs.pacman.all]]
 package = "libsidplayfp"
-version = "2.3.1-1"
+version = "2.4.1-1"
 
 [[pkgs.pacman.all]]
 package = "libsigsegv"
@@ -1584,11 +2408,11 @@ version = "1.0.18-2"
 
 [[pkgs.pacman.all]]
 package = "libsoup"
-version = "2.74.2-2"
+version = "2.74.3-1"
 
 [[pkgs.pacman.all]]
 package = "libsoup3"
-version = "3.2.0-1"
+version = "3.2.2-1"
 
 [[pkgs.pacman.all]]
 package = "libsoxr"
@@ -1596,19 +2420,15 @@ version = "0.1.3-2"
 
 [[pkgs.pacman.all]]
 package = "libspectre"
-version = "0.2.10-1"
+version = "0.2.11-1"
 
 [[pkgs.pacman.all]]
 package = "libssh"
-version = "0.10.4-1"
+version = "0.10.4-3"
 
 [[pkgs.pacman.all]]
 package = "libssh2"
-version = "1.10.0-1"
-
-[[pkgs.pacman.all]]
-package = "libstaroffice"
-version = "0.0.7-2"
+version = "1.10.0-3"
 
 [[pkgs.pacman.all]]
 package = "libstemmer"
@@ -1616,11 +2436,11 @@ version = "2.2.0-2"
 
 [[pkgs.pacman.all]]
 package = "libsynctex"
-version = "2022.62885-1"
+version = "2022.62885-3"
 
 [[pkgs.pacman.all]]
 package = "libsysprof-capture"
-version = "3.44.0-2"
+version = "3.46.0-1"
 
 [[pkgs.pacman.all]]
 package = "libtasn1"
@@ -1628,7 +2448,7 @@ version = "4.19.0-1"
 
 [[pkgs.pacman.all]]
 package = "libteam"
-version = "1.31-5"
+version = "1.31-7"
 
 [[pkgs.pacman.all]]
 package = "libtermkey"
@@ -1636,7 +2456,7 @@ version = "0.22-2"
 
 [[pkgs.pacman.all]]
 package = "libthai"
-version = "0.1.29-1"
+version = "0.1.29-2"
 
 [[pkgs.pacman.all]]
 package = "libtheora"
@@ -1648,11 +2468,7 @@ version = "4.4.0-4"
 
 [[pkgs.pacman.all]]
 package = "libtirpc"
-version = "1.3.3-1"
-
-[[pkgs.pacman.all]]
-package = "libtommath"
-version = "1.2.0-3"
+version = "1.3.3-2"
 
 [[pkgs.pacman.all]]
 package = "libtool"
@@ -1660,19 +2476,19 @@ version = "2.4.7-5"
 
 [[pkgs.pacman.all]]
 package = "libtpms"
-version = "0.9.5-1"
+version = "0.9.5-2"
 
 [[pkgs.pacman.all]]
 package = "libunistring"
-version = "1.0-1"
+version = "1.1-2"
 
 [[pkgs.pacman.all]]
 package = "libunwind"
-version = "1.6.2-1"
+version = "1.6.2-2"
 
 [[pkgs.pacman.all]]
 package = "libupnp"
-version = "1.14.13-1"
+version = "1.14.15-1"
 
 [[pkgs.pacman.all]]
 package = "liburcu"
@@ -1680,7 +2496,7 @@ version = "0.13.2-1"
 
 [[pkgs.pacman.all]]
 package = "liburing"
-version = "2.2-1"
+version = "2.3-1"
 
 [[pkgs.pacman.all]]
 package = "libusb"
@@ -1700,11 +2516,15 @@ version = "1.44.2-1"
 
 [[pkgs.pacman.all]]
 package = "libva"
-version = "2.15.0-7"
+version = "2.16.0-1"
 
 [[pkgs.pacman.all]]
 package = "libva-intel-driver"
 version = "2.4.1-2"
+
+[[pkgs.pacman.all]]
+package = "libva-mesa-driver"
+version = "22.2.3-1"
 
 [[pkgs.pacman.all]]
 package = "libvdpau"
@@ -1713,10 +2533,6 @@ version = "1.5-1"
 [[pkgs.pacman.all]]
 package = "libverto"
 version = "0.3.2-4"
-
-[[pkgs.pacman.all]]
-package = "libvisio"
-version = "0.1.7-7"
 
 [[pkgs.pacman.all]]
 package = "libvisual"
@@ -1728,43 +2544,35 @@ version = "1.3.7-3"
 
 [[pkgs.pacman.all]]
 package = "libvpx"
-version = "1.12.0-1"
+version = "1.12.0-2"
 
 [[pkgs.pacman.all]]
-package = "libvterm01"
-version = "0.1.4-2"
+package = "libvterm"
+version = "0.3-1"
 
 [[pkgs.pacman.all]]
 package = "libwacom"
-version = "2.4.0-1"
+version = "2.5.0-1"
 
 [[pkgs.pacman.all]]
 package = "libwebp"
 version = "1.2.4-1"
 
 [[pkgs.pacman.all]]
-package = "libwpd"
-version = "0.10.3-3"
+package = "libwireplumber"
+version = "0.4.12-2"
 
 [[pkgs.pacman.all]]
 package = "libwpe"
 version = "1.14.0-1"
 
 [[pkgs.pacman.all]]
-package = "libwpg"
-version = "0.3.3-3"
-
-[[pkgs.pacman.all]]
-package = "libwps"
-version = "0.4.12-1"
-
-[[pkgs.pacman.all]]
 package = "libx11"
-version = "1.8.1-3"
+version = "1.8.2-2"
 
 [[pkgs.pacman.all]]
 package = "libxau"
-version = "1.0.10-1"
+version = "1.0.11-1"
 
 [[pkgs.pacman.all]]
 package = "libxaw"
@@ -1772,19 +2580,19 @@ version = "1.0.14-1"
 
 [[pkgs.pacman.all]]
 package = "libxcb"
-version = "1.15-1"
+version = "1.15-2"
 
 [[pkgs.pacman.all]]
 package = "libxcomposite"
-version = "0.4.5-4"
+version = "0.4.6-1"
 
 [[pkgs.pacman.all]]
 package = "libxcrypt"
-version = "4.4.28-2"
+version = "4.4.33-1"
 
 [[pkgs.pacman.all]]
 package = "libxcursor"
-version = "1.2.1-1"
+version = "1.2.1-3"
 
 [[pkgs.pacman.all]]
 package = "libxcvt"
@@ -1792,7 +2600,7 @@ version = "0.1.2-1"
 
 [[pkgs.pacman.all]]
 package = "libxdamage"
-version = "1.1.5-4"
+version = "1.1.6-1"
 
 [[pkgs.pacman.all]]
 package = "libxdg-basedir"
@@ -1800,15 +2608,15 @@ version = "1.2.3-1"
 
 [[pkgs.pacman.all]]
 package = "libxdmcp"
-version = "1.1.3-4"
+version = "1.1.4-1"
 
 [[pkgs.pacman.all]]
 package = "libxext"
-version = "1.3.4-4"
+version = "1.3.5-1"
 
 [[pkgs.pacman.all]]
 package = "libxfixes"
-version = "6.0.0-1"
+version = "6.0.0-2"
 
 [[pkgs.pacman.all]]
 package = "libxfont2"
@@ -1816,55 +2624,59 @@ version = "2.0.6-1"
 
 [[pkgs.pacman.all]]
 package = "libxft"
-version = "2.3.6-1"
+version = "2.3.7-1"
 
 [[pkgs.pacman.all]]
 package = "libxi"
-version = "1.8-1"
+version = "1.8-2"
 
 [[pkgs.pacman.all]]
 package = "libxinerama"
-version = "1.1.4-4"
+version = "1.1.5-1"
 
 [[pkgs.pacman.all]]
 package = "libxkbcommon"
-version = "1.4.1-1"
+version = "1.4.1-2"
 
 [[pkgs.pacman.all]]
 package = "libxkbcommon-x11"
-version = "1.4.1-1"
+version = "1.4.1-2"
 
 [[pkgs.pacman.all]]
 package = "libxkbfile"
-version = "1.1.0-3"
+version = "1.1.2-1"
 
 [[pkgs.pacman.all]]
 package = "libxml2"
-version = "2.10.2-2"
+version = "2.10.3-2"
 
 [[pkgs.pacman.all]]
 package = "libxmu"
-version = "1.1.3-3"
+version = "1.1.4-1"
 
 [[pkgs.pacman.all]]
 package = "libxnvctrl"
-version = "515.76-1"
+version = "525.60.11-2"
 
 [[pkgs.pacman.all]]
 package = "libxpm"
-version = "3.5.13-3"
+version = "3.5.14-1"
+
+[[pkgs.pacman.all]]
+package = "libxpresent"
+version = "1.0.1-1"
 
 [[pkgs.pacman.all]]
 package = "libxrandr"
-version = "1.5.2-4"
+version = "1.5.3-1"
 
 [[pkgs.pacman.all]]
 package = "libxrender"
-version = "0.9.10-5"
+version = "0.9.11-1"
 
 [[pkgs.pacman.all]]
 package = "libxshmfence"
-version = "1.3-3"
+version = "1.3.2-1"
 
 [[pkgs.pacman.all]]
 package = "libxslt"
@@ -1880,15 +2692,15 @@ version = "1.2.1-1"
 
 [[pkgs.pacman.all]]
 package = "libxtst"
-version = "1.2.3-5"
+version = "1.2.4-1"
 
 [[pkgs.pacman.all]]
 package = "libxv"
-version = "1.0.11-5"
+version = "1.0.12-1"
 
 [[pkgs.pacman.all]]
 package = "libxxf86vm"
-version = "1.1.4-5"
+version = "1.1.5-1"
 
 [[pkgs.pacman.all]]
 package = "libyaml"
@@ -1897,10 +2709,6 @@ version = "0.2.5-1"
 [[pkgs.pacman.all]]
 package = "libyuv"
 version = "r2322+3aebf69d-1"
-
-[[pkgs.pacman.all]]
-package = "libzmf"
-version = "0.0.2-12"
 
 [[pkgs.pacman.all]]
 package = "licenses"
@@ -1912,7 +2720,7 @@ version = "0.24.20-1"
 
 [[pkgs.pacman.all]]
 package = "linux"
-version = "5.19.10.arch1-1"
+version = "6.0.12.arch1-1"
 
 [[pkgs.pacman.all]]
 package = "linux-api-headers"
@@ -1920,35 +2728,47 @@ version = "5.18.15-1"
 
 [[pkgs.pacman.all]]
 package = "linux-firmware"
-version = "20220815.8413c63-1"
+version = "20221109.60310c2-2"
 
 [[pkgs.pacman.all]]
 package = "linux-firmware-whence"
-version = "20220815.8413c63-1"
+version = "20221109.60310c2-2"
+
+[[pkgs.pacman.all]]
+package = "lldb"
+version = "14.0.6-1"
 
 [[pkgs.pacman.all]]
 package = "llvm"
-version = "14.0.6-3"
+version = "14.0.6-4"
 
 [[pkgs.pacman.all]]
 package = "llvm-libs"
-version = "14.0.6-3"
+version = "14.0.6-4"
 
 [[pkgs.pacman.all]]
 package = "lm_sensors"
-version = "1:3.6.0.r41.g31d1f125-1"
+version = "1:3.6.0.r41.g31d1f125-2"
 
 [[pkgs.pacman.all]]
 package = "lmdb"
 version = "0.9.29-1"
 
 [[pkgs.pacman.all]]
-package = "lpsolve"
-version = "5.5.2.11-1"
+package = "lolcat"
+version = "100.0.1-1"
 
 [[pkgs.pacman.all]]
 package = "lua"
 version = "5.4.4-2"
+
+[[pkgs.pacman.all]]
+package = "lua-lpeg"
+version = "1.0.2-4"
+
+[[pkgs.pacman.all]]
+package = "lua52"
+version = "5.2.4-5"
 
 [[pkgs.pacman.all]]
 package = "lua53"
@@ -1956,7 +2776,7 @@ version = "5.3.6-1"
 
 [[pkgs.pacman.all]]
 package = "luajit"
-version = "2.1.0.beta3.r439.g633f265f-1"
+version = "2.1.0.beta3.r457.g637721d0-1"
 
 [[pkgs.pacman.all]]
 package = "lv2"
@@ -1964,7 +2784,7 @@ version = "1.18.10-1"
 
 [[pkgs.pacman.all]]
 package = "lvm2"
-version = "2.03.16-2"
+version = "2.03.17-1"
 
 [[pkgs.pacman.all]]
 package = "lxappearance"
@@ -1976,7 +2796,15 @@ version = "1:1.9.4-1"
 
 [[pkgs.pacman.all]]
 package = "lzo"
-version = "2.10-3"
+version = "2.10-4"
+
+[[pkgs.pacman.all]]
+package = "m17n-db"
+version = "1.8.0-3"
+
+[[pkgs.pacman.all]]
+package = "m17n-lib"
+version = "1.8.0-13"
 
 [[pkgs.pacman.all]]
 package = "m4"
@@ -1988,15 +2816,15 @@ version = "2.1.53-1"
 
 [[pkgs.pacman.all]]
 package = "make"
-version = "4.3-3"
+version = "4.3-5"
 
 [[pkgs.pacman.all]]
 package = "man-db"
-version = "2.10.2-1"
+version = "2.11.1-1"
 
 [[pkgs.pacman.all]]
 package = "man-pages"
-version = "5.13-1"
+version = "6.01-1"
 
 [[pkgs.pacman.all]]
 package = "mbsync-git"
@@ -2016,43 +2844,51 @@ version = "24-2"
 
 [[pkgs.pacman.all]]
 package = "mesa"
-version = "22.1.7-1"
+version = "22.2.3-1"
+
+[[pkgs.pacman.all]]
+package = "meson"
+version = "0.64.1-1"
 
 [[pkgs.pacman.all]]
 package = "minizip"
-version = "1:1.2.12-2"
+version = "1:1.2.13-2"
 
 [[pkgs.pacman.all]]
 package = "mkinitcpio"
-version = "31-3"
+version = "34-2"
 
 [[pkgs.pacman.all]]
 package = "mkinitcpio-busybox"
 version = "1.35.0-1"
 
 [[pkgs.pacman.all]]
+package = "moar"
+version = "1.10.0-1"
+
+[[pkgs.pacman.all]]
 package = "mobile-broadband-provider-info"
-version = "20220725-1"
+version = "20221107-1"
 
 [[pkgs.pacman.all]]
 package = "moc"
-version = "1:2.5.2-6"
+version = "1:2.5.2-7"
 
 [[pkgs.pacman.all]]
 package = "mpd"
-version = "0.23.9-3"
+version = "0.23.11-1"
 
 [[pkgs.pacman.all]]
 package = "mpfr"
-version = "4.1.0.p13-3"
+version = "4.1.1.p1-1"
 
 [[pkgs.pacman.all]]
 package = "mpg123"
-version = "1.30.2-1"
+version = "1.31.1-1"
 
 [[pkgs.pacman.all]]
 package = "mpv"
-version = "1:0.34.1-5"
+version = "1:0.35.0-2"
 
 [[pkgs.pacman.all]]
 package = "msgpack-c"
@@ -2064,23 +2900,19 @@ version = "1.1.6-2"
 
 [[pkgs.pacman.all]]
 package = "mu"
-version = "1.8.9-1"
+version = "1.8.13-1"
 
 [[pkgs.pacman.all]]
 package = "mujs"
-version = "1.2.0-2"
+version = "1.3.2-1"
 
 [[pkgs.pacman.all]]
 package = "multipath-tools"
-version = "0.9.1-1"
-
-[[pkgs.pacman.all]]
-package = "mut-ex-wallpapers-git"
-version = "r36.849587d-1"
+version = "0.9.3-1"
 
 [[pkgs.pacman.all]]
 package = "ncmpcpp"
-version = "0.9.2-8"
+version = "0.9.2-9"
 
 [[pkgs.pacman.all]]
 package = "ncurses"
@@ -2095,20 +2927,16 @@ package = "neomutt"
 version = "20220429-1"
 
 [[pkgs.pacman.all]]
-package = "neon"
-version = "0.32.4-1"
-
-[[pkgs.pacman.all]]
 package = "neovim"
-version = "0.7.2-3"
+version = "0.8.1-2"
 
 [[pkgs.pacman.all]]
 package = "nerd-fonts-mononoki"
-version = "2.1.0-2"
+version = "2.2.2-2"
 
 [[pkgs.pacman.all]]
 package = "net-snmp"
-version = "5.9.1-4"
+version = "5.9.1-5"
 
 [[pkgs.pacman.all]]
 package = "nettle"
@@ -2116,11 +2944,27 @@ version = "3.8.1-1"
 
 [[pkgs.pacman.all]]
 package = "networkmanager"
-version = "1.40.0-1"
+version = "1.40.6-1"
+
+[[pkgs.pacman.all]]
+package = "ninja"
+version = "1.11.1-2"
 
 [[pkgs.pacman.all]]
 package = "nm-connection-editor"
-version = "1.28.0-1"
+version = "1.30.0-1"
+
+[[pkgs.pacman.all]]
+package = "node-gyp"
+version = "9.3.0-1"
+
+[[pkgs.pacman.all]]
+package = "nodejs"
+version = "19.2.0-1"
+
+[[pkgs.pacman.all]]
+package = "nodejs-nopt"
+version = "7.0.0-1"
 
 [[pkgs.pacman.all]]
 package = "notmuch-runtime"
@@ -2128,11 +2972,15 @@ version = "0.37-2"
 
 [[pkgs.pacman.all]]
 package = "noto-fonts"
-version = "20220607-1"
+version = "20220810-1"
 
 [[pkgs.pacman.all]]
 package = "noto-fonts-cjk"
 version = "20220126-1"
+
+[[pkgs.pacman.all]]
+package = "npm"
+version = "8.19.2-1"
 
 [[pkgs.pacman.all]]
 package = "npth"
@@ -2144,19 +2992,19 @@ version = "4.35-1"
 
 [[pkgs.pacman.all]]
 package = "nss"
-version = "3.83-1"
+version = "3.85-1"
 
 [[pkgs.pacman.all]]
 package = "ntfs-3g"
-version = "2022.5.17-1"
+version = "2022.10.3-1"
 
 [[pkgs.pacman.all]]
 package = "numactl"
-version = "2.0.15-1"
+version = "2.0.16-1"
 
 [[pkgs.pacman.all]]
-package = "nushell"
-version = "0.67.0-1"
+package = "obnc"
+version = "0.16.1-3"
 
 [[pkgs.pacman.all]]
 package = "ocl-icd"
@@ -2164,7 +3012,7 @@ version = "2.3.1-1"
 
 [[pkgs.pacman.all]]
 package = "okular"
-version = "22.08.1-1"
+version = "22.12.0-1"
 
 [[pkgs.pacman.all]]
 package = "oniguruma"
@@ -2184,19 +3032,19 @@ version = "2.5.0-1"
 
 [[pkgs.pacman.all]]
 package = "openmpi"
-version = "4.1.4-2"
+version = "4.1.4-4"
 
 [[pkgs.pacman.all]]
 package = "openpmix"
-version = "4.2.0-1"
+version = "4.2.2-1"
 
 [[pkgs.pacman.all]]
 package = "openssh"
-version = "9.0p1-1"
+version = "9.1p1-3"
 
 [[pkgs.pacman.all]]
 package = "openssl"
-version = "1.1.1.q-1"
+version = "3.0.7-2"
 
 [[pkgs.pacman.all]]
 package = "opus"
@@ -2204,11 +3052,11 @@ version = "1.3.1-3"
 
 [[pkgs.pacman.all]]
 package = "orc"
-version = "0.4.32-1"
+version = "0.4.33-1"
 
 [[pkgs.pacman.all]]
 package = "otf-monocraft"
-version = "1.3-1"
+version = "1.4-1"
 
 [[pkgs.pacman.all]]
 package = "p11-kit"
@@ -2216,15 +3064,15 @@ version = "0.24.1-1"
 
 [[pkgs.pacman.all]]
 package = "pacman"
-version = "6.0.1-7"
+version = "6.0.2-5"
 
 [[pkgs.pacman.all]]
 package = "pacman-contrib"
-version = "1.7.1-1"
+version = "1.8.0-1"
 
 [[pkgs.pacman.all]]
 package = "pacman-mirrorlist"
-version = "20220828-1"
+version = "20221204-1"
 
 [[pkgs.pacman.all]]
 package = "pam"
@@ -2232,11 +3080,15 @@ version = "1.5.2-1"
 
 [[pkgs.pacman.all]]
 package = "pambase"
-version = "20211210-1"
+version = "20221020-1"
+
+[[pkgs.pacman.all]]
+package = "pandoc"
+version = "2.19.2-35"
 
 [[pkgs.pacman.all]]
 package = "pango"
-version = "1:1.50.10-1"
+version = "1:1.50.12-1"
 
 [[pkgs.pacman.all]]
 package = "parted"
@@ -2256,15 +3108,15 @@ version = "2.7.6-8"
 
 [[pkgs.pacman.all]]
 package = "pciutils"
-version = "3.8.0-2"
+version = "3.9.0-1"
 
 [[pkgs.pacman.all]]
 package = "pcre"
-version = "8.45-2"
+version = "8.45-3"
 
 [[pkgs.pacman.all]]
 package = "pcre2"
-version = "10.40-2"
+version = "10.40-3"
 
 [[pkgs.pacman.all]]
 package = "perl"
@@ -2288,7 +3140,7 @@ version = "2.33-4"
 
 [[pkgs.pacman.all]]
 package = "phodav"
-version = "2.5-2"
+version = "3.0-1"
 
 [[pkgs.pacman.all]]
 package = "phonon-qt5"
@@ -2304,27 +3156,31 @@ version = "1770_Next.208.g51b2135_2022.05.29-1"
 
 [[pkgs.pacman.all]]
 package = "pinentry-git"
-version = "1.2.1.r4.gbc11554-1"
+version = "1.2.1.r12.ga7e78e1-1"
 
 [[pkgs.pacman.all]]
 package = "pipewire"
-version = "1:0.3.58-1"
+version = "1:0.3.61-1"
 
 [[pkgs.pacman.all]]
 package = "pipewire-alsa"
-version = "1:0.3.58-1"
+version = "1:0.3.61-1"
+
+[[pkgs.pacman.all]]
+package = "pipewire-audio"
+version = "1:0.3.61-1"
 
 [[pkgs.pacman.all]]
 package = "pipewire-jack"
-version = "1:0.3.58-1"
+version = "1:0.3.61-1"
 
 [[pkgs.pacman.all]]
 package = "pipewire-pulse"
-version = "1:0.3.58-1"
+version = "1:0.3.61-1"
 
 [[pkgs.pacman.all]]
 package = "pixman"
-version = "0.40.0-2"
+version = "0.42.2-1"
 
 [[pkgs.pacman.all]]
 package = "pkgconf"
@@ -2332,7 +3188,7 @@ version = "1.8.0-1"
 
 [[pkgs.pacman.all]]
 package = "polkit"
-version = "121-1"
+version = "122-1"
 
 [[pkgs.pacman.all]]
 package = "polkit-qt5"
@@ -2344,19 +3200,23 @@ version = "3.6.3-2"
 
 [[pkgs.pacman.all]]
 package = "poppler"
-version = "22.09.0-1"
+version = "22.12.0-1"
+
+[[pkgs.pacman.all]]
+package = "poppler-data"
+version = "0.4.11-3"
 
 [[pkgs.pacman.all]]
 package = "poppler-glib"
-version = "22.09.0-1"
+version = "22.12.0-1"
 
 [[pkgs.pacman.all]]
 package = "poppler-qt5"
-version = "22.09.0-1"
+version = "22.12.0-1"
 
 [[pkgs.pacman.all]]
 package = "popt"
-version = "1.18-3"
+version = "1.19-1"
 
 [[pkgs.pacman.all]]
 package = "portaudio"
@@ -2384,11 +3244,11 @@ version = "1.5.1-3"
 
 [[pkgs.pacman.all]]
 package = "purpose"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "python"
-version = "3.10.7-1"
+version = "3.10.8-3"
 
 [[pkgs.pacman.all]]
 package = "python-appdirs"
@@ -2399,16 +3259,24 @@ package = "python-argcomplete"
 version = "2.0.0-1"
 
 [[pkgs.pacman.all]]
+package = "python-attrs"
+version = "22.1.0-1"
+
+[[pkgs.pacman.all]]
 package = "python-autocommand"
-version = "2.2.1-1"
+version = "2.2.2-1"
 
 [[pkgs.pacman.all]]
 package = "python-black"
-version = "22.8.0-2"
+version = "22.12.0-1"
 
 [[pkgs.pacman.all]]
 package = "python-cairo"
-version = "1.21.0-1"
+version = "1.23.0-2"
+
+[[pkgs.pacman.all]]
+package = "python-cffi"
+version = "1.15.1-1"
 
 [[pkgs.pacman.all]]
 package = "python-click"
@@ -2416,35 +3284,51 @@ version = "8.1.3-1"
 
 [[pkgs.pacman.all]]
 package = "python-colorama"
-version = "0.4.5-1"
+version = "0.4.6-1"
+
+[[pkgs.pacman.all]]
+package = "python-cryptography"
+version = "38.0.4-1"
 
 [[pkgs.pacman.all]]
 package = "python-dateutil"
 version = "2.8.2-4"
 
 [[pkgs.pacman.all]]
+package = "python-distlib"
+version = "0.3.6-1"
+
+[[pkgs.pacman.all]]
 package = "python-distro"
-version = "1.7.0-1"
+version = "1.8.0-1"
+
+[[pkgs.pacman.all]]
+package = "python-filelock"
+version = "3.8.2-1"
 
 [[pkgs.pacman.all]]
 package = "python-gobject"
 version = "3.42.2-1"
 
 [[pkgs.pacman.all]]
+package = "python-importlib-metadata"
+version = "5.0.0-1"
+
+[[pkgs.pacman.all]]
 package = "python-inflect"
-version = "6.0.0-1"
+version = "6.0.2-1"
 
 [[pkgs.pacman.all]]
 package = "python-jaraco.context"
-version = "4.1.2-1"
+version = "4.2.0-1"
 
 [[pkgs.pacman.all]]
 package = "python-jaraco.functools"
-version = "3.5.1-1"
+version = "3.5.2-1"
 
 [[pkgs.pacman.all]]
 package = "python-jaraco.text"
-version = "3.9.1-1"
+version = "3.11.0-1"
 
 [[pkgs.pacman.all]]
 package = "python-jinja"
@@ -2456,15 +3340,11 @@ version = "2.1.1-1"
 
 [[pkgs.pacman.all]]
 package = "python-more-itertools"
-version = "8.13.0-2"
+version = "9.0.0-1"
 
 [[pkgs.pacman.all]]
 package = "python-mypy_extensions"
 version = "0.4.3-5"
-
-[[pkgs.pacman.all]]
-package = "python-nspektr"
-version = "0.4.0-2"
 
 [[pkgs.pacman.all]]
 package = "python-ordered-set"
@@ -2476,11 +3356,11 @@ version = "21.3-1"
 
 [[pkgs.pacman.all]]
 package = "python-pathspec"
-version = "0.10.1-1"
+version = "0.10.3-1"
 
 [[pkgs.pacman.all]]
 package = "python-pip"
-version = "22.2.2-2"
+version = "22.3.1-1"
 
 [[pkgs.pacman.all]]
 package = "python-pipx"
@@ -2488,11 +3368,15 @@ version = "1.1.0-1"
 
 [[pkgs.pacman.all]]
 package = "python-platformdirs"
-version = "2.5.2-1"
+version = "2.6.0-1"
 
 [[pkgs.pacman.all]]
 package = "python-ply"
 version = "3.11-10"
+
+[[pkgs.pacman.all]]
+package = "python-pycparser"
+version = "2.21-3"
 
 [[pkgs.pacman.all]]
 package = "python-pydantic"
@@ -2508,7 +3392,7 @@ version = "3.0.9-1"
 
 [[pkgs.pacman.all]]
 package = "python-pyqt5"
-version = "5.15.7-2"
+version = "5.15.7-3"
 
 [[pkgs.pacman.all]]
 package = "python-pyqt5-sip"
@@ -2520,11 +3404,11 @@ version = "5.15.6-1"
 
 [[pkgs.pacman.all]]
 package = "python-setuptools"
-version = "1:62.3.4-1"
+version = "1:65.6.3-1"
 
 [[pkgs.pacman.all]]
 package = "python-shtab"
-version = "1.5.5-1"
+version = "1.5.8-1"
 
 [[pkgs.pacman.all]]
 package = "python-six"
@@ -2532,7 +3416,7 @@ version = "1.16.0-6"
 
 [[pkgs.pacman.all]]
 package = "python-termcolor"
-version = "2.0.0-1"
+version = "2.1.1-1"
 
 [[pkgs.pacman.all]]
 package = "python-tomli"
@@ -2540,11 +3424,11 @@ version = "2.0.1-1"
 
 [[pkgs.pacman.all]]
 package = "python-trove-classifiers"
-version = "2022.8.31-1"
+version = "2022.12.1-1"
 
 [[pkgs.pacman.all]]
 package = "python-typing_extensions"
-version = "4.3.0-1"
+version = "4.4.0-1"
 
 [[pkgs.pacman.all]]
 package = "python-userpath"
@@ -2555,180 +3439,196 @@ package = "python-validate-pyproject"
 version = "0.10.1-1"
 
 [[pkgs.pacman.all]]
+package = "python-virtualenv"
+version = "20.17.1-1"
+
+[[pkgs.pacman.all]]
+package = "python-wheel"
+version = "0.38.4-1"
+
+[[pkgs.pacman.all]]
 package = "python-yaml"
 version = "6.0-1"
 
 [[pkgs.pacman.all]]
+package = "python-zipp"
+version = "3.11.0-1"
+
+[[pkgs.pacman.all]]
 package = "qca-qt5"
-version = "2.3.4-3"
+version = "2.3.5-2"
 
 [[pkgs.pacman.all]]
 package = "qemu-audio-spice"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-base"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-block-curl"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-block-dmg"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-block-nfs"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-block-ssh"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-chardev-spice"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-common"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-hw-display-qxl"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-hw-display-virtio-gpu"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-hw-display-virtio-gpu-gl"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-hw-display-virtio-gpu-pci"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-hw-display-virtio-gpu-pci-gl"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-hw-display-virtio-vga"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-hw-display-virtio-vga-gl"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-hw-s390x-virtio-gpu-ccw"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-hw-usb-host"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-hw-usb-redirect"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-hw-usb-smartcard"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-img"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-pr-helper"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-system-x86"
-version = "7.1.0-5"
+version = "7.1.0-11"
+
+[[pkgs.pacman.all]]
+package = "qemu-system-x86-firmware"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-tools"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-ui-curses"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-ui-opengl"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-ui-spice-app"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-ui-spice-core"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qemu-virtiofsd"
-version = "7.1.0-5"
+version = "7.1.0-11"
 
 [[pkgs.pacman.all]]
 package = "qt5-base"
-version = "5.15.6+kde+r177-1"
+version = "5.15.7+kde+r177-1"
 
 [[pkgs.pacman.all]]
 package = "qt5-declarative"
-version = "5.15.6+kde+r20-1"
+version = "5.15.7+kde+r25-1"
 
 [[pkgs.pacman.all]]
 package = "qt5-graphicaleffects"
-version = "5.15.6+kde+r0-1"
+version = "5.15.7-1"
 
 [[pkgs.pacman.all]]
 package = "qt5-location"
-version = "5.15.6+kde+r3-1"
+version = "5.15.7+kde+r3-1"
 
 [[pkgs.pacman.all]]
 package = "qt5-multimedia"
-version = "5.15.6+kde+r1-1"
+version = "5.15.7+kde+r1-1"
 
 [[pkgs.pacman.all]]
 package = "qt5-quickcontrols"
-version = "5.15.6+kde+r0-1"
+version = "5.15.7-1"
 
 [[pkgs.pacman.all]]
 package = "qt5-quickcontrols2"
-version = "5.15.6+kde+r5-1"
+version = "5.15.7+kde+r7-1"
 
 [[pkgs.pacman.all]]
 package = "qt5-speech"
-version = "5.15.6+kde+r1-1"
+version = "5.15.7+kde+r1-1"
 
 [[pkgs.pacman.all]]
 package = "qt5-svg"
-version = "5.15.6+kde+r9-1"
+version = "5.15.7+kde+r9-1"
 
 [[pkgs.pacman.all]]
 package = "qt5-translations"
-version = "5.15.6+kde+r2-1"
+version = "5.15.7-1"
 
 [[pkgs.pacman.all]]
 package = "qt5-wayland"
-version = "5.15.6+kde+r49-1"
+version = "5.15.7+kde+r56-1"
 
 [[pkgs.pacman.all]]
 package = "qt5-webchannel"
-version = "5.15.6+kde+r3-1"
+version = "5.15.7+kde+r3-1"
 
 [[pkgs.pacman.all]]
 package = "qt5-webengine"
-version = "5.15.10-3"
+version = "5.15.11-3"
 
 [[pkgs.pacman.all]]
 package = "qt5-x11extras"
-version = "5.15.6+kde+r0-1"
+version = "5.15.7-1"
 
 [[pkgs.pacman.all]]
 package = "qt5ct"
@@ -2736,43 +3636,31 @@ version = "1.5-2"
 
 [[pkgs.pacman.all]]
 package = "quickemu"
-version = "4.3-1"
+version = "4.5-1"
 
 [[pkgs.pacman.all]]
 package = "qutebrowser"
-version = "2.5.2-1"
+version = "2.5.2-2"
 
 [[pkgs.pacman.all]]
 package = "ranger"
 version = "1.9.3-4"
 
 [[pkgs.pacman.all]]
-package = "raptor"
-version = "2.0.15-19"
-
-[[pkgs.pacman.all]]
-package = "rasqal"
-version = "1:0.9.33-5"
-
-[[pkgs.pacman.all]]
 package = "rav1e"
-version = "0.5.1-2"
+version = "0.6.1-1"
 
 [[pkgs.pacman.all]]
 package = "re2"
-version = "1:20220601-1"
+version = "1:20221201-2"
 
 [[pkgs.pacman.all]]
 package = "readline"
-version = "8.1.002-1"
+version = "8.2.001-1"
 
 [[pkgs.pacman.all]]
-package = "redland"
-version = "1:1.0.17-8"
-
-[[pkgs.pacman.all]]
-package = "rest"
-version = "0.8.1+r4+ge5ee6ef-1"
+package = "rhash"
+version = "1.4.3-1"
 
 [[pkgs.pacman.all]]
 package = "rofi"
@@ -2784,127 +3672,135 @@ version = "r22.0c07719-1"
 
 [[pkgs.pacman.all]]
 package = "rubberband"
-version = "3.0.0-2"
-
-[[pkgs.pacman.all]]
-package = "ruby"
-version = "3.0.4-9"
-
-[[pkgs.pacman.all]]
-package = "ruby-abbrev"
-version = "0.1.0-1"
-
-[[pkgs.pacman.all]]
-package = "ruby-base64"
-version = "0.1.1-1"
-
-[[pkgs.pacman.all]]
-package = "ruby-benchmark"
-version = "0.2.0-1"
-
-[[pkgs.pacman.all]]
-package = "ruby-bigdecimal"
 version = "3.1.2-1"
 
 [[pkgs.pacman.all]]
+package = "ruby"
+version = "3.0.4-20"
+
+[[pkgs.pacman.all]]
+package = "ruby-abbrev"
+version = "0.1.0-4"
+
+[[pkgs.pacman.all]]
+package = "ruby-base64"
+version = "0.1.1-4"
+
+[[pkgs.pacman.all]]
+package = "ruby-benchmark"
+version = "0.2.0-4"
+
+[[pkgs.pacman.all]]
+package = "ruby-bigdecimal"
+version = "3.1.2-4"
+
+[[pkgs.pacman.all]]
 package = "ruby-bundledgems"
-version = "3.0.4-9"
+version = "3.0.4-20"
 
 [[pkgs.pacman.all]]
 package = "ruby-bundler"
-version = "2.3.22-1"
+version = "2.3.25-1"
 
 [[pkgs.pacman.all]]
 package = "ruby-cgi"
-version = "0.3.2-1"
+version = "0.3.6-1"
 
 [[pkgs.pacman.all]]
 package = "ruby-csv"
-version = "3.2.5-1"
+version = "3.2.5-4"
 
 [[pkgs.pacman.all]]
 package = "ruby-date"
-version = "3.2.2-1"
+version = "3.2.2-4"
 
 [[pkgs.pacman.all]]
 package = "ruby-delegate"
-version = "0.2.0-1"
+version = "0.2.0-4"
 
 [[pkgs.pacman.all]]
 package = "ruby-did_you_mean"
-version = "1.6.1-1"
+version = "1.6.1-4"
+
+[[pkgs.pacman.all]]
+package = "ruby-diff-lcs"
+version = "1.5.0-1"
 
 [[pkgs.pacman.all]]
 package = "ruby-digest"
-version = "3.1.0-1"
+version = "3.1.0-6"
 
 [[pkgs.pacman.all]]
 package = "ruby-drb"
-version = "2.1.0-1"
+version = "2.1.0-5"
 
 [[pkgs.pacman.all]]
 package = "ruby-english"
-version = "0.7.1-1"
+version = "0.7.1-5"
 
 [[pkgs.pacman.all]]
 package = "ruby-erb"
-version = "2.2.3-2"
+version = "4.0.2-1"
 
 [[pkgs.pacman.all]]
 package = "ruby-etc"
-version = "1.3.0-2"
+version = "1.3.0-6"
 
 [[pkgs.pacman.all]]
 package = "ruby-fcntl"
-version = "1.0.1-1"
+version = "1.0.1-4"
 
 [[pkgs.pacman.all]]
 package = "ruby-fiddle"
-version = "1.1.0-1"
+version = "1.1.0-4"
 
 [[pkgs.pacman.all]]
 package = "ruby-fileutils"
-version = "1.6.0-1"
+version = "1.6.0-4"
 
 [[pkgs.pacman.all]]
 package = "ruby-find"
-version = "0.1.1-1"
+version = "0.1.1-4"
 
 [[pkgs.pacman.all]]
 package = "ruby-forwardable"
-version = "1.3.2-1"
+version = "1.3.2-6"
 
 [[pkgs.pacman.all]]
 package = "ruby-getoptlong"
-version = "0.1.1-1"
+version = "0.1.1-3"
 
 [[pkgs.pacman.all]]
 package = "ruby-io-console"
-version = "0.5.11-1"
+version = "0.5.11-3"
 
 [[pkgs.pacman.all]]
 package = "ruby-io-nonblock"
-version = "0.1.0-1"
+version = "0.1.0-3"
 
 [[pkgs.pacman.all]]
 package = "ruby-io-wait"
-version = "0.2.3-1"
+version = "0.2.3-4"
 
 [[pkgs.pacman.all]]
 package = "ruby-ipaddr"
-version = "1.2.4-1"
+version = "1.2.4-3"
 
 [[pkgs.pacman.all]]
 package = "ruby-irb"
-version = "1.4.1-1"
+version = "1.4.2-1"
 
 [[pkgs.pacman.all]]
 package = "ruby-json"
-version = "2.6.2-1"
+version = "2.6.2-2"
 
 [[pkgs.pacman.all]]
 package = "ruby-logger"
-version = "1.5.1-1"
+version = "1.5.1-3"
+
+[[pkgs.pacman.all]]
+package = "ruby-manpages"
+version = "0.6.1-4"
 
 [[pkgs.pacman.all]]
 package = "ruby-minitest"
@@ -2912,23 +3808,39 @@ version = "5.16.3-1"
 
 [[pkgs.pacman.all]]
 package = "ruby-mutex_m"
-version = "0.1.1-1"
+version = "0.1.1-3"
 
 [[pkgs.pacman.all]]
 package = "ruby-net-http"
-version = "0.2.2-1"
+version = "0.2.2-2"
 
 [[pkgs.pacman.all]]
 package = "ruby-open-uri"
-version = "0.2.0-2"
+version = "0.2.0-3"
+
+[[pkgs.pacman.all]]
+package = "ruby-optimist"
+version = "3.0.1-2"
+
+[[pkgs.pacman.all]]
+package = "ruby-paint"
+version = "2.3.0-1"
 
 [[pkgs.pacman.all]]
 package = "ruby-power_assert"
-version = "2.0.1-1"
+version = "2.0.2-1"
 
 [[pkgs.pacman.all]]
 package = "ruby-psych"
-version = "4.0.4-2"
+version = "4.0.6-1"
+
+[[pkgs.pacman.all]]
+package = "ruby-racc"
+version = "1.6.0-3"
+
+[[pkgs.pacman.all]]
+package = "ruby-rainbow"
+version = "3.1.1-1"
 
 [[pkgs.pacman.all]]
 package = "ruby-rake"
@@ -2936,15 +3848,35 @@ version = "13.0.6-1"
 
 [[pkgs.pacman.all]]
 package = "ruby-rdoc"
-version = "6.4.0-2"
+version = "6.4.0-4"
 
 [[pkgs.pacman.all]]
 package = "ruby-reline"
-version = "0.3.1-1"
+version = "0.3.1-2"
 
 [[pkgs.pacman.all]]
 package = "ruby-rexml"
 version = "3.2.5-1"
+
+[[pkgs.pacman.all]]
+package = "ruby-rspec"
+version = "3.12.0-1"
+
+[[pkgs.pacman.all]]
+package = "ruby-rspec-core"
+version = "3.12.0-1"
+
+[[pkgs.pacman.all]]
+package = "ruby-rspec-expectations"
+version = "3.12.0-1"
+
+[[pkgs.pacman.all]]
+package = "ruby-rspec-mocks"
+version = "3.12.0-1"
+
+[[pkgs.pacman.all]]
+package = "ruby-rspec-support"
+version = "3.12.0-1"
 
 [[pkgs.pacman.all]]
 package = "ruby-ruby2_keywords"
@@ -2952,31 +3884,39 @@ version = "0.0.5-1"
 
 [[pkgs.pacman.all]]
 package = "ruby-stdlib"
-version = "3.0.4-9"
+version = "3.0.4-20"
 
 [[pkgs.pacman.all]]
 package = "ruby-stringio"
-version = "3.0.2-1"
+version = "3.0.2-4"
+
+[[pkgs.pacman.all]]
+package = "ruby-term-ansicolor"
+version = "1.7.1-2"
 
 [[pkgs.pacman.all]]
 package = "ruby-test-unit"
-version = "3.5.3-1"
+version = "3.5.5-1"
 
 [[pkgs.pacman.all]]
 package = "ruby-time"
-version = "0.2.0-2"
+version = "0.2.0-4"
+
+[[pkgs.pacman.all]]
+package = "ruby-tins"
+version = "1.31.1-1"
 
 [[pkgs.pacman.all]]
 package = "ruby-tmpdir"
-version = "0.1.2-1"
+version = "0.1.2-3"
 
 [[pkgs.pacman.all]]
 package = "ruby-uri"
-version = "0.11.0-2"
+version = "0.11.0-5"
 
 [[pkgs.pacman.all]]
 package = "rubygems"
-version = "3.3.21-1"
+version = "3.3.25-1"
 
 [[pkgs.pacman.all]]
 package = "run-parts"
@@ -2984,7 +3924,7 @@ version = "5.5-1"
 
 [[pkgs.pacman.all]]
 package = "rust"
-version = "1:1.63.0-1"
+version = "1:1.65.0-1"
 
 [[pkgs.pacman.all]]
 package = "sane"
@@ -2995,32 +3935,52 @@ package = "sbc"
 version = "2.0-1"
 
 [[pkgs.pacman.all]]
+package = "scdoc"
+version = "1.11.2-4"
+
+[[pkgs.pacman.all]]
+package = "scim"
+version = "1.4.18-3"
+
+[[pkgs.pacman.all]]
 package = "scrot"
 version = "1.7-1"
 
 [[pkgs.pacman.all]]
 package = "sddm"
-version = "0.19.0-8"
+version = "0.19.0-9"
 
 [[pkgs.pacman.all]]
 package = "sddm-sugar-candy-git"
 version = "r53.2b72ef6-1"
 
 [[pkgs.pacman.all]]
+package = "sdl12-compat"
+version = "1.2.60-1"
+
+[[pkgs.pacman.all]]
 package = "sdl2"
-version = "2.24.0-2"
+version = "2.26.1-1"
 
 [[pkgs.pacman.all]]
 package = "seabios"
-version = "1.16.0-3"
+version = "1.16.1-1"
 
 [[pkgs.pacman.all]]
 package = "sed"
-version = "4.8-1"
+version = "4.9-1"
+
+[[pkgs.pacman.all]]
+package = "semver"
+version = "7.3.8-1"
 
 [[pkgs.pacman.all]]
 package = "serd"
 version = "0.30.16-1"
+
+[[pkgs.pacman.all]]
+package = "sfml"
+version = "2.5.1-3"
 
 [[pkgs.pacman.all]]
 package = "sfsexp"
@@ -3032,7 +3992,7 @@ version = "2022.1-4"
 
 [[pkgs.pacman.all]]
 package = "shadow"
-version = "4.11.1-1"
+version = "4.12.3-2"
 
 [[pkgs.pacman.all]]
 package = "shared-mime-info"
@@ -3040,7 +4000,7 @@ version = "2.0+155+gf4e7cbc-1"
 
 [[pkgs.pacman.all]]
 package = "signon-kwallet-extension"
-version = "22.08.1-1"
+version = "22.12.0-1"
 
 [[pkgs.pacman.all]]
 package = "signon-plugin-oauth2"
@@ -3064,11 +4024,11 @@ version = "2.3.3-1"
 
 [[pkgs.pacman.all]]
 package = "slock"
-version = "1.4-6"
+version = "1.5-1"
 
 [[pkgs.pacman.all]]
 package = "smbclient"
-version = "4.17.0-1"
+version = "4.17.3-1"
 
 [[pkgs.pacman.all]]
 package = "snappy"
@@ -3079,12 +4039,16 @@ package = "sndio"
 version = "1.9.0-1"
 
 [[pkgs.pacman.all]]
+package = "socat"
+version = "1.7.4.4-1"
+
+[[pkgs.pacman.all]]
 package = "solid"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "sonnet"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "sord"
@@ -3093,6 +4057,10 @@ version = "0.16.14-1"
 [[pkgs.pacman.all]]
 package = "sound-theme-freedesktop"
 version = "0.8-5"
+
+[[pkgs.pacman.all]]
+package = "source-highlight"
+version = "3.1.9-9"
 
 [[pkgs.pacman.all]]
 package = "speex"
@@ -3104,11 +4072,11 @@ version = "1.2.1-1"
 
 [[pkgs.pacman.all]]
 package = "spice"
-version = "0.15.0-1"
+version = "0.15.1-1"
 
 [[pkgs.pacman.all]]
 package = "spice-gtk"
-version = "0.41-2"
+version = "0.41-5"
 
 [[pkgs.pacman.all]]
 package = "spirv-tools"
@@ -3116,7 +4084,7 @@ version = "2022.1-1"
 
 [[pkgs.pacman.all]]
 package = "sqlite"
-version = "3.39.3-1"
+version = "3.40.0-2"
 
 [[pkgs.pacman.all]]
 package = "sratom"
@@ -3124,7 +4092,7 @@ version = "0.6.14-1"
 
 [[pkgs.pacman.all]]
 package = "srt"
-version = "1.5.0-1"
+version = "1.5.1-3"
 
 [[pkgs.pacman.all]]
 package = "startup-notification"
@@ -3132,15 +4100,15 @@ version = "0.12-7"
 
 [[pkgs.pacman.all]]
 package = "sudo"
-version = "1.9.11.p3-1"
+version = "1.9.12.p1-1"
 
 [[pkgs.pacman.all]]
 package = "svt-av1"
-version = "1.2.1-1"
+version = "1.4.0-1"
 
 [[pkgs.pacman.all]]
 package = "swtpm"
-version = "0.7.3-1"
+version = "0.7.3-2"
 
 [[pkgs.pacman.all]]
 package = "sxhkd"
@@ -3152,15 +4120,15 @@ version = "2.1.1-1"
 
 [[pkgs.pacman.all]]
 package = "systemd"
-version = "251.4-1"
+version = "252.3-1"
 
 [[pkgs.pacman.all]]
 package = "systemd-libs"
-version = "251.4-1"
+version = "252.3-1"
 
 [[pkgs.pacman.all]]
 package = "systemd-sysvcompat"
-version = "251.4-1"
+version = "252.3-1"
 
 [[pkgs.pacman.all]]
 package = "t1lib"
@@ -3168,7 +4136,7 @@ version = "5.1.2-8"
 
 [[pkgs.pacman.all]]
 package = "taglib"
-version = "1.12-2"
+version = "1.13-1"
 
 [[pkgs.pacman.all]]
 package = "talloc"
@@ -3177,6 +4145,10 @@ version = "2.3.4-1"
 [[pkgs.pacman.all]]
 package = "tar"
 version = "1.34-1"
+
+[[pkgs.pacman.all]]
+package = "tcl"
+version = "8.6.13-1"
 
 [[pkgs.pacman.all]]
 package = "tdb"
@@ -3192,7 +4164,7 @@ version = "1:0.13.0-1"
 
 [[pkgs.pacman.all]]
 package = "texinfo"
-version = "6.8-2"
+version = "7.0.1-1"
 
 [[pkgs.pacman.all]]
 package = "texlive-bibtexextra"
@@ -3200,7 +4172,7 @@ version = "2022.63023-1"
 
 [[pkgs.pacman.all]]
 package = "texlive-bin"
-version = "2022.62885-1"
+version = "2022.62885-3"
 
 [[pkgs.pacman.all]]
 package = "texlive-core"
@@ -3252,27 +4224,35 @@ version = "0.9.0-1"
 
 [[pkgs.pacman.all]]
 package = "threadweaver"
-version = "5.98.0-1"
+version = "5.101.0-1"
 
 [[pkgs.pacman.all]]
 package = "tig"
 version = "2.5.7-1"
 
 [[pkgs.pacman.all]]
-package = "tldr"
-version = "3.1.0-2"
+package = "tk"
+version = "8.6.13-1"
+
+[[pkgs.pacman.all]]
+package = "tldr++"
+version = "1.0.0.alpha-5"
 
 [[pkgs.pacman.all]]
 package = "tmux"
 version = "3.3_a-2"
 
 [[pkgs.pacman.all]]
+package = "tomb"
+version = "2.9-3"
+
+[[pkgs.pacman.all]]
 package = "tpm2-tss"
-version = "3.2.0-1"
+version = "3.2.0-3"
 
 [[pkgs.pacman.all]]
 package = "tracker3"
-version = "3.3.3-1"
+version = "3.4.2-1"
 
 [[pkgs.pacman.all]]
 package = "tree"
@@ -3296,7 +4276,7 @@ version = "0.4.0-2"
 
 [[pkgs.pacman.all]]
 package = "tzdata"
-version = "2022c-1"
+version = "2022g-1"
 
 [[pkgs.pacman.all]]
 package = "uchardet"
@@ -3332,7 +4312,11 @@ version = "0.13.0-1"
 
 [[pkgs.pacman.all]]
 package = "usbutils"
-version = "014-2"
+version = "015-2"
+
+[[pkgs.pacman.all]]
+package = "uthash"
+version = "2.3.0-1"
 
 [[pkgs.pacman.all]]
 package = "util-linux"
@@ -3356,15 +4340,23 @@ version = "1.1-3"
 
 [[pkgs.pacman.all]]
 package = "vim-clipboard"
-version = "9.0.0354-1"
+version = "9.0.0910-1"
 
 [[pkgs.pacman.all]]
 package = "vim-runtime"
-version = "9.0.0354-1"
+version = "9.0.0910-1"
 
 [[pkgs.pacman.all]]
 package = "virglrenderer"
-version = "0.9.1-1"
+version = "0.10.3-1"
+
+[[pkgs.pacman.all]]
+package = "visidata"
+version = "2.10.2-3"
+
+[[pkgs.pacman.all]]
+package = "vivid"
+version = "0.8.0-1"
 
 [[pkgs.pacman.all]]
 package = "vmaf"
@@ -3376,23 +4368,31 @@ version = "0.3.12-7"
 
 [[pkgs.pacman.all]]
 package = "vulkan-icd-loader"
-version = "1.3.226-1"
+version = "1.3.235-1"
 
 [[pkgs.pacman.all]]
 package = "vulkan-intel"
-version = "22.1.7-1"
+version = "22.2.3-1"
+
+[[pkgs.pacman.all]]
+package = "vulkan-radeon"
+version = "22.2.3-1"
 
 [[pkgs.pacman.all]]
 package = "wavpack"
-version = "5.5.0-1"
+version = "5.6.0-1"
 
 [[pkgs.pacman.all]]
 package = "wayland"
-version = "1.21.0-1"
+version = "1.21.0-2"
+
+[[pkgs.pacman.all]]
+package = "wayland-protocols"
+version = "1.31-1"
 
 [[pkgs.pacman.all]]
 package = "webkit2gtk"
-version = "2.38.0-2"
+version = "2.38.2-2"
 
 [[pkgs.pacman.all]]
 package = "webrtc-audio-processing"
@@ -3416,7 +4416,7 @@ version = "30.pre9-3"
 
 [[pkgs.pacman.all]]
 package = "wireplumber"
-version = "0.4.11-4"
+version = "0.4.12-2"
 
 [[pkgs.pacman.all]]
 package = "woff2"
@@ -3424,11 +4424,11 @@ version = "1.0.2-4"
 
 [[pkgs.pacman.all]]
 package = "wolfssl"
-version = "5.5.0-1"
+version = "5.5.3-1"
 
 [[pkgs.pacman.all]]
 package = "wpa_supplicant"
-version = "2:2.10-5"
+version = "2:2.10-7"
 
 [[pkgs.pacman.all]]
 package = "wpebackend-fdo"
@@ -3444,11 +4444,11 @@ version = "3.5-3"
 
 [[pkgs.pacman.all]]
 package = "xapian-core"
-version = "1:1.4.20-1"
+version = "1:1.4.21-1"
 
 [[pkgs.pacman.all]]
 package = "xcb-proto"
-version = "1.15.2-1"
+version = "1.15.2-2"
 
 [[pkgs.pacman.all]]
 package = "xcb-util"
@@ -3456,23 +4456,23 @@ version = "0.4.0-4"
 
 [[pkgs.pacman.all]]
 package = "xcb-util-cursor"
-version = "0.1.3-4"
+version = "0.1.4-1"
 
 [[pkgs.pacman.all]]
 package = "xcb-util-image"
-version = "0.4.0-4"
+version = "0.4.1-2"
 
 [[pkgs.pacman.all]]
 package = "xcb-util-keysyms"
-version = "0.4.0-4"
+version = "0.4.1-4"
 
 [[pkgs.pacman.all]]
 package = "xcb-util-renderutil"
-version = "0.3.9-4"
+version = "0.3.10-1"
 
 [[pkgs.pacman.all]]
 package = "xcb-util-wm"
-version = "0.4.1-4"
+version = "0.4.2-1"
 
 [[pkgs.pacman.all]]
 package = "xcb-util-xrm"
@@ -3492,7 +4492,7 @@ version = "0.18-1"
 
 [[pkgs.pacman.all]]
 package = "xdg-utils"
-version = "1.1.3+21+g1a58bc2-2"
+version = "1.1.3+25+g8ae0263-1"
 
 [[pkgs.pacman.all]]
 package = "xdotool"
@@ -3503,28 +4503,40 @@ package = "xf86-input-libinput"
 version = "1.2.1-1"
 
 [[pkgs.pacman.all]]
+package = "xf86-video-amdgpu"
+version = "22.0.0-1"
+
+[[pkgs.pacman.all]]
+package = "xf86-video-ati"
+version = "1:19.1.0.r15.g7a6a34af-1"
+
+[[pkgs.pacman.all]]
+package = "xf86-video-nouveau"
+version = "1.0.17-2"
+
+[[pkgs.pacman.all]]
 package = "xf86-video-vesa"
-version = "2.5.0-3"
+version = "2.6.0-1"
+
+[[pkgs.pacman.all]]
+package = "xf86-video-vmware"
+version = "13.3.0-4"
 
 [[pkgs.pacman.all]]
 package = "xfsprogs"
-version = "5.19.0-1"
+version = "6.0.0-1"
 
 [[pkgs.pacman.all]]
 package = "xkeyboard-config"
-version = "2.36+89+g382c5feb-1"
-
-[[pkgs.pacman.all]]
-package = "xmlsec"
-version = "1.2.34-2"
+version = "2.37-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-bdftopcf"
-version = "1.1-3"
+version = "1.1.1-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-docs"
-version = "1.7.2-1"
+version = "1.7.2-2"
 
 [[pkgs.pacman.all]]
 package = "xorg-font-util"
@@ -3532,11 +4544,11 @@ version = "1.3.3-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-fonts-100dpi"
-version = "1.0.3-7"
+version = "1.0.3-8"
 
 [[pkgs.pacman.all]]
 package = "xorg-fonts-75dpi"
-version = "1.0.3-7"
+version = "1.0.3-8"
 
 [[pkgs.pacman.all]]
 package = "xorg-fonts-alias-100dpi"
@@ -3584,7 +4596,7 @@ version = "21.1.4-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-sessreg"
-version = "1.1.2-3"
+version = "1.1.3-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-setxkbmap"
@@ -3592,7 +4604,7 @@ version = "1.3.3-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-smproxy"
-version = "1.0.6-4"
+version = "1.0.7-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-util-macros"
@@ -3600,7 +4612,7 @@ version = "1.19.3-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-x11perf"
-version = "1.6.1-3"
+version = "1.6.2-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xauth"
@@ -3616,7 +4628,7 @@ version = "1.0.6-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xcursorgen"
-version = "1.0.7-3"
+version = "1.0.8-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xdpyinfo"
@@ -3632,7 +4644,7 @@ version = "1.2.5-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xgamma"
-version = "1.0.6-4"
+version = "1.0.7-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xhost"
@@ -3640,7 +4652,7 @@ version = "1.0.8-3"
 
 [[pkgs.pacman.all]]
 package = "xorg-xinit"
-version = "1.4.1-3"
+version = "1.4.2-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xinput"
@@ -3648,11 +4660,11 @@ version = "1.6.3-3"
 
 [[pkgs.pacman.all]]
 package = "xorg-xkbcomp"
-version = "1.4.5-1"
+version = "1.4.6-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xkbevd"
-version = "1.1.4-4"
+version = "1.1.5-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xkbutils"
@@ -3660,15 +4672,15 @@ version = "1.0.5-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xkill"
-version = "1.0.5-3"
+version = "1.0.6-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xlsatoms"
-version = "1.1.3-3"
+version = "1.1.4-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xlsclients"
-version = "1.1.4-3"
+version = "1.1.5-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xmodmap"
@@ -3680,11 +4692,11 @@ version = "1.1.0-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xprop"
-version = "1.2.5-1"
+version = "1.2.6-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xrandr"
-version = "1.5.1-2"
+version = "1.5.2-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xrdb"
@@ -3696,19 +4708,19 @@ version = "1.0.7-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xset"
-version = "1.2.4-3"
+version = "1.2.5-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xsetroot"
-version = "1.1.2-3"
+version = "1.1.3-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xvinfo"
-version = "1.1.4-3"
+version = "1.1.5-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xwayland"
-version = "22.1.3-1"
+version = "22.1.5-1"
 
 [[pkgs.pacman.all]]
 package = "xorg-xwd"
@@ -3732,7 +4744,7 @@ version = "1.3.7-2"
 
 [[pkgs.pacman.all]]
 package = "xz"
-version = "5.2.6-1"
+version = "5.2.9-1"
 
 [[pkgs.pacman.all]]
 package = "yajl"
@@ -3748,7 +4760,7 @@ version = "3.0.4-1"
 
 [[pkgs.pacman.all]]
 package = "zlib"
-version = "1:1.2.12-2"
+version = "1:1.2.13-2"
 
 [[pkgs.pacman.all]]
 package = "zram-generator"
@@ -3761,6 +4773,10 @@ version = "2.1.3-4"
 [[pkgs.pacman.all]]
 package = "zsa-wally"
 version = "2.1.3-4"
+
+[[pkgs.pacman.all]]
+package = "zsh"
+version = "5.9-1"
 
 [[pkgs.pacman.all]]
 package = "zstd"
@@ -3776,35 +4792,15 @@ version = "0.13.72-1"
 
 [[pkgs.pacman.explicit]]
 package = "alacritty"
-version = "0.10.1-2"
+version = "0.11.0-2"
 
 [[pkgs.pacman.explicit]]
 package = "alsa-utils"
-version = "1.2.7-1"
-
-[[pkgs.pacman.explicit]]
-package = "amtoine-applications-git"
-version = "1.0.r6.27242df-1"
-
-[[pkgs.pacman.explicit]]
-package = "amtoine-icons-git"
-version = "r21.7cc7ce2-1"
-
-[[pkgs.pacman.explicit]]
-package = "amtoine-scripts-git"
-version = "r37.189592d-1"
-
-[[pkgs.pacman.explicit]]
-package = "amtoine-sounds-git"
-version = "r4.5d10643-1"
-
-[[pkgs.pacman.explicit]]
-package = "amtoine-wallpapers-git"
-version = "r32.e5ba1e1-1"
+version = "1.2.8-1"
 
 [[pkgs.pacman.explicit]]
 package = "archlinux-keyring"
-version = "20220831-1"
+version = "20221123-1"
 
 [[pkgs.pacman.explicit]]
 package = "asciinema"
@@ -3828,7 +4824,7 @@ version = "0.22.1-1"
 
 [[pkgs.pacman.explicit]]
 package = "binutils"
-version = "2.39-3"
+version = "2.39-4"
 
 [[pkgs.pacman.explicit]]
 package = "bison"
@@ -3836,19 +4832,19 @@ version = "3.8.2-4"
 
 [[pkgs.pacman.explicit]]
 package = "blueman"
-version = "2.3.2-1"
+version = "2.3.5-1"
 
 [[pkgs.pacman.explicit]]
 package = "bluez"
-version = "5.65-3"
+version = "5.66-1"
 
 [[pkgs.pacman.explicit]]
 package = "bluez-plugins"
-version = "5.65-3"
+version = "5.66-1"
 
 [[pkgs.pacman.explicit]]
 package = "bluez-utils"
-version = "5.65-3"
+version = "5.66-1"
 
 [[pkgs.pacman.explicit]]
 package = "brightnessctl"
@@ -3860,15 +4856,15 @@ version = "0.9.10-2"
 
 [[pkgs.pacman.explicit]]
 package = "catppuccin-gtk-theme-frappe"
-version = "0.2.7-2"
+version = "0.4.0-1"
 
 [[pkgs.pacman.explicit]]
 package = "cava"
-version = "0.8.2-5"
+version = "0.8.3-1"
 
 [[pkgs.pacman.explicit]]
 package = "clang"
-version = "14.0.6-2"
+version = "14.0.6-4"
 
 [[pkgs.pacman.explicit]]
 package = "cmus"
@@ -3876,11 +4872,15 @@ version = "2.10.0-3"
 
 [[pkgs.pacman.explicit]]
 package = "conky"
-version = "1.12.2-2"
+version = "1.15.0-1"
 
 [[pkgs.pacman.explicit]]
 package = "cronie"
 version = "1.6.1-1"
+
+[[pkgs.pacman.explicit]]
+package = "debugedit"
+version = "5.0-4"
 
 [[pkgs.pacman.explicit]]
 package = "devour"
@@ -3888,7 +4888,7 @@ version = "12-2"
 
 [[pkgs.pacman.explicit]]
 package = "discord"
-version = "0.0.20-1"
+version = "0.0.22-1"
 
 [[pkgs.pacman.explicit]]
 package = "dmscripts-git"
@@ -3912,11 +4912,11 @@ version = "0.10.1-6"
 
 [[pkgs.pacman.explicit]]
 package = "fakeroot"
-version = "1.29-1"
+version = "1.30.1-1"
 
 [[pkgs.pacman.explicit]]
 package = "fd"
-version = "8.4.0-1"
+version = "8.6.0-1"
 
 [[pkgs.pacman.explicit]]
 package = "feh"
@@ -3932,7 +4932,7 @@ version = "4.9.0-1"
 
 [[pkgs.pacman.explicit]]
 package = "firefox"
-version = "105.0-2"
+version = "107.0.1-1"
 
 [[pkgs.pacman.explicit]]
 package = "flex"
@@ -3940,19 +4940,23 @@ version = "2.6.4-3"
 
 [[pkgs.pacman.explicit]]
 package = "fzf"
-version = "0.33.0-1"
+version = "0.35.1-1"
 
 [[pkgs.pacman.explicit]]
 package = "gawk"
-version = "5.2.0-3"
+version = "5.2.1-1"
 
 [[pkgs.pacman.explicit]]
 package = "gcc"
 version = "12.2.0-1"
 
 [[pkgs.pacman.explicit]]
+package = "gdb"
+version = "12.1-2"
+
+[[pkgs.pacman.explicit]]
 package = "gettext"
-version = "0.21-2"
+version = "0.21.1-2"
 
 [[pkgs.pacman.explicit]]
 package = "ghq"
@@ -3960,19 +4964,51 @@ version = "1.3.0-1"
 
 [[pkgs.pacman.explicit]]
 package = "git"
-version = "2.37.3-1"
+version = "2.38.2-1"
 
 [[pkgs.pacman.explicit]]
 package = "git-delta"
-version = "0.14.0-2"
+version = "0.15.1-1"
 
 [[pkgs.pacman.explicit]]
 package = "github-cli"
-version = "2.15.0-1"
+version = "2.20.2-1"
 
 [[pkgs.pacman.explicit]]
 package = "glow"
 version = "1.4.1-3"
+
+[[pkgs.pacman.explicit]]
+package = "goat-applications-git"
+version = "1.0.r7.14bb72a-1"
+
+[[pkgs.pacman.explicit]]
+package = "goat-icons-git"
+version = "r22.a2864f9-1"
+
+[[pkgs.pacman.explicit]]
+package = "goat-junnunkarim-wallpapers-git"
+version = "r5.ed614bd-1"
+
+[[pkgs.pacman.explicit]]
+package = "goat-mut-ex-wallpapers-git"
+version = "r36.849587d-1"
+
+[[pkgs.pacman.explicit]]
+package = "goat-remote-git"
+version = "r21.c32f4bb-1"
+
+[[pkgs.pacman.explicit]]
+package = "goat-scripts-git"
+version = "r41.70ca3a3-1"
+
+[[pkgs.pacman.explicit]]
+package = "goat-sounds-git"
+version = "r5.0f05e4f-1"
+
+[[pkgs.pacman.explicit]]
+package = "goat-wallpapers-git"
+version = "r33.52e7e25-1"
 
 [[pkgs.pacman.explicit]]
 package = "grep"
@@ -3984,11 +5020,27 @@ version = "1.22.4-7"
 
 [[pkgs.pacman.explicit]]
 package = "gst-plugin-pipewire"
-version = "1:0.3.58-1"
+version = "1:0.3.61-1"
 
 [[pkgs.pacman.explicit]]
 package = "gzip"
 version = "1.12-1"
+
+[[pkgs.pacman.explicit]]
+package = "helix"
+version = "22.12-1"
+
+[[pkgs.pacman.explicit]]
+package = "htop"
+version = "3.2.1-1"
+
+[[pkgs.pacman.explicit]]
+package = "hugo"
+version = "0.108.0-1"
+
+[[pkgs.pacman.explicit]]
+package = "ijq"
+version = "0.4.1-1"
 
 [[pkgs.pacman.explicit]]
 package = "intel-media-driver"
@@ -3996,15 +5048,11 @@ version = "22.4.4-2"
 
 [[pkgs.pacman.explicit]]
 package = "intel-ucode"
-version = "20220809-1"
-
-[[pkgs.pacman.explicit]]
-package = "junnunkarim-wallpapers-git"
-version = "r4.9893042-1"
+version = "20221108-1"
 
 [[pkgs.pacman.explicit]]
 package = "kolourpaint"
-version = "22.08.1-1"
+version = "22.12.0-1"
 
 [[pkgs.pacman.explicit]]
 package = "latex-mk"
@@ -4012,7 +5060,7 @@ version = "2.1-4"
 
 [[pkgs.pacman.explicit]]
 package = "lazygit"
-version = "0.35-1"
+version = "0.36.0-1"
 
 [[pkgs.pacman.explicit]]
 package = "libnotify"
@@ -4020,11 +5068,7 @@ version = "0.8.1-1"
 
 [[pkgs.pacman.explicit]]
 package = "libpulse"
-version = "16.1-1"
-
-[[pkgs.pacman.explicit]]
-package = "libreoffice-fresh"
-version = "7.4.1-3"
+version = "16.1-3"
 
 [[pkgs.pacman.explicit]]
 package = "libtool"
@@ -4035,16 +5079,28 @@ package = "libva-intel-driver"
 version = "2.4.1-2"
 
 [[pkgs.pacman.explicit]]
+package = "libva-mesa-driver"
+version = "22.2.3-1"
+
+[[pkgs.pacman.explicit]]
 package = "linux"
-version = "5.19.10.arch1-1"
+version = "6.0.12.arch1-1"
 
 [[pkgs.pacman.explicit]]
 package = "linux-firmware"
-version = "20220815.8413c63-1"
+version = "20221109.60310c2-2"
+
+[[pkgs.pacman.explicit]]
+package = "lldb"
+version = "14.0.6-1"
 
 [[pkgs.pacman.explicit]]
 package = "llvm"
-version = "14.0.6-3"
+version = "14.0.6-4"
+
+[[pkgs.pacman.explicit]]
+package = "lolcat"
+version = "100.0.1-1"
 
 [[pkgs.pacman.explicit]]
 package = "lxappearance"
@@ -4056,35 +5112,35 @@ version = "1.4.19-1"
 
 [[pkgs.pacman.explicit]]
 package = "make"
-version = "4.3-3"
+version = "4.3-5"
 
 [[pkgs.pacman.explicit]]
 package = "man-pages"
-version = "5.13-1"
+version = "6.01-1"
 
 [[pkgs.pacman.explicit]]
 package = "mbsync-git"
 version = "1306.65cd442-1"
 
 [[pkgs.pacman.explicit]]
+package = "moar"
+version = "1.10.0-1"
+
+[[pkgs.pacman.explicit]]
 package = "moc"
-version = "1:2.5.2-6"
+version = "1:2.5.2-7"
 
 [[pkgs.pacman.explicit]]
 package = "mpd"
-version = "0.23.9-3"
+version = "0.23.11-1"
 
 [[pkgs.pacman.explicit]]
 package = "mu"
-version = "1.8.9-1"
-
-[[pkgs.pacman.explicit]]
-package = "mut-ex-wallpapers-git"
-version = "r36.849587d-1"
+version = "1.8.13-1"
 
 [[pkgs.pacman.explicit]]
 package = "ncmpcpp"
-version = "0.9.2-8"
+version = "0.9.2-9"
 
 [[pkgs.pacman.explicit]]
 package = "neomutt"
@@ -4092,51 +5148,55 @@ version = "20220429-1"
 
 [[pkgs.pacman.explicit]]
 package = "neovim"
-version = "0.7.2-3"
+version = "0.8.1-2"
 
 [[pkgs.pacman.explicit]]
 package = "nerd-fonts-mononoki"
-version = "2.1.0-2"
+version = "2.2.2-2"
 
 [[pkgs.pacman.explicit]]
 package = "networkmanager"
-version = "1.40.0-1"
+version = "1.40.6-1"
 
 [[pkgs.pacman.explicit]]
 package = "nm-connection-editor"
-version = "1.28.0-1"
+version = "1.30.0-1"
 
 [[pkgs.pacman.explicit]]
 package = "noto-fonts"
-version = "20220607-1"
+version = "20220810-1"
 
 [[pkgs.pacman.explicit]]
 package = "noto-fonts-cjk"
 version = "20220126-1"
 
 [[pkgs.pacman.explicit]]
-package = "ntfs-3g"
-version = "2022.5.17-1"
+package = "npm"
+version = "8.19.2-1"
 
 [[pkgs.pacman.explicit]]
-package = "nushell"
-version = "0.67.0-1"
+package = "ntfs-3g"
+version = "2022.10.3-1"
+
+[[pkgs.pacman.explicit]]
+package = "obnc"
+version = "0.16.1-3"
 
 [[pkgs.pacman.explicit]]
 package = "okular"
-version = "22.08.1-1"
+version = "22.12.0-1"
 
 [[pkgs.pacman.explicit]]
 package = "openssh"
-version = "9.0p1-1"
+version = "9.1p1-3"
 
 [[pkgs.pacman.explicit]]
 package = "otf-monocraft"
-version = "1.3-1"
+version = "1.4-1"
 
 [[pkgs.pacman.explicit]]
 package = "pacman"
-version = "6.0.1-7"
+version = "6.0.2-5"
 
 [[pkgs.pacman.explicit]]
 package = "paru"
@@ -4156,23 +5216,23 @@ version = "1770_Next.208.g51b2135_2022.05.29-1"
 
 [[pkgs.pacman.explicit]]
 package = "pinentry-git"
-version = "1.2.1.r4.gbc11554-1"
+version = "1.2.1.r12.ga7e78e1-1"
 
 [[pkgs.pacman.explicit]]
 package = "pipewire"
-version = "1:0.3.58-1"
+version = "1:0.3.61-1"
 
 [[pkgs.pacman.explicit]]
 package = "pipewire-alsa"
-version = "1:0.3.58-1"
+version = "1:0.3.61-1"
 
 [[pkgs.pacman.explicit]]
 package = "pipewire-jack"
-version = "1:0.3.58-1"
+version = "1:0.3.61-1"
 
 [[pkgs.pacman.explicit]]
 package = "pipewire-pulse"
-version = "1:0.3.58-1"
+version = "1:0.3.61-1"
 
 [[pkgs.pacman.explicit]]
 package = "pkgconf"
@@ -4192,15 +5252,19 @@ version = "1.5.1-3"
 
 [[pkgs.pacman.explicit]]
 package = "python-black"
-version = "22.8.0-2"
+version = "22.12.0-1"
 
 [[pkgs.pacman.explicit]]
 package = "python-pip"
-version = "22.2.2-2"
+version = "22.3.1-1"
 
 [[pkgs.pacman.explicit]]
 package = "python-pipx"
 version = "1.1.0-1"
+
+[[pkgs.pacman.explicit]]
+package = "python-virtualenv"
+version = "20.17.1-1"
 
 [[pkgs.pacman.explicit]]
 package = "qt5ct"
@@ -4208,11 +5272,11 @@ version = "1.5-2"
 
 [[pkgs.pacman.explicit]]
 package = "quickemu"
-version = "4.3-1"
+version = "4.5-1"
 
 [[pkgs.pacman.explicit]]
 package = "qutebrowser"
-version = "2.5.2-1"
+version = "2.5.2-2"
 
 [[pkgs.pacman.explicit]]
 package = "ranger"
@@ -4228,7 +5292,7 @@ version = "r22.0c07719-1"
 
 [[pkgs.pacman.explicit]]
 package = "rust"
-version = "1:1.63.0-1"
+version = "1:1.65.0-1"
 
 [[pkgs.pacman.explicit]]
 package = "scrot"
@@ -4236,7 +5300,7 @@ version = "1.7-1"
 
 [[pkgs.pacman.explicit]]
 package = "sddm"
-version = "0.19.0-8"
+version = "0.19.0-9"
 
 [[pkgs.pacman.explicit]]
 package = "sddm-sugar-candy-git"
@@ -4244,7 +5308,15 @@ version = "r53.2b72ef6-1"
 
 [[pkgs.pacman.explicit]]
 package = "sed"
-version = "4.8-1"
+version = "4.9-1"
+
+[[pkgs.pacman.explicit]]
+package = "semver"
+version = "7.3.8-1"
+
+[[pkgs.pacman.explicit]]
+package = "sfml"
+version = "2.5.1-3"
 
 [[pkgs.pacman.explicit]]
 package = "sl"
@@ -4252,11 +5324,11 @@ version = "5.05-3"
 
 [[pkgs.pacman.explicit]]
 package = "slock"
-version = "1.4-6"
+version = "1.5-1"
 
 [[pkgs.pacman.explicit]]
 package = "sudo"
-version = "1.9.11.p3-1"
+version = "1.9.12.p1-1"
 
 [[pkgs.pacman.explicit]]
 package = "sxhkd"
@@ -4268,7 +5340,7 @@ version = "1.18.0-3"
 
 [[pkgs.pacman.explicit]]
 package = "texinfo"
-version = "6.8-2"
+version = "7.0.1-1"
 
 [[pkgs.pacman.explicit]]
 package = "texlive-bibtexextra"
@@ -4323,12 +5395,20 @@ package = "tig"
 version = "2.5.7-1"
 
 [[pkgs.pacman.explicit]]
-package = "tldr"
-version = "3.1.0-2"
+package = "tk"
+version = "8.6.13-1"
+
+[[pkgs.pacman.explicit]]
+package = "tldr++"
+version = "1.0.0.alpha-5"
 
 [[pkgs.pacman.explicit]]
 package = "tmux"
 version = "3.3_a-2"
+
+[[pkgs.pacman.explicit]]
+package = "tomb"
+version = "2.9-3"
 
 [[pkgs.pacman.explicit]]
 package = "tty-clock-git"
@@ -4344,11 +5424,23 @@ version = "6.0-19"
 
 [[pkgs.pacman.explicit]]
 package = "vim-clipboard"
-version = "9.0.0354-1"
+version = "9.0.0910-1"
+
+[[pkgs.pacman.explicit]]
+package = "visidata"
+version = "2.10.2-3"
+
+[[pkgs.pacman.explicit]]
+package = "vivid"
+version = "0.8.0-1"
 
 [[pkgs.pacman.explicit]]
 package = "vulkan-intel"
-version = "22.1.7-1"
+version = "22.2.3-1"
+
+[[pkgs.pacman.explicit]]
+package = "vulkan-radeon"
+version = "22.2.3-1"
 
 [[pkgs.pacman.explicit]]
 package = "which"
@@ -4356,19 +5448,35 @@ version = "2.21-5"
 
 [[pkgs.pacman.explicit]]
 package = "wireplumber"
-version = "0.4.11-4"
+version = "0.4.12-2"
+
+[[pkgs.pacman.explicit]]
+package = "xf86-video-amdgpu"
+version = "22.0.0-1"
+
+[[pkgs.pacman.explicit]]
+package = "xf86-video-ati"
+version = "1:19.1.0.r15.g7a6a34af-1"
+
+[[pkgs.pacman.explicit]]
+package = "xf86-video-nouveau"
+version = "1.0.17-2"
 
 [[pkgs.pacman.explicit]]
 package = "xf86-video-vesa"
-version = "2.5.0-3"
+version = "2.6.0-1"
+
+[[pkgs.pacman.explicit]]
+package = "xf86-video-vmware"
+version = "13.3.0-4"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-bdftopcf"
-version = "1.1-3"
+version = "1.1.1-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-docs"
-version = "1.7.2-1"
+version = "1.7.2-2"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-font-util"
@@ -4376,11 +5484,11 @@ version = "1.3.3-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-fonts-100dpi"
-version = "1.0.3-7"
+version = "1.0.3-8"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-fonts-75dpi"
-version = "1.0.3-7"
+version = "1.0.3-8"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-iceauth"
@@ -4412,15 +5520,15 @@ version = "21.1.4-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-sessreg"
-version = "1.1.2-3"
+version = "1.1.3-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-smproxy"
-version = "1.0.6-4"
+version = "1.0.7-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-x11perf"
-version = "1.6.1-3"
+version = "1.6.2-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-xbacklight"
@@ -4432,7 +5540,7 @@ version = "1.0.6-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-xcursorgen"
-version = "1.0.7-3"
+version = "1.0.8-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-xdpyinfo"
@@ -4448,7 +5556,7 @@ version = "1.2.5-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-xgamma"
-version = "1.0.6-4"
+version = "1.0.7-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-xhost"
@@ -4456,7 +5564,7 @@ version = "1.0.8-3"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-xinit"
-version = "1.4.1-3"
+version = "1.4.2-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-xinput"
@@ -4464,7 +5572,7 @@ version = "1.6.3-3"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-xkbevd"
-version = "1.1.4-4"
+version = "1.1.5-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-xkbutils"
@@ -4472,35 +5580,43 @@ version = "1.0.5-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-xkill"
-version = "1.0.5-3"
+version = "1.0.6-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-xlsatoms"
-version = "1.1.3-3"
+version = "1.1.4-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-xlsclients"
-version = "1.1.4-3"
+version = "1.1.5-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-xpr"
 version = "1.1.0-1"
 
 [[pkgs.pacman.explicit]]
+package = "xorg-xprop"
+version = "1.2.6-1"
+
+[[pkgs.pacman.explicit]]
 package = "xorg-xrefresh"
 version = "1.0.7-1"
 
 [[pkgs.pacman.explicit]]
+package = "xorg-xset"
+version = "1.2.5-1"
+
+[[pkgs.pacman.explicit]]
 package = "xorg-xsetroot"
-version = "1.1.2-3"
+version = "1.1.3-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-xvinfo"
-version = "1.1.4-3"
+version = "1.1.5-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-xwayland"
-version = "22.1.3-1"
+version = "22.1.5-1"
 
 [[pkgs.pacman.explicit]]
 package = "xorg-xwd"
@@ -4523,32 +5639,12 @@ package = "zsa-wally"
 version = "2.1.3-4"
 
 [[pkgs.pacman.foreign]]
-package = "amtoine-applications-git"
-version = "1.0.r6.27242df-1"
-
-[[pkgs.pacman.foreign]]
-package = "amtoine-icons-git"
-version = "r21.7cc7ce2-1"
-
-[[pkgs.pacman.foreign]]
-package = "amtoine-scripts-git"
-version = "r37.189592d-1"
-
-[[pkgs.pacman.foreign]]
-package = "amtoine-sounds-git"
-version = "r4.5d10643-1"
-
-[[pkgs.pacman.foreign]]
-package = "amtoine-wallpapers-git"
-version = "r32.e5ba1e1-1"
-
-[[pkgs.pacman.foreign]]
 package = "catppuccin-gtk-theme-frappe"
-version = "0.2.7-2"
+version = "0.4.0-1"
 
 [[pkgs.pacman.foreign]]
 package = "cava"
-version = "0.8.2-5"
+version = "0.8.3-1"
 
 [[pkgs.pacman.foreign]]
 package = "devour"
@@ -4567,8 +5663,40 @@ package = "ghq"
 version = "1.3.0-1"
 
 [[pkgs.pacman.foreign]]
-package = "junnunkarim-wallpapers-git"
-version = "r4.9893042-1"
+package = "goat-applications-git"
+version = "1.0.r7.14bb72a-1"
+
+[[pkgs.pacman.foreign]]
+package = "goat-icons-git"
+version = "r22.a2864f9-1"
+
+[[pkgs.pacman.foreign]]
+package = "goat-junnunkarim-wallpapers-git"
+version = "r5.ed614bd-1"
+
+[[pkgs.pacman.foreign]]
+package = "goat-mut-ex-wallpapers-git"
+version = "r36.849587d-1"
+
+[[pkgs.pacman.foreign]]
+package = "goat-remote-git"
+version = "r21.c32f4bb-1"
+
+[[pkgs.pacman.foreign]]
+package = "goat-scripts-git"
+version = "r41.70ca3a3-1"
+
+[[pkgs.pacman.foreign]]
+package = "goat-sounds-git"
+version = "r5.0f05e4f-1"
+
+[[pkgs.pacman.foreign]]
+package = "goat-wallpapers-git"
+version = "r33.52e7e25-1"
+
+[[pkgs.pacman.foreign]]
+package = "ijq"
+version = "0.4.1-1"
 
 [[pkgs.pacman.foreign]]
 package = "latex-mk"
@@ -4579,20 +5707,24 @@ package = "mbsync-git"
 version = "1306.65cd442-1"
 
 [[pkgs.pacman.foreign]]
-package = "mu"
-version = "1.8.9-1"
+package = "moar"
+version = "1.10.0-1"
 
 [[pkgs.pacman.foreign]]
-package = "mut-ex-wallpapers-git"
-version = "r36.849587d-1"
+package = "mu"
+version = "1.8.13-1"
 
 [[pkgs.pacman.foreign]]
 package = "nerd-fonts-mononoki"
-version = "2.1.0-2"
+version = "2.2.2-2"
+
+[[pkgs.pacman.foreign]]
+package = "obnc"
+version = "0.16.1-3"
 
 [[pkgs.pacman.foreign]]
 package = "otf-monocraft"
-version = "1.3-1"
+version = "1.4-1"
 
 [[pkgs.pacman.foreign]]
 package = "paru"
@@ -4604,11 +5736,11 @@ version = "1770_Next.208.g51b2135_2022.05.29-1"
 
 [[pkgs.pacman.foreign]]
 package = "pinentry-git"
-version = "1.2.1.r4.gbc11554-1"
+version = "1.2.1.r12.ga7e78e1-1"
 
 [[pkgs.pacman.foreign]]
 package = "quickemu"
-version = "4.3-1"
+version = "4.5-1"
 
 [[pkgs.pacman.foreign]]
 package = "rofi-bluetooth-git"
@@ -4619,24 +5751,32 @@ package = "sddm-sugar-candy-git"
 version = "r53.2b72ef6-1"
 
 [[pkgs.pacman.foreign]]
+package = "tldr++"
+version = "1.0.0.alpha-5"
+
+[[pkgs.pacman.foreign]]
+package = "tomb"
+version = "2.9-3"
+
+[[pkgs.pacman.foreign]]
 package = "tty-clock-git"
 version = "185.f2f847c-1"
 
 [[pkgs.pacman.foreign]]
 package = "vim-clipboard"
-version = "9.0.0354-1"
+version = "9.0.0910-1"
 
 [[pkgs.pacman.native]]
 package = "alacritty"
-version = "0.10.1-2"
+version = "0.11.0-2"
 
 [[pkgs.pacman.native]]
 package = "alsa-utils"
-version = "1.2.7-1"
+version = "1.2.8-1"
 
 [[pkgs.pacman.native]]
 package = "archlinux-keyring"
-version = "20220831-1"
+version = "20221123-1"
 
 [[pkgs.pacman.native]]
 package = "asciinema"
@@ -4660,7 +5800,7 @@ version = "0.22.1-1"
 
 [[pkgs.pacman.native]]
 package = "binutils"
-version = "2.39-3"
+version = "2.39-4"
 
 [[pkgs.pacman.native]]
 package = "bison"
@@ -4668,19 +5808,19 @@ version = "3.8.2-4"
 
 [[pkgs.pacman.native]]
 package = "blueman"
-version = "2.3.2-1"
+version = "2.3.5-1"
 
 [[pkgs.pacman.native]]
 package = "bluez"
-version = "5.65-3"
+version = "5.66-1"
 
 [[pkgs.pacman.native]]
 package = "bluez-plugins"
-version = "5.65-3"
+version = "5.66-1"
 
 [[pkgs.pacman.native]]
 package = "bluez-utils"
-version = "5.65-3"
+version = "5.66-1"
 
 [[pkgs.pacman.native]]
 package = "brightnessctl"
@@ -4692,7 +5832,7 @@ version = "0.9.10-2"
 
 [[pkgs.pacman.native]]
 package = "clang"
-version = "14.0.6-2"
+version = "14.0.6-4"
 
 [[pkgs.pacman.native]]
 package = "cmus"
@@ -4700,15 +5840,19 @@ version = "2.10.0-3"
 
 [[pkgs.pacman.native]]
 package = "conky"
-version = "1.12.2-2"
+version = "1.15.0-1"
 
 [[pkgs.pacman.native]]
 package = "cronie"
 version = "1.6.1-1"
 
 [[pkgs.pacman.native]]
+package = "debugedit"
+version = "5.0-4"
+
+[[pkgs.pacman.native]]
 package = "discord"
-version = "0.0.20-1"
+version = "0.0.22-1"
 
 [[pkgs.pacman.native]]
 package = "dunst"
@@ -4724,11 +5868,11 @@ version = "0.10.1-6"
 
 [[pkgs.pacman.native]]
 package = "fakeroot"
-version = "1.29-1"
+version = "1.30.1-1"
 
 [[pkgs.pacman.native]]
 package = "fd"
-version = "8.4.0-1"
+version = "8.6.0-1"
 
 [[pkgs.pacman.native]]
 package = "feh"
@@ -4744,7 +5888,7 @@ version = "4.9.0-1"
 
 [[pkgs.pacman.native]]
 package = "firefox"
-version = "105.0-2"
+version = "107.0.1-1"
 
 [[pkgs.pacman.native]]
 package = "flex"
@@ -4752,31 +5896,35 @@ version = "2.6.4-3"
 
 [[pkgs.pacman.native]]
 package = "fzf"
-version = "0.33.0-1"
+version = "0.35.1-1"
 
 [[pkgs.pacman.native]]
 package = "gawk"
-version = "5.2.0-3"
+version = "5.2.1-1"
 
 [[pkgs.pacman.native]]
 package = "gcc"
 version = "12.2.0-1"
 
 [[pkgs.pacman.native]]
+package = "gdb"
+version = "12.1-2"
+
+[[pkgs.pacman.native]]
 package = "gettext"
-version = "0.21-2"
+version = "0.21.1-2"
 
 [[pkgs.pacman.native]]
 package = "git"
-version = "2.37.3-1"
+version = "2.38.2-1"
 
 [[pkgs.pacman.native]]
 package = "git-delta"
-version = "0.14.0-2"
+version = "0.15.1-1"
 
 [[pkgs.pacman.native]]
 package = "github-cli"
-version = "2.15.0-1"
+version = "2.20.2-1"
 
 [[pkgs.pacman.native]]
 package = "glow"
@@ -4792,11 +5940,23 @@ version = "1.22.4-7"
 
 [[pkgs.pacman.native]]
 package = "gst-plugin-pipewire"
-version = "1:0.3.58-1"
+version = "1:0.3.61-1"
 
 [[pkgs.pacman.native]]
 package = "gzip"
 version = "1.12-1"
+
+[[pkgs.pacman.native]]
+package = "helix"
+version = "22.12-1"
+
+[[pkgs.pacman.native]]
+package = "htop"
+version = "3.2.1-1"
+
+[[pkgs.pacman.native]]
+package = "hugo"
+version = "0.108.0-1"
 
 [[pkgs.pacman.native]]
 package = "intel-media-driver"
@@ -4804,15 +5964,15 @@ version = "22.4.4-2"
 
 [[pkgs.pacman.native]]
 package = "intel-ucode"
-version = "20220809-1"
+version = "20221108-1"
 
 [[pkgs.pacman.native]]
 package = "kolourpaint"
-version = "22.08.1-1"
+version = "22.12.0-1"
 
 [[pkgs.pacman.native]]
 package = "lazygit"
-version = "0.35-1"
+version = "0.36.0-1"
 
 [[pkgs.pacman.native]]
 package = "libnotify"
@@ -4820,11 +5980,7 @@ version = "0.8.1-1"
 
 [[pkgs.pacman.native]]
 package = "libpulse"
-version = "16.1-1"
-
-[[pkgs.pacman.native]]
-package = "libreoffice-fresh"
-version = "7.4.1-3"
+version = "16.1-3"
 
 [[pkgs.pacman.native]]
 package = "libtool"
@@ -4835,16 +5991,28 @@ package = "libva-intel-driver"
 version = "2.4.1-2"
 
 [[pkgs.pacman.native]]
+package = "libva-mesa-driver"
+version = "22.2.3-1"
+
+[[pkgs.pacman.native]]
 package = "linux"
-version = "5.19.10.arch1-1"
+version = "6.0.12.arch1-1"
 
 [[pkgs.pacman.native]]
 package = "linux-firmware"
-version = "20220815.8413c63-1"
+version = "20221109.60310c2-2"
+
+[[pkgs.pacman.native]]
+package = "lldb"
+version = "14.0.6-1"
 
 [[pkgs.pacman.native]]
 package = "llvm"
-version = "14.0.6-3"
+version = "14.0.6-4"
+
+[[pkgs.pacman.native]]
+package = "lolcat"
+version = "100.0.1-1"
 
 [[pkgs.pacman.native]]
 package = "lxappearance"
@@ -4856,23 +6024,23 @@ version = "1.4.19-1"
 
 [[pkgs.pacman.native]]
 package = "make"
-version = "4.3-3"
+version = "4.3-5"
 
 [[pkgs.pacman.native]]
 package = "man-pages"
-version = "5.13-1"
+version = "6.01-1"
 
 [[pkgs.pacman.native]]
 package = "moc"
-version = "1:2.5.2-6"
+version = "1:2.5.2-7"
 
 [[pkgs.pacman.native]]
 package = "mpd"
-version = "0.23.9-3"
+version = "0.23.11-1"
 
 [[pkgs.pacman.native]]
 package = "ncmpcpp"
-version = "0.9.2-8"
+version = "0.9.2-9"
 
 [[pkgs.pacman.native]]
 package = "neomutt"
@@ -4880,43 +6048,43 @@ version = "20220429-1"
 
 [[pkgs.pacman.native]]
 package = "neovim"
-version = "0.7.2-3"
+version = "0.8.1-2"
 
 [[pkgs.pacman.native]]
 package = "networkmanager"
-version = "1.40.0-1"
+version = "1.40.6-1"
 
 [[pkgs.pacman.native]]
 package = "nm-connection-editor"
-version = "1.28.0-1"
+version = "1.30.0-1"
 
 [[pkgs.pacman.native]]
 package = "noto-fonts"
-version = "20220607-1"
+version = "20220810-1"
 
 [[pkgs.pacman.native]]
 package = "noto-fonts-cjk"
 version = "20220126-1"
 
 [[pkgs.pacman.native]]
-package = "ntfs-3g"
-version = "2022.5.17-1"
+package = "npm"
+version = "8.19.2-1"
 
 [[pkgs.pacman.native]]
-package = "nushell"
-version = "0.67.0-1"
+package = "ntfs-3g"
+version = "2022.10.3-1"
 
 [[pkgs.pacman.native]]
 package = "okular"
-version = "22.08.1-1"
+version = "22.12.0-1"
 
 [[pkgs.pacman.native]]
 package = "openssh"
-version = "9.0p1-1"
+version = "9.1p1-3"
 
 [[pkgs.pacman.native]]
 package = "pacman"
-version = "6.0.1-7"
+version = "6.0.2-5"
 
 [[pkgs.pacman.native]]
 package = "pass"
@@ -4928,19 +6096,19 @@ version = "2.7.6-8"
 
 [[pkgs.pacman.native]]
 package = "pipewire"
-version = "1:0.3.58-1"
+version = "1:0.3.61-1"
 
 [[pkgs.pacman.native]]
 package = "pipewire-alsa"
-version = "1:0.3.58-1"
+version = "1:0.3.61-1"
 
 [[pkgs.pacman.native]]
 package = "pipewire-jack"
-version = "1:0.3.58-1"
+version = "1:0.3.61-1"
 
 [[pkgs.pacman.native]]
 package = "pipewire-pulse"
-version = "1:0.3.58-1"
+version = "1:0.3.61-1"
 
 [[pkgs.pacman.native]]
 package = "pkgconf"
@@ -4960,15 +6128,19 @@ version = "1.5.1-3"
 
 [[pkgs.pacman.native]]
 package = "python-black"
-version = "22.8.0-2"
+version = "22.12.0-1"
 
 [[pkgs.pacman.native]]
 package = "python-pip"
-version = "22.2.2-2"
+version = "22.3.1-1"
 
 [[pkgs.pacman.native]]
 package = "python-pipx"
 version = "1.1.0-1"
+
+[[pkgs.pacman.native]]
+package = "python-virtualenv"
+version = "20.17.1-1"
 
 [[pkgs.pacman.native]]
 package = "qt5ct"
@@ -4976,7 +6148,7 @@ version = "1.5-2"
 
 [[pkgs.pacman.native]]
 package = "qutebrowser"
-version = "2.5.2-1"
+version = "2.5.2-2"
 
 [[pkgs.pacman.native]]
 package = "ranger"
@@ -4988,7 +6160,7 @@ version = "1.7.5-1"
 
 [[pkgs.pacman.native]]
 package = "rust"
-version = "1:1.63.0-1"
+version = "1:1.65.0-1"
 
 [[pkgs.pacman.native]]
 package = "scrot"
@@ -4996,11 +6168,19 @@ version = "1.7-1"
 
 [[pkgs.pacman.native]]
 package = "sddm"
-version = "0.19.0-8"
+version = "0.19.0-9"
 
 [[pkgs.pacman.native]]
 package = "sed"
-version = "4.8-1"
+version = "4.9-1"
+
+[[pkgs.pacman.native]]
+package = "semver"
+version = "7.3.8-1"
+
+[[pkgs.pacman.native]]
+package = "sfml"
+version = "2.5.1-3"
 
 [[pkgs.pacman.native]]
 package = "sl"
@@ -5008,11 +6188,11 @@ version = "5.05-3"
 
 [[pkgs.pacman.native]]
 package = "slock"
-version = "1.4-6"
+version = "1.5-1"
 
 [[pkgs.pacman.native]]
 package = "sudo"
-version = "1.9.11.p3-1"
+version = "1.9.12.p1-1"
 
 [[pkgs.pacman.native]]
 package = "sxhkd"
@@ -5024,7 +6204,7 @@ version = "1.18.0-3"
 
 [[pkgs.pacman.native]]
 package = "texinfo"
-version = "6.8-2"
+version = "7.0.1-1"
 
 [[pkgs.pacman.native]]
 package = "texlive-bibtexextra"
@@ -5079,8 +6259,8 @@ package = "tig"
 version = "2.5.7-1"
 
 [[pkgs.pacman.native]]
-package = "tldr"
-version = "3.1.0-2"
+package = "tk"
+version = "8.6.13-1"
 
 [[pkgs.pacman.native]]
 package = "tmux"
@@ -5095,8 +6275,20 @@ package = "unzip"
 version = "6.0-19"
 
 [[pkgs.pacman.native]]
+package = "visidata"
+version = "2.10.2-3"
+
+[[pkgs.pacman.native]]
+package = "vivid"
+version = "0.8.0-1"
+
+[[pkgs.pacman.native]]
 package = "vulkan-intel"
-version = "22.1.7-1"
+version = "22.2.3-1"
+
+[[pkgs.pacman.native]]
+package = "vulkan-radeon"
+version = "22.2.3-1"
 
 [[pkgs.pacman.native]]
 package = "which"
@@ -5104,19 +6296,35 @@ version = "2.21-5"
 
 [[pkgs.pacman.native]]
 package = "wireplumber"
-version = "0.4.11-4"
+version = "0.4.12-2"
+
+[[pkgs.pacman.native]]
+package = "xf86-video-amdgpu"
+version = "22.0.0-1"
+
+[[pkgs.pacman.native]]
+package = "xf86-video-ati"
+version = "1:19.1.0.r15.g7a6a34af-1"
+
+[[pkgs.pacman.native]]
+package = "xf86-video-nouveau"
+version = "1.0.17-2"
 
 [[pkgs.pacman.native]]
 package = "xf86-video-vesa"
-version = "2.5.0-3"
+version = "2.6.0-1"
+
+[[pkgs.pacman.native]]
+package = "xf86-video-vmware"
+version = "13.3.0-4"
 
 [[pkgs.pacman.native]]
 package = "xorg-bdftopcf"
-version = "1.1-3"
+version = "1.1.1-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-docs"
-version = "1.7.2-1"
+version = "1.7.2-2"
 
 [[pkgs.pacman.native]]
 package = "xorg-font-util"
@@ -5124,11 +6332,11 @@ version = "1.3.3-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-fonts-100dpi"
-version = "1.0.3-7"
+version = "1.0.3-8"
 
 [[pkgs.pacman.native]]
 package = "xorg-fonts-75dpi"
-version = "1.0.3-7"
+version = "1.0.3-8"
 
 [[pkgs.pacman.native]]
 package = "xorg-iceauth"
@@ -5160,15 +6368,15 @@ version = "21.1.4-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-sessreg"
-version = "1.1.2-3"
+version = "1.1.3-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-smproxy"
-version = "1.0.6-4"
+version = "1.0.7-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-x11perf"
-version = "1.6.1-3"
+version = "1.6.2-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-xbacklight"
@@ -5180,7 +6388,7 @@ version = "1.0.6-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-xcursorgen"
-version = "1.0.7-3"
+version = "1.0.8-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-xdpyinfo"
@@ -5196,7 +6404,7 @@ version = "1.2.5-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-xgamma"
-version = "1.0.6-4"
+version = "1.0.7-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-xhost"
@@ -5204,7 +6412,7 @@ version = "1.0.8-3"
 
 [[pkgs.pacman.native]]
 package = "xorg-xinit"
-version = "1.4.1-3"
+version = "1.4.2-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-xinput"
@@ -5212,7 +6420,7 @@ version = "1.6.3-3"
 
 [[pkgs.pacman.native]]
 package = "xorg-xkbevd"
-version = "1.1.4-4"
+version = "1.1.5-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-xkbutils"
@@ -5220,35 +6428,43 @@ version = "1.0.5-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-xkill"
-version = "1.0.5-3"
+version = "1.0.6-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-xlsatoms"
-version = "1.1.3-3"
+version = "1.1.4-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-xlsclients"
-version = "1.1.4-3"
+version = "1.1.5-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-xpr"
 version = "1.1.0-1"
 
 [[pkgs.pacman.native]]
+package = "xorg-xprop"
+version = "1.2.6-1"
+
+[[pkgs.pacman.native]]
 package = "xorg-xrefresh"
 version = "1.0.7-1"
 
 [[pkgs.pacman.native]]
+package = "xorg-xset"
+version = "1.2.5-1"
+
+[[pkgs.pacman.native]]
 package = "xorg-xsetroot"
-version = "1.1.2-3"
+version = "1.1.3-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-xvinfo"
-version = "1.1.4-3"
+version = "1.1.5-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-xwayland"
-version = "22.1.3-1"
+version = "22.1.5-1"
 
 [[pkgs.pacman.native]]
 package = "xorg-xwd"
@@ -5269,6 +6485,10 @@ version = "1.1.2-1"
 [[pkgs.pacman.native]]
 package = "zsa-wally"
 version = "2.1.3-4"
+
+[pkgs.python]
+pipx = []
+
 [[pkgs.python.pip]]
 package = "appdirs"
 version = "1.4.4"
@@ -5278,32 +6498,36 @@ package = "argcomplete"
 version = "2.0.0"
 
 [[pkgs.python.pip]]
+package = "asciidoc"
+version = "10.2.0"
+
+[[pkgs.python.pip]]
 package = "asciinema"
 version = "2.2.0"
 
 [[pkgs.python.pip]]
+package = "attrs"
+version = "22.1.0"
+
+[[pkgs.python.pip]]
 package = "autocommand"
-version = "2.2.1"
+version = "2.2.2"
 
 [[pkgs.python.pip]]
 package = "black"
-version = "22.8.0"
+version = "22.12.0"
 
 [[pkgs.python.pip]]
 package = "btrfsutil"
-version = "5.19.1"
+version = "6.0.2"
 
 [[pkgs.python.pip]]
-package = "certifi"
-version = "2022.9.14"
+package = "cffi"
+version = "1.15.1"
 
 [[pkgs.python.pip]]
 package = "cfgv"
 version = "3.3.1"
-
-[[pkgs.python.pip]]
-package = "charset-normalizer"
-version = "2.1.1"
 
 [[pkgs.python.pip]]
 package = "click"
@@ -5311,63 +6535,71 @@ version = "8.1.3"
 
 [[pkgs.python.pip]]
 package = "colorama"
-version = "0.4.5"
+version = "0.4.6"
 
 [[pkgs.python.pip]]
 package = "commonmark"
 version = "0.9.1"
 
 [[pkgs.python.pip]]
+package = "cryptography"
+version = "38.0.4"
+
+[[pkgs.python.pip]]
 package = "Cython"
 version = "0.29.32"
 
 [[pkgs.python.pip]]
+package = "distlib"
+version = "0.3.6"
+
+[[pkgs.python.pip]]
 package = "distro"
-version = "1.7.0"
+version = "1.8.0"
 
 [[pkgs.python.pip]]
-package = "docopt"
-version = "0.6.2"
+package = "evdev"
+version = "1.6.0"
 
 [[pkgs.python.pip]]
-package = "Flask"
-version = "2.2.2"
-
-[[pkgs.python.pip]]
-package = "grip"
-version = "4.6.1"
+package = "filelock"
+version = "3.8.0"
 
 [[pkgs.python.pip]]
 package = "identify"
-version = "2.5.5"
+version = "2.5.9"
 
 [[pkgs.python.pip]]
-package = "idna"
-version = "3.4"
+package = "importlib-metadata"
+version = "5.0.0"
 
 [[pkgs.python.pip]]
 package = "inflect"
-version = "6.0.0"
-
-[[pkgs.python.pip]]
-package = "itsdangerous"
-version = "2.1.2"
+version = "6.0.2"
 
 [[pkgs.python.pip]]
 package = "jaraco.context"
-version = "4.1.2"
+version = "4.2.0"
 
 [[pkgs.python.pip]]
 package = "jaraco.functools"
-version = "3.5.1"
+version = "3.5.2"
 
 [[pkgs.python.pip]]
 package = "jaraco.text"
-version = "3.9.1"
+version = "3.11.0"
+
+[[pkgs.python.pip]]
+package = "jedi"
+version = "0.18.2"
 
 [[pkgs.python.pip]]
 package = "Jinja2"
 version = "3.1.2"
+
+[[pkgs.python.pip]]
+package = "keyboard"
+version = "0.13.5"
 
 [[pkgs.python.pip]]
 package = "libfdt"
@@ -5378,16 +6610,20 @@ package = "lit"
 version = "14.0.6.dev0"
 
 [[pkgs.python.pip]]
-package = "Markdown"
-version = "3.4.1"
-
-[[pkgs.python.pip]]
 package = "MarkupSafe"
 version = "2.1.1"
 
 [[pkgs.python.pip]]
+package = "meson"
+version = "0.64.1"
+
+[[pkgs.python.pip]]
 package = "more-itertools"
-version = "8.13.0"
+version = "9.0.0"
+
+[[pkgs.python.pip]]
+package = "mouse"
+version = "0.7.1"
 
 [[pkgs.python.pip]]
 package = "mypy-extensions"
@@ -5402,10 +6638,6 @@ package = "nodeenv"
 version = "1.7.0"
 
 [[pkgs.python.pip]]
-package = "nspektr"
-version = "0.4.0"
-
-[[pkgs.python.pip]]
 package = "ordered-set"
 version = "4.1.0"
 
@@ -5414,16 +6646,12 @@ package = "packaging"
 version = "21.3"
 
 [[pkgs.python.pip]]
-package = "path-and-address"
-version = "2.0.1"
+package = "parso"
+version = "0.8.3"
 
 [[pkgs.python.pip]]
 package = "pathspec"
-version = "0.10.1"
-
-[[pkgs.python.pip]]
-package = "pbr"
-version = "5.10.0"
+version = "0.10.3"
 
 [[pkgs.python.pip]]
 package = "pipx"
@@ -5431,11 +6659,27 @@ version = "1.1.0"
 
 [[pkgs.python.pip]]
 package = "platformdirs"
-version = "2.5.2"
+version = "2.6.0"
 
 [[pkgs.python.pip]]
 package = "ply"
 version = "3.11"
+
+[[pkgs.python.pip]]
+package = "plyer"
+version = "2.0.0"
+
+[[pkgs.python.pip]]
+package = "pre-commit"
+version = "2.20.0"
+
+[[pkgs.python.pip]]
+package = "prompt-toolkit"
+version = "3.0.33"
+
+[[pkgs.python.pip]]
+package = "ptpython"
+version = "3.0.21"
 
 [[pkgs.python.pip]]
 package = "pulsemixer"
@@ -5443,7 +6687,11 @@ version = "1.5.1"
 
 [[pkgs.python.pip]]
 package = "pycairo"
-version = "1.21.0"
+version = "1.23.0"
+
+[[pkgs.python.pip]]
+package = "pycparser"
+version = "2.21"
 
 [[pkgs.python.pip]]
 package = "pydantic"
@@ -5460,6 +6708,10 @@ version = "2.13.0"
 [[pkgs.python.pip]]
 package = "PyGObject"
 version = "3.42.2"
+
+[[pkgs.python.pip]]
+package = "pynput"
+version = "1.7.6"
 
 [[pkgs.python.pip]]
 package = "pyparsing"
@@ -5483,7 +6735,7 @@ version = "2.8.2"
 
 [[pkgs.python.pip]]
 package = "python-xlib"
-version = "0.31"
+version = "0.32"
 
 [[pkgs.python.pip]]
 package = "PyYAML"
@@ -5498,20 +6750,19 @@ package = "ranger-fm"
 version = "1.9.3"
 
 [[pkgs.python.pip]]
-package = "requests"
-version = "2.28.1"
+package = "remote @ file:///home/amtoine/.local/share/ghq/github.com/amtoine/remote-ps3"
+
+[[pkgs.python.pip]]
+package = "rich"
+version = "12.5.1"
 
 [[pkgs.python.pip]]
 package = "shtab"
-version = "1.5.5"
+version = "1.5.8"
 
 [[pkgs.python.pip]]
 package = "six"
 version = "1.16.0"
-
-[[pkgs.python.pip]]
-package = "stevedore"
-version = "4.0.0"
 
 [[pkgs.python.pip]]
 package = "team"
@@ -5519,15 +6770,11 @@ version = "1.0"
 
 [[pkgs.python.pip]]
 package = "termcolor"
-version = "2.0.0"
+version = "2.1.1"
 
 [[pkgs.python.pip]]
 package = "termdown"
 version = "1.18.0"
-
-[[pkgs.python.pip]]
-package = "tldr"
-version = "3.1.0"
 
 [[pkgs.python.pip]]
 package = "toml"
@@ -5539,15 +6786,11 @@ version = "2.0.1"
 
 [[pkgs.python.pip]]
 package = "trove-classifiers"
-version = "2022.8.31"
+version = "2022.12.1"
 
 [[pkgs.python.pip]]
 package = "typing_extensions"
-version = "4.3.0"
-
-[[pkgs.python.pip]]
-package = "urllib3"
-version = "1.26.12"
+version = "4.4.0"
 
 [[pkgs.python.pip]]
 package = "userpath"
@@ -5558,37 +6801,51 @@ package = "validate-pyproject"
 version = "0.10.1"
 
 [[pkgs.python.pip]]
-package = "virtualenv-clone"
-version = "0.5.7"
-
-[[pkgs.python.pip]]
-package = "virtualenvwrapper"
-version = "4.8.4"
-
-[[pkgs.python.pip]]
-package = "Werkzeug"
-version = "2.2.2"
-
-[[pkgs.python.pipx]]
-package = "python-lsp-server"
-python = "3.10.7"
-version = "1.5.0"
-
-[[pkgs.python.pipx]]
 package = "virtualenv"
-python = "3.10.7"
-version = "20.16.5"
+version = "20.16.7"
+
+[[pkgs.python.pip]]
+package = "visidata"
+version = "2.10.2"
+
+[[pkgs.python.pip]]
+package = "wcwidth"
+version = "0.2.5"
+
+[[pkgs.python.pip]]
+package = "zipp"
+version = "3.11.0"
 [[pkgs.rust.cargo]]
 package = "broot"
-version = "1.15.0"
+version = "1.16.2"
+
+[[pkgs.rust.cargo]]
+package = "fd-find"
+version = "8.5.3"
+
+[[pkgs.rust.cargo]]
+package = "gex"
+version = "0.3.3"
+
+[[pkgs.rust.cargo]]
+package = "gitui"
+version = "0.22.1"
 
 [[pkgs.rust.cargo]]
 package = "heh"
 version = "0.2.0"
 
 [[pkgs.rust.cargo]]
-package = "helix-term"
-version = "0.6.0 (/home/amtoine/ghq/github.com/helix-editor/helix/helix-term)"
+package = "nu"
+version = "0.72.0"
+
+[[pkgs.rust.cargo]]
+package = "ripgrep"
+version = "13.0.0"
+
+[[pkgs.rust.cargo]]
+package = "sd"
+version = "0.7.6"
 
 [[pkgs.rust.cargo]]
 package = "toipe"
