@@ -194,6 +194,43 @@ let-env NU_LIB_DIRS = [
     ($nu.config-path | path dirname | path join 'lib')
 ]
 
+let-env DEFAULT_CONFIG_FILE = (
+  $env.NU_LIB_DIRS.0
+  | path join "default_config.nu"
+)
+
+
+# TODO
+# credit to @kubouch
+# https://discord.com/channels/601130461678272522/1050117978403917834/1051457787663761518
+export def "config update default" [ --help (-h) ] {
+  let name = ($env.DEFAULT_CONFIG_FILE | path basename)
+  let default_url = (
+    [
+        'https://raw.githubusercontent.com'
+        'nushell/nushell/main/crates/nu-utils/src/sample_config'
+        $name
+    ]
+    | path join
+  )
+
+  if ($env.DEFAULT_CONFIG_FILE| path expand | path exists) {
+    let new = (fetch $default_url)
+    let old = (open $env.DEFAULT_CONFIG_FILE)
+
+    if $old != $new {
+      $new | save --raw $env.DEFAULT_CONFIG_FILE
+      print $'Updated ($name)'
+    } else {
+      print $'($name): No change'
+    }
+  } else {
+    fetch $default_url | save --raw $env.DEFAULT_CONFIG_FILE
+    print $'Downloaded new ($name)'
+  }
+}
+
+
 # Directories to search for plugin binaries when calling register
 #
 # By default, <nushell-config-dir>/plugins is added
