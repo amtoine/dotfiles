@@ -314,10 +314,11 @@ let-env FZF_DEFAULT_OPTS = "
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
-let-env PATH = ($env.PATH | split row (char esep) |
-    prepend ($env.HOME | path join ".local" "bin") |
-    prepend ($env.EMACS_HOME | path join "bin") |
-    prepend ($env.CARGO_HOME | path join "bin")
+let-env PATH = ($env.PATH | split row (char esep)
+    | prepend ($env.HOME | path join ".local" "bin")
+    | prepend ($env.EMACS_HOME | path join "bin")
+    | prepend ($env.CARGO_HOME | path join "bin")
+    | prepend ($env.XDG_DATA_HOME | path join "clang-15" "bin")
 )
 let-env LD_LIBRARY_PATH = ($env.LD_LIBRARY_PATH | split row (char esep) |
     prepend $env.MUJOCO_BIN
@@ -328,6 +329,8 @@ let-env LD_LIBRARY_PATH = ($env.LD_LIBRARY_PATH | split row (char esep) |
 #
 let-env USE_FINAL_CONFIG_HOOK = false
 let-env QT_QPA_PLATFORMTHEME = "qt5ct"
+
+let-env TOMB_HOME = ($env.XDG_DATA_HOME | path join "tombs")
 
 let-env LS_THEME = "dracula"
 let-env LS_COLORS = (vivid generate $env.LS_THEME)

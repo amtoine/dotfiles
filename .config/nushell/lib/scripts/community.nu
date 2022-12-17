@@ -69,7 +69,7 @@ export def-env br [args = "."] {
     let cmd_file = (^mktemp | str trim);
     ^broot --outcmd $cmd_file $args;
     let cmd = ((open $cmd_file) | str trim);
-    ^rm $cmd_file;
+    ^rm --trash $cmd_file;
     cd ($cmd | str replace "cd" "" | str trim)
 }
 
@@ -96,4 +96,40 @@ def mvr [
   moveto: string
 ] {
   mv $path ($moveto | str replace % ($path | path dirname))
+}
+
+
+# TODO
+# credit to @Eldyj
+# https://discord.com/channels/601130461678272522/615253963645911060/1048654339494912031
+export def "cross pathsep" [] {
+  if ($nu.os-info.name =~ windows) {
+    "\\"
+  } else {
+    "/"
+  }
+}
+
+
+# TODO
+# credit to @Eldyj
+# https://discord.com/channels/601130461678272522/615253963645911060/1048654339494912031
+export def "cross home" [] {
+  if ($nu.os-info.name =~ windows) {
+    $env.USERPROFILE
+  } else {
+    $env.HOME
+  }
+}
+
+
+# TODO
+# credit to @Eldyj
+# https://discord.com/channels/601130461678272522/615253963645911060/1048654339494912031
+export def "cross username" [] {
+  if ($nu.os-info.name =~ windows) {
+    $env.USERNAME
+  } else {
+    $env.USER
+  }
 }

@@ -91,8 +91,8 @@ export def remove [] {
     let os = ($vm | split column "-" | get column1 | to text)
     let path = ($env.QUICKEMU_HOME | path join $os $vm)
 
-    rm -rvfi $path
-    rm -rvfi $"($path).conf"
+    rm --trash -rvfi $path
+    rm --trash -rvfi $"($path).conf"
 }
 
 

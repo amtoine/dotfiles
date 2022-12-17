@@ -35,7 +35,7 @@ export alias keybindings = [
     mode: [emacs, vi_insert, vi_normal]
     event: {
       send: executehostcommand
-      cmd: "repo goto"
+      cmd: "repo goto --clear"
     }
   }
   {
@@ -46,6 +46,16 @@ export alias keybindings = [
     event: {
       send: executehostcommand
       cmd: "dotfiles edit"
+    }
+  }
+  {
+    name: clear_and_ls
+    modifier: control
+    keycode: char_l
+    mode: [emacs, vi_normal, vi_insert]
+    event: {
+      send: executehostcommand
+      cmd: "clear; lsg"
     }
   }
 ]
