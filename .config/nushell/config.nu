@@ -93,13 +93,15 @@ source personal/aliases.nu
 
 use scripts/misc.nu *
 use scripts/community.nu *
-use scripts/dotfiles.nu
-use scripts/vm.nu
-use scripts/venv.nu
-use scripts/job.nu
-use scripts/repo.nu
-use scripts/gf.nu
-use scripts/hx.nu
-use scripts/gh.nu
+use applications/dotfiles.nu
+use applications/vm.nu
+use applications/venv.nu
+use applications/job.nu
+use applications/repo.nu
+use applications/gf.nu
+use applications/hx.nu
+use applications/gh.nu
+use applications/gpg.nu
+use applications/sys.nu
 
 source personal/final.nu

@@ -15,19 +15,3 @@ alias mv = mv --verbose
 alias cb = ^cbonsai --infinite --live --base=1 --wait=2 --time=10
 
 alias sl = sl -aw -20
-
-alias disk = (
-  df -h |
-  str replace "Mounted on" "Mountpoint" |
-  detect columns |
-  rename filesystem size used avail used% mountpoint |
-  into filesize size used avail |
-  upsert used% {|it| 100 * (1 - $it.avail / $it.size)}
-)
-alias devices = (
-  lsblk -lp |
-  str replace --all ":" " " |
-  detect columns |
-  rename name major minor RM size RO type mountpoints |
-  into filesize size
-)
