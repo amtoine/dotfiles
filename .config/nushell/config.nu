@@ -70,5 +70,6 @@ use applications/gf.nu
 use applications/hx.nu
 use applications/gh.nu
 use applications/gpg.nu
+use applications/sys.nu
 
 source personal/final.nu
