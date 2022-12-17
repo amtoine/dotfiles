@@ -42,11 +42,7 @@ export def pull [] {
     let os = $choice
     let vm_directory = ($env.QUICKEMU_HOME | path join $os)
 
-    if (
-        (do -i {^ls $vm_directory} |
-        complete |
-        get exit_code) != 0
-    ) {
+    if not ($vm_directory | path exists) {
         mkdir $vm_directory
     }
 
