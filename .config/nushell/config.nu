@@ -69,6 +69,6 @@ use applications/repo.nu
 use applications/gf.nu
 use applications/hx.nu
 use applications/gh.nu
-use scripts/gpg.nu
+use applications/gpg.nu
 
 source personal/final.nu
