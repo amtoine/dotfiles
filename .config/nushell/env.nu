@@ -187,51 +187,6 @@ let-env ENV_CONVERSIONS = {
   }
 }
 
-# Directories to search for scripts when calling source or use
-#
-# By default, <nushell-config-dir>/scripts is added
-let-env NU_LIB_DIRS = [
-    ($nu.config-path | path dirname | path join 'lib')
-    ("~/.local/share/ghq/github.com/goatfiles/nu_scripts" | path expand)
-]
-
-let-env DEFAULT_CONFIG_FILE = (
-  $env.NU_LIB_DIRS.0
-  | path join "default_config.nu"
-)
-
-
-# TODO
-# credit to @kubouch
-# https://discord.com/channels/601130461678272522/1050117978403917834/1051457787663761518
-export def "config update default" [ --help (-h) ] {
-  let name = ($env.DEFAULT_CONFIG_FILE | path basename)
-  let default_url = (
-    [
-        'https://raw.githubusercontent.com'
-        'nushell/nushell/main/crates/nu-utils/src/sample_config'
-        $name
-    ]
-    | path join
-  )
-
-  if ($env.DEFAULT_CONFIG_FILE| path expand | path exists) {
-    let new = (fetch $default_url)
-    let old = (open $env.DEFAULT_CONFIG_FILE)
-
-    if $old != $new {
-      $new | save --raw $env.DEFAULT_CONFIG_FILE
-      print $'Updated ($name)'
-    } else {
-      print $'($name): No change'
-    }
-  } else {
-    fetch $default_url | save --raw $env.DEFAULT_CONFIG_FILE
-    print $'Downloaded new ($name)'
-  }
-}
-
-
 # Directories to search for plugin binaries when calling register
 #
 # By default, <nushell-config-dir>/plugins is added
@@ -335,3 +290,59 @@ let-env TOMB_HOME = ($env.XDG_DATA_HOME | path join "tombs")
 
 let-env LS_THEME = "dracula"
 let-env LS_COLORS = (vivid generate $env.LS_THEME)
+
+
+# Directories to search for scripts when calling source or use
+#
+# By default, <nushell-config-dir>/scripts is added
+let-env NU_LIB_DIR = ($nu.config-path | path dirname | path join 'lib')
+let-env NU_SCRIPTS_REMOTE = "https://github.com/goatfiles/nu_scripts"
+let-env NU_SCRIPTS_DIR = ($env.GHQ_ROOT | path join "github.com/goatfiles/nu_scripts")
+
+let-env NU_LIB_DIRS = [
+    $env.NU_LIB_DIR
+    $env.NU_SCRIPTS_DIR
+]
+
+if not ($env.NU_SCRIPTS_DIR | path exists) {
+  print $"(ansi red_bold)error(ansi reset): ($env.NU_SCRIPTS_DIR) does not exist..."
+  print $"(ansi cyan)info(ansi reset): pulling the scripts from ($env.NU_SCRIPTS_REMOTE)..."
+  git clone $env.NU_SCRIPTS_REMOTE $env.NU_SCRIPTS_DIR
+}
+
+let-env DEFAULT_CONFIG_FILE = (
+  $env.NU_LIB_DIR
+  | path join "default_config.nu"
+)
+let-env DEFAULT_CONFIG_REMOTE = (
+  "https://raw.githubusercontent.com/nushell/nushell/main/crates/nu-utils/src/sample_config"
+)
+
+# TODO
+# credit to @kubouch
+# https://discord.com/channels/601130461678272522/1050117978403917834/1051457787663761518
+export def "config update default" [ --help (-h) ] {
+  let name = ($env.DEFAULT_CONFIG_FILE | path basename)
+  let default_url = ($env.DEFAULT_CONFIG_REMOTE | path join $name)
+
+  if ($env.DEFAULT_CONFIG_FILE| path expand | path exists) {
+    let new = (fetch $default_url)
+    let old = (open $env.DEFAULT_CONFIG_FILE)
+
+    if $old != $new {
+      $new | save --raw $env.DEFAULT_CONFIG_FILE
+      print $'Updated ($name)'
+    } else {
+      print $'($name): No change'
+    }
+  } else {
+    fetch $default_url | save --raw $env.DEFAULT_CONFIG_FILE
+    print $'Downloaded new ($name)'
+  }
+}
+
+if not ($env.DEFAULT_CONFIG_FILE | path exists) {
+  print $"(ansi red_bold)error(ansi reset): ($env.DEFAULT_CONFIG_FILE) does not exist..."
+  print $"(ansi cyan)info(ansi reset): pulling default config file..."
+  config update default
+}
