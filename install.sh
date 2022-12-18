@@ -71,6 +71,8 @@ install_dmenu () {
 activate_system () {
     sudo systemctl enable sddm
     sudo systemctl enable NetworkManager
+    sudo systemctl enable cronie
+    sudo systemctl enable bluetooth
 }
 
 
