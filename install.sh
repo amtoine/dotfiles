@@ -18,6 +18,9 @@ LOCAL_PKGS_FILE="/tmp/pkgs.toml"
 REMOTE_DMENU="https://github.com/bakkeby/dmenu-flexipatch"
 LOCAL_DMENU_DIR="/tmp/dmenu"
 
+REMOTE_PKGBUILDS="https://github.com/goatfiles/pkgbuilds"
+LOCAL_PKGUILDS_DIR="/tmp/pkgbuilds"
+
 
 install_base () {
     sudo pacman --noconfirm -Syyu archlinux-keyring base-devel git vim nushell cargo
@@ -36,12 +39,12 @@ pull_files () {
 
 install_pkgbuilds () {
     # Clean and clone pkgbuilds
-    [ -d /tmp/pkgbuilds ] && sudo rm -r /tmp/pkgbuilds
-    git clone https://github.com/goatfiles/pkgbuilds /tmp/pkgbuilds
+    [ -d "$LOCAL_PKGBUILDS_DIR" ] && sudo rm -r "$LOCAL_PKGBUILDS_DIR"
+    git clone "$REMOTE_PKGBUILDS" "$LOCAL_PKGBUILDS_DIR"
 
     # Build pkgbuilds
     (
-        cd /tmp/pkgbuilds
+        cd "$LOCAL_PKGBUILDS_DIR"
         ./install.sh x86_64/paru
         ./clean.sh
         ./install.sh x86_64/amtoine-scripts-git/
