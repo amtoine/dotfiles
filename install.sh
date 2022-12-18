@@ -14,7 +14,10 @@ RAW_DOTFILES="https://raw.githubusercontent.com/goatfiles/dotfiles"
 REVISION="main"
 
 LOCAL_PKGS_FILE="/tmp/pkgs.toml"
+
+REMOTE_DMENU="https://github.com/bakkeby/dmenu-flexipatch"
 LOCAL_DMENU_DIR="/tmp/dmenu"
+
 
 install_base () {
     sudo pacman --noconfirm -Syyu archlinux-keyring base-devel git vim nushell cargo
@@ -64,7 +67,7 @@ install_dependencies () {
 
 
 install_dmenu () {
-    git clone https://github.com/bakkeby/dmenu-flexipatch "$LOCAL_DMENU_DIR"
+    git clone "$REMOTE_DMENU" "$LOCAL_DMENU_DIR"
     (
         cd "$LOCAL_DMENU_DIR"
         sudo make clean install
