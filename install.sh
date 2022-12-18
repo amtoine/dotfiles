@@ -10,6 +10,10 @@
 #*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
 #*
 
+RAW_DOTFILES="https://raw.githubusercontent.com/goatfiles/dotfiles"
+REVISION="main"
+
+
 install_base () {
     sudo pacman --noconfirm -Syyu archlinux-keyring base-devel git vim nushell cargo
 }
@@ -19,10 +23,9 @@ synchronize_database () {
     sudo pacman -Fy
 }
 
-
 pull_files () {
-    curl -fLo /tmp/pkgs.toml https://raw.githubusercontent.com/goatfiles/dotfiles/main/pkgs.toml
-    curl -fLo /tmp/dmenu/patches.h https://raw.githubusercontent.com/goatfiles/dotfiles/main/.config/dmenu-flexipatch/patches.h
+    curl -fLo /tmp/pkgs.toml "$RAW_DOTFILES/$REVISION/pkgs.toml"
+    curl -fLo /tmp/dmenu/patches.h "$RAW_DOTFILES/$REVISION/.config/dmenu-flexipatch/patches.h"
 }
 
 
