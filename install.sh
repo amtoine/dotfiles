@@ -15,12 +15,18 @@ install_base () {
 }
 
 
+synchronize_database () {
+    sudo pacman -Fy
+}
+
+
 pull_files () {
     curl -fLo /tmp/pkgs.toml https://raw.githubusercontent.com/goatfiles/dotfiles/main/pkgs.toml
     curl -fLo /tmp/dmenu/patches.h https://raw.githubusercontent.com/goatfiles/dotfiles/main/.config/dmenu-flexipatch/patches.h
 }
 
 install_base
+synchronize_database
 pull_files
 
 # Clean and clone pkgbuilds
