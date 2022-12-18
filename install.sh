@@ -49,6 +49,9 @@ SYSTEM_SERVICES=(
     bluetooth
 )
 
+REMOTE_DOTFILES="https://github.com/goatfiles/dotfiles"
+LOCAL_DOTFILES_DIR="$HOME/.local/share/ghq/github.com/goatfiles/dotfiles"
+
 
 install_base () {
     sudo pacman --noconfirm -Syyu "${BASE_DEPENDENCIES[@]}"
@@ -104,8 +107,8 @@ activate_system () {
 
 
 pull_dotfiles () {
-    git clone --bare https://github.com/goatfiles/dotfiles $HOME/.local/share/ghq/github.com/goatfiles/dotfiles
-    cfg="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+    git clone --bare "$REMOTE_DOTFILES" "$LOCAL_DOTFILES_DIR"
+    cfg="/usr/bin/git --git-dir=$LOCAL_DOTFILES_DIR --work-tree=$HOME"
     $cfg reset --hard
     $cfg config --local status.showUntrackedFiles no
     $cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
