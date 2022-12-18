@@ -86,7 +86,23 @@ install_pkgbuilds () {
 
 
 install_dependencies () {
-    nu -c "paru -S (open $LOCAL_PKGS_FILE | get pkgs.pacman.explicit.package | find --invert --regex 'amtoine|wallpapers')"
+    pacman_deps=$(nu -c "\
+        open $LOCAL_PKGS_FILE \
+        | get pkgs.pacman.explicit.package \
+        | find --invert --regex 'amtoine|wallpapers'\
+    ")
+    rust_deps=$(nu -c "\
+        open $LOCAL_PKGS_FILE \
+        | get pkgs.rust.cargo.package \
+    ")
+    python_deps=$(nu -c "\
+        open $LOCAL_PKGS_FILE \
+        | get pkgs.python.pip.package \
+    ")
+
+    paru -S $pacman_deps
+    cargo install $rust_deps
+    pip install $python_deps
 }
 
 
