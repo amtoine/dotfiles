@@ -10,19 +10,18 @@
 #*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
 #*
 
-# Update
 install_base () {
     sudo pacman --noconfirm -Syyu archlinux-keyring base-devel git vim nushell cargo
 }
 
-install_base
 
-# Clone dotfiles
-git clone --bare https://github.com/goatfiles/dotfiles $HOME/.dotfiles
-cfg="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-$cfg reset --hard
-$cfg config --local status.showUntrackedFiles no
-$cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+pull_files () {
+    curl -fLo /tmp/pkgs.toml https://raw.githubusercontent.com/goatfiles/dotfiles/main/pkgs.toml
+    curl -fLo /tmp/dmenu/patches.h https://raw.githubusercontent.com/goatfiles/dotfiles/main/.config/dmenu-flexipatch/patches.h
+}
+
+install_base
+pull_files
 
 # Clean and clone pkgbuilds
 if [[ -d /tmp/pkgbuilds ]]; then sudo rm -r /tmp/pkgbuilds; fi
@@ -42,7 +41,7 @@ git clone https://github.com/goatfiles/pkgbuilds /tmp/pkgbuilds
 )
 
 # Install dependencies
-nu -c 'paru -S (open $"($env.HOME)/pkgs.toml" | get pkgs.pacman.explicit.package | find --invert --regex "amtoine|wallpapers")'
+nu -c 'paru -S (open /tmp/pkgs.toml | get pkgs.pacman.explicit.package | find --invert --regex "amtoine|wallpapers")'
 
 # Install dmenu-flexipatch
 git clone https://github.com/bakkeby/dmenu-flexipatch /tmp/dmenu
@@ -55,6 +54,13 @@ cp $HOME/.config/dmenu-flexipatch/patches.h /tmp/dmenu
 # Activate useful system
 sudo systemctl enable sddm
 sudo systemctl enable NetworkManager
+
+# Clone dotfiles
+git clone --bare https://github.com/goatfiles/dotfiles $HOME/.dotfiles
+cfg="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+$cfg reset --hard
+$cfg config --local status.showUntrackedFiles no
+$cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 
 # Greet
 echo 'Installation completed! Please reboot your computer.'
