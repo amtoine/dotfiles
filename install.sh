@@ -62,7 +62,7 @@ sudo systemctl enable sddm
 sudo systemctl enable NetworkManager
 
 # Clone dotfiles
-git clone --bare https://github.com/goatfiles/dotfiles $HOME/.dotfiles
+git clone --bare https://github.com/goatfiles/dotfiles $HOME/.local/share/ghq/github.com/goatfiles/dotfiles
 cfg="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 $cfg reset --hard
 $cfg config --local status.showUntrackedFiles no
