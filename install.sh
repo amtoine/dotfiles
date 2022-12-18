@@ -13,6 +13,8 @@
 RAW_DOTFILES="https://raw.githubusercontent.com/goatfiles/dotfiles"
 REVISION="main"
 
+LOCAL_PKGS_FILE="/tmp/pkgs.toml"
+LOCAL_DMENU_DIR="/tmp/dmenu"
 
 install_base () {
     sudo pacman --noconfirm -Syyu archlinux-keyring base-devel git vim nushell cargo
@@ -24,8 +26,8 @@ synchronize_database () {
 }
 
 pull_files () {
-    curl -fLo /tmp/pkgs.toml "$RAW_DOTFILES/$REVISION/pkgs.toml"
-    curl -fLo /tmp/dmenu/patches.h "$RAW_DOTFILES/$REVISION/.config/dmenu-flexipatch/patches.h"
+    curl -fLo "$LOCAL_PKGS_FILE" "$RAW_DOTFILES/$REVISION/pkgs.toml"
+    curl -fLo "$LOCAL_DMENU_DIR/patches.h" "$RAW_DOTFILES/$REVISION/.config/dmenu-flexipatch/patches.h"
 }
 
 
@@ -57,15 +59,14 @@ install_pkgbuilds () {
 
 
 install_dependencies () {
-    nu -c 'paru -S (open /tmp/pkgs.toml | get pkgs.pacman.explicit.package | find --invert --regex "amtoine|wallpapers")'
+    nu -c "paru -S (open $LOCAL_PKGS_FILE | get pkgs.pacman.explicit.package | find --invert --regex 'amtoine|wallpapers')"
 }
 
 
 install_dmenu () {
-    git clone https://github.com/bakkeby/dmenu-flexipatch /tmp/dmenu
-    cp $HOME/.config/dmenu-flexipatch/patches.h /tmp/dmenu
+    git clone https://github.com/bakkeby/dmenu-flexipatch "$LOCAL_DMENU_DIR"
     (
-        cd /tmp/dmenu
+        cd "$LOCAL_DMENU_DIR"
         sudo make clean install
     )
 }
