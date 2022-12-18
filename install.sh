@@ -25,26 +25,40 @@ pull_files () {
     curl -fLo /tmp/dmenu/patches.h https://raw.githubusercontent.com/goatfiles/dotfiles/main/.config/dmenu-flexipatch/patches.h
 }
 
+
+install_pkgbuilds () {
+    # Clean and clone pkgbuilds
+    [ -d /tmp/pkgbuilds ] && sudo rm -r /tmp/pkgbuilds
+    git clone https://github.com/goatfiles/pkgbuilds /tmp/pkgbuilds
+
+    # Build pkgbuilds
+    (
+        cd /tmp/pkgbuilds
+        ./install.sh x86_64/paru
+        ./clean.sh
+        ./install.sh x86_64/amtoine-scripts-git/
+        ./clean.sh
+        ./install.sh x86_64/amtoine-sounds-git/
+        ./clean.sh
+        ./install.sh x86_64/amtoine-wallpapers-git/
+        ./clean.sh
+        ./install.sh x86_64/amtoine-applications-git/
+        ./clean.sh
+        ./install.sh x86_64/amtoine-icons-git/
+        ./clean.sh
+        ./install.sh x86_64/junnunkarim-wallpapers-git
+        ./clean.sh
+        ./install.sh x86_64/mut-ex-wallpapers-git
+    )
+}
+
+
 install_base
 synchronize_database
+
 pull_files
 
-# Clean and clone pkgbuilds
-if [[ -d /tmp/pkgbuilds ]]; then sudo rm -r /tmp/pkgbuilds; fi
-git clone https://github.com/goatfiles/pkgbuilds /tmp/pkgbuilds
-
-# Build pkgbuilds
-(
-    cd /tmp/pkgbuilds
-    ./install.sh x86_64/paru
-    ./install.sh x86_64/amtoine-scripts-git/
-    ./install.sh x86_64/amtoine-sounds-git/
-    ./install.sh x86_64/amtoine-wallpapers-git/
-    ./install.sh x86_64/amtoine-applications-git/
-    ./install.sh x86_64/amtoine-icons-git/
-    ./install.sh x86_64/junnunkarim-wallpapers-git
-    ./install.sh x86_64/mut-ex-wallpapers-git
-)
+install_pkgbuilds
 
 # Install dependencies
 nu -c 'paru -S (open /tmp/pkgs.toml | get pkgs.pacman.explicit.package | find --invert --regex "amtoine|wallpapers")'
