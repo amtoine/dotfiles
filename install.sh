@@ -21,6 +21,17 @@ LOCAL_DMENU_DIR="/tmp/dmenu"
 REMOTE_PKGBUILDS="https://github.com/goatfiles/pkgbuilds"
 LOCAL_PKGUILDS_DIR="/tmp/pkgbuilds"
 
+PKGBUILDS=(
+    paru
+    amtoine-scripts-git
+    amtoine-sounds-git
+    amtoine-wallpapers-git
+    amtoine-applications-git
+    amtoine-icons-git
+    junnunkarim-wallpapers-git
+    mut-ex-wallpapers-git
+)
+
 
 install_base () {
     sudo pacman --noconfirm -Syyu archlinux-keyring base-devel git vim nushell cargo
@@ -45,21 +56,11 @@ install_pkgbuilds () {
     # Build pkgbuilds
     (
         cd "$LOCAL_PKGBUILDS_DIR"
-        ./install.sh x86_64/paru
+        for pkgbuild in "${PKGBUILDS[@]}"; do
+            ./clean.sh
+            ./install.sh "x86_64/$pkgbuild/PKGBUILD"
+        done
         ./clean.sh
-        ./install.sh x86_64/amtoine-scripts-git/
-        ./clean.sh
-        ./install.sh x86_64/amtoine-sounds-git/
-        ./clean.sh
-        ./install.sh x86_64/amtoine-wallpapers-git/
-        ./clean.sh
-        ./install.sh x86_64/amtoine-applications-git/
-        ./clean.sh
-        ./install.sh x86_64/amtoine-icons-git/
-        ./clean.sh
-        ./install.sh x86_64/junnunkarim-wallpapers-git
-        ./clean.sh
-        ./install.sh x86_64/mut-ex-wallpapers-git
     )
 }
 
