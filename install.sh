@@ -53,36 +53,49 @@ install_pkgbuilds () {
 }
 
 
+install_dependencies () {
+    nu -c 'paru -S (open /tmp/pkgs.toml | get pkgs.pacman.explicit.package | find --invert --regex "amtoine|wallpapers")'
+}
+
+
+install_dmenu () {
+    git clone https://github.com/bakkeby/dmenu-flexipatch /tmp/dmenu
+    cp $HOME/.config/dmenu-flexipatch/patches.h /tmp/dmenu
+    (
+        cd /tmp/dmenu
+        sudo make clean install
+    )
+}
+
+
+activate_system () {
+    sudo systemctl enable sddm
+    sudo systemctl enable NetworkManager
+}
+
+
+pull_dotfiles () {
+    git clone --bare https://github.com/goatfiles/dotfiles $HOME/.local/share/ghq/github.com/goatfiles/dotfiles
+    cfg="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+    $cfg reset --hard
+    $cfg config --local status.showUntrackedFiles no
+    $cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+    $cfg fetch
+}
+
+
 install_base
 synchronize_database
 
 pull_files
 
 install_pkgbuilds
+install_dependencies
+install_dmenu
 
-# Install dependencies
-nu -c 'paru -S (open /tmp/pkgs.toml | get pkgs.pacman.explicit.package | find --invert --regex "amtoine|wallpapers")'
+activate_system
 
-# Install dmenu-flexipatch
-git clone https://github.com/bakkeby/dmenu-flexipatch /tmp/dmenu
-cp $HOME/.config/dmenu-flexipatch/patches.h /tmp/dmenu
-(
-    cd /tmp/dmenu
-    sudo make clean install
-)
+pull_dotfiles
 
-# Activate useful system
-sudo systemctl enable sddm
-sudo systemctl enable NetworkManager
-
-# Clone dotfiles
-git clone --bare https://github.com/goatfiles/dotfiles $HOME/.local/share/ghq/github.com/goatfiles/dotfiles
-cfg="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-$cfg reset --hard
-$cfg config --local status.showUntrackedFiles no
-$cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
-$cfg fetch
-
-# Greet
 echo 'Installation completed! Please reboot your computer.'
 
