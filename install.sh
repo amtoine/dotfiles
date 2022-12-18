@@ -33,6 +33,14 @@ PKGBUILDS=(
 )
 
 
+SYSTEM_SERVICES=(
+    sddm
+    NetworkManager
+    cronie
+    bluetooth
+)
+
+
 install_base () {
     sudo pacman --noconfirm -Syyu archlinux-keyring base-devel git vim nushell cargo
 }
@@ -80,10 +88,9 @@ install_dmenu () {
 
 
 activate_system () {
-    sudo systemctl enable sddm
-    sudo systemctl enable NetworkManager
-    sudo systemctl enable cronie
-    sudo systemctl enable bluetooth
+    for service in "${SYSTEM_SERVICES[@]}"; do
+        sudo systemctl enable "$service"
+    done
 }
 
 
