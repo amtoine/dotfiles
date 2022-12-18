@@ -227,6 +227,8 @@ let-env EMACS_HOME = ($env.HOME | path join ".emacs.d")
 let-env MUJOCO_BIN = ($env.HOME | path join ".mujoco" "mujoco210" "bin")
 let-env VIMINIT = 'let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
+let-env BROWSER = "qutebrowser"
+let-env TERMINAL = "alacritty -e"
 # changes the editor in the terminal, to edit long commands.
 let-env EDITOR = 'lvim'
 let-env VISAL = 'lvim'
