@@ -10,6 +10,16 @@
 #*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
 #*
 
+
+BASE_DEPENDENCIES=(
+    archlinux-keyring
+    base-devel
+    git
+    vim
+    nushell
+    cargo
+)
+
 RAW_DOTFILES="https://raw.githubusercontent.com/goatfiles/dotfiles"
 REVISION="main"
 
@@ -32,7 +42,6 @@ PKGBUILDS=(
     mut-ex-wallpapers-git
 )
 
-
 SYSTEM_SERVICES=(
     sddm
     NetworkManager
@@ -42,7 +51,7 @@ SYSTEM_SERVICES=(
 
 
 install_base () {
-    sudo pacman --noconfirm -Syyu archlinux-keyring base-devel git vim nushell cargo
+    sudo pacman --noconfirm -Syyu "${BASE_DEPENDENCIES[@]}"
 }
 
 
