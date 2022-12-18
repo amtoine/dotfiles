@@ -11,11 +11,11 @@
 #*
 
 # Update
-sudo pacman -S archlinux-keyring
-sudo pacman -Syu
+install_base () {
+    sudo pacman --noconfirm -Syyu archlinux-keyring base-devel git vim nushell cargo
+}
 
-# Install tools for building dependencies
-sudo pacman -S git nushell cargo feh
+install_base
 
 # Clone dotfiles
 git clone --bare https://github.com/goatfiles/dotfiles $HOME/.dotfiles
