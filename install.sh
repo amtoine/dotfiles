@@ -67,6 +67,7 @@ cfg="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 $cfg reset --hard
 $cfg config --local status.showUntrackedFiles no
 $cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+$cfg fetch
 
 # Greet
 echo 'Installation completed! Please reboot your computer.'
