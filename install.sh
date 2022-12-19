@@ -145,6 +145,7 @@ pull_dotfiles () {
     $cfg config --local status.showUntrackedFiles no
     $cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
     $cfg fetch
+    $cfg checkout "$REVISION"
 }
 
 
