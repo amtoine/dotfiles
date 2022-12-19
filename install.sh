@@ -166,7 +166,7 @@ activate_system () {
 
 pull_dotfiles () {
     echo_and_run git clone --bare "$REMOTE_DOTFILES" "$LOCAL_DOTFILES_DIR"
-    echo_and_run cfg="/usr/bin/git --git-dir=$LOCAL_DOTFILES_DIR --work-tree=$HOME"
+    cfg="/usr/bin/git --git-dir=$LOCAL_DOTFILES_DIR --work-tree=$HOME"
     echo_and_run $cfg reset --hard
     echo_and_run $cfg config --local status.showUntrackedFiles no
     echo_and_run $cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
