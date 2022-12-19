@@ -62,13 +62,13 @@ LOCAL_DOTFILES_DIR="$HOME/.local/share/ghq/github.com/goatfiles/dotfiles"
 
 
 echo_and_run () {
-    echo -e "\e[93m===============================================\e[0m"
+    echo -e "\e[93m== running following command ==================\e[0m"
     echo -e "\e[93m$@\e[0m"
 
     eval "$@" || {
-        echo -e "\e[91m===============================================\e[0m"
-        echo -e "\e[91man error occured!!\e[0m"
+        echo -e "\e[91m== an error occured... terminating... =========\e[0m"
         echo -e "\e[91m'$@' failed...\e[0m"
+        echo -e "\e[91mcurrent pwd: $(pwd)\e[0m"
         exit 1
     }
 }
