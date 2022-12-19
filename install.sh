@@ -64,13 +64,13 @@ LOCAL_DOTFILES_DIR="$HOME/.local/share/ghq/github.com/goatfiles/dotfiles"
 echo_and_run () {
     echo -e "\e[93m===============================================\e[0m"
     echo -e "\e[93m$@\e[0m"
-    eval "$@"
 
-    if [ "$?" -ne 0 ]; then
+    eval "$@" || {
         echo -e "\e[91m===============================================\e[0m"
         echo -e "\e[91man error occured!!\e[0m"
+        echo -e "\e[91m'$@' failed...\e[0m"
         exit 1
-    fi
+    }
 }
 
 
@@ -97,7 +97,7 @@ install_pkgbuilds () {
             echo_and_run ./install.sh "x86_64/$pkgbuild/PKGBUILD"
         done
         echo_and_run ./cleanup.sh
-    )
+    ) || exit 1
 }
 
 
@@ -133,7 +133,7 @@ install_dmenu () {
     (
         echo_and_run cd "$LOCAL_DMENU_DIR"
         echo_and_run sudo make clean install
-    )
+    ) || exit 1
 }
 
 
