@@ -61,35 +61,42 @@ REMOTE_DOTFILES="https://github.com/goatfiles/dotfiles"
 LOCAL_DOTFILES_DIR="$HOME/.local/share/ghq/github.com/goatfiles/dotfiles"
 
 
+echo_and_run () {
+    echo -e "\e[93m===============================================\e[0m"
+    echo -e "\e[93m$@\e[0m"
+    eval "$@"
+}
+
+
 install_base () {
-    sudo pacman --noconfirm -Syyu "${BASE_DEPENDENCIES[@]}"
+    echo_and_run sudo pacman --noconfirm -Syyu "${BASE_DEPENDENCIES[@]}"
 }
 
 
 synchronize_database () {
-    sudo pacman -Fy
+    echo_and_run sudo pacman -Fy
 }
 
 
 install_pkgbuilds () {
     # Clean and clone pkgbuilds
-    [ -d "$LOCAL_PKGBUILDS_DIR" ] && sudo rm -r "$LOCAL_PKGBUILDS_DIR"
-    git clone "$REMOTE_PKGBUILDS" "$LOCAL_PKGBUILDS_DIR"
+    [ -d "$LOCAL_PKGBUILDS_DIR" ] && echo_and_run sudo rm -r "$LOCAL_PKGBUILDS_DIR"
+    echo_and_run git clone "$REMOTE_PKGBUILDS" "$LOCAL_PKGBUILDS_DIR"
 
     # Build pkgbuilds
     (
-        cd "$LOCAL_PKGBUILDS_DIR"
+        echo_and_run cd "$LOCAL_PKGBUILDS_DIR"
         for pkgbuild in "${PKGBUILDS[@]}"; do
-            ./cleanup.sh
-            ./install.sh "x86_64/$pkgbuild/PKGBUILD"
+            echo_and_run ./cleanup.sh
+            echo_and_run ./install.sh "x86_64/$pkgbuild/PKGBUILD"
         done
-        ./cleanup.sh
+        echo_and_run ./cleanup.sh
     )
 }
 
 
 install_dependencies () {
-    curl -fLo "$LOCAL_PKGS_FILE" "$RAW_DOTFILES/$REVISION/pkgs.toml"
+    echo_and_run curl -fLo "$LOCAL_PKGS_FILE" "$RAW_DOTFILES/$REVISION/pkgs.toml"
 
     pacman_deps=$(nu -c "\
         open $LOCAL_PKGS_FILE \
@@ -105,47 +112,47 @@ install_dependencies () {
         | get pkgs.python.pip.package \
     ")
 
-    paru -S $pacman_deps
-    cargo install $rust_deps
-    pip install $python_deps
+    echo_and_run paru -S $pacman_deps
+    echo_and_run cargo install $rust_deps
+    echo_and_run pip install $python_deps
 }
 
 
 install_dmenu () {
-    [ -d "$LOCAL_DMENU_DIR" ] && sudo rm -r "$LOCAL_DMENU_DIR"
-    git clone "$REMOTE_DMENU" "$LOCAL_DMENU_DIR"
+    [ -d "$LOCAL_DMENU_DIR" ] && echo_and_run sudo rm -r "$LOCAL_DMENU_DIR"
+    echo_and_run git clone "$REMOTE_DMENU" "$LOCAL_DMENU_DIR"
 
-    curl -fLo "$LOCAL_DMENU_DIR/patches.h" "$RAW_DOTFILES/$REVISION/.config/dmenu-flexipatch/patches.h"
+    echo_and_run curl -fLo "$LOCAL_DMENU_DIR/patches.h" "$RAW_DOTFILES/$REVISION/.config/dmenu-flexipatch/patches.h"
 
     (
-        cd "$LOCAL_DMENU_DIR"
-        sudo make clean install
+        echo_and_run cd "$LOCAL_DMENU_DIR"
+        echo_and_run sudo make clean install
     )
 }
 
 
 install_system_files () {
     for file in "${SYSTEM_FILES[@]}"; do
-        sudo curl -fLo "/$file" "$RAW_DOTFILES/$REVISION/.system/$file"
+        echo_and_run sudo curl -fLo "/$file" "$RAW_DOTFILES/$REVISION/.system/$file"
     done
 }
 
 
 activate_system () {
     for service in "${SYSTEM_SERVICES[@]}"; do
-        sudo systemctl enable "$service"
+        echo_and_run sudo systemctl enable "$service"
     done
 }
 
 
 pull_dotfiles () {
-    git clone --bare "$REMOTE_DOTFILES" "$LOCAL_DOTFILES_DIR"
-    cfg="/usr/bin/git --git-dir=$LOCAL_DOTFILES_DIR --work-tree=$HOME"
-    $cfg reset --hard
-    $cfg config --local status.showUntrackedFiles no
-    $cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
-    $cfg fetch
-    $cfg checkout "$REVISION"
+    echo_and_run git clone --bare "$REMOTE_DOTFILES" "$LOCAL_DOTFILES_DIR"
+    echo_and_run cfg="/usr/bin/git --git-dir=$LOCAL_DOTFILES_DIR --work-tree=$HOME"
+    echo_and_run $cfg reset --hard
+    echo_and_run $cfg config --local status.showUntrackedFiles no
+    echo_and_run $cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+    echo_and_run $cfg fetch
+    echo_and_run $cfg checkout "$REVISION"
 }
 
 
