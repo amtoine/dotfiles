@@ -65,6 +65,12 @@ echo_and_run () {
     echo -e "\e[93m===============================================\e[0m"
     echo -e "\e[93m$@\e[0m"
     eval "$@"
+
+    if [ "$?" -ne 0 ]; then
+        echo -e "\e[91m===============================================\e[0m"
+        echo -e "\e[91man error occured!!\e[0m"
+        exit 1
+    fi
 }
 
 
