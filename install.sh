@@ -77,10 +77,10 @@ install_pkgbuilds () {
     (
         cd "$LOCAL_PKGBUILDS_DIR"
         for pkgbuild in "${PKGBUILDS[@]}"; do
-            ./clean.sh
+            ./cleanup.sh
             ./install.sh "x86_64/$pkgbuild/PKGBUILD"
         done
-        ./clean.sh
+        ./cleanup.sh
     )
 }
 
