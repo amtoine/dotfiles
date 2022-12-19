@@ -108,6 +108,7 @@ install_pkgbuilds () {
         done
         echo_and_run ./cleanup.sh
     )
+    [ "$?" -ne 0 ] && exit 1
 }
 
 
@@ -144,6 +145,7 @@ install_dmenu () {
         echo_and_run cd "$LOCAL_DMENU_DIR"
         yes | echo_and_run sudo make clean install || exit 1
     )
+    [ "$?" -ne 0 ] && exit 1
 }
 
 
