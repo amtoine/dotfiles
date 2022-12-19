@@ -174,5 +174,5 @@ activate_system
 
 pull_dotfiles
 
-echo 'Installation completed! Please reboot your computer.'
+echo -e "\e[92mInstallation completed! Please reboot your computer\e[0m."
 
