@@ -94,7 +94,7 @@ install_pkgbuilds () {
         echo_and_run cd "$LOCAL_PKGBUILDS_DIR"
         for pkgbuild in "${PKGBUILDS[@]}"; do
             echo_and_run ./cleanup.sh
-            echo_and_run ./install.sh "x86_64/$pkgbuild/PKGBUILD"
+            yes | echo_and_run ./install.sh "x86_64/$pkgbuild/PKGBUILD"
         done
         echo_and_run ./cleanup.sh
     ) || exit 1
@@ -132,7 +132,7 @@ install_dmenu () {
 
     (
         echo_and_run cd "$LOCAL_DMENU_DIR"
-        echo_and_run sudo make clean install
+        yes | echo_and_run sudo make clean install
     ) || exit 1
 }
 
