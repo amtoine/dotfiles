@@ -18,6 +18,16 @@ BASE_DEPENDENCIES=(
     vim
     nushell
     cargo
+    sddm
+    bspwm
+    sxhkd
+    alacritty
+    cronie
+    blueman
+    bluez
+    bluez-utils
+    bluez-libs
+    bluez-plugins
 )
 
 RAW_DOTFILES="https://raw.githubusercontent.com/goatfiles/dotfiles"
@@ -167,7 +177,7 @@ install_base
 synchronize_database
 
 install_pkgbuilds
-install_dependencies
+#install_dependencies
 install_dmenu
 
 install_system_files
