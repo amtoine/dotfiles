@@ -107,7 +107,7 @@ install_dependencies () {
     pacman_deps=$(nu -c "\
         open $LOCAL_PKGS_FILE \
         | get pkgs.pacman.explicit.package \
-        | find --invert --regex 'amtoine|wallpapers'\
+        | find --invert --regex 'goat-.*-git'\
     ")
     rust_deps=$(nu -c "\
         open $LOCAL_PKGS_FILE \
