@@ -104,6 +104,7 @@ install_dependencies () {
 
 
 install_dmenu () {
+    [ -d "$LOCAL_DMENU_DIR" ] && sudo rm -r "$LOCAL_DMENU_DIR"
     git clone "$REMOTE_DMENU" "$LOCAL_DMENU_DIR"
 
     curl -fLo "$LOCAL_DMENU_DIR/patches.h" "$RAW_DOTFILES/$REVISION/.config/dmenu-flexipatch/patches.h"
