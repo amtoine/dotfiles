@@ -62,11 +62,6 @@ synchronize_database () {
     sudo pacman -Fy
 }
 
-pull_files () {
-    curl -fLo "$LOCAL_PKGS_FILE" "$RAW_DOTFILES/$REVISION/pkgs.toml"
-    curl -fLo "$LOCAL_DMENU_DIR/patches.h" "$RAW_DOTFILES/$REVISION/.config/dmenu-flexipatch/patches.h"
-}
-
 
 install_pkgbuilds () {
     # Clean and clone pkgbuilds
@@ -86,6 +81,8 @@ install_pkgbuilds () {
 
 
 install_dependencies () {
+    curl -fLo "$LOCAL_PKGS_FILE" "$RAW_DOTFILES/$REVISION/pkgs.toml"
+
     pacman_deps=$(nu -c "\
         open $LOCAL_PKGS_FILE \
         | get pkgs.pacman.explicit.package \
@@ -108,6 +105,9 @@ install_dependencies () {
 
 install_dmenu () {
     git clone "$REMOTE_DMENU" "$LOCAL_DMENU_DIR"
+
+    curl -fLo "$LOCAL_DMENU_DIR/patches.h" "$RAW_DOTFILES/$REVISION/.config/dmenu-flexipatch/patches.h"
+
     (
         cd "$LOCAL_DMENU_DIR"
         sudo make clean install
@@ -134,8 +134,6 @@ pull_dotfiles () {
 
 install_base
 synchronize_database
-
-pull_files
 
 install_pkgbuilds
 install_dependencies
