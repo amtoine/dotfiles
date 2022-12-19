@@ -42,6 +42,14 @@ PKGBUILDS=(
     mut-ex-wallpapers-git
 )
 
+SYSTEM_FILES=(
+    etc/pacman.conf
+    etc/pacman.d/mirrorlist
+    etc/sddm.conf
+    usr/share/sddm/themes/sugar-candy/theme.conf
+    var/spool/cron/user
+)
+
 SYSTEM_SERVICES=(
     sddm
     NetworkManager
@@ -116,6 +124,13 @@ install_dmenu () {
 }
 
 
+install_system_files () {
+    for file in "${SYSTEM_FILES[@]}"; do
+        sudo curl -fLo "/$file" "$RAW_DOTFILES/$REVISION/.system/$file"
+    done
+}
+
+
 activate_system () {
     for service in "${SYSTEM_SERVICES[@]}"; do
         sudo systemctl enable "$service"
@@ -140,6 +155,7 @@ install_pkgbuilds
 install_dependencies
 install_dmenu
 
+install_system_files
 activate_system
 
 pull_dotfiles
