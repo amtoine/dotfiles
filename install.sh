@@ -29,7 +29,7 @@ REMOTE_DMENU="https://github.com/bakkeby/dmenu-flexipatch"
 LOCAL_DMENU_DIR="/tmp/dmenu"
 
 REMOTE_PKGBUILDS="https://github.com/goatfiles/pkgbuilds"
-LOCAL_PKGUILDS_DIR="/tmp/pkgbuilds"
+LOCAL_PKGBUILDS_DIR="/tmp/pkgbuilds"
 
 PKGBUILDS=(
     paru
