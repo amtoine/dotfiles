@@ -139,6 +139,7 @@ install_dmenu () {
 
 install_system_files () {
     for file in "${SYSTEM_FILES[@]}"; do
+        echo_and_run sudo mkdir -p "/$(dirname "$file")"
         echo_and_run sudo curl -fLo "/$file" "$RAW_DOTFILES/$REVISION/.system/$file"
     done
 }
