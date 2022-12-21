@@ -141,3 +141,4 @@
   rebase = true
 [push]
 	autoSetupRemote = true
+	default = nothing
