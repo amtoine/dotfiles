@@ -225,7 +225,6 @@ let-env CABAL_DIR = ($env.XDG_DATA_HOME | path join "cabal")
 let-env KERAS_HOME = ($env.XDG_STATE_HOME | path join "keras")
 let-env EMACS_HOME = ($env.HOME | path join ".emacs.d")
 let-env MUJOCO_BIN = ($env.HOME | path join ".mujoco" "mujoco210" "bin")
-let-env VIMINIT = 'let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
 # changes the editor in the terminal, to edit long commands.
 let-env EDITOR = 'helix'
