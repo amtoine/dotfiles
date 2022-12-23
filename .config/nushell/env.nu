@@ -96,10 +96,11 @@ let-env MANPAGER = "sh -c 'col -bx | bat -l man -p'"
 let-env WORKON_HOME = ($env.XDG_DATA_HOME | path join "virtualenvs")
 
 let-env GHQ_ROOT = ($env.XDG_DATA_HOME | path join "ghq")
+let-env GIT_REPOS_HOME = $env.GHQ_ROOT
 
 let-env QUICKEMU_HOME = ($env.XDG_DATA_HOME | path join "quickemu")
 
-let-env DOTFILES_GIT_DIR = ($env.GHQ_ROOT| path join "github.com" "goatfiles" "dotfiles")
+let-env DOTFILES_GIT_DIR = ($env.GIT_REPOS_HOME| path join "github.com" "goatfiles" "dotfiles")
 let-env DOTFILES_WORKTREE = $env.HOME
 
 let-env DOWNLOADS_DIR = ($env.HOME | path join "downloads")
@@ -145,7 +146,7 @@ let-env LS_COLORS = (vivid generate $env.LS_THEME)
 # By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIR = ($nu.config-path | path dirname | path join 'lib')
 let-env NU_SCRIPTS_REMOTE = "https://github.com/goatfiles/nu_scripts"
-let-env NU_SCRIPTS_DIR = ($env.GHQ_ROOT | path join "github.com/goatfiles/nu_scripts")
+let-env NU_SCRIPTS_DIR = ($env.GIT_REPOS_HOME | path join "github.com/goatfiles/nu_scripts")
 
 let-env NU_LIB_DIRS = [
     $env.NU_LIB_DIR
