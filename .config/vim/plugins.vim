@@ -11,8 +11,8 @@
 
 call plug#begin()
     Plug 'junegunn/fzf', { 'dir': '~/.local/share/fzf', 'do': './install --all' }
-    Plug 'wellle/context.vim'
-    Plug 'dense-analysis/ale'
+    " Plug 'wellle/context.vim'
+    " Plug 'dense-analysis/ale'
     Plug 'preservim/nerdtree'
     Plug 'rakr/vim-one'
     Plug 'chrisbra/Colorizer'
@@ -25,10 +25,6 @@ function! s:build_quickfix_list(lines)
 endfunction
 
 let g:fzf_layout = { 'down': '40%' }
-let g:fzf_action = {
-  \ 'ctrl-q': function('s:build_quickfix_list'),
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+let g:fzf_action = {'ctrl-q': function('s:build_quickfix_list'), 'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit'}
 
 let g:airline_theme='one'
