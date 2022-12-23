@@ -142,7 +142,7 @@
 [push]
 	autoSetupRemote = true
 	default = nothing
-	gpgsign = true
+	gpgsign = false
 [commit]
 	gpgsign = true
 [tag]
