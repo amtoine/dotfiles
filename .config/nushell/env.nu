@@ -39,7 +39,13 @@ let-env XDG_STATE_HOME = ($env.HOME | path join ".local" "state")
 let-env XDG_CACHE_HOME = ($env.HOME | path join ".cache")
 
 # move all moveable config to the right location, outside $HOME.
-let-env TERMINFO_DIRS = $"($env.XDG_DATA_HOME | path join terminfo):/usr/share/terminfo"
+let-env TERMINFO_DIRS = (
+  [
+      ($env.XDG_DATA_HOME | path join "terminfo")
+      "/usr/share/terminfo"
+  ]
+  | str join ":"
+)
 let-env _JAVA_OPTIONS = $"-Djava.util.prefs.userRoot=($env.XDG_CONFIG_HOME | path join java)"
 let-env HISTFILE = ($env.XDG_STATE_HOME | path join "bash" "history")
 let-env CARGO_HOME = ($env.XDG_DATA_HOME | path join "cargo")
@@ -109,14 +115,16 @@ let-env FZF_DEFAULT_OPTS = "
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
-let-env PATH = ($env.PATH | split row (char esep)
+let-env PATH = (
+    $env.PATH | split row (char esep)
     | prepend ($env.HOME | path join ".local" "bin")
     | prepend ($env.EMACS_HOME | path join "bin")
     | prepend ($env.CARGO_HOME | path join "bin")
     | prepend ($env.XDG_DATA_HOME | path join "clang-15" "bin")
 )
-let-env LD_LIBRARY_PATH = ($env.LD_LIBRARY_PATH | split row (char esep) |
-    prepend $env.MUJOCO_BIN
+let-env LD_LIBRARY_PATH = (
+    $env.LD_LIBRARY_PATH | split row (char esep)
+    | prepend $env.MUJOCO_BIN
 )
 
 
