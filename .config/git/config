@@ -16,7 +16,6 @@
   defaultBranch = main
 
 [core]
-  editor = helix
   pager = delta
 
 [delta]
@@ -141,3 +140,4 @@
   rebase = true
 [push]
 	autoSetupRemote = true
+	default = nothing

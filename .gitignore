@@ -39,11 +39,13 @@ media/
 .config/gh/hosts.yml
 .config/kolourpaintrc
 .config/lazygit/state.yml
+.config/lvim/plugin/packer_compiled.lua
 .config/menus/applications-merged/xdg-desktop-menu-dummy.menu
 .config/mpd/database
 .config/mpd/pid
 .config/nushell/history.txt
 .config/nushell/lib/default_config.nu
+.config/nvim/plugin/packer_compiled.lua
 .config/okularrc
 .config/pulse/cookie
 .config/user-dirs.dirs
