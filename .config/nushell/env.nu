@@ -180,13 +180,13 @@ export def "config update default" [ --help (-h) ] {
     let old = (open $env.DEFAULT_CONFIG_FILE)
 
     if $old != $new {
-      $new | save --raw $env.DEFAULT_CONFIG_FILE
+      $new | save --force --raw $env.DEFAULT_CONFIG_FILE
       print $'Updated ($name)'
     } else {
       print $'($name): No change'
     }
   } else {
-    fetch $default_url | save --raw $env.DEFAULT_CONFIG_FILE
+    fetch $default_url | save --force --raw $env.DEFAULT_CONFIG_FILE
     print $'Downloaded new ($name)'
   }
 }
