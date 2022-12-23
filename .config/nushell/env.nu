@@ -146,7 +146,7 @@ let-env LS_COLORS = (vivid generate $env.LS_THEME)
 #
 # By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIR = ($nu.config-path | path dirname | path join 'lib')
-let-env NU_SCRIPTS_REMOTE = "https://github.com/goatfiles/nu_scripts"
+let-env NU_SCRIPTS_REMOTE = "ssh://git@github.com/goatfiles/nu_scripts.git"
 let-env NU_SCRIPTS_DIR = ($env.GIT_REPOS_HOME | path join "github.com/goatfiles/nu_scripts")
 
 let-env NU_LIB_DIRS = [
