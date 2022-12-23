@@ -227,8 +227,8 @@ let-env EMACS_HOME = ($env.HOME | path join ".emacs.d")
 let-env MUJOCO_BIN = ($env.HOME | path join ".mujoco" "mujoco210" "bin")
 
 # changes the editor in the terminal, to edit long commands.
-let-env EDITOR = 'helix'
-let-env VISAL = 'helix'
+let-env EDITOR = 'nvim'
+let-env VISAL = 'nvim'
 
 ### SET MANPAGER
 ### Uncomment only one of these!
