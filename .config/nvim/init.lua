@@ -72,7 +72,7 @@ require('packer').startup(function(use)
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
-  local has_plugins, plugins = pcall(require, 'custom.plugins')
+  local has_plugins, plugins = pcall(require, 'user.plugins')
   if has_plugins then
     plugins(use)
   end
