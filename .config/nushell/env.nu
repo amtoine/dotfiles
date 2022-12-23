@@ -75,7 +75,7 @@ let-env BROWSER = "qutebrowser"
 let-env TERMINAL = "alacritty -e"
 # changes the editor in the terminal, to edit long commands.
 let-env EDITOR = 'nvim'
-let-env VISAL = 'nvim'
+let-env VISUAL = $env.EDITOR
 
 ### SET MANPAGER
 ### Uncomment only one of these!

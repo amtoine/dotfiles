@@ -200,7 +200,7 @@ export BROWSER="qutebrowser"
 export TERMINAL="alacritty -e"
 # changes the editor in the terminal, to edit long commands.
 export EDITOR='nvim'
-export VISAL='nvim'
+export VISUAL="$EDITOR"
 set -o vi
 
 ### SET MANPAGER
