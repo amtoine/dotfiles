@@ -6566,6 +6566,10 @@ package = "filelock"
 version = "3.8.0"
 
 [[pkgs.python.pip]]
+package = "greenlet"
+version = "2.0.1"
+
+[[pkgs.python.pip]]
 package = "identify"
 version = "2.5.9"
 
@@ -6624,6 +6628,10 @@ version = "9.0.0"
 [[pkgs.python.pip]]
 package = "mouse"
 version = "0.7.1"
+
+[[pkgs.python.pip]]
+package = "msgpack"
+version = "1.0.4"
 
 [[pkgs.python.pip]]
 package = "mypy-extensions"
@@ -6712,6 +6720,10 @@ version = "3.42.2"
 [[pkgs.python.pip]]
 package = "pynput"
 version = "1.7.6"
+
+[[pkgs.python.pip]]
+package = "pynvim"
+version = "0.4.3"
 
 [[pkgs.python.pip]]
 package = "pyparsing"

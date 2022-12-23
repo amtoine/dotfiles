@@ -354,10 +354,10 @@ cursor:
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-shell:
-  program: nu
-  args:
-    - --login
+# shell:
+#   program:
+#   args:
+#     - --login
 
 # Startup directory
 #

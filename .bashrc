@@ -197,9 +197,11 @@ export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 export PATH="$HOME/.local/bin:$EMACS_HOME/bin:$CARGO_HOME/bin:$PATH"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$MUJOCO_BIN"
 
+export BROWSER="qutebrowser"
+export TERMINAL="alacritty -e"
 # changes the editor in the terminal, to edit long commands.
-export EDITOR='helix'
-export VISAL='helix'
+export EDITOR='lvim'
+export VISAL='lvim'
 set -o vi
 
 ### SET MANPAGER
