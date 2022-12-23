@@ -37,6 +37,7 @@ media/
 .config/asciinema/install-id
 .config/dconf/user
 .config/gh/hosts.yml
+.config/gtk-3.0/bookmarks
 .config/kolourpaintrc
 .config/lazygit/state.yml
 .config/lvim/plugin/packer_compiled.lua
