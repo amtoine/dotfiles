@@ -102,7 +102,7 @@ let-env QUICKEMU_HOME = ($env.XDG_DATA_HOME | path join "quickemu")
 let-env DOTFILES_GIT_DIR = ($env.GHQ_ROOT| path join "github.com" "goatfiles" "dotfiles")
 let-env DOTFILES_WORKTREE = $env.HOME
 
-let-env DOWNLOADS_DIR = ("~/downloads" | path expand)
+let-env DOWNLOADS_DIR = ($env.HOME | path join "downloads")
 
 let-env FZF_DEFAULT_OPTS = "
 --bind ctrl-d:half-page-down
