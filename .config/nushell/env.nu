@@ -11,167 +11,6 @@
 
 # Nushell Environment Config File
 
-
-# credit to @Eldyj
-# https://discord.com/channels/601130461678272522/615253963645911060/1036225475288252446
-# revised by @eldyj in
-# https://discord.com/channels/601130461678272522/615253963645911060/1037327061481701468
-# revised by @fdncred in
-# https://discord.com/channels/601130461678272522/615253963645911060/1037354164147200050
-def spwd [] {
-  let home = (if ($nu.os-info.name == windows) { $env.USERPROFILE } else { $env.HOME })
-  let sep = (if ($nu.os-info.name == windows) { "\\" } else { "/" })
-
-  let spwd_paths = (
-    $"!/($env.PWD)" |
-      str replace $"!/($home)" ~ -s |
-      split row $sep
-  )
-
-  let spwd_len = (($spwd_paths | length) - 1)
-
-  $spwd_paths
-  | each {|el id|
-    let spwd_src = ($el | split chars)
-
-    if ($id == $spwd_len) {
-      $el
-    } else if ($spwd_src.0 == ".") {
-      $".($spwd_src.1)"
-    } else {
-      $"($spwd_src.0)"
-    }
-  }
-  | str collect $sep
-}
-
-
-# credit to @Eldyj
-# https://discord.com/channels/601130461678272522/615253963645911060/1036274988950487060
-def build-prompt [
-    separator: string
-    segments: table
-] {
-    let len = ($segments | length)
-
-    let first = {
-      fg: ($segments.0.fg),
-      bg: ($segments.0.bg),
-      text: $" ($segments.0.text) "
-    }
-
-    let tokens = (
-        seq 1 ($len - 1)
-        | each {|i|
-          let sep = {
-            fg: ($segments | get ($i - 1) | get bg),
-            bg: ($segments | get $i | get bg),
-            text: $separator
-          }
-          let text = {
-            fg: ($segments | get $i | get fg),
-            bg: ($segments | get $i | get bg),
-            text: $" ($segments | get $i | get text) "
-          }
-          $sep | append $text
-        }
-        | flatten
-    )
-
-    let last = {
-        fg: ($segments | get ($len - 1) | get bg),
-        bg: '',
-        text: $separator
-    }
-
-    let prompt = (
-        $first |
-        append $tokens |
-        append $last |
-        each {
-            |it|
-            $"(ansi reset)(ansi -e {fg: $it.fg, bg: $it.bg})($it.text)"
-        } |
-        str collect
-    )
-    $"($prompt)(ansi reset) "
-}
-
-
-def create_left_prompt [] {
-    let simplified_pwd = ($env.PWD | str replace $nu.home-path '~' -s)
-
-    let path_segment = if (is-admin) {
-        $"(ansi red_bold)($simplified_pwd)"
-    } else {
-        $"(ansi green_bold)($simplified_pwd)"
-    }
-
-    let branch = (do -i { git branch --show-current } | str trim)
-
-    if ($branch == '') {
-        $path_segment
-    } else {
-        $path_segment + $" (ansi reset)\((ansi yellow_bold)($branch)(ansi reset)\)"
-    }
-}
-
-
-# credit to @Eldyj
-# https://discord.com/channels/601130461678272522/615253963645911060/1036274988950487060
-def create_left_prompt_eldyj [] {
-    let user_bg = "#2e3440"
-    let user_fg = "#88c0d0"
-    let pwd_bg = "#3b4252"
-    let pwd_fg = "#81a1c1"
-    let git_bg = "#434C5E"
-    let git_fg = "#A3BE8C"
-
-    let common = [
-        [bg fg text];
-        [$user_bg $user_fg $env.USER]
-        [$pwd_bg $pwd_fg $"(spwd)"]
-    ]
-
-    let segments = if ((do -i { git branch --show-current } | complete | get stderr) == "") {
-        let git_branch = {
-            bg: $git_bg,
-            fg: $git_fg,
-            text: (git branch --show-current | str replace --all "\n" "")
-        }
-        $common | append $git_branch
-    } else {
-        $common
-    }
-
-    build-prompt (char nf_left_segment) $segments
-}
-
-
-def create_right_prompt [] {
-    let time_segment = ([
-        (date now | date format '%m/%d/%Y %r')
-    ] | str collect)
-
-    $time_segment
-}
-
-
-# Use nushell functions to define your right and left prompt
-let eldyj = true
-let right = false
-let-env PROMPT_COMMAND = if ($eldyj) { {create_left_prompt_eldyj} } else { {create_left_prompt} }
-let-env PROMPT_COMMAND_RIGHT = if ($right) { {create_right_prompt} } else { "" }
-
-# The prompt indicators are environmental variables that represent
-# the state of the prompt
-let show_prompt_indicator = not $eldyj
-let-env PROMPT_INDICATOR = if ($show_prompt_indicator) { "〉" } else { "" }
-let-env PROMPT_INDICATOR_VI_INSERT = if ($show_prompt_indicator) { ": " } else { "" }
-let-env PROMPT_INDICATOR_VI_NORMAL = if ($show_prompt_indicator) { "〉" } else { "" }
-
-let-env PROMPT_MULTILINE_INDICATOR = { "::: " }
-
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)
 # - converted from a value back to a string when running external commands (to_string)
@@ -200,7 +39,13 @@ let-env XDG_STATE_HOME = ($env.HOME | path join ".local" "state")
 let-env XDG_CACHE_HOME = ($env.HOME | path join ".cache")
 
 # move all moveable config to the right location, outside $HOME.
-let-env TERMINFO_DIRS = $"($env.XDG_DATA_HOME | path join terminfo):/usr/share/terminfo"
+let-env TERMINFO_DIRS = (
+  [
+      ($env.XDG_DATA_HOME | path join "terminfo")
+      "/usr/share/terminfo"
+  ]
+  | str join ":"
+)
 let-env _JAVA_OPTIONS = $"-Djava.util.prefs.userRoot=($env.XDG_CONFIG_HOME | path join java)"
 let-env HISTFILE = ($env.XDG_STATE_HOME | path join "bash" "history")
 let-env CARGO_HOME = ($env.XDG_DATA_HOME | path join "cargo")
@@ -226,6 +71,8 @@ let-env KERAS_HOME = ($env.XDG_STATE_HOME | path join "keras")
 let-env EMACS_HOME = ($env.HOME | path join ".emacs.d")
 let-env MUJOCO_BIN = ($env.HOME | path join ".mujoco" "mujoco210" "bin")
 
+let-env BROWSER = "qutebrowser"
+let-env TERMINAL = "alacritty -e"
 # changes the editor in the terminal, to edit long commands.
 let-env EDITOR = 'nvim'
 let-env VISAL = 'nvim'
@@ -250,13 +97,14 @@ let-env MANPAGER = "sh -c 'col -bx | bat -l man -p'"
 let-env WORKON_HOME = ($env.XDG_DATA_HOME | path join "virtualenvs")
 
 let-env GHQ_ROOT = ($env.XDG_DATA_HOME | path join "ghq")
+let-env GIT_REPOS_HOME = $env.GHQ_ROOT
 
 let-env QUICKEMU_HOME = ($env.XDG_DATA_HOME | path join "quickemu")
 
-let-env DOTFILES_GIT_DIR = ($env.GHQ_ROOT| path join "github.com" "goatfiles" "dotfiles")
+let-env DOTFILES_GIT_DIR = ($env.GIT_REPOS_HOME| path join "github.com" "goatfiles" "dotfiles")
 let-env DOTFILES_WORKTREE = $env.HOME
 
-let-env DOWNLOADS_DIR = ("~/downloads" | path expand)
+let-env DOWNLOADS_DIR = ($env.HOME | path join "downloads")
 
 let-env FZF_DEFAULT_OPTS = "
 --bind ctrl-d:half-page-down
@@ -269,20 +117,23 @@ let-env FZF_DEFAULT_OPTS = "
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
-let-env PATH = ($env.PATH | split row (char esep)
+let-env PATH = (
+    $env.PATH | split row (char esep)
     | prepend ($env.HOME | path join ".local" "bin")
     | prepend ($env.EMACS_HOME | path join "bin")
     | prepend ($env.CARGO_HOME | path join "bin")
     | prepend ($env.XDG_DATA_HOME | path join "clang-15" "bin")
 )
-let-env LD_LIBRARY_PATH = ($env.LD_LIBRARY_PATH | split row (char esep) |
-    prepend $env.MUJOCO_BIN
+let-env LD_LIBRARY_PATH = (
+    $env.LD_LIBRARY_PATH | split row (char esep)
+    | prepend $env.MUJOCO_BIN
 )
 
 
 # disable or enable final configuration commands in ./scripts/final.nu
 #
 let-env USE_FINAL_CONFIG_HOOK = false
+
 let-env QT_QPA_PLATFORMTHEME = "qt5ct"
 
 let-env TOMB_HOME = ($env.XDG_DATA_HOME | path join "tombs")
@@ -296,7 +147,7 @@ let-env LS_COLORS = (vivid generate $env.LS_THEME)
 # By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIR = ($nu.config-path | path dirname | path join 'lib')
 let-env NU_SCRIPTS_REMOTE = "https://github.com/goatfiles/nu_scripts"
-let-env NU_SCRIPTS_DIR = ($env.GHQ_ROOT | path join "github.com/goatfiles/nu_scripts")
+let-env NU_SCRIPTS_DIR = ($env.GIT_REPOS_HOME | path join "github.com/goatfiles/nu_scripts")
 
 let-env NU_LIB_DIRS = [
     $env.NU_LIB_DIR
@@ -345,3 +196,10 @@ if not ($env.DEFAULT_CONFIG_FILE | path exists) {
   print $"(ansi cyan)info(ansi reset): pulling default config file..."
   config update default
 }
+
+let-env PROMPT_MULTILINE_INDICATOR = {(
+    (
+      [(ansi red) (ansi yellow) (ansi green) (ansi reset)]
+      | str join ")"
+    ) + " "
+)}

@@ -19,7 +19,7 @@ alias q = exit
 
 # be more verbose
 alias cp = cp --verbose
-alias rm = rm --trash --verbose
+alias rm = rm --verbose
 alias mv = mv --verbose
 
 # misc

@@ -26,16 +26,25 @@ DMBORDER=5
 # DMENU="dmenu -i -g $DMCOLUMNS -l $DMLINES -x $((960 - $DMWIDTH/2)) -y $((540 - ($DMLINES+1)*$DMHEIGHT/2)) -z $DMWIDTH -h $DMHEIGHT -bw $DMBORDER -p"
 DMENU="dmenu -i -l $DMLINES -bw $DMBORDER -p"
 
+# this needs to be set in the calling shell, defined in the shebang above
+#   here it is `bash`
+DMBROWSER="$BROWSER"
 # DMBROWSER="brave"
 # DMBROWSER="surf"
 # DMBROWSER="firefox"
-DMBROWSER="qutebrowser"
+# DMBROWSER="qutebrowser"
 
-DMTERM="st -e"
+# this needs to be set in the calling shell, defined in the shebang above
+#   here it is `bash`
+DMTERM="$TERMINAL"
+# DMTERM="st -e"
 # DMTERM="alacritty -e"
 # DMTERM="kitty"
 
-DMEDITOR="emacsclient -c -a emacs"
+# this needs to be set in the calling shell, defined in the shebang above
+#   here it is `bash`
+DMEDITOR="$EDITOR"
+# DMEDITOR="lvim"
 # DMEDITOR="${DMTERM} nvim"
 
 # TODO: Rename this variable to something more traditional

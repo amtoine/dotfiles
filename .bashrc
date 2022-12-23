@@ -196,6 +196,8 @@ export MUJOCO_BIN="$HOME/.mujoco/mujoco210/bin"
 export PATH="$HOME/.local/bin:$EMACS_HOME/bin:$CARGO_HOME/bin:$PATH"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$MUJOCO_BIN"
 
+export BROWSER="qutebrowser"
+export TERMINAL="alacritty -e"
 # changes the editor in the terminal, to edit long commands.
 export EDITOR='nvim'
 export VISAL='nvim'
