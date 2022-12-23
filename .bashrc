@@ -192,7 +192,6 @@ export CABAL_DIR="$XDG_DATA_HOME"/cabal
 export KERAS_HOME="$XDG_STATE_HOME/keras"
 export EMACS_HOME="$HOME/.emacs.d"
 export MUJOCO_BIN="$HOME/.mujoco/mujoco210/bin"
-export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 
 export PATH="$HOME/.local/bin:$EMACS_HOME/bin:$CARGO_HOME/bin:$PATH"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$MUJOCO_BIN"
@@ -200,7 +199,7 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$MUJOCO_BIN"
 export BROWSER="qutebrowser"
 export TERMINAL="alacritty -e"
 # changes the editor in the terminal, to edit long commands.
-export EDITOR='lvim'
+export EDITOR='nvim'
 export VISUAL="$EDITOR"
 set -o vi
 
