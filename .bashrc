@@ -201,7 +201,7 @@ export BROWSER="qutebrowser"
 export TERMINAL="alacritty -e"
 # changes the editor in the terminal, to edit long commands.
 export EDITOR='lvim'
-export VISAL="$EDITOR"
+export VISUAL="$EDITOR"
 set -o vi
 
 ### SET MANPAGER
