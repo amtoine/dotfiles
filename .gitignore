@@ -5,12 +5,14 @@
 .local/
 .mozilla/
 .pki/
+.snap/
 .ssh/
 
 # regular directories
 documents/
 downloads/
 media/
+snap/
 
 # hidden files
 .Xauthority
