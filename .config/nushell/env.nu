@@ -210,7 +210,8 @@ let-env PROMPT_MULTILINE_INDICATOR = {(
 #
 # see https://www.nushell.sh/cookbook/misc.html#manage-ssh-passphrases
 #
-ssh-agent -c
+let-env SSH_AGENT_TIMEOUT = 300
+ssh-agent -c -t $env.SSH_AGENT_TIMEOUT
 | lines
 | first 2
 | parse "setenv {name} {value};"
