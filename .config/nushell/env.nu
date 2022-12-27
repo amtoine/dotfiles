@@ -203,3 +203,16 @@ let-env PROMPT_MULTILINE_INDICATOR = {(
       | str join ")"
     ) + " "
 )}
+
+
+# start the ssh agent to allow SSO with ssh authentication
+# very usefull with `github` over the ssh protocol
+#
+# see https://www.nushell.sh/cookbook/misc.html#manage-ssh-passphrases
+#
+ssh-agent -c
+| lines
+| first 2
+| parse "setenv {name} {value};"
+| transpose -i -r -d
+| load-env
