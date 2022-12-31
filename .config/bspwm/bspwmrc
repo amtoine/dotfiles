@@ -149,7 +149,7 @@ apply_rules () {
         bspc rule -a "$app" desktop="^$NB_WORKSPACES_PER_MONITOR" state=tiled focus=off follow=off manage=on
     done
     for qute_floating in "filepicker" "ytdl-download"; do
-        bspc rule -a "qutebrowser-$qute_floating" state=floating focus=on follow=on manage=on
+        bspc rule -a "qutebrowser-$qute_floating" state=floating focus=on follow=on manage=on rectangle=1600x900+160+90
     done
     log_ok "desktop rules applied!" "[bspwmrc.apply_rules]"
 }
