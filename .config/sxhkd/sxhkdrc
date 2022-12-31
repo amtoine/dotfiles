@@ -38,7 +38,12 @@ super + {_,shift} + F2
 super + {_,shift} + F3
   git_dir="$XDG_DATA_HOME/ghq/github.com/goatfiles/dotfiles"; \
   work_tree="$HOME"; \
-  TIGRC_USER="$XDG_CONFIG_HOME/tig/.dotfiles" GIT_DIR="$git_dir" GIT_WORK_TREE="$work_tree" $WM_TERM $WM_TERM_FLAGS {tig --all, lazygit --git-dir="$gir_dir" --work-tree="$work_tree"}
+  TIGRC_USER="$XDG_CONFIG_HOME/tig/.dotfiles" GIT_DIR="$git_dir" GIT_WORK_TREE="$work_tree" \
+  $WM_TERM $WM_TERM_FLAGS \
+  {\
+    tig --all,\
+    lazygit --git-dir="$gir_dir" --work-tree="$work_tree"\
+  }
 
 # general one-key bindings, mainly to run applications quickly.
 super + Return
