@@ -147,3 +147,5 @@
 	gpgsign = true
 [tag]
 	gpgsign = true
+[safe]
+	directory = /mnt
