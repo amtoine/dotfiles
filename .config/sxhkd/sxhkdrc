@@ -109,3 +109,5 @@ super + z; u; {c, u}
   gsupdate --{check,update}
 super + z; z; {m, w}
   $WM_TERM $WM_TERM_FLAGS {gmacho,gwtldr}
+super + z; h
+  $WM_TERM --class "htop,htop" $WM_TERM_FLAGS htop

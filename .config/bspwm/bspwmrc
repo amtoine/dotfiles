@@ -153,6 +153,7 @@ FLOATING_APPS=(
     "qutebrowser-filepicker"
     "qutebrowser-ytdl-download"
     "config-git"
+    "htop"
 )
 
 
