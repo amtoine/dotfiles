@@ -35,6 +35,10 @@ autostart () {
       log_info "do not use dunst"
     fi
 
+    if [ -n "$WM_LOG_NOTIFICATIONS" ]; then
+      notify-log "$WM_NOTIFICATIONS_LOG_FILE" &
+    fi
+
     if [ -n "$WM_USE_POLYBAR" ]; then
       if does_command_exist polybar; then
         log_info "polybar..." "[scripts.autostart]"

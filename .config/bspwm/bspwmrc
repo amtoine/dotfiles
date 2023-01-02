@@ -11,6 +11,7 @@
 #*
 
 XDG_CONFIG=${XDG_CONFIG_HOME:-$HOME/.config}
+XDG_DATA=${XDG_DATA_HOME:-$HOME/.config}
 
 source "$XDG_CONFIG/bspwm/scripts/autostart.sh"
 
@@ -59,6 +60,9 @@ export WM_USE_UNCLUTTER="yes"
 
 export WM_PLAY_STARTUP_SOUND="yes"
 export WM_NOTIFY_AT_STARTUP="yes"
+
+export WM_LOG_NOTIFICATIONS="yes"
+export WM_NOTIFICATIONS_LOG_FILE="$XDG_DATA/notifications/log.txt"
 
 # the configuration files.
 export WM_SXHKD_COMMON="$XDG_CONFIG/sxhkd/sxhkdrc"
