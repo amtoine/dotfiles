@@ -29,6 +29,14 @@ XF86Audio{Lower,Raise}Volume + control
 XF86Audio{Lower,Raise}Volume
   gmixer --{down,up} --channel Master --step 5 --notify
 
+# bindings to control a music player
+super + F{7,8,9}
+  playerctl --player $WM_MUSIC_PLAYER {previous,play-pause,next}
+super + shift + F{7,9}
+  playerctl --player $WM_MUSIC_PLAYER position 5.0{-,+}
+super + control + F{7,9}
+  playerctl --player $WM_MUSIC_PLAYER volume 0.05{-,+}
+
 # function bindings, such as taking screeshots, doing version control on the dotfiles,
 # logging out of the window manager...
 super + {_,shift} + F1
