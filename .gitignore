@@ -2,6 +2,7 @@
 .cache/
 .cargo/
 .gnome/
+.ipfs/
 .local/
 .mozilla/
 .pki/
@@ -45,6 +46,7 @@ snap/
 .config/menus/applications-merged/xdg-desktop-menu-dummy.menu
 .config/mpd/database
 .config/mpd/pid
+.config/ncmpcpp/error.log
 .config/nushell/history.txt
 .config/nushell/lib/default_config.nu
 .config/nvim/plugin/packer_compiled.lua
