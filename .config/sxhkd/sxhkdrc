@@ -30,8 +30,15 @@ XF86Audio{Lower,Raise}Volume
   gmixer --{down,up} --channel Master --step 5 --notify
 
 # bindings to control a music player
-super + F{7,8,9}
-  playerctl --player $WM_MUSIC_PLAYER {previous,play-pause,next}
+super + F8
+  playerctl --player $WM_MUSIC_PLAYER play-pause; \
+  album=$(playerctl --player $WM_MUSIC_PLAYER metadata album); \
+  title=$(playerctl --player $WM_MUSIC_PLAYER metadata title); \
+  track=$(playerctl --player $WM_MUSIC_PLAYER metadata xesam:trackNumber); \
+  status=$(playerctl --player $WM_MUSIC_PLAYER status); \
+  dunstify "$album" "$title ($track)\n\n$status" --timeout 1000
+super + F{7,9}
+  playerctl --player $WM_MUSIC_PLAYER {previous,next}
 super + shift + F{7,9}
   playerctl --player $WM_MUSIC_PLAYER position 5.0{-,+}
 super + control + F{7,9}
