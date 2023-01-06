@@ -1,9 +1,9 @@
-iris https://iris.isae.fr/acces-aux-ressources-de-calcul-de-l-isae-supaero
+isae-iris https://iris.isae.fr/acces-aux-ressources-de-calcul-de-l-isae-supaero
 yt https://www.youtube.com/
 wl https://www.youtube.com/playlist?list=WL
 gh https://github.com/
 mva https://inception.universite-paris-saclay.fr/fr/
-wali https://wali-m.isae.fr/SOGo/so/a.stevan/Mail/view#!/Mail/0/INBOX
+isae-wali https://wali-m.isae.fr/SOGo/so/a.stevan/Mail/view#!/Mail/0/INBOX
 amazon https://www.amazon.fr/
 linkedin https://www.linkedin.com/feed/
 maps https://www.google.com/maps
@@ -85,7 +85,7 @@ nushell-io https://github.com/nushell/nushell.github.io
 nushell-scripts https://github.com/nushell/nu_scripts
 citadelcolour https://citadelcolour.com/
 overleaf https://www.overleaf.com/login
-lms https://lms.isae.fr/
+isae-lms https://lms.isae.fr/
 wallhaven https://wallhaven.cc/
 cic https://www.cic.fr/fr/authentification.html
 gnu https://www.gnu.org/
@@ -109,7 +109,7 @@ asm-syscalls https://www.tutorialspoint.com/assembly_programming/assembly_system
 llvm-opt https://www.llvm.org/docs/CommandGuide/opt.html#cmdoption-opt-help
 llvm-docs https://llvm.org/docs/index.html
 bouygues https://www.bouyguestelecom.fr/
-cosinus https://cosinusv2.isae.fr/app/index.html
+isae-cosinus https://cosinusv2.isae.fr/app/index.html
 frame.work https://frame.work/fr/en
 yt-lib https://www.youtube.com/feed/library
 yt-hist https://www.youtube.com/feed/history
@@ -125,8 +125,8 @@ infinity-universe https://infinitytheuniverse.com/
 infinity-wiki https://infinitythewiki.com/Introduction
 infinity-store https://store.corvusbelli.com/wargames/infinity
 infinity-army https://infinitytheuniverse.com/army
-adn https://adn.isae-supaero.fr/
-microlearning https://microlearning.groupe-isae.fr/
+isae-adn https://adn.isae-supaero.fr/
+isae-microlearning https://microlearning.groupe-isae.fr/
 paypal https://www.paypal.com/signin
 advent-of-code https://adventofcode.com/
 learngitbranching https://learngitbranching.js.org/
@@ -199,3 +199,5 @@ isae-rocketchat https://rocketchat.isae-supaero.fr/home
 ensap https://ensap.gouv.fr/web/accueilnonconnecte
 gmail-inbox https://mail.google.com/mail/u/0/#inbox
 linuxfr https://linuxfr.org/
+isae-chronos https://chronos.isae-supaero.fr/
+isae-desk https://desk.isae.fr/services
