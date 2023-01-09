@@ -1,6 +1,7 @@
 # hidden directories
 .cache/
 .cargo/
+.docker/
 .gnome/
 .ipfs/
 .local/
