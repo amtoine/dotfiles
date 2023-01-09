@@ -31,7 +31,7 @@ snap/
 # the config directories
 .config/chromium/
 .config/discord/
-.config/grip/cache*/
+.config/grip/cache-*/
 .config/libreoffice/
 .config/vim/plugged/
 
