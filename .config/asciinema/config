@@ -1,0 +1,5 @@
+[record]
+;command = ~/.local/share/ghq/github.com/nushell/nushell/target/debug/nu
+command = bash -norc
+;command = nu --config . --env-config .
+env = SHELL,TERM,USER
