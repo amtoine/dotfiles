@@ -168,7 +168,7 @@ ghna https://github.com/notifications?query=
 awesome-rust https://awesome-rust.com/
 rustonomicon https://doc.rust-lang.org/stable/nomicon/
 google https://www.google.com/
-gmail https://mail.google.com/mail/u/0/#all
+gmail-all https://mail.google.com/mail/u/0/#all
 ggh https://gist.github.com/amtoine
 gghs https://gist.github.com/amtoine/starred
 git-workflows https://www.atlassian.com/git/tutorials/comparing-workflows
@@ -197,7 +197,7 @@ isae-gitlab https://gitlab.isae-supaero.fr/
 isae-nextcloud https://nextcloud.isae.fr/index.php/apps/dashboard/
 isae-rocketchat https://rocketchat.isae-supaero.fr/home
 ensap https://ensap.gouv.fr/web/accueilnonconnecte
-gmail-inbox https://mail.google.com/mail/u/0/#inbox
+gmail https://mail.google.com/mail/u/0/#inbox
 linuxfr https://linuxfr.org/
 agenda https://calendar.google.com/calendar/u/0/r?pli=1
 isae-chronos https://chronos.isae-supaero.fr/
