@@ -1,0 +1,53 @@
+# hidden directories
+.cache/
+.cargo/
+.gnome/
+.local/
+.mozilla/
+.pki/
+.ssh/
+
+# regular directories
+documents/
+downloads/
+media/
+
+# hidden files
+.Xauthority
+.bash_history
+.fzf.bash
+.lesshst
+.lldb/lldb-widehistory
+.moc/equalizer
+.moc/last_directory
+.moc/softmixer
+.python_history
+.viminfo
+.wget-hsts
+
+
+# the config directories
+.config/chromium/
+.config/discord/
+.config/grip/cache*/
+.config/libreoffice/
+.config/vim/plugged/
+
+# the config files
+.config/asciinema/install-id
+.config/dconf/user
+.config/gh/hosts.yml
+.config/kolourpaintrc
+.config/lazygit/state.yml
+.config/lvim/plugin/packer_compiled.lua
+.config/menus/applications-merged/xdg-desktop-menu-dummy.menu
+.config/mpd/database
+.config/mpd/pid
+.config/nushell/history.txt
+.config/nushell/lib/default_config.nu
+.config/nvim/plugin/packer_compiled.lua
+.config/okularrc
+.config/pulse/cookie
+.config/user-dirs.dirs
+.config/user-dirs.locale
+.config/vim/autoload/plug.vim

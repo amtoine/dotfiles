@@ -42,14 +42,14 @@ REMOTE_PKGBUILDS="https://github.com/goatfiles/pkgbuilds"
 LOCAL_PKGBUILDS_DIR="/tmp/pkgbuilds"
 
 PKGBUILDS=(
-    paru
-    amtoine-scripts-git
-    amtoine-sounds-git
-    amtoine-wallpapers-git
-    amtoine-applications-git
-    amtoine-icons-git
-    junnunkarim-wallpapers-git
-    mut-ex-wallpapers-git
+    goat-paru-git
+    goat-scripts-git
+    goat-sounds-git
+    goat-wallpapers-git
+    goat-applications-git
+    goat-icons-git
+    goat-junnunkarim-wallpapers-git
+    goat-mut-ex-wallpapers-git
 )
 
 SYSTEM_FILES=(

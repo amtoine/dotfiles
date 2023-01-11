@@ -11,12 +11,12 @@
 
 [user]
   name = amtoine
-  email = 44101798+amtoine@users.noreply.github.com
+	email = stevan.antoine@gmail.com
+	signingkey = 7C5EE50BA27B86B7F9D5A7BA37AAE9B486CFF1AB
 [init]
   defaultBranch = main
 
 [core]
-  editor = helix
   pager = delta
 
 [delta]
@@ -141,3 +141,9 @@
   rebase = true
 [push]
 	autoSetupRemote = true
+	default = nothing
+	gpgsign = false
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
