@@ -31,14 +31,14 @@ git clone https://github.com/goatfiles/pkgbuilds /tmp/pkgbuilds
 # Build pkgbuilds
 (
     cd /tmp/pkgbuilds
-    ./install.sh x86_64/paru
-    ./install.sh x86_64/amtoine-scripts-git/
-    ./install.sh x86_64/amtoine-sounds-git/
-    ./install.sh x86_64/amtoine-wallpapers-git/
-    ./install.sh x86_64/amtoine-applications-git/
-    ./install.sh x86_64/amtoine-icons-git/
-    ./install.sh x86_64/junnunkarim-wallpapers-git
-    ./install.sh x86_64/mut-ex-wallpapers-git
+    ./install.sh x86_64/goat-paru-git/
+    ./install.sh x86_64/goat-scripts-git/
+    ./install.sh x86_64/goat-sounds-git/
+    ./install.sh x86_64/goat-wallpapers-git/
+    ./install.sh x86_64/goat-applications-git/
+    ./install.sh x86_64/goat-icons-git/
+    ./install.sh x86_64/goat-junnunkarim-wallpapers-git/
+    ./install.sh x86_64/goat-mut-ex-wallpapers-git/
 )
 
 # Install dependencies
