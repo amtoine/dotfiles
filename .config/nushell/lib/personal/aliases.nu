@@ -13,6 +13,8 @@
 alias cfg = ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE
 alias lg = ^lazygit
 
+alias git-ipfs = git -C $env.IPFS_PATH
+
 # exit the shell
 alias :q = exit
 alias q = exit
