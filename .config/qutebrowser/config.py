@@ -22,6 +22,11 @@
 ##   qute://help/settings.html
 import os
 
+
+def get_env(key, default=None):
+    return os.environ[key] if key in os.environ else default
+
+
 ALACRITTY = 0
 ST = 1
 
@@ -1158,7 +1163,7 @@ config.load_autoconfig(True)
 # Directory to save downloads to. If unset, a sensible OS-specific
 # default is used.
 # Type: Directory
-# c.downloads.location.directory = None
+c.downloads.location.directory = get_env("DOWNLOADS_DIR", "~/downloads")
 
 # Prompt the user for the download location. If set to false,
 # `downloads.location.directory` will be used.
