@@ -66,7 +66,7 @@ export alias keybindings = [
     mode: [emacs, vi_normal, vi_insert]
     event: {
       send: executehostcommand
-      cmd: "clear; lsg"
+      cmd: "clear"
     }
   }
 ]

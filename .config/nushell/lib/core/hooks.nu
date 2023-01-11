@@ -18,7 +18,7 @@ export alias hooks = {
   }]
   env_change: {
     PWD: [{|before, after|
-      print (lsg)  # replace with source code to run if the PWD environment is different since the last repl input
+      $nothing  # replace with source code to run if the PWD environment is different since the last repl input
     }]
   }
 }
