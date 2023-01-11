@@ -72,7 +72,7 @@ export WM_SXHKD_BSPWM="$XDG_CONFIG/bspwm/sxhkd/sxhkdrc"
 export WM_DMFONT="mononoki Nerd Font-20"
 export WM_TERM="alacritty"
 export WM_TERM_FLAGS="-e"
-export WM_TERM_SHELL="/home/amtoine/.local/share/ghq/github.com/nushell/nushell/target/debug/nu"
+export WM_TERM_SHELL="nu"
 
 export WM_MUSIC_PLAYER="spotify"
 
