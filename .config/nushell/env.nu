@@ -219,3 +219,5 @@ ssh-agent -c -t $env.SSH_AGENT_TIMEOUT
 | parse "setenv {name} {value};"
 | transpose -i -r -d
 | load-env
+
+let-env SSH_KEYS_HOME = ($env.HOME | path join ".ssh" "keys")

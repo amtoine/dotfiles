@@ -59,6 +59,7 @@ use scripts/sys.nu
 use scripts/docker.nu
 use scripts/downloads.nu
 use scripts/ipfs.nu
+use scripts/ssh.nu
 
 source personal/final.nu
 
