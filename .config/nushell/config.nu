@@ -57,6 +57,8 @@ use scripts/gh.nu
 use scripts/gpg.nu
 use scripts/sys.nu
 use scripts/docker.nu
+use scripts/downloads.nu
+use scripts/ipfs.nu
 
 source personal/final.nu
 
