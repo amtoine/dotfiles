@@ -113,6 +113,7 @@ let-env FZF_DEFAULT_OPTS = "
 --bind shift-left:preview-half-page-up
 --bind shift-down:preview-down
 --bind shift-up:preview-up
+--preview-window left,40%
 "
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
