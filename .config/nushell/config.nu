@@ -64,4 +64,4 @@ use scripts/ssh.nu
 source personal/final.nu
 
 use scripts/shell_prompt.nu
-shell_prompt setup --use-eldyj-prompt
+shell_prompt setup --use-right-prompt
