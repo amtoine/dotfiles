@@ -33,7 +33,7 @@ let custom_config = {
     abbreviations: true
   }
 
-  color_config: (themes base16)
+  color_config: $dark_theme
 
   edit_mode: vi
   show_banner: false
