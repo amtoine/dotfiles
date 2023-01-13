@@ -69,4 +69,28 @@ export alias keybindings = [
       cmd: "clear"
     }
   }
+  # credit to @fdncred
+  # https://discord.com/channels/601130461678272522/614593951969574961/1063493778566037566
+  {
+    name: fuzzy_history
+    modifier: control
+    keycode: char_h
+    mode: [emacs, vi_normal, vi_insert]
+    event: {
+      send: executehostcommand
+      cmd: "commandline (history | each { |it| $it.command } | uniq | reverse | str collect (char nl) | fzf --layout=reverse --height=40% -q (commandline) | decode utf-8 | str trim)"
+    }
+  }
+  # credit to @fdncred
+  # https://discord.com/channels/601130461678272522/614593951969574961/1063493778566037566
+  {
+    name: fuzzy_dir
+    modifier: control
+    keycode: char_s
+    mode: [emacs, vi_normal, vi_insert]
+    event: {
+      send: executehostcommand
+      cmd: "commandline -a (ls **/* | where type == dir | get name | to text | fzf -q (commandline) | str trim)"
+    }
+  }
 ]
