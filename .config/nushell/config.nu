@@ -60,6 +60,7 @@ use scripts/docker.nu
 use scripts/downloads.nu
 use scripts/ipfs.nu
 use scripts/ssh.nu
+use scripts/trash.nu
 
 source personal/final.nu
 
