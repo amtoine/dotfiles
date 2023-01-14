@@ -95,4 +95,16 @@ export alias keybindings = [
       cmd: "commandline -a (ls **/* | where type == dir | get name | to text | fzf -q (commandline) | str trim)"
     }
   }
+  # credit to @vinlet
+  # https://discord.com/channels/601130461678272522/614593951969574961/1063822677808250991
+  {
+    name: insert_file
+    modifier: control
+    keycode: char_y
+    mode: [emacs, vi_insert]
+    event: {
+      send: executehostcommand
+      cmd: "commandline --insert (fzf --tiebreak=chunk --layout=reverse  --multi --preview='echo {..}' --preview-window='bottom:3:wrap' --height=70% | decode utf-8 | str trim)"
+    }
+  }
 ]
