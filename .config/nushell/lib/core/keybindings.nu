@@ -71,6 +71,8 @@ export alias keybindings = [
   }
   # credit to @fdncred
   # https://discord.com/channels/601130461678272522/614593951969574961/1063493778566037566
+  # augmented by @vinlet
+  # https://discord.com/channels/601130461678272522/614593951969574961/1063822677808250991
   {
     name: fuzzy_history
     modifier: control
@@ -78,7 +80,7 @@ export alias keybindings = [
     mode: [emacs, vi_normal, vi_insert]
     event: {
       send: executehostcommand
-      cmd: "commandline (history | each { |it| $it.command } | uniq | reverse | str collect (char nl) | fzf --layout=reverse --height=40% -q (commandline) | decode utf-8 | str trim)"
+      cmd: "commandline (history | each { |it| $it.command } | uniq | reverse | str collect (char nl) | fzf --tiebreak=chunk --layout=reverse  --multi --preview='echo {..}' --preview-window='bottom:3:wrap' --height=70% -q (commandline) | decode utf-8 | str trim)"
     }
   }
   # credit to @fdncred
