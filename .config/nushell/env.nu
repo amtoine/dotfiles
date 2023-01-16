@@ -96,7 +96,7 @@ let-env MANPAGER = "sh -c 'col -bx | bat -l man -p'"
 # activates virtualenvwrapper to manage python virtual environments.
 let-env WORKON_HOME = ($env.XDG_DATA_HOME | path join "virtualenvs")
 
-let-env GHQ_ROOT = ($env.XDG_DATA_HOME | path join "ghq")
+let-env GHQ_ROOT = ($env.XDG_DATA_HOME | path join "git" "store")
 let-env GIT_REPOS_HOME = $env.GHQ_ROOT
 
 let-env QUICKEMU_HOME = ($env.XDG_DATA_HOME | path join "quickemu")
