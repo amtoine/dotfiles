@@ -35,6 +35,7 @@
   cl      = clone
   a       = add
   au      = add -u
+  ae      = add --edit
   ap      = add -p
   aup     = add -up
   st      = status --short
