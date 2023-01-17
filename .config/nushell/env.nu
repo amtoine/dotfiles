@@ -129,7 +129,7 @@ let-env PATH = (
     | prepend ($env.XDG_DATA_HOME | path join "gem" "ruby" $env.GEM_VERSION "bin")
 )
 let-env LD_LIBRARY_PATH = (
-    $env.LD_LIBRARY_PATH | split row (char esep)
+    $env | get -i LD_LIBRARY_PATH | default "" | split row (char esep)
     | prepend $env.MUJOCO_BIN
 )
 
