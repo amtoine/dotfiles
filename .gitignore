@@ -19,6 +19,7 @@ snap/
 .Xauthority
 .bash_history
 .fzf.bash
+.icons/default/cursors
 .lesshst
 .lldb/lldb-widehistory
 .moc/equalizer
