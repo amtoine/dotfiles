@@ -51,6 +51,7 @@ snap/
 .config/ncmpcpp/error.log
 .config/nushell/history.txt
 .config/nushell/lib/default_config.nu
+.config/nushell/plugin.nu
 .config/nvim/plugin/packer_compiled.lua
 .config/okularrc
 .config/pulse/cookie
