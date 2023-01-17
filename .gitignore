@@ -29,7 +29,6 @@ snap/
 .viminfo
 .wget-hsts
 
-
 # the config directories
 .config/chromium/
 .config/discord/
@@ -42,6 +41,8 @@ snap/
 .config/dconf/user
 .config/gh/hosts.yml
 .config/gtk-3.0/bookmarks
+.config/kconf_updaterc
+.config/kdeglobals
 .config/kolourpaintrc
 .config/lazygit/state.yml
 .config/lvim/plugin/packer_compiled.lua
