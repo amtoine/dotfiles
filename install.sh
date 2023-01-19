@@ -30,7 +30,7 @@ BASE_DEPENDENCIES=(
     bluez-plugins
 )
 
-RAW_DOTFILES="https://raw.githubusercontent.com/goatfiles/dotfiles"
+RAW_GOATFILES="https://raw.githubusercontent.com/goatfiles"
 REVISION="main"
 
 LOCAL_PKGS_FILE="/tmp/pkgs.toml"
@@ -113,7 +113,7 @@ install_pkgbuilds () {
 
 
 install_dependencies () {
-    echo_and_run curl -fLo "$LOCAL_PKGS_FILE" "$RAW_DOTFILES/$REVISION/pkgs.toml"
+    echo_and_run curl -fLo "$LOCAL_PKGS_FILE" "$RAW_GOATFILES/dotfiles/$REVISION/pkgs.toml"
 
     pacman_deps=$(nu -c "\
         open $LOCAL_PKGS_FILE \
@@ -139,7 +139,7 @@ install_dmenu () {
     [ -d "$LOCAL_DMENU_DIR" ] && echo_and_run sudo rm -r "$LOCAL_DMENU_DIR"
     echo_and_run git clone "$REMOTE_DMENU" "$LOCAL_DMENU_DIR"
 
-    echo_and_run curl -fLo "$LOCAL_DMENU_DIR/patches.h" "$RAW_DOTFILES/$REVISION/.config/dmenu-flexipatch/patches.h"
+    echo_and_run curl -fLo "$LOCAL_DMENU_DIR/patches.h" "$RAW_GOATFILES/dotfiles/$REVISION/.config/dmenu-flexipatch/patches.h"
 
     (
         echo_and_run cd "$LOCAL_DMENU_DIR"
@@ -152,7 +152,7 @@ install_dmenu () {
 install_system_files () {
     for file in "${SYSTEM_FILES[@]}"; do
         echo_and_run sudo mkdir -p "/$(dirname "$file")"
-        echo_and_run sudo curl -fLo "/$file" "$RAW_DOTFILES/$REVISION/.system/$file"
+        echo_and_run sudo curl -fLo "/$file" "$RAW_GOATFILES/system/$REVISION/$file"
     done
 }
 
