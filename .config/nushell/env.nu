@@ -171,18 +171,21 @@ let-env NU_LIB_DIRS = [
     $env.NU_SCRIPTS.nushell.directory
 ]
 
-if not ($env.NU_SCRIPTS.goatfiles.directory | path exists) {
-  print $"(ansi red_bold)error(ansi reset): ($env.NU_SCRIPTS.goatfiles.directory) does not exist..."
-  print $"(ansi cyan)info(ansi reset): pulling the scripts from ($env.NU_SCRIPTS.goatfiles.upstream)..."
-  git clone $env.NU_SCRIPTS.goatfiles.upstream $env.NU_SCRIPTS.goatfiles.directory
-  git -C $env.NU_SCRIPTS.goatfiles.directory checkout $env.NU_SCRIPTS.goatfiles.revision
+
+def _check_nu_scripts_and_clone [profile] {
+  if not ($profile.directory | path exists) {
+    print $"(ansi red_bold)error(ansi reset): ($profile.directory) does not exist..."
+    print $"(ansi cyan)info(ansi reset): pulling the scripts from ($profile.upstream)..."
+    git clone $profile.upstream $profile.directory
+    git -C $profile.directory checkout $profile.revision
+  }
 }
 
-if not ($env.NU_SCRIPTS.nushell.directory | path exists) {
-  print $"(ansi red_bold)error(ansi reset): ($env.NU_SCRIPTS.nushell.directory) does not exist..."
-  print $"(ansi cyan)info(ansi reset): pulling the scripts from ($env.NU_SCRIPTS.nushell.upstream)..."
-  git clone $env.NU_SCRIPTS.nushell.upstream $env.NU_SCRIPTS.nushell.directory
-  git -C $env.NU_SCRIPTS.nushell.directory checkout $env.NU_SCRIPTS.nushell.revision
+
+$env.NU_SCRIPTS
+| transpose name profile
+| each {
+  _check_nu_scripts_and_clone $in.profile
 }
 
 let-env DEFAULT_CONFIG_FILE = (
