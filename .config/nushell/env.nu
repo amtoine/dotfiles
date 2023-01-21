@@ -153,6 +153,11 @@ let-env IPFS_PATH = ($env.HOME | path join ".ipfs")
 # By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIR = ($nu.config-path | path dirname | path join 'lib')
 let-env NU_SCRIPTS = {
+  nushell: {
+     upstream: "ssh://git@github.com/nushell/nu_scripts.git"
+     directory: ($env.GIT_REPOS_HOME | path join "github.com/nushell/nu_scripts")
+     revision: "main"
+  }
   goatfiles: {
      upstream: "ssh://git@github.com/goatfiles/nu_scripts.git"
      directory: ($env.GIT_REPOS_HOME | path join "github.com/goatfiles/nu_scripts")
@@ -163,6 +168,7 @@ let-env NU_SCRIPTS = {
 let-env NU_LIB_DIRS = [
     $env.NU_LIB_DIR
     $env.NU_SCRIPTS.goatfiles.directory
+    $env.NU_SCRIPTS.nushell.directory
 ]
 
 if not ($env.NU_SCRIPTS.goatfiles.directory | path exists) {
@@ -170,6 +176,13 @@ if not ($env.NU_SCRIPTS.goatfiles.directory | path exists) {
   print $"(ansi cyan)info(ansi reset): pulling the scripts from ($env.NU_SCRIPTS.goatfiles.upstream)..."
   git clone $env.NU_SCRIPTS.goatfiles.upstream $env.NU_SCRIPTS.goatfiles.directory
   git -C $env.NU_SCRIPTS.goatfiles.directory checkout $env.NU_SCRIPTS.goatfiles.revision
+}
+
+if not ($env.NU_SCRIPTS.nushell.directory | path exists) {
+  print $"(ansi red_bold)error(ansi reset): ($env.NU_SCRIPTS.nushell.directory) does not exist..."
+  print $"(ansi cyan)info(ansi reset): pulling the scripts from ($env.NU_SCRIPTS.nushell.upstream)..."
+  git clone $env.NU_SCRIPTS.nushell.upstream $env.NU_SCRIPTS.nushell.directory
+  git -C $env.NU_SCRIPTS.nushell.directory checkout $env.NU_SCRIPTS.nushell.revision
 }
 
 let-env DEFAULT_CONFIG_FILE = (
