@@ -156,6 +156,7 @@ let-env NU_SCRIPTS = {
   goatfiles: {
      upstream: "ssh://git@github.com/goatfiles/nu_scripts.git"
      directory: ($env.GIT_REPOS_HOME | path join "github.com/goatfiles/nu_scripts")
+     revision: "bleeding"
   }
 }
 
@@ -168,6 +169,7 @@ if not ($env.NU_SCRIPTS.goatfiles.directory | path exists) {
   print $"(ansi red_bold)error(ansi reset): ($env.NU_SCRIPTS.goatfiles.directory) does not exist..."
   print $"(ansi cyan)info(ansi reset): pulling the scripts from ($env.NU_SCRIPTS.goatfiles.upstream)..."
   git clone $env.NU_SCRIPTS.goatfiles.upstream $env.NU_SCRIPTS.goatfiles.directory
+  git -C $env.NU_SCRIPTS.goatfiles.directory checkout $env.NU_SCRIPTS.goatfiles.revision
 }
 
 let-env DEFAULT_CONFIG_FILE = (
