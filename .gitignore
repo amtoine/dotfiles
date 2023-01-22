@@ -7,6 +7,10 @@
 .local/
 .mozilla/
 .pki/
+.rustup/downloads/
+.rustup/tmp/
+.rustup/toolchains/
+.rustup/update-hashes/
 .snap/
 .ssh/
 
