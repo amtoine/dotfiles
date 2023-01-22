@@ -44,6 +44,7 @@ let custom_config = {
 }
 let-env config = ($env.config | merge $custom_config)
 
+# the scripts coming from $env.NU_SCRIPTS.goatfiles.directory
 use scripts/misc.nu *
 use scripts/community.nu *
 use scripts/dotfiles.nu
@@ -65,5 +66,6 @@ use scripts/xdg.nu
 
 source personal/final.nu
 
+# this script comes from $env.NU_SCRIPTS.goatfiles.directory
 use scripts/shell_prompt.nu
 shell_prompt setup --use-right-prompt
