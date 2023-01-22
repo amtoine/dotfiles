@@ -64,6 +64,12 @@ use scripts/ssh.nu
 use scripts/trash.nu
 use scripts/xdg.nu
 
+# the scripts coming from $env.NU_SCRIPTS.nushell.directory
+use custom-completions/git/git-completions.nu *
+use custom-completions/cargo/cargo-completions.nu *
+use custom-completions/glow/glow-completions.nu *
+use custom-completions/make/make-completions.nu *
+
 source personal/final.nu
 
 # this script comes from $env.NU_SCRIPTS.goatfiles.directory
