@@ -204,7 +204,7 @@ export def "config update default" [ --help (-h) ] {
   let default_url = ($env.DEFAULT_CONFIG_REMOTE | path join $name)
 
   if ($env.DEFAULT_CONFIG_FILE| path expand | path exists) {
-    let new = (fetch $default_url)
+    let new = (http get $default_url)
     let old = (open $env.DEFAULT_CONFIG_FILE)
 
     if $old != $new {
@@ -214,7 +214,7 @@ export def "config update default" [ --help (-h) ] {
       print $'($name): No change'
     }
   } else {
-    fetch $default_url | save --force --raw $env.DEFAULT_CONFIG_FILE
+    http get $default_url | save --force --raw $env.DEFAULT_CONFIG_FILE
     print $'Downloaded new ($name)'
   }
 }
