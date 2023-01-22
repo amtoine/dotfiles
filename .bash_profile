@@ -19,3 +19,4 @@ else
 fi
 
 source /home/amtoine/.config/broot/launcher/bash/br
+. "/home/amtoine/.local/share/cargo/env"

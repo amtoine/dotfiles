@@ -283,3 +283,4 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 source /home/amtoine/.config/broot/launcher/bash/br
 
 eval $(ssh-agent -s)
+. "/home/amtoine/.local/share/cargo/env"

@@ -16,3 +16,4 @@
 # the files are located in the bash-doc package.
 
 # kept for legacy on systems that might require this file
+. "/home/amtoine/.local/share/cargo/env"
