@@ -21,6 +21,8 @@ use core/hooks.nu *
 use core/menus.nu *
 use core/keybindings.nu *
 
+use themes/themes/tokyo-night.nu *
+
 let custom_config = {
   ls: {
     use_ls_colors: true
@@ -33,7 +35,7 @@ let custom_config = {
     abbreviations: true
   }
 
-  color_config: $dark_theme
+  color_config: (tokyo_night)
 
   edit_mode: vi
   show_banner: false
