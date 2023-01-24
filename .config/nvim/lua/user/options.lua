@@ -21,3 +21,13 @@ vim.opt.wrap = false
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+
+
+vim.cmd([[
+  highlight RedundantSpaces ctermbg=red guibg=red
+  match RedundantSpaces /\s\+$/
+]])
+
+vim.cmd([[
+  autocmd TermOpen * startinsert
+]])
