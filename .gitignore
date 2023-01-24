@@ -32,6 +32,7 @@ snap/
 .python_history
 .viminfo
 .wget-hsts
+.zshenv
 
 # the config directories
 .config/chromium/
