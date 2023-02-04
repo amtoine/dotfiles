@@ -9,102 +9,104 @@
 #*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
 #*
 
-export alias keybindings = [
-  {
-    name: history_menu
-    modifier: control
-    keycode: char_x
-    mode: [emacs, vi_normal, vi_insert]
-    event: {
-      until: [
-        { send: menu name: history_menu }
-        { send: menupagenext }
-      ]
+export def main [] {
+  [
+    {
+      name: history_menu
+      modifier: control
+      keycode: char_x
+      mode: [emacs, vi_normal, vi_insert]
+      event: {
+        until: [
+          { send: menu name: history_menu }
+          { send: menupagenext }
+        ]
+      }
     }
-  }
-  {
-    name: commands_menu
-    modifier: control
-    keycode: char_t
-    mode: [emacs, vi_normal, vi_insert]
-    event: { send: menu name: commands_menu }
-  }
-  {
-    name: reload_config
-    modifier: control
-    keycode: char_r
-    mode: [ emacs vi_insert vi_normal ]
-    event: {
-      send: executehostcommand,
-      cmd: $"source ($nu.env-path); source ($nu.config-path)"
+    {
+      name: commands_menu
+      modifier: control
+      keycode: char_t
+      mode: [emacs, vi_normal, vi_insert]
+      event: { send: menu name: commands_menu }
     }
-  }
-  {
-    name: open_repo
-    modifier: control
-    keycode: char_g
-    mode: [emacs, vi_insert, vi_normal]
-    event: {
-      send: executehostcommand
-      cmd: "repo goto --clear"
+    {
+      name: reload_config
+      modifier: control
+      keycode: char_r
+      mode: [ emacs vi_insert vi_normal ]
+      event: {
+        send: executehostcommand,
+        cmd: $"source ($nu.env-path); source ($nu.config-path)"
+      }
     }
-  }
-  {
-    name: edit_config
-    modifier: control
-    keycode: char_v
-    mode: [emacs, vi_insert, vi_normal]
-    event: {
-      send: executehostcommand
-      cmd: "dotfiles edit"
+    {
+      name: open_repo
+      modifier: control
+      keycode: char_g
+      mode: [emacs, vi_insert, vi_normal]
+      event: {
+        send: executehostcommand
+        cmd: "repo goto --clear"
+      }
     }
-  }
-  {
-    name: clear_and_ls
-    modifier: control
-    keycode: char_l
-    mode: [emacs, vi_normal, vi_insert]
-    event: {
-      send: executehostcommand
-      cmd: "clear"
+    {
+      name: edit_config
+      modifier: control
+      keycode: char_v
+      mode: [emacs, vi_insert, vi_normal]
+      event: {
+        send: executehostcommand
+        cmd: "dotfiles edit"
+      }
     }
-  }
-  # credit to @fdncred
-  # https://discord.com/channels/601130461678272522/614593951969574961/1063493778566037566
-  # augmented by @vinlet
-  # https://discord.com/channels/601130461678272522/614593951969574961/1063822677808250991
-  {
-    name: fuzzy_history
-    modifier: control
-    keycode: char_h
-    mode: [emacs, vi_normal, vi_insert]
-    event: {
-      send: executehostcommand
-      cmd: "commandline (history | each { |it| $it.command } | uniq | reverse | str collect (char nl) | fzf --tiebreak=chunk --layout=reverse  --multi --preview='echo {..}' --preview-window='bottom:3:wrap' --height=70% -q (commandline) | decode utf-8 | str trim)"
+    {
+      name: clear_and_ls
+      modifier: control
+      keycode: char_l
+      mode: [emacs, vi_normal, vi_insert]
+      event: {
+        send: executehostcommand
+        cmd: "clear"
+      }
     }
-  }
-  # credit to @fdncred
-  # https://discord.com/channels/601130461678272522/614593951969574961/1063493778566037566
-  {
-    name: fuzzy_dir
-    modifier: control
-    keycode: char_s
-    mode: [emacs, vi_normal, vi_insert]
-    event: {
-      send: executehostcommand
-      cmd: "commandline -a (ls **/* | where type == dir | get name | to text | fzf -q (commandline) | str trim)"
+    # credit to @fdncred
+    # https://discord.com/channels/601130461678272522/614593951969574961/1063493778566037566
+    # augmented by @vinlet
+    # https://discord.com/channels/601130461678272522/614593951969574961/1063822677808250991
+    {
+      name: fuzzy_history
+      modifier: control
+      keycode: char_h
+      mode: [emacs, vi_normal, vi_insert]
+      event: {
+        send: executehostcommand
+        cmd: "commandline (history | each { |it| $it.command } | uniq | reverse | str collect (char nl) | fzf --tiebreak=chunk --layout=reverse  --multi --preview='echo {..}' --preview-window='bottom:3:wrap' --height=70% -q (commandline) | decode utf-8 | str trim)"
+      }
     }
-  }
-  # credit to @vinlet
-  # https://discord.com/channels/601130461678272522/614593951969574961/1063822677808250991
-  {
-    name: insert_file
-    modifier: control
-    keycode: char_y
-    mode: [emacs, vi_insert]
-    event: {
-      send: executehostcommand
-      cmd: "commandline --insert (fzf --tiebreak=chunk --layout=reverse  --multi --preview='echo {..}' --preview-window='bottom:3:wrap' --height=70% | decode utf-8 | str trim)"
+    # credit to @fdncred
+    # https://discord.com/channels/601130461678272522/614593951969574961/1063493778566037566
+    {
+      name: fuzzy_dir
+      modifier: control
+      keycode: char_s
+      mode: [emacs, vi_normal, vi_insert]
+      event: {
+        send: executehostcommand
+        cmd: "commandline -a (ls **/* | where type == dir | get name | to text | fzf -q (commandline) | str trim)"
+      }
     }
-  }
-]
+    # credit to @vinlet
+    # https://discord.com/channels/601130461678272522/614593951969574961/1063822677808250991
+    {
+      name: insert_file
+      modifier: control
+      keycode: char_y
+      mode: [emacs, vi_insert]
+      event: {
+        send: executehostcommand
+        cmd: "commandline --insert (fzf --tiebreak=chunk --layout=reverse  --multi --preview='echo {..}' --preview-window='bottom:3:wrap' --height=70% | decode utf-8 | str trim)"
+      }
+    }
+  ]
+}

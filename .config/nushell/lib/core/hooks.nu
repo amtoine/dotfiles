@@ -9,16 +9,18 @@
 #*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
 #*
 
-export alias hooks = {
-  pre_prompt: [{
-    $nothing  # replace with source code to run before the prompt is shown
-  }]
-  pre_execution: [{
-    $nothing  # replace with source code to run before the repl input is run
-  }]
-  env_change: {
-    PWD: [{|before, after|
-      $nothing  # replace with source code to run if the PWD environment is different since the last repl input
+export def main [] {
+  {
+    pre_prompt: [{
+      $nothing  # replace with source code to run before the prompt is shown
     }]
+    pre_execution: [{
+      $nothing  # replace with source code to run before the repl input is run
+    }]
+    env_change: {
+      PWD: [{|before, after|
+        $nothing  # replace with source code to run if the PWD environment is different since the last repl input
+      }]
+    }
   }
 }
