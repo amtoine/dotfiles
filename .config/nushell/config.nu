@@ -34,6 +34,9 @@ let custom_config = {
   cd: {
     abbreviations: true
   }
+  history: {
+    file_format: "sqlite"
+  }
 
   color_config: (tokyo_night)
 
