@@ -55,6 +55,7 @@ snap/
 .config/mpd/database
 .config/mpd/pid
 .config/ncmpcpp/error.log
+.config/nushell/history.sqlite*
 .config/nushell/history.txt
 .config/nushell/lib/default_config.nu
 .config/nushell/plugin.nu
