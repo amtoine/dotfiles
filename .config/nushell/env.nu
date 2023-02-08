@@ -160,15 +160,22 @@ let-env IPFS_PATH = ($env.HOME | path join ".ipfs")
 # Directories to search for scripts when calling source or use
 #
 # By default, <nushell-config-dir>/scripts is added
+let GIT_PROTOCOLS = {
+    ssh: {name: "secure shell" protocol: "ssh://git@"}
+    https: {name: "HTTP" protocol: "https://"}
+}
+
+let-env GIT_PROTOCOL = $GIT_PROTOCOLS.ssh
+
 let-env NU_LIB_DIR = ($nu.config-path | path dirname | path join 'lib')
 let-env NU_SCRIPTS = {
   nushell: {
-     upstream: "ssh://git@github.com/nushell/nu_scripts.git"
+     upstream: "github.com/nushell/nu_scripts.git"
      directory: ($env.GIT_REPOS_HOME | path join "github.com/nushell/nu_scripts")
      revision: "main"
   }
   goatfiles: {
-     upstream: "ssh://git@github.com/goatfiles/nu_scripts.git"
+     upstream: "github.com/goatfiles/nu_scripts.git"
      directory: ($env.GIT_REPOS_HOME | path join "github.com/goatfiles/nu_scripts")
      revision: "bleeding"
   }
@@ -185,7 +192,7 @@ def _check_nu_scripts_and_clone [profile] {
   if not ($profile.directory | path exists) {
     print $"(ansi red_bold)error(ansi reset): ($profile.directory) does not exist..."
     print $"(ansi cyan)info(ansi reset): pulling the scripts from ($profile.upstream)..."
-    git clone $profile.upstream $profile.directory
+    git clone ([$env.GIT_PROTOCOL.protocol $profile.upstream] | str join) $profile.directory
     git -C $profile.directory checkout $profile.revision
   }
 }
