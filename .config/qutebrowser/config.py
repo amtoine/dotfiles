@@ -35,8 +35,8 @@ terminal = ALACRITTY
 CSS_COMMAND = "set content.user_stylesheets"
 CSS_PATH = "~/ghq/github.com/alphapapa/solarized-everything-css/css"
 
-USER = os.environ.get("USER")
-DEFAULT_PAGE = f"file:///home/{USER}/.config/www/html/homepage.html"
+HOME = os.environ.get("HOME")
+DEFAULT_PAGE = f"file:///{HOME}/.config/www/html/homepage.html"
 
 FILEPICKER = "ranger"
 
