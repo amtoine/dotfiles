@@ -37,6 +37,10 @@ let custom_config = {
   history: {
     file_format: "sqlite"
   }
+  cursor_shape: {
+    vi_insert: underscore
+    vi_normal: underscore
+  }
 
   color_config: (tokyo_night)
 
