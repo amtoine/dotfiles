@@ -70,7 +70,7 @@ export WM_SXHKD_BSPWM="$XDG_CONFIG/bspwm/sxhkd/sxhkdrc"
 
 # the environment variables used by sxhkd.
 export WM_DMFONT="mononoki Nerd Font-20"
-export WM_TERM="alacritty"
+export WM_TERM="kitty"
 export WM_TERM_FLAGS="-e"
 export WM_TERM_SHELL="nu"
 
