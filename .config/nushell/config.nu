@@ -42,7 +42,7 @@ let custom_config = {
     vi_normal: underscore
   }
 
-  color_config: (tokyo_night)
+  color_config: $dark_theme
 
   edit_mode: vi
   show_banner: false
