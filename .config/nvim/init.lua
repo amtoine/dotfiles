@@ -439,3 +439,5 @@ cmp.setup {
 -- vim: ts=2 sts=2 sw=2 et
 
 pcall(require, 'user.options')
+
+vim.keymap.set('n', '<leader>so', ':source ~/.config/nvim/init.lua<CR>', { silent = true })
