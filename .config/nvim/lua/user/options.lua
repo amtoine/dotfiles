@@ -31,3 +31,7 @@ vim.cmd([[
 vim.cmd([[
   autocmd TermOpen * startinsert
 ]])
+
+vim.cmd([[
+  set hlsearch
+]])
