@@ -29,3 +29,5 @@ alias cb = ^cbonsai --infinite --live --base=1 --wait=2 --time=10
 
 alias sl = sl -aw -20
 alias lsg = if (ls | length) > 0 {ls | sort-by type name -i | grid -c | str trim}
+
+alias "zk git" = git -C $env.ZK_NOTEBOOK_DIR
