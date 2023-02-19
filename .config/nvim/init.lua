@@ -442,3 +442,4 @@ pcall(require, 'user.options')
 
 vim.keymap.set('n', '<leader>so', ':source ~/.config/nvim/init.lua<CR>', { silent = true })
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>', { silent = true })
+vim.keymap.set('n', '<leader>t', ':terminal nu<CR>', { silent = true })
