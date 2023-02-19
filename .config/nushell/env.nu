@@ -156,7 +156,7 @@ let-env LS_COLORS = (vivid generate $env.LS_THEME)
 
 let-env IPFS_PATH = ($env.HOME | path join ".ipfs")
 
-let-env ZK_NOTEBOOK_DIR = ($env.XDG_DATA_HOME | path join "zk" "notes")
+let-env ZK_NOTEBOOK_DIR = ($env.GIT_REPOS_HOME | path join "github.com" "amtoine" "notes")
 
 
 # Directories to search for scripts when calling source or use
