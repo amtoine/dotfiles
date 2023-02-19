@@ -128,5 +128,35 @@ export def main [] {
             | each { |it| {value: $it.command description: $it.usage} }
         }
       }
+      # from #8076
+      {
+        name: fzf_history_menu_fzf_ui_session
+        only_buffer_difference: false
+        marker: "# "
+        type: {
+          layout: list
+          page_size: 10
+          # layout: columnar
+          # columns: 4
+          # col_width: 20
+          # col_padding: 2
+        }
+        style: {
+          text: green
+          selected_text: green_reverse
+          description_text: yellow
+        }
+        source: { |buffer, position|
+
+          history -l
+          | where session_id == (history session)
+          | select command
+          | where command =~ $buffer
+          | each { |it| {value: $it.command } }
+          | reverse
+          | uniq
+
+        }
+      }
     ]
 }

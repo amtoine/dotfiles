@@ -108,5 +108,13 @@ export def main [] {
         cmd: "commandline --insert (fzf --tiebreak=chunk --layout=reverse  --multi --preview='echo {..}' --preview-window='bottom:3:wrap' --height=70% | decode utf-8 | str trim)"
       }
     }
+    # from #8076
+    {
+      name: "fzf_history_menu_fzf_ui_session"
+      modifier: alt
+      keycode: char_r
+      mode: [emacs, vi_normal, vi_insert]
+      event: { send: menu name: fzf_history_menu_fzf_ui_session }
+    }
   ]
 }
