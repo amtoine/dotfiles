@@ -200,10 +200,8 @@ def _check_nu_scripts_and_clone [profile] {
 }
 
 
-$env.NU_SCRIPTS
-| transpose name profile
-| each {
-  _check_nu_scripts_and_clone $in.profile
+for profile in ($env.NU_SCRIPTS | transpose name profile | get profile) {
+  _check_nu_scripts_and_clone $profile
 }
 
 let-env DEFAULT_CONFIG_FILE = (
