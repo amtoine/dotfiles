@@ -18,8 +18,12 @@ export def main [] {
       $nothing  # replace with source code to run before the repl input is run
     }]
     env_change: {
-      PWD: [{|before, after|
-        $nothing  # replace with source code to run if the PWD environment is different since the last repl input
+      PWD: [{
+        condition: {|_, _| 'toolkit.nu' | path exists}
+        code: "
+          print 'toolkit module detected...'
+          use toolkit.nu
+        "
       }]
     }
     display_output: {
