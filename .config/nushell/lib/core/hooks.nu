@@ -21,7 +21,8 @@ export def main [] {
       PWD: [{
         condition: {|_, _| 'toolkit.nu' | path exists}
         code: "
-          print 'toolkit module detected...'
+          print $'(ansi default_underline)(ansi default_bold)toolkit(ansi reset) module (ansi green_italic)detected(ansi reset)...'
+          print $'(ansi yellow_italic)activating(ansi reset) (ansi default_underline)(ansi default_bold)toolkit(ansi reset) module with `(ansi default_dimmed)(ansi default_italic)use toolkit.nu(ansi reset)`'
           use toolkit.nu
         "
       }]
