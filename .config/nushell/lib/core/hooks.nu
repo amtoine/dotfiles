@@ -18,14 +18,17 @@ export def main [] {
       $nothing  # replace with source code to run before the repl input is run
     }]
     env_change: {
-      PWD: [{
-        condition: {|_, _| 'toolkit.nu' | path exists}
-        code: "
-          print $'(ansi default_underline)(ansi default_bold)toolkit(ansi reset) module (ansi green_italic)detected(ansi reset)...'
-          print $'(ansi yellow_italic)activating(ansi reset) (ansi default_underline)(ansi default_bold)toolkit(ansi reset) module with `(ansi default_dimmed)(ansi default_italic)use toolkit.nu(ansi reset)`'
-          use toolkit.nu
-        "
-      }]
+      PWD: [
+        { code: "hide toolkit" }
+        {
+          condition: {|_, after| $after | path join 'toolkit.nu' | path exists}
+          code: "
+            print $'(ansi default_underline)(ansi default_bold)toolkit(ansi reset) module (ansi green_italic)detected(ansi reset)...'
+            print $'(ansi yellow_italic)activating(ansi reset) (ansi default_underline)(ansi default_bold)toolkit(ansi reset) module with `(ansi default_dimmed)(ansi default_italic)use toolkit.nu(ansi reset)`'
+            use toolkit.nu
+          "
+        }
+      ]
     }
     display_output: {
       if (term size).columns >= 100 { table -e } else { table }
