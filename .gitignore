@@ -38,6 +38,7 @@ snap/
 .config/chromium/
 .config/discord/
 .config/grip/cache-*/
+.config/irust/themes/
 .config/libreoffice/
 .config/vim/plugged/
 
@@ -55,6 +56,7 @@ snap/
 .config/mpd/database
 .config/mpd/pid
 .config/ncmpcpp/error.log
+.config/ncspot/userstate.cbor
 .config/nushell/history.sqlite*
 .config/nushell/history.txt
 .config/nushell/lib/default_config.nu
