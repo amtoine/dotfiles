@@ -183,10 +183,14 @@ let-env NU_SCRIPTS = {
   }
 }
 
+let-env NUSHELL_REPO = ($env.GIT_REPOS_HOME | path join "github.com" "amtoine" "nushell")
+let-env STD_LIB = ($env.NUSHELL_REPO | path join "crates" "nu-utils" "standard_library")
+
 let-env NU_LIB_DIRS = [
     $env.NU_LIB_DIR
     $env.NU_SCRIPTS.goatfiles.directory
     $env.NU_SCRIPTS.nushell.directory
+    $env.STD_LIB
 ]
 
 
