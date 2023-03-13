@@ -150,3 +150,5 @@
 	gpgsign = true
 [safe]
 	directory = /mnt
+[advice]
+	detachedHead = false
