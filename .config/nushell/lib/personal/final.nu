@@ -12,3 +12,9 @@
 if ($env.USE_FINAL_CONFIG_HOOK) {
     pokemon-colorscripts -r
 }
+
+use std.nu match
+match (date now | date format "%m.%d") {
+    "03.14": { $'Happy (char -i 0x03c0) Day! (char -i 0x1f973)' }
+    "06.28": { $'Happy (char -i 0x1d70f) Day! (char -i 0x1f973)' }
+}
