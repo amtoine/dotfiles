@@ -16,12 +16,9 @@ source personal/aliases.nu
 source default_config.nu
 
 use core/completions.nu *
-use core/themes.nu
 use core/hooks.nu *
 use core/menus.nu *
 use core/keybindings.nu *
-
-use themes/themes/tokyo-night.nu *
 
 let custom_config = {
   ls: {
