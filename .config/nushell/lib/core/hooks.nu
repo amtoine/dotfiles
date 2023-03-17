@@ -11,10 +11,10 @@
 
 export def main [] {
   {
-    pre_prompt: [{
+    pre_prompt: [{||
       $nothing  # replace with source code to run before the prompt is shown
     }]
-    pre_execution: [{
+    pre_execution: [{||
       $nothing  # replace with source code to run before the repl input is run
     }]
     env_change: {
@@ -30,7 +30,7 @@ export def main [] {
         }
       ]
     }
-    display_output: {
+    display_output: {||
       if (term size).columns >= 100 { table -e } else { table }
     }
   }
