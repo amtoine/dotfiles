@@ -245,12 +245,10 @@ if not ($env.DEFAULT_CONFIG_FILE | path exists) {
   config update default
 }
 
-let-env PROMPT_MULTILINE_INDICATOR = (
-    (
-      [(ansi red) (ansi yellow) (ansi green) (ansi reset)]
-      | str join ")"
-    ) + " "
-)
+let-env PROMPT_MULTILINE_INDICATOR = ((
+    [(ansi red_dimmed) (ansi yellow_dimmed) (ansi green_dimmed) (ansi reset)]
+    | str join ":"
+) + " ")
 
 
 # start the ssh agent to allow SSO with ssh authentication
