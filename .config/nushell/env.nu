@@ -250,6 +250,11 @@ let-env PROMPT_MULTILINE_INDICATOR = ((
     | str join ":"
 ) + " ")
 
+let-env PROMPT_INDICATORS = {
+  plain: "> ",
+  vi: { insert: ">_ ", normal: ">- " }
+}
+
 
 # start the ssh agent to allow SSO with ssh authentication
 # very usefull with `github` over the ssh protocol

@@ -80,7 +80,4 @@ source personal/final.nu
 
 # this script comes from $env.NU_SCRIPTS.goatfiles.directory
 use scripts/shell_prompt.nu
-shell_prompt setup --no-left-prompt --use-right-prompt --indicators {
-  plain: "> ",
-  vi: { insert: ">_ ", normal: ">- " }
-}
+shell_prompt setup --no-left-prompt --use-right-prompt --indicators $env.PROMPT_INDICATORS
