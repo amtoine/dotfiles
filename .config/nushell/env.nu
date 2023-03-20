@@ -136,6 +136,7 @@ let-env PATH = (
     | prepend-if-not-in ($env.CARGO_HOME | path join "bin")
     | prepend-if-not-in ($env.XDG_DATA_HOME | path join "clang-15" "bin")
     | prepend-if-not-in ($env.XDG_DATA_HOME | path join "gem" "ruby" $env.GEM_VERSION "bin")
+    | prepend-if-not-in ($env.GOPATH | path join "bin")
 )
 let-env LD_LIBRARY_PATH = (
     $env | get -i LD_LIBRARY_PATH | default "" | split row (char esep)
