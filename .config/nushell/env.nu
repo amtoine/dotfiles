@@ -159,6 +159,8 @@ let-env IPFS_PATH = ($env.HOME | path join ".ipfs")
 
 let-env ZK_NOTEBOOK_DIR = ($env.GIT_REPOS_HOME | path join "github.com" "amtoine" "notes")
 
+let-env GIST_HOME = ($env.XDG_DATA_HOME | path join "gists")
+
 
 # Directories to search for scripts when calling source or use
 #
