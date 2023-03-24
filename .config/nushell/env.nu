@@ -225,23 +225,19 @@ let-env DEFAULT_CONFIG_REMOTE = ({
 # credit to @kubouch
 # https://discord.com/channels/601130461678272522/1050117978403917834/1051457787663761518
 export def "config update default" [ --help (-h) ] {
-  let name = ($env.DEFAULT_CONFIG_FILE | path basename)
-  let default_url = ($env.DEFAULT_CONFIG_REMOTE | path join $name)
+    let name = ($env.DEFAULT_CONFIG_FILE | path basename)
+    let default_url = ($env.DEFAULT_CONFIG_REMOTE | path join $name)
 
-  if ($env.DEFAULT_CONFIG_FILE| path expand | path exists) {
-    let new = (http get $default_url)
-    let old = (open $env.DEFAULT_CONFIG_FILE)
+    if ($env.DEFAULT_CONFIG_FILE | path expand | path exists) {
+        http get $default_url | save --force --raw .default_config.nu
 
-    if $old != $new {
-      $new | save --force --raw $env.DEFAULT_CONFIG_FILE
-      print $'Updated ($name)'
+        print (diff -u --color=always $env.DEFAULT_CONFIG_FILE .default_config.nu)
+
+        mv --force .default_config.nu $env.DEFAULT_CONFIG_FILE
     } else {
-      print $'($name): No change'
+        http get $default_url | save --force --raw $env.DEFAULT_CONFIG_FILE
+        print $'Downloaded new ($name)'
     }
-  } else {
-    http get $default_url | save --force --raw $env.DEFAULT_CONFIG_FILE
-    print $'Downloaded new ($name)'
-  }
 }
 
 if not ($env.DEFAULT_CONFIG_FILE | path exists) {
