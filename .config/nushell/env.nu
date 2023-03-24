@@ -215,9 +215,11 @@ let-env DEFAULT_CONFIG_FILE = (
   $env.NU_LIB_DIR
   | path join "default_config.nu"
 )
-let-env DEFAULT_CONFIG_REMOTE = (
-  "https://raw.githubusercontent.com/nushell/nushell/main/crates/nu-utils/src/sample_config"
-)
+let-env DEFAULT_CONFIG_REMOTE = ({
+    scheme: https,
+    host: raw.githubusercontent.com,
+    path: /nushell/nushell/main/crates/nu-utils/src/sample_config,
+} | url join)
 
 # TODO
 # credit to @kubouch
