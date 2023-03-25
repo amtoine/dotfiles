@@ -21,6 +21,7 @@
 ##   qute://help/configuring.html
 ##   qute://help/settings.html
 import os
+from pathlib import Path
 
 
 def get_env(key, default=None):
@@ -1163,7 +1164,9 @@ config.load_autoconfig(True)
 # Directory to save downloads to. If unset, a sensible OS-specific
 # default is used.
 # Type: Directory
-c.downloads.location.directory = get_env("DOWNLOADS_DIR", "~/downloads")
+downloads_dir = get_env("DOWNLOADS_DIR", "~/downloads")
+Path(downloads_dir).expanduser().mkdir(parents=True, exist_ok=True)
+c.downloads.location.directory = downloads_dir
 
 # Prompt the user for the download location. If set to false,
 # `downloads.location.directory` will be used.
