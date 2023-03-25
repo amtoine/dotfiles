@@ -80,3 +80,23 @@ source personal/final.nu
 # this script comes from $env.NU_SCRIPTS.goatfiles.directory
 use scripts/shell_prompt.nu
 shell_prompt setup --no-left-prompt --use-right-prompt --indicators $env.PROMPT_INDICATORS
+
+def edit [] {
+    let files = $in
+
+    if ($files | is-empty) {
+        error make --unspanned {
+            msg: $"no file given to `(ansi default_dimmed)edit(ansi reset)`"
+        }
+    }
+
+    if ($files | describe) != "list<string>" {
+        error make --unspanned {
+            msg: $"please give a list of strings to `(ansi default_dimmed)(ansi default_italic)edit(ansi reset)`
+    => found `(ansi default_dimmed)(ansi default_italic)($files | describe)(ansi reset)`
+($files | table | lines | each {|file| $'($file)' } | to text)"
+        }
+    }
+
+    ^$env.EDITOR $files
+}
