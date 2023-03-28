@@ -113,7 +113,7 @@ let-env FZF_DEFAULT_OPTS = "
 --bind shift-left:preview-half-page-up
 --bind shift-down:preview-down
 --bind shift-up:preview-up
---preview-window left,40%
+--preview-window right,80%
 "
 
 let-env GEM_VERSION = "3.0.0"
