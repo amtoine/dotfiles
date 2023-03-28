@@ -114,3 +114,6 @@ def edit [
 
     ^$env.EDITOR $files
 }
+
+alias v = edit
+alias e = edit
