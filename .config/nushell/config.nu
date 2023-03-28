@@ -81,21 +81,35 @@ source personal/final.nu
 use scripts/shell_prompt.nu
 shell_prompt setup --no-left-prompt --use-right-prompt --indicators $env.PROMPT_INDICATORS
 
-def edit [] {
-    let files = $in
+def _throw-not-a-list-of-strings [files: any] {
+    error make --unspanned {
+        msg: $'please give a list of strings to `(ansi default_dimmed)(ansi default_italic)edit(ansi reset)`
+=> found `(ansi default_dimmed)(ansi default_italic)($files | describe)(ansi reset)`
+    ($files | table | lines | each {|file| $"($file)" } | str join "\n    ")'
+    }
+}
 
-    if ($files | is-empty) {
-        error make --unspanned {
-            msg: $"no file given to `(ansi default_dimmed)edit(ansi reset)`"
-        }
+def edit [
+    ...rest: string
+    --no-auto-cmd: bool
+    --auto-cmd: string = "lua require('telescope.builtin').find_files()"
+] {
+    let files = ($in | default [])
+    if (not ($files | is-empty)) and (($files | describe) != "list<string>") {
+        _throw-not-a-list-of-strings $files
     }
 
-    if ($files | describe) != "list<string>" {
-        error make --unspanned {
-            msg: $"please give a list of strings to `(ansi default_dimmed)(ansi default_italic)edit(ansi reset)`
-    => found `(ansi default_dimmed)(ansi default_italic)($files | describe)(ansi reset)`
-($files | table | lines | each {|file| $'($file)' } | to text)"
+    let files = ($rest | append $files | uniq)
+
+    if ($files | is-empty) {
+        if $no_auto_cmd {
+            error make --unspanned {
+                msg: $"no file given to `(ansi default_dimmed)edit(ansi reset)`"
+            }
         }
+
+        ^$env.EDITOR -c $auto_cmd
+        return
     }
 
     ^$env.EDITOR $files
