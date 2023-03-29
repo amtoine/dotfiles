@@ -165,12 +165,12 @@ let-env GIST_HOME = ($env.XDG_DATA_HOME | path join "gists")
 # Directories to search for scripts when calling source or use
 #
 # By default, <nushell-config-dir>/scripts is added
-let GIT_PROTOCOLS = {
+let-env GIT_PROTOCOLS = {
     ssh: {name: "secure shell" protocol: "ssh://git@"}
     https: {name: "HTTP" protocol: "https://"}
 }
 
-let-env GIT_PROTOCOL = $GIT_PROTOCOLS.ssh
+let-env GIT_PROTOCOL = $env.GIT_PROTOCOLS.ssh
 
 let-env NU_LIB_DIR = ($nu.config-path | path dirname | path join 'lib')
 let-env NU_SCRIPTS = {
