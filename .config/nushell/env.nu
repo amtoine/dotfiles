@@ -172,16 +172,18 @@ let-env GIT_PROTOCOLS = {
 
 let-env GIT_PROTOCOL = $env.GIT_PROTOCOLS.ssh
 
+let-env NU_GIT_LIB = ($env.XDG_DATA_HOME | path join "nushell" "lib")
+
 let-env NU_LIB_DIR = ($nu.config-path | path dirname | path join 'lib')
 let-env NU_SCRIPTS = {
   nushell: {
      upstream: "github.com/nushell/nu_scripts.git"
-     directory: ($env.XDG_DATA_HOME | path join "nushell" "lib" "nushell" "nu_scripts")
+     directory: ($env.NU_GIT_LIB | path join "nushell" "nu_scripts")
      revision: "main"
   }
   goatfiles: {
      upstream: "github.com/goatfiles/nu_scripts.git"
-     directory: ($env.XDG_DATA_HOME | path join "nushell" "lib" "goatfiles" "nu_scripts")
+     directory: ($env.NU_GIT_LIB | path join "goatfiles" "nu_scripts")
      revision: "bleeding"
   }
 }
