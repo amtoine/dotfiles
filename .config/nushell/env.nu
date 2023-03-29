@@ -192,21 +192,6 @@ let-env NU_LIB_DIRS = [
     $env.NU_SCRIPTS.nushell.directory
 ]
 
-
-def _check_nu_scripts_and_clone [profile] {
-  if not ($profile.directory | path exists) {
-    print $"(ansi red_bold)error(ansi reset): ($profile.directory) does not exist..."
-    print $"(ansi cyan)info(ansi reset): pulling the scripts from ($profile.upstream)..."
-    git clone ([$env.GIT_PROTOCOL.protocol $profile.upstream] | str join) $profile.directory
-    git -C $profile.directory checkout $profile.revision
-  }
-}
-
-
-for profile in ($env.NU_SCRIPTS | transpose name profile | get profile) {
-  _check_nu_scripts_and_clone $profile
-}
-
 let-env DEFAULT_CONFIG_FILE = (
   $env.NU_LIB_DIR
   | path join "default_config.nu"
@@ -217,30 +202,54 @@ let-env DEFAULT_CONFIG_REMOTE = ({
     path: /nushell/nushell/main/crates/nu-utils/src/sample_config,
 } | url join)
 
-# TODO
-# credit to @kubouch
-# https://discord.com/channels/601130461678272522/1050117978403917834/1051457787663761518
-export def "config update default" [ --help (-h) ] {
+export def "config update default" [
+    --init: bool
+] {
     let name = ($env.DEFAULT_CONFIG_FILE | path basename)
     let default_url = ($env.DEFAULT_CONFIG_REMOTE | path join $name)
 
     if ($env.DEFAULT_CONFIG_FILE | path expand | path exists) {
-        http get $default_url | save --force --raw .default_config.nu
+        if not $init {
+            print $"(ansi cyan)info(ansi reset): updating default config..."
+            http get $default_url | save --force --raw .default_config.nu
 
-        print (diff -u --color=always $env.DEFAULT_CONFIG_FILE .default_config.nu)
+            let diff = (diff -u --color=always $env.DEFAULT_CONFIG_FILE .default_config.nu)
 
-        mv --force .default_config.nu $env.DEFAULT_CONFIG_FILE
+            if not ($diff | is-empty) {
+                print $diff
+            }
+
+            mv --force .default_config.nu $env.DEFAULT_CONFIG_FILE
+        }
     } else {
+        print $"(ansi red_bold)error(ansi reset): ($env.DEFAULT_CONFIG_FILE) does not exist..."
+        print $"(ansi cyan)info(ansi reset): pulling default config file..."
         http get $default_url | save --force --raw $env.DEFAULT_CONFIG_FILE
         print $'Downloaded new ($name)'
     }
 }
 
-if not ($env.DEFAULT_CONFIG_FILE | path exists) {
-  print $"(ansi red_bold)error(ansi reset): ($env.DEFAULT_CONFIG_FILE) does not exist..."
-  print $"(ansi cyan)info(ansi reset): pulling default config file..."
-  config update default
+export def "config update lib" [
+    --init: bool
+] {
+    for profile in ($env.NU_SCRIPTS | transpose name profile | get profile) {
+        if not ($profile.directory | path exists) {
+            print $"(ansi red_bold)error(ansi reset): ($profile.directory) does not exist..."
+            print $"(ansi cyan)info(ansi reset): pulling the scripts from ($profile.upstream)..."
+            git clone ([$env.GIT_PROTOCOLS.https.protocol $profile.upstream] | str join) $profile.directory
+        } else {
+            if not $init {
+                print $"(ansi cyan)info(ansi reset): updating ($profile.directory)..."
+                git -C $profile.directory fetch origin --prune
+            }
+        }
+
+        git -C $profile.directory checkout (["origin" $profile.revision] | path join) out+err> /dev/null
+    }
 }
+
+config update default --init
+config update lib --init
 
 let-env PROMPT_MULTILINE_INDICATOR = ((
     [(ansi red_dimmed) (ansi yellow_dimmed) (ansi green_dimmed) (ansi reset)]
