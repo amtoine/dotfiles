@@ -176,12 +176,12 @@ let-env NU_LIB_DIR = ($nu.config-path | path dirname | path join 'lib')
 let-env NU_SCRIPTS = {
   nushell: {
      upstream: "github.com/nushell/nu_scripts.git"
-     directory: ($env.GIT_REPOS_HOME | path join "github.com/nushell/nu_scripts")
+     directory: ($env.XDG_DATA_HOME | path join "nushell" "lib" "nushell" "nu_scripts")
      revision: "main"
   }
   goatfiles: {
      upstream: "github.com/goatfiles/nu_scripts.git"
-     directory: ($env.GIT_REPOS_HOME | path join "github.com/goatfiles/nu_scripts")
+     directory: ($env.XDG_DATA_HOME | path join "nushell" "lib" "goatfiles" "nu_scripts")
      revision: "bleeding"
   }
 }
