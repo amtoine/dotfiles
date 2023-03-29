@@ -90,7 +90,7 @@ def _throw-not-a-list-of-strings [files: any] {
 }
 
 def edit [
-    ...rest: string
+    ...rest: path
     --no-auto-cmd: bool
     --auto-cmd: string = "lua require('telescope.builtin').find_files()"
 ] {
