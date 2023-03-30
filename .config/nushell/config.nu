@@ -11,8 +11,6 @@
 
 # base up-to-date with Nushell version 0.67.0
 
-source personal/aliases.nu
-
 source default_config.nu
 
 use core/hooks.nu *
@@ -75,6 +73,7 @@ use custom-completions/cargo/cargo-completions.nu *
 use custom-completions/glow/glow-completions.nu *
 use custom-completions/make/make-completions.nu *
 
+source personal/aliases.nu
 source personal/final.nu
 
 # this script comes from $env.NU_SCRIPTS.goatfiles.directory
