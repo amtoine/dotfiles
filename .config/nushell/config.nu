@@ -17,35 +17,34 @@ use core/hooks.nu *
 use core/menus.nu *
 use core/keybindings.nu *
 
-let custom_config = {
-  ls: {
-    use_ls_colors: true
-    clickable_links: false
-  }
-  rm: {
-    always_trash: true
-  }
-  cd: {
-    abbreviations: true
-  }
-  history: {
-    file_format: "sqlite"
-  }
-  cursor_shape: {
-    vi_insert: underscore
-    vi_normal: underscore
-  }
+let-env config = ($env.config | merge {
+    ls: {
+        use_ls_colors: true
+        clickable_links: false
+    }
+    rm: {
+        always_trash: true
+    }
+    cd: {
+        abbreviations: true
+    }
+    history: {
+        file_format: "sqlite"
+    }
+    cursor_shape: {
+        vi_insert: underscore
+        vi_normal: underscore
+    }
 
-  color_config: $dark_theme
+    color_config: $dark_theme
 
-  edit_mode: vi
-  show_banner: false
+    edit_mode: vi
+    show_banner: false
 
-  hooks: (hooks)
-  menus: (menus)
-  keybindings: (keybindings)
-}
-let-env config = ($env.config | merge $custom_config)
+    hooks: (hooks)
+    menus: (menus)
+    keybindings: (keybindings)
+})
 
 # the scripts coming from $env.NU_SCRIPTS.goatfiles.directory
 use scripts/misc.nu *
