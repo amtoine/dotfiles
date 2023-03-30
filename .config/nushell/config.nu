@@ -17,6 +17,8 @@ use core/hooks.nu *
 use core/menus.nu *
 use core/keybindings.nu *
 
+let base_theme = $dark_theme
+
 let-env config = ($env.config | merge {
     ls: {
         use_ls_colors: true
@@ -36,7 +38,21 @@ let-env config = ($env.config | merge {
         vi_normal: underscore
     }
 
-    color_config: $dark_theme
+    color_config: ($base_theme | merge {
+        filesize: {|size|
+            if $size == 0b {
+                'white'
+            } else if $size < 1mb {
+                'purple_dimmed'
+            } else if $size < 1gb {
+                'purple'
+            } else { 'purple_bold' }
+        }
+        shape_block: yellow_bold
+        shape_flag: yellow_bold
+        shape_literal: yellow
+        shape_table: yellow_bold
+    })
 
     edit_mode: vi
     show_banner: false
