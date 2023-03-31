@@ -253,6 +253,25 @@ export def "config update lib" [
 config update default --init
 config update lib --init
 
+export def "config edit default" [] {
+    ^$env.EDITOR $env.DEFAULT_CONFIG_FILE
+}
+
+def "nu-complete list-nu-libs" [] {
+    ls ($env.NU_GIT_LIB
+    | path join "**" "*" ".git")
+    | get name
+    | path parse
+    | get parent
+    | str replace $env.NU_GIT_LIB ""
+    | str trim -c (char path_sep)
+}
+
+export def "config edit lib" [lib: string@"nu-complete list-nu-libs"] {
+    cd ($env.NU_GIT_LIB | path join $lib)
+    ^$env.EDITOR .
+}
+
 let-env PROMPT_MULTILINE_INDICATOR = ((
     [(ansi red_dimmed) (ansi yellow_dimmed) (ansi green_dimmed) (ansi reset)]
     | str join ":"
