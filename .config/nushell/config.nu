@@ -105,7 +105,7 @@ def _throw-not-a-list-of-strings [files: any] {
 
 def edit [
     ...rest: path
-    --no-auto-cmd: bool
+    --no-auto-cmd (-n): bool
     --auto-cmd: string = "lua require('telescope.builtin').find_files()"
 ] {
     let files = ($in | default [])
