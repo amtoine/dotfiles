@@ -36,6 +36,7 @@
   a       = add
   au      = add -u
   ae      = add --edit
+  ai      = add --interactive
   ap      = add -p
   aup     = add -up
   st      = status --short
