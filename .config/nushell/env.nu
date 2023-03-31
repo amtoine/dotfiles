@@ -272,9 +272,18 @@ export def "config edit lib" [lib: string@"nu-complete list-nu-libs"] {
     ^$env.EDITOR .
 }
 
+let-env PROMPT_MULTILINE_INDICATOR_COLORS = [
+    "red_dimmed"
+    "yellow_dimmed"
+    "green_dimmed"
+]
+let-env PROMPT_MULTILINE_INDICATOR_CHARACTER = ":"
+
 let-env PROMPT_MULTILINE_INDICATOR = ((
-    [(ansi red_dimmed) (ansi yellow_dimmed) (ansi green_dimmed) (ansi reset)]
-    | str join ":"
+    $env.PROMPT_MULTILINE_INDICATOR_COLORS
+    | each {|color| ansi $color }
+    | append (ansi reset)
+    | str join $env.PROMPT_MULTILINE_INDICATOR_CHARACTER
 ) + " ")
 
 let-env PROMPT_INDICATORS = {
