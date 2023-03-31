@@ -116,13 +116,10 @@ def edit [
     let files = ($rest | append $files | uniq)
 
     if ($files | is-empty) {
-        if $no_auto_cmd {
-            error make --unspanned {
-                msg: $"no file given to `(ansi default_dimmed)edit(ansi reset)`"
-            }
-        }
+        ^$env.EDITOR -c (
+            if $no_auto_cmd { "" } else { $auto_cmd }
+        )
 
-        ^$env.EDITOR -c $auto_cmd
         return
     }
 
