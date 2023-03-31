@@ -565,8 +565,8 @@ key_bindings:
   - {key: V, mods: Control|Shift, action: Paste}
   - {key: C, mods: Control|Shift, action: Copy}
 
-  - {key: U, mods: Alt, action: ScrollPageUp}
-  - {key: D, mods: Alt, action: ScrollPageDown}
+  - {key: U, mods: Alt, action: ScrollHalfPageUp}
+  - {key: D, mods: Alt, action: ScrollHalfPageDown}
   - {key: K, mods: Alt, action: ScrollLineUp}
   - {key: J, mods: Alt, action: ScrollLineDown}
   - {key: G, mods: Alt, action: ScrollToTop}
