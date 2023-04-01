@@ -271,6 +271,19 @@ export def "config edit lib" [lib: string@"nu-complete list-nu-libs"] {
     ^$env.EDITOR .
 }
 
+export def "config status" [] {
+    nu-complete list-nu-libs | each {|lib|
+        {
+            name: $lib
+            describe: (try {
+                let tag = (git -C ($env.NU_GIT_LIB | path join $lib) describe HEAD)
+                $tag
+            } catch { "" })
+            rev: (git -C ($env.NU_GIT_LIB | path join $lib) rev-parse HEAD)
+        }
+    }
+}
+
 let-env PROMPT_MULTILINE_INDICATOR_COLORS = [
     "red_dimmed"
     "yellow_dimmed"
