@@ -41,7 +41,7 @@ snap/
 .config/irust/themes/
 .config/libreoffice/
 # i use a fork of https://github.com/nvim-lua/kickstart.nvim
-.config/nvim/
+.config/nvim
 .config/vim/plugged/
 
 # the config files
