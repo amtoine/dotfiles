@@ -190,13 +190,13 @@ let-env NU_SCRIPTS = {
 
 let-env NU_LIB_DIRS = [
     $env.NU_LIB_DIR
+    $env.NU_GIT_LIB
     $env.NU_SCRIPTS.goatfiles.directory
     $env.NU_SCRIPTS.nushell.directory
 ]
 
 let-env DEFAULT_CONFIG_FILE = (
-  $env.NU_LIB_DIR
-  | path join "default_config.nu"
+  $env.NU_GIT_LIB | path join "default_config.nu"
 )
 let-env DEFAULT_CONFIG_REMOTE = ({
     scheme: https,

@@ -61,7 +61,6 @@ snap/
 .config/ncspot/userstate.cbor
 .config/nushell/history.sqlite*
 .config/nushell/history.txt
-.config/nushell/lib/default_config.nu
 .config/nushell/plugin.nu
 .config/nvim/plugin/packer_compiled.lua
 .config/okularrc
