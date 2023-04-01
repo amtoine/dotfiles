@@ -258,8 +258,7 @@ export def "config edit default" [] {
 }
 
 def "nu-complete list-nu-libs" [] {
-    ls ($env.NU_GIT_LIB
-    | path join "**" "*" ".git")
+    ls ($env.NU_GIT_LIB | path join "**" "*" ".git")
     | get name
     | path parse
     | get parent
