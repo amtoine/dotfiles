@@ -250,6 +250,7 @@ export def "config update lib" [
     }
 }
 
+mkdir $env.NU_GIT_LIB_DIR
 config update default --init
 config update lib --init
 
