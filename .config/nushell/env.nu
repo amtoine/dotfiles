@@ -172,31 +172,31 @@ let-env GIT_PROTOCOLS = {
 
 let-env GIT_PROTOCOL = $env.GIT_PROTOCOLS.ssh
 
-let-env NU_GIT_LIB = ($env.XDG_DATA_HOME | path join "nushell" "lib")
+let-env NU_GIT_LIB_DIR = ($env.XDG_DATA_HOME | path join "nushell" "lib")
 
 let-env NU_LIB_DIR = ($nu.config-path | path dirname | path join 'lib')
 let-env NU_SCRIPTS = {
   nushell: {
      upstream: "github.com/nushell/nu_scripts.git"
-     directory: ($env.NU_GIT_LIB | path join "nushell" "nu_scripts")
+     directory: ($env.NU_GIT_LIB_DIR | path join "nushell" "nu_scripts")
      revision: "main"
   }
   goatfiles: {
      upstream: "github.com/goatfiles/nu_scripts.git"
-     directory: ($env.NU_GIT_LIB | path join "goatfiles" "nu_scripts")
+     directory: ($env.NU_GIT_LIB_DIR | path join "goatfiles" "nu_scripts")
      revision: "bleeding"
   }
 }
 
 let-env NU_LIB_DIRS = [
     $env.NU_LIB_DIR
-    $env.NU_GIT_LIB
+    $env.NU_GIT_LIB_DIR
     $env.NU_SCRIPTS.goatfiles.directory
     $env.NU_SCRIPTS.nushell.directory
 ]
 
 let-env DEFAULT_CONFIG_FILE = (
-  $env.NU_GIT_LIB | path join "default_config.nu"
+  $env.NU_GIT_LIB_DIR | path join "default_config.nu"
 )
 let-env DEFAULT_CONFIG_REMOTE = ({
     scheme: https,
@@ -258,16 +258,16 @@ export def "config edit default" [] {
 }
 
 def "nu-complete list-nu-libs" [] {
-    ls ($env.NU_GIT_LIB | path join "**" "*" ".git")
+    ls ($env.NU_GIT_LIB_DIR | path join "**" "*" ".git")
     | get name
     | path parse
     | get parent
-    | str replace $env.NU_GIT_LIB ""
+    | str replace $env.NU_GIT_LIB_DIR ""
     | str trim -c (char path_sep)
 }
 
 export def "config edit lib" [lib: string@"nu-complete list-nu-libs"] {
-    cd ($env.NU_GIT_LIB | path join $lib)
+    cd ($env.NU_GIT_LIB_DIR | path join $lib)
     ^$env.EDITOR .
 }
 
@@ -276,10 +276,10 @@ export def "config status" [] {
         {
             name: $lib
             describe: (try {
-                let tag = (git -C ($env.NU_GIT_LIB | path join $lib) describe HEAD)
+                let tag = (git -C ($env.NU_GIT_LIB_DIR | path join $lib) describe HEAD)
                 $tag
             } catch { "" })
-            rev: (git -C ($env.NU_GIT_LIB | path join $lib) rev-parse HEAD)
+            rev: (git -C ($env.NU_GIT_LIB_DIR | path join $lib) rev-parse HEAD)
         }
     }
 }
