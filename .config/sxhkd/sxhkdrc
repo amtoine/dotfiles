@@ -67,15 +67,10 @@ super + p
   [ -s /tmp/passmenu.msg ] && { dunstify "$(cat /tmp/passmenu.msg)"; rm /tmp/passmenu.msg; }
 super + Escape
   pkill -USR1 -x sxhkd
-super + shift + q
-  killall picom; \
-  dm-logout -fn "mononoki Nerd Font-20"; PICOM_EXTRA_FLAGS="--experimental-backends --animations" gpcm --toggle
 
 # dmenu-related bindings.
 super + d; d
   dmenu_run -l 10 -bw 5 -c -fn "mononoki Nerd Font-20"
-super + d; h
-  dm-hub -fn "mononoki Nerd Font-20"
 
 # Emacs-related bindings.
 super + e; e
