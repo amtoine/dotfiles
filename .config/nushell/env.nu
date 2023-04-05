@@ -30,7 +30,7 @@ let-env ENV_CONVERSIONS = {
 #
 # By default, <nushell-config-dir>/plugins is added
 let-env NU_PLUGIN_DIRS = [
-    ($nu.config-path | path dirname | path join 'plugins')
+    ($nu.config-path | path dirname | path join 'plugins' 'bin')
 ]
 
 let-env XDG_DATA_HOME = ($env.HOME | path join ".local" "share")
