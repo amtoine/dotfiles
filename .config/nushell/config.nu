@@ -17,7 +17,7 @@ use core/hooks.nu *
 use core/menus.nu *
 use core/keybindings.nu *
 
-use /home/amtoine/.local/share/git/store/github.com/amtoine/nu_scripts/themes/themes/tokyo-night.nu
+use themes/themes/tokyo-night.nu
 
 let-env config = ($env.config | merge {
     ls: {
