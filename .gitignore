@@ -46,6 +46,7 @@ snap/
 .config/vim/plugged/
 
 # the config files
+.config/alacritty/alacritty.yml.*
 .config/asciinema/install-id
 .config/dconf/user
 .config/gh/hosts.yml
