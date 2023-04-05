@@ -40,6 +40,7 @@ snap/
 .config/grip/cache-*/
 .config/irust/themes/
 .config/libreoffice/
+.config/nushell/plugins/
 # i use a fork of https://github.com/nvim-lua/kickstart.nvim
 .config/nvim
 .config/vim/plugged/
