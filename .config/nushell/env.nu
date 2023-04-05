@@ -65,9 +65,12 @@ let-env TERMINFO_DIRS = (
 )
 let-env _JAVA_OPTIONS = $"-Djava.util.prefs.userRoot=($env.XDG_CONFIG_HOME | path join java)"
 
+let-env GEM_VERSION = "3.0.0"
+
 let-env CABAL_CONFIG = ($env.XDG_CONFIG_HOME | path join "cabal" "config")
 let-env CABAL_DIR = ($env.XDG_DATA_HOME | path join "cabal")
 let-env CARGO_HOME = ($env.XDG_DATA_HOME | path join "cargo")
+let-env CLANG_HOME = ($env.XDG_DATA_HOME | path join "clang-15")
 let-env DOOMDIR = ($env.XDG_CONFIG_HOME | path join "doom")
 let-env DOWNLOADS_DIR = ($env.HOME | path join "downloads")
 let-env EMACS_HOME = ($env.HOME | path join ".emacs.d")
@@ -87,6 +90,7 @@ let-env PASSWORD_STORE_DIR = ($env.XDG_DATA_HOME | path join "pass")
 let-env PYTHONSTARTUP = ($env.XDG_CONFIG_HOME | path join "python" "pythonrc")
 let-env QT_QPA_PLATFORMTHEME = "qt5ct"
 let-env QUICKEMU_HOME = ($env.XDG_DATA_HOME | path join "quickemu")
+let-env RUBY_HOME = ($env.XDG_DATA_HOME | path join "gem" "ruby" $env.GEM_VERSION)
 let-env SQLITE_HISTORY = ($env.XDG_CACHE_HOME | path join "sqlite_history")
 let-env TERMINFO = ($env.XDG_DATA_HOME | path join "terminfo")
 let-env TOMB_HOME = ($env.XDG_DATA_HOME | path join "tombs")
@@ -131,8 +135,6 @@ let-env FZF_DEFAULT_OPTS = "
 --preview-window right,80%
 "
 
-let-env GEM_VERSION = "3.0.0"
-
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 
@@ -141,8 +143,8 @@ let-env PATH = (
     | prepend ($env.HOME | path join ".local" "bin")
     | prepend ($env.EMACS_HOME | path join "bin")
     | prepend ($env.CARGO_HOME | path join "bin")
-    | prepend ($env.XDG_DATA_HOME | path join "clang-15" "bin")
-    | prepend ($env.XDG_DATA_HOME | path join "gem" "ruby" $env.GEM_VERSION "bin")
+    | prepend ($env.CLANG_HOME | path join "bin")
+    | prepend ($env.RUBY_HOME | path join "bin")
     | prepend ($env.GOPATH | path join "bin")
     | uniq
 )
