@@ -78,21 +78,24 @@ let-env TERMINAL = "alacritty -e"
 let-env EDITOR = 'nvim'
 let-env VISUAL = $env.EDITOR
 
-### SET MANPAGER
-### Uncomment only one of these!
-# make "less" man pages prettier
-#let-env LESS_TERMCAP_mb = $(tput bold; tput setaf 2)  # green
-#let-env LESS_TERMCAP_md = $(tput bold; tput setaf 2)  # green
-#let-env LESS_TERMCAP_so = $(tput bold; tput rev; tput setaf 3)  # yellow
-#let-env LESS_TERMCAP_se = $(tput smul; tput sgr0)
-#let-env LESS_TERMCAP_us = $(tput bold; tput bold; tput setaf 1)  # red
-#let-env LESS_TERMCAP_me = $(tput sgr0)
-### "bat" as manpager
-let-env MANPAGER = "sh -c 'col -bx | bat -l man -p'"
-### "vim" as manpager
-# export MANPAGER = '/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
-### "nvim" as manpager
-# export MANPAGER = "nvim -c 'set ft=man' -"
+def-env _set_manpager [pager: string] {
+    let-env MANPAGER = (match $pager {
+        "bat" => "sh -c 'col -bx | bat -l man -p'",
+        "vim" => '/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"',
+        "nvim" => "nvim -c 'set ft=man' -",
+        _ => {
+            print $"unknown manpage '($pager)', defaulting to prettier `less`"
+            let-env LESS_TERMCAP_mb = (tput bold; tput setaf 2)  # green
+            let-env LESS_TERMCAP_md = (tput bold; tput setaf 2)  # green
+            let-env LESS_TERMCAP_so = (tput bold; tput rev; tput setaf 3)  # yellow
+            let-env LESS_TERMCAP_se = (tput smul; tput sgr0)
+            let-env LESS_TERMCAP_us = (tput bold; tput bold; tput setaf 1)  # red
+            let-env LESS_TERMCAP_me = (tput sgr0)
+         }
+    })
+}
+
+_set_manpager "bat"
 
 # activates virtualenvwrapper to manage python virtual environments.
 let-env WORKON_HOME = ($env.XDG_DATA_HOME | path join "virtualenvs")
