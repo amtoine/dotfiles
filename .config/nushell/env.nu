@@ -136,26 +136,20 @@ let-env GEM_VERSION = "3.0.0"
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 
-# TODO
-def prepend-if-not-in [
-  value: string
-] {
-    let list = $in
-    $list | if ($value in $list) {$in} else {$in | prepend $value}
-}
-
 let-env PATH = (
     $env.PATH | split row (char esep)
-    | prepend-if-not-in ($env.HOME | path join ".local" "bin")
-    | prepend-if-not-in ($env.EMACS_HOME | path join "bin")
-    | prepend-if-not-in ($env.CARGO_HOME | path join "bin")
-    | prepend-if-not-in ($env.XDG_DATA_HOME | path join "clang-15" "bin")
-    | prepend-if-not-in ($env.XDG_DATA_HOME | path join "gem" "ruby" $env.GEM_VERSION "bin")
-    | prepend-if-not-in ($env.GOPATH | path join "bin")
+    | prepend ($env.HOME | path join ".local" "bin")
+    | prepend ($env.EMACS_HOME | path join "bin")
+    | prepend ($env.CARGO_HOME | path join "bin")
+    | prepend ($env.XDG_DATA_HOME | path join "clang-15" "bin")
+    | prepend ($env.XDG_DATA_HOME | path join "gem" "ruby" $env.GEM_VERSION "bin")
+    | prepend ($env.GOPATH | path join "bin")
+    | uniq
 )
 let-env LD_LIBRARY_PATH = (
     $env | get -i LD_LIBRARY_PATH | default "" | split row (char esep)
-    | prepend-if-not-in $env.MUJOCO_BIN
+    | prepend $env.MUJOCO_BIN
+    | uniq
 )
 
 let-env LS_THEME = "one-dark"
