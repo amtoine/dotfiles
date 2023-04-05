@@ -17,7 +17,7 @@ use core/hooks.nu *
 use core/menus.nu *
 use core/keybindings.nu *
 
-let base_theme = $dark_theme
+use /home/amtoine/.local/share/git/store/github.com/amtoine/nu_scripts/themes/themes/tokyo-night.nu
 
 let-env config = ($env.config | merge {
     ls: {
@@ -38,21 +38,7 @@ let-env config = ($env.config | merge {
         vi_normal: underscore
     }
 
-    color_config: ($base_theme | merge {
-        filesize: {|size|
-            if $size == 0b {
-                'white'
-            } else if $size < 1mb {
-                'purple_dimmed'
-            } else if $size < 1gb {
-                'purple'
-            } else { 'purple_bold' }
-        }
-        shape_block: yellow_bold
-        shape_flag: yellow_bold
-        shape_literal: yellow
-        shape_table: yellow_bold
-    })
+    color_config: (tokyo-night)
 
     edit_mode: vi
     show_banner: false

@@ -237,38 +237,38 @@ draw_bold_text_with_bright_colors: true
 #
 #
 colors:
-  # COLORSCHEME: Dracula
+  name: TokyoNight Night
+  author: Folke
+  # Default colors
   primary:
-#+ BEGIN:primary
-    background: '#191919'
-    foreground: '#ffffff'
-#+ END:primary
-  cursor:
-#+ BEGIN:cursor
-    cursor: '#ffffff'
-    text: '#ffffff'
-#+ END:cursor
+    background: '0x1a1b26'
+    foreground: '0xc0caf5'
+
+  # Normal colors
   normal:
-#+ BEGIN:normal
-    magenta: '#cc00cc'
-    green: '#00cc00'
-    white: '#cccccc'
-    red: '#cc0000'
-    blue: '#0000cc'
-    yellow: '#cccc00'
-    cyan: '#00cccc'
-    black: '#282828'
-#+ END:normal
+    black: '0x15161E'
+    red: '0xf7768e'
+    green: '0x9ece6a'
+    yellow: '0xe0af68'
+    blue: '0x7aa2f7'
+    magenta: '0xbb9af7'
+    cyan: '0x7dcfff'
+    white: '0xa9b1d6'
+
+  # Bright colors
   bright:
-#+ BEGIN:bright
-    magenta: '#ff00ff'
-    green: '#00ff00'
-    white: '#ffffff'
-    red: '#ff0000'
-    blue: '#0000ff'
-    yellow: '#ffff00'
-    cyan: '#00ffff'
-    black: '#333333'
+    black: '0x414868'
+    red: '0xf7768e'
+    green: '0x9ece6a'
+    yellow: '0xe0af68'
+    blue: '0x7aa2f7'
+    magenta: '0xbb9af7'
+    cyan: '0x7dcfff'
+    white: '0xc0caf5'
+
+  indexed_colors:
+    - { index: 16, color: '0xff9e64' }
+    - { index: 17, color: '0xdb4b4b' }
 #+ END:bright
 # >>> Visual Bell.
 #
@@ -569,3 +569,4 @@ key_bindings:
     }
   # - {key: L, mods: Control|Shift, action: ClearLogNotice}
   # - {key: L, mods: Control|Shift, chars: "\f"}
+theme: Tokyonight_Night
