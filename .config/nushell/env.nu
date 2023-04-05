@@ -33,6 +33,7 @@ let-env NU_PLUGIN_DIRS = [
     ($nu.config-path | path dirname | path join 'plugins' 'bin')
 ]
 
+# the XDG environment on which all the others are based
 let-env XDG_DATA_HOME = ($env.HOME | path join ".local" "share")
 let-env XDG_CONFIG_HOME = ($env.HOME | path join ".config")
 let-env XDG_STATE_HOME = ($env.HOME | path join ".local" "state")
