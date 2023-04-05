@@ -100,11 +100,15 @@ let-env ZDOTDIR = ($env.XDG_CONFIG_HOME | path join "zsh")
 let-env ZK_NOTEBOOK_DIR = ($env.GIT_REPOS_HOME | path join "github.com" "amtoine" "notes")
 let-env _Z_DATA = ($env.XDG_DATA_HOME | path join "z")
 
+# user environment variables
 let-env BROWSER = "qutebrowser"
 let-env TERMINAL = "alacritty -e"
 # changes the editor in the terminal, to edit long commands.
 let-env EDITOR = 'nvim'
 let-env VISUAL = $env.EDITOR
+
+let-env LS_THEME = "one-dark"
+let-env LS_COLORS = (vivid generate $env.LS_THEME)
 
 def-env _set_manpager [pager: string] {
     let-env MANPAGER = (match $pager {
@@ -137,7 +141,6 @@ let-env FZF_DEFAULT_OPTS = "
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
-
 let-env PATH = (
     $env.PATH | split row (char esep)
     | prepend ($env.HOME | path join ".local" "bin")
@@ -148,14 +151,12 @@ let-env PATH = (
     | prepend ($env.GOPATH | path join "bin")
     | uniq
 )
+
 let-env LD_LIBRARY_PATH = (
     $env | get -i LD_LIBRARY_PATH | default "" | split row (char esep)
     | prepend $env.MUJOCO_BIN
     | uniq
 )
-
-let-env LS_THEME = "one-dark"
-let-env LS_COLORS = (vivid generate $env.LS_THEME)
 
 # Directories to search for scripts when calling source or use
 #
@@ -291,7 +292,6 @@ let-env PROMPT_INDICATORS = {
   plain: "> ",
   vi: { insert: ">_ ", normal: ">- " }
 }
-
 
 # start the ssh agent to allow SSO with ssh authentication
 # very usefull with `github` over the ssh protocol
