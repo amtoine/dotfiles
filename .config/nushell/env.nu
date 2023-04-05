@@ -39,6 +39,22 @@ let-env XDG_CONFIG_HOME = ($env.HOME | path join ".config")
 let-env XDG_STATE_HOME = ($env.HOME | path join ".local" "state")
 let-env XDG_CACHE_HOME = ($env.HOME | path join ".cache")
 
+# git-related variables
+let-env GHQ_ROOT = ($env.XDG_DATA_HOME | path join "git" "store")
+let-env GIT_REPOS_HOME = $env.GHQ_ROOT
+
+let-env DOTFILES_GIT_DIR = ($env.GIT_REPOS_HOME| path join "github.com" "goatfiles" "dotfiles")
+let-env DOTFILES_WORKTREE = $env.HOME
+
+let-env GIST_HOME = ($env.XDG_DATA_HOME | path join "gists")
+
+let-env GIT_PROTOCOLS = {
+    ssh: {name: "secure shell" protocol: "ssh://git@"}
+    https: {name: "HTTP" protocol: "https://"}
+}
+
+let-env GIT_PROTOCOL = $env.GIT_PROTOCOLS.ssh
+
 # move all moveable config to the right location, outside $HOME.
 let-env TERMINFO_DIRS = (
   [
@@ -48,29 +64,37 @@ let-env TERMINFO_DIRS = (
   | str join ":"
 )
 let-env _JAVA_OPTIONS = $"-Djava.util.prefs.userRoot=($env.XDG_CONFIG_HOME | path join java)"
-let-env HISTFILE = ($env.XDG_STATE_HOME | path join "bash" "history")
+
+let-env CABAL_CONFIG = ($env.XDG_CONFIG_HOME | path join "cabal" "config")
+let-env CABAL_DIR = ($env.XDG_DATA_HOME | path join "cabal")
 let-env CARGO_HOME = ($env.XDG_DATA_HOME | path join "cargo")
 let-env DOOMDIR = ($env.XDG_CONFIG_HOME | path join "doom")
+let-env DOWNLOADS_DIR = ($env.HOME | path join "downloads")
+let-env EMACS_HOME = ($env.HOME | path join ".emacs.d")
 let-env GNUPGHOME = ($env.XDG_DATA_HOME | path join "gnupg")
-let-env PASSWORD_STORE_DIR = ($env.XDG_DATA_HOME | path join "pass")
 let-env GOPATH = ($env.XDG_DATA_HOME | path join "go")
 let-env GRIPHOME = ($env.XDG_CONFIG_HOME | path join "grip")
 let-env GTK2_RC_FILES = ($env.XDG_CONFIG_HOME | path join "gtk-2.0" "gtkrc")
+let-env HISTFILE = ($env.XDG_STATE_HOME | path join "bash" "history")
+let-env IPFS_PATH = ($env.HOME | path join ".ipfs")
 let-env JUPYTER_CONFIG_DIR = ($env.XDG_CONFIG_HOME | path join "jupyter")
+let-env KERAS_HOME = ($env.XDG_STATE_HOME | path join "keras")
 let-env LESSHISTFILE = ($env.XDG_CACHE_HOME | path join "less" "history")
-let-env TERMINFO = ($env.XDG_DATA_HOME | path join "terminfo")
+let-env MUJOCO_BIN = ($env.HOME | path join ".mujoco" "mujoco210" "bin")
 let-env NODE_REPL_HISTORY = ($env.XDG_DATA_HOME | path join "node_repl_history")
 let-env NPM_CONFIG_USERCONFIG = ($env.XDG_CONFIG_HOME | path join "npm" "npmrc")
+let-env PASSWORD_STORE_DIR = ($env.XDG_DATA_HOME | path join "pass")
 let-env PYTHONSTARTUP = ($env.XDG_CONFIG_HOME | path join "python" "pythonrc")
+let-env QT_QPA_PLATFORMTHEME = "qt5ct"
+let-env QUICKEMU_HOME = ($env.XDG_DATA_HOME | path join "quickemu")
 let-env SQLITE_HISTORY = ($env.XDG_CACHE_HOME | path join "sqlite_history")
+let-env TERMINFO = ($env.XDG_DATA_HOME | path join "terminfo")
+let-env TOMB_HOME = ($env.XDG_DATA_HOME | path join "tombs")
+let-env WORKON_HOME = ($env.XDG_DATA_HOME | path join "virtualenvs")
 let-env XINITRC = ($env.XDG_CONFIG_HOME | path join "X11" "xinitrc")
 let-env ZDOTDIR = ($env.XDG_CONFIG_HOME | path join "zsh")
+let-env ZK_NOTEBOOK_DIR = ($env.GIT_REPOS_HOME | path join "github.com" "amtoine" "notes")
 let-env _Z_DATA = ($env.XDG_DATA_HOME | path join "z")
-let-env CABAL_CONFIG = ($env.XDG_CONFIG_HOME | path join "cabal" "config")
-let-env CABAL_DIR = ($env.XDG_DATA_HOME | path join "cabal")
-let-env KERAS_HOME = ($env.XDG_STATE_HOME | path join "keras")
-let-env EMACS_HOME = ($env.HOME | path join ".emacs.d")
-let-env MUJOCO_BIN = ($env.HOME | path join ".mujoco" "mujoco210" "bin")
 
 let-env BROWSER = "qutebrowser"
 let-env TERMINAL = "alacritty -e"
@@ -96,19 +120,6 @@ def-env _set_manpager [pager: string] {
 }
 
 _set_manpager "bat"
-
-# activates virtualenvwrapper to manage python virtual environments.
-let-env WORKON_HOME = ($env.XDG_DATA_HOME | path join "virtualenvs")
-
-let-env GHQ_ROOT = ($env.XDG_DATA_HOME | path join "git" "store")
-let-env GIT_REPOS_HOME = $env.GHQ_ROOT
-
-let-env QUICKEMU_HOME = ($env.XDG_DATA_HOME | path join "quickemu")
-
-let-env DOTFILES_GIT_DIR = ($env.GIT_REPOS_HOME| path join "github.com" "goatfiles" "dotfiles")
-let-env DOTFILES_WORKTREE = $env.HOME
-
-let-env DOWNLOADS_DIR = ($env.HOME | path join "downloads")
 
 let-env FZF_DEFAULT_OPTS = "
 --bind ctrl-d:half-page-down
@@ -147,35 +158,12 @@ let-env LD_LIBRARY_PATH = (
     | prepend-if-not-in $env.MUJOCO_BIN
 )
 
-
-# disable or enable final configuration commands in ./scripts/final.nu
-#
-let-env USE_FINAL_CONFIG_HOOK = false
-
-let-env QT_QPA_PLATFORMTHEME = "qt5ct"
-
-let-env TOMB_HOME = ($env.XDG_DATA_HOME | path join "tombs")
-
 let-env LS_THEME = "one-dark"
 let-env LS_COLORS = (vivid generate $env.LS_THEME)
-
-let-env IPFS_PATH = ($env.HOME | path join ".ipfs")
-
-let-env ZK_NOTEBOOK_DIR = ($env.GIT_REPOS_HOME | path join "github.com" "amtoine" "notes")
-
-let-env GIST_HOME = ($env.XDG_DATA_HOME | path join "gists")
-
 
 # Directories to search for scripts when calling source or use
 #
 # By default, <nushell-config-dir>/scripts is added
-let-env GIT_PROTOCOLS = {
-    ssh: {name: "secure shell" protocol: "ssh://git@"}
-    https: {name: "HTTP" protocol: "https://"}
-}
-
-let-env GIT_PROTOCOL = $env.GIT_PROTOCOLS.ssh
-
 let-env NU_GIT_LIB_DIR = ($env.XDG_DATA_HOME | path join "nushell" "lib")
 
 let-env NU_LIB_DIR = ($nu.config-path | path dirname | path join 'lib')
@@ -323,3 +311,7 @@ ssh-agent -c -t $env.SSH_AGENT_TIMEOUT
 | load-env
 
 let-env SSH_KEYS_HOME = ($env.HOME | path join ".ssh" "keys")
+
+# disable or enable final configuration commands in ./scripts/final.nu
+#
+let-env USE_FINAL_CONFIG_HOOK = false
