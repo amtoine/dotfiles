@@ -173,7 +173,7 @@ let-env NU_SCRIPTS = {
   goatfiles: {
      upstream: "github.com/goatfiles/nu_scripts.git"
      directory: ($env.NU_GIT_LIB_DIR | path join "goatfiles" "nu_scripts")
-     revision: "bleeding"
+     revision: "nightly"
   }
 }
 
