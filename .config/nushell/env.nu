@@ -239,6 +239,18 @@ export def "config update lib" [
     }
 }
 
+export def "config update all" [
+    --init: bool
+] {
+    if $init {
+        config update default --init
+        config update lib --init
+    } else {
+        config update default
+        config update lib
+    }
+}
+
 mkdir $env.NU_GIT_LIB_DIR
 config update default --init
 config update lib --init
