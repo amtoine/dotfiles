@@ -145,11 +145,11 @@ let-env FZF_DEFAULT_OPTS = "
 let-env PATH = (
     $env.PATH | split row (char esep)
     | prepend ($env.HOME | path join ".local" "bin")
-    | prepend ($env.EMACS_HOME | path join "bin")
     | prepend ($env.CARGO_HOME | path join "bin")
     | prepend ($env.CLANG_HOME | path join "bin")
-    | prepend ($env.RUBY_HOME | path join "bin")
     | prepend ($env.GOPATH | path join "bin")
+    | prepend ($env.EMACS_HOME | path join "bin")
+    | prepend ($env.RUBY_HOME | path join "bin")
     | uniq
 )
 
