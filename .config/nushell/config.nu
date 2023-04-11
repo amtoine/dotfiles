@@ -17,8 +17,6 @@ use core/hooks.nu *
 use core/menus.nu *
 use core/keybindings.nu *
 
-use themes/themes/tokyo-night.nu
-
 let-env config = ($env.config | merge {
     ls: {
         use_ls_colors: true
@@ -38,7 +36,7 @@ let-env config = ($env.config | merge {
         vi_normal: underscore
     }
 
-    color_config: (tokyo-night)
+    color_config: $dark_theme
 
     edit_mode: vi
     show_banner: false
