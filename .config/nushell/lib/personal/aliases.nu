@@ -26,3 +26,6 @@ old-alias sl = sl -aw -20
 def lsg [] { ls | sort-by type name -i | grid -c | str trim }
 
 alias "zk git" = git -C $env.ZK_NOTEBOOK_DIR
+
+alias v = edit
+alias e = edit

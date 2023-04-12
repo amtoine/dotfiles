@@ -79,8 +79,4 @@ source personal/final.nu
 use scripts/shell_prompt.nu
 shell_prompt setup --no-left-prompt --use-right-prompt --indicators $env.PROMPT_INDICATORS
 
-
-alias v = edit
-alias e = edit
-
 use std clip
