@@ -35,6 +35,11 @@ let-env config = ($env.config | merge {
         vi_insert: underscore
         vi_normal: underscore
     }
+    table: {
+        mode: rounded
+        index_mode: auto
+        show_empty: false
+    }
 
     color_config: $dark_theme
 
