@@ -37,7 +37,7 @@ let-env config = ($env.config | merge {
     }
     table: {
         mode: rounded
-        index_mode: auto
+        index_mode: always
         show_empty: false
     }
 
