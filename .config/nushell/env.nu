@@ -26,18 +26,18 @@ let-env ENV_CONVERSIONS = {
   }
 }
 
-# Directories to search for plugin binaries when calling register
-#
-# By default, <nushell-config-dir>/plugins is added
-let-env NU_PLUGIN_DIRS = [
-    ($nu.config-path | path dirname | path join 'plugins' 'bin')
-]
-
 # the XDG environment on which all the others are based
 let-env XDG_DATA_HOME = ($env.HOME | path join ".local" "share")
 let-env XDG_CONFIG_HOME = ($env.HOME | path join ".config")
 let-env XDG_STATE_HOME = ($env.HOME | path join ".local" "state")
 let-env XDG_CACHE_HOME = ($env.HOME | path join ".cache")
+
+# Directories to search for plugin binaries when calling register
+#
+# By default, <nushell-config-dir>/plugins is added
+let-env NU_PLUGIN_DIRS = [
+    ($env.XDG_DATA_HOME | path join "nushell" 'plugins' 'bin')
+]
 
 # git-related variables
 let-env GHQ_ROOT = ($env.XDG_DATA_HOME | path join "git" "store")
