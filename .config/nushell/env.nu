@@ -185,107 +185,113 @@ let-env NU_LIB_DIRS = [
     $env.NU_SCRIPTS.nushell.directory
 ]
 
-let-env DEFAULT_CONFIG_FILE = (
-  $env.NU_GIT_LIB_DIR | path join "default_config.nu"
-)
-let-env DEFAULT_CONFIG_REMOTE = ({
-    scheme: https,
-    host: raw.githubusercontent.com,
-    path: /nushell/nushell/main/crates/nu-utils/src/sample_config,
-} | url join)
-
-export def "config update default" [
-    --init: bool
-] {
-    let name = ($env.DEFAULT_CONFIG_FILE | path basename)
-    let default_url = ($env.DEFAULT_CONFIG_REMOTE | path join $name)
-
-    if ($env.DEFAULT_CONFIG_FILE | path expand | path exists) {
-        if not $init {
-            print $"(ansi cyan)info(ansi reset): updating default config..."
-            http get $default_url | save --force --raw .default_config.nu
-
-            let diff = (diff -u --color=always $env.DEFAULT_CONFIG_FILE .default_config.nu)
-
-            if not ($diff | is-empty) {
-                print $diff
-            }
-
-            mv --force .default_config.nu $env.DEFAULT_CONFIG_FILE
-        }
-    } else {
-        print $"(ansi red_bold)error(ansi reset): ($env.DEFAULT_CONFIG_FILE) does not exist..."
-        print $"(ansi cyan)info(ansi reset): pulling default config file..."
-        http get $default_url | save --force --raw $env.DEFAULT_CONFIG_FILE
-        print $'Downloaded new ($name)'
+module config {
+    export-env {
+        let-env DEFAULT_CONFIG_FILE = (
+          $env.NU_GIT_LIB_DIR | path join "default_config.nu"
+        )
+        let-env DEFAULT_CONFIG_REMOTE = ({
+            scheme: https,
+            host: raw.githubusercontent.com,
+            path: /nushell/nushell/main/crates/nu-utils/src/sample_config,
+        } | url join)
     }
-}
 
-export def "config update lib" [
-    --init: bool
-] {
-    for profile in ($env.NU_SCRIPTS | transpose name profile | get profile) {
-        if not ($profile.directory | path exists) {
-            print $"(ansi red_bold)error(ansi reset): ($profile.directory) does not exist..."
-            print $"(ansi cyan)info(ansi reset): pulling the scripts from ($profile.upstream)..."
-            git clone ([$env.GIT_PROTOCOLS.https.protocol $profile.upstream] | str join) $profile.directory
-        } else {
+    export def "update default" [
+        --init: bool
+    ] {
+        let name = ($env.DEFAULT_CONFIG_FILE | path basename)
+        let default_url = ($env.DEFAULT_CONFIG_REMOTE | path join $name)
+
+        if ($env.DEFAULT_CONFIG_FILE | path expand | path exists) {
             if not $init {
-                print $"(ansi cyan)info(ansi reset): updating ($profile.directory)..."
-                git -C $profile.directory fetch origin --prune
+                print $"(ansi cyan)info(ansi reset): updating default config..."
+                http get $default_url | save --force --raw .default_config.nu
+
+                let diff = (diff -u --color=always $env.DEFAULT_CONFIG_FILE .default_config.nu)
+
+                if not ($diff | is-empty) {
+                    print $diff
+                }
+
+                mv --force .default_config.nu $env.DEFAULT_CONFIG_FILE
+            }
+        } else {
+            print $"(ansi red_bold)error(ansi reset): ($env.DEFAULT_CONFIG_FILE) does not exist..."
+            print $"(ansi cyan)info(ansi reset): pulling default config file..."
+            http get $default_url | save --force --raw $env.DEFAULT_CONFIG_FILE
+            print $'Downloaded new ($name)'
+        }
+    }
+
+    export def "update lib" [
+        --init: bool
+    ] {
+        for profile in ($env.NU_SCRIPTS | transpose name profile | get profile) {
+            if not ($profile.directory | path exists) {
+                print $"(ansi red_bold)error(ansi reset): ($profile.directory) does not exist..."
+                print $"(ansi cyan)info(ansi reset): pulling the scripts from ($profile.upstream)..."
+                git clone ([$env.GIT_PROTOCOLS.https.protocol $profile.upstream] | str join) $profile.directory
+            } else {
+                if not $init {
+                    print $"(ansi cyan)info(ansi reset): updating ($profile.directory)..."
+                    git -C $profile.directory fetch origin --prune
+                }
+            }
+
+            git -C $profile.directory checkout (["origin" $profile.revision] | path join) out+err> /dev/null
+        }
+    }
+
+    export def "update all" [
+        --init: bool
+    ] {
+        if $init {
+            update default --init
+            update lib --init
+        } else {
+            update default
+            update lib
+        }
+    }
+
+    export def "edit default" [] {
+        ^$env.EDITOR $env.DEFAULT_CONFIG_FILE
+    }
+
+    def "nu-complete list-nu-libs" [] {
+        ls ($env.NU_GIT_LIB_DIR | path join "**" "*" ".git")
+        | get name
+        | path parse
+        | get parent
+        | str replace $env.NU_GIT_LIB_DIR ""
+        | str trim -c (char path_sep)
+    }
+
+    export def "edit lib" [lib: string@"nu-complete list-nu-libs"] {
+        cd ($env.NU_GIT_LIB_DIR | path join $lib)
+        ^$env.EDITOR .
+    }
+
+    export def "status" [] {
+        nu-complete list-nu-libs | each {|lib|
+            {
+                name: $lib
+                describe: (try {
+                    let tag = (git -C ($env.NU_GIT_LIB_DIR | path join $lib) describe HEAD)
+                    $tag
+                } catch { "" })
+                rev: (git -C ($env.NU_GIT_LIB_DIR | path join $lib) rev-parse HEAD)
             }
         }
-
-        git -C $profile.directory checkout (["origin" $profile.revision] | path join) out+err> /dev/null
     }
 }
 
-export def "config update all" [
-    --init: bool
-] {
-    if $init {
-        config update default --init
-        config update lib --init
-    } else {
-        config update default
-        config update lib
-    }
-}
+use config
 
 mkdir $env.NU_GIT_LIB_DIR
 config update default --init
 config update lib --init
-
-export def "config edit default" [] {
-    ^$env.EDITOR $env.DEFAULT_CONFIG_FILE
-}
-
-def "nu-complete list-nu-libs" [] {
-    ls ($env.NU_GIT_LIB_DIR | path join "**" "*" ".git")
-    | get name
-    | path parse
-    | get parent
-    | str replace $env.NU_GIT_LIB_DIR ""
-    | str trim -c (char path_sep)
-}
-
-export def "config edit lib" [lib: string@"nu-complete list-nu-libs"] {
-    cd ($env.NU_GIT_LIB_DIR | path join $lib)
-    ^$env.EDITOR .
-}
-
-export def "config status" [] {
-    nu-complete list-nu-libs | each {|lib|
-        {
-            name: $lib
-            describe: (try {
-                let tag = (git -C ($env.NU_GIT_LIB_DIR | path join $lib) describe HEAD)
-                $tag
-            } catch { "" })
-            rev: (git -C ($env.NU_GIT_LIB_DIR | path join $lib) rev-parse HEAD)
-        }
-    }
-}
 
 let-env PROMPT_MULTILINE_INDICATOR_COLORS = [
     "red_dimmed"
