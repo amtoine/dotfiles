@@ -20,7 +20,7 @@
   pager = delta
 
 [delta]
-  side-by-side = true
+  side-by-side = false
   line-numbers = true
   file-style = cyan
   light = false
