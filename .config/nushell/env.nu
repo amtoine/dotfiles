@@ -43,7 +43,7 @@ let-env NU_PLUGIN_DIRS = [
 let-env GHQ_ROOT = ($env.XDG_DATA_HOME | path join "git" "store")
 let-env GIT_REPOS_HOME = $env.GHQ_ROOT
 
-let-env DOTFILES_GIT_DIR = ($env.GIT_REPOS_HOME| path join "github.com" "goatfiles" "dotfiles")
+let-env DOTFILES_GIT_DIR = ($env.GIT_REPOS_HOME | path join "github.com" "goatfiles" "dotfiles")
 let-env DOTFILES_WORKTREE = $env.HOME
 
 let-env GIST_HOME = ($env.XDG_DATA_HOME | path join "gists")
