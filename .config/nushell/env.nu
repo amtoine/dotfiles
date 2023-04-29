@@ -48,13 +48,6 @@ let-env DOTFILES_WORKTREE = $env.HOME
 
 let-env GIST_HOME = ($env.XDG_DATA_HOME | path join "gists")
 
-let-env GIT_PROTOCOLS = {
-    ssh: {name: "secure shell" protocol: "ssh://git@"}
-    https: {name: "HTTP" protocol: "https://"}
-}
-
-let-env GIT_PROTOCOL = $env.GIT_PROTOCOLS.ssh
-
 # move all moveable config to the right location, outside $HOME.
 let-env TERMINFO_DIRS = (
   [
@@ -167,12 +160,12 @@ let-env NU_GIT_LIB_DIR = ($env.XDG_DATA_HOME | path join "nushell" "lib")
 let-env NU_LIB_DIR = ($nu.config-path | path dirname | path join 'lib')
 let-env NU_SCRIPTS = {
   nushell: {
-     upstream: "github.com/nushell/nu_scripts.git"
+     upstream: "https://github.com/nushell/nu_scripts.git"
      directory: ($env.NU_GIT_LIB_DIR | path join "nushell" "nu_scripts")
      revision: "main"
   }
   goatfiles: {
-     upstream: "github.com/goatfiles/nu_scripts.git"
+     upstream: "https://github.com/goatfiles/nu_scripts.git"
      directory: ($env.NU_GIT_LIB_DIR | path join "goatfiles" "nu_scripts")
      revision: "nightly"
   }
@@ -231,7 +224,7 @@ module config {
             if not ($profile.directory | path exists) {
                 print $"(ansi red_bold)error(ansi reset): ($profile.directory) does not exist..."
                 print $"(ansi cyan)info(ansi reset): pulling the scripts from ($profile.upstream)..."
-                git clone ([$env.GIT_PROTOCOLS.https.protocol $profile.upstream] | str join) $profile.directory
+                git clone $profile.upstream $profile.directory
             } else {
                 if not $init {
                     print $"(ansi cyan)info(ansi reset): updating ($profile.directory)..."
