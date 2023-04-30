@@ -324,5 +324,6 @@ let-env SSH_KEYS_HOME = ($env.HOME | path join ".ssh" "keys")
 let-env USE_FINAL_CONFIG_HOOK = false
 
 # enable starship
-mkdir ~/.cache/starship
-starship init nu | save -f ~/.cache/starship/init.nu
+let-env STARSHIP_CACHE = ($env.XDG_CACHE_HOME | path join "starship")
+mkdir $env.STARSHIP_CACHE
+starship init nu | save --force ($env.STARSHIP_CACHE | path join "init.nu")
