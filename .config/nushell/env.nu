@@ -283,8 +283,7 @@ module config {
 use config
 
 mkdir $env.NU_GIT_LIB_DIR
-config update default --init
-config update libs --init
+config update all --init
 
 let-env PROMPT_MULTILINE_INDICATOR_COLORS = [
     "red_dimmed"
