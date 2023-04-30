@@ -322,3 +322,7 @@ let-env SSH_KEYS_HOME = ($env.HOME | path join ".ssh" "keys")
 # disable or enable final configuration commands in ./scripts/final.nu
 #
 let-env USE_FINAL_CONFIG_HOOK = false
+
+# enable starship
+mkdir ~/.cache/starship
+starship init nu | save -f ~/.cache/starship/init.nu
