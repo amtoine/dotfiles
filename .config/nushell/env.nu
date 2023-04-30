@@ -217,7 +217,7 @@ module config {
         }
     }
 
-    export def "update lib" [
+    export def "update libs" [
         --init: bool
     ] {
         for profile in ($env.NU_SCRIPTS | transpose name profile | get profile) {
@@ -241,10 +241,10 @@ module config {
     ] {
         if $init {
             update default --init
-            update lib --init
+            update libs --init
         } else {
             update default
-            update lib
+            update libs
         }
     }
 
@@ -284,7 +284,7 @@ use config
 
 mkdir $env.NU_GIT_LIB_DIR
 config update default --init
-config update lib --init
+config update libs --init
 
 let-env PROMPT_MULTILINE_INDICATOR_COLORS = [
     "red_dimmed"
