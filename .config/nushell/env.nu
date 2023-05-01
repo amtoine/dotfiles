@@ -160,17 +160,17 @@ let-env NU_GIT_LIB_DIR = ($env.XDG_DATA_HOME | path join "nushell" "lib")
 let-env NU_SCRIPTS = {
   nushell: {
      upstream: "https://github.com/nushell/nu_scripts.git"
-     directory: ($env.NU_GIT_LIB_DIR | path join "nushell" "nu_scripts")
+     directory: ["nushell" "nu_scripts"]
      revision: "main"
   }
   goatfiles: {
      upstream: "https://github.com/goatfiles/nu_scripts.git"
-     directory: ($env.NU_GIT_LIB_DIR | path join "goatfiles" "nu_scripts")
+     directory: ["goatfiles" "nu_scripts"]
      revision: "nightly"
   }
   nu-git-manager: {
      upstream: "https://github.com/amtoine/nu-git-manager.git"
-     directory: ($env.NU_GIT_LIB_DIR | path join "nu-git-manager")
+     directory: ["nu-git-manager"]
      revision: "main"
   }
 }
@@ -178,7 +178,7 @@ let-env NU_SCRIPTS = {
 let-env NU_LIB_DIRS = [
     ($nu.config-path | path dirname | path join 'lib')
     $env.NU_GIT_LIB_DIR
-    $env.NU_SCRIPTS.goatfiles.directory  # this line is important for the `goatfiles` modules to work
+    ($env.NU_GIT_LIB_DIR | append $env.NU_SCRIPTS.goatfiles.directory | path join)  # this line is important for the `goatfiles` modules to work
 ]
 
 module config {
@@ -224,18 +224,19 @@ module config {
         --init: bool
     ] {
         for profile in ($env.NU_SCRIPTS | transpose name profile | get profile) {
-            if not ($profile.directory | path exists) {
-                print $"(ansi red_bold)error(ansi reset): ($profile.directory) does not exist..."
+            let directory = ($env.NU_GIT_LIB_DIR | append $profile.directory | path join)
+            if not ($directory | path exists) {
+                print $"(ansi red_bold)error(ansi reset): ($directory) does not exist..."
                 print $"(ansi cyan)info(ansi reset): pulling the scripts from ($profile.upstream)..."
-                git clone $profile.upstream $profile.directory
+                git clone $profile.upstream $directory
             } else {
                 if not $init {
-                    print $"(ansi cyan)info(ansi reset): updating ($profile.directory)..."
-                    git -C $profile.directory fetch origin --prune
+                    print $"(ansi cyan)info(ansi reset): updating ($directory)..."
+                    git -C $directory fetch origin --prune
                 }
             }
 
-            git -C $profile.directory checkout (["origin" $profile.revision] | path join) out+err> /dev/null
+            git -C $directory checkout (["origin" $profile.revision] | path join) out+err> /dev/null
         }
     }
 
