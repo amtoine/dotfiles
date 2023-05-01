@@ -69,7 +69,6 @@ use goatfiles/nu_scripts/scripts/ssh.nu
 use goatfiles/nu_scripts/scripts/trash.nu
 use goatfiles/nu_scripts/scripts/xdg.nu
 
-use nushell/nu_scripts/custom-completions/git/git-completions.nu *
 use nushell/nu_scripts/custom-completions/cargo/cargo-completions.nu *
 use nushell/nu_scripts/custom-completions/glow/glow-completions.nu *
 use nushell/nu_scripts/custom-completions/make/make-completions.nu *
@@ -77,6 +76,7 @@ use nushell/nu_scripts/custom-completions/make/make-completions.nu *
 use nu-git-manager/mod.nu *
 use nu-git-manager/sugar.nu *
 use nu-git-manager/repo.nu
+use nu-git-manager/completions.nu *
 
 source personal/aliases.nu
 source personal/final.nu
