@@ -180,7 +180,6 @@ let-env NU_LIB_DIRS = [
     $env.NU_LIB_DIR
     $env.NU_GIT_LIB_DIR
     $env.NU_SCRIPTS.goatfiles.directory
-    $env.NU_SCRIPTS.nushell.directory
 ]
 
 module config {
