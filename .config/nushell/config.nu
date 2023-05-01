@@ -76,6 +76,10 @@ use custom-completions/cargo/cargo-completions.nu *
 use custom-completions/glow/glow-completions.nu *
 use custom-completions/make/make-completions.nu *
 
+use nu-git-manager/mod.nu *
+use nu-git-manager/sugar.nu *
+use nu-git-manager/repo.nu
+
 source personal/aliases.nu
 source personal/final.nu
 

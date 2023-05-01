@@ -169,6 +169,11 @@ let-env NU_SCRIPTS = {
      directory: ($env.NU_GIT_LIB_DIR | path join "goatfiles" "nu_scripts")
      revision: "nightly"
   }
+  nu-git-manager: {
+     upstream: "https://github.com/amtoine/nu-git-manager.git"
+     directory: ($env.NU_GIT_LIB_DIR | path join "nu-git-manager")
+     revision: "main"
+  }
 }
 
 let-env NU_LIB_DIRS = [
