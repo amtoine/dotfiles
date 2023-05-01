@@ -179,7 +179,7 @@ let-env NU_SCRIPTS = {
 let-env NU_LIB_DIRS = [
     $env.NU_LIB_DIR
     $env.NU_GIT_LIB_DIR
-    $env.NU_SCRIPTS.goatfiles.directory
+    $env.NU_SCRIPTS.goatfiles.directory  # this line is important for the `goatfiles` modules to work
 ]
 
 module config {

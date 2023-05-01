@@ -51,24 +51,23 @@ let-env config = ($env.config | merge {
     keybindings: (keybindings)
 })
 
-# the scripts coming from $env.NU_SCRIPTS.goatfiles.directory
-use scripts/misc.nu *
-use scripts/community.nu *
-use scripts/dotfiles.nu
-use scripts/vm.nu
-use scripts/venv.nu
-use scripts/job.nu
-use scripts/gf.nu
-use scripts/hx.nu
-use scripts/gh.nu
-use scripts/gpg.nu
-use scripts/sys.nu
-use scripts/docker.nu
-use scripts/downloads.nu
-use scripts/ipfs.nu
-use scripts/ssh.nu
-use scripts/trash.nu
-use scripts/xdg.nu
+use goatfiles/nu_scripts/scripts/misc.nu *
+use goatfiles/nu_scripts/scripts/community.nu *
+use goatfiles/nu_scripts/scripts/dotfiles.nu
+use goatfiles/nu_scripts/scripts/vm.nu
+use goatfiles/nu_scripts/scripts/venv.nu
+use goatfiles/nu_scripts/scripts/job.nu
+use goatfiles/nu_scripts/scripts/gf.nu
+use goatfiles/nu_scripts/scripts/hx.nu
+use goatfiles/nu_scripts/scripts/gh.nu
+use goatfiles/nu_scripts/scripts/gpg.nu
+use goatfiles/nu_scripts/scripts/sys.nu
+use goatfiles/nu_scripts/scripts/docker.nu
+use goatfiles/nu_scripts/scripts/downloads.nu
+use goatfiles/nu_scripts/scripts/ipfs.nu
+use goatfiles/nu_scripts/scripts/ssh.nu
+use goatfiles/nu_scripts/scripts/trash.nu
+use goatfiles/nu_scripts/scripts/xdg.nu
 
 use nushell/nu_scripts/custom-completions/git/git-completions.nu *
 use nushell/nu_scripts/custom-completions/cargo/cargo-completions.nu *
