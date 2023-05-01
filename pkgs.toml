@@ -724,7 +724,7 @@ version = "r21.c32f4bb-1"
 
 [[pacman.all]]
 package = "goat-scripts-git"
-version = "r41.70ca3a3-1"
+version = "r42.316356d-1"
 
 [[pacman.all]]
 package = "goat-sounds-git"
@@ -5376,7 +5376,7 @@ version = "r21.c32f4bb-1"
 
 [[pacman.explicit]]
 package = "goat-scripts-git"
-version = "r41.70ca3a3-1"
+version = "r42.316356d-1"
 
 [[pacman.explicit]]
 package = "goat-sounds-git"
@@ -6128,7 +6128,7 @@ version = "r21.c32f4bb-1"
 
 [[pacman.foreign]]
 package = "goat-scripts-git"
-version = "r41.70ca3a3-1"
+version = "r42.316356d-1"
 
 [[pacman.foreign]]
 package = "goat-sounds-git"
