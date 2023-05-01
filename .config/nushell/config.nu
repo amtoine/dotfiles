@@ -58,7 +58,6 @@ use scripts/dotfiles.nu
 use scripts/vm.nu
 use scripts/venv.nu
 use scripts/job.nu
-use scripts/repo.nu
 use scripts/gf.nu
 use scripts/hx.nu
 use scripts/gh.nu
