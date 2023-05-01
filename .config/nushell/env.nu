@@ -178,7 +178,8 @@ let-env NU_SCRIPTS = {
 let-env NU_LIB_DIRS = [
     ($nu.config-path | path dirname | path join 'lib')
     $env.NU_LIB_DIR
-    ($env.NU_LIB_DIR | append $env.NU_SCRIPTS.goatfiles.directory | path join)  # this line is important for the `goatfiles` modules to work
+    # this line is important for the `goatfiles` modules to work
+    ($env.NU_LIB_DIR | append $env.NU_SCRIPTS.goatfiles.directory | path join)
 ]
 
 module config {
