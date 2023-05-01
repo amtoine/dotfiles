@@ -155,7 +155,7 @@ let-env LD_LIBRARY_PATH = (
 # Directories to search for scripts when calling source or use
 #
 # By default, <nushell-config-dir>/scripts is added
-let-env NU_GIT_LIB_DIR = ($env.XDG_DATA_HOME | path join "nushell" "lib")
+let-env NU_LIB_DIR = ($env.XDG_DATA_HOME | path join "nushell" "lib")
 
 let-env NU_SCRIPTS = {
   nushell: {
@@ -177,14 +177,14 @@ let-env NU_SCRIPTS = {
 
 let-env NU_LIB_DIRS = [
     ($nu.config-path | path dirname | path join 'lib')
-    $env.NU_GIT_LIB_DIR
-    ($env.NU_GIT_LIB_DIR | append $env.NU_SCRIPTS.goatfiles.directory | path join)  # this line is important for the `goatfiles` modules to work
+    $env.NU_LIB_DIR
+    ($env.NU_LIB_DIR | append $env.NU_SCRIPTS.goatfiles.directory | path join)  # this line is important for the `goatfiles` modules to work
 ]
 
 module config {
     export-env {
         let-env DEFAULT_CONFIG_FILE = (
-          $env.NU_GIT_LIB_DIR | path join "default_config.nu"
+          $env.NU_LIB_DIR | path join "default_config.nu"
         )
         let-env DEFAULT_CONFIG_REMOTE = ({
             scheme: https,
@@ -224,7 +224,7 @@ module config {
         --init: bool
     ] {
         for profile in ($env.NU_SCRIPTS | transpose name profile | get profile) {
-            let directory = ($env.NU_GIT_LIB_DIR | append $profile.directory | path join)
+            let directory = ($env.NU_LIB_DIR | append $profile.directory | path join)
             if not ($directory | path exists) {
                 print $"(ansi red_bold)error(ansi reset): ($directory) does not exist..."
                 print $"(ansi cyan)info(ansi reset): pulling the scripts from ($profile.upstream)..."
@@ -257,16 +257,16 @@ module config {
     }
 
     def "nu-complete list-nu-libs" [] {
-        ls ($env.NU_GIT_LIB_DIR | path join "**" "*" ".git")
+        ls ($env.NU_LIB_DIR | path join "**" "*" ".git")
         | get name
         | path parse
         | get parent
-        | str replace $env.NU_GIT_LIB_DIR ""
+        | str replace $env.NU_LIB_DIR ""
         | str trim -c (char path_sep)
     }
 
     export def "edit lib" [lib: string@"nu-complete list-nu-libs"] {
-        cd ($env.NU_GIT_LIB_DIR | path join $lib)
+        cd ($env.NU_LIB_DIR | path join $lib)
         ^$env.EDITOR .
     }
 
@@ -275,10 +275,10 @@ module config {
             {
                 name: $lib
                 describe: (try {
-                    let tag = (git -C ($env.NU_GIT_LIB_DIR | path join $lib) describe HEAD)
+                    let tag = (git -C ($env.NU_LIB_DIR | path join $lib) describe HEAD)
                     $tag
                 } catch { "" })
-                rev: (git -C ($env.NU_GIT_LIB_DIR | path join $lib) rev-parse HEAD)
+                rev: (git -C ($env.NU_LIB_DIR | path join $lib) rev-parse HEAD)
             }
         }
     }
@@ -286,7 +286,7 @@ module config {
 
 use config
 
-mkdir $env.NU_GIT_LIB_DIR
+mkdir $env.NU_LIB_DIR
 config update all --init
 
 let-env PROMPT_MULTILINE_INDICATOR_COLORS = [
