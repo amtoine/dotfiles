@@ -183,9 +183,17 @@ let-env NU_LIB_DIRS = [
 ]
 
 module config {
+    def get-lib-dir [] {
+        $env.NU_LIB_DIR? | default (
+            $env.XDG_DATA_HOME?
+            | default ($env.HOME | path join ".local" "share")
+            | path join "nushell" "lib"
+        )
+    }
+
     export-env {
         let-env DEFAULT_CONFIG_FILE = (
-          $env.NU_LIB_DIR | path join "default_config.nu"
+          get-lib-dir | path join "default_config.nu"
         )
         let-env DEFAULT_CONFIG_REMOTE = ({
             scheme: https,
@@ -225,7 +233,7 @@ module config {
         --init: bool
     ] {
         for profile in ($env.NU_SCRIPTS | transpose name profile | get profile) {
-            let directory = ($env.NU_LIB_DIR | append $profile.directory | path join)
+            let directory = (get-lib-dir | append $profile.directory | path join)
             if not ($directory | path exists) {
                 print $"(ansi red_bold)error(ansi reset): ($directory) does not exist..."
                 print $"(ansi cyan)info(ansi reset): pulling the scripts from ($profile.upstream)..."
@@ -258,16 +266,16 @@ module config {
     }
 
     def "nu-complete list-nu-libs" [] {
-        ls ($env.NU_LIB_DIR | path join "**" "*" ".git")
+        ls (get-lib-dir | path join "**" "*" ".git")
         | get name
         | path parse
         | get parent
-        | str replace $env.NU_LIB_DIR ""
+        | str replace (get-lib-dir) ""
         | str trim -c (char path_sep)
     }
 
     export def "edit lib" [lib: string@"nu-complete list-nu-libs"] {
-        cd ($env.NU_LIB_DIR | path join $lib)
+        cd (get-lib-dir | path join $lib)
         ^$env.EDITOR .
     }
 
@@ -276,10 +284,10 @@ module config {
             {
                 name: $lib
                 describe: (try {
-                    let tag = (git -C ($env.NU_LIB_DIR | path join $lib) describe HEAD)
+                    let tag = (git -C (get-lib-dir | path join $lib) describe HEAD)
                     $tag
                 } catch { "" })
-                rev: (git -C ($env.NU_LIB_DIR | path join $lib) rev-parse HEAD)
+                rev: (git -C (get-lib-dir | path join $lib) rev-parse HEAD)
             }
         }
     }
