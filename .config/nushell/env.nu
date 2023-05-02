@@ -252,6 +252,7 @@ module config {
     export def "update all" [
         --init: bool
     ] {
+        mkdir (get-lib-dir)
         if $init {
             update default --init
             update libs --init
@@ -294,8 +295,6 @@ module config {
 }
 
 use config
-
-mkdir $env.NU_LIB_DIR
 config update all --init
 
 let-env PROMPT_MULTILINE_INDICATOR_COLORS = [
