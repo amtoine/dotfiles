@@ -297,6 +297,7 @@ module config {
 use config
 config update all --init
 
+# the prompt
 let-env PROMPT_MULTILINE_INDICATOR_COLORS = [
     "red_dimmed"
     "yellow_dimmed"
@@ -316,6 +317,11 @@ let-env PROMPT_INDICATORS = {
   vi: { insert: ">_ ", normal: ">- " }
 }
 
+# enable starship
+let-env STARSHIP_CACHE = ($env.XDG_CACHE_HOME | path join "starship")
+mkdir $env.STARSHIP_CACHE
+starship init nu | save --force ($env.STARSHIP_CACHE | path join "init.nu")
+
 # start the ssh agent to allow SSO with ssh authentication
 # very usefull with `github` over the ssh protocol
 #
@@ -334,8 +340,3 @@ let-env SSH_KEYS_HOME = ($env.HOME | path join ".ssh" "keys")
 # disable or enable final configuration commands in ./scripts/final.nu
 #
 let-env USE_FINAL_CONFIG_HOOK = false
-
-# enable starship
-let-env STARSHIP_CACHE = ($env.XDG_CACHE_HOME | path join "starship")
-mkdir $env.STARSHIP_CACHE
-starship init nu | save --force ($env.STARSHIP_CACHE | path join "init.nu")
