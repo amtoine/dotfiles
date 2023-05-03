@@ -26,11 +26,12 @@ let-env ENV_CONVERSIONS = {
   }
 }
 
-# the XDG environment on which all the others are based
-let-env XDG_DATA_HOME = ($env.HOME | path join ".local" "share")
-let-env XDG_CONFIG_HOME = ($env.HOME | path join ".config")
-let-env XDG_STATE_HOME = ($env.HOME | path join ".local" "state")
-let-env XDG_CACHE_HOME = ($env.HOME | path join ".cache")
+export-env { load-env {  # the XDG environment on which all the others are based
+    XDG_DATA_HOME: ($env.HOME | path join ".local" "share")
+    XDG_CONFIG_HOME: ($env.HOME | path join ".config")
+    XDG_STATE_HOME: ($env.HOME | path join ".local" "state")
+    XDG_CACHE_HOME: ($env.HOME | path join ".cache")
+}}
 
 # Directories to search for plugin binaries when calling register
 #
@@ -39,14 +40,18 @@ let-env NU_PLUGIN_DIRS = [
     ($env.XDG_DATA_HOME | path join "nushell" 'plugins' 'bin')
 ]
 
-# git-related variables
-let-env GIT_REPOS_HOME = ($env.XDG_DATA_HOME | path join "git" "store")
-let-env GHQ_ROOT = $env.GIT_REPOS_HOME
+export-env {  # git-related variables
+    let-env GIT_REPOS_HOME = ($env.XDG_DATA_HOME | path join "git" "store")
 
-let-env DOTFILES_GIT_DIR = ($env.GIT_REPOS_HOME | path join "github.com" "goatfiles" "dotfiles")
-let-env DOTFILES_WORKTREE = $env.HOME
+    load-env {
+        GHQ_ROOT: $env.GIT_REPOS_HOME
 
-let-env GIST_HOME = ($env.XDG_DATA_HOME | path join "gists")
+        DOTFILES_GIT_DIR: ($env.GIT_REPOS_HOME | path join "github.com" "goatfiles" "dotfiles")
+        DOTFILES_WORKTREE: $env.HOME
+
+        GIST_HOME: ($env.XDG_DATA_HOME | path join "gists")
+    }
+}
 
 # move all moveable config to the right location, outside $HOME.
 let-env TERMINFO_DIRS = (
@@ -60,39 +65,41 @@ let-env _JAVA_OPTIONS = $"-Djava.util.prefs.userRoot=($env.XDG_CONFIG_HOME | pat
 
 let-env GEM_VERSION = "3.0.0"
 
-let-env CABAL_CONFIG = ($env.XDG_CONFIG_HOME | path join "cabal" "config")
-let-env CABAL_DIR = ($env.XDG_DATA_HOME | path join "cabal")
-let-env CARGO_HOME = ($env.XDG_DATA_HOME | path join "cargo")
-let-env CLANG_HOME = ($env.XDG_DATA_HOME | path join "clang-15")
-let-env DOOMDIR = ($env.XDG_CONFIG_HOME | path join "doom")
-let-env DOWNLOADS_DIR = ($env.HOME | path join "downloads")
-let-env EMACS_HOME = ($env.HOME | path join ".emacs.d")
-let-env GNUPGHOME = ($env.XDG_DATA_HOME | path join "gnupg")
-let-env GOPATH = ($env.XDG_DATA_HOME | path join "go")
-let-env GRIPHOME = ($env.XDG_CONFIG_HOME | path join "grip")
-let-env GTK2_RC_FILES = ($env.XDG_CONFIG_HOME | path join "gtk-2.0" "gtkrc")
-let-env HISTFILE = ($env.XDG_STATE_HOME | path join "bash" "history")
-let-env IMAGES_HOME = ($env.HOME | path join "media" "images")
-let-env IPFS_PATH = ($env.HOME | path join ".ipfs")
-let-env JUPYTER_CONFIG_DIR = ($env.XDG_CONFIG_HOME | path join "jupyter")
-let-env KERAS_HOME = ($env.XDG_STATE_HOME | path join "keras")
-let-env LESSHISTFILE = ($env.XDG_CACHE_HOME | path join "less" "history")
-let-env MUJOCO_BIN = ($env.HOME | path join ".mujoco" "mujoco210" "bin")
-let-env NODE_REPL_HISTORY = ($env.XDG_DATA_HOME | path join "node_repl_history")
-let-env NPM_CONFIG_USERCONFIG = ($env.XDG_CONFIG_HOME | path join "npm" "npmrc")
-let-env PASSWORD_STORE_DIR = ($env.XDG_DATA_HOME | path join "pass")
-let-env PYTHONSTARTUP = ($env.XDG_CONFIG_HOME | path join "python" "pythonrc")
-let-env QT_QPA_PLATFORMTHEME = "qt5ct"
-let-env QUICKEMU_HOME = ($env.XDG_DATA_HOME | path join "quickemu")
-let-env RUBY_HOME = ($env.XDG_DATA_HOME | path join "gem" "ruby" $env.GEM_VERSION)
-let-env SQLITE_HISTORY = ($env.XDG_CACHE_HOME | path join "sqlite_history")
-let-env TERMINFO = ($env.XDG_DATA_HOME | path join "terminfo")
-let-env TOMB_HOME = ($env.XDG_DATA_HOME | path join "tombs")
-let-env WORKON_HOME = ($env.XDG_DATA_HOME | path join "virtualenvs")
-let-env XINITRC = ($env.XDG_CONFIG_HOME | path join "X11" "xinitrc")
-let-env ZDOTDIR = ($env.XDG_CONFIG_HOME | path join "zsh")
-let-env ZK_NOTEBOOK_DIR = ($env.GIT_REPOS_HOME | path join "github.com" "amtoine" "notes")
-let-env _Z_DATA = ($env.XDG_DATA_HOME | path join "z")
+export-env { load-env {
+    CABAL_CONFIG: ($env.XDG_CONFIG_HOME | path join "cabal" "config")
+    CABAL_DIR: ($env.XDG_DATA_HOME | path join "cabal")
+    CARGO_HOME: ($env.XDG_DATA_HOME | path join "cargo")
+    CLANG_HOME: ($env.XDG_DATA_HOME | path join "clang-15")
+    DOOMDIR: ($env.XDG_CONFIG_HOME | path join "doom")
+    DOWNLOADS_DIR: ($env.HOME | path join "downloads")
+    EMACS_HOME: ($env.HOME | path join ".emacs.d")
+    GNUPGHOME: ($env.XDG_DATA_HOME | path join "gnupg")
+    GOPATH: ($env.XDG_DATA_HOME | path join "go")
+    GRIPHOME: ($env.XDG_CONFIG_HOME | path join "grip")
+    GTK2_RC_FILES: ($env.XDG_CONFIG_HOME | path join "gtk-2.0" "gtkrc")
+    HISTFILE: ($env.XDG_STATE_HOME | path join "bash" "history")
+    IMAGES_HOME: ($env.HOME | path join "media" "images")
+    IPFS_PATH: ($env.HOME | path join ".ipfs")
+    JUPYTER_CONFIG_DIR: ($env.XDG_CONFIG_HOME | path join "jupyter")
+    KERAS_HOME: ($env.XDG_STATE_HOME | path join "keras")
+    LESSHISTFILE: ($env.XDG_CACHE_HOME | path join "less" "history")
+    MUJOCO_BIN: ($env.HOME | path join ".mujoco" "mujoco210" "bin")
+    NODE_REPL_HISTORY: ($env.XDG_DATA_HOME | path join "node_repl_history")
+    NPM_CONFIG_USERCONFIG: ($env.XDG_CONFIG_HOME | path join "npm" "npmrc")
+    PASSWORD_STORE_DIR: ($env.XDG_DATA_HOME | path join "pass")
+    PYTHONSTARTUP: ($env.XDG_CONFIG_HOME | path join "python" "pythonrc")
+    QT_QPA_PLATFORMTHEME: "qt5ct"
+    QUICKEMU_HOME: ($env.XDG_DATA_HOME | path join "quickemu")
+    RUBY_HOME: ($env.XDG_DATA_HOME | path join "gem" "ruby" $env.GEM_VERSION)
+    SQLITE_HISTORY: ($env.XDG_CACHE_HOME | path join "sqlite_history")
+    TERMINFO: ($env.XDG_DATA_HOME | path join "terminfo")
+    TOMB_HOME: ($env.XDG_DATA_HOME | path join "tombs")
+    WORKON_HOME: ($env.XDG_DATA_HOME | path join "virtualenvs")
+    XINITRC: ($env.XDG_CONFIG_HOME | path join "X11" "xinitrc")
+    ZDOTDIR: ($env.XDG_CONFIG_HOME | path join "zsh")
+    ZK_NOTEBOOK_DIR: ($env.GIT_REPOS_HOME | path join "github.com" "amtoine" "notes")
+    _Z_DATA: ($env.XDG_DATA_HOME | path join "z")
+}}
 
 # user environment variables
 let-env BROWSER = "qutebrowser"
@@ -297,24 +304,24 @@ module config {
 use config
 config update all --init
 
-# the prompt
-let-env PROMPT_MULTILINE_INDICATOR_COLORS = [
-    "red_dimmed"
-    "yellow_dimmed"
-    "green_dimmed"
-]
-let-env PROMPT_MULTILINE_INDICATOR_CHARACTER = ":"
-
-let-env PROMPT_MULTILINE_INDICATOR = ((
-    $env.PROMPT_MULTILINE_INDICATOR_COLORS
-    | each {|color| ansi $color }
-    | append (ansi reset)
-    | str join $env.PROMPT_MULTILINE_INDICATOR_CHARACTER
-) + " ")
-
-let-env PROMPT_INDICATORS = {
-  plain: "> ",
-  vi: { insert: ">_ ", normal: ">- " }
+export-env {  # the prompt
+    load-env {
+        PROMPT_INDICATOR: "> "
+        PROMPT_INDICATOR_VI_INSERT: ">_ "
+        PROMPT_INDICATOR_VI_NORMAL: ">- "
+        PROMPT_MULTILINE_INDICATOR_COLORS: [
+            "red_dimmed"
+            "yellow_dimmed"
+            "green_dimmed"
+        ]
+        PROMPT_MULTILINE_INDICATOR_CHARACTER: ":"
+    }
+    let-env PROMPT_MULTILINE_INDICATOR = ((
+        $env.PROMPT_MULTILINE_INDICATOR_COLORS
+        | each {|color| ansi $color }
+        | append (ansi reset)
+        | str join $env.PROMPT_MULTILINE_INDICATOR_CHARACTER
+    ) + " ")
 }
 
 # enable starship
