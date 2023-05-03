@@ -63,10 +63,10 @@ add_newline = false
 #
 #      https://starship.rs/config/#character
 [character]
- format         = "$symbol "
- success_symbol = "[❯](bold green)"  # The format string used before the text input if the previous command succeeded.
- error_symbol   = "[X](bold red)"    # The format string used before the text input if the previous command failed.
- vicmd_symbol   = "[V](bold green)"  # The format string used before the text input if the shell is in vim normal mode.
+ format         = "$symbol"
+ success_symbol = ''  # The format string used before the text input if the previous command succeeded.
+ error_symbol   = "[X](bold red) "    # The format string used before the text input if the previous command failed.
+ vicmd_symbol   = "[V](bold green) "  # The format string used before the text input if the shell is in vim normal mode.
  disabled       = false
 
 
