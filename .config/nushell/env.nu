@@ -357,3 +357,6 @@ let-env SSH_KEYS_HOME = ($env.HOME | path join ".ssh" "keys")
 # disable or enable final configuration commands in ./scripts/final.nu
 #
 let-env USE_FINAL_CONFIG_HOOK = false
+
+# load secret environment variables
+try { open ~/.env | from nuon } catch {{}} | load-env
