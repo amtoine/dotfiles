@@ -199,9 +199,6 @@ module config {
     }
 
     export-env {
-        let-env DEFAULT_CONFIG_FILE = (
-          get-lib-dir | path join "default_config.nu"
-        )
         let-env DEFAULT_CONFIG_REMOTE = ({
             scheme: https,
             host: raw.githubusercontent.com,
@@ -209,30 +206,34 @@ module config {
         } | url join)
     }
 
+    def get-config-file [] {
+        get-lib-dir | path join "default_config.nu"
+    }
+
     export def "update default" [
         --init: bool
     ] {
-        let name = ($env.DEFAULT_CONFIG_FILE | path basename)
+        let name = (get-config-file | path basename)
         let default_url = ($env.DEFAULT_CONFIG_REMOTE | path join $name)
 
-        if ($env.DEFAULT_CONFIG_FILE | path expand | path exists) {
+        if (get-config-file | path expand | path exists) {
             if not $init {
-                print $"(ansi cyan)info(ansi reset): updating default config..."
+                print $"(ansi cyan)info(ansi reset): updating default config from (ansi yellow)($revision)(ansi reset)..."
                 http get $default_url | save --force --raw .default_config.nu
 
-                let diff = (diff -u --color=always $env.DEFAULT_CONFIG_FILE .default_config.nu)
+                let diff = (diff -u --color=always (get-config-file) .default_config.nu)
 
                 if not ($diff | is-empty) {
                     print $diff
                 }
 
-                mv --force .default_config.nu $env.DEFAULT_CONFIG_FILE
+                mv --force .default_config.nu (get-config-file)
             }
         } else {
-            print $"(ansi red_bold)error(ansi reset): ($env.DEFAULT_CONFIG_FILE) does not exist..."
+            print $"(ansi red_bold)error(ansi reset): (get-config-file) does not exist..."
             print $"(ansi cyan)info(ansi reset): pulling default config file..."
-            http get $default_url | save --force --raw $env.DEFAULT_CONFIG_FILE
-            print $'Downloaded new ($name)'
+            http get $default_url | save --force --raw (get-config-file)
+            print $'Downloaded new default config file'
         }
     }
 
@@ -270,7 +271,7 @@ module config {
     }
 
     export def "edit default" [] {
-        ^$env.EDITOR $env.DEFAULT_CONFIG_FILE
+        ^$env.EDITOR (get-config-file)
     }
 
     def "nu-complete list-nu-libs" [] {
