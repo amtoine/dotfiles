@@ -198,23 +198,32 @@ module config {
         )
     }
 
-    export-env {
-        let-env DEFAULT_CONFIG_REMOTE = ({
-            scheme: https,
-            host: raw.githubusercontent.com,
-            path: /nushell/nushell/main/crates/nu-utils/src/sample_config,
-        } | url join)
-    }
-
     def get-config-file [] {
         get-lib-dir | path join "default_config.nu"
     }
 
     export def "update default" [
         --init: bool
+        --latest: bool
+        --revision: string
     ] {
-        let name = (get-config-file | path basename)
-        let default_url = ($env.DEFAULT_CONFIG_REMOTE | path join $name)
+        let revision = if $latest {
+            "main"
+        } else if ($revision != null) {
+            $revision
+        } else {
+            let v = (version)
+            $v.commit_hash? | default $v.branch? | default $v.version
+        }
+
+        let default_url = (
+            {
+                scheme: https,
+                host: raw.githubusercontent.com,
+                path: $"/nushell/nushell/($revision)/crates/nu-utils/src/sample_config",
+            } | url join
+            | path join "default_config.nu"
+        )
 
         if (get-config-file | path expand | path exists) {
             if not $init {
