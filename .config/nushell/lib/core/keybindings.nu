@@ -25,17 +25,10 @@ export def set [] {
       }
     }
     {
-      name: commands_menu
-      modifier: control
-      keycode: char_t
-      mode: [emacs, vi_normal, vi_insert]
-      event: { send: menu name: commands_menu }
-    }
-    {
       name: reload_config
       modifier: control
       keycode: char_r
-      mode: [ emacs vi_insert vi_normal ]
+      mode: [emacs, vi_insert, vi_normal]
       event: {
         send: executehostcommand,
         cmd: "exec nu"
@@ -62,7 +55,7 @@ export def set [] {
       }
     }
     {
-      name: clear_and_ls
+      name: clear
       modifier: control
       keycode: char_l
       mode: [emacs, vi_normal, vi_insert]
@@ -82,7 +75,13 @@ export def set [] {
       mode: [emacs, vi_normal, vi_insert]
       event: {
         send: executehostcommand
-        cmd: "commandline (history | each { |it| $it.command } | uniq | reverse | str join (char nl) | fzf --tiebreak=chunk --layout=reverse  --multi --preview='echo {..}' --preview-window='bottom:3:wrap' --height=70% -q (commandline) | decode utf-8 | str trim)"
+        cmd: "commandline (
+          history
+          | each { |it| $it.command }
+          | uniq
+          | reverse
+          | input list -f 'Please choose a command from history:'
+        )"
       }
     }
     # credit to @fdncred
@@ -94,28 +93,13 @@ export def set [] {
       mode: [emacs, vi_normal, vi_insert]
       event: {
         send: executehostcommand
-        cmd: "commandline -a (ls **/* | where type == dir | get name | to text | fzf -q (commandline) | str trim)"
+        cmd: "commandline -a (
+          ls **/*
+          | where type == dir
+          | get name
+          | input list -f 'Please choose a dir to insert:'
+        )"
       }
-    }
-    # credit to @vinlet
-    # https://discord.com/channels/601130461678272522/614593951969574961/1063822677808250991
-    {
-      name: insert_file
-      modifier: control
-      keycode: char_y
-      mode: [emacs, vi_insert]
-      event: {
-        send: executehostcommand
-        cmd: "commandline --insert (fzf --tiebreak=chunk --layout=reverse  --multi --preview='echo {..}' --preview-window='bottom:3:wrap' --height=70% | decode utf-8 | str trim)"
-      }
-    }
-    # from #8076
-    {
-      name: "fzf_history_menu_fzf_ui_session"
-      modifier: alt
-      keycode: char_r
-      mode: [emacs, vi_normal, vi_insert]
-      event: { send: menu name: fzf_history_menu_fzf_ui_session }
     }
   ]
 }
