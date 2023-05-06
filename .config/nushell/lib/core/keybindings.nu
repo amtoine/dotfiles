@@ -9,7 +9,8 @@
 #*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
 #*
 
-export def main [] {
+# define the keybindings for GOATs
+export def set [] {
   [
     {
       name: history_menu

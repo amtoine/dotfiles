@@ -46,9 +46,9 @@ let-env config = ($env.config | merge {
     edit_mode: vi
     show_banner: false
 
-    hooks: (hooks)
-    menus: (menus)
-    keybindings: (keybindings)
+    hooks: (hooks set)
+    menus: (menus set)
+    keybindings: (keybindings set)
 })
 
 use goatfiles/nu_scripts/scripts/misc.nu *

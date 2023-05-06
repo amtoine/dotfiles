@@ -9,7 +9,10 @@
 #*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
 #*
 
-export def main [] {
+export def main [] { help hooks }
+
+# define the hooks for GOATs
+export def set [] {
   {
     pre_prompt: [{||
       $nothing  # replace with source code to run before the prompt is shown
