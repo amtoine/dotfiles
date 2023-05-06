@@ -79,7 +79,7 @@ export def set [] {[
                 | each { |it| $it.command }
                 | uniq
                 | reverse
-                | input list -f 'Please choose a command from history:'
+                | input list --fuzzy 'Please choose a command from history:'
             )"
         }
     }
@@ -96,7 +96,7 @@ export def set [] {[
                 ls **/*
                 | where type == dir
                 | get name
-                | input list -f 'Please choose a dir to insert:'
+                | input list --fuzzy 'Please choose a dir to insert:'
             )"
         }
     }
