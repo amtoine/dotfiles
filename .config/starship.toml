@@ -27,6 +27,7 @@ $lua\
 $golang\
 $c\
 $zig\
+${custom.nu}\
 \
 $battery\
 $cmd_duration\
@@ -209,3 +210,13 @@ show_always = false
 disabled = false
 
 symbol = '⚡️ '
+
+# https://starship.rs/config/#custom-commands
+[custom.nu]
+disabled = false
+
+detect_files = ["package.nuon"]
+detect_extensions = ["nu", "nush"]
+shell = ["nu", "-c"]
+command = "version | get version"
+format = "via [nu $output](red bold) "
