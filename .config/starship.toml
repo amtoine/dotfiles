@@ -32,16 +32,19 @@ add_newline = false
 
 # https://starship.rs/config/#battery
 [battery]
+disabled = false
+
 format             = "[$symbol$percentage]($style) "
 full_symbol        = " "
 charging_symbol    = " "
 discharging_symbol = " "
 unknown_symbol     = " "
 empty_symbol       = " "
-disabled           = false
 
 # https://starship.rs/config/#character
 [character]
+disabled = false
+
 format         = "$symbol"
 success_symbol = "[>](green) "
 error_symbol   = "[x](bold red) "
@@ -49,16 +52,19 @@ vicmd_symbol   = "[V](bold green) "
 
 # https://starship.rs/config/#command-duration
 [cmd_duration]
+disabled = false
+
 format             = "took [$duration]($style) "
 min_time           = 2_000
 show_milliseconds  = false
 style              = "bold yellow"
 show_notifications = false
 min_time_to_notify = 45_000
-disabled           = true
 
 # https://starship.rs/config/#directory
 [directory]
+disabled = false
+
 format            = "[$path]($style)[$read_only]($read_only_style) "
 truncation_length = 3
 truncate_to_repo  = true
@@ -68,10 +74,11 @@ read_only_style   = "red"
 truncation_symbol = ""
 repo_root_style   = "bold red"
 home_symbol       = "~"
-disabled          = false
 
 # https://starship.rs/config/#git-branch
 [git_branch]
+disabled = false
+
 format = "[$symbol$branch]($style) "
 symbol             = " "
 truncation_length  = 50
@@ -79,20 +86,22 @@ truncation_symbol  = "…"
 always_show_remote = false
 only_attached      = true
 style              = "bold yellow"
-disabled           = false
 
 # https://starship.rs/config/#git-commit
 [git_commit]
+disabled = false
+
 format             = "[\\($hash$tag\\)]($style) "
 commit_hash_length = 7
 style              = "bold green"
 only_detached      = true
 tag_disabled       = false
 tag_symbol         = " 🏷 "
-disabled           = false
 
 # https://starship.rs/config/#git-state
 [git_state]
+disabled = false
+
 format       = '\([$state( $progress_current/$progress_total)]($style)\) '
 rebase       = "REBASING"
 merge        = "MERGING"
@@ -102,18 +111,20 @@ bisect       = "BISECTING"
 am           = "AM"
 am_or_rebase = "AM/REBASE"
 style        = "bold yellow"
-disabled     = false
 
 # https://starship.rs/config/#git-metrics
 [git_metrics]
+disabled = false
+
 format             = '([+$added]($added_style) )([-$deleted]($deleted_style) )'
 added_style        = "bold green"
 deleted_style      = "bold red"
 only_nonzero_diffs = true
-disabled           = false
 
 # https://starship.rs/config/#git-status
 [git_status]
+disabled = false
+
 format     = '([\[$all_status$ahead_behind\]]($style) )'
 conflicted = "="
 ahead      = "⇡"
@@ -130,13 +141,16 @@ style      = "bold red"
 
 # https://starship.rs/config/#hostname
 [hostname]
+disabled = false
+
 ssh_only = true
 format = '[$ssh_symbol](bold blue) on [$hostname](bold red) '
 trim_at = '.companyname.com'
-disabled = false
 
 # https://starship.rs/config/#python
 [python]
+disabled = false
+
 format             = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 version_format     = "v${raw}"
 symbol             = "py "
@@ -150,6 +164,8 @@ detect_folders     = []
 
 # https://starship.rs/config/#username
 [username]
+disabled = false
+
 style_user = 'yellow'
 style_root = 'red bold'
 format = '[$user]($style)'
