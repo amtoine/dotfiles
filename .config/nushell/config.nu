@@ -75,7 +75,6 @@ use nushell/nu_scripts/custom-completions/make/make-completions.nu *
 
 use nu-git-manager/mod.nu *
 use nu-git-manager/sugar.nu *
-use nu-git-manager/repo.nu
 use nu-git-manager/completions.nu *
 
 source personal/aliases.nu

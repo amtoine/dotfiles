@@ -48,7 +48,7 @@ export def set [] {
       mode: [emacs, vi_insert, vi_normal]
       event: {
         send: executehostcommand
-        cmd: "repo goto --clear"
+        cmd: "gm goto"
       }
     }
     {
