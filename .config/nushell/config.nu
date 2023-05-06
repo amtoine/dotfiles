@@ -76,7 +76,7 @@ use nu-git-manager/sugar/git.nu
 use nu-git-manager/sugar/gh.nu
 use nu-git-manager/sugar/gist.nu
 use nu-git-manager/sugar/completions/git.nu *
-use nu-git-manager/sugar/dotfiles.nu edit
+use nu-git-manager/sugar/dotfiles.nu
 
 source personal/aliases.nu
 source personal/final.nu
