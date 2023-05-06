@@ -14,12 +14,8 @@ export def main [] { help hooks }
 # define the hooks for GOATs
 export def set [] {
   {
-    pre_prompt: [{||
-      $nothing  # replace with source code to run before the prompt is shown
-    }]
-    pre_execution: [{||
-      $nothing  # replace with source code to run before the repl input is run
-    }]
+    pre_prompt: [{||}]
+    pre_execution: [{||}]
     env_change: {
       PWD: [
         { code: "hide toolkit" }
