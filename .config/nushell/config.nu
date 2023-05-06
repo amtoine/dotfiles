@@ -51,19 +51,11 @@ let-env config = ($env.config | merge {
     keybindings: (keybindings set)
 })
 
-use goatfiles/nu_scripts/scripts/misc.nu *
-use goatfiles/nu_scripts/scripts/community.nu *
 use goatfiles/nu_scripts/scripts/dotfiles.nu
-use goatfiles/nu_scripts/scripts/vm.nu
-use goatfiles/nu_scripts/scripts/venv.nu
-use goatfiles/nu_scripts/scripts/job.nu
 use goatfiles/nu_scripts/scripts/gf.nu
-use goatfiles/nu_scripts/scripts/hx.nu
 use goatfiles/nu_scripts/scripts/gpg.nu
 use goatfiles/nu_scripts/scripts/sys.nu
-use goatfiles/nu_scripts/scripts/docker.nu
 use goatfiles/nu_scripts/scripts/downloads.nu
-use goatfiles/nu_scripts/scripts/ipfs.nu
 use goatfiles/nu_scripts/scripts/ssh.nu
 use goatfiles/nu_scripts/scripts/trash.nu
 use goatfiles/nu_scripts/scripts/xdg.nu
