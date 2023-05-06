@@ -73,10 +73,10 @@ use nushell/nu_scripts/custom-completions/glow/glow-completions.nu *
 use nushell/nu_scripts/custom-completions/make/make-completions.nu *
 
 use nu-git-manager/mod.nu *
-use nu-git-manager/sugar.nu *
-use nu-git-manager/gh.nu
-use nu-git-manager/gist.nu
-use nu-git-manager/completions.nu *
+use nu-git-manager/sugar/git.nu
+use nu-git-manager/sugar/gh.nu
+use nu-git-manager/sugar/gist.nu
+use nu-git-manager/sugar/completions.nu *
 
 source personal/aliases.nu
 source personal/final.nu
