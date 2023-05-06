@@ -68,7 +68,7 @@ use nu-git-manager/mod.nu *
 use nu-git-manager/sugar/git.nu
 use nu-git-manager/sugar/gh.nu
 use nu-git-manager/sugar/gist.nu
-use nu-git-manager/sugar/completions.nu *
+use nu-git-manager/sugar/completions/git.nu *
 
 source personal/aliases.nu
 source personal/final.nu
