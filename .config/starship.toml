@@ -209,7 +209,7 @@ show_always = false
 [zig]
 disabled = false
 
-symbol = '⚡️ '
+format = 'via [⚡️](yellow bold)'
 
 # https://starship.rs/config/#custom-commands
 [custom.nu]
