@@ -47,7 +47,7 @@ let-env config = ($env.config | merge {
     show_banner: false
 
     hooks: (hooks set)
-    menus: (menus set)
+    menus: ($env.config.menus | append (menus set))
     keybindings: (keybindings set)
 })
 
