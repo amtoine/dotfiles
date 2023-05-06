@@ -79,7 +79,8 @@ export def set [] {[
                 | each { |it| $it.command }
                 | uniq
                 | reverse
-                | input list --fuzzy 'Please choose a command from history:'
+                | input list --fuzzy
+                    $'Please choose a (ansi magenta)command from history(ansi reset):'
             )"
         }
     }
@@ -96,7 +97,8 @@ export def set [] {[
                 ls **/*
                 | where type == dir
                 | get name
-                | input list --fuzzy 'Please choose a dir to insert:'
+                | input list --fuzzy
+                    $'Please choose a (ansi magenta)directory(ansi reset) to (ansi cyan_underline)insert(ansi reset):'
             )"
         }
     }
