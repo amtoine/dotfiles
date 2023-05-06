@@ -59,7 +59,6 @@ use goatfiles/nu_scripts/scripts/venv.nu
 use goatfiles/nu_scripts/scripts/job.nu
 use goatfiles/nu_scripts/scripts/gf.nu
 use goatfiles/nu_scripts/scripts/hx.nu
-use goatfiles/nu_scripts/scripts/gh.nu
 use goatfiles/nu_scripts/scripts/gpg.nu
 use goatfiles/nu_scripts/scripts/sys.nu
 use goatfiles/nu_scripts/scripts/docker.nu
@@ -75,6 +74,8 @@ use nushell/nu_scripts/custom-completions/make/make-completions.nu *
 
 use nu-git-manager/mod.nu *
 use nu-git-manager/sugar.nu *
+use nu-git-manager/gh.nu
+use nu-git-manager/gist.nu
 use nu-git-manager/completions.nu *
 
 source personal/aliases.nu
