@@ -51,6 +51,14 @@ let-env config = ($env.config | merge {
     keybindings: (keybindings set)
 })
 
+use goatfiles/nu_scripts/scripts/misc.nu [
+    back
+    "cargo list"
+    "cargo info full"
+    edit
+    "youtube share"
+]
+
 use goatfiles/nu_scripts/scripts/dotfiles.nu
 use goatfiles/nu_scripts/scripts/gf.nu
 use goatfiles/nu_scripts/scripts/gpg.nu
