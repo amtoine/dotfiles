@@ -13,9 +13,9 @@
 
 source default_config.nu
 
-use core/hooks.nu *
-use core/menus.nu *
-use core/keybindings.nu *
+use core/hooks.nu
+use core/menus.nu
+use core/keybindings.nu
 
 let-env config = ($env.config | merge {
     ls: {
