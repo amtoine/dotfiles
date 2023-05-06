@@ -55,7 +55,7 @@ empty_symbol       = " "
 [c]
 disabled = false
 
-format = 'via [$name $version]($style)'
+format = "\n    via [$name $version]($style)"
 
 # https://starship.rs/config/#character
 [character]
@@ -159,7 +159,7 @@ style      = "bold red"
 [golang]
 disabled = false
 
-format = 'via [🏎💨 $version](bold cyan) '
+format = "\n    via [🏎💨 $version](bold cyan) "
 
 # https://starship.rs/config/#hostname
 [hostname]
@@ -173,13 +173,13 @@ trim_at = '.companyname.com'
 [lua]
 disabled = false
 
-format = 'via [🌕 $version](bold blue) '
+format = "\n    via [🌕 $version](bold blue) "
 
 # https://starship.rs/config/#python
 [python]
 disabled = false
 
-format             = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+format             = "\n    via [${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style) "
 version_format     = "v${raw}"
 symbol             = "py "
 style              = "yellow bold"
@@ -194,7 +194,7 @@ detect_folders     = []
 [rust]
 disabled = false
 
-format = 'via [⚙️ $version](red bold) '
+format = "\n    via [⚙️ $version](red bold) "
 
 # https://starship.rs/config/#username
 [username]
@@ -209,7 +209,7 @@ show_always = false
 [zig]
 disabled = false
 
-format = 'via [⚡️](yellow bold)'
+format = "\n    via [⚡️](yellow bold)"
 
 # https://starship.rs/config/#custom-commands
 [custom.nu]
@@ -219,4 +219,4 @@ detect_files = ["package.nuon"]
 detect_extensions = ["nu", "nush"]
 shell = ["nu", "-c"]
 command = "version | get version"
-format = "via [nu $output](red bold) "
+format = "\n    via [nu $output](red bold) "
