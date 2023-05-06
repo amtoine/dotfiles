@@ -19,7 +19,12 @@ $git_commit\
 $git_state\
 $git_metrics\
 $git_status\
+$rust\
 $python\
+$lua\
+$golang\
+$c\
+$zig\
 $battery\
 $cmd_duration\
 $character\
@@ -40,6 +45,12 @@ charging_symbol    = " "
 discharging_symbol = " "
 unknown_symbol     = " "
 empty_symbol       = " "
+
+# https://starship.rs/config/#c
+[c]
+disabled = false
+
+format = 'via [$name $version]($style)'
 
 # https://starship.rs/config/#character
 [character]
@@ -140,12 +151,24 @@ deleted    = "✘"
 style      = "bold red"
 
 # https://starship.rs/config/#hostname
+[golang]
+disabled = false
+
+format = 'via [🏎💨 $version](bold cyan) '
+
+# https://starship.rs/config/#hostname
 [hostname]
 disabled = false
 
 ssh_only = true
 format = '[$ssh_symbol](bold blue) on [$hostname](bold red) '
 trim_at = '.companyname.com'
+
+# https://starship.rs/config/#lua
+[lua]
+disabled = false
+
+format = 'via [🌕 $version](bold blue) '
 
 # https://starship.rs/config/#python
 [python]
@@ -162,6 +185,12 @@ detect_extensions  = ["py"]
 detect_files       = [".python-version", "Pipfile", "__init__.py", "pyproject.toml", "requirements.txt", "setup.py", "tox.ini"]
 detect_folders     = []
 
+# https://starship.rs/config/#rust
+[rust]
+disabled = false
+
+format = 'via [⚙️ $version](red bold) '
+
 # https://starship.rs/config/#username
 [username]
 disabled = false
@@ -170,3 +199,9 @@ style_user = 'yellow'
 style_root = 'red bold'
 format = '[$user]($style)'
 show_always = false
+
+# https://starship.rs/config/#zig
+[zig]
+disabled = false
+
+symbol = '⚡️ '
