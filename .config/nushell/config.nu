@@ -71,7 +71,7 @@ use nushell/nu_scripts/custom-completions/cargo/cargo-completions.nu *
 use nushell/nu_scripts/custom-completions/glow/glow-completions.nu *
 use nushell/nu_scripts/custom-completions/make/make-completions.nu *
 
-use nu-git-manager/mod.nu *
+use nu-git-manager/gm/mod.nu *
 use nu-git-manager/sugar/git.nu
 use nu-git-manager/sugar/gh.nu
 use nu-git-manager/sugar/gist.nu
