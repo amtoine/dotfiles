@@ -262,7 +262,7 @@ module config {
                 }
             }
 
-            git -C $directory checkout (["origin" $profile.revision] | path join) out+err> /dev/null
+            git -C $directory checkout (["origin" $profile.revision] | path join) --quiet
         }
     }
 
