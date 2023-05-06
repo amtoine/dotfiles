@@ -316,9 +316,9 @@ config update all --init
 
 export-env {  # the prompt
     load-env {
-        PROMPT_INDICATOR: "> "
-        PROMPT_INDICATOR_VI_INSERT: ">_ "
-        PROMPT_INDICATOR_VI_NORMAL: ">- "
+        PROMPT_INDICATOR: ""
+        PROMPT_INDICATOR_VI_INSERT: ""
+        PROMPT_INDICATOR_VI_NORMAL: ""
         PROMPT_MULTILINE_INDICATOR_COLORS: [
             "red_dimmed"
             "yellow_dimmed"
