@@ -1,3 +1,5 @@
+use std "log warning"
+
 def get-lib-dir [] {
     $env.NU_LIB_DIR? | default (
         $env.XDG_DATA_HOME?
@@ -14,6 +16,8 @@ export def "update default" [
     --init: bool
     --latest: bool
     --revision: string
+    --reload: bool
+    --silent: bool
 ] {
     let revision = if $latest {
         "main"
@@ -52,10 +56,19 @@ export def "update default" [
         http get $default_url | save --force --raw (get-config-file)
         print $'Downloaded new default config file'
     }
+
+    if $reload {
+        exec nu
+    }
+    if not $silent {
+        log warning "do not forget to reload your config!"
+    }
 }
 
 export def "update libs" [
     --init: bool
+    --reload: bool
+    --silent: bool
 ] {
     for profile in ($env.NU_SCRIPTS | transpose name profile | get profile) {
         let directory = (get-lib-dir | append $profile.directory | path join)
@@ -72,6 +85,13 @@ export def "update libs" [
 
         git -C $directory checkout (["origin" $profile.revision] | path join) --quiet
     }
+
+    if $reload {
+        exec nu
+    }
+    if not $silent {
+        log warning "do not forget to reload your config!"
+    }
 }
 
 export def "update all" [
@@ -79,12 +99,15 @@ export def "update all" [
 ] {
     mkdir (get-lib-dir)
     if $init {
-        update default --init
-        update libs --init
+        update default --init --silent
+        update libs --init --silent
     } else {
-        update default
-        update libs
+        update default --silent
+        update libs --silent
     }
+
+    log warning "reloading the config..."
+    exec nu
 }
 
 export def "edit default" [] {
