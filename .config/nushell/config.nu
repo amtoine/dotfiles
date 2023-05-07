@@ -71,12 +71,12 @@ use nushell/nu_scripts/custom-completions/cargo/cargo-completions.nu *
 use nushell/nu_scripts/custom-completions/glow/glow-completions.nu *
 use nushell/nu_scripts/custom-completions/make/make-completions.nu *
 
-use nu-git-manager/gm/mod.nu *
-use nu-git-manager/sugar/git.nu
-use nu-git-manager/sugar/gh.nu
-use nu-git-manager/sugar/gist.nu
-use nu-git-manager/sugar/completions/git.nu *
-use nu-git-manager/sugar/dotfiles.nu
+use nu-git-manager/gm
+use nu-git-manager/sugar git
+use nu-git-manager/sugar gh
+use nu-git-manager/sugar gist
+use nu-git-manager/sugar completions git *
+use nu-git-manager/sugar dotfiles
 
 source personal/aliases.nu
 source personal/final.nu
