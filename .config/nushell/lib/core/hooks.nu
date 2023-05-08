@@ -11,6 +11,21 @@
 
 export def main [] { help hooks }
 
+def "env-change pwd toolkit" [
+  --directory: bool
+] {{
+  condition: (if $directory {
+    {|_, after| $after | path join 'toolkit' 'mod.nu' | path exists }
+  } else {
+    {|_, after| $after | path join 'toolkit.nu' | path exists }
+  })
+  code: ([
+    "print -n $'(ansi default_underline)(ansi default_bold)toolkit(ansi reset) module (ansi yellow_italic)detected(ansi reset)... '"
+    $"use (if $directory { 'toolkit/' } else { 'toolkit.nu' })"
+    "print $'(ansi green_bold)activated!(ansi reset)'"
+  ] | str join "\n")
+}}
+
 # define the hooks for GOATs
 export def set [] {
   {
@@ -19,22 +34,8 @@ export def set [] {
     env_change: {
       PWD: [
         { code: "hide toolkit" }
-        {
-          condition: {|_, after| $after | path join 'toolkit' 'mod.nu' | path exists }
-          code: "
-            print -n $'(ansi default_underline)(ansi default_bold)toolkit(ansi reset) module (ansi yellow_italic)detected(ansi reset)... '
-            use toolkit/
-            print $'(ansi green_bold)activated!(ansi reset)'
-          "
-        }
-        {
-          condition: {|_, after| $after | path join 'toolkit.nu' | path exists }
-          code: "
-            print -n $'(ansi default_underline)(ansi default_bold)toolkit(ansi reset) module (ansi yellow_italic)detected(ansi reset)... '
-            use toolkit.nu
-            print $'(ansi green_bold)activated!(ansi reset)'
-          "
-        }
+        (env-change pwd toolkit)
+        (env-change pwd toolkit --directory)
       ]
     }
     display_output: {||
