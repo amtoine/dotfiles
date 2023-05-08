@@ -20,11 +20,19 @@ export def set [] {
       PWD: [
         { code: "hide toolkit" }
         {
-          condition: {|_, after| $after | path join 'toolkit.nu' | path exists}
+          condition: {|_, after| $after | path join 'toolkit' 'mod.nu' | path exists }
           code: "
-            print $'(ansi default_underline)(ansi default_bold)toolkit(ansi reset) module (ansi green_italic)detected(ansi reset)...'
-            print $'(ansi yellow_italic)activating(ansi reset) (ansi default_underline)(ansi default_bold)toolkit(ansi reset) module with `(ansi default_dimmed)(ansi default_italic)use toolkit.nu(ansi reset)`'
+            print -n $'(ansi default_underline)(ansi default_bold)toolkit(ansi reset) module (ansi yellow_italic)detected(ansi reset)... '
+            use toolkit/
+            print $'(ansi green_bold)activated!(ansi reset)'
+          "
+        }
+        {
+          condition: {|_, after| $after | path join 'toolkit.nu' | path exists }
+          code: "
+            print -n $'(ansi default_underline)(ansi default_bold)toolkit(ansi reset) module (ansi yellow_italic)detected(ansi reset)... '
             use toolkit.nu
+            print $'(ansi green_bold)activated!(ansi reset)'
           "
         }
       ]
