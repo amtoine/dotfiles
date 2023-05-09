@@ -159,9 +159,7 @@ let-env LD_LIBRARY_PATH = (
     | uniq
 )
 
-# Directories to search for scripts when calling source or use
-#
-# By default, <nushell-config-dir>/scripts is added
+# Nushell libraries to install and load with the `config` module
 let-env NU_LIB_DIR = ($env.XDG_DATA_HOME | path join "nushell" "lib")
 
 let-env NU_SCRIPTS = {
@@ -182,6 +180,9 @@ let-env NU_SCRIPTS = {
   }
 }
 
+# Directories to search for scripts when calling source or use
+#
+# By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIRS = [
     ($nu.config-path | path dirname | path join 'lib')
     $env.NU_LIB_DIR
