@@ -214,6 +214,7 @@ export-env {  # the prompt
 let-env STARSHIP_CACHE = ($env.XDG_CACHE_HOME | path join "starship")
 mkdir $env.STARSHIP_CACHE
 starship init nu | save --force ($env.STARSHIP_CACHE | path join "init.nu")
+source ~/.cache/starship/init.nu
 
 # start the ssh agent to allow SSO with ssh authentication
 # very usefull with `github` over the ssh protocol

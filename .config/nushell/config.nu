@@ -81,9 +81,4 @@ use nu-git-manager sugar dotfiles
 source personal/aliases.nu
 source personal/final.nu
 
-# start `starship`
-# > **Note**  
-# > this is the value given by `$env.STARSHIP_CACHE | path join "init.nu"`
-source ~/.cache/starship/init.nu
-
 use std clip
