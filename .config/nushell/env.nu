@@ -162,7 +162,7 @@ let-env LD_LIBRARY_PATH = (
 # Nushell libraries to install and load with the `config` module
 let-env NU_LIB_DIR = ($env.XDG_DATA_HOME | path join "nushell" "lib")
 
-let-env NU_SCRIPTS = {
+let-env NU_LIBS = {
   nushell: {
      upstream: "https://github.com/nushell/nu_scripts.git"
      directory: ["nushell" "nu_scripts"]
@@ -187,7 +187,7 @@ let-env NU_LIB_DIRS = [
     ($nu.config-path | path dirname | path join 'lib')
     $env.NU_LIB_DIR
     # this line is important for the `goatfiles` modules to work
-    ($env.NU_LIB_DIR | append $env.NU_SCRIPTS.goatfiles.directory | path join)
+    ($env.NU_LIB_DIR | append $env.NU_LIBS.goatfiles.directory | path join)
 ]
 
 export-env {  # the prompt

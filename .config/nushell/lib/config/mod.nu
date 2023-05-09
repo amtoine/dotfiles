@@ -70,7 +70,7 @@ export def "update libs" [
     --reload: bool
     --silent: bool
 ] {
-    for profile in ($env.NU_SCRIPTS | transpose name profile | get profile) {
+    for profile in ($env.NU_LIBS | transpose name profile | get profile) {
         let directory = (get-lib-dir | append $profile.directory | path join)
         if not ($directory | path exists) {
             print $"(ansi red_bold)error(ansi reset): ($directory) does not exist..."
