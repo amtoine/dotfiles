@@ -159,35 +159,11 @@ let-env LD_LIBRARY_PATH = (
     | uniq
 )
 
-# Nushell libraries to install and load with the `config` module
-let-env NU_LIB_DIR = ($env.XDG_DATA_HOME | path join "nushell" "lib")
-
-let-env NU_LIBS = {
-  nushell: {
-     upstream: "https://github.com/nushell/nu_scripts.git"
-     directory: ["nushell" "nu_scripts"]
-     revision: "main"
-  }
-  goatfiles: {
-     upstream: "https://github.com/goatfiles/nu_scripts.git"
-     directory: ["goatfiles" "nu_scripts"]
-     revision: "nightly"
-  }
-  nu-git-manager: {
-     upstream: "https://github.com/amtoine/nu-git-manager.git"
-     directory: ["nu-git-manager"]
-     revision: "main"
-  }
-}
-
 # Directories to search for scripts when calling source or use
 #
 # By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIRS = [
     ($nu.config-path | path dirname | path join 'lib')
-    $env.NU_LIB_DIR
-    # this line is important for the `goatfiles` modules to work
-    ($env.NU_LIB_DIR | append $env.NU_LIBS.goatfiles.directory | path join)
 ]
 
 export-env {  # the prompt
@@ -236,3 +212,6 @@ let-env USE_FINAL_CONFIG_HOOK = false
 
 # load secret environment variables
 try { open ~/.env | from nuon } catch {{}} | load-env
+
+let-env NUPM_HOME = ($env.XDG_DATA_HOME | path join "nupm")
+source ~/.local/share/nupm/env.nu

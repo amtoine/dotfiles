@@ -11,7 +11,7 @@
 
 # base up-to-date with Nushell version 0.67.0
 
-source default_config.nu
+source ~/.local/share/nupm/load.nu
 
 use core/hooks.nu
 use core/menus.nu
@@ -50,33 +50,6 @@ let-env config = ($env.config | merge {
     menus: ($env.config.menus | append (menus set))
     keybindings: (keybindings set)
 })
-
-use goatfiles/nu_scripts/scripts/misc.nu [
-    back
-    "cargo list"
-    "cargo info full"
-    edit
-    "youtube share"
-]
-
-use goatfiles/nu_scripts/scripts/gf.nu
-use goatfiles/nu_scripts/scripts/gpg.nu
-use goatfiles/nu_scripts/scripts/sys.nu
-use goatfiles/nu_scripts/scripts/downloads.nu
-use goatfiles/nu_scripts/scripts/ssh.nu
-use goatfiles/nu_scripts/scripts/trash.nu
-use goatfiles/nu_scripts/scripts/xdg.nu
-
-use nushell/nu_scripts/custom-completions/cargo/cargo-completions.nu *
-use nushell/nu_scripts/custom-completions/glow/glow-completions.nu *
-use nushell/nu_scripts/custom-completions/make/make-completions.nu *
-
-use nu-git-manager gm
-use nu-git-manager sugar git
-use nu-git-manager sugar gh
-use nu-git-manager sugar gist
-use nu-git-manager sugar completions git *
-use nu-git-manager sugar dotfiles
 
 source personal/aliases.nu
 source personal/final.nu
