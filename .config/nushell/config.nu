@@ -81,4 +81,6 @@ use nu-git-manager sugar dotfiles
 source personal/aliases.nu
 source personal/final.nu
 
+source ~/.cache/starship/init.nu
+
 use std clip
