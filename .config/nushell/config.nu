@@ -9,8 +9,6 @@
 #*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
 #*
 
-# base up-to-date with Nushell version 0.67.0
-
 source ~/.local/share/nupm/load.nu
 
 let-env config = ($env.config? | default {} | merge {
