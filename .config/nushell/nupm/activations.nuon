@@ -30,5 +30,13 @@
     [
         source,
         default_config.nu
+    ],
+    [
+        use,
+        "nu-goat-scripts misc edit"
+    ],
+    [
+        use,
+        "nu-goat-scripts misc back"
     ]
 ]
