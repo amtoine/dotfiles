@@ -13,7 +13,7 @@
 
 source ~/.local/share/nupm/load.nu
 
-let-env config = ($env.config | merge {
+let-env config = ($env.config? | default {} | merge {
     ls: {
         use_ls_colors: true
         clickable_links: false

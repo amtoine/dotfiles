@@ -25,7 +25,7 @@ export-env {
     ] | str join "\n")
   }}
 
-  let-env config = ($env.config | merge {hooks: {
+  let-env config = ($env.config? | default {} | merge {hooks: {
     pre_prompt: [{||}]
     pre_execution: [{||}]
     env_change: {
