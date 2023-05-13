@@ -9,7 +9,6 @@
 #*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
 #*
 
-export def main [] { help menus }
-
-# define the menus for GOATs
-export def set [] { [] }
+let-env config = ($env.config | merge {
+    menus: ($env.config.menus | append [])
+})

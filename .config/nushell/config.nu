@@ -13,10 +13,6 @@
 
 source ~/.local/share/nupm/load.nu
 
-use core/hooks.nu
-use core/menus.nu
-use core/keybindings.nu
-
 let-env config = ($env.config | merge {
     ls: {
         use_ls_colors: true
@@ -45,11 +41,11 @@ let-env config = ($env.config | merge {
 
     edit_mode: vi
     show_banner: false
-
-    hooks: (hooks set)
-    menus: ($env.config.menus | append (menus set))
-    keybindings: (keybindings set)
 })
+
+source core/hooks.nu
+source core/menus.nu
+source core/keybindings.nu
 
 source personal/aliases.nu
 source personal/final.nu

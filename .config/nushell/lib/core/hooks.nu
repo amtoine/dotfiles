@@ -9,26 +9,23 @@
 #*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
 #*
 
-export def main [] { help hooks }
+export-env {
+  def "env-change pwd toolkit" [
+    --directory: bool
+  ] {{
+    condition: (if $directory {
+      {|_, after| $after | path join 'toolkit' 'mod.nu' | path exists }
+    } else {
+      {|_, after| $after | path join 'toolkit.nu' | path exists }
+    })
+    code: ([
+      "print -n $'(ansi default_underline)(ansi default_bold)toolkit(ansi reset) module (ansi yellow_italic)detected(ansi reset)... '"
+      $"use (if $directory { 'toolkit/' } else { 'toolkit.nu' })"
+      "print $'(ansi green_bold)activated!(ansi reset)'"
+    ] | str join "\n")
+  }}
 
-def "env-change pwd toolkit" [
-  --directory: bool
-] {{
-  condition: (if $directory {
-    {|_, after| $after | path join 'toolkit' 'mod.nu' | path exists }
-  } else {
-    {|_, after| $after | path join 'toolkit.nu' | path exists }
-  })
-  code: ([
-    "print -n $'(ansi default_underline)(ansi default_bold)toolkit(ansi reset) module (ansi yellow_italic)detected(ansi reset)... '"
-    $"use (if $directory { 'toolkit/' } else { 'toolkit.nu' })"
-    "print $'(ansi green_bold)activated!(ansi reset)'"
-  ] | str join "\n")
-}}
-
-# define the hooks for GOATs
-export def set [] {
-  {
+  let-env config = ($env.config | merge {hooks: {
     pre_prompt: [{||}]
     pre_execution: [{||}]
     env_change: {
@@ -41,5 +38,5 @@ export def set [] {
     display_output: {||
       if (term size).columns >= 100 { table -e } else { table }
     }
-  }
+  }})
 }
