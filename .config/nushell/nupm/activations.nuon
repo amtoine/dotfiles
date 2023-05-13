@@ -1,0 +1,34 @@
+[
+    [
+        mode,
+        activation
+    ];
+    [
+        use,
+        "nu-git-manager gm"
+    ],
+    [
+        use,
+        "nu-git-manager sugar git"
+    ],
+    [
+        use,
+        "nu-git-manager sugar gh"
+    ],
+    [
+        use,
+        "nu-git-manager sugar gist"
+    ],
+    [
+        use,
+        "nu-git-manager sugar completions git *"
+    ],
+    [
+        use,
+        "nu-git-manager sugar dotfiles"
+    ],
+    [
+        source,
+        default_config.nu
+    ]
+]
