@@ -43,13 +43,6 @@ let-env config = ($env.config | merge {
     show_banner: false
 })
 
-source core/hooks.nu
-source core/menus.nu
-source core/keybindings.nu
-
-source personal/aliases.nu
-source personal/final.nu
-
+source all.nu
 source ~/.cache/starship/init.nu
-
 use std clip
