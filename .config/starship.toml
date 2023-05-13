@@ -220,3 +220,4 @@ detect_extensions = ["nu", "nush"]
 shell = ["nu", "-c"]
 command = "version | get version"
 format = "via [nu $output](red bold) "
+ignore_timeout = true
