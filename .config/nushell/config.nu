@@ -41,6 +41,10 @@ let-env config = ($env.config? | default {} | merge {
     show_banner: false
 })
 
+$env.config.color_config.string = {||
+    if $in =~ '^#[a-fA-F\d]+' { $in } else { 'white' }
+}
+
 source all.nu
 source starship.nu
 use std clip
