@@ -154,7 +154,7 @@ let-env PATH = (
 )
 
 let-env LD_LIBRARY_PATH = (
-    $env | get -i LD_LIBRARY_PATH | default "" | split row (char esep)
+    $env.LD_LIBRARY_PATH? | default "" | split row (char esep)
     | prepend $env.MUJOCO_BIN
     | uniq
 )
