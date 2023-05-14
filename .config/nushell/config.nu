@@ -42,5 +42,5 @@ let-env config = ($env.config? | default {} | merge {
 })
 
 source all.nu
-source ~/.cache/starship/init.nu
+source starship.nu
 use std clip

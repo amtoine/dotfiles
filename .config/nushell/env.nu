@@ -189,7 +189,10 @@ export-env {  # the prompt
 # enable starship
 let-env STARSHIP_CACHE = ($env.XDG_CACHE_HOME | path join "starship")
 mkdir $env.STARSHIP_CACHE
-starship init nu | save --force ($env.STARSHIP_CACHE | path join "init.nu")
+starship init nu | save --force ($env.STARSHIP_CACHE | path join "starship.nu")
+let-env NU_LIB_DIRS = ($env.NU_LIB_DIRS? | default [] | append [
+    $env.STARSHIP_CACHE
+])
 
 # start the ssh agent to allow SSO with ssh authentication
 # very usefull with `github` over the ssh protocol
@@ -211,7 +214,7 @@ let-env SSH_KEYS_HOME = ($env.HOME | path join ".ssh" "keys")
 let-env USE_FINAL_CONFIG_HOOK = false
 
 # load secret environment variables
-try { open ~/.env | from nuon } catch {{}} | load-env
+try { $nu.home-path | path join ".env" | open | from nuon } catch {{}} | load-env
 
 let-env NUPM_HOME = ($env.XDG_DATA_HOME | path join "nupm")
 source ~/.local/share/nupm/env.nu
