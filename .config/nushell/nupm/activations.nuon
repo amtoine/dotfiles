@@ -4,12 +4,20 @@
         activation
     ];
     [
+        source,
+        default_config.nu
+    ],
+    [
         use,
         "nu-git-manager gm"
     ],
     [
         use,
-        "nu-git-manager sugar git"
+        "nu-git-manager sugar completions git *"
+    ],
+    [
+        use,
+        "nu-git-manager sugar dotfiles"
     ],
     [
         use,
@@ -21,22 +29,14 @@
     ],
     [
         use,
-        "nu-git-manager sugar completions git *"
-    ],
-    [
-        use,
-        "nu-git-manager sugar dotfiles"
-    ],
-    [
-        source,
-        default_config.nu
-    ],
-    [
-        use,
-        "nu-goat-scripts misc edit"
+        "nu-git-manager sugar git"
     ],
     [
         use,
         "nu-goat-scripts misc back"
+    ],
+    [
+        use,
+        "nu-goat-scripts misc edit"
     ]
 ]
