@@ -1,0 +1,22 @@
+[
+    [
+        name,
+        revision,
+        url
+    ];
+    [
+        default_config.nu,
+        main,
+        "https://raw.githubusercontent.com/nushell/nushell/main/crates/nu-utils/src/sample_config/default_config.nu"
+    ],
+    [
+        nu-git-manager,
+        main,
+        "https://github.com/amtoine/nu-git-manager.git"
+    ],
+    [
+        nu-goat-scripts,
+        nightly,
+        "https://github.com/goatfiles/nu_scripts"
+    ]
+]
