@@ -6,7 +6,7 @@
     ];
     [
         nu-git-manager,
-        main,
+        "0.1.0",
         "https://github.com/amtoine/nu-git-manager.git"
     ],
     [
@@ -16,7 +16,7 @@
     ],
     [
         nupm,
-        main,
+        "0.1.0",
         "https://github.com/amtoine/nupm.git"
     ]
 ]
