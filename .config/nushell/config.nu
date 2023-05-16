@@ -9,7 +9,7 @@
 #*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
 #*
 
-source ~/.local/share/nupm/load.nu
+use nupm.nu *
 
 let-env config = ($env.config? | default {} | merge {
     ls: {
@@ -35,12 +35,11 @@ let-env config = ($env.config? | default {} | merge {
         show_empty: false
     }
 
-    color_config: $dark_theme
-
     edit_mode: vi
     show_banner: false
 })
 
+$env.config.color_config = {}
 $env.config.color_config.string = {||
     if $in =~ '^#[a-fA-F\d]+' { $in } else { 'white' }
 }

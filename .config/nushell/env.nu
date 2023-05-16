@@ -216,5 +216,9 @@ let-env USE_FINAL_CONFIG_HOOK = false
 # load secret environment variables
 try { $nu.home-path | path join ".env" | open | from nuon } catch {{}} | load-env
 
-let-env NUPM_HOME = ($env.XDG_DATA_HOME | path join "nupm")
-source ~/.local/share/nupm/env.nu
+export-env {
+    let-env NUPM_HOME = ($env.XDG_DATA_HOME | path join "nupm")
+    let-env NU_LIB_DIRS = ($env.NU_LIB_DIRS? | default [] | append [
+        $env.NUPM_HOME
+    ])
+}
