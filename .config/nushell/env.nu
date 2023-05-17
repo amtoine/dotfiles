@@ -212,10 +212,6 @@ export-env {
     | load-env
 }
 
-# disable or enable final configuration commands in ./scripts/final.nu
-#
-let-env USE_FINAL_CONFIG_HOOK = false
-
 # load secret environment variables
 try { $nu.home-path | path join ".env" | open | from nuon } catch {{}} | load-env
 

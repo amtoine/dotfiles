@@ -215,10 +215,6 @@ $env.config.color_config.string = {||
 
 overlay use aliases.nu
 
-if ($env.USE_FINAL_CONFIG_HOOK? | default false) {
-    pokemon-colorscripts -r
-}
-
 match (date now | date format "%m.%d") {
     "03.14" => { print $'Happy (char -i 0x03c0) Day! (char -i 0x1f973)' }
     "06.28" => { print $'Happy (char -i 0x1d70f) Day! (char -i 0x1f973)' }
