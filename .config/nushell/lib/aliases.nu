@@ -10,22 +10,22 @@
 #*
 
 # git
-alias cfg = ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE
-alias lg = ^lazygit
+export alias cfg = ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE
+export alias lg = ^lazygit
 
-alias git-ipfs = git -C $env.IPFS_PATH
+export alias git-ipfs = git -C $env.IPFS_PATH
 
 # exit the shell
-alias :q = exit
-alias q = exit
+export alias :q = exit
+export alias q = exit
 
 # misc
-alias cb = ^cbonsai --infinite --live --base=1 --wait=2 --time=10
+export alias cb = ^cbonsai --infinite --live --base=1 --wait=2 --time=10
 
-alias sl = sl -aw -20
-def lsg [] { ls | sort-by type name -i | grid -c | str trim }
+export alias sl = sl -aw -20
+export def lsg [] { ls | sort-by type name -i | grid -c | str trim }
 
-alias "zk git" = git -C $env.ZK_NOTEBOOK_DIR
+export alias "zk git" = git -C $env.ZK_NOTEBOOK_DIR
 
-alias v = edit
-alias e = edit
+export alias v = edit
+export alias e = edit
