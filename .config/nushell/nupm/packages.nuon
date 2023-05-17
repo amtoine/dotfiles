@@ -16,7 +16,7 @@
     ],
     [
         nupm,
-        "0.1.0",
+        main,
         "https://github.com/amtoine/nupm.git"
     ]
 ]
