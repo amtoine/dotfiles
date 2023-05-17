@@ -186,28 +186,31 @@ export-env {  # the prompt
     ) + " ")
 }
 
-# enable starship
-let-env STARSHIP_CACHE = ($env.XDG_CACHE_HOME | path join "starship")
-mkdir $env.STARSHIP_CACHE
-starship init nu | save --force ($env.STARSHIP_CACHE | path join "starship.nu")
-let-env NU_LIB_DIRS = ($env.NU_LIB_DIRS? | default [] | append [
-    $env.STARSHIP_CACHE
-])
+export-env {
+    let-env STARSHIP_CACHE = ($env.XDG_CACHE_HOME | path join "starship")
+    let-env NU_LIB_DIRS = ($env.NU_LIB_DIRS? | default [] | append [
+        $env.STARSHIP_CACHE
+    ])
+
+    mkdir $env.STARSHIP_CACHE
+    starship init nu | save --force ($env.STARSHIP_CACHE | path join "starship.nu")
+}
 
 # start the ssh agent to allow SSO with ssh authentication
 # very usefull with `github` over the ssh protocol
 #
 # see https://www.nushell.sh/cookbook/misc.html#manage-ssh-passphrases
-#
-let-env SSH_AGENT_TIMEOUT = 300
-ssh-agent -c -t $env.SSH_AGENT_TIMEOUT
-| lines
-| first 2
-| parse "setenv {name} {value};"
-| transpose -i -r -d
-| load-env
+export-env {
+    let-env SSH_AGENT_TIMEOUT = 300
+    let-env SSH_KEYS_HOME = ($env.HOME | path join ".ssh" "keys")
 
-let-env SSH_KEYS_HOME = ($env.HOME | path join ".ssh" "keys")
+    ssh-agent -c -t $env.SSH_AGENT_TIMEOUT
+    | lines
+    | first 2
+    | parse "setenv {name} {value};"
+    | transpose -i -r -d
+    | load-env
+}
 
 # disable or enable final configuration commands in ./scripts/final.nu
 #

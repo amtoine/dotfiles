@@ -10,6 +10,8 @@
 #*
 
 use nupm.nu *
+source starship.nu
+use std clip
 
 let-env config = ($env.config? | default {} | merge {
     ls: {
@@ -202,8 +204,6 @@ $env.config.color_config.string = {||
 }
 
 overlay use aliases.nu
-source starship.nu
-use std clip
 
 if ($env.USE_FINAL_CONFIG_HOOK? | default false) {
     pokemon-colorscripts -r
