@@ -123,4 +123,3 @@ let-env config = ($env.config? | default {} | merge {keybindings: [
         }
     }
 ]})
-
