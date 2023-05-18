@@ -10,7 +10,6 @@
 #*
 
 use nupm/activations *
-source starship.nu
 use std clip
 
 let-env config = ($env.config? | default {} | merge {
@@ -214,6 +213,7 @@ $env.config.color_config.string = {||
 }
 
 overlay use aliases.nu
+overlay use starship.nu
 
 match (date now | date format "%m.%d") {
     "03.14" => { print $'Happy (char -i 0x03c0) Day! (char -i 0x1f973)' }
