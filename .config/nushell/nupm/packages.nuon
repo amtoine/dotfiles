@@ -10,6 +10,11 @@
         url: "https://github.com/goatfiles/nu_scripts"
     },
     {
+        name: "nu-scripts",
+        revision: "main",
+        url: "https://github.com/nushell/nu_scripts"
+    },
+    {
         name: "nupm",
         revision: "main",
         url: "https://github.com/amtoine/nupm.git"
