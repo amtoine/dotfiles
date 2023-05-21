@@ -229,9 +229,9 @@ export-env {
     use nu-right-prompt
 
     let-env PROMPT_CONFIG = {
-        compact: true
+        compact: false
         section_separator: ' | '
-        overlay_separator: "::"
+        overlay_separator: "<"
     }
 }
 
