@@ -9,9 +9,6 @@
 #*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
 #*
 
-use nupm/activations *
-use std clip
-
 let-env config = ($env.config? | default {} | merge {
     ls: {
         use_ls_colors: true
@@ -209,6 +206,9 @@ $env.config.keybindings = [
         }
     }
 ]
+
+use nupm/activations *
+use std clip
 
 $env.config.color_config = (nushell-dark)
 $env.config.color_config.string = {||
