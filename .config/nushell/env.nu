@@ -220,10 +220,4 @@ export-env {
     let-env NU_LIB_DIRS = ($env.NU_LIB_DIRS? | default [] | append [
         $env.NUPM_HOME
     ])
-
-    let-env NUPM_CONFIG = {
-        activations: ($nu.config-path | path dirname | path join "nupm" "activations.nuon")
-        packages: ($nu.config-path | path dirname | path join "nupm" "packages.nuon")
-        set_prompt: false
-    }
 }
