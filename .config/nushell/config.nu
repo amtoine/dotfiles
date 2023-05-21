@@ -227,7 +227,6 @@ use nu-git-manager sugar gist
 use nu-git-manager sugar git
 use nu-goat-scripts misc back
 use nu-goat-scripts misc edit
-
 let-env NUPM_CONFIG = {
     activations: ($nu.config-path | path dirname | path join "nupm" "activations.nuon")
     packages: ($nu.config-path | path dirname | path join "nupm" "packages.nuon")
@@ -239,7 +238,6 @@ overlay use aliases.nu
 overlay use starship.nu as prompt
 export-env {
     use nu-right-prompt
-
     let-env PROMPT_CONFIG = {
         compact: false
         section_separator: ' | '
