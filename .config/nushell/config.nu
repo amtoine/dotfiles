@@ -70,6 +70,7 @@ export-env {
 }
 
 $env.config.keybindings = [
+    # basic shell features
     {
         name: history_menu
         modifier: control
@@ -93,6 +94,18 @@ $env.config.keybindings = [
         }
     }
     {
+        name: clear
+        modifier: control
+        keycode: char_l
+        mode: [emacs, vi_normal, vi_insert]
+        event: {
+            send: executehostcommand
+            cmd: "clear"
+        }
+    }
+
+    # nupm libraries
+    {
         name: open_repo
         modifier: control
         keycode: char_g
@@ -112,39 +125,7 @@ $env.config.keybindings = [
             cmd: "dotfiles edit"
         }
     }
-    {
-        name: nupm
-        modifier: control
-        keycode: char_n
-        mode: [emacs, vi_insert, vi_normal]
-        event: {
-            send: executehostcommand
-            cmd: "overlay use --prefix nupm"
-        }
-    }
-    {
-        name: hide
-        modifier: alt
-        keycode: char_h
-        mode: [emacs, vi_insert, vi_normal]
-        event: {
-            send: executehostcommand
-            cmd: '
-                commandline --replace "overlay hide "
-                commandline --insert (overlay list | last)
-            '
-        }
-    }
-    {
-        name: clear
-        modifier: control
-        keycode: char_l
-        mode: [emacs, vi_normal, vi_insert]
-        event: {
-            send: executehostcommand
-            cmd: "clear"
-        }
-    }
+
     # credit to @fdncred
     # https://discord.com/channels/601130461678272522/614593951969574961/1063493778566037566
     # augmented by @vinlet
@@ -184,6 +165,8 @@ $env.config.keybindings = [
             )"
         }
     }
+
+    # interact with modules and overlays
     {
         name: nu_lib_dirs
         modifier: control
@@ -205,6 +188,29 @@ $env.config.keybindings = [
                     | input list --fuzzy
                         $"Please choose a (ansi magenta)module(ansi reset) to (ansi cyan_underline)load(ansi reset):"
                 )
+            '
+        }
+    }
+    {
+        name: nupm
+        modifier: control
+        keycode: char_n
+        mode: [emacs, vi_insert, vi_normal]
+        event: {
+            send: executehostcommand
+            cmd: "overlay use --prefix nupm"
+        }
+    }
+    {
+        name: hide
+        modifier: alt
+        keycode: char_h
+        mode: [emacs, vi_insert, vi_normal]
+        event: {
+            send: executehostcommand
+            cmd: '
+                commandline --replace "overlay hide "
+                commandline --insert (overlay list | last)
             '
         }
     }
