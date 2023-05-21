@@ -163,7 +163,7 @@ let-env LD_LIBRARY_PATH = (
 #
 # By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIRS = [
-    ($nu.config-path | path dirname | path join 'lib')
+    ($nu.default-config-dir | path join 'lib')
 ]
 
 export-env {  # the prompt
