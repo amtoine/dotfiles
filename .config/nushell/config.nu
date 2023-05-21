@@ -218,6 +218,7 @@ $env.config.color_config.string = {||
 
 overlay use aliases.nu
 overlay use starship.nu
+use nu-right-prompt
 
 match (date now | date format "%m.%d") {
     "03.14" => { print $'Happy (char -i 0x03c0) Day! (char -i 0x1f973)' }
