@@ -208,7 +208,6 @@ $env.config.keybindings = [
 ]
 
 use nupm/activations *
-use std clip
 
 $env.config.color_config = (nushell-dark)
 $env.config.color_config.string = {||
@@ -218,6 +217,8 @@ $env.config.color_config.string = {||
 overlay use aliases.nu
 overlay use starship.nu
 use nu-right-prompt
+
+use std clip
 
 match (date now | date format "%m.%d") {
     "03.14" => { print $'Happy (char -i 0x03c0) Day! (char -i 0x1f973)' }
