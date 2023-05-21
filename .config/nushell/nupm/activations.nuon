@@ -6,5 +6,6 @@
     "nu-git-manager sugar gist",
     "nu-git-manager sugar git",
     "nu-goat-scripts misc back",
-    "nu-goat-scripts misc edit"
+    "nu-goat-scripts misc edit",
+    "nu-scripts/themes/themes/nushell-dark.nu"
 ]

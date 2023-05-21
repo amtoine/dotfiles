@@ -210,7 +210,6 @@ $env.config.keybindings = [
     }
 ]
 
-use nu-scripts/themes/themes/nushell-dark.nu
 $env.config.color_config = (nushell-dark)
 $env.config.color_config.string = {||
     if $in =~ '^#[a-fA-F\d]+' { $in } else { 'white' }
