@@ -220,8 +220,11 @@ $env.config.color_config.string = {||
 }
 
 overlay use aliases.nu
-overlay use starship.nu
-use nu-right-prompt
+
+overlay use starship.nu as prompt
+export-env {
+    use nu-right-prompt
+}
 
 use std clip
 
