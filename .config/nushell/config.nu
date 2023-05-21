@@ -123,6 +123,19 @@ $env.config.keybindings = [
         }
     }
     {
+        name: hide
+        modifier: alt
+        keycode: char_h
+        mode: [emacs, vi_insert, vi_normal]
+        event: {
+            send: executehostcommand
+            cmd: '
+                commandline --replace "overlay hide "
+                commandline --insert (overlay list | last)
+            '
+        }
+    }
+    {
         name: clear
         modifier: control
         keycode: char_l
