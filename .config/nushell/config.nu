@@ -207,16 +207,19 @@ $env.config.keybindings = [
     }
 ]
 
+use nu-scripts/themes/themes/nushell-dark.nu
+$env.config = ($env.config? | default {})
+$env.config.color_config = (nushell-dark)
+$env.config.color_config.string = {||
+    if $in =~ '^#[a-fA-F\d]+' { $in } else { 'white' }
+}
+
 use nupm/activations *
+
 let-env NUPM_CONFIG = {
     activations: ($nu.config-path | path dirname | path join "nupm" "activations.nuon")
     packages: ($nu.config-path | path dirname | path join "nupm" "packages.nuon")
     set_prompt: false
-}
-
-$env.config.color_config = (nushell-dark)
-$env.config.color_config.string = {||
-    if $in =~ '^#[a-fA-F\d]+' { $in } else { 'white' }
 }
 
 overlay use aliases.nu
