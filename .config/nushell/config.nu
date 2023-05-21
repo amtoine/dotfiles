@@ -215,6 +215,9 @@ $env.config.color_config.string = {||
     if $in =~ '^#[a-fA-F\d]+' { $in } else { 'white' }
 }
 
+overlay new stdlib
+use std clip
+
 overlay new libs
 use nu-git-manager gm
 use nu-git-manager sugar completions git *
@@ -230,9 +233,6 @@ let-env NUPM_CONFIG = {
     packages: ($nu.config-path | path dirname | path join "nupm" "packages.nuon")
     set_prompt: false
 }
-
-overlay new stdlib
-use std clip
 
 overlay use aliases.nu
 
