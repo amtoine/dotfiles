@@ -207,6 +207,7 @@ $env.config.keybindings = [
     }
 ]
 
+overlay new theme
 use nu-scripts/themes/themes/nushell-dark.nu
 $env.config = ($env.config? | default {})
 $env.config.color_config = (nushell-dark)
@@ -214,6 +215,7 @@ $env.config.color_config.string = {||
     if $in =~ '^#[a-fA-F\d]+' { $in } else { 'white' }
 }
 
+overlay new libs
 use nu-git-manager gm
 use nu-git-manager sugar completions git *
 use nu-git-manager sugar dotfiles
