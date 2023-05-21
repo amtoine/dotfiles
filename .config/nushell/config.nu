@@ -222,6 +222,9 @@ let-env NUPM_CONFIG = {
     set_prompt: false
 }
 
+overlay new stdlib
+use std clip
+
 overlay use aliases.nu
 
 overlay use starship.nu as prompt
@@ -234,8 +237,6 @@ export-env {
         overlay_separator: "<"
     }
 }
-
-use std clip
 
 match (date now | date format "%m.%d") {
     "03.14" => { print $'Happy (char -i 0x03c0) Day! (char -i 0x1f973)' }
