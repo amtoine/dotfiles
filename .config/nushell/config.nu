@@ -32,7 +32,6 @@ let-env config = ($env.config? | default {} | merge {
         index_mode: always
         show_empty: false
     }
-
     edit_mode: vi
     show_banner: false
 })
