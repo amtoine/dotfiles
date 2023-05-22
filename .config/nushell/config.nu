@@ -45,11 +45,7 @@ export-env {
         } else {
             {|_, after| $after | path join 'toolkit.nu' | path exists }
         })
-        code: ([
-            "print -n $'(ansi default_underline)(ansi default_bold)toolkit(ansi reset) module (ansi yellow_italic)detected(ansi reset)... '"
-            $"use (if $directory { 'toolkit/' } else { 'toolkit.nu' })"
-            "print $'(ansi green_bold)activated!(ansi reset)'"
-        ] | str join "\n")
+        code: $"overlay use --prefix (if $directory { 'toolkit/' } else { 'toolkit.nu' })"
     }}
 
     $env.config.hooks = {
@@ -57,7 +53,6 @@ export-env {
         pre_execution: [{||}]
         env_change: {
             PWD: [
-                { code: "hide toolkit" }
                 (env-change pwd toolkit)
                 (env-change pwd toolkit --directory)
             ]
