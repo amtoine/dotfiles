@@ -212,7 +212,6 @@ $env.config.keybindings = [
     }
 ]
 
-overlay new theme
 use nu-scripts/themes/themes/nushell-dark.nu
 $env.config = ($env.config? | default {})
 $env.config.color_config = (nushell-dark)
