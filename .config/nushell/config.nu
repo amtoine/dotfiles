@@ -243,9 +243,26 @@ export-env {
     use nu-right-prompt
     let-env PROMPT_CONFIG = {
         compact: false
-        section_separator: ' | '
-        overlay_separator: "<"
+        section_separator: " | "
+        overlay_separator: '<'
     }
+    load-env {
+        PROMPT_INDICATOR: ''
+        PROMPT_INDICATOR_VI_INSERT: ''
+        PROMPT_INDICATOR_VI_NORMAL: ''
+        PROMPT_MULTILINE_INDICATOR_COLORS: [
+            "red_dimmed"
+            "yellow_dimmed"
+            "green_dimmed"
+        ]
+        PROMPT_MULTILINE_INDICATOR_CHARACTER: ':'
+    }
+    let-env PROMPT_MULTILINE_INDICATOR = ((
+        $env.PROMPT_MULTILINE_INDICATOR_COLORS
+        | each {|color| ansi $color }
+        | append (ansi reset)
+        | str join $env.PROMPT_MULTILINE_INDICATOR_CHARACTER
+    ) + " ")
 }
 
 match (date now | date format "%m.%d") {

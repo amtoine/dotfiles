@@ -167,26 +167,6 @@ let-env NU_LIB_DIRS = [
     ($nu.default-config-dir | path join 'lib')
 ]
 
-export-env {  # the prompt
-    load-env {
-        PROMPT_INDICATOR: ""
-        PROMPT_INDICATOR_VI_INSERT: ""
-        PROMPT_INDICATOR_VI_NORMAL: ""
-        PROMPT_MULTILINE_INDICATOR_COLORS: [
-            "red_dimmed"
-            "yellow_dimmed"
-            "green_dimmed"
-        ]
-        PROMPT_MULTILINE_INDICATOR_CHARACTER: ":"
-    }
-    let-env PROMPT_MULTILINE_INDICATOR = ((
-        $env.PROMPT_MULTILINE_INDICATOR_COLORS
-        | each {|color| ansi $color }
-        | append (ansi reset)
-        | str join $env.PROMPT_MULTILINE_INDICATOR_CHARACTER
-    ) + " ")
-}
-
 export-env {
     let-env STARSHIP_CACHE = ($env.XDG_CACHE_HOME | path join "starship")
     let-env NU_LIB_DIRS = ($env.NU_LIB_DIRS? | default [] | append [
