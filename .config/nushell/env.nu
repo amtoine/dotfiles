@@ -36,8 +36,9 @@ export-env { load-env {  # the XDG environment on which all the others are based
 # Directories to search for plugin binaries when calling register
 #
 # By default, <nushell-config-dir>/plugins is added
+let-env NU_PLUGIN_DIR = ($env.XDG_DATA_HOME | path join "nushell" "plugins")
 let-env NU_PLUGIN_DIRS = [
-    ($env.XDG_DATA_HOME | path join "nushell" 'plugins' 'bin')
+    ($env.NU_PLUGIN_DIR | path join "bin")
 ]
 
 export-env {  # git-related variables
