@@ -235,7 +235,7 @@ overlay use aliases.nu
 
 overlay use starship.nu as prompt
 export-env {
-    let-env PROMPT_CONFIG = {
+    let-env NU_RIGHT_PROMPT_CONFIG = {
         compact: false
         section_separator: " | "
         overlay_separator: '<'
