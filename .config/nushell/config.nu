@@ -233,7 +233,7 @@ let-env NUPM_CONFIG = {
 
 overlay use aliases.nu
 
-overlay use starship.nu as prompt
+overlay new prompt
 export-env {
     let-env NU_RIGHT_PROMPT_CONFIG = {
         compact: false
@@ -241,7 +241,6 @@ export-env {
         overlay_separator: '<'
         sections: ["overlays"]
     }
-    use nu-right-prompt
     load-env {
         PROMPT_INDICATOR: ''
         PROMPT_INDICATOR_VI_INSERT: ''
@@ -260,6 +259,8 @@ export-env {
         | str join $env.PROMPT_MULTILINE_INDICATOR_CHARACTER
     ) + " ")
 }
+use starship.nu
+use nu-right-prompt
 
 match (date now | date format "%m.%d") {
     "03.14" => { print $'Happy (char -i 0x03c0) Day! (char -i 0x1f973)' }
