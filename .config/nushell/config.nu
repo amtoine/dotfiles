@@ -235,12 +235,12 @@ overlay use aliases.nu
 
 overlay use starship.nu as prompt
 export-env {
-    use nu-right-prompt
     let-env PROMPT_CONFIG = {
         compact: false
         section_separator: " | "
         overlay_separator: '<'
     }
+    use nu-right-prompt
     load-env {
         PROMPT_INDICATOR: ''
         PROMPT_INDICATOR_VI_INSERT: ''
