@@ -239,6 +239,7 @@ export-env {
         compact: false
         section_separator: " | "
         overlay_separator: '<'
+        sections: ["overlays"]
     }
     use nu-right-prompt
     load-env {
