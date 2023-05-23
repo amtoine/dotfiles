@@ -6,7 +6,7 @@
     },
     {
         name: "nu-goat-scripts",
-        revision: "0.80.1",
+        revision: "nightly",
         url: "https://github.com/goatfiles/nu_scripts"
     },
     {
