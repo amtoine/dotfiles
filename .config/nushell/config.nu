@@ -55,6 +55,9 @@ export-env {
             PWD: [
                 (env-change pwd toolkit)
                 (env-change pwd toolkit --directory)
+                {|before, _| if $before == null and (not ($env.config?.show_banner? | default true)) {
+                    print $"(ansi {fg: default, attr: "du"})startup time(ansi reset): (ansi {fg: default, attr: "di"})($nu.startup-time)(ansi reset)"
+                }}
             ]
         }
         display_output: {||
