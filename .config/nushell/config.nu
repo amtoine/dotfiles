@@ -140,16 +140,11 @@ $env.config.color_config.string = {||
     if $in =~ '^#[a-fA-F\d]+' { $in } else { 'white' }
 }
 
-use std clip
-
-use nupm/activations *
 let-env NUPM_CONFIG = {
     activations: ($nu.default-config-dir | path join "nupm" "activations.nuon")
     packages: ($nu.default-config-dir | path join "nupm" "packages.nuon")
     set_prompt: false
 }
-
-use aliases.nu *
 
 export-env {
     let-env NU_RIGHT_PROMPT_CONFIG = {
@@ -164,6 +159,10 @@ export-env {
         PROMPT_INDICATOR_VI_NORMAL: ''
     }
 }
+
+use nupm/activations *
+use std clip
+use aliases.nu *
 use starship.nu
 
 match (date now | date format "%m.%d") {
