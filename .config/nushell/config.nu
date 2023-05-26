@@ -143,7 +143,7 @@ $env.config.color_config.string = {||
 let-env NUPM_CONFIG = {
     activations: ($nu.default-config-dir | path join "nupm" "activations.nuon")
     packages: ($nu.default-config-dir | path join "nupm" "packages.nuon")
-    set_prompt: false
+    set_prompt: true
 }
 
 export-env {
