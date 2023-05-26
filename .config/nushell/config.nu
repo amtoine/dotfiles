@@ -69,7 +69,7 @@ export-env {
 $env.config.keybindings = [
     # basic shell features
     {
-        name: reload_config
+        name: reload
         modifier: control
         keycode: char_r
         mode: [emacs, vi_insert, vi_normal]
@@ -91,7 +91,7 @@ $env.config.keybindings = [
 
     # nupm libraries
     {
-        name: open_repo
+        name: goto_repo
         modifier: control
         keycode: char_g
         mode: [emacs, vi_insert, vi_normal]
@@ -113,7 +113,7 @@ $env.config.keybindings = [
 
     # interact with modules and overlays
     {
-        name: nupm
+        name: overlay_use_nupm
         modifier: control
         keycode: char_n
         mode: [emacs, vi_insert, vi_normal]
@@ -123,7 +123,7 @@ $env.config.keybindings = [
         }
     }
     {
-        name: hide
+        name: overlay_hide
         modifier: alt
         keycode: char_h
         mode: [emacs, vi_insert, vi_normal]
