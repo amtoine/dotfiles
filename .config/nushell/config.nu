@@ -132,6 +132,18 @@ $env.config.keybindings = [
             cmd: "overlay hide"
         }
     }
+
+    # misc
+    {
+        name: run_zellij
+        modifier: control
+        keycode: char_z
+        mode: [emacs, vi_insert, vi_normal]
+        event: {
+            send: executehostcommand
+            cmd: "zellij options --default-shell nu"
+        }
+    }
 ]
 
 use nu-scripts/themes/themes/nushell-dark.nu
