@@ -152,6 +152,7 @@ use nu-git-manager sugar gist
 use nu-git-manager sugar git
 use nu-goat-scripts misc back
 use nu-goat-scripts misc edit
+alias v = edit
 let-env NUPM_CONFIG = {
     activations: ($nu.default-config-dir | path join "nupm" "activations.nuon")
     packages: ($nu.default-config-dir | path join "nupm" "packages.nuon")
