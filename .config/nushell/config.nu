@@ -69,18 +69,6 @@ export-env {
 $env.config.keybindings = [
     # basic shell features
     {
-        name: history_menu
-        modifier: control
-        keycode: char_x
-        mode: [emacs, vi_normal, vi_insert]
-        event: {
-            until: [
-                { send: menu name: history_menu }
-                { send: menupagenext }
-            ]
-        }
-    }
-    {
         name: reload_config
         modifier: control
         keycode: char_r
@@ -123,71 +111,7 @@ $env.config.keybindings = [
         }
     }
 
-    # credit to @fdncred
-    # https://discord.com/channels/601130461678272522/614593951969574961/1063493778566037566
-    # augmented by @vinlet
-    # https://discord.com/channels/601130461678272522/614593951969574961/1063822677808250991
-    {
-        name: fuzzy_history
-        modifier: control
-        keycode: char_h
-        mode: [emacs, vi_normal, vi_insert]
-        event: {
-            send: executehostcommand
-            cmd: "commandline (
-                history
-                | each { |it| $it.command }
-                | uniq
-                | reverse
-                | input list --fuzzy
-                    $'Please choose a (ansi magenta)command from history(ansi reset):'
-            )"
-        }
-    }
-    # credit to @fdncred
-    # https://discord.com/channels/601130461678272522/614593951969574961/1063493778566037566
-    {
-        name: fuzzy_dir
-        modifier: control
-        keycode: char_s
-        mode: [emacs, vi_normal, vi_insert]
-        event: {
-            send: executehostcommand
-            cmd: "commandline -a (
-                ls **/*
-                | where type == dir
-                | get name
-                | input list --fuzzy
-                    $'Please choose a (ansi magenta)directory(ansi reset) to (ansi cyan_underline)insert(ansi reset):'
-            )"
-        }
-    }
-
     # interact with modules and overlays
-    {
-        name: nu_lib_dirs
-        modifier: control
-        keycode: char_u
-        mode: [emacs, vi_normal, vi_insert]
-        event: {
-            send: executehostcommand
-            cmd: '
-                commandline --replace "use "
-                commandline --insert (
-                    $env.NU_LIB_DIRS
-                    | each {|dir|
-                        ls ($dir | path join "**" "*.nu")
-                        | get name
-                        | str replace $dir ""
-                        | str trim -c "/"
-                    }
-                    | flatten
-                    | input list --fuzzy
-                        $"Please choose a (ansi magenta)module(ansi reset) to (ansi cyan_underline)load(ansi reset):"
-                )
-            '
-        }
-    }
     {
         name: nupm
         modifier: control
