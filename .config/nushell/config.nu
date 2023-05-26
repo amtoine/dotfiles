@@ -143,7 +143,6 @@ $env.config.color_config.string = {||
 use std clip
 
 use nupm/activations *
-alias v = edit
 let-env NUPM_CONFIG = {
     activations: ($nu.default-config-dir | path join "nupm" "activations.nuon")
     packages: ($nu.default-config-dir | path join "nupm" "packages.nuon")

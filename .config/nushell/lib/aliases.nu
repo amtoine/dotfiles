@@ -26,3 +26,5 @@ export alias sl = sl -aw -20
 export def lsg [] { ls | sort-by type name -i | grid -c | str trim }
 
 export alias "zk git" = git -C $env.ZK_NOTEBOOK_DIR
+
+export alias v = edit
