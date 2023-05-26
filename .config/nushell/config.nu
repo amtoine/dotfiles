@@ -140,10 +140,8 @@ $env.config.color_config.string = {||
     if $in =~ '^#[a-fA-F\d]+' { $in } else { 'white' }
 }
 
-overlay new stdlib
 use std clip
 
-overlay new libs
 use nu-git-manager gm
 use nu-git-manager sugar completions git *
 use nu-git-manager sugar dotfiles
@@ -159,9 +157,8 @@ let-env NUPM_CONFIG = {
     set_prompt: false
 }
 
-overlay use aliases.nu
+use aliases.nu *
 
-overlay new prompt
 export-env {
     let-env NU_RIGHT_PROMPT_CONFIG = {
         compact: false
