@@ -124,7 +124,7 @@ $env.config.keybindings = [
     }
     {
         name: overlay_hide
-        modifier: alt
+        modifier: control
         keycode: char_h
         mode: [emacs, vi_insert, vi_normal]
         event: {
