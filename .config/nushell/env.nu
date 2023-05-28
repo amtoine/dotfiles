@@ -109,7 +109,7 @@ let-env TERMINAL = "alacritty -e"
 let-env EDITOR = 'nvim'
 let-env VISUAL = $env.EDITOR
 
-let-env LS_THEME = "one-dark"
+let-env LS_THEME = "dracula"
 let-env LS_COLORS = (vivid generate $env.LS_THEME)
 
 def-env _set_manpager [pager: string] {
