@@ -36,33 +36,29 @@ let-env config = ($env.config? | default {} | merge {
     show_banner: false
 })
 
-export-env {
-    def "env-change pwd toolkit" [
-        --directory: bool
-    ] {{
-        condition: (if $directory {
-            {|_, after| $after | path join 'toolkit' 'mod.nu' | path exists }
-        } else {
-            {|_, after| $after | path join 'toolkit.nu' | path exists }
-        })
-        code: $"overlay use --prefix (if $directory { 'toolkit/' } else { 'toolkit.nu' })"
-    }}
-
-    $env.config.hooks = {
-        pre_prompt: [{||}]
-        pre_execution: [{||}]
-        env_change: {
-            PWD: [
-                (env-change pwd toolkit)
-                (env-change pwd toolkit --directory)
-                {|before, _| if $before == null and (not ($env.config?.show_banner? | default true)) {
+$env.config.hooks = {
+    pre_prompt: [{||}]
+    pre_execution: [{||}]
+    env_change: {
+        PWD: [
+            {
+                condition: {|_, after| $after | path join 'toolkit.nu' | path exists }
+                code: "overlay use --prefix toolkit.nu"
+            }
+            {
+                condition: {|_, after| $after | path join 'toolkit' 'mod.nu' | path exists }
+                code: "overlay use --prefix toolkit/"
+            }
+            {
+                condition: {|before, _| $before == null and (not ($env.config?.show_banner? | default true)) }
+                code: {
                     print $"(ansi {fg: default, attr: "du"})startup time(ansi reset): (ansi {fg: default, attr: "di"})($nu.startup-time)(ansi reset)"
-                }}
-            ]
-        }
-        display_output: {||
-            if (term size).columns >= 100 { table -e } else { table }
-        }
+                }
+            }
+        ]
+    }
+    display_output: {||
+        if (term size).columns >= 100 { table -e } else { table }
     }
 }
 
