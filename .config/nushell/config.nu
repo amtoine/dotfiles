@@ -137,7 +137,7 @@ $env.config.keybindings = [
         mode: [emacs, vi_insert, vi_normal]
         event: {
             send: executehostcommand
-            cmd: "nu-zellij open layout --default-shell nu"
+            cmd: "nu-zellij layout open --default-shell nu"
         }
     }
 ]
