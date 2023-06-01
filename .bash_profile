@@ -9,8 +9,12 @@
 #*              ATXR:    https://github.com/atxr    atxr#6214    3B25AF716B608D41AB86C3D20E55E4B1DE5B2C8B
 #*
 
-echo "$HOME/.bash_profile"
-[ ! -s ~/.config/mpd/pid ] && mpd
+export XDG_DATA_HOME="$HOME/.local/share"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+
+export PATH="$CARGO_HOME/bin:$PATH"
+
 if [[ $(fgconsole 2> /dev/null) == 1 ]]; then
     echo "Starting x..."
     exec startx -- vt1;
@@ -18,5 +22,4 @@ else
   [[ -f ~/.bashrc ]] && . ~/.bashrc
 fi
 
-source /home/amtoine/.config/broot/launcher/bash/br
-. "/home/amtoine/.local/share/cargo/env"
+. "${CARGO_HOME:-$HOME/.cargo}/env"
