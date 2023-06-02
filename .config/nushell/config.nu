@@ -37,14 +37,8 @@ let-env config = ($env.config? | default {} | merge {
 })
 
 $env.config.hooks = {
-    pre_prompt: [{||}]
-    pre_execution: [{||}]
     env_change: {
         PWD: [
-            {
-                condition: {|_, after| $after | path join '.zellij.nuon' | path exists }
-                code: "nu-zellij layout run --default-shell nu"
-            }
             {
                 condition: {|_, after| $after | path join 'toolkit.nu' | path exists }
                 code: "overlay use --prefix toolkit.nu"
