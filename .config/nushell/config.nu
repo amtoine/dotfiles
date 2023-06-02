@@ -178,7 +178,6 @@ use aliases.nu *
 use starship.nu
 
 use ~/.local/share/git/store/github.com/amtoine/zellij-layouts/nu-zellij
-$env.ZELLIJ_HOME = ($env.GIT_REPOS_HOME | path join "github.com" "amtoine" "zellij-layouts")
 
 match (date now | date format "%m.%d") {
     "03.14" => { print $'Happy (char -i 0x03c0) Day! (char -i 0x1f973)' }
