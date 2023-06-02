@@ -39,6 +39,11 @@ let-env config = ($env.config? | default {} | merge {
 $env.config.hooks = {
     env_change: {
         PWD: [
+            {|before, _|
+                if $before == null and (not ($env.config?.show_banner? | default true)) {
+                    print $"(ansi {fg: default, attr: "du"})startup time(ansi reset): (ansi {fg: default, attr: "di"})($nu.startup-time)(ansi reset)"
+                }
+            }
             {
                 condition: {|_, after| $after | path join 'toolkit.nu' | path exists }
                 code: "overlay use --prefix toolkit.nu"
@@ -46,12 +51,6 @@ $env.config.hooks = {
             {
                 condition: {|_, after| $after | path join 'toolkit' 'mod.nu' | path exists }
                 code: "overlay use --prefix toolkit/"
-            }
-            {
-                condition: {|before, _| $before == null and (not ($env.config?.show_banner? | default true)) }
-                code: {
-                    print $"(ansi {fg: default, attr: "du"})startup time(ansi reset): (ansi {fg: default, attr: "di"})($nu.startup-time)(ansi reset)"
-                }
             }
         ]
     }
