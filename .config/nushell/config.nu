@@ -24,7 +24,7 @@ let-env config = ($env.config? | default {} | merge {
         file_format: "sqlite"
     }
     cursor_shape: {
-        vi_insert: underscore
+        vi_insert: line
         vi_normal: underscore
     }
     table: {
