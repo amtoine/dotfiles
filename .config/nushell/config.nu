@@ -57,36 +57,6 @@ $env.config.hooks = {
     display_output: {||
         if (term size).columns >= 100 { table -e } else { table }
     }
-    command_not_found: {|cmd|
-        let commands_in_path = (
-            $env.PATH | each {|directory|
-                if ($directory | path exists) {
-                    ls $directory | get name | path parse | update parent "" | path join
-                }
-            }
-            | flatten
-            | wrap cmd
-        )
-
-        let closest_commands = (
-            $commands_in_path
-            | insert distance {|it|
-                $it.cmd | str distance $cmd
-            }
-            | uniq
-            | sort-by distance
-            | get cmd
-            | first 10
-        )
-
-        let pretty_commands = (
-            $closest_commands | each {|cmd|
-                $"    (ansi {fg: "default" attr: "di"})($cmd)(ansi reset)"
-            }
-        )
-
-        $"\ndid you mean?\n($pretty_commands | str join "\n")"
-    }
 }
 
 $env.config.keybindings = [
