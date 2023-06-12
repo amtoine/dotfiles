@@ -43,7 +43,8 @@ If you want more information about *bare* `git` repositories, you can check one 
 **COMING SOON**
 
 > **Note**  
-> the `surf` config has been moved [here](https://github.com/goatfiles-suckless/surf/tree/surf-webkit2/config)
+> - the `surf` config has been moved [here](https://github.com/goatfiles-suckless/surf/tree/surf-webkit2/config)
+> - the `qtile` config has been moved [here](https://github.com/goatfiles/qtile-config)
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## 3. The install process. [[toc](#table-of-content)]
