@@ -42,6 +42,9 @@ If you want more information about *bare* `git` repositories, you can check one 
 ## 2. The software I use. [[toc](#table-of-content)]
 **COMING SOON**
 
+> **Note**  
+> the `surf` config has been moved [here](https://github.com/goatfiles-suckless/surf/tree/surf-webkit2/config)
+
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## 3. The install process. [[toc](#table-of-content)]
 **COMING SOON**
