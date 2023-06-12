@@ -1,8 +1,35 @@
+env {
+    RUST_BACKTRACE 1
+}
+on_force_close "detach"
+copy_on_select false
+mouse_mode false
+
 theme "default"
 default_layout "default"
 
 ui {
     pane_frames {
         rounded_corners true
+    }
+}
+simplified_ui true
+pane_frames false
+
+keybinds {
+    normal {
+        unbind "Ctrl o"
+    }
+    pane {
+        bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
+        bind "f" { TogglePaneFrames; SwitchToMode "Normal"; }
+    }
+    session {
+        unbind "Ctrl o"
+        bind "Ctrl x" { SwitchToMode "Normal"; }
+    }
+
+    shared_except "session" "locked" {
+        bind "Ctrl x" { SwitchToMode "Session"; }
     }
 }
