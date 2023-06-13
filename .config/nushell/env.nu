@@ -98,6 +98,7 @@ export-env { load-env {
     WORKON_HOME: ($env.XDG_DATA_HOME | path join "virtualenvs")
     XINITRC: ($env.XDG_CONFIG_HOME | path join "X11" "xinitrc")
     ZDOTDIR: ($env.XDG_CONFIG_HOME | path join "zsh")
+    ZELLIJ_LAYOUTS_HOME: ($env.GIT_REPOS_HOME | path join "github.com" "amtoine" "zellij-layouts" "layouts")
     ZK_NOTEBOOK_DIR: ($env.GIT_REPOS_HOME | path join "github.com" "amtoine" "notes")
     _Z_DATA: ($env.XDG_DATA_HOME | path join "z")
 }}
