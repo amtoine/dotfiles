@@ -139,12 +139,6 @@ $env.config.keybindings = [
     }
 ]
 
-use nu-scripts/themes/themes/nushell-dark.nu
-$env.config.color_config = (nushell-dark)
-$env.config.color_config.string = {||
-    if $in =~ '^#[a-fA-F\d]+' { $in } else { 'white' }
-}
-
 let-env NUPM_CONFIG = {
     activations: ($nu.default-config-dir | path join "nupm" "activations.nuon")
     packages: ($nu.default-config-dir | path join "nupm" "packages.nuon")
@@ -179,6 +173,12 @@ use nu-goat-scripts misc back
 use nu-goat-scripts misc edit
 # `nupm install --path /path/to/amtoine/zellij-layouts/nu-zellij/`
 use nu-zellij
+# `nupm install --path /path/to/nushell/nu_scripts/`
+use nu-scripts/themes/themes/nushell-dark.nu
+$env.config.color_config = (nushell-dark)
+$env.config.color_config.string = {||
+    if $in =~ '^#[a-fA-F\d]+' { $in } else { 'white' }
+}
 
 use std clip
 use aliases.nu *
