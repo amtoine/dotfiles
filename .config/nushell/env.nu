@@ -131,25 +131,6 @@ let-env FZF_DEFAULT_OPTS = "
 --preview-window right,80%
 "
 
-# To add entries to PATH (on Windows you might use Path), you can use the following pattern:
-# let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
-let-env PATH = (
-    $env.PATH | split row (char esep)
-    | prepend ($env.HOME | path join ".local" "bin")
-    | prepend ($env.CARGO_HOME | path join "bin")
-    | prepend ($env.CLANG_HOME | path join "bin")
-    | prepend ($env.GOPATH | path join "bin")
-    | prepend ($env.EMACS_HOME | path join "bin")
-    | prepend ($env.RUBY_HOME | path join "bin")
-    | uniq
-)
-
-let-env LD_LIBRARY_PATH = (
-    $env.LD_LIBRARY_PATH? | default "" | split row (char esep)
-    | prepend $env.MUJOCO_BIN
-    | uniq
-)
-
 # Directories to search for scripts when calling source or use
 #
 # By default, <nushell-config-dir>/scripts is added
@@ -192,3 +173,20 @@ export-env {
         $env.NUPM_HOME
     ])
 }
+
+let-env PATH = (
+    $env.PATH | split row (char esep)
+    | prepend ($env.HOME | path join ".local" "bin")
+    | prepend ($env.CARGO_HOME | path join "bin")
+    | prepend ($env.CLANG_HOME | path join "bin")
+    | prepend ($env.GOPATH | path join "bin")
+    | prepend ($env.EMACS_HOME | path join "bin")
+    | prepend ($env.RUBY_HOME | path join "bin")
+    | uniq
+)
+
+let-env LD_LIBRARY_PATH = (
+    $env.LD_LIBRARY_PATH? | default "" | split row (char esep)
+    | prepend $env.MUJOCO_BIN
+    | uniq
+)
