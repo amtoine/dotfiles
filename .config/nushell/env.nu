@@ -1,9 +1,3 @@
-# Nushell Environment Config File
-
-# Specifies how environment variables are:
-# - converted from a string to a value on Nushell startup (from_string)
-# - converted from a value back to a string when running external commands (to_string)
-# Note: The conversions happen *after* config.nu is loaded
 let-env ENV_CONVERSIONS = {
   "PATH": {
     from_string: { |s| $s | split row (char esep) | path expand -n }
@@ -15,22 +9,14 @@ let-env ENV_CONVERSIONS = {
   }
 }
 
-export-env { load-env {  # the XDG environment on which all the others are based
+export-env { load-env {
     XDG_DATA_HOME: ($env.HOME | path join ".local" "share")
     XDG_CONFIG_HOME: ($env.HOME | path join ".config")
     XDG_STATE_HOME: ($env.HOME | path join ".local" "state")
     XDG_CACHE_HOME: ($env.HOME | path join ".cache")
 }}
 
-# Directories to search for plugin binaries when calling register
-#
-# By default, <nushell-config-dir>/plugins is added
-let-env NU_PLUGIN_DIR = ($env.XDG_DATA_HOME | path join "nushell" "plugins")
-let-env NU_PLUGIN_DIRS = [
-    ($env.NU_PLUGIN_DIR | path join "bin")
-]
-
-export-env {  # git-related variables
+export-env {
     let-env GIT_REPOS_HOME = ($env.XDG_DATA_HOME | path join "git" "store")
 
     load-env {
@@ -43,7 +29,6 @@ export-env {  # git-related variables
     }
 }
 
-# move all moveable config to the right location, outside $HOME.
 let-env TERMINFO_DIRS = (
   [
       ($env.XDG_DATA_HOME | path join "terminfo")
@@ -51,7 +36,6 @@ let-env TERMINFO_DIRS = (
   ]
   | str join ":"
 )
-let-env _JAVA_OPTIONS = $"-Djava.util.prefs.userRoot=($env.XDG_CONFIG_HOME | path join java)"
 
 let-env GEM_VERSION = "3.0.0"
 
@@ -76,12 +60,17 @@ export-env { load-env {
     MUJOCO_BIN: ($env.HOME | path join ".mujoco" "mujoco210" "bin")
     NODE_REPL_HISTORY: ($env.XDG_DATA_HOME | path join "node_repl_history")
     NPM_CONFIG_USERCONFIG: ($env.XDG_CONFIG_HOME | path join "npm" "npmrc")
+    NUPM_HOME: ($env.XDG_DATA_HOME | path join "nupm")
+    NU_PLUGIN_DIR: ($env.XDG_DATA_HOME | path join "nushell" "plugins")
     PASSWORD_STORE_DIR: ($env.XDG_DATA_HOME | path join "pass")
     PYTHONSTARTUP: ($env.XDG_CONFIG_HOME | path join "python" "pythonrc")
     QT_QPA_PLATFORMTHEME: "qt5ct"
     QUICKEMU_HOME: ($env.XDG_DATA_HOME | path join "quickemu")
     RUBY_HOME: ($env.XDG_DATA_HOME | path join "gem" "ruby" $env.GEM_VERSION)
     SQLITE_HISTORY: ($env.XDG_CACHE_HOME | path join "sqlite_history")
+    SSH_AGENT_TIMEOUT: 300
+    SSH_KEYS_HOME: ($env.HOME | path join ".ssh" "keys")
+    STARSHIP_CACHE: ($env.XDG_CACHE_HOME | path join "starship")
     TERMINFO: ($env.XDG_DATA_HOME | path join "terminfo")
     TOMB_HOME: ($env.XDG_DATA_HOME | path join "tombs")
     WORKON_HOME: ($env.XDG_DATA_HOME | path join "virtualenvs")
@@ -89,13 +78,12 @@ export-env { load-env {
     ZDOTDIR: ($env.XDG_CONFIG_HOME | path join "zsh")
     ZELLIJ_LAYOUTS_HOME: ($env.GIT_REPOS_HOME | path join "github.com" "amtoine" "zellij-layouts" "layouts")
     ZK_NOTEBOOK_DIR: ($env.GIT_REPOS_HOME | path join "github.com" "amtoine" "notes")
+    _JAVA_OPTIONS: $"-Djava.util.prefs.userRoot=($env.XDG_CONFIG_HOME | path join java)"
     _Z_DATA: ($env.XDG_DATA_HOME | path join "z")
 }}
 
-# user environment variables
 let-env BROWSER = "qutebrowser"
 let-env TERMINAL = "alacritty -e"
-# changes the editor in the terminal, to edit long commands.
 let-env EDITOR = 'nvim'
 let-env VISUAL = $env.EDITOR
 
@@ -131,48 +119,10 @@ let-env FZF_DEFAULT_OPTS = "
 --preview-window right,80%
 "
 
-# Directories to search for scripts when calling source or use
-#
-# By default, <nushell-config-dir>/scripts is added
-let-env NU_LIB_DIRS = [
-    ($nu.default-config-dir | path join 'lib')
-]
-
-export-env {
-    let-env STARSHIP_CACHE = ($env.XDG_CACHE_HOME | path join "starship")
-    let-env NU_LIB_DIRS = ($env.NU_LIB_DIRS? | default [] | append [
-        $env.STARSHIP_CACHE
-    ])
-
-    mkdir $env.STARSHIP_CACHE
-    starship init nu | save --force ($env.STARSHIP_CACHE | path join "starship.nu")
-}
-
-# start the ssh agent to allow SSO with ssh authentication
-# very usefull with `github` over the ssh protocol
-#
-# see https://www.nushell.sh/cookbook/misc.html#manage-ssh-passphrases
-export-env {
-    let-env SSH_AGENT_TIMEOUT = 300
-    let-env SSH_KEYS_HOME = ($env.HOME | path join ".ssh" "keys")
-
-    ssh-agent -c -t $env.SSH_AGENT_TIMEOUT
-    | lines
-    | first 2
-    | parse "setenv {name} {value};"
-    | transpose -i -r -d
-    | load-env
-}
-
 # load secret environment variables
-try { $nu.home-path | path join ".env" | open | from nuon } catch {{}} | load-env
-
-export-env {
-    let-env NUPM_HOME = ($env.XDG_DATA_HOME | path join "nupm")
-    let-env NU_LIB_DIRS = ($env.NU_LIB_DIRS? | default [] | append [
-        $env.NUPM_HOME
-    ])
-}
+try {
+    $nu.home-path | path join ".env" | open | from nuon
+} catch {{}} | load-env
 
 let-env PATH = (
     $env.PATH | split row (char esep)
@@ -190,3 +140,27 @@ let-env LD_LIBRARY_PATH = (
     | prepend $env.MUJOCO_BIN
     | uniq
 )
+
+let-env NU_LIB_DIRS = [
+    ($nu.default-config-dir | path join 'lib')
+    $env.NUPM_HOME
+    $env.STARSHIP_CACHE
+]
+
+let-env NU_PLUGIN_DIRS = [
+    ($env.NU_PLUGIN_DIR | path join "bin")
+]
+
+mkdir $env.STARSHIP_CACHE
+starship init nu | save --force ($env.STARSHIP_CACHE | path join "starship.nu")
+
+# start the ssh agent to allow SSO with ssh authentication
+# very usefull with `github` over the ssh protocol
+#
+# see https://www.nushell.sh/cookbook/misc.html#manage-ssh-passphrases
+ssh-agent -c -t $env.SSH_AGENT_TIMEOUT
+| lines
+| first 2
+| parse "setenv {name} {value};"
+| transpose -i -r -d
+| load-env
