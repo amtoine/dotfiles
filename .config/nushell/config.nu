@@ -19,7 +19,7 @@ let-env config = ($env.config? | default {} | merge {
     table: {
         mode: rounded
         index_mode: always
-        show_empty: false
+        show_empty: true
     }
     edit_mode: vi
     show_banner: false
