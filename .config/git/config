@@ -14,6 +14,7 @@
   file-style = cyan
   light = false
   hunk-header-line-number-style = cyan
+  tabs = 16
 
 [ghq "https://git.example.com/repos/"]
   vcs = git
