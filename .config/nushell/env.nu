@@ -73,6 +73,7 @@ export-env { load-env {
     STARSHIP_CACHE: ($env.XDG_CACHE_HOME | path join "starship")
     TERMINFO: ($env.XDG_DATA_HOME | path join "terminfo")
     TOMB_HOME: ($env.XDG_DATA_HOME | path join "tombs")
+    VIMRUNTIME: ($env.XDG_DATA_HOME | path join "nvim" "runtime")
     WORKON_HOME: ($env.XDG_DATA_HOME | path join "virtualenvs")
     XINITRC: ($env.XDG_CONFIG_HOME | path join "X11" "xinitrc")
     ZDOTDIR: ($env.XDG_CONFIG_HOME | path join "zsh")
