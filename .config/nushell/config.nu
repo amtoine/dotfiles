@@ -126,6 +126,16 @@ $env.config.keybindings = [
             cmd: "nu-zellij layout open --default-shell nu"
         }
     }
+    {
+        name: zellij_sessionizer
+        modifier: control
+        keycode: char_f
+        mode: [emacs, vi_insert, vi_normal]
+        event: {
+            send: executehostcommand
+            cmd: "zellij-sessionizer.nu (gm list --full-path)"
+        }
+    }
 ]
 
 let-env NUPM_CONFIG = {
