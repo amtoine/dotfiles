@@ -133,6 +133,7 @@ let-env PATH = (
     | prepend ($env.GOPATH | path join "bin")
     | prepend ($env.EMACS_HOME | path join "bin")
     | prepend ($env.RUBY_HOME | path join "bin")
+    | prepend $env.NUPM_HOME
     | uniq
 )
 
