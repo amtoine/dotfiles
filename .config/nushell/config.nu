@@ -88,6 +88,16 @@ $env.config.keybindings = [
             cmd: "overlay hide"
         }
     }
+    {
+        name: reload_toolkit
+        modifier: control
+        keycode: char_t
+        mode: [emacs, vi_insert, vi_normal]
+        event: {
+            send: executehostcommand
+            cmd: "use toolkit.nu"
+        }
+    }
 
     # misc
     {
