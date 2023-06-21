@@ -37,10 +37,6 @@ $env.config.hooks = {
                 condition: {|_, after| $after | path join 'toolkit.nu' | path exists }
                 code: "overlay use --prefix toolkit.nu"
             }
-            {
-                condition: {|_, after| $after | path join 'toolkit' 'mod.nu' | path exists }
-                code: "overlay use --prefix toolkit/"
-            }
         ]
     }
     display_output: {||
