@@ -67,28 +67,6 @@ $env.config.keybindings = [
         }
     }
 
-    # nupm libraries
-    {
-        name: goto_repo
-        modifier: control
-        keycode: char_g
-        mode: [emacs, vi_insert, vi_normal]
-        event: {
-            send: executehostcommand
-            cmd: "gm goto"
-        }
-    }
-    {
-        name: edit_config
-        modifier: control
-        keycode: char_v
-        mode: [emacs, vi_insert, vi_normal]
-        event: {
-            send: executehostcommand
-            cmd: "dotfiles edit"
-        }
-    }
-
     # interact with modules and overlays
     {
         name: overlay_use_nupm
@@ -130,6 +108,26 @@ $env.config.keybindings = [
         event: {
             send: executehostcommand
             cmd: "zellij-sessionizer.nu (gm list --full-path)"
+        }
+    }
+    {
+        name: goto_repo
+        modifier: control
+        keycode: char_g
+        mode: [emacs, vi_insert, vi_normal]
+        event: {
+            send: executehostcommand
+            cmd: "gm goto"
+        }
+    }
+    {
+        name: edit_config
+        modifier: control
+        keycode: char_v
+        mode: [emacs, vi_insert, vi_normal]
+        event: {
+            send: executehostcommand
+            cmd: "dotfiles edit"
         }
     }
 ]
