@@ -33,8 +33,20 @@ $env.config.hooks = {
     env_change: {
         PWD: [
             {|before, _|
-                if $before == null and (not ($env.config?.show_banner? | default true)) {
-                    print $"(ansi {fg: default, attr: "du"})startup time(ansi reset): (ansi {fg: default, attr: "di"})($nu.startup-time)(ansi reset)"
+                if $before == null {
+                    let file = ($nu.home-path | path join ".local" "share" "nushell" "startup-times.nuon")
+                    if not ($file | path exists) {
+                        mkdir ($file | path dirname)
+                        touch $file
+                    }
+
+                    open $file | append {
+                        date: (date now)
+                        time: $nu.startup-time
+                        version: (version | get version)
+                        commit: (version | get commit_hash)
+                        build: (version | get build_time)
+                    } | save --force $file
                 }
             }
             {
