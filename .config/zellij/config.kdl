@@ -6,11 +6,12 @@ copy_on_select false
 mouse_mode false
 
 theme "default"
-default_layout "default"
+default_layout "compact"
 
 ui {
     pane_frames {
         rounded_corners true
+        hide_session_name false
     }
 }
 simplified_ui true
