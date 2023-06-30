@@ -83,38 +83,6 @@ $env.config.keybindings = [
         }
     }
 
-    # interact with modules and overlays
-    {
-        name: overlay_use_nupm
-        modifier: control
-        keycode: char_n
-        mode: [emacs, vi_insert, vi_normal]
-        event: {
-            send: executehostcommand
-            cmd: "overlay use --prefix nupm"
-        }
-    }
-    {
-        name: overlay_hide
-        modifier: control
-        keycode: char_h
-        mode: [emacs, vi_insert, vi_normal]
-        event: {
-            send: executehostcommand
-            cmd: "overlay hide"
-        }
-    }
-    {
-        name: reload_toolkit
-        modifier: control
-        keycode: char_t
-        mode: [emacs, vi_insert, vi_normal]
-        event: {
-            send: executehostcommand
-            cmd: "use toolkit.nu"
-        }
-    }
-
     # misc
     {
         name: run_zellij
