@@ -61,7 +61,6 @@ export-env { load-env {
     NODE_REPL_HISTORY: ($env.XDG_DATA_HOME | path join "node_repl_history")
     NPM_CONFIG_USERCONFIG: ($env.XDG_CONFIG_HOME | path join "npm" "npmrc")
     NUPM_HOME: ($env.XDG_DATA_HOME | path join "nupm")
-    NU_PLUGIN_DIR: ($env.XDG_DATA_HOME | path join "nushell" "plugins")
     PASSWORD_STORE_DIR: ($env.XDG_DATA_HOME | path join "pass")
     PYTHONSTARTUP: ($env.XDG_CONFIG_HOME | path join "python" "pythonrc")
     QT_QPA_PLATFORMTHEME: "qt5ct"
@@ -147,10 +146,6 @@ let-env NU_LIB_DIRS = [
     ($nu.default-config-dir | path join 'lib')
     $env.NUPM_HOME
     $env.STARSHIP_CACHE
-]
-
-let-env NU_PLUGIN_DIRS = [
-    ($env.NU_PLUGIN_DIR | path join "bin")
 ]
 
 mkdir $env.STARSHIP_CACHE
