@@ -1,4 +1,4 @@
-let-env ENV_CONVERSIONS = {
+$env.ENV_CONVERSIONS = {
   "PATH": {
     from_string: { |s| $s | split row (char esep) | path expand -n }
     to_string: { |v| $v | path expand -n | str join (char esep) }
@@ -17,7 +17,7 @@ export-env { load-env {
 }}
 
 export-env {
-    let-env GIT_REPOS_HOME = ($env.XDG_DATA_HOME | path join "git" "store")
+    $env.GIT_REPOS_HOME = ($env.XDG_DATA_HOME | path join "git" "store")
 
     load-env {
         GHQ_ROOT: $env.GIT_REPOS_HOME
@@ -29,7 +29,7 @@ export-env {
     }
 }
 
-let-env TERMINFO_DIRS = (
+$env.TERMINFO_DIRS = (
   [
       ($env.XDG_DATA_HOME | path join "terminfo")
       "/usr/share/terminfo"
@@ -37,7 +37,7 @@ let-env TERMINFO_DIRS = (
   | str join ":"
 )
 
-let-env GEM_VERSION = "3.0.0"
+$env.GEM_VERSION = "3.0.0"
 
 export-env { load-env {
     CABAL_CONFIG: ($env.XDG_CONFIG_HOME | path join "cabal" "config")
@@ -82,34 +82,34 @@ export-env { load-env {
     _Z_DATA: ($env.XDG_DATA_HOME | path join "z")
 }}
 
-let-env BROWSER = "qutebrowser"
-let-env TERMINAL = "alacritty -e"
-let-env EDITOR = 'nvim'
-let-env VISUAL = $env.EDITOR
+$env.BROWSER = "qutebrowser"
+$env.TERMINAL = "alacritty -e"
+$env.EDITOR = 'nvim'
+$env.VISUAL = $env.EDITOR
 
-let-env LS_THEME = "dracula"
-let-env LS_COLORS = (vivid generate $env.LS_THEME)
+$env.LS_THEME = "dracula"
+$env.LS_COLORS = (vivid generate $env.LS_THEME)
 
 def-env _set_manpager [pager: string] {
-    let-env MANPAGER = (match $pager {
+    $env.MANPAGER = (match $pager {
         "bat" => "sh -c 'col -bx | bat -l man -p'",
         "vim" => '/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"',
         "nvim" => "nvim -c 'set ft=man' -",
         _ => {
             print $"unknown manpage '($pager)', defaulting to prettier `less`"
-            let-env LESS_TERMCAP_mb = (tput bold; tput setaf 2)  # green
-            let-env LESS_TERMCAP_md = (tput bold; tput setaf 2)  # green
-            let-env LESS_TERMCAP_so = (tput bold; tput rev; tput setaf 3)  # yellow
-            let-env LESS_TERMCAP_se = (tput smul; tput sgr0)
-            let-env LESS_TERMCAP_us = (tput bold; tput bold; tput setaf 1)  # red
-            let-env LESS_TERMCAP_me = (tput sgr0)
+            $env.LESS_TERMCAP_mb = (tput bold; tput setaf 2)  # green
+            $env.LESS_TERMCAP_md = (tput bold; tput setaf 2)  # green
+            $env.LESS_TERMCAP_so = (tput bold; tput rev; tput setaf 3)  # yellow
+            $env.LESS_TERMCAP_se = (tput smul; tput sgr0)
+            $env.LESS_TERMCAP_us = (tput bold; tput bold; tput setaf 1)  # red
+            $env.LESS_TERMCAP_me = (tput sgr0)
          }
     })
 }
 
 _set_manpager "bat"
 
-let-env FZF_DEFAULT_OPTS = "
+$env.FZF_DEFAULT_OPTS = "
 --bind ctrl-d:half-page-down
 --bind ctrl-u:half-page-up
 --bind shift-right:preview-half-page-down
@@ -124,7 +124,7 @@ try {
     $nu.home-path | path join ".env" | open | from nuon
 } catch {{}} | load-env
 
-let-env PATH = (
+$env.PATH = (
     $env.PATH | split row (char esep)
     | prepend ($env.HOME | path join ".local" "bin")
     | prepend ($env.CARGO_HOME | path join "bin")
@@ -136,13 +136,13 @@ let-env PATH = (
     | uniq
 )
 
-let-env LD_LIBRARY_PATH = (
+$env.LD_LIBRARY_PATH = (
     $env.LD_LIBRARY_PATH? | default "" | split row (char esep)
     | prepend $env.MUJOCO_BIN
     | uniq
 )
 
-let-env NU_LIB_DIRS = [
+$env.NU_LIB_DIRS = [
     ($nu.default-config-dir | path join 'lib')
     $env.NUPM_HOME
     $env.STARSHIP_CACHE

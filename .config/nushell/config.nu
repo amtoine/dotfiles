@@ -1,4 +1,4 @@
-let-env config = ($env.config? | default {} | merge {
+$env.config = ($env.config? | default {} | merge {
     ls: {
         use_ls_colors: true
         clickable_links: false
@@ -126,14 +126,14 @@ $env.config.keybindings = [
     }
 ]
 
-let-env NUPM_CONFIG = {
+$env.NUPM_CONFIG = {
     activations: ($nu.default-config-dir | path join "nupm" "activations.nuon")
     packages: ($nu.default-config-dir | path join "nupm" "packages.nuon")
     set_prompt: true
 }
 
 export-env {
-    let-env NU_RIGHT_PROMPT_CONFIG = {
+    $env.NU_RIGHT_PROMPT_CONFIG = {
         compact: false
         section_separator: " | "
         overlay_separator: '<'
