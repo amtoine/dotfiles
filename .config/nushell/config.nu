@@ -40,12 +40,16 @@ $env.config.hooks = {
                         touch $file
                     }
 
+                    let version = (version)
+
                     open $file | append {
                         date: (date now)
                         time: $nu.startup-time
-                        version: (version | get version)
-                        commit: (version | get commit_hash)
-                        build: (version | get build_time)
+                        build: $version.build_rust_channel
+                        allocator: $version.allocator
+                        version: $version.version
+                        commit: $version.commit_hash
+                        build_time: $version.build_time
                     } | save --force $file
                 }
             }
