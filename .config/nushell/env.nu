@@ -143,7 +143,6 @@ $env.LD_LIBRARY_PATH = (
 )
 
 $env.NU_LIB_DIRS = [
-    ($nu.default-config-dir | path join 'lib')
     $env.NUPM_HOME
     $env.STARSHIP_CACHE
 ]
