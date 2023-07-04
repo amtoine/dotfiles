@@ -182,6 +182,12 @@ alias cfg = ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKT
 alias :q = exit
 alias sl = sl -aw -20
 alias vim = edit
+alias ll = ls --all --long
+def lsg [] {
+    ls --all | each {|it|
+        $it.name | if $it.type == dir { append "/" } else {} | str join
+    } | grid --color --separator " | "
+}
 
 match (date now | date format "%m.%d") {
     "03.14" => { print $'Happy (char -i 0x03c0) Day! (char -i 0x1f973)' }
