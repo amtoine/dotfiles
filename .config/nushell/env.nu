@@ -1,12 +1,12 @@
 $env.ENV_CONVERSIONS = {
-  "PATH": {
-    from_string: { |s| $s | split row (char esep) | path expand -n }
-    to_string: { |v| $v | path expand -n | str join (char esep) }
-  }
-  "Path": {
-    from_string: { |s| $s | split row (char esep) }
-    to_string: { |v| $v | str join (char esep) }
-  }
+    "PATH": {
+        from_string: { |s| $s | split row (char esep) | path expand -n }
+        to_string: { |v| $v | path expand -n | str join (char esep) }
+    }
+    "Path": {
+        from_string: { |s| $s | split row (char esep) }
+        to_string: { |v| $v | str join (char esep) }
+    }
 }
 
 export-env { load-env {
@@ -30,11 +30,11 @@ export-env {
 }
 
 $env.TERMINFO_DIRS = (
-  [
-      ($env.XDG_DATA_HOME | path join "terminfo")
-      "/usr/share/terminfo"
-  ]
-  | str join ":"
+    [
+        ($env.XDG_DATA_HOME | path join "terminfo")
+        "/usr/share/terminfo"
+    ]
+    | str join ":"
 )
 
 $env.GEM_VERSION = "3.0.0"
@@ -125,21 +125,24 @@ try {
 } catch {{}} | load-env
 
 $env.PATH = (
-    $env.PATH | split row (char esep)
-    | prepend ($env.HOME | path join ".local" "bin")
-    | prepend ($env.CARGO_HOME | path join "bin")
-    | prepend ($env.CLANG_HOME | path join "bin")
-    | prepend ($env.GOPATH | path join "bin")
-    | prepend ($env.EMACS_HOME | path join "bin")
-    | prepend ($env.RUBY_HOME | path join "bin")
-    | prepend $env.NUPM_HOME
-    | uniq
+    $env.PATH
+        | split row (char esep)
+        | prepend ($env.HOME | path join ".local" "bin")
+        | prepend ($env.CARGO_HOME | path join "bin")
+        | prepend ($env.CLANG_HOME | path join "bin")
+        | prepend ($env.GOPATH | path join "bin")
+        | prepend ($env.EMACS_HOME | path join "bin")
+        | prepend ($env.RUBY_HOME | path join "bin")
+        | prepend $env.NUPM_HOME
+        | uniq
 )
 
 $env.LD_LIBRARY_PATH = (
-    $env.LD_LIBRARY_PATH? | default "" | split row (char esep)
-    | prepend $env.MUJOCO_BIN
-    | uniq
+    $env.LD_LIBRARY_PATH?
+        | default ""
+        | split row (char esep)
+        | prepend $env.MUJOCO_BIN
+        | uniq
 )
 
 $env.NU_LIB_DIRS = [
@@ -155,8 +158,8 @@ starship init nu | save --force ($env.STARSHIP_CACHE | path join "starship.nu")
 #
 # see https://www.nushell.sh/cookbook/misc.html#manage-ssh-passphrases
 ssh-agent -c -t $env.SSH_AGENT_TIMEOUT
-| lines
-| first 2
-| parse "setenv {name} {value};"
-| transpose -i -r -d
-| load-env
+    | lines
+    | first 2
+    | parse "setenv {name} {value};"
+    | transpose -i -r -d
+    | load-env
