@@ -27,6 +27,10 @@ $env.config = ($env.config? | default {} | merge {
         normal: "%a, %d %b %Y %H:%M:%S %z"
         table: "%Y/%m/%d %H:%M:%S"
     }
+    completions: {
+        algorithm: "prefix"
+        case_sensitive: true
+    }
 })
 
 $env.config.hooks = {
