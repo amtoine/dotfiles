@@ -1,9 +1,5 @@
 $env.ENV_CONVERSIONS = {
-    "PATH": {
-        from_string: { |s| $s | split row (char esep) | path expand -n }
-        to_string: { |v| $v | path expand -n | str join (char esep) }
-    }
-    "Path": {
+    "XDG_DATA_DIRS": {
         from_string: { |s| $s | split row (char esep) }
         to_string: { |v| $v | str join (char esep) }
     }
