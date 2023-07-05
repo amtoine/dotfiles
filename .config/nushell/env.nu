@@ -1,7 +1,12 @@
-$env.ENV_CONVERSIONS = {
-    "XDG_DATA_DIRS": {
+export-env {
+    let esep_list_converter = {
         from_string: { |s| $s | split row (char esep) }
         to_string: { |v| $v | str join (char esep) }
+    }
+
+    $env.ENV_CONVERSIONS = {
+        XDG_DATA_DIRS: $esep_list_converter
+        TERMINFO_DIRS: $esep_list_converter
     }
 }
 
