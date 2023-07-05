@@ -12,3 +12,5 @@ fi
 
 cargo_env="${CARGO_HOME:-$HOME/.cargo}/env"
 [[ -f "${cargo_env}" ]] && . "${cargo_env}"
+
+export PICOM_EXTRA_FLAGS="--experimental-backends --animations"

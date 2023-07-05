@@ -92,7 +92,7 @@ super + z; m; f
 super + z; n
   $WM_TERM $WM_TERM_FLAGS bash -c "nmcli d | grep -w 'connected' | sed 's/\s\+/ /g'| cut -d' ' -f4; echo -e '\n\n'; ping google.com"
 super + z; p; {b,t}
-  PICOM_EXTRA_FLAGS="--experimental-backends --animations" gpcm --{blur,toggle} --notify
+  gpcm --{blur,toggle} --notify
 super + z; p; d; f
   gpdf
 super + z; r; t
