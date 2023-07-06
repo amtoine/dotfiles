@@ -1,1 +1,1 @@
-let-env PROMPT_INDICATOR = { "(LS)〉" }
+$env.PROMPT_INDICATOR = { "(LS)〉" }
