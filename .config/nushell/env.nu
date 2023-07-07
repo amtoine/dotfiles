@@ -23,15 +23,14 @@ export-env { load-env {
 }}
 
 export-env {
-    $env.GIT_REPOS_HOME = ($env.XDG_DATA_HOME | path join "git" "store")
+    $env.GIT_REPOS_HOME = ($env.XDG_DOCUMENTS_DIR | path join "repos")
+    $env.GIST_HOME = ($env.XDG_DOCUMENTS_DIR | path join "gists")
 
     load-env {
         GHQ_ROOT: $env.GIT_REPOS_HOME
 
         DOTFILES_GIT_DIR: ($env.GIT_REPOS_HOME | path join "github.com" "goatfiles" "dotfiles")
         DOTFILES_WORKTREE: $env.HOME
-
-        GIST_HOME: ($env.XDG_DATA_HOME | path join "gists")
     }
 }
 
