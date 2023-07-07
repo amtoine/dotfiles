@@ -21,7 +21,7 @@ FILEPICKER = "ranger"
 
 config.load_autoconfig(True)
 
-downloads_dir = get_env("DOWNLOADS_DIR", "~/downloads")
+downloads_dir = get_env("XDG_DOWNLOAD_DIR", "~/downloads")
 Path(downloads_dir).expanduser().mkdir(parents=True, exist_ok=True)
 c.downloads.location.directory = downloads_dir
 

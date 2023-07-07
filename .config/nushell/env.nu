@@ -51,7 +51,6 @@ export-env { load-env {
     CARGO_HOME: ($env.XDG_DATA_HOME | path join "cargo")
     CLANG_HOME: ($env.XDG_DATA_HOME | path join "clang-15")
     DOOMDIR: ($env.XDG_CONFIG_HOME | path join "doom")
-    DOWNLOADS_DIR: ($env.HOME | path join "downloads")
     EMACS_HOME: ($env.HOME | path join ".emacs.d")
     GNUPGHOME: ($env.XDG_DATA_HOME | path join "gnupg")
     GOPATH: ($env.XDG_DATA_HOME | path join "go")
