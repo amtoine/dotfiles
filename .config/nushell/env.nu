@@ -15,6 +15,11 @@ export-env { load-env {
     XDG_CONFIG_HOME: ($env.HOME | path join ".config")
     XDG_STATE_HOME: ($env.HOME | path join ".local" "state")
     XDG_CACHE_HOME: ($env.HOME | path join ".cache")
+    XDG_DOCUMENTS_DIR: ($env.HOME | path join "documents")
+    XDG_DOWNLOAD_DIR: ($env.HOME | path join "downloads")
+    XDG_MUSIC_DIR: ($env.HOME | path join "media" "music")
+    XDG_PICTURES_DIR: ($env.HOME | path join "media" "images")
+    XDG_VIDEOS_DIR: ($env.HOME | path join "media" "videos")
 }}
 
 export-env {
