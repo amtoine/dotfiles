@@ -57,7 +57,6 @@ export-env { load-env {
     GRIPHOME: ($env.XDG_CONFIG_HOME | path join "grip")
     GTK2_RC_FILES: ($env.XDG_CONFIG_HOME | path join "gtk-2.0" "gtkrc")
     HISTFILE: ($env.XDG_STATE_HOME | path join "bash" "history")
-    IMAGES_HOME: ($env.HOME | path join "media" "images")
     IPFS_PATH: ($env.HOME | path join ".ipfs")
     JUPYTER_CONFIG_DIR: ($env.XDG_CONFIG_HOME | path join "jupyter")
     KERAS_HOME: ($env.XDG_STATE_HOME | path join "keras")
