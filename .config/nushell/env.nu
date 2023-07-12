@@ -133,6 +133,7 @@ export-env {
 $env.PATH = (
     $env.PATH
         | split row (char esep)
+        | prepend ($env.XDG_DATA_HOME | path join "npm" "bin")
         | prepend ($env.HOME | path join ".local" "bin")
         | prepend ($env.CARGO_HOME | path join "bin")
         | prepend ($env.CLANG_HOME | path join "bin")
