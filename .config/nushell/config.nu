@@ -14,7 +14,7 @@ $env.config = ($env.config? | default {} | merge {
     }
     cursor_shape: {
         vi_insert: line
-        vi_normal: underscore
+        vi_normal: block
     }
     table: {
         mode: rounded
@@ -137,19 +137,23 @@ $env.NUPM_CONFIG = {
     set_prompt: true
 }
 
-export-env {
-    $env.NU_RIGHT_PROMPT_CONFIG = {
-        compact: false
-        section_separator: " | "
-        overlay_separator: '<'
-        sections: ["overlays"]
-    }
-    load-env {
-        PROMPT_INDICATOR: ''
-        PROMPT_INDICATOR_VI_INSERT: ''
-        PROMPT_INDICATOR_VI_NORMAL: ''
-    }
+$env.NU_RIGHT_PROMPT_CONFIG = {
+    compact: false
+    section_separator: " | "
+    overlay_separator: '<'
+    sections: ["overlays"]
 }
+
+$env.PROMPT_INDICATOR = ' '
+$env.PROMPT_INDICATOR_VI_INSERT = ' '
+$env.PROMPT_INDICATOR_VI_NORMAL = ' '
+# use starship.nu
+
+use nu-goat-scripts shell_prompt
+shell_prompt setup --indicators {vi: {
+    insert: $" (ansi reset)(ansi red_dimmed)INSERT(ansi reset) > "
+    normal: $" (ansi reset)(ansi blue_dimmed)NORMAL(ansi reset) > "
+}}
 
 # **Note**  
 # the following modules have been installed with `nupm` from nushell/nupm#6:
@@ -173,7 +177,6 @@ $env.config.color_config.string = {||
 }
 
 use std clip
-use starship.nu
 
 alias cfg = ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE
 alias :q = exit
