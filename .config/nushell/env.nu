@@ -123,9 +123,12 @@ $env.FZF_DEFAULT_OPTS = "
 "
 
 # load secret environment variables
-try {
-    $nu.home-path | path join ".env" | open | from nuon
-} catch {{}} | load-env
+export-env {
+    let env_file = $nu.home-path | path join ".env"
+    if ($env_file | path exists) {
+        open $env_file | from nuon | load-env
+    }
+}
 
 $env.PATH = (
     $env.PATH
