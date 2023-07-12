@@ -87,6 +87,16 @@ $env.config.keybindings = [
             cmd: "clear"
         }
     }
+    {
+        name: exit
+        modifier: none
+        keycode: char_q
+        mode: [vi_normal]
+        event: {
+            send: executehostcommand
+            cmd: "exit"
+        }
+    }
 
     # misc
     {
