@@ -101,9 +101,9 @@ $env.config.keybindings = [
     # misc
     {
         name: run_zellij
-        modifier: none
+        modifier: control
         keycode: char_z
-        mode: [vi_normal]
+        mode: [vi_normal, vi_insert]
         event: {
             send: executehostcommand
             cmd: "nu-zellij layout open --default-shell nu"
@@ -111,9 +111,9 @@ $env.config.keybindings = [
     }
     {
         name: zellij_sessionizer
-        modifier: shift
-        keycode: char_z
-        mode: [vi_normal]
+        modifier: control
+        keycode: char_f
+        mode: [vi_normal, vi_insert]
         event: {
             send: executehostcommand
             cmd: "zellij-sessionizer.nu (gm list --full-path)"
@@ -121,9 +121,9 @@ $env.config.keybindings = [
     }
     {
         name: goto_repo
-        modifier: none
-        keycode: space
-        mode: [vi_normal]
+        modifier: control
+        keycode: char_g
+        mode: [vi_normal, vi_insert]
         event: {
             send: executehostcommand
             cmd: "gm goto"
@@ -131,9 +131,9 @@ $env.config.keybindings = [
     }
     {
         name: edit_config
-        modifier: none
+        modifier: control
         keycode: char_v
-        mode: [vi_normal]
+        mode: [vi_normal, vi_insert]
         event: {
             send: executehostcommand
             cmd: "dotfiles edit"
