@@ -198,6 +198,7 @@ def lsg [] {
         $it.name | if $it.type == dir { append "/" } else {} | str join
     } | grid --color --separator " | "
 }
+alias te = table --expand
 
 match (date now | date format "%m.%d") {
     "03.14" => { print $'Happy (char -i 0x03c0) Day! (char -i 0x1f973)' }
