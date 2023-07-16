@@ -169,4 +169,6 @@ ssh-agent -c -t $env.SSH_AGENT_TIMEOUT
     | first 2
     | parse "setenv {name} {value};"
     | transpose -i -r -d
+    | to nuon
+    | from nuon
     | load-env
