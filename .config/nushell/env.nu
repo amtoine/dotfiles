@@ -168,7 +168,6 @@ ssh-agent -c -t $env.SSH_AGENT_TIMEOUT
     | lines
     | first 2
     | parse "setenv {name} {value};"
-    | transpose -i -r -d
-    | to nuon
-    | from nuon
+    | transpose -r
+    | into record
     | load-env
