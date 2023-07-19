@@ -50,9 +50,13 @@ snap/
 # the config files
 .config/alacritty/alacritty.yml.*
 .config/asciinema/install-id
+.config/bashtop/bashtop.cfg
+.config/bpytop/bpytop.conf
+.config/btop/btop.conf
 .config/dconf/user
 .config/gh/hosts.yml
 .config/gtk-3.0/bookmarks
+.config/htop/htoprc
 .config/kconf_updaterc
 .config/kdeglobals
 .config/kolourpaintrc
