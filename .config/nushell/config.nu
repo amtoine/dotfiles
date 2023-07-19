@@ -11,6 +11,7 @@ $env.config = ($env.config? | default {} | merge {
     }
     history: {
         file_format: "sqlite"
+        isolation: false
     }
     cursor_shape: {
         vi_insert: line
@@ -21,6 +22,7 @@ $env.config = ($env.config? | default {} | merge {
         index_mode: always
         show_empty: true
     }
+    footer_mode: 25
     edit_mode: vi
     show_banner: false
     datetime_format: {
@@ -38,7 +40,7 @@ $env.config.hooks = {
         PWD: [
             {|before, _|
                 if $before == null {
-                    let file = ($nu.home-path | path join ".local" "share" "nushell" "startup-times.nuon")
+                    let file = $nu.home-path | path join ".local" "share" "nushell" "startup-times.nuon"
                     if not ($file | path exists) {
                         mkdir ($file | path dirname)
                         touch $file
