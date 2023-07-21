@@ -37,5 +37,7 @@ bspc configure (open ~/.config/bspwm/config.nuon)
 
 connect external monitor
 
+feh --randomize /usr/share/backgrounds/* --bg-fill --no-fehbg
+
 killall sxhkd
 bash -c "sxhkd -c ~/.config/bspwm/sxhkdrc ~/.config/sxhkd/sxhkdrc &"
