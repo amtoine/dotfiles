@@ -24,5 +24,7 @@ connect external monitor
 
 feh --randomize /usr/share/backgrounds/* --bg-fill --no-fehbg
 
-killall sxhkd
+if not (pgrep sxhkd | is-empty) {
+    killall sxhkd
+}
 bash -c "sxhkd -c ~/.config/bspwm/sxhkdrc ~/.config/sxhkd/sxhkdrc &"
