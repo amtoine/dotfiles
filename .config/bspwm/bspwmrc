@@ -16,21 +16,6 @@ def "bspc configure" [config: record] {
     bspc config bottom_padding $config.padding.bottom
     bspc config left_padding $config.padding.left
     bspc config right_padding $config.padding.right
-    bspc config single_monocle ($config.monocle.single | into string)
-    bspc config borderless_monocle ($config.monocle.borderless | into string)
-    bspc config gapless_monocle ($config.gapless | into string)
-    bspc config click_to_focus ($config.focus.need_click | into string)
-    bspc config focus_by_distance ($config.focus.by_distance | into string)
-    bspc config focus_follows_pointer ($config.focus.follow_pointer | into string)
-    bspc config history_aware_focus ($config.focus.history_aware | into string)
-    bspc config ignore_ewmh_focus ($config.focus.ignore_ewmh | into string)
-    bspc config split_ratio ($config.split_ratio | into string)
-    bspc config remove_disabled_monitors ($config.monitors.remove_disabled | into string)
-    bspc config merge_overlapping_monitors ($config.monitors.merge_overlapping | into string)
-    bspc config pointer_modifier $config.pointers.modifier
-    bspc config pointer_action1 $config.pointers.actions[0]
-    bspc config pointer_action2 $config.pointers.actions[1]
-    bspc config pointer_action3 $config.pointers.actions[2]
 }
 
 bspc configure (open ~/.config/bspwm/config.nuon)
