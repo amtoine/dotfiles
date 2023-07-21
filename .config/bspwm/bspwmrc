@@ -38,4 +38,4 @@ bspc configure (open ~/.config/bspwm/config.nuon)
 connect external monitor
 
 killall sxhkd
-bash -c "sxhkd -c ~/.config/bspwm/sxhkd/sxhkdrc ~/.config/sxhkd/sxhkdrc &"
+bash -c "sxhkd -c ~/.config/bspwm/sxhkdrc ~/.config/sxhkd/sxhkdrc &"
