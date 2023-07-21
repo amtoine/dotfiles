@@ -1,234 +1,41 @@
-#! /usr/bin/bash
+#!/usr/bin/env nu
 
-XDG_CONFIG=${XDG_CONFIG_HOME:-$HOME/.config}
-XDG_DATA=${XDG_DATA_HOME:-$HOME/.config}
+def "connect external monitor" [] {
+    let monitors = xrandr | lines | find ' connected' | split column " " name . type | select name type
 
-source "$XDG_CONFIG/bspwm/scripts/autostart.sh"
+    let primary = $monitors | where type == primary | get 0.name
+    let external = $monitors | where type != primary | get 0.name
 
-# some handy variables.
-NB_WORKSPACES_PER_MONITOR=3
-
-BORDER_RADIUS=8
-BORDER_WIDTH=4
-WINDOW_GAP=4
-
-COLOR_RESOURCES="$XDG_CONFIG/X11/Xresources"
-declare -A COLOR_MAP=(
-#+ BEGIN:palette
-    [focused_border_color]="#00ff00"
-    [active_border_color]="#ffff00"
-    [presel_feedback_color]="#00cccc"
-    [normal_border_color]="#ff0000"
-    [urgent_border_color]="#ff00ff"
-#+ END:palette
-)
-
-AUTOSTART="$XDG_CONFIG/bspwm/scripts/autostart.sh"
-SCRATCHPAD="$XDG_CONFIG/bspwm/scripts/scratchpad.sh"
-export WM_STARTUP_SOUND="/usr/share/sounds/goat-sounds-git/startup.16.mp3"
-export WM_CONKY_HELP="$XDG_CONFIG/conky/bspwm.conkyrc"
-export WM_CONKY_CLOCK="$XDG_CONFIG/conky/vision/Z333-vision.conkyrc"
-export WM_POLYBAR="$XDG_CONFIG/polybar/launch.sh"
-export WM_POLYBAR_THEME="forest"
-export WM_LOCKER="$HOME/.local/bin/slock.sh"
-
-# comment any of the following lines to change the behaviour of the startup of bspwm.
-export WM_USE_DUNST="yes"
-# export WM_USE_POLYBAR="yes"
-# export WM_USE_CONKY="yes"
-# export WM_USE_SYSTRAY="yes"
-export WM_USE_PICOM="yes"
-export WM_SET_WALLPAPERS="yes"
-# export WM_USE_AUTOLOCK="yes"
-export WM_USE_UNCLUTTER="yes"
-# export WM_USE_AUTOSAVER="yes"
-# export WM_USE_MOC="yes"
-# export WM_USE_EMACS="yes"
-
-# export WM_PULL_GITHUB="yes"
-# export WM_PULL_UPDATES="yes"
-
-export WM_PLAY_STARTUP_SOUND="yes"
-export WM_NOTIFY_AT_STARTUP="yes"
-
-export WM_LOG_NOTIFICATIONS="yes"
-export WM_NOTIFICATIONS_LOG_FILE="$XDG_DATA/notifications/log.txt"
-
-# the configuration files.
-export WM_SXHKD_COMMON="$XDG_CONFIG/sxhkd/sxhkdrc"
-export WM_SXHKD_BSPWM="$XDG_CONFIG/bspwm/sxhkd/sxhkdrc"
-
-# the environment variables used by sxhkd.
-export WM_DMFONT="mononoki Nerd Font-20"
-export WM_TERM="alacritty"
-export WM_TERM_FLAGS="-e"
-export WM_TERM_SHELL="nu"
-
-export WM_MUSIC_PLAYER="spotify"
-
-source "$XDG_CONFIG/bspwm/scripts/utils.sh"
-
-
-# tool functions.
-_build_workspaces () {
-    # Build a list of workspace ids.
-    #
-    # An example will be the best to understand the code below.
-    # Let us say we have 2 monitors connected and want 4 workspaces
-    # on each of the monitor, i.e. (1, 2, 3, 4) on the first monitor
-    # and (5, 6, 7, 8) on the second one.
-    # For the first monitor, $1 = 0 and $2 = 4:
-    #   - j = 4 * 0 + 1 = 1
-    #   - j + k, for k in (0, 1, 2, 3), gives (1, 2, 3, 4)
-    # For the second monitor, $1 = 1 and $2 = 4:
-    #   - j = 4 * 1 + 1 = 5
-    #   - j + k, for k in (0, 1, 2, 3), gives (5, 6, 7, 8)
-    #
-    # Args:
-    #   $1: the monitor id.
-    #   $2: the number of workspaces to build.
-    #
-    # Returns:
-    #   workspaces: the list of workspaces, i.e. integer ids.
-    j=$(("$2" * "$1" + 1))
-    workspaces=()
-    for (( k = 0; k < "$2"; k++ )); do
-        workspaces+=($((j + k)))
-    done
-    echo "${workspaces[@]}"
+    nu --commands $"xrandr --output ($primary) --off --output ($external) --auto"
 }
 
-
-connect_monitors () {
-    # Connect all the monitors to the bspwm socket through bspc.
-
-    log_info "connecting the monitors..." "[bspwmrc.connect_monitors]"
-
-    # get the list of all the monitors
-    monitors=($(polybar -m | awk -F: '{ print $1 }' | tr '\n' ' '))
-
-    # for each monitor, build the list of numbered monitors and connect if with
-    # bspc monitor <nanme> -n <id> -d <workspace 1> <workspace 2>...
-    for (( i = 0; i < "${#monitors[@]}"; i++ )); do
-        log_info "connecting ${monitors[$i]}..." "[bspwmrc.connect_monitors]"
-        workspaces=($(_build_workspaces "$i" "$NB_WORKSPACES_PER_MONITOR"))
-        bspc monitor "${monitors[$i]}" -n "$i" -d ${workspaces[@]}
-        log_ok "${monitors[$i]} connected!" "[bspwmrc.connect_monitors]"
-    done
-    log_ok "monitors connected!" "[bspwmrc.connect_monitors]"
+def "bspc configure" [config: record] {
+    bspc config border_width $config.border_width
+    bspc config window_gap $config.window_gap
+    bspc config top_padding $config.padding.top
+    bspc config bottom_padding $config.padding.bottom
+    bspc config left_padding $config.padding.left
+    bspc config right_padding $config.padding.right
+    bspc config single_monocle ($config.monocle.single | into string)
+    bspc config borderless_monocle ($config.monocle.borderless | into string)
+    bspc config gapless_monocle ($config.gapless | into string)
+    bspc config click_to_focus ($config.focus.need_click | into string)
+    bspc config focus_by_distance ($config.focus.by_distance | into string)
+    bspc config focus_follows_pointer ($config.focus.follow_pointer | into string)
+    bspc config history_aware_focus ($config.focus.history_aware | into string)
+    bspc config ignore_ewmh_focus ($config.focus.ignore_ewmh | into string)
+    bspc config split_ratio ($config.split_ratio | into string)
+    bspc config remove_disabled_monitors ($config.monitors.remove_disabled | into string)
+    bspc config merge_overlapping_monitors ($config.monitors.merge_overlapping | into string)
+    bspc config pointer_modifier $config.pointers.modifier
+    bspc config pointer_action1 $config.pointers.actions[0]
+    bspc config pointer_action2 $config.pointers.actions[1]
+    bspc config pointer_action3 $config.pointers.actions[2]
 }
 
+bspc configure (open ~/.config/bspwm/config.nuon)
 
-_get_color () {
-    # TODO.
-    color=$(grep "^*$1:" "$COLOR_RESOURCES" | sed 's/.*\s\+//')
-    echo "$color"
-}
+connect external monitor
 
-
-apply_colors () {
-    # TODO.
-    log_info "applying the colors..." "[bspwmrc.apply_colors]"
-    for config in "${!COLOR_MAP[@]}"; do
-        bspc config "$config" "${COLOR_MAP[$config]}"
-    done
-    log_ok "colors applied!" "[bspwmrc.apply_colors]"
-}
-
-
-CHAT_CLIENTS=(
-    "discord"
-    "Caprine"
-    "Slack"
-    "Signal"
-    "thunderbird"
-    "Gmail Desktop"
-)
-
-FLOATING_APPS=(
-    "qutebrowser-filepicker"
-    "qutebrowser-ytdl-download"
-    "config-git"
-    "htop"
-)
-
-
-apply_rules () {
-    # TODO.
-    log_info "applying the desktop rules..." "[bspwmrc.apply_rules]"
-    # force emacs to tile as it does not by default.
-    bspc rule -a Emacs state=tiled focus=on follow=on manage=on
-    # send any chat client to the last workspace of the main monitor, without focus.
-    for app in "${CHAT_CLIENTS[@]}"; do
-        bspc rule -a "$app" desktop="^$NB_WORKSPACES_PER_MONITOR" state=tiled focus=off follow=off manage=on
-    done
-    for floating_app in "${FLOATING_APPS[@]}"; do
-        bspc rule -a "$floating_app" state=floating focus=on follow=on manage=on rectangle=1600x900+160+90
-    done
-    log_ok "desktop rules applied!" "[bspwmrc.apply_rules]"
-}
-
-
-setup_scratchpads () {
-    log_info "seting up the scratchpad..." "[bspwmrc.setup_scratchpads]"
-    bspc rule -a scratchpad sticky=on state=floating hidden=on
-    # check scratchpad already running
-    [ "$(ps -x | grep -c 'scratchpad')" -eq "1" ] && st -c scratchpad -e "$SCRATCHPAD" &
-
-    bspc rule -a dropdown sticky=on state=floating hidden=on
-    st -c dropdown -e bash &
-    log_ok "scratchpad set up!" "[bspwmrc.setup_scratchpads]"
-}
-
-
-log_info "====================================================================="
-log_info "== Starting bspwm... ================================================"
-log_info "====================================================================="
-
-# the top padding needs to adapt depending on whether a bar is used.
-if [ -n "$WM_USE_POLYBAR" ]; then
-    top_padding=20
-else
-    killall polybar
-    top_padding=0
-fi
-
-# configure bspwm.
-connect_monitors
-
-log_info "starting configuration..." "[bspwmrc]"
-bspc config border_radius                 "$BORDER_RADIUS"
-bspc config border_width                  "$BORDER_WIDTH"
-bspc config window_gap                    "$WINDOW_GAP"
-bspc config top_padding                   "$top_padding"
-bspc config bottom_padding                0
-bspc config left_padding                  0
-bspc config right_padding                 0
-bspc config single_monocle                false
-bspc config click_to_focus                true
-bspc config split_ratio                   0.618
-bspc config borderless_monocle            false
-bspc config gapless_monocle               true
-bspc config focus_by_distance             true
-bspc config focus_follows_pointer         false
-bspc config history_aware_focus           true
-bspc config remove_disabled_monitors      true
-bspc config merge_overlapping_monitors    true
-bspc config pointer_modifier mod4
-bspc config pointer_action1 move
-bspc config pointer_action2 resize_side
-bspc config pointer_action3 resize_corner
-bspc config ignore_ewmh_focus true
-log_info "configuration done!" "[bspwmrc]"
-
-apply_colors
-apply_rules
-
-autostart
-
-# bspwm has been completely started
-log_ok "bspwm has been fully loaded!"
-[ -n "$WM_NOTIFY_AT_STARTUP" ] && dunstify -u normal -t 10000 -- "bspwm has been fully loaded!"
-[ -n "$WM_PLAY_STARTUP_SOUND" ] && mpv --no-video "$WM_STARTUP_SOUND" &
-
-poststart
+killall sxhkd
+bash -c "sxhkd -c ~/.config/bspwm/sxhkd/sxhkdrc ~/.config/sxhkd/sxhkdrc &"

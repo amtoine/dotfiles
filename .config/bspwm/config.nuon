@@ -1,0 +1,31 @@
+{
+    border_width: 4
+    window_gap: 4
+    padding: {
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+    }
+    monocle: {
+        single: false
+        borderless: false
+        gapless: true
+    }
+    focus: {
+        need_click: true
+        by_distance: true
+        follow_pointer: false
+        history_aware: true
+        ignore_ewmh: true
+    }
+    split_ratio: 0.618
+    monitors: {
+        remove_disabled: true
+        merge_overlapping: true
+    }
+    pointer: {
+        modifier: "mod4"
+        actions: ["move", "resize_side", "resize_corner"]
+    }
+}
