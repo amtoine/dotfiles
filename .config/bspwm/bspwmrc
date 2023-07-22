@@ -61,6 +61,8 @@ if not (pgrep picom | is-empty) {
 }
 picom --experimental-backends --daemon
 
+bash -c "dunst -conf ~/.config/dunst/dunstrc &"
+
 if not (pgrep sxhkd | is-empty) {
     killall sxhkd
 }
