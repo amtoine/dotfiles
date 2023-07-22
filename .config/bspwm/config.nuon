@@ -28,4 +28,13 @@
         modifier: "mod4"
         actions: ["move", "resize_side", "resize_corner"]
     }
+
+    color: {
+        border: {
+            focused: "#00ff00"
+            active: "#ffff00"
+            normal: "#ff0000"
+        }
+        presel_feedback: "#00cccc"
+    }
 }
