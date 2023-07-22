@@ -22,7 +22,9 @@ def "bspc configure" [config: record] {
     bspc config right_padding $config.padding.right
 }
 
-bspc configure (open ~/.config/bspwm/config.nuon)
+let config = try { open ~/.config/bspwm/config.nuon } | default {}
+
+bspc configure $config
 
 connect external monitor
 
