@@ -24,6 +24,13 @@ def "bspc configure" [config: record] {
     bspc config bottom_padding $config.padding.bottom
     bspc config left_padding $config.padding.left
     bspc config right_padding $config.padding.right
+    bspc config split_ratio ($config.split_ratio | into string)
+    bspc config remove_disabled_monitors ($config.monitors.remove_disabled | into string)
+    bspc config merge_overlapping_monitors ($config.monitors.merge_overlapping | into string)
+    bspc config pointer_modifier ($config.pointers.modifier | into string)
+    bspc config pointer_action1 $config.pointers.actions.0
+    bspc config pointer_action2 $config.pointers.actions.1
+    bspc config pointer_action3 $config.pointers.actions.2
 
     bspc config focused_border_color $config.color.border.focused
     bspc config active_border_color $config.color.border.active

@@ -24,7 +24,7 @@
         remove_disabled: true
         merge_overlapping: true
     }
-    pointer: {
+    pointers: {
         modifier: "mod4"
         actions: ["move", "resize_side", "resize_corner"]
     }
