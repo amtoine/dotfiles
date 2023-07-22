@@ -42,6 +42,7 @@ let config = try { open ~/.config/bspwm/config.nuon } | default {}
 bspc configure $config
 
 connect external monitor
+bspc monitor -d 1 2 3
 
 feh --randomize /usr/share/backgrounds/* --bg-fill --no-fehbg
 
