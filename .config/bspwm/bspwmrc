@@ -25,6 +25,16 @@ def "bspc configure" [config: record] {
     bspc config active_border_color $config.color.border.active
     bspc config presel_feedback_color $config.color.presel_feedback
     bspc config normal_border_color $config.color.border.normal
+
+    $config.windows.rules?.tile? | default [] | each {|name|
+        bspc rule -a $name state=tiled focus=on follow=on manage=on
+    }
+    $config.windows.rules?.chat_clients? | default [] | each {|name|
+        bspc rule -a $name desktop=2 state=tiled focus=off follow=off manage=on
+    }
+    $config.windows.rules?.float? | default [] | each {|name|
+        bspc rule -a $name state=floating focus=on follow=on manage=on rectangle=1600x900+160+90
+    }
 }
 
 let config = try { open ~/.config/bspwm/config.nuon } | default {}
