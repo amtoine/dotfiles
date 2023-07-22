@@ -4,17 +4,17 @@ $env.WM_TERM = "alacritty"
 $env.WM_TERM_FLAGS = "-e"
 $env.WM_TERM_SHELL = "nu"
 
-def "connect external monitor" [] {
+def "connect monitor" [] {
     let monitors = ^xrandr | lines | find ' connected' | split column " " name . type | select name type
 
     let primary = $monitors | where type == primary | get 0.name
-    let externals = $monitors | where type == primary
+    let externals = $monitors | where type != primary
 
-    if not ($externals | is-empty) {(
-        ^xrandr
-            --output $primary --off
-            --output ($externals | get 0.name) --auto
-    )}
+    if not ($externals | is-empty) {
+        ^xrandr --output $primary --off --output ($externals | get 0.name) --auto
+    } else {
+        ^xrandr --auto
+    }
 }
 
 def "bspc configure" [config: record] {
@@ -47,7 +47,7 @@ let config = try { open ~/.config/bspwm/config.nuon } | default {}
 
 bspc configure $config
 
-connect external monitor
+connect monitor
 
 feh --randomize /usr/share/backgrounds/* --bg-fill --no-fehbg
 
