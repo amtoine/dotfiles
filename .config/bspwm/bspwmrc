@@ -5,12 +5,12 @@ $env.WM_TERM_FLAGS = "-e"
 $env.WM_TERM_SHELL = "nu"
 
 def "connect external monitor" [] {
-    let monitors = xrandr | lines | find ' connected' | split column " " name . type | select name type
+    let monitors = ^xrandr | lines | find ' connected' | split column " " name . type | select name type
 
     let primary = $monitors | where type == primary | get 0.name
     let external = $monitors | where type != primary | get 0.name
 
-    nu --commands $"xrandr --output ($primary) --off --output ($external) --auto"
+    ^xrandr --output $primary --off --output $external --auto
 }
 
 def "bspc configure" [config: record] {
