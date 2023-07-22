@@ -20,6 +20,10 @@ def "bspc configure" [config: record] {
     bspc config bottom_padding $config.padding.bottom
     bspc config left_padding $config.padding.left
     bspc config right_padding $config.padding.right
+    bspc config borderless_monocle ($config.monocle.borderless | into string)
+    bspc config gapless_monocle ($config.monocle.gapless | into string)
+    bspc config click_to_focus $config.focus.click
+    bspc config ignore_ewmh_focus ($config.focus.ignore_ewmh | into string)
     bspc config split_ratio ($config.split_ratio | into string)
     bspc config remove_disabled_monitors ($config.monitors.remove_disabled | into string)
     bspc config merge_overlapping_monitors ($config.monitors.merge_overlapping | into string)

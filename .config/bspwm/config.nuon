@@ -13,10 +13,8 @@
         gapless: true
     }
     focus: {
-        need_click: true
-        by_distance: true
+        click: button1
         follow_pointer: false
-        history_aware: true
         ignore_ewmh: true
     }
     split_ratio: 0.618
