@@ -1,9 +1,5 @@
 #!/usr/bin/env nu
 
-$env.WM_TERM = "alacritty"
-$env.WM_TERM_FLAGS = "-e"
-$env.WM_TERM_SHELL = "nu"
-
 def "connect monitor" [] {
     let monitors = ^xrandr | lines | find ' connected' | split column " " name . type | select name type
 
@@ -56,6 +52,8 @@ let config = if ($config_file | path exists) {
 } else {
     {}
 }
+
+$config.env? | load-env
 
 bspc configure $config
 
