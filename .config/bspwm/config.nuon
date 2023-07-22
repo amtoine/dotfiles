@@ -45,4 +45,6 @@
             float: ["qutebrowser-filepicker", "qutebrowser-ytdl-download" , "config-git", "htop"]
         }
     }
+
+    desktops: [1 2 3]
 }

@@ -39,6 +39,8 @@ def "bspc configure" [config: record] {
     $config.windows.rules?.float? | default [] | each {|name|
         bspc rule -a $name state=floating focus=on follow=on manage=on rectangle=1600x900+160+90
     }
+
+    bspc monitor -d $config.desktops
 }
 
 let config = try { open ~/.config/bspwm/config.nuon } | default {}
@@ -46,7 +48,6 @@ let config = try { open ~/.config/bspwm/config.nuon } | default {}
 bspc configure $config
 
 connect external monitor
-bspc monitor -d 1 2 3
 
 feh --randomize /usr/share/backgrounds/* --bg-fill --no-fehbg
 
