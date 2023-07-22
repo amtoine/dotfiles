@@ -45,6 +45,11 @@ connect external monitor
 
 feh --randomize /usr/share/backgrounds/* --bg-fill --no-fehbg
 
+if not (pgrep picom | is-empty) {
+    killall picom
+}
+picom --experimental-backends --daemon
+
 if not (pgrep sxhkd | is-empty) {
     killall sxhkd
 }
