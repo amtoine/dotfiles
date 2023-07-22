@@ -43,7 +43,12 @@ def "bspc configure" [config: record] {
     bspc monitor -d $config.desktops
 }
 
-let config = try { open ~/.config/bspwm/config.nuon } | default {}
+let config_file = $env.CURRENT_FILE | path dirname | path join "config.nuon"
+let config = if ($config_file | path exists) {
+    open $config_file
+} else {
+    {}
+}
 
 bspc configure $config
 
