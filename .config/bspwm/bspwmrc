@@ -7,7 +7,7 @@ def "connect monitor" [] {
     let externals = $monitors | where type != primary
 
     if not ($externals | is-empty) {
-        ^xrandr --output $primary --off --output ($externals | get 0.name) --auto
+        ^xrandr --output $primary --off --output ($externals | get 0.name) --auto --primary
     } else {
         ^xrandr --auto
     }
