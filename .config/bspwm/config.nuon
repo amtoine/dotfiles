@@ -15,7 +15,7 @@
     focus: {
         click: button1
         follow_pointer: false
-        ignore_ewmh: true
+        ignore_ewmh: false
     }
     split_ratio: 0.618
     monitors: {
