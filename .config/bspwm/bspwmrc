@@ -44,16 +44,16 @@ def "bspc configure" [config: record] {
     bspc config normal_border_color $config.color.border.normal
 
     $config.windows.rules?.tile? | default [] | each {|name|
-        bspc rule -a $name state=tiled focus=on follow=on manage=on
+        bspc rule --add $name state=tiled focus=on follow=on manage=on
     }
     $config.windows.rules?.chat_clients? | default [] | each {|name|
-        bspc rule -a $name desktop ($config.desktops | last) state=tiled focus=off follow=off manage=on
+        bspc rule --add $name desktop ($config.desktops | last) state=tiled focus=off follow=off manage=on
     }
     $config.windows.rules?.float? | default [] | each {|name|
-        bspc rule -a $name state=floating focus=on follow=on manage=on rectangle=1600x900+160+90
+        bspc rule --add $name state=floating focus=on follow=on manage=on rectangle=1600x900+160+90
     }
 
-    bspc monitor -d $config.desktops
+    bspc monitor --reset-desktops $config.desktops
 }
 
 let config_file = $env.CURRENT_FILE | path dirname | path join "config.nuon"
