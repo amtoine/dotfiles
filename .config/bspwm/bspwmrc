@@ -34,7 +34,7 @@ def "bspc configure" [config: record] {
         bspc rule -a $name state=tiled focus=on follow=on manage=on
     }
     $config.windows.rules?.chat_clients? | default [] | each {|name|
-        bspc rule -a $name desktop=2 state=tiled focus=off follow=off manage=on
+        bspc rule -a $name desktop ($config.desktops | last) state=tiled focus=off follow=off manage=on
     }
     $config.windows.rules?.float? | default [] | each {|name|
         bspc rule -a $name state=floating focus=on follow=on manage=on rectangle=1600x900+160+90
