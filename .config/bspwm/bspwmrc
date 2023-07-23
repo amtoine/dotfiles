@@ -1,6 +1,10 @@
 #!/usr/bin/env nu
 
-def "connect monitor" [] {
+# connect a single monitor with xrandr
+#
+# when no external monitor is connected, the primary one is made auto
+# when external monitors are connected, the first one is connected and the primary one is disconnected
+def "xrandr connect monitor" [] {
     let monitors = ^xrandr | lines | find ' connected' | split column " " name . type | select name type
 
     let primary = $monitors | where type == primary | get 0.name
@@ -67,7 +71,7 @@ $config.env? | load-env
 
 bspc configure $config
 
-connect monitor
+xrandr connect monitor
 
 feh --randomize /usr/share/backgrounds/* --bg-fill --no-fehbg
 
