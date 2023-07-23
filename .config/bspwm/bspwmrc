@@ -73,7 +73,7 @@ bspc configure $config
 
 xrandr connect monitor
 
-feh --randomize /usr/share/backgrounds/* --bg-fill --no-fehbg
+feh --randomize $env.WM_BACKGROUND_DIRS --bg-fill --no-fehbg
 
 if not (pgrep picom | is-empty) {
     killall picom

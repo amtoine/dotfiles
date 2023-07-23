@@ -50,5 +50,6 @@
         WM_TERM: "alacritty"
         WM_TERM_FLAGS: "-e"
         WM_TERM_SHELL: "nu"
+        WM_BACKGROUND_DIRS: ["/usr/share/backgrounds/goat-wallpapers-git/waifu/"]
     }
 }
