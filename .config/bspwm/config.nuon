@@ -52,4 +52,5 @@
         TERM_SHELL: "nu"
         BACKGROUND_DIRS: ["/usr/share/backgrounds/goat-wallpapers-git/waifu/"]
     }
+    startup_sound: "/usr/share/sounds/goat-sounds-git/startup.16.mp3"
 }

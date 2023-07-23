@@ -87,5 +87,5 @@ if not (pgrep sxhkd | is-empty) {
 }
 bash -c $"sxhkd -c ($env.CURRENT_FILE | path dirname | path join 'sxhkdrc') ~/.config/sxhkd/sxhkdrc &"
 
-bash -c "mpv --no-video /usr/share/sounds/goat-sounds-git/startup.16.mp3 &"
+bash -c $"mpv --no-video ($config.startup_sound) &"
 notify-send --urgency normal --expire-time 3000 -- "bspwm has been fully loaded!"
