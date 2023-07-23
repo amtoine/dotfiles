@@ -61,6 +61,8 @@ def "bspc configure" [config: record] {
 }
 
 let config_file = $env.CURRENT_FILE | path dirname | path join "config.nuon"
+let keybindings_file = $env.CURRENT_FILE | path dirname | path join 'sxhkdrc'
+
 let config = if ($config_file | path exists) {
     open $config_file
 } else {
@@ -85,7 +87,7 @@ bash -c "dunst -conf ~/.config/dunst/dunstrc &"
 if not (pgrep sxhkd | is-empty) {
     killall sxhkd
 }
-bash -c $"sxhkd -c ($env.CURRENT_FILE | path dirname | path join 'sxhkdrc') ~/.config/sxhkd/sxhkdrc &"
+bash -c $"sxhkd -c ($keybindings_file) ~/.config/sxhkd/sxhkdrc &"
 
 bash -c $"mpv --no-video ($config.startup_sound) &"
 notify-send --urgency normal --expire-time 3000 -- "bspwm has been fully loaded!"
