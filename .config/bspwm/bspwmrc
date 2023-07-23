@@ -67,7 +67,7 @@ let config = if ($config_file | path exists) {
     {}
 }
 
-$config.env? | load-env
+$config.env? | transpose var val | update var { prepend "WM_" | str join } | transpose -r | into record | load-env
 
 bspc configure $config
 

@@ -47,9 +47,9 @@
     desktops: [1 2 3]
 
     env: {
-        WM_TERM: "alacritty"
-        WM_TERM_FLAGS: "-e"
-        WM_TERM_SHELL: "nu"
-        WM_BACKGROUND_DIRS: ["/usr/share/backgrounds/goat-wallpapers-git/waifu/"]
+        TERM: "alacritty"
+        TERM_FLAGS: "-e"
+        TERM_SHELL: "nu"
+        BACKGROUND_DIRS: ["/usr/share/backgrounds/goat-wallpapers-git/waifu/"]
     }
 }
