@@ -1,0 +1,56 @@
+{
+    border_width: 4
+    window_gap: 4
+    padding: {
+        top: 0
+        bottom: 0
+        left: 0
+        right: 0
+    }
+    monocle: {
+        single: false
+        borderless: false
+        gapless: true
+    }
+    focus: {
+        click: button1
+        follow_pointer: false
+        ignore_ewmh: false
+    }
+    split_ratio: 0.618
+    monitors: {
+        remove_disabled: true
+        merge_overlapping: true
+    }
+    pointers: {
+        modifier: "mod4"
+        actions: ["move", "resize_side", "resize_corner"]
+    }
+
+    color: {
+        border: {
+            focused: "#00ff00"
+            active: "#ffff00"
+            normal: "#ff0000"
+        }
+        presel_feedback: "#00cccc"
+    }
+
+    windows: {
+        rules: {
+            tile: ["Emacs"]
+            chat_clients: ["discord", "Caprine", "Slack", "Signal", "thunderbird", "Gmail Desktop"]
+            float: ["qutebrowser-filepicker", "qutebrowser-ytdl-download" , "config-git", "htop"]
+        }
+    }
+
+    desktops: [1 2 3]
+
+    env: {
+        TERM: "alacritty"
+        TERM_FLAGS: "-e"
+        TERM_SHELL: "nu"
+        BACKGROUND_DIRS: ["/usr/share/backgrounds/goat-wallpapers-git/waifu/"]
+    }
+    startup_sound: "/usr/share/sounds/goat-sounds-git/startup.16.mp3"
+}
