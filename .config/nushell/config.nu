@@ -26,8 +26,8 @@ $env.config = ($env.config? | default {} | merge {
     edit_mode: vi
     show_banner: false
     datetime_format: {
-        normal: "%a, %d %b %Y %H:%M:%S %z"
-        table: "%Y/%m/%d %H:%M:%S"
+        normal: "%a, %d %b %Y %T %z"
+        table: "%F %T"
     }
     completions: {
         algorithm: "prefix"
