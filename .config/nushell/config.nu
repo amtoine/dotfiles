@@ -203,5 +203,8 @@ def lsg [] {
 }
 alias te = table --expand
 alias news = nushell-news --force
+alias passmenu = passmenu -l 10 -bw 5 -fn "mononoki Nerd Font-20" --notify
+alias bye = sudo shutdown now
+alias later = slock
 
 happy-day
