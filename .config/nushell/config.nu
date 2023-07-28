@@ -202,8 +202,6 @@ def lsg [] {
     } | grid --color --separator " | "
 }
 alias te = table --expand
+alias news = nushell-news --force
 
-match (date now | date format "%m.%d") {
-    "03.14" => { print $'Happy (char -i 0x03c0) Day! (char -i 0x1f973)' }
-    "06.28" => { print $'Happy (char -i 0x1d70f) Day! (char -i 0x1f973)' }
-}
+happy-day
