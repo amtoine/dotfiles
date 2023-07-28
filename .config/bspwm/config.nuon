@@ -40,7 +40,7 @@
         rules: {
             tile: ["Emacs"]
             chat_clients: ["discord", "Caprine", "Slack", "Signal", "thunderbird", "Gmail Desktop"]
-            float: ["qutebrowser-filepicker", "qutebrowser-ytdl-download" , "config-git", "htop"]
+            float: ["qutebrowser-filepicker", "qutebrowser-ytdl-download" , "config-git", "htop", "float"]
         }
     }
 

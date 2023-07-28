@@ -28,7 +28,7 @@ super + z; b
 super + z; d; {c, h, p}
     dunstctl {close-all,history-pop,set-paused toggle}
 super + z; n
-    $WM_TERM --class "htop,htop" $WM_TERM_FLAGS bash -c "nmcli d | grep -w 'connected' | sed 's/\s\+/ /g'| cut -d' ' -f4; echo -e '\n\n'; ping google.com"
+    $WM_TERM --class "float,float" $WM_TERM_FLAGS bash -c "nmcli d | grep -w 'connected' | sed 's/\s\+/ /g'| cut -d' ' -f4; echo -e '\n\n'; ping google.com"
 super + z; c; {w,b}
     {networkmanager_dmenu -l 30 -bw 5 -i -fn "mononoki Nerd Font-20",rofi-bluetooth}
 super + z; p; {b,t}
