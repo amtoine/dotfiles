@@ -33,6 +33,7 @@ $env.config = ($env.config? | default {} | merge {
         algorithm: "prefix"
         case_sensitive: true
     }
+    bracketed_paste: true
 })
 
 $env.config.hooks = {
