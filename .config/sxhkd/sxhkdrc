@@ -22,6 +22,8 @@ super + {_,shift,alt} + @space
 
 super + d
     dmenu_run -l 10 -bw 5 -c -fn "mononoki Nerd Font-20"
+super + shift + q
+    $HOME/.local/bin/logout --lock slock --launcher dmenu
 
 super + z; b
     gbat --print
