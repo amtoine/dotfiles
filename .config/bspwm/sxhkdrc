@@ -32,9 +32,6 @@ super + ctrl + {m,x,y,z}
 # focus the node in the given direction
 super + {_,shift + }{h, j, k, l}
   bspc node --{focus,swap} {west, south, north, east}
-# focus the node for the given path jump
-super + {p,b,comma,period}
-  bspc node --focus @{parent,brother,first,second}
 # focus the next/previous window in the current desktop
 super + {_,shift + }c
   bspc node --focus {next,prev}.local.!hidden.window
