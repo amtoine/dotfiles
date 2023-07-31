@@ -47,8 +47,8 @@
     desktops: [1 2 3]
 
     env: {
-        TERM: "alacritty"
-        TERM_FLAGS: "-e"
+        TERM: "rio"
+        TERM_FLAGS: "--command"
         TERM_SHELL: "nu"
         BACKGROUND_DIRS: ["/usr/share/backgrounds/goat-wallpapers-git/waifu/"]
     }
