@@ -1,8 +1,0 @@
-#!/bin/sh
-
-BROWSER="qutebrowser"
-DMFONT="mononoki Nerd Font-20"
-regex='(((http|https|ftp|gopher)|mailto)[.:][^ >"\t]*|www\.[-a-z0-9.]+)[^ .,;\t>">\):]'
-url=$(grep -Po "$regex" | dmenu -l 10 -bw 5 -fn "$DMFONT" -p "Go:" -w "$WINDOWID") || exit
-$BROWSER "$url"
-exit 0

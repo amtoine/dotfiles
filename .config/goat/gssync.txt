@@ -1,4 +1,0 @@
-etc/default/grub
-etc/pacman.conf
-etc/sddm.conf
-usr/share/sddm/themes/sugar-candy/theme.conf

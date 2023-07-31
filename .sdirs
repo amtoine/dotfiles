@@ -1,3 +1,0 @@
-export DIR_qtile="$HOME/.config/qtile"
-export DIR_scripts="$HOME/.local/bin"
-export DIR_fish="$HOME/.config/fish"

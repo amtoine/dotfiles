@@ -1,9 +1,0 @@
-[[language]]
-name = "oberon"
-scope = "source.oberon"
-injection-regex = "oberon"
-file-types = ["obn", "Mod", "mod"]
-roots = []
-comment-token = "(*"
-indent = { tab-width = 4, unit = "  " }
-grammar = "pascal"
