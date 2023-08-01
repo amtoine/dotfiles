@@ -171,3 +171,5 @@ ssh-agent -c -t $env.SSH_AGENT_TIMEOUT
     | transpose -r
     | into record
     | load-env
+
+$env.SHELL = $nu.current-exe
