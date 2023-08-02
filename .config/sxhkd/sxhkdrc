@@ -16,7 +16,7 @@ super + {_,shift} + F1
     gshot {window,full} --notify
 
 super + Return
-    $WM_TERM $WM_TERM_FLAGS $WM_TERM_SHELL
+    $WM_TERM nu
 super + {_,shift,alt} + @space
     rofi -show {drun,run,window}
 
@@ -32,7 +32,7 @@ super + z; b
 super + z; d; {c, h, p}
     dunstctl {close-all,history-pop,set-paused toggle}
 super + z; n
-    $WM_TERM --class "float,float" $WM_TERM_FLAGS bash -c "\
+    $WM_TERM --class "float,float" bash -c "\
         nmcli d | grep -w 'connected' | sed 's/\s\+/ /g'| cut -d' ' -f4; \
         echo -e '\n\n'; \
         ping google.com \
@@ -45,7 +45,7 @@ super + z; c; {w,b}
 super + z; p; {b,t}
     gpcm --{blur,toggle} --notify
 super + z; h
-    $WM_TERM --class "htop,htop" $WM_TERM_FLAGS htop
+    $WM_TERM --class "htop,htop" htop
 super + z; g
     gghn
 super + z; t
