@@ -16,7 +16,7 @@ super + {_,shift} + F1
     gshot {window,full} --notify
 
 super + Return
-    $WM_TERM nu --commands '$env.SHELL = $nu.current-exe; tmux new-session -A -s default'
+    $WM_TERM nu --commands '$env.SHELL = $nu.current-exe; tmux new-session -A -s (random uuid)'
 super + {_,shift,alt} + @space
     rofi -show {drun,run,window}
 
