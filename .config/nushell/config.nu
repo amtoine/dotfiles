@@ -103,36 +103,6 @@ $env.config.keybindings = [
 
     # misc
     {
-        name: run_zellij
-        modifier: control
-        keycode: char_z
-        mode: [vi_normal, vi_insert]
-        event: {
-            send: executehostcommand
-            cmd: "nu-zellij layout open --default-shell nu"
-        }
-    }
-    {
-        name: zellij_sessionizer
-        modifier: control
-        keycode: char_f
-        mode: [vi_normal, vi_insert]
-        event: {
-            send: executehostcommand
-            cmd: "zellij-sessionizer.nu (gm list --full-path)"
-        }
-    }
-    {
-        name: goto_repo
-        modifier: control
-        keycode: char_g
-        mode: [vi_normal, vi_insert]
-        event: {
-            send: executehostcommand
-            cmd: "gm goto"
-        }
-    }
-    {
         name: edit_config
         modifier: control
         keycode: char_v
