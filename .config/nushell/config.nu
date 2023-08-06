@@ -100,18 +100,6 @@ $env.config.keybindings = [
             cmd: "exit"
         }
     }
-
-    # misc
-    {
-        name: edit_config
-        modifier: control
-        keycode: char_v
-        mode: [vi_normal, vi_insert]
-        event: {
-            send: executehostcommand
-            cmd: "dotfiles edit"
-        }
-    }
 ]
 
 $env.NUPM_CONFIG = {
@@ -176,5 +164,6 @@ alias news = nushell-news --force
 alias passmenu = passmenu -l 10 -bw 5 -fn "mononoki Nerd Font-20" --notify
 alias bye = sudo shutdown now
 alias later = slock
+alias de = dotfiles edit
 
 happy-day
