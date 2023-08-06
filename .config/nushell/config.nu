@@ -166,4 +166,4 @@ alias bye = sudo shutdown now
 alias later = slock
 alias de = dotfiles edit
 
-happy-day
+happy-day.nu
