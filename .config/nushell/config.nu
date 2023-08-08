@@ -21,6 +21,7 @@ $env.config = ($env.config? | default {} | merge {
         mode: rounded
         index_mode: always
         show_empty: true
+        header_on_separator: false
     }
     footer_mode: 25
     edit_mode: vi
