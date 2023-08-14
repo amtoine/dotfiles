@@ -173,3 +173,5 @@ ssh-agent -c -t $env.SSH_AGENT_TIMEOUT
     | load-env
 
 $env.SHELL = $nu.current-exe
+
+$env.GPG_TTY = (tty)
