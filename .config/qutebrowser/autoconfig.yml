@@ -23,7 +23,8 @@ settings:
     global: true
   content.notifications.enabled:
     https://gitlab.com: false
-    https://rocketchat.isae-supaero.fr: true
+    https://gitlab.isae-supaero.fr: false
+    https://rocketchat.isae-supaero.fr: false
   content.register_protocol_handler:
     https://mail.google.com?extsrc=mailto&url=%25s: true
     https://wali-m.isae.fr#!/Mail/0/INBOX/new?%25s: false
