@@ -127,21 +127,14 @@ shell_prompt setup --indicators {vi: {
     normal: $" (ansi reset)(ansi blue_dimmed)NORMAL(ansi reset) > "
 }}
 
-# **Note**  
-# the following modules have been installed with `nupm` from nushell/nupm#6:
-# `nupm install --path /path/to/amtoine/nu-git-manager/`
 use nu-git-manager gm
 use nu-git-manager sugar completions git *
 use nu-git-manager sugar dotfiles
 use nu-git-manager sugar gh
 use nu-git-manager sugar gist
 use nu-git-manager sugar git
-# `nupm install --path /path/to/goatfiles/scripts/nu_scripts/`
 use nu-goat-scripts misc back
 use nu-goat-scripts misc edit
-# `nupm install --path /path/to/amtoine/zellij-layouts/nu-zellij/`
-use nu-zellij
-# `nupm install --path /path/to/nushell/nu_scripts/`
 use nu-scripts/themes/themes/nushell-dark.nu
 $env.config.color_config = (nushell-dark)
 $env.config.color_config.string = {||
