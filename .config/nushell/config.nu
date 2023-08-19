@@ -154,8 +154,8 @@ def lsg [] {
     } | grid --color --separator " | "
 }
 alias te = table --expand
-alias news = nushell-news --force
-alias passmenu = passmenu -l 10 -bw 5 -fn "mononoki Nerd Font-20" --notify
+alias news = nushell-news.nu --force
+alias passmenu = passme.nu -l 10 -bw 5 -fn "mononoki Nerd Font-20" --notify
 alias bye = sudo shutdown now
 alias later = slock
 alias de = dotfiles edit
