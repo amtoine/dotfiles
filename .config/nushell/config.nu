@@ -144,6 +144,7 @@ $env.config.color_config.string = {||
 use std clip
 
 alias cfg = ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE
+alias :G = git
 alias :q = exit
 alias sl = sl -aw -20
 alias vim = edit
