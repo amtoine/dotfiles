@@ -144,21 +144,30 @@ $env.config.color_config.string = {||
 use std clip
 
 alias cfg = ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE
-alias :G = git
+alias de = dotfiles edit
+
+alias vim = ^nvim
+alias vi = ^nvim -u NONE
+alias :G = ^git
 alias :q = exit
-alias sl = sl -aw -20
-alias vim = edit
+
 alias ll = ls --all --long
 def lsg [] {
     ls --all | each {|it|
         $it.name | if $it.type == dir { append "/" } else {} | str join
-    } | grid --color --separator " | "
+    }
+    | grid --color --separator " | "
 }
+
 alias te = table --expand
-alias news = nushell-news.nu --force
-alias passmenu = passme.nu -l 10 -bw 5 -fn "mononoki Nerd Font-20" --notify
-alias bye = sudo shutdown now
-alias later = slock
-alias de = dotfiles edit
+alias ex = explore
+
+alias news = ^nushell-news.nu --force
+alias passmenu = ^passme.nu -l 10 -bw 5 -fn "mononoki Nerd Font-20" --notify
+
+alias bye = ^sudo shutdown now
+alias later = ^slock
+
+alias sl = ^sl -aw -20
 
 happy-day.nu
