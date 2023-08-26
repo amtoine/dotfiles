@@ -121,11 +121,13 @@ $env.PROMPT_INDICATOR_VI_INSERT = ' '
 $env.PROMPT_INDICATOR_VI_NORMAL = ' '
 # use starship.nu
 
-use nu-goat-scripts shell_prompt
-shell_prompt setup --indicators {vi: {
-    insert: $" (ansi reset)(ansi red_dimmed)INSERT(ansi reset) > "
-    normal: $" (ansi reset)(ansi blue_dimmed)NORMAL(ansi reset) > "
-}}
+export-env {
+    use nu-goat-scripts shell_prompt
+    shell_prompt setup --pwd-mode "basename" --indicators {vi: {
+        insert: " > "
+        normal: " > "
+    }}
+}
 
 use nu-git-manager gm
 use nu-git-manager sugar completions git *
