@@ -123,7 +123,7 @@ $env.PROMPT_INDICATOR_VI_NORMAL = ' '
 
 export-env {
     use nu-goat-scripts shell_prompt
-    shell_prompt setup --pwd-mode "basename" --indicators {vi: {
+    shell_prompt setup --pwd-mode "git" --indicators {vi: {
         insert: " > "
         normal: " > "
     }}
