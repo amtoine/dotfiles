@@ -173,3 +173,5 @@ alias later = ^slock
 alias sl = ^sl -aw -20
 
 happy-day.nu
+
+source ($nu.default-config-dir | path join "completion.nu")
