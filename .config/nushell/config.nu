@@ -18,10 +18,11 @@ $env.config = ($env.config? | default {} | merge {
         vi_normal: block
     }
     table: {
-        mode: rounded
+        mode: compact
         index_mode: always
         show_empty: true
-        header_on_separator: false
+        padding: { left: 0, right: 0 }
+        header_on_separator: true
     }
     footer_mode: 25
     edit_mode: vi
