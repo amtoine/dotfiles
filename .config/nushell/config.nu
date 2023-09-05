@@ -127,7 +127,7 @@ export-env {
     shell_prompt setup --pwd-mode "git" --indicators {vi: {
         insert: " > "
         normal: " > "
-    }}
+    }} --duration-threshold 10sec
 }
 
 use nu-git-manager gm
