@@ -22,6 +22,7 @@ settings:
   content.javascript.enabled:
     global: true
   content.notifications.enabled:
+    https://calendar.google.com: false
     https://gitlab.com: false
     https://gitlab.isae-supaero.fr: false
     https://rocketchat.isae-supaero.fr: false
