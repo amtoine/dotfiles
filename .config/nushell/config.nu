@@ -163,7 +163,7 @@ def lsg [] {
 }
 
 alias te = table --expand
-alias ex = explore ($env.explore_config? | default {})
+alias ex = nu_plugin_explore ($env.explore_config? | default {})
 
 alias news = ^nushell-news.nu --force
 alias passmenu = ^passme.nu -l 10 -bw 5 -fn "mononoki Nerd Font-20" --notify
