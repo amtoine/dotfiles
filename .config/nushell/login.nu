@@ -3,5 +3,5 @@ export-env {
     shell_prompt setup --pwd-mode "git" --indicators {vi: {
         insert: " l> "
         normal: " l> "
-    }}
+    }} --duration-threshold 10sec
 }
