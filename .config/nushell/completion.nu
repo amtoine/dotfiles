@@ -16,7 +16,29 @@ $env.config.completions.external.completer = {|tokens: list<string>|
 
     let completions = carapace $cmd nushell $tokens | from json | default []
 
-    if ($completions | where value =~ '^-.*ERR$' | is-empty) {
+    if ($completions | is-empty) {
+        let path = $tokens | last
+
+        ls $"($path)*" | each {|it|
+            let choice = if ($path | str ends-with "/") {
+                $path | path join ($it.name | path basename)
+            } else {
+                $path | path dirname | path join ($it.name | path basename)
+            }
+
+            let choice = if ($it.type == "dir") and (not ($choice | str ends-with "/")) {
+                $"($choice)/"
+            } else {
+                $choice
+            }
+
+            if ($choice | str contains " ") {
+                $"`($choice)`"
+            } else {
+                $choice
+            }
+        }
+    } else if ($completions | where value =~ '^.*ERR$' | is-empty) {
         $completions
     } else {
         null
