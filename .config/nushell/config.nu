@@ -36,6 +36,9 @@ $env.config = ($env.config? | default {} | merge {
         case_sensitive: true
     }
     bracketed_paste: true
+    filesize: {
+        metric: true
+    }
 })
 
 $env.config.hooks = {
