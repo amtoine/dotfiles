@@ -173,6 +173,7 @@ alias passmenu = ^passme.nu -l 10 -bw 5 -fn "mononoki Nerd Font-20" --notify
 alias bye = ^logout.nu
 
 # related to https://github.com/nushell/nushell/pull/10097
+alias "core cp" = cp
 alias cp = ucp
 
 alias sl = ^sl -aw -20
