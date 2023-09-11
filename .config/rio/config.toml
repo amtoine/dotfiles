@@ -1,7 +1,5 @@
 cursor = '_'
 env-vars = []
-editor = "nvim"
-font-size = 30
 padding-x = 10
 performance = "High"
 window-opacity = 1.0
@@ -24,6 +22,9 @@ use-fork = true
 
         { key = 'e', with = "control | alt", action = "OpenConfigEditor" },
     ]
+
+[fonts]
+    size = 30
 
 [developer]
     log-level = "INFO"
