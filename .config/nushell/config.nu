@@ -139,6 +139,9 @@ export-env {
     $env.config.color_config.string = {||
         if $in =~ '^#[a-fA-F\d]+' { $in } else { 'white' }
     }
+    $env.config.color_config.shape_garbage = { fg: $env.config.color_config.shape_garbage.bg, attr: u }
+    $env.config.color_config.shape_external = { fg: $env.config.color_config.shape_external, attr: u }
+    $env.config.color_config.shape_externalarg = { fg: $env.config.color_config.shape_externalarg, attr: u }
 }
 
 use nu-git-manager gm
