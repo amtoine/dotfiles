@@ -9,18 +9,9 @@ use-fork = true
 
 [bindings]
     keys = [
-        { key = 'q', with = "control | alt", action = "Quit" },
-
         { key = 'u', with = "control | alt", action = "DecreaseFontSize"},
         { key = 'i', with = "control | alt", action = "IncreaseFontSize"},
         { key = 'o', with = "control | alt", action = "ResetFontSize"},
-
-        { key = 'h', with = "control | alt", action = "TabSwitchNext"},
-        { key = 'k', with = "control | alt", action = "CreateTab"},
-        { key = 'j', with = "control | alt", action = "CloseTab"},
-        { key = 'l', with = "control | alt", action = "TabSwitchPrev"},
-
-        { key = 'e', with = "control | alt", action = "OpenConfigEditor" },
     ]
 
 [fonts]
