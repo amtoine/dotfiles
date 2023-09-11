@@ -19,3 +19,6 @@ use-fork = true
 
 [developer]
     log-level = "INFO"
+
+[navigation]
+    mode = "Plain"
