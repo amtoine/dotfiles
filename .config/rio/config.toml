@@ -9,9 +9,12 @@ use-fork = true
 
 [bindings]
     keys = [
-        { key = 'u', with = "control | alt", action = "DecreaseFontSize"},
-        { key = 'i', with = "control | alt", action = "IncreaseFontSize"},
-        { key = 'o', with = "control | alt", action = "ResetFontSize"},
+        { key = 'u', with = "control | alt", action = "DecreaseFontSize" },
+        { key = 'i', with = "control | alt", action = "IncreaseFontSize" },
+        { key = 'o', with = "control | alt", action = "ResetFontSize" },
+
+        { key = 'c', with = "control | shift", action = "Copy" },
+        { key = 'v', with = "control | shift", action = "Paste" },
     ]
 
 [fonts]
