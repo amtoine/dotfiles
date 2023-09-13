@@ -18,7 +18,3 @@ def "from nuon" []: string -> any {
         }
     }
 }
-
-def "from ndjson" []: string -> any {
-    from json --objects
-}

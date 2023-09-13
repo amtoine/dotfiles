@@ -155,6 +155,7 @@ use nu-goat-scripts misc back
 use nu-goat-scripts misc edit
 
 use std clip
+use std formats "from ndjson"
 
 alias cfg = ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE
 alias de = dotfiles edit
