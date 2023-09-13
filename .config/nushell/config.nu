@@ -142,6 +142,7 @@ export-env {
     $env.config.color_config.shape_garbage = { fg: $env.config.color_config.shape_garbage.bg, attr: u }
     $env.config.color_config.shape_external = { fg: $env.config.color_config.shape_external, attr: u }
     $env.config.color_config.shape_externalarg = { fg: $env.config.color_config.shape_externalarg, attr: u }
+    $env.config.color_config.leading_trailing_space_bg = {bg: red}
 }
 
 use nu-git-manager gm
