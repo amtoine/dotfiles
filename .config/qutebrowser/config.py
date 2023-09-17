@@ -14,8 +14,7 @@ terminal = ALACRITTY
 CSS_COMMAND = "set content.user_stylesheets"
 CSS_PATH = "~/ghq/github.com/alphapapa/solarized-everything-css/css"
 
-HOME = os.environ.get("HOME")
-DEFAULT_PAGE = "https://giphy.com/embed/3o72F8t9TDi2xVnxOE"
+DEFAULT_PAGE = "https://github.com/notifications?query=is%3Aunread"
 
 FILEPICKER = "ranger"
 
