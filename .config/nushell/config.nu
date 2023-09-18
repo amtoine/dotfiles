@@ -71,6 +71,7 @@ $env.config.hooks = {
             }
         ]
     }
+    display_output: {|| table }
 }
 
 $env.config.keybindings = [
