@@ -47,7 +47,7 @@ super + z; p; {b,t}
 super + z; h
     $WM_TERM --class "htop,htop" htop
 super + z; g
-    gghn
+    ~/.local/share/nupm/bin/gh-notifications.nu --notify --max-notifications 5
 super + z; t
     gdate
 super + z; w; f
