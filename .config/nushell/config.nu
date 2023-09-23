@@ -180,6 +180,7 @@ alias ex = nu_plugin_explore ($env.explore_config? | default {})
 alias news = ^nushell-news.nu --force
 alias passmenu = ^passme.nu -l 10 -bw 5 -fn "mononoki Nerd Font-20" --notify
 alias bye = ^logout.nu --lock "slock"
+alias gghn = do { ^gh-notifications.nu --notify --max-notifications 5 | ignore }
 
 # related to https://github.com/nushell/nushell/pull/10097
 alias "core cp" = cp
