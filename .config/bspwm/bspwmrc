@@ -93,6 +93,15 @@ picom --experimental-backends --daemon
 
 bash -c "dunst -conf ~/.config/dunst/dunstrc &"
 
+# NOTE: the condition can also be
+# ```nushell
+# not (ps | find Xorg | is-empty)
+# ```
+if $env.XDG_SESSION_TYPE? == "x11" {
+    xset s off
+    xset -dpms
+}
+
 if not (pgrep sxhkd | is-empty) {
     killall sxhkd
 }
