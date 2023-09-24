@@ -5,7 +5,11 @@
 # when no external monitor is connected, the primary one is made auto
 # when external monitors are connected, the first one is connected and the primary one is disconnected
 def "xrandr connect monitor" [] {
-    let monitors = ^xrandr | lines | find ' connected' | split column " " name . type | select name type
+    let monitors = ^xrandr
+        | lines
+        | find ' connected'
+        | split column " " name . type
+        | select name type
 
     let primary = $monitors | where type == primary | get 0.name
     let externals = $monitors | where type != primary
@@ -69,7 +73,12 @@ let config = if ($config_file | path exists) {
     {}
 }
 
-$config.env? | transpose var val | update var { prepend "WM_" | str join } | transpose -r | into record | load-env
+$config.env?
+    | transpose var val
+    | update var { prepend "WM_" | str join }
+    | transpose --header-row
+    | into record
+    | load-env
 
 bspc configure $config
 
