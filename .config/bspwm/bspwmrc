@@ -91,6 +91,8 @@ if not (pgrep picom | is-empty) {
 }
 picom --experimental-backends --daemon
 
+# FIXME: do not use `bash -c "... &"`
+# related to https://github.com/nushell/nushell/issues/247
 bash -c "dunst -conf ~/.config/dunst/dunstrc &"
 
 # NOTE: the condition can also be
@@ -105,7 +107,11 @@ if $env.XDG_SESSION_TYPE? == "x11" {
 if not (pgrep sxhkd | is-empty) {
     killall sxhkd
 }
+# FIXME: do not use `bash -c "... &"`
+# related to https://github.com/nushell/nushell/issues/247
 bash -c $"sxhkd -c ($keybindings_file) ~/.config/sxhkd/sxhkdrc &"
 
+# FIXME: do not use `bash -c "... &"`
+# related to https://github.com/nushell/nushell/issues/247
 bash -c $"mpv --no-video ($config.startup_sound) &"
 notify-send --urgency normal --expire-time 3000 -- "bspwm has been fully loaded!"
