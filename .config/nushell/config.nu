@@ -188,6 +188,8 @@ alias cp = ucp
 
 alias sl = ^sl -aw -20
 
+alias try-nu = cargo run -- -e "$env.PROMPT_COMMAND_RIGHT = 'CARGO RUN'"
+
 happy-day.nu
 
 source ($nu.default-config-dir | path join "completion.nu")
