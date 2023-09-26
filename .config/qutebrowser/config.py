@@ -8,8 +8,9 @@ def get_env(key, default=None):
 
 ALACRITTY = 0
 ST = 1
+RIO = 2
 
-terminal = ALACRITTY
+terminal = RIO
 
 CSS_COMMAND = "set content.user_stylesheets"
 CSS_PATH = "~/ghq/github.com/alphapapa/solarized-everything-css/css"
@@ -27,6 +28,9 @@ c.downloads.location.directory = downloads_dir
 if terminal == ST:
     terminal = "st"
     flags = ["-c", "qutebrowser-filepicker", "-n", "qutebrowser-filepicker"]
+elif terminal == RIO:
+    terminal = "rio"
+    flags = []
 else:
     terminal = "alacritty"
     flags = ["--class", "qutebrowser-filepicker,qutebrowser-filepicker"]
