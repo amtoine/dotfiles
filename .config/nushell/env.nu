@@ -96,6 +96,7 @@ $env.LS_COLORS = (vivid generate $env.LS_THEME)
 def-env _set_manpager [pager: string] {
     $env.MANPAGER = (match $pager {
         "bat" => "sh -c 'col -bx | bat -l man -p'",
+        "batcat" => "sh -c 'col -bx | batcat -l man -p'",
         "vim" => '/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"',
         "nvim" => "nvim -c 'set ft=man' -",
         _ => {
