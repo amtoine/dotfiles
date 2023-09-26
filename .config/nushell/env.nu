@@ -159,7 +159,9 @@ $env.NU_LIB_DIRS = [
 ]
 
 mkdir $env.STARSHIP_CACHE
-starship init nu | save --force ($env.STARSHIP_CACHE | path join "starship.nu")
+if not (which starship | is-empty) {
+    starship init nu | save --force ($env.STARSHIP_CACHE | path join "starship.nu")
+}
 
 # start the ssh agent to allow SSO with ssh authentication
 # very usefull with `github` over the ssh protocol
