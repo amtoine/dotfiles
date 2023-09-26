@@ -48,7 +48,119 @@ If you want more information about *bare* `git` repositories, you can check one 
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## 3. The install process. [[toc](#table-of-content)]
-**COMING SOON**
+### some requirements
+on Ubuntu, there are some requirements to install before anything else
+```
+# general
+sudo apt install git cmake curl
+
+# nushell
+sudo apt install libssl-dev
+
+# neovim
+sudo apt install libtool-bin gettext
+```
+
+first of all, we will install Nushell to make our lives easier:
+- install Rust and `cargo` via `rustup`
+```bash
+bash> CARGO_HOME=~/.local/share/cargo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+- install Nushell with `cargo`
+```bash
+bash> cargo install nu
+```
+- enter Nushell
+```bash
+bash> nu
+```
+- install the dotfiles
+```nushell
+git clone --bare https://github.com/goatfiles/dotfiles /tmp/dotfiles
+alias cfg = ^git --git-dir /tmp/dotfiles --work-tree $nu.home-path
+cfg reset --hard
+cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+```
+- run the following script
+```nushell
+const GRAPHICAL_SERVER = ""  # either one of `x11` or `wayland`
+
+# install Nupm and a tool to manage Git repositories
+git clone https://github.com/nushell/nupm /tmp/nupm
+git clone https://github.com/amtoine/nu-git-manager /tmp/nu-git-manager
+
+use /tmp/nupm/nupm
+nupm install --path /tmp/nu-git-manager/
+
+# download a bunch of repositories
+use nu-git-manager gm
+gm grab --bare https://github.com/goatfiles/dotfiles
+gm grab https://github.com/nushell/nushell
+gm grab https://github.com/nushell/nupm
+gm grab https://github.com/amtoine/nu-git-manager
+gm grab https://github.com/goatfiles/scripts
+gm grab https://github.com/nushell/nu_scripts
+gm grab https://github.com/raphamorim/rio
+gm grab https://github.com/goatfiles/kickstart.nvim
+
+# and install them with Nupm
+nupm install --path ($env.GIT_REPOS_HOME | path join "github.com" "goatfiles" "scripts" "nu_scripts")
+nupm install --path ($env.GIT_REPOS_HOME | path join "github.com" "goatfiles" "scripts" "nu-logout")
+nupm install --path ($env.GIT_REPOS_HOME | path join "github.com" "nushell" "nu_scripts")
+
+# install Nushell from source
+cargo install --path ($env.GIT_REPOS_HOME | path join "github.com" "nushell" "nushell")
+
+# install
+http get https://github.com/goatfiles/dotfiles/blob/main/.config/rio/install.nu | save --force /tmp/install-rio.nu
+do i
+    cd ($env.GIT_REPOS_HOME | path join "github.com/raphamorim/rio")
+    nu /tmp/install-rio.nu -g $GRAPHICAL_SERVER
+}
+```
+- install Neovim from source
+```
+git checkout v0.9.0
+make CMAKE_BUILD_TYPE=Release
+sudo make install
+
+tk setup
+tk update
+```
+- install some more software
+```
+cargo install git-delta fd-find ripgrep sd
+sudo apt install gnome-screensaver gnome-shell-extensions tmux wl-clipboard bat
+```
+
+## Ubuntu-specific instructions
+- settings > multitasking > 4 workspaces
+- settings > keyboard > default layout to us
+- edit `/etc/default/keyboard` with
+```bash
+# KEYBOARD CONFIGURATION FILE
+
+# Consult the keyboard(5) manual page.
+
+XKBMODEL="pc105"
+XKBLAYOUT="us"
+XKBVARIANT=
+XKBOPTIONS=""
+
+BACKSPACE="guess"
+```
+- settings > keyboard > bindings > custom >
+    - bye on `super + shift + q`: `rio --command nu --env-config ~/.config/nushell/env.nu --commands "logout.nu --lock 'gnome-screensaver-command --lock'"`
+    - terminal on `super + enter`: `rio --command nu --commands "$env.SHELL = $nu.current-exe; tmux new-session -A -s (random uuid)"`
+- disable settings > keyboard > bindings > windows > hide window on `super + h`
+- disable settings > keyboard > bindings > system > lock screen on `super + l`
+- settings > keyboard > bindings > navigation > move workspace left / right with `super  + h / l`
+- settings > keyboard > bindings > navigation > move window to workspace left / right with `super  + shift + h / l`
+- settings > keyboard > bindings > navigation > switch windows on `super + j`
+- settings > keyboard > bindings > navigation > switch windows directly on `super + k`
+- disable settings > power -> screen blank
+- disable settings > power > automatic suspend
+- run `gsettings set org.gnome.desktop.interface locate-pointer true`
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## 4. Contribute. [[toc](#table-of-content)]
