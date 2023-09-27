@@ -87,6 +87,13 @@ $env.config.hooks = {
 }
 
 $env.config.keybindings = [
+    {
+        name: history_menu
+        modifier: alt
+        keycode: char_h
+        mode: [emacs, vi_insert, vi_normal]
+        event: { send: menu name: history_menu }
+    }
     # basic shell features
     {
         name: reload
