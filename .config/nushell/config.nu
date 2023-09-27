@@ -72,6 +72,18 @@ $env.config.hooks = {
         ]
     }
     display_output: {|| table }
+    command_not_found: { |cmd_name|
+        try {
+            let pkgs = pkgfile --binaries --verbose $cmd_name
+            if ($pkgs | is-empty) {
+                return null
+            }
+            (
+                $"(ansi $env.config.color_config.shape_external)($cmd_name)(ansi reset) " +
+                $"may be found in the following packages:\n($pkgs)"
+            )
+        }
+    }
 }
 
 $env.config.keybindings = [
