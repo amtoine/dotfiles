@@ -97,7 +97,7 @@ $env.config.keybindings = [
     # basic shell features
     {
         name: reload
-        modifier: control
+        modifier: alt
         keycode: char_r
         mode: [emacs, vi_insert, vi_normal]
         event: {
@@ -107,7 +107,7 @@ $env.config.keybindings = [
     }
     {
         name: clear
-        modifier: control
+        modifier: alt
         keycode: char_l
         mode: [emacs, vi_normal, vi_insert]
         event: {
