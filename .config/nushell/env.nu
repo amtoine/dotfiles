@@ -90,9 +90,6 @@ $env.TERMINAL = "alacritty -e"
 $env.EDITOR = 'nvim'
 $env.VISUAL = $env.EDITOR
 
-$env.LS_THEME = "dracula"
-$env.LS_COLORS = (vivid generate $env.LS_THEME)
-
 def-env _set_manpager [pager: string] {
     $env.MANPAGER = (match $pager {
         "bat" => "sh -c 'col -bx | bat -l man -p'",
