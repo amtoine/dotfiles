@@ -129,6 +129,14 @@ $env.config.keybindings = [
             cmd: "exit"
         }
     }
+    # more
+    {
+        name: insert_newline
+        modifier: alt
+        keycode: enter
+        mode: [emacs vi_normal vi_insert]
+        event: { edit: insertnewline }
+    }
 ]
 
 $env.NUPM_CONFIG = {
