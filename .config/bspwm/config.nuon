@@ -47,7 +47,7 @@
     desktops: [1 2 3]
 
     env: {
-        TERM: "rio --command"
+        TERM: "st -e"
         BACKGROUND_DIRS: ["/usr/share/backgrounds/goat-wallpapers-git/waifu/"]
     }
     startup_sound: "/usr/share/sounds/goat-sounds-git/startup.16.mp3"
