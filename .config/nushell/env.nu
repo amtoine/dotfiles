@@ -138,7 +138,7 @@ $env.PATH = (
         | prepend ($env.GOPATH | path join "bin")
         | prepend ($env.EMACS_HOME | path join "bin")
         | prepend ($env.RUBY_HOME | path join "bin")
-        | prepend ($env.NUPM_HOME | path join "bin")
+        | prepend ($env.NUPM_HOME | path join "scripts")
         | uniq
 )
 
@@ -151,7 +151,7 @@ $env.LD_LIBRARY_PATH = (
 )
 
 $env.NU_LIB_DIRS = [
-    $env.NUPM_HOME
+    ($env.NUPM_HOME | path join "modules")
     $env.STARSHIP_CACHE
 ]
 
