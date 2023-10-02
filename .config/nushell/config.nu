@@ -69,6 +69,13 @@ $env.config.hooks = {
                 condition: {|_, after| $after | path join 'toolkit.nu' | path exists }
                 code: "overlay use --prefix toolkit.nu as tk"
             }
+            { ||
+                if (which direnv | is-empty) {
+                    return
+                }
+
+                direnv export json | from json | default {} | load-env
+            }
         ]
     }
     display_output: {|| table }
