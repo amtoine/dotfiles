@@ -197,7 +197,7 @@ use std clip
 use std formats "from ndjson"
 
 alias cfg = ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE
-alias de = dotfiles edit
+alias "cfg edit" = dotfiles edit
 
 alias vim = ^nvim
 alias vi = ^nvim -u NONE
