@@ -204,7 +204,7 @@ YOU can contribute to this project in the wonderfull world of linux, arch and co
 - if you like this config, please share it to whoever could be interested.
 - if you stumble upon bugs, ideas, new amazing color palettes or alternatives,
 - if you want to be part of the testers for my install script.
-do not hesitate to [contact me](https://amtoine.github.io/public/contact), either via email, github issues or pull requests!
+do not hesitate to [contact me](https://amtoine.github.io/contact), either via email, github issues or pull requests!
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## 5. Gallery. [[toc](#table-of-content)]
