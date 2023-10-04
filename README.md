@@ -112,7 +112,7 @@ nupm install --path ($env.GIT_REPOS_HOME | path join "github.com" "amtoine" "nu-
 # install Nushell from source
 cargo install --path ($env.GIT_REPOS_HOME | path join "github.com" "nushell" "nushell")
 
-# install
+# install the Rio terminal emulator
 http get https://github.com/goatfiles/dotfiles/blob/main/.config/rio/install.nu | save --force /tmp/install-rio.nu
 do i
     cd ($env.GIT_REPOS_HOME | path join "github.com/raphamorim/rio")
