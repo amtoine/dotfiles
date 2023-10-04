@@ -127,6 +127,10 @@ sudo make install
 tk setup
 tk update
 ```
+- install Nix
+```
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+```
 - install some more software
 ```
 cargo install git-delta fd-find ripgrep sd
