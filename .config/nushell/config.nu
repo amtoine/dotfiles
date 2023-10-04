@@ -6,9 +6,6 @@ $env.config = ($env.config? | default {} | merge {
     rm: {
         always_trash: true
     }
-    cd: {
-        abbreviations: true
-    }
     history: {
         file_format: "sqlite"
         isolation: false
