@@ -16,7 +16,7 @@ If you want a quick brief of what dotfiles really are, I recommend [this video][
 ## Table Of Content.
 - **1**     [**Overview and architecture.**](#1-overview-and-architecture-toc)
 - **2**     [**The software I use.**](#2-the-software-i-use-toc) (**coming soon**)
-- **3**     [**The install process**](#3-the-install-process-toc) (**coming soon**)
+- **3**     [**The install process**](#3-the-install-process-toc)
 - **4**     [**Contribute.**](#4-contribute-toc)
 - **5**     [**Gallery.**](#5-gallery-toc) (**coming soon**)
 
