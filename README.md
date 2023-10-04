@@ -81,50 +81,80 @@ alias cfg = ^git --git-dir /tmp/dotfiles --work-tree $nu.home-path
 cfg reset --hard
 cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 ```
-- run the following script
+- install Nupm and a tool to manage Git repositories
 ```nushell
-const GRAPHICAL_SERVER = ""  # either one of `x11` or `wayland`
-
-# install Nupm and a tool to manage Git repositories
 git clone https://github.com/nushell/nupm /tmp/nupm
 git clone https://github.com/amtoine/nu-git-manager /tmp/nu-git-manager
 
 use /tmp/nupm/nupm
+nupm install --path /tmp/nupm/
 nupm install --path /tmp/nu-git-manager/
+```
 
-# download a bunch of repositories
-use nu-git-manager gm
+> **Note**  
+> in the following we assume `nupm` and `gm` have been brought into scope with
+> ```nushell
+> use nupm
+> ```
+> and
+> ```nushell
+> use nu-git-manager gm
+> ```
+> respectively
+
+- install Nushell packages
+```
 gm grab --bare https://github.com/goatfiles/dotfiles
-gm grab https://github.com/nushell/nushell
 gm grab https://github.com/nushell/nupm
 gm grab https://github.com/amtoine/nu-git-manager
 gm grab https://github.com/goatfiles/scripts
 gm grab https://github.com/nushell/nu_scripts
+```
+```
+nupm install --path ($env.GIT_REPOS_HOME | path join "github.com/goatfiles/scripts/nu_scripts")
+nupm install --path ($env.GIT_REPOS_HOME | path join "github.com/goatfiles/scripts/nu-logout")
+nupm install --path ($env.GIT_REPOS_HOME | path join "github.com/amtoine/nu-git-manager")
+nupm install --path ($env.GIT_REPOS_HOME | path join "github.com/nushell/nu_scripts")
+```
+- install Nushell from source
+```
+gm grab https://github.com/nushell/nushell
+cargo install --path ($env.GIT_REPOS_HOME | path join "github.com/nushell/nushell")
+```
+- install the ST terminal emulator
+```
+git clone git://git.suckless.org/st ($env.GIT_REPOS_HOME | path join "git.suckless.org/st/st")
+```
+```
+# in `st/st`
+cp ~/.config/st/config.h .
+sudo make clean install
+```
+- install the Rio terminal emulator
+```
 gm grab https://github.com/raphamorim/rio
-gm grab https://github.com/goatfiles/kickstart.nvim
+```
+```
+# in `raphamorim/rio`
+const GRAPHICAL_SERVER = ""  # either one of `x11` or `wayland`
 
-# and install them with Nupm
-nupm install --path ($env.GIT_REPOS_HOME | path join "github.com" "goatfiles" "scripts" "nu_scripts")
-nupm install --path ($env.GIT_REPOS_HOME | path join "github.com" "goatfiles" "scripts" "nu-logout")
-nupm install --path ($env.GIT_REPOS_HOME | path join "github.com" "nushell" "nu_scripts")
-nupm install --path ($env.GIT_REPOS_HOME | path join "github.com" "amtoine" "nu-git-manager")
-
-# install Nushell from source
-cargo install --path ($env.GIT_REPOS_HOME | path join "github.com" "nushell" "nushell")
-
-# install the Rio terminal emulator
-http get https://github.com/goatfiles/dotfiles/blob/main/.config/rio/install.nu | save --force /tmp/install-rio.nu
-do i
+do {
     cd ($env.GIT_REPOS_HOME | path join "github.com/raphamorim/rio")
-    nu /tmp/install-rio.nu -g $GRAPHICAL_SERVER
+    nu ~/.config/rio/install.nu -g $GRAPHICAL_SERVER
 }
 ```
 - install Neovim from source
 ```
+gm grab https://github.com/neovim/neovim
+gm grab https://github.com/goatfiles/kickstart.nvim
+```
+```
+# in `neovim/neovim`
 git checkout v0.9.0
 make CMAKE_BUILD_TYPE=Release
 sudo make install
 
+# in `goatfiles/kickstart.nvim`
 tk setup
 tk update
 ```
