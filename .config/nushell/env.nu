@@ -131,14 +131,16 @@ export-env {
 $env.PATH = (
     $env.PATH
         | split row (char esep)
+        | prepend /nix/var/nix/profiles/default/bin
         | prepend ($env.XDG_DATA_HOME | path join "npm" "bin")
-        | prepend ($env.HOME | path join ".local" "bin")
         | prepend ($env.CARGO_HOME | path join "bin")
         | prepend ($env.CLANG_HOME | path join "bin")
         | prepend ($env.GOPATH | path join "bin")
         | prepend ($env.EMACS_HOME | path join "bin")
         | prepend ($env.RUBY_HOME | path join "bin")
         | prepend ($env.NUPM_HOME | path join "scripts")
+        | prepend ($env.XDG_STATE_HOME | path join "nix/profile/bin")
+        | prepend ($env.HOME | path join ".local" "bin")
         | uniq
 )
 
