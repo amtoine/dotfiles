@@ -66,6 +66,8 @@ $env.config.hooks = {
                 condition: {|_, after| $after | path join 'toolkit.nu' | path exists }
                 code: "overlay use --prefix toolkit.nu as tk"
             }
+            # FIXME: i would like to use the hook from the `nu_scripts` that was updated in
+            # https://github.com/nushell/nu_scripts/pull/628
             { ||
                 if (which direnv | is-empty) {
                     return
