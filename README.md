@@ -107,6 +107,7 @@ gm grab https://github.com/goatfiles/kickstart.nvim
 nupm install --path ($env.GIT_REPOS_HOME | path join "github.com" "goatfiles" "scripts" "nu_scripts")
 nupm install --path ($env.GIT_REPOS_HOME | path join "github.com" "goatfiles" "scripts" "nu-logout")
 nupm install --path ($env.GIT_REPOS_HOME | path join "github.com" "nushell" "nu_scripts")
+nupm install --path ($env.GIT_REPOS_HOME | path join "github.com" "amtoine" "nu-git-manager")
 
 # install Nushell from source
 cargo install --path ($env.GIT_REPOS_HOME | path join "github.com" "nushell" "nushell")
