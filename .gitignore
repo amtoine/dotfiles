@@ -8,10 +8,6 @@
 .mozilla/
 .npm/
 .pki/
-.rustup/downloads/
-.rustup/tmp/
-.rustup/toolchains/
-.rustup/update-hashes/
 .snap/
 .ssh/
 
@@ -45,6 +41,10 @@ snap/
 .config/nushell/plugins/
 # i use a fork of https://github.com/nvim-lua/kickstart.nvim
 .config/nvim
+.config/rustup/downloads/
+.config/rustup/tmp/
+.config/rustup/toolchains/
+.config/rustup/update-hashes/
 .config/vim/plugged/
 
 # the config files

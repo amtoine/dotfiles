@@ -69,6 +69,7 @@ export-env { load-env {
     QT_QPA_PLATFORMTHEME: "qt5ct"
     QUICKEMU_HOME: ($env.XDG_DATA_HOME | path join "quickemu")
     RUBY_HOME: ($env.XDG_DATA_HOME | path join "gem" "ruby" $env.GEM_VERSION)
+    RUSTUP_HOME: ($env.XDG_CONFIG_HOME | path join "rustup")
     SQLITE_HISTORY: ($env.XDG_CACHE_HOME | path join "sqlite_history")
     SSH_AGENT_TIMEOUT: 300
     SSH_KEYS_HOME: ($env.HOME | path join ".ssh" "keys")
