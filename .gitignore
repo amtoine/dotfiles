@@ -3,6 +3,7 @@
 .cargo/
 .docker/
 .gnome/
+.gnupg/
 .ipfs/
 .local/
 .mozilla/
@@ -10,15 +11,16 @@
 .pki/
 .snap/
 .ssh/
+.thunderbird/
 
 # regular directories
 documents/
 downloads/
 media/
+Screenshots/
 snap/
 
 # hidden files
-.Xauthority
 .bash_history
 .fzf.bash
 .icons/default/cursors
@@ -27,24 +29,39 @@ snap/
 .moc/equalizer
 .moc/last_directory
 .moc/softmixer
+.pam_environment
+.profile
 .python_history
+.sudo_as_admin_successful
 .viminfo
 .wget-hsts
+.Xauthority
 .zshenv
 
 # the config directories
+.config/autostart/
 .config/chromium/
 .config/discord/
+.config/enchant/
+.config/evolution/
+.config/gedit/
+.config/gnome-control-center/
+.config/goa-1.0/
 .config/grip/cache-*/
+.config/ibus/
 .config/irust/themes/
+.config/kdeconnect/
 .config/libreoffice/
 .config/nushell/plugins/
 # i use a fork of https://github.com/nvim-lua/kickstart.nvim
 .config/nvim
+.config/pulse/
+.config/Rocket.Chat/
 .config/rustup/downloads/
 .config/rustup/tmp/
 .config/rustup/toolchains/
 .config/rustup/update-hashes/
+.config/session/
 .config/vim/plugged/
 
 # the config files
@@ -55,14 +72,19 @@ snap/
 .config/btop/btop.conf
 .config/dconf/user
 .config/gh/hosts.yml
+.config/gnome-initial-setup-done
+.config/.gsd-keyboard.settings-ported
 .config/gtk-3.0/bookmarks
 .config/htop/htoprc
+.config/kactivitymanagerdrc
 .config/kconf_updaterc
 .config/kdeglobals
+.config/kglobalshortcutsrc
 .config/kolourpaintrc
 .config/lazygit/state.yml
 .config/lvim/plugin/packer_compiled.lua
 .config/menus/applications-merged/xdg-desktop-menu-dummy.menu
+.config/monitors.xml
 .config/mpd/database
 .config/mpd/pid
 .config/ncmpcpp/error.log
