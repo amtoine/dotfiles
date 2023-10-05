@@ -93,6 +93,7 @@ snap/
 .config/nushell/history.txt
 .config/nushell/plugin.nu
 .config/nvim/plugin/packer_compiled.lua
+.config/okularpartrc
 .config/okularrc
 .config/pulse/cookie
 .config/user-dirs.dirs
