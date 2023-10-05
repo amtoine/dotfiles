@@ -184,13 +184,10 @@ export-env {
 # }
 
 use nu-git-manager gm
-use nu-git-manager sugar completions git *
 use nu-git-manager sugar dotfiles
 use nu-git-manager sugar gh
-use nu-git-manager sugar gist
 use nu-git-manager sugar git
 use nu-goat-scripts misc back
-use nu-goat-scripts misc edit
 
 use std clip
 use std formats "from ndjson"
