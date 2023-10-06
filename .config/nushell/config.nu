@@ -190,7 +190,7 @@ use nu-git-manager sugar git
 use nu-goat-scripts misc back
 
 use std clip
-use std formats "from ndjson"
+use std formats ["from ndjson" "to ndjson"]
 
 alias cfg = ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE
 alias "cfg edit" = dotfiles edit
