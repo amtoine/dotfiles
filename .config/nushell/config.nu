@@ -235,3 +235,15 @@ def "from nix" []: string -> any {
 def "to nix" []: any -> string {
     to json | nix eval --expr $"builtins.fromJSON ''($in)''" | nix run `nixpkgs#alejandra` -- -q
 }
+
+def nix-dev [environment?: string] {
+    let nushell_startup = [
+        --command nu -e $"$env.PROMPT_COMMAND_RIGHT = ($environment | default "local")"
+    ]
+
+    if $environment != null {
+        nix develop $environment $nushell_startup
+    } else {
+        nix develop $nushell_startup
+    }
+}
