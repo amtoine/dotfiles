@@ -227,3 +227,11 @@ alias try-nu = cargo run -- -e "$env.PROMPT_COMMAND_RIGHT = 'CARGO RUN'"
 happy-day.nu
 
 source ($nu.default-config-dir | path join "completion.nu")
+
+def "from nix" []: string -> any {
+    nix eval --json --expr $in | from json
+}
+
+def "to nix" []: any -> string {
+    to json | nix eval --expr $"builtins.fromJSON ''($in)''" | nix run `nixpkgs#alejandra` -- -q
+}
