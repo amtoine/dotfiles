@@ -184,9 +184,6 @@ export-env {
 # }
 
 use nu-git-manager gm
-use nu-git-manager sugar dotfiles
-use nu-git-manager sugar gh
-use nu-git-manager sugar git
 use nu-goat-scripts misc back
 
 use std clip
