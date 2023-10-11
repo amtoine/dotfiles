@@ -58,5 +58,3 @@ alias bye = ^logout.nu --lock "slock"
 alias gghn = do { ^gh-notifications.nu --notify --max-notifications 5 | ignore }
 
 alias sl = ^sl -aw -20
-
-alias try-nu = cargo run -- -e "$env.PROMPT_COMMAND_RIGHT = 'CARGO RUN'"
