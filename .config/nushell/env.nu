@@ -158,6 +158,11 @@ $env.NU_LIB_DIRS = [
     $env.STARSHIP_CACHE
 ]
 
+$env.NU_PLUGIN_DIRS = [
+    ($env.CARGO_HOME | path join "bin")
+    ($env.NUPM_HOME | path join "plugins/bin")
+]
+
 mkdir $env.STARSHIP_CACHE
 if not (which starship | is-empty) {
     starship init nu | save --force ($env.STARSHIP_CACHE | path join "starship.nu")
