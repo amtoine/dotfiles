@@ -186,4 +186,16 @@ use std formats ["from ndjson" "to ndjson"]
 source ($nu.default-config-dir | path join "aliases.nu")
 source ($nu.default-config-dir | path join "completion.nu")
 
-happy-day.nu
+do {
+    let happy_day = "happy-day.nu"
+    if not (which $happy_day | is-empty) {
+        ^$happy_day
+    } else {
+        error make --unspanned {
+            msg: (
+                $"(ansi red_bold)config_script_not_found(ansi reset):\n"
+              + $"could not find `($happy_day)` in `$env.PATH`"
+            )
+        }
+    }
+}
