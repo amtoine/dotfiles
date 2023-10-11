@@ -4,7 +4,7 @@ alias "cfg edit" = do {
         error make --unspanned {
             msg: (
                 $"(ansi red_bold)environment_variable_not_found(ansi reset):\n"
-               + "`cfg edit` requires `$env.DOTFILES_GIT_DIR`"
+              + $"`(ansi default_dimmed)cfg edit(ansi reset)` requires `(ansi default_dimmed)$env.DOTFILES_GIT_DIR(ansi reset)`"
             )
         }
     }
@@ -12,7 +12,7 @@ alias "cfg edit" = do {
         error make --unspanned {
             msg: (
                 $"(ansi red_bold)environment_variable_not_found(ansi reset):\n"
-               + "`cfg edit` requires `$env.DOTFILES_WORKTREEE`"
+              + $"`(ansi default_dimmed)cfg edit(ansi reset)` requires `(ansi default_dimmed)$env.DOTFILES_WORKTREE(ansi reset)`"
             )
         }
     }
