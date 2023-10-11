@@ -22,10 +22,6 @@ alias passmenu = ^passme.nu -l 10 -bw 5 -fn "mononoki Nerd Font-20" --notify
 alias bye = ^logout.nu --lock "slock"
 alias gghn = do { ^gh-notifications.nu --notify --max-notifications 5 | ignore }
 
-# related to https://github.com/nushell/nushell/pull/10097
-alias "core cp" = cp
-alias cp = ucp
-
 alias sl = ^sl -aw -20
 
 alias try-nu = cargo run -- -e "$env.PROMPT_COMMAND_RIGHT = 'CARGO RUN'"
