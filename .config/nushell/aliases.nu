@@ -1,4 +1,6 @@
+# manage dotfiles from anywhere
 alias cfg = ^git --git-dir $env.DOTFILES_GIT_DIR --work-tree $env.DOTFILES_WORKTREE
+# edit any config file tracked as dotfiles
 alias "cfg edit" = do {
     if $env.DOTFILES_GIT_DIR? == null {
         error make --unspanned {
@@ -59,4 +61,5 @@ alias gghn = do { ^gh-notifications.nu --notify --max-notifications 5 | ignore }
 
 alias sl = ^sl -aw -20
 
+# show the disk usage
 alias "sys disk" = do { use nu-goat-scripts sys; sys disk }
