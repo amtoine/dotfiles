@@ -171,7 +171,7 @@ if not (which starship | is-empty) {
 # start the ssh agent to allow SSO with ssh authentication
 # very usefull with `github` over the ssh protocol
 #
-# see https://www.nushell.sh/cookbook/misc.html#manage-ssh-passphrases
+# see https://www.nushell.sh/cookbook/ssh_agent.html
 ssh-agent -c -t $env.SSH_AGENT_TIMEOUT
     | lines
     | first 2
