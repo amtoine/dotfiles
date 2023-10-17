@@ -10,7 +10,7 @@ ALACRITTY = 0
 ST = 1
 RIO = 2
 
-terminal = RIO
+terminal = ST
 
 CSS_COMMAND = "set content.user_stylesheets"
 CSS_PATH = "~/ghq/github.com/alphapapa/solarized-everything-css/css"
