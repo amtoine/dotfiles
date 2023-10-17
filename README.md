@@ -130,18 +130,13 @@ git clone git://git.suckless.org/st ($env.GIT_REPOS_HOME | path join "git.suckle
 cp ~/.config/st/config.h .
 sudo make clean install
 ```
-- install the Rio terminal emulator
+- install the Rio terminal emulator from source
 ```
-gm grab https://github.com/raphamorim/rio
+cargo install --force --locked --git https://github.com/raphamorim/rio
 ```
+- install the Alacritty terminal emulator from source
 ```
-# in `raphamorim/rio`
-const GRAPHICAL_SERVER = ""  # either one of `x11` or `wayland`
-
-do {
-    cd ($env.GIT_REPOS_HOME | path join "github.com/raphamorim/rio")
-    nu ~/.config/rio/install.nu -g $GRAPHICAL_SERVER
-}
+cargo install --force --locked --git https://github.com/alacritty/alacritty
 ```
 - install Neovim from source
 ```
