@@ -52,6 +52,7 @@ snap/
 .config/irust/themes/
 .config/kdeconnect/
 .config/libreoffice/
+.config/neofetch/
 .config/nushell/plugins/
 # i use a fork of https://github.com/nvim-lua/kickstart.nvim
 .config/nvim
