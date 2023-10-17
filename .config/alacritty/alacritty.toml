@@ -1,68 +1,8 @@
-working_directory = "None"
-
-[bell]
-animation = "EaseOutCirc"
-color = "0x111111"
-duration = 10
-
-[colors]
-draw_bold_text_with_bright_colors = true
-
-[debug]
-log_level = "Warn"
-persistent_logging = true
-print_events = true
-render_timer = false
-
 [env]
 TERM = "xterm-256color"
 
 [font]
-size = 25.0
-
-[font.offset]
-x = 0
-y = 0
-
-[[keyboard.bindings]]
-action = "Paste"
-key = "V"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-action = "Copy"
-key = "C"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-action = "ScrollHalfPageUp"
-key = "U"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "ScrollHalfPageDown"
-key = "D"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "ScrollToTop"
-key = "G"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "ScrollToBottom"
-key = "G"
-mods = "Alt|Shift"
-
-[[keyboard.bindings]]
-action = "Quit"
-key = "Q"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "Quit"
-key = "C"
-mods = "Alt|Shift"
+size = 20.0
 
 [[keyboard.bindings]]
 action = "ResetFontSize"
@@ -78,35 +18,3 @@ mods = "Alt|Control"
 action = "DecreaseFontSize"
 key = "U"
 mods = "Alt|Control"
-
-[mouse]
-hide_when_typing = true
-
-[mouse.double_click]
-threshold = 300
-
-[mouse.triple_click]
-threshold = 300
-
-[scrolling]
-history = 5000
-multiplier = 3
-
-[window]
-decorations = "full"
-decorations_theme_variant = "Dark"
-dynamic_padding = false
-startup_mode = "Windowed"
-title = "Alacritty"
-
-[window.class]
-general = "Alacritty"
-instance = "Alacritty"
-
-[window.dimensions]
-columns = 40
-lines = 40
-
-[window.padding]
-x = 4
-y = 4
