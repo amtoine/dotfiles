@@ -89,7 +89,7 @@ $env.TERMINAL = "alacritty -e"
 $env.EDITOR = 'nvim'
 $env.VISUAL = $env.EDITOR
 
-def-env _set_manpager [pager: string] {
+def --env _set_manpager [pager: string] {
     $env.MANPAGER = (match $pager {
         "bat" => "sh -c 'col -bx | bat -l man -p'",
         "batcat" => "sh -c 'col -bx | batcat -l man -p'",
