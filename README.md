@@ -104,11 +104,11 @@ nupm install --path /tmp/nu-git-manager/
 
 - install Nushell packages
 ```
-gm grab --bare https://github.com/goatfiles/dotfiles
-gm grab https://github.com/nushell/nupm
-gm grab https://github.com/amtoine/nu-git-manager
-gm grab https://github.com/goatfiles/scripts
-gm grab https://github.com/nushell/nu_scripts
+gm clone --bare https://github.com/goatfiles/dotfiles
+gm clone https://github.com/nushell/nupm
+gm clone https://github.com/amtoine/nu-git-manager
+gm clone https://github.com/goatfiles/scripts
+gm clone https://github.com/nushell/nu_scripts
 ```
 ```
 nupm install --path ($env.GIT_REPOS_HOME | path join "github.com/goatfiles/scripts/nu_scripts")
@@ -118,7 +118,7 @@ nupm install --path ($env.GIT_REPOS_HOME | path join "github.com/nushell/nu_scri
 ```
 - install Nushell from source
 ```
-gm grab https://github.com/nushell/nushell
+gm clone https://github.com/nushell/nushell
 cargo install --path ($env.GIT_REPOS_HOME | path join "github.com/nushell/nushell")
 ```
 - install the ST terminal emulator
@@ -140,8 +140,8 @@ cargo install --force --locked --git https://github.com/alacritty/alacritty
 ```
 - install Neovim from source
 ```
-gm grab https://github.com/neovim/neovim
-gm grab https://github.com/goatfiles/kickstart.nvim
+gm clone https://github.com/neovim/neovim
+gm clone https://github.com/goatfiles/kickstart.nvim
 ```
 ```
 # in `neovim/neovim`
