@@ -166,7 +166,7 @@ export-env {
 }
 
 export-env {
-    use nu-themes/themes/nushell-dark.nu
+    use nu-themes/nushell-dark.nu
     $env.config.color_config = (nushell-dark)
     $env.config.color_config.string = {||
         if $in =~ '^#[a-fA-F\d]+' { $in } else { 'white' }
