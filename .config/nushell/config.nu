@@ -169,7 +169,7 @@ export-env {
     $env.config.color_config.leading_trailing_space_bg = {bg: red}
 }
 
-use nu-git-manager [gm, "gm list", "gm clone", "gm root", "gm remove", "gm cache"]
+use nu-git-manager *
 use nu-goat-scripts misc back
 
 use std clip
