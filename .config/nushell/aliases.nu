@@ -63,3 +63,6 @@ alias sl = ^sl -aw -20
 
 # show the disk usage
 alias "sys disk" = do { use nu-goat-scripts sys; sys disk }
+
+alias tree = nix run nixpkgs#tree
+alias firefox = nix run nixpkgs#firefox
