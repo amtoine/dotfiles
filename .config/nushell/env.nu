@@ -127,21 +127,18 @@ export-env {
     }
 }
 
-$env.PATH = (
-    $env.PATH
-        | split row (char esep)
-        | prepend /nix/var/nix/profiles/default/bin
-        | prepend ($env.XDG_DATA_HOME | path join "npm" "bin")
-        | prepend ($env.CARGO_HOME | path join "bin")
-        | prepend ($env.CLANG_HOME | path join "bin")
-        | prepend ($env.GOPATH | path join "bin")
-        | prepend ($env.EMACS_HOME | path join "bin")
-        | prepend ($env.RUBY_HOME | path join "bin")
-        | prepend ($env.NUPM_HOME | path join "scripts")
-        | prepend ($env.XDG_STATE_HOME | path join "nix/profile/bin")
-        | prepend ($env.HOME | path join ".local" "bin")
-        | uniq
-)
+use std "path add"
+path add /nix/var/nix/profiles/default/bin
+path add ($env.XDG_DATA_HOME | path join "npm" "bin")
+path add ($env.CARGO_HOME | path join "bin")
+path add ($env.CLANG_HOME | path join "bin")
+path add ($env.GOPATH | path join "bin")
+path add ($env.EMACS_HOME | path join "bin")
+path add ($env.RUBY_HOME | path join "bin")
+path add ($env.NUPM_HOME | path join "scripts")
+path add ($env.XDG_STATE_HOME | path join "nix/profile/bin")
+path add ($env.HOME | path join ".local" "bin")
+$env.PATH = ($env.PATH | uniq)
 
 $env.LD_LIBRARY_PATH = (
     $env.LD_LIBRARY_PATH?
