@@ -49,6 +49,6 @@ super + z; h
 super + z; g
     ~/.local/share/nupm/bin/gh-notifications.nu --notify --max-notifications 5
 super + z; t
-    gdate
+    $HOME/.local/share/nupm/scripts/notify-date.nu
 super + z; w; f
     feh --no-fehbg --bg-fill --randomize /usr/share/backgrounds/*
