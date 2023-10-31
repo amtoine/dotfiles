@@ -48,6 +48,10 @@ If you want more information about *bare* `git` repositories, you can check one 
 
 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 ## 3. The install process. [[toc](#table-of-content)]
+### download Arch
+- https://archlinux.org/download/
+- https://wiki.archlinux.org/title/USB_flash_installation_medium
+
 ### some requirements
 on Ubuntu, there are some requirements to install before anything else
 ```
