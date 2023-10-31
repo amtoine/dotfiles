@@ -157,7 +157,6 @@ cargo install --path (gm list --full-path  | find "nushell/nushell" | get 0)
 ```
 - install the ST terminal emulator
 ```
-```
 # in `st/st`
 cp ~/.config/st/config.h .
 sudo make clean install
