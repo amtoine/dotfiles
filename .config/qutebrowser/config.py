@@ -42,7 +42,7 @@ c.fileselect.handler = 'external'
 c.fileselect.multiple_files.command = filepicker_cmd + ['--choosefiles={}']
 c.fileselect.single_file.command = filepicker_cmd + ['--choosefile={}']
 
-c.fonts.default_family = ["Monocraft"]
+c.fonts.default_family = ["Mononoki"]
 
 c.url.default_page = DEFAULT_PAGE
 c.url.start_pages = [DEFAULT_PAGE]
