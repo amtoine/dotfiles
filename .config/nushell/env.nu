@@ -27,7 +27,7 @@ export-env {
     $env.GIST_HOME = ($env.XDG_DOCUMENTS_DIR | path join "gists")
 
     load-env {
-        DOTFILES_GIT_DIR: ($env.GIT_REPOS_HOME | path join "github.com" "goatfiles" "dotfiles")
+        DOTFILES_GIT_DIR: ($env.GIT_REPOS_HOME | path join "github.com" "amtoine" "dotfiles")
         DOTFILES_WORKTREE: $env.HOME
     }
 }
