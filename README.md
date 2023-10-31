@@ -66,10 +66,17 @@ sudo apt install libssl-dev
 sudo apt install libtool-bin gettext
 ```
 
+on ArchLinux
+```
+# minimal
+sudo pacman -S openssl openssh vim git libxft cmake unzip xorg xorg-xinit bspwm sxhkd tmux qutebrowser xclip libnotify rofi slock
+```
+
 first of all, we will install Nushell to make our lives easier:
 - install Rust and `cargo` via `rustup`
 ```bash
-bash> CARGO_HOME=~/.local/share/cargo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+bash> export CARGO_HOME=~/.local/share/cargo
+bash> curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 - install Nushell with `cargo`
 ```bash
@@ -107,28 +114,48 @@ nupm install --path /tmp/nu-git-manager/
 > ```
 > respectively
 
+- pull down repositories
+```nushell
+const REPOS = [
+    [url,                                         bare,  fetch, push];
+
+    [git://git.suckless.org/st,                   false, git,   git],
+    [https://github.com/amtoine/nu-git-manager,   false, https, ssh],
+    [https://github.com/amtoine/dotfiles,         true,  https, ssh],
+    [https://github.com/amtoine/scripts,          false, https, ssh],
+    [https://github.com/amtoine/tmux-sessionizer, false, https, ssh],
+    [https://github.com/neovim/neovim,            false, https, https],
+    [https://github.com/nushell/nu_scripts,       false, https, https],
+    [https://github.com/nushell/nupm,             false, https, https],
+    [https://github.com/nushell/nushell,          false, https, https],
+]
+
+$REPOS | each {|repo|
+    if $repo.bare {
+        gm clone $repo.url --fetch $repo.fetch --push $repo.push --bare
+    } else {
+        gm clone $repo.url --fetch $repo.fetch --push $repo.push
+    }
+}
+```
 - install Nushell packages
-```
-gm clone --bare https://github.com/goatfiles/dotfiles
-gm clone https://github.com/nushell/nupm
-gm clone https://github.com/amtoine/nu-git-manager
-gm clone https://github.com/goatfiles/scripts
-gm clone https://github.com/nushell/nu_scripts
-```
-```
-nupm install --path ($env.GIT_REPOS_HOME | path join "github.com/goatfiles/scripts/nu_scripts")
-nupm install --path ($env.GIT_REPOS_HOME | path join "github.com/goatfiles/scripts/nu-logout")
-nupm install --path ($env.GIT_REPOS_HOME | path join "github.com/amtoine/nu-git-manager")
-nupm install --path ($env.GIT_REPOS_HOME | path join "github.com/nushell/nu_scripts")
+```nushell
+const PKGS = [
+    github.com/amtoine/nu-git-manager
+    github.com/amtoine/scripts/nu_scripts
+    github.com/amtoine/scripts/nu-logout
+    github.com/amtoine/tmux-sessionizer
+    github.com/nushell/nu_scripts
+    github.com/nushell/nupm
+]
+
+$PKGS | each {|pkg| nupm install --force --path (gm status | get root.path | path join $pkg) }
 ```
 - install Nushell from source
 ```
-gm clone https://github.com/nushell/nushell
-cargo install --path ($env.GIT_REPOS_HOME | path join "github.com/nushell/nushell")
+cargo install --path (gm list --full-path  | find "nushell/nushell" | get 0)
 ```
 - install the ST terminal emulator
-```
-git clone git://git.suckless.org/st ($env.GIT_REPOS_HOME | path join "git.suckless.org/st/st")
 ```
 ```
 # in `st/st`
@@ -144,10 +171,6 @@ cargo install --force --locked --git https://github.com/raphamorim/rio
 cargo install --force --locked --git https://github.com/alacritty/alacritty
 ```
 - install Neovim from source
-```
-gm clone https://github.com/neovim/neovim
-gm clone https://github.com/goatfiles/kickstart.nvim
-```
 ```
 # in `neovim/neovim`
 git checkout v0.9.0
