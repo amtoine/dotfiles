@@ -18,35 +18,7 @@ super + Return
 super + {_,shift,alt} + @space
     rofi -show {drun,run,window}
 
-super + d
-    dmenu_run -l 10 -bw 5 -c -fn "mononoki Nerd Font-20"
 super + shift + q
     $HOME/.local/share/nupm/scripts/logout.nu --lock slock --launcher rofi --no-ansi
 super + p
     $HOME/.local/share/nupm/scripts/passme.nu -l 10 -bw 5 -p "Select a password to copy"
-
-super + z; b
-    gbat --print
-super + z; d; {c, h, p}
-    dunstctl {close-all,history-pop,set-paused toggle}
-super + z; n
-    $WM_TERM --class "float,float" bash -c "\
-        nmcli d | grep -w 'connected' | sed 's/\s\+/ /g'| cut -d' ' -f4; \
-        echo -e '\n\n'; \
-        ping google.com \
-    "
-super + z; c; {w,b}
-    {\
-        networkmanager_dmenu -l 30 -bw 5 -i -fn "mononoki Nerd Font-20",\
-        rofi-bluetooth\
-    }
-super + z; p; {b,t}
-    gpcm --{blur,toggle} --notify
-super + z; h
-    $WM_TERM --class "htop,htop" htop
-super + z; g
-    ~/.local/share/nupm/bin/gh-notifications.nu --notify --max-notifications 5
-super + z; t
-    $HOME/.local/share/nupm/scripts/notify-date.nu
-super + z; w; f
-    feh --no-fehbg --bg-fill --randomize /usr/share/backgrounds/*
