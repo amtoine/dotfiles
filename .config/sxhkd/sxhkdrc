@@ -21,7 +21,7 @@ super + {_,shift,alt} + @space
 super + d
     dmenu_run -l 10 -bw 5 -c -fn "mononoki Nerd Font-20"
 super + shift + q
-    $HOME/.local/share/nupm/scripts/logout.nu --lock slock --launcher dmenu --no-ansi
+    $HOME/.local/share/nupm/scripts/logout.nu --lock slock --launcher rofi --no-ansi
 super + p
     $HOME/.local/share/nupm/scripts/passme.nu -l 10 -bw 5 -p "Select a password to copy"
 
