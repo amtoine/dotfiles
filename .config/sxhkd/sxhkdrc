@@ -1,19 +1,17 @@
 super + Escape
     pkill -USR1 -x sxhkd
 
-XF86MonBrightness{Down,Up}
-    notify-send "main ({-,+})"
-XF86MonBrightness{Down,Up} + shift
-    notify-send "second ({-,+})"
-XF86AudioMute
-    gmixer --toggle --channel Master --notify
-ctrl + XF86AudioMute
-    gmixer --bluetooth --notify
-XF86Audio{Lower,Raise}Volume
-    gmixer --{down,up} --channel Master --step 5 --notify
-
-super + {_,shift} + F1
-    gshot {window,full} --notify
+# FIXME: use real bindings to set the brightness and the volume
+# XF86MonBrightness{Down,Up}
+#     notify-send "main ({-,+})"
+# XF86MonBrightness{Down,Up} + shift
+#     notify-send "second ({-,+})"
+# XF86AudioMute
+#     gmixer --toggle --channel Master --notify
+# ctrl + XF86AudioMute
+#     gmixer --bluetooth --notify
+# XF86Audio{Lower,Raise}Volume
+#     gmixer --{down,up} --channel Master --step 5 --notify
 
 super + Return
     $WM_TERM nu --commands '$env.SHELL = $nu.current-exe; tmux new-session -A -s (random uuid)'
