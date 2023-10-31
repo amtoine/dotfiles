@@ -51,6 +51,7 @@ If you want more information about *bare* `git` repositories, you can check one 
 ### download Arch
 - https://archlinux.org/download/
 - https://wiki.archlinux.org/title/USB_flash_installation_medium
+- https://wiki.archlinux.org/title/Iwd#iwctl
 
 ### some requirements
 on Ubuntu, there are some requirements to install before anything else
