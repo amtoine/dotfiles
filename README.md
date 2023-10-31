@@ -69,7 +69,7 @@ sudo apt install libtool-bin gettext
 on ArchLinux
 ```
 # minimal
-sudo pacman -S openssl openssh vim git libxft cmake unzip xorg xorg-xinit bspwm sxhkd tmux qutebrowser xclip libnotify rofi slock
+sudo pacman -S openssl openssh vim git libxft cmake unzip xorg xorg-xinit bspwm sxhkd tmux qutebrowser xclip libnotify rofi slock dunst
 ```
 
 first of all, we will install Nushell to make our lives easier:
