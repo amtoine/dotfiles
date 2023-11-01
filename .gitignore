@@ -65,6 +65,7 @@ snap/
 .config/rustup/toolchains/
 .config/rustup/update-hashes/
 .config/session/
+.config/systemd/
 .config/vim/plugged/
 
 # the config files
