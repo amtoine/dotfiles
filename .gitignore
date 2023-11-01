@@ -23,6 +23,8 @@ snap/
 # hidden files
 .bash_history
 .fzf.bash
+.grip
+.grip-oggenc
 .icons/default/cursors
 .lesshst
 .lldb/lldb-widehistory
