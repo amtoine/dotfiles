@@ -67,3 +67,4 @@ alias "sys disk" = do { use nu-goat-scripts sys; sys disk }
 alias tree = nix run nixpkgs#tree
 alias firefox = nix run nixpkgs#firefox
 alias acpi = nix run nixpkgs#acpi
+alias tldr = nix run nixpkgs#tldr --
