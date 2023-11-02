@@ -68,3 +68,5 @@ alias tree = nix run nixpkgs#tree
 alias firefox = nix run nixpkgs#firefox
 alias acpi = nix run nixpkgs#acpi
 alias tldr = nix run nixpkgs#tldr --
+alias gh = nix run nixpkgs#gh --
+alias grip = nix run nixpkgs#python310Packages.grip --
