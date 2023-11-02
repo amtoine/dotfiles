@@ -88,7 +88,7 @@ bash> nu
 ```
 - install the dotfiles
 ```nushell
-git clone --bare https://github.com/goatfiles/dotfiles /tmp/dotfiles
+git clone --bare https://github.com/amtoine/dotfiles /tmp/dotfiles
 alias cfg = ^git --git-dir /tmp/dotfiles --work-tree $nu.home-path
 cfg reset --hard
 cfg config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
@@ -176,7 +176,7 @@ git checkout v0.9.0
 make CMAKE_BUILD_TYPE=Release
 sudo make install
 
-# in `goatfiles/kickstart.nvim`
+# in `amtoine/kickstart.nvim`
 tk setup
 tk update
 ```

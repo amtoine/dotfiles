@@ -48,7 +48,7 @@
 
     env: {
         TERM: "st -e"
-        BACKGROUND_DIRS: ["/usr/share/backgrounds/goat-wallpapers-git/waifu/"]
+        BACKGROUND_DIRS: ["/usr/share/backgrounds/amtoine-wallpapers-git/waifu/"]
     }
-    startup_sound: "/usr/share/sounds/goat-sounds-git/startup.16.mp3"
+    startup_sound: "/usr/share/sounds/amtoine-sounds-git/startup.16.mp3"
 }
