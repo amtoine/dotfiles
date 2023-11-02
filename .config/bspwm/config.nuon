@@ -47,7 +47,6 @@
     desktops: [1 2 3]
 
     env: {
-        TERM: "st -e"
         BACKGROUND_DIRS: ["/usr/share/backgrounds/amtoine-wallpapers-git/waifu/"]
     }
     startup_sound: "/usr/share/sounds/amtoine-sounds-git/startup.16.mp3"

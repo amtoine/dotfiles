@@ -14,7 +14,7 @@ super + Escape
 #     gmixer --{down,up} --channel Master --step 5 --notify
 
 super + Return
-    $WM_TERM nu --commands '$env.SHELL = $nu.current-exe; tmux new-session -A -s (random uuid)'
+    st -e nu --commands '$env.SHELL = $nu.current-exe; tmux new-session -A -s (random uuid)'
 super + {_,shift,alt} + @space
     rofi -show {drun,run,window}
 
