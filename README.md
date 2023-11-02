@@ -69,7 +69,7 @@ sudo apt install libtool-bin gettext
 on ArchLinux
 ```
 # minimal
-sudo pacman -S openssl openssh vim git libxft cmake unzip xorg xorg-xinit bspwm sxhkd tmux qutebrowser xclip libnotify rofi slock dunst pinentry at-spi2-core gtk3
+sudo pacman -S openssl openssh vim git libxft cmake unzip xorg xorg-xinit bspwm sxhkd tmux qutebrowser xclip libnotify rofi slock dunst pinentry at-spi2-core gtk3 bluez bluez-utils
 ```
 
 first of all, we will install Nushell to make our lives easier:
@@ -188,6 +188,11 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 ```
 cargo install git-delta fd-find ripgrep sd
 sudo apt install gnome-screensaver gnome-shell-extensions tmux wl-clipboard bat
+```
+- enable bluetooth
+```
+systemctl enable bluetooth
+reboot
 ```
 - install Discord
 ```nushell
