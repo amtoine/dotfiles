@@ -110,6 +110,7 @@ if $env.XDG_SESSION_TYPE? == "x11" {
     xset -dpms
 }
 
+$env.PATH = ($env.PATH | split row ":" | prepend ("~/.local/share/nupm/scripts/" | path expand))
 if not (pgrep sxhkd | is-empty) {
     killall sxhkd
 }

@@ -19,6 +19,6 @@ super + {_,shift,alt} + @space
     rofi -show {drun,run,window}
 
 super + shift + q
-    $HOME/.local/share/nupm/scripts/logout.nu --lock slock --launcher rofi --no-ansi
+    logout.nu --lock slock --launcher rofi --no-ansi
 super + p
-    $HOME/.local/share/nupm/scripts/passme.nu -l 10 -bw 5 -p "Select a password to copy"
+    passme.nu -l 10 -bw 5 -p "Select a password to copy"
