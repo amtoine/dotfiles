@@ -1,100 +1,60 @@
-# >>> bspwm hotkeys
-#
-# restart bspwm
+# full example [here](https://github.com/baskerville/bspwm/blob/master/examples/sxhkdrc)
+
 super + shift + r
-  bspc wm --restart
-# close and kill
+    notify-send "restarting BSPWM"; \
+    bspc wm --restart
 super + {_,shift + }w
-  bspc node --{close,kill}
-# alternate between the tiled and monocle layout
+    bspc node --{close,kill}
 super + m
-  bspc desktop --layout next
-# send the newest marked node to the newest preselected node
-super + y
-  bspc node newest.marked.local --to-node newest.!automatic.local
-# swap the current node and the biggest window
-super + g
-  bspc node --swap biggest.window
+    bspc desktop --layout next
 
-#
-# >>> state/flags
-#
-# set the window state
 super + {t,shift + t,s,f}
-  bspc node --state {tiled,pseudo_tiled,floating,fullscreen}
-# set the node flags
-super + ctrl + {m,x,y,z}
-  bspc node --flag {marked,locked,sticky,private}
+    bspc node --state {tiled,pseudo_tiled,floating,fullscreen}
 
-#
-# >>> focus/swap
-#
-# focus the node in the given direction
 super + {_,shift + }{h, j, k, l}
-  bspc node --{focus,swap} {west, south, north, east}
-# focus the next/previous window in the current desktop
+    bspc node --{focus,swap} {west, south, north, east}
 super + {_,shift + }c
-  bspc node --focus {next,prev}.local.!hidden.window
-# focus the next/previous desktop in the current monitor
+    bspc node --focus {next,prev}.local.!hidden.window
 super + bracket{left,right}
-  bspc desktop --focus {prev,next}.local
-# focus the next/previous monitor
+    bspc desktop --focus {prev,next}.local
 super + shift + bracket{left,right}
-  bspc monitor --focus {prev,next}
-# focus the last node/desktop
-super + {grave,Tab}
-  bspc {node,desktop} --focus last
-# focus the older or newer node in the focus history
+    bspc monitor --focus {prev,next}
 super + {o,i}
-  bspc wm --record-history off; \
-  bspc node {older,newer} --focus; \
-  bspc wm --record-history on
-# focus or send to the given desktop
+    bspc wm --record-history off; \
+    bspc node {older,newer} --focus; \
+    bspc wm --record-history on
+
 super + {_,shift + }{1-9,0}
-  { action="desktop --focus"; message="Switching to"; \
-  , action="node --to-desktop"; message="Sending to"; \
-  } \
-  node="{1-9,10}"; \
-  bspc $action "^$node"; \
-  if [ "$?" = 0 ]; then \
-    dunstify "bspwm/sxhkd"  "$message $node" --timeout=1000 --replace=128; \
-  fi
+    { \
+        action="desktop --focus"; message="Switching to"; \
+    ,   action="node --to-desktop"; message="Sending to"; \
+    } \
+\
+    node="{1-9,10}"; \
+    bspc $action "^$node"; \
+\
+    if [ "$?" = 0 ]; then \
+        dunstify "bspwm/sxhkd" "$message $node" --timeout=1000 --replace=128; \
+    fi
 
-#
-# >>> preselect
-#
-# preselect the direction
 super + ctrl + {h,j,k,l}
-  bspc node --presel-dir {west,south,north,east}
-# preselect the ratio
+    bspc node --presel-dir {west,south,north,east}
 super + ctrl + {1-9}
-  bspc node --presel-ratio 0.{1-9}
-# cancel the preselection for the focused node
+    bspc node --presel-ratio 0.{1-9}
 super + ctrl + space
-  bspc node --presel-dir cancel
-# cancel the preselection for the focused desktop
+    bspc node --presel-dir cancel
 super + ctrl + shift + space
-  bspc query --nodes --desktop | xargs -I id -n 1 bspc node id --presel-dir cancel
+    bspc query --nodes --desktop | xargs -I id -n 1 bspc node id --presel-dir cancel
 
-#
-# >>> move/resize
-#
-# move a floating window
-super + {Left,Down,Up,Right}
-  bspc node --move {-20 0,0 20,0 -20,20 0}
 super + {_,ctrl + }alt + {h,j,k,l}
-  { n=135; \
-  , n=10; \
-  } \
-  { d1=left;   d2=right;  dx=-$n; dy=0;   \
-  , d1=bottom; d2=top;    dx=0;   dy=$n;  \
-  , d1=top;    d2=bottom; dx=0;   dy=-$n; \
-  , d1=right;  d2=left;   dx=$n;  dy=0;   \
-  } \
-  bspc node --resize $d1 $dx $dy || bspc node --resize $d2 $dx $dy
-
-# super + shift + Return
-#   id=$(cat /tmp/scratchid);\
-#   bspc node $id --flag hidden;bspc node -f $id
-# super + control + Return
-#   bash "$HOME/.config/bspwm/scripts/dropdown.sh" dropdown
+    { \
+        n=135; \
+    ,   n=10; \
+    } \
+    { \
+        d1=left;   d2=right;  dx=-$n; dy=0;   \
+    ,   d1=bottom; d2=top;    dx=0;   dy=$n;  \
+    ,   d1=top;    d2=bottom; dx=0;   dy=-$n; \
+    ,   d1=right;  d2=left;   dx=$n;  dy=0;   \
+    } \
+    bspc node --resize $d1 $dx $dy || bspc node --resize $d2 $dx $dy
