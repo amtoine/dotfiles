@@ -150,7 +150,7 @@ $env.PROMPT_INDICATOR_VI_NORMAL = ' '
 # use starship.nu
 
 export-env {
-    use nu-goat-scripts shell_prompt
+    use nu-scripts shell_prompt
     shell_prompt setup --pwd-mode "git" --indicators {vi: {
         insert: "> "
         normal: "> "
@@ -170,7 +170,7 @@ export-env {
 }
 
 use nu-git-manager *
-use nu-goat-scripts misc back
+use nu-scripts misc back
 
 use std clip
 use std formats ["from ndjson" "to ndjson"]
