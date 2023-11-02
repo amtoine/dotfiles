@@ -22,3 +22,6 @@ super + shift + q
     logout.nu --lock slock --launcher rofi --no-ansi
 super + p
     passme.nu -l 10 -bw 5 -p "Select a password to copy"
+
+super + z; t
+    notify-date.nu
