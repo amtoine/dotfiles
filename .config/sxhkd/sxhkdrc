@@ -25,3 +25,5 @@ super + p
 
 super + z; t
     notify-date.nu
+super + z; b
+    notify-battery.nu --report --min 15 --max 85
