@@ -4,6 +4,10 @@ $env.config.completions.external = {
 }
 
 $env.config.completions.external.completer = {|tokens: list<string>|
+    if (which carapace | is-empty) {
+        return
+    }
+
     let expanded_alias = scope aliases | where name == $tokens.0 | get --ignore-errors expansion.0
 
     let tokens = if $expanded_alias != null  {
@@ -14,7 +18,7 @@ $env.config.completions.external.completer = {|tokens: list<string>|
 
     let cmd = $tokens.0 | str trim --left --char '^'
 
-    let completions = carapace $cmd nushell $tokens | from json | default []
+    let completions = ^carapace $cmd nushell $tokens | from json | default []
 
     if ($completions | is-empty) {
         let path = $tokens | last
