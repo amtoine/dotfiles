@@ -6,12 +6,10 @@ super + Escape
 #     notify-send "main ({-,+})"
 # XF86MonBrightness{Down,Up} + shift
 #     notify-send "second ({-,+})"
-# XF86AudioMute
-#     gmixer --toggle --channel Master --notify
-# ctrl + XF86AudioMute
-#     gmixer --bluetooth --notify
-# XF86Audio{Lower,Raise}Volume
-#     gmixer --{down,up} --channel Master --step 5 --notify
+XF86Audio{Lower,Raise}Volume
+    sound-manager.nu set-volume {down,up} --notify
+XF86AudioMute
+    sound-manager.nu toggle-mute --notify
 
 super + Return
     st -e nu --commands '$env.SHELL = $nu.current-exe; tmux new-session -A -s (random uuid)'
