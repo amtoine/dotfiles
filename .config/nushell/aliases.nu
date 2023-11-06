@@ -70,3 +70,6 @@ alias acpi = nix run nixpkgs#acpi
 alias tldr = nix run nixpkgs#tldr --
 alias gh = nix run nixpkgs#gh --
 alias grip = nix run nixpkgs#python310Packages.grip --
+alias pass = nix run nixpkgs#pass --
+alias feh = nix run nixpkgs#feh --
+alias kolourpaint = nix run nixpkgs#kolourpaint --
