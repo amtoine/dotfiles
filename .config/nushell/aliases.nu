@@ -73,3 +73,4 @@ alias grip = nix run nixpkgs#python310Packages.grip --
 alias pass = nix run nixpkgs#pass --
 alias feh = nix run nixpkgs#feh --
 alias kolourpaint = nix run nixpkgs#kolourpaint --
+alias glow = nix run nixpkgs#glow --
