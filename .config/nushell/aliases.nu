@@ -76,3 +76,4 @@ alias pass = nix run nixpkgs#pass --
 alias feh = nix run nixpkgs#feh --
 alias kolourpaint = nix run nixpkgs#kolourpaint --
 alias glow = nix run nixpkgs#glow --
+alias ncdu = nix run nixpkgs#ncdu --
