@@ -3,6 +3,9 @@ TERM = "xterm-256color"
 
 [font]
 size = 20.0
+normal = { family = "FiraCode Nerd Font Mono" }
+bold = { family = "FiraCode Nerd Font Mono" }
+italic = { family = "FiraCode Nerd Font Mono" }
 
 [[keyboard.bindings]]
 action = "ResetFontSize"
