@@ -75,6 +75,7 @@ snap/
 .config/bpytop/bpytop.conf
 .config/btop/btop.conf
 .config/dconf/user
+.config/flameshot/flameshot.ini
 .config/gh/hosts.yml
 .config/gnome-initial-setup-done
 .config/.gsd-keyboard.settings-ported
