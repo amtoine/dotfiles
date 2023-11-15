@@ -78,3 +78,13 @@ alias kolourpaint = nix run nixpkgs#kolourpaint --
 alias glow = nix run nixpkgs#glow --
 alias ncdu = nix run nixpkgs#ncdu --
 alias flameshot = nix run nixpkgs#flameshot --
+
+# jump to any repository managed by `nu-git-manager`
+alias "gm jump" = do --env {
+    let res = gm list | input list --fuzzy "Please chose a directory to jump to"
+    if $res == null {
+        return
+    }
+
+    cd (gm status | get root.path | path join $res)
+}
