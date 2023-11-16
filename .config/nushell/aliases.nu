@@ -88,3 +88,16 @@ alias "gm jump" = do --env {
 
     cd (gm status | get root.path | path join $res)
 }
+
+# download the latest nightly build of Nushell
+alias "nightly update" = do {
+    const MODULE = ($nu.temp-path | path join "nightly.nu")
+
+    http get https://raw.githubusercontent.com/nushell/nightly/nightly/toolkit.nu
+        | save --force --progress $MODULE
+
+    ^$nu.current-exe --commands $"
+        use ($MODULE) *
+        get-latest-nightly-build
+    "
+}
