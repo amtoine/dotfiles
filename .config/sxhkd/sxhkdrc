@@ -1,11 +1,8 @@
 super + Escape
     pkill -USR1 -x sxhkd
 
-# FIXME: use real bindings to set the brightness and the volume
-# XF86MonBrightness{Down,Up}
-#     notify-send "main ({-,+})"
-# XF86MonBrightness{Down,Up} + shift
-#     notify-send "second ({-,+})"
+XF86MonBrightness{Down,Up}
+    monitor-manager.nu set-brightness {down,up} --notify
 XF86Audio{Lower,Raise}Volume
     sound-manager.nu set-volume {down,up} --notify
 XF86AudioMute
