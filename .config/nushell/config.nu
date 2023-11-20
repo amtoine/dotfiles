@@ -172,7 +172,6 @@ export-env {
 use nu-git-manager *
 use nu-scripts misc back
 
-use std clip
 use std formats ["from ndjson" "to ndjson"]
 
 source ($nu.default-config-dir | path join "aliases.nu")

@@ -101,3 +101,8 @@ alias "nightly update" = do {
         get-latest-nightly-build
     "
 }
+
+# copy the input to the system's clipboard
+alias clip = clipboard copy --daemon
+# paste from the system's clipboard to the output
+alias paste = clipboard paste
