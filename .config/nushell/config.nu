@@ -137,17 +137,9 @@ $env.config.keybindings = [
     }
 ]
 
-$env.NU_RIGHT_PROMPT_CONFIG = {
-    compact: false
-    section_separator: " | "
-    overlay_separator: '<'
-    sections: ["overlays"]
-}
-
 $env.PROMPT_INDICATOR = ' '
 $env.PROMPT_INDICATOR_VI_INSERT = ' '
 $env.PROMPT_INDICATOR_VI_NORMAL = ' '
-# use starship.nu
 
 export-env {
     use nu-scripts shell_prompt

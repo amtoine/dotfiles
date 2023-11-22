@@ -71,7 +71,6 @@ export-env { load-env {
     SQLITE_HISTORY: ($env.XDG_CACHE_HOME | path join "sqlite_history")
     SSH_AGENT_TIMEOUT: 300
     SSH_KEYS_HOME: ($env.HOME | path join ".ssh" "keys")
-    STARSHIP_CACHE: ($env.XDG_CACHE_HOME | path join "starship")
     TERMINFO: ($env.XDG_DATA_HOME | path join "terminfo")
     TOMB_HOME: ($env.XDG_DATA_HOME | path join "tombs")
     VIMRUNTIME: ($env.XDG_DATA_HOME | path join "nvim" "runtime")
@@ -84,8 +83,6 @@ export-env { load-env {
     _Z_DATA: ($env.XDG_DATA_HOME | path join "z")
 }}
 
-$env.BROWSER = "qutebrowser"
-$env.TERMINAL = "alacritty -e"
 $env.EDITOR = 'nvim'
 $env.VISUAL = $env.EDITOR
 
@@ -165,18 +162,12 @@ $env.LD_LIBRARY_PATH = (
 
 $env.NU_LIB_DIRS = [
     ($env.NUPM_HOME | path join "modules")
-    $env.STARSHIP_CACHE
 ]
 
 $env.NU_PLUGIN_DIRS = [
     ($env.CARGO_HOME | path join "bin")
     ($env.NUPM_HOME | path join "plugins/bin")
 ]
-
-if not (which starship | is-empty) {
-    mkdir $env.STARSHIP_CACHE
-    starship init nu | save --force ($env.STARSHIP_CACHE | path join "starship.nu")
-}
 
 # start the ssh agent to allow SSO with ssh authentication
 # very usefull with `github` over the ssh protocol
