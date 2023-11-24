@@ -163,6 +163,7 @@ export-env {
 
 use nu-git-manager *
 use nu-git-manager-sugar git *
+use nu-git-manager-sugar github *
 use nu-scripts misc back
 
 use std formats ["from ndjson" "to ndjson"]
