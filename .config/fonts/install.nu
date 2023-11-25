@@ -28,8 +28,8 @@ def "font install" [
         | save --force $local_font_archive
 
     print $"(ansi cyan)EXTRACTING FONT FILES to `($font_dir)`(ansi reset)"
-    unzip $local_font_archive -d $font_dir
+    ^unzip $local_font_archive -d $font_dir
 
     print $"(ansi cyan)UPDATING FONT CACHE(ansi reset)"
-    sudo fc-cache -f -v $font_dir
+    ^sudo fc-cache -f -v $font_dir
 }
