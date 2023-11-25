@@ -25,7 +25,7 @@ export def "font install nerd" [
 
     print $"(ansi cyan)DOWNLOADING '($font)' VERSION ($version) TO `($local_font_archive)`(ansi reset)"
     http get $"($NERD_FONTS_DOWNLOAD_BASE)/v($version)/($font).zip"
-        | save --force $local_font_archive
+        | save --progress --force $local_font_archive
 
     print $"(ansi cyan)EXTRACTING FONT FILES to `($font_dir)`(ansi reset)"
     ^unzip $local_font_archive -d $font_dir
