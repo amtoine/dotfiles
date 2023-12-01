@@ -167,7 +167,7 @@ cargo install --force --locked --git https://github.com/raphamorim/rio
 ```
 - install the Alacritty terminal emulator from source
 ```
-cargo install --force --locked --git https://github.com/alacritty/alacritty
+cargo install --force --locked --git https://github.com/alacritty/alacritty --rev cad0cbec
 ```
 - install Neovim from source
 ```
