@@ -169,6 +169,10 @@ cargo install --force --locked --git https://github.com/raphamorim/rio
 ```
 cargo install --force --locked --git https://github.com/alacritty/alacritty --rev cad0cbec
 ```
+- install the Zellij terminal multiplexer
+```
+cargo install --locked zellij@0.38.0
+```
 - install Neovim from source
 ```
 # in `neovim/neovim`
