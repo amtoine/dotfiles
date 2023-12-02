@@ -142,11 +142,13 @@ $env.PROMPT_INDICATOR_VI_INSERT = ' '
 $env.PROMPT_INDICATOR_VI_NORMAL = ' '
 
 export-env {
-    use nu-scripts shell_prompt
-    shell_prompt setup --pwd-mode "git" --indicators {vi: {
-        insert: "> "
-        normal: "> "
-    }} --duration-threshold 10sec
+    use nu-git-manager-sugar git-prompt setup
+    setup --duration-threshold 10sec --indicators {
+        vi: {
+            insert: "> "
+            normal: "> "
+        }
+    }
 }
 
 export-env {
