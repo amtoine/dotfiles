@@ -14,7 +14,7 @@ super + {_,shift,alt} + @space
     rofi -show {drun,run,window}
 
 super + shift + q
-    logout.nu --lock slock --launcher rofi --no-ansi
+    alacritty -e nu --env-config ~/.config/nushell/env.nu --commands "logout.nu --lock slock --sudo"
 super + p
     passme.nu -l 10 -bw 5 -p "Select a password to copy"
 
