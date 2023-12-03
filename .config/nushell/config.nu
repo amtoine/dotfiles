@@ -145,7 +145,7 @@ $env.PROMPT_INDICATOR_VI_INSERT = ' '
 $env.PROMPT_INDICATOR_VI_NORMAL = ' '
 
 export-env {
-    use nu-git-manager-sugar git-prompt setup
+    use nu-git-manager-sugar git prompt setup
     setup --duration-threshold 10sec --indicators {
         vi: {
             insert: "> "
