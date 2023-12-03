@@ -104,7 +104,10 @@ $env.config.keybindings = [
         mode: [emacs, vi_insert, vi_normal]
         event: {
             send: executehostcommand,
-            cmd: "source $nu.config-path; source $nu.env-path"
+            cmd: "
+                source $nu.env-path
+                source $nu.config-path
+            "
         }
     }
     {
