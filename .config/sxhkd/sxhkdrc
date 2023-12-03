@@ -9,7 +9,7 @@ XF86AudioMute
     sound-manager.nu toggle-mute --notify
 
 super + Return
-    alacritty -e nu --commands '$env.SHELL = $nu.current-exe; tmux new-session -A -s (random uuid)'
+    alacritty -e zellij options --default-shell nu
 super + {_,shift,alt} + @space
     rofi -show {drun,run,window}
 
