@@ -38,8 +38,6 @@ alias "cfg edit" = do {
     ^$env.EDITOR $config_file
 }
 
-alias vim = ^nvim
-alias vi = ^nvim -u NONE
 alias :G = ^git
 alias :q = exit
 
@@ -78,6 +76,7 @@ alias kolourpaint = nix run nixpkgs#kolourpaint --
 alias glow = nix run nixpkgs#glow --
 alias ncdu = nix run nixpkgs#ncdu --
 alias flameshot = nix run nixpkgs#flameshot --
+alias vim = nix run nixpkgs#vim -- -u NONE
 
 # jump to any repository managed by `nu-git-manager`
 alias "gm jump" = do --env {
