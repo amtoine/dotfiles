@@ -53,7 +53,17 @@ alias te = table --expand
 alias ex = nu_plugin_explore ($env.explore_config? | default {})
 
 alias news = ^nushell-news.nu --force
-alias passmenu = ^passme.nu -l 10 -bw 5 -fn "mononoki Nerd Font-20" --notify
+alias passmenu = do {
+    let res = glob ($env.PASSWORD_STORE_DIR | path join "**/*.gpg")
+        | parse --regex $'^($env.PASSWORD_STORE_DIR)(char path_sep)(char lparen)?<entry>.*(char rparen)\.gpg'
+        | get entry
+        | input list --fuzzy
+    if $res == null {
+        return
+    }
+
+    pass show -c $res
+}
 alias bye = ^logout.nu --lock "slock"
 alias gghn = do { ^gh-notifications.nu --notify --max-notifications 5 | ignore }
 
