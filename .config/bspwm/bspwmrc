@@ -101,11 +101,7 @@ if not (which dunst | is-empty) {
     bash -c "dunst -conf ~/.config/dunst/dunstrc &"
 }
 
-# NOTE: the condition can also be
-# ```nushell
-# not (ps | find Xorg | is-empty)
-# ```
-if $env.XDG_SESSION_TYPE? == "x11" {
+if not (ps | find Xorg | is-empty) {
     xset s off
     xset -dpms
 }
