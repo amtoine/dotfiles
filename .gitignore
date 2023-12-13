@@ -8,6 +8,7 @@
 .local/
 .mozilla/
 .npm/
+.opam/
 .pki/
 .snap/
 .ssh/
