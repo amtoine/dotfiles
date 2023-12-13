@@ -42,6 +42,7 @@ snap/
 .zshenv
 
 # the config directories
+.config/.keymapp/
 .config/autostart/
 .config/chromium/
 .config/discord/
