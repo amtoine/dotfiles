@@ -1,5 +1,12 @@
 #!/usr/bin/env nu
 
+def log [msg: string]: nothing -> nothing {
+    mkdir ~/.cache/bspwm
+    $"(date now | format date "%+")|($msg)\n" | save --force --append ~/.cache/bspwm/log.txt
+}
+
+log "STARTING BSPWM"
+
 # connect a single monitor with xrandr
 #
 # when no external monitor is connected, the primary one is made auto
@@ -81,18 +88,22 @@ $config.env?
     | load-env
 
 bspc configure $config
+log "bspc configured"
 
 xrandr connect monitor
+log "monitor connected"
 
 if not (which dunst | is-empty) {
     # FIXME: do not use `bash -c "... &"`
     # related to https://github.com/nushell/nushell/issues/247
     bash -c "dunst -conf ~/.config/dunst/dunstrc &"
+    log "dunst started"
 }
 
 if not (ps | find Xorg | is-empty) {
     xset s off
     xset -dpms
+    log "DPMS disabled"
 }
 
 $env.PATH = ($env.PATH | split row ":" | prepend ("~/.local/share/nupm/scripts/" | path expand))
@@ -102,5 +113,7 @@ if not (pgrep sxhkd | is-empty) {
 # FIXME: do not use `bash -c "... &"`
 # related to https://github.com/nushell/nushell/issues/247
 bash -c $"sxhkd -c ($keybindings_file) ~/.config/sxhkd/sxhkdrc &"
+log "SXHKD started"
 
 notify-send --urgency normal --expire-time 3000 -- "bspwm has been fully loaded!"
+log "BSPWM fully loaded"
