@@ -161,7 +161,8 @@ $env.LD_LIBRARY_PATH = (
 )
 
 $env.NU_LIB_DIRS = [
-    ($env.NUPM_HOME | path join "modules")
+    ($env.NUPM_HOME | path join "modules"),
+    ($nu.default-config-dir | path join "overlays")
 ]
 
 $env.NU_PLUGIN_DIRS = [
