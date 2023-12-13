@@ -84,17 +84,6 @@ bspc configure $config
 
 xrandr connect monitor
 
-if not (which feh | is-empty) {
-    feh --randomize $env.WM_BACKGROUND_DIRS --bg-fill --no-fehbg
-}
-
-if not (which picom | is-empty) {
-    if not (pgrep picom | is-empty) {
-        killall picom
-    }
-    picom --experimental-backends --daemon
-}
-
 if not (which dunst | is-empty) {
     # FIXME: do not use `bash -c "... &"`
     # related to https://github.com/nushell/nushell/issues/247
@@ -114,9 +103,4 @@ if not (pgrep sxhkd | is-empty) {
 # related to https://github.com/nushell/nushell/issues/247
 bash -c $"sxhkd -c ($keybindings_file) ~/.config/sxhkd/sxhkdrc &"
 
-if not (which mpv | is-empty) {
-    # FIXME: do not use `bash -c "... &"`
-    # related to https://github.com/nushell/nushell/issues/247
-    bash -c $"mpv --no-video ($config.startup_sound) &"
-}
 notify-send --urgency normal --expire-time 3000 -- "bspwm has been fully loaded!"
