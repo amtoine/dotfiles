@@ -62,7 +62,7 @@ alias passmenu = do {
         return
     }
 
-    pass show -c $res
+    nix run nixpkgs#pass -- show -c $res
 }
 alias bye = ^logout.nu --lock "slock"
 alias gghn = do { ^gh-notifications.nu --notify --max-notifications 5 | ignore }
