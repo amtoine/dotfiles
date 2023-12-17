@@ -64,7 +64,7 @@ alias passmenu = do {
 
     nix run nixpkgs#pass -- show -c $res
 }
-alias bye = ^logout.nu --lock "slock"
+alias bye = ^nu-logout.nu --lock "slock"
 alias gghn = do { ^gh-notifications.nu --notify --max-notifications 5 | ignore }
 
 alias sl = ^sl -aw -20

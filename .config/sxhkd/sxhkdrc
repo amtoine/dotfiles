@@ -2,11 +2,11 @@ super + Escape
     pkill -USR1 -x sxhkd
 
 XF86MonBrightness{Down,Up}
-    monitor-manager.nu set-brightness {down,up} --notify
+    nu-monitor-manager.nu set-brightness {down,up} --notify
 XF86Audio{Lower,Raise}Volume
-    sound-manager.nu set-volume {down,up} --notify
+    nu-sound-manager.nu set-volume {down,up} --notify
 XF86AudioMute
-    sound-manager.nu toggle-mute --notify
+    nu-sound-manager.nu toggle-mute --notify
 
 super + Return
     alacritty -e nu --commands '$env.SHELL = $nu.current-exe; tmux new-session -A -s (random uuid)'
@@ -14,7 +14,7 @@ super + {_,shift,alt} + @space
     rofi -show {drun,run,window}
 
 super + shift + q
-    alacritty -e nu --env-config ~/.config/nushell/env.nu --commands "logout.nu --lock slock --sudo"
+    alacritty -e nu --env-config ~/.config/nushell/env.nu --commands "nu-logout.nu --lock slock --sudo"
 super + p
     passme.nu -l 10 -bw 5 -p "Select a password to copy"
 
