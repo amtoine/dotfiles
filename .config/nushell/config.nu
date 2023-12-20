@@ -64,9 +64,19 @@ $env.config.hooks = {
             },
             {
                 condition: {|_, after| $after | path join 'toolkit.nu' | path exists }
-                code: "overlay use --prefix toolkit.nu as tk"
+                code: "
+                    print 'loading toolkit'
+                    overlay use --prefix toolkit.nu as tk
+                "
             },
             (source nu-hooks/direnv/config.nu)
+            {
+                condition: {|_, after| $after | path join 'dune-project' | path exists }
+                code: "
+                    print 'loading OCaml'
+                    overlay use ocaml.nu
+                "
+            },
         ]
     }
     display_output: {|| table }
