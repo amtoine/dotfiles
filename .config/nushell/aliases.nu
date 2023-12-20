@@ -88,6 +88,7 @@ alias ncdu = nix run nixpkgs#ncdu --
 alias flameshot = nix run nixpkgs#flameshot --
 alias vim = nix run nixpkgs#vim -- -u NONE
 alias npm = nix shell nixpkgs#nodejs --command npm
+alias okular = nix run nixpkgs#okular --
 
 # jump to any repository managed by `nu-git-manager`
 alias "gm jump" = do --env {
