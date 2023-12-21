@@ -67,6 +67,7 @@ $env.config.hooks = {
                 code: "
                     print 'loading toolkit'
                     overlay use --prefix toolkit.nu as tk
+                    print (overlay list)
                 "
             },
             (source nu-hooks/direnv/config.nu)
@@ -75,6 +76,7 @@ $env.config.hooks = {
                 code: "
                     print 'loading OCaml'
                     overlay use ocaml.nu
+                    print (overlay list)
                 "
             },
         ]
