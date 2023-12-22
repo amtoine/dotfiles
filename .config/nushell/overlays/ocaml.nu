@@ -1,12 +1,10 @@
-export alias opam = nix run nixpkgs#opam --
-
 export-env {
-    let res = do { opam env } | complete
+    let res = do { ^opam env } | complete
     if $res.exit_code != 0 {
-        opam init
+        ^opam init
     }
 
-    opam env
+    ^opam env
         | lines
         | parse "{name}='{value}'; export {rest}"
         | reject rest
