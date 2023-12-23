@@ -72,7 +72,7 @@ alias sl = ^sl -aw -20
 # show the disk usage
 alias "sys disk" = do { use nu-scripts sys; sys disk }
 # open PDF documents in Okular
-alias "pdf" = do { use nu-scripts misc "open pdf"; open pdf --no-swallow true }
+alias "pdf" = do { use nu-scripts misc "open pdf"; open pdf --no-swallow }
 
 alias tree = nix run nixpkgs#tree --
 alias firefox = nix run nixpkgs#firefox --
