@@ -6,8 +6,8 @@ export def "opam switch-list" []: nothing -> table<switch: string, current: bool
         | update switch { str replace (pwd) "." | str replace $nu.home-path "~" }
 }
 
-export def --env "opam switch-activate" []: nothing -> nothing {
-    ^opam env
+export def --env "opam switch-activate" [--switch: string = "default"]: nothing -> nothing {
+    ^opam env --switch $switch --set-switch
         | lines
         | parse "{name}='{value}'; export {rest}"
         | reject rest
