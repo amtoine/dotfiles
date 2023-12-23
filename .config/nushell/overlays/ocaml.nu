@@ -1,3 +1,11 @@
+export def "opam switch-list" []: nothing -> table<switch: string, current: bool> {
+    ^opam switch list --short
+        | lines
+        | wrap switch
+        | insert current {|it| $it.switch == (^opam switch show)}
+        | update switch { str replace (pwd) "." | str replace $nu.home-path "~" }
+}
+
 export def --env "opam switch-activate" []: nothing -> nothing {
     ^opam env
         | lines
