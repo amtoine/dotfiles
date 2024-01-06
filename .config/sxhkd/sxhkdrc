@@ -9,14 +9,20 @@ XF86AudioMute
     nu-sound-manager.nu toggle-mute --notify
 
 super + Return
-    alacritty -e nu --commands '$env.SHELL = $nu.current-exe; tmux new-session -A -s (random uuid)'
+    alacritty -e nu \
+        --commands '$env.SHELL = $nu.current-exe; tmux new-session -A -s (random uuid)'
 super + {_,shift,alt} + @space
     rofi -show {drun,run,window}
 
 super + shift + q
-    alacritty -e nu --env-config ~/.config/nushell/env.nu --commands "nu-logout.nu --lock slock --sudo"
+    alacritty -e nu \
+        --env-config ~/.config/nushell/env.nu \
+        --commands "nu-logout.nu --lock slock --sudo"
 super + p
-    alacritty -e nu --env-config ~/.config/nushell/env.nu --config ~/.config/nushell/config.nu --commands "passmenu"
+    alacritty -e nu \
+        --env-config ~/.config/nushell/env.nu \
+        --config ~/.config/nushell/config.nu \
+        --commands "passmenu"
 
 super + z; t
     notify-date.nu
