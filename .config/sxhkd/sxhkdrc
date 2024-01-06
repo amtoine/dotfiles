@@ -16,7 +16,7 @@ super + {_,shift,alt} + @space
 super + shift + q
     alacritty -e nu --env-config ~/.config/nushell/env.nu --commands "nu-logout.nu --lock slock --sudo"
 super + p
-    passme.nu -l 10 -bw 5 -p "Select a password to copy"
+    alacritty -e nu --env-config ~/.config/nushell/env.nu --config ~/.config/nushell/config.nu --commands "passmenu"
 
 super + z; t
     notify-date.nu
