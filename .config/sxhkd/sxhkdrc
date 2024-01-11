@@ -2,7 +2,7 @@ super + Escape
     pkill -USR1 -x sxhkd
 
 XF86MonBrightness{Down,Up}
-    nu-monitor-manager.nu set-brightness eDP-1 {down,up} --notify
+    nu-monitor-manager.nu set-brightness HDMI-2 {down,up} --notify
 XF86Audio{Lower,Raise}Volume
     nu-sound-manager.nu set-volume {down,up} --notify
 XF86AudioMute
