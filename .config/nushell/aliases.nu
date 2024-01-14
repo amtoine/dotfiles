@@ -89,6 +89,7 @@ alias flameshot = nix run nixpkgs#flameshot --
 alias vim = nix run nixpkgs#vim -- -u NONE
 alias npm = nix shell nixpkgs#nodejs --command npm
 alias okular = nix run nixpkgs#okular --
+alias btop = nix run nixpkgs#btop --
 
 # jump to any repository managed by `nu-git-manager`
 alias "gm jump" = do --env {
