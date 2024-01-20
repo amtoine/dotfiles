@@ -62,7 +62,7 @@ alias passmenu = do {
         return
     }
 
-    nix run nixpkgs#pass -- show -c $res
+    ^pass show -c $res
 }
 alias bye = ^nu-logout.nu --lock "slock"
 alias gghn = do { ^gh-notifications.nu --notify --max-notifications 5 | ignore }
@@ -80,7 +80,6 @@ alias acpi = nix run nixpkgs#acpi --
 alias tldr = nix run nixpkgs#tldr --
 alias gh = nix run nixpkgs#gh --
 alias grip = nix run nixpkgs#python310Packages.grip --
-alias pass = nix run nixpkgs#pass --
 alias feh = nix run nixpkgs#feh --
 alias kolourpaint = nix run nixpkgs#kolourpaint --
 alias glow = nix run nixpkgs#glow --
