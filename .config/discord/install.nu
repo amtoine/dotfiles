@@ -28,7 +28,7 @@ export def "discord install" [
 
     print $"creating symlink to binary in `($bin_directory)`..."
     mkdir $bin_directory
-    ^ln [
+    ^ln ...[
         --symbolic --force
         ($install_directory | path join "Discord/Discord")
         ($bin_directory | path join "discord")
