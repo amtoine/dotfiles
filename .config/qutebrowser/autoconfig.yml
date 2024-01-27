@@ -19,6 +19,8 @@ settings:
     global: true
   colors.webpage.preferred_color_scheme:
     global: dark
+  content.geolocation:
+    https://www.ugc.fr: false
   content.javascript.enabled:
     global: true
   content.notifications.enabled:
