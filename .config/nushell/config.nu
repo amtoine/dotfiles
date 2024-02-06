@@ -179,6 +179,7 @@ use nu-git-manager *
 use nu-git-manager-sugar git *
 use nu-git-manager-sugar github *
 use nu-git-manager-sugar extra *
+use nu-git-manager-sugar dotfiles *
 use nu-scripts misc back
 
 use std formats ["from ndjson" "to ndjson"]

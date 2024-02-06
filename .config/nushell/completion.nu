@@ -12,6 +12,12 @@ $env.config.completions.external.completer = {|tokens: list<string>|
 
     let tokens = if $expanded_alias != null  {
         $expanded_alias | split row " " | append ($tokens | skip 1)
+    } else if ($tokens.0 | str trim | str replace --all --regex '\s+' ' ') == "gm cfg" {
+        [
+            "git",
+            "--git-dir", $env.DOTFILES_GIT_DIR,
+            "--work-tree", $env.DOTFILES_WORKTREE
+        ] | append ($tokens | skip 1)
     } else {
         $tokens
     }
