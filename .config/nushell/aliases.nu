@@ -74,6 +74,6 @@ alias "nightly update" = do {
 }
 
 # copy the input to the system's clipboard
-alias clip = clipboard copy --daemon
+alias clip = clipboard copy
 # paste from the system's clipboard to the output
 alias paste = clipboard paste
