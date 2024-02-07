@@ -10,7 +10,7 @@ def lsg [] {
 }
 
 alias te = table --expand
-alias ex = nu_plugin_explore ($env.explore_config? | default {})
+alias ex = nu_plugin_explore
 
 alias news = ^nushell-news.nu --force
 alias passmenu = do {
