@@ -31,6 +31,7 @@ $env.config = ($env.config? | default {} | merge {
     completions: {
         algorithm: "prefix"
         case_sensitive: true
+        use_ls_colors: true
     }
     bracketed_paste: true
     filesize: {
