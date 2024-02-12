@@ -5,9 +5,9 @@ TERM = "xterm-256color"
 
 [font]
 size = 21.0
-normal = { family = "Monaspace Argon", style="Regular" }
-bold = { family = "Monaspace Argon", style="Bold" }
-italic = { family = "Monaspace Argon", style="Italic" }
+normal = { family = "Mononoki Nerd Font Mono" }
+bold = { family = "Mononoki Nerd Font Mono" }
+italic = { family = "Mononoki Nerd Font Mono" }
 
 [[keyboard.bindings]]
 action = "ResetFontSize"
