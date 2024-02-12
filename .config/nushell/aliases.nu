@@ -41,7 +41,6 @@ alias tldr = nix run nixpkgs#tldr --
 alias gh = nix run nixpkgs#gh --
 alias grip = nix run nixpkgs#python310Packages.grip --
 alias feh = nix run nixpkgs#feh --
-alias kolourpaint = nix run nixpkgs#kolourpaint --
 alias glow = nix run nixpkgs#glow --
 alias ncdu = nix run nixpkgs#ncdu --
 alias flameshot = nix run nixpkgs#flameshot --
