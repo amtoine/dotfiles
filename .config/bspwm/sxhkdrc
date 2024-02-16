@@ -44,7 +44,7 @@ super + ctrl + {h,j,k,l}
     bspc node --presel-dir {west,south,north,east}
 super + ctrl + {1-9}
     bspc node --presel-ratio 0.{1-9}
-super + ctrl + space
+super + ctrl + Escape
     bspc node --presel-dir cancel
 super + ctrl + shift + space
     bspc query --nodes --desktop | xargs -I id -n 1 bspc node id --presel-dir cancel
