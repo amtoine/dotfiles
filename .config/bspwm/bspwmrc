@@ -68,7 +68,7 @@ def "bspc configure" [config: record] {
         bspc rule --add $name state=floating focus=on follow=on manage=on rectangle=1600x900+160+90
     }
 
-    bspc monitor --reset-desktops $config.desktops
+    bspc monitor --reset-desktops ...$config.desktops
 }
 
 let config_file = $env.CURRENT_FILE | path dirname | path join "config.nuon"
