@@ -29,11 +29,11 @@
 
     color: {
         border: {
-            focused: "#00ff00"
-            active: "#ffff00"
-            normal: "#ff0000"
+            focused: "#006600"
+            active: "#666600"
+            normal: "#660000"
         }
-        presel_feedback: "#00cccc"
+        presel_feedback: "#004444"
     }
 
     windows: {
