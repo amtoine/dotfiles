@@ -1,6 +1,6 @@
 {
-    border_width: 4
-    window_gap: 4
+    border_width: 2
+    window_gap: 2
     padding: {
         top: 0
         bottom: 0
