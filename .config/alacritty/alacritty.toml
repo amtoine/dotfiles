@@ -23,3 +23,6 @@ mods = "Alt|Control"
 action = "DecreaseFontSize"
 key = "U"
 mods = "Alt|Control"
+
+[window]
+padding = { x = 0, y = 0 }
