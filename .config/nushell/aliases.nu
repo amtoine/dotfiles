@@ -34,21 +34,6 @@ alias "sys disk" = do { use nu-scripts sys; sys disk }
 # open PDF documents in Okular
 alias "pdf" = do { use nu-scripts misc "open pdf"; open pdf --no-swallow }
 
-alias tree = nix run nixpkgs#tree --
-alias firefox = nix run nixpkgs#firefox --
-alias acpi = nix run nixpkgs#acpi --
-alias tldr = nix run nixpkgs#tldr --
-alias gh = nix run nixpkgs#gh --
-alias grip = nix run nixpkgs#python310Packages.grip --
-alias feh = nix run nixpkgs#feh --
-alias glow = nix run nixpkgs#glow --
-alias ncdu = nix run nixpkgs#ncdu --
-alias flameshot = nix run nixpkgs#flameshot --
-alias vim = nix run nixpkgs#vim -- -u NONE
-alias npm = nix shell nixpkgs#nodejs --command npm
-alias okular = nix run nixpkgs#okular --
-alias btop = nix run nixpkgs#btop --
-
 # jump to any repository managed by `nu-git-manager`
 alias "gm jump" = do --env {
     let res = gm list | input list --fuzzy "Please chose a directory to jump to"
