@@ -61,6 +61,7 @@ export-env { load-env {
     MUJOCO_BIN: ($env.HOME | path join ".mujoco" "mujoco210" "bin")
     NODE_REPL_HISTORY: ($env.XDG_DATA_HOME | path join "node_repl_history")
     NPM_CONFIG_USERCONFIG: ($env.XDG_CONFIG_HOME | path join "npm" "npmrc")
+    NUPM_CACHE: ($env.XDG_CACHE_HOME | path join "nupm")
     NUPM_HOME: ($env.XDG_DATA_HOME | path join "nupm")
     PASSWORD_STORE_DIR: ($env.XDG_DATA_HOME | path join "pass")
     PYTHONSTARTUP: ($env.XDG_CONFIG_HOME | path join "python" "pythonrc")
