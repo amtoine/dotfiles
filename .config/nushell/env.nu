@@ -74,7 +74,6 @@ export-env { load-env {
     SSH_KEYS_HOME: ($env.HOME | path join ".ssh" "keys")
     TERMINFO: ($env.XDG_DATA_HOME | path join "terminfo")
     TOMB_HOME: ($env.XDG_DATA_HOME | path join "tombs")
-    VIMRUNTIME: ($env.XDG_DATA_HOME | path join "nvim" "runtime")
     WORKON_HOME: ($env.XDG_DATA_HOME | path join "virtualenvs")
     XINITRC: ($env.XDG_CONFIG_HOME | path join "X11" "xinitrc")
     ZDOTDIR: ($env.XDG_CONFIG_HOME | path join "zsh")
