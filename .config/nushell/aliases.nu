@@ -1,18 +1,8 @@
-alias :G = ^git
-alias :q = exit
-
 alias ll = ls --all --long
-def lsg [] {
-    ls --all | each {|it|
-        $it.name | if $it.type == dir { append "/" } else {} | str join
-    }
-    | grid --color --separator " | "
-}
 
 alias te = table --expand
 alias ex = nu_plugin_explore
 
-alias news = ^nushell-news.nu --force
 alias passmenu = do {
     let res = glob ($env.PASSWORD_STORE_DIR | path join "**/*.gpg")
         | parse --regex $'^($env.PASSWORD_STORE_DIR)(char path_sep)(char lparen)?<entry>.*(char rparen)\.gpg'
@@ -24,10 +14,6 @@ alias passmenu = do {
 
     ^pass show -c $res
 }
-alias bye = ^nu-logout.nu --lock "slock"
-alias gghn = do { ^gh-notifications.nu --notify --max-notifications 5 | ignore }
-
-alias sl = ^sl -aw -20
 
 # show the disk usage
 alias "sys disk" = do { use nu-scripts sys; sys disk }
