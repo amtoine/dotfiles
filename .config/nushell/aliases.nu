@@ -47,3 +47,5 @@ alias "nightly update" = do {
 alias clip = clipboard copy
 # paste from the system's clipboard to the output
 alias paste = clipboard paste
+
+alias lg = lazygit
