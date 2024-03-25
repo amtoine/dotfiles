@@ -1,0 +1,4 @@
+keybinding:
+  universal:
+    nextPage: '<c-d>'
+    prevPage: '<c-u>'
