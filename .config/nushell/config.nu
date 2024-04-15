@@ -37,6 +37,18 @@ $env.config = ($env.config? | default {} | merge {
     filesize: {
         metric: true
     }
+    plugins: {
+        explore: {
+            margin: 3,
+            relativenumber: true,
+            colors: {
+                line_numbers: {
+                    normal: { foreground: [100, 100, 100] },
+                    selected: { background: [100, 100, 100] }
+                }
+            }
+        }
+    }
 })
 
 $env.config.hooks = {
