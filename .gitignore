@@ -58,7 +58,6 @@ snap/
 .config/kdeconnect/
 .config/libreoffice/
 .config/neofetch/
-.config/nushell/plugins/
 # i use a fork of https://github.com/nvim-lua/kickstart.nvim
 .config/nvim
 .config/pulse/
@@ -98,9 +97,8 @@ snap/
 .config/mpd/pid
 .config/ncmpcpp/error.log
 .config/ncspot/userstate.cbor
-.config/nushell/history.sqlite*
-.config/nushell/history.txt
-.config/nushell/plugin.nu
+.config/nushell/history.*
+.config/nushell/plugin.*
 .config/nvim/plugin/packer_compiled.lua
 .config/okularpartrc
 .config/okularrc
