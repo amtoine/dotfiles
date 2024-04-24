@@ -1,4 +1,4 @@
-default_toolchain = "stable-x86_64-unknown-linux-gnu"
+default_toolchain = "1.77-x86_64-unknown-linux-gnu"
 profile = "default"
 version = "12"
 
