@@ -64,7 +64,9 @@ $env.config.hooks = {
 
                     let version = (version)
 
-                    open $file | append {
+                    # NOTE: this binding is required as per
+                    # https://github.com/nushell/nushell/pull/12601#issuecomment-2069167555
+                    let startup_times = open $file | append {
                         date: (date now)
                         time: $nu.startup-time
                         build: $version.build_rust_channel
@@ -72,7 +74,8 @@ $env.config.hooks = {
                         version: $version.version
                         commit: $version.commit_hash
                         build_time: $version.build_time
-                    } | save --force $file
+                    }
+                    $startup_times | save --force $file
                 }
             },
             {
