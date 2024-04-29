@@ -45,6 +45,8 @@ alias "nightly update" = do {
 
 # copy the input to the system's clipboard
 alias clip = clipboard copy
+# copy the input to the system's clipboard without showing the content, "safely"
+alias sclip = do { clipboard copy | ignore }
 # paste from the system's clipboard to the output
 alias paste = clipboard paste
 
