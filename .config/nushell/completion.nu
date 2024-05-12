@@ -29,7 +29,13 @@ $env.config.completions.external.completer = {|tokens: list<string>|
     if ($completions | is-empty) {
         let path = $tokens | last
 
-        ls $"($path)*" | each {|it|
+        let res = try {
+            ls $"($path)*"
+        } catch {
+            []
+        }
+
+        $res | each {|it|
             let choice = if ($path | str ends-with "/") {
                 $path | path join ($it.name | path basename)
             } else {
