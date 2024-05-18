@@ -1,35 +1,53 @@
-use std log
+const SHARE = ($nu.home-path | path join ".local" "share" "alacritty")
+const LOCAL = ($SHARE | path join "themes")
+const THEMES = ($LOCAL | path join "themes")
+const REMOTE = "https://github.com/alacritty/alacritty-theme"
 
-# install a TOML theme for Alacritty
+def is_downloaded []: nothing -> bool {
+    $THEMES | path exists
+}
+
+export def "alacritty theme install" [] {
+    if (is_downloaded) {
+        error make --unspanned { msg: "themes are already installed" }
+    }
+
+    print --no-newline "installing themes... "
+    git clone --depth 1 $REMOTE ($THEMES | path dirname) out+err> /dev/null
+    print "done"
+}
+
+export def "alacritty theme update" [] {
+    if not (is_downloaded) {
+        error make --unspanned { msg: "themes are not installed" }
+    }
+
+    print --no-newline "updating themes... "
+    git -C $LOCAL fetch origin master out+err> /dev/null
+    git -C $LOCAL rebase origin/master out> /dev/null
+    print "done"
+}
+
+# switch to another theme for Alacritty
 #
 # you should add the following line to the top of your `alacritty.toml`
 # ```toml
-# import = ["~/.config/alacritty/theme.toml"]
+# import = ["~/.local/share/alacritty/theme.toml"]
 # ```
-export def alacritty-theme [
-    --revision: string = "808b81b2e88884e8eca5d951b89f54983fa6c237"
-    --theme-file: path = "~/.config/alacritty/theme.toml"
-]: nothing -> nothing {
-    const REPO = "alacritty/alacritty-theme"
+export def "alacritty theme switch" [] {
+    if not (is_downloaded) {
+        error make --unspanned { msg: "themes are not installed" }
+    }
 
-    log debug $"pulling down the list of themes from ($REPO)..."
-    let res = http get $"https://github.com/($REPO)/tree/($revision)/themes"
-        | from json
-        | get payload.tree.items.name
-        | path parse
-        | get stem
-        | input list --fuzzy "Please choose a theme to use in Alacritty"
+    let res = ls $THEMES | get name | each { path parse } | get stem | input list --fuzzy
     if $res == null {
+        print "user chose to exit"
         return
     }
 
-    log debug $"pulling theme '($res)' from ($REPO)"
-    let theme = http get $"https://raw.githubusercontent.com/($REPO)/($revision)/themes/($res).yaml"
-        | to toml
+    print --no-newline $"switching theme to '($res)'... "
+    cp ($THEMES | path join $"($res).toml") ($SHARE | path join "theme.toml")
+    print "done"
 
-    log debug $"saving '($res)' to `($theme_file)`"
-    $theme | save --force $theme_file
-
-    log info "you can now restart Alacritty and enjoy the new theme!"
+    print "[!] don't forget to restart Alacritty"
 }
-
