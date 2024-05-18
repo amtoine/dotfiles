@@ -1,10 +1,23 @@
+const CONFIG = ($nu.home-path | path join ".config" "alacritty")
 const SHARE = ($nu.home-path | path join ".local" "share" "alacritty")
+
+const REMOTE = "https://github.com/alacritty/alacritty-theme"
 const LOCAL = ($SHARE | path join "themes")
 const THEMES = ($LOCAL | path join "themes")
-const REMOTE = "https://github.com/alacritty/alacritty-theme"
+
+const THEME = ($SHARE | path join "theme.toml")
+const THEME_NAME = ($CONFIG | path join "theme.txt")
 
 def is_downloaded []: nothing -> bool {
     $THEMES | path exists
+}
+
+def is_theme_set []: nothing -> bool {
+    $THEME | path exists
+}
+
+def is_theme_name_set []: nothing -> bool {
+    $THEME_NAME | path exists
 }
 
 export def "alacritty theme install" [] {
@@ -47,7 +60,55 @@ export def "alacritty theme switch" [] {
 
     print --no-newline $"switching theme to '($res)'... "
     cp ($THEMES | path join $"($res).toml") ($SHARE | path join "theme.toml")
+    $res | save -f $THEME_NAME
     print "done"
 
     print "[!] don't forget to restart Alacritty"
+}
+
+export def "alacritty theme current" []: [
+    nothing -> record<
+        name: string,
+        colors: record<
+            bright: record<
+                black: string,
+                blue: string,
+                cyan: string,
+                green: string,
+                magenta: string,
+                red: string,
+                white: string,
+                yellow: string,
+            >,
+            normal: record<
+                black: string,
+                blue: string,
+                cyan: string,
+                green: string,
+                magenta: string,
+                red: string,
+                white: string,
+                yellow: string,
+            >,
+            primary: record<
+                background: string,
+               foreground: string,
+            >
+        >
+    >
+] {
+    if not (is_downloaded) {
+        error make --unspanned { msg: "themes are not installed" }
+    }
+    if not (is_theme_set) {
+        error make --unspanned { msg: "theme is not set" }
+    }
+    if not (is_theme_name_set) {
+        error make --unspanned { msg: "unexpected: theme name could not be found" }
+    }
+
+    {
+        name: (open $THEME_NAME),
+        colors: (open $THEME).colors,
+    }
 }
