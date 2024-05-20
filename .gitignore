@@ -58,8 +58,10 @@ snap/
 .config/kdeconnect/
 .config/libreoffice/
 .config/neofetch/
-# i use a fork of https://github.com/nvim-lua/kickstart.nvim
+# i symlink the Neovim config from Git repos elsewhere, no need to track that
 .config/nvim
+# ignore any other Neovim config that i might add there
+.config/nvim-*
 .config/pulse/
 .config/Rocket.Chat/
 .config/rustup/downloads/
