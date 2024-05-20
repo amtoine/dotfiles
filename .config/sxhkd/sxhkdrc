@@ -17,7 +17,7 @@ super + {_,shift,alt} + @space
 super + shift + q
     alacritty -e nu \
         --env-config ~/.config/nushell/env.nu \
-        --commands "nu-logout.nu --lock slock --sudo"
+        --commands "nu-logout.nu --lock slock"
 super + p
     alacritty -e nu \
         --env-config ~/.config/nushell/env.nu \
