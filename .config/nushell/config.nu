@@ -81,9 +81,9 @@ $env.config.hooks = {
             {
                 condition: {|_, after| $after | path join 'toolkit.nu' | path exists }
                 code: "
-                    print 'loading toolkit'
+                    print $'[(ansi yellow_bold)hook(ansi reset)] loading toolkit'
                     overlay use --prefix toolkit.nu as tk
-                    print --no-newline (overlay list)
+                    overlay list | str join ', ' | print $'[(ansi yellow_bold)hook(ansi reset)] overlays: ($in)'
                 "
             },
             (source nu-hooks/direnv/config.nu)
