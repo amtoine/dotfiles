@@ -86,6 +86,13 @@ $env.config.hooks = {
                     overlay list | str join ', ' | print $'[(ansi yellow_bold)hook(ansi reset)] overlays: ($in)'
                 "
             },
+            {
+                condition: {|_, after| $after | path join '.env.nu' | path exists }
+                code: "
+                    print $'[(ansi yellow_bold)hook(ansi reset)] loading env file'
+                    source .env.nu
+                "
+            },
             (source nu-hooks/direnv/config.nu)
             {
                 condition: {|_, after| $after | path join 'dune-project' | path exists }
