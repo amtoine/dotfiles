@@ -51,6 +51,8 @@ $env.config = ($env.config? | default {} | merge {
     }
 })
 
+use nu-hooks/nuenv/hook.nu [ "nuenv allow", "nuenv disallow" ]
+
 $env.config.hooks = {
     env_change: {
         PWD: [
@@ -59,13 +61,7 @@ $env.config.hooks = {
                 use nu-hooks/toolkit.nu;
                 toolkit setup --name "tk" --color "yellow_bold"
             )
-            {
-                condition: {|_, after| $after | path join '.env.nu' | path exists }
-                code: "
-                    print $'[(ansi yellow_bold)hook(ansi reset)] loading env file'
-                    source .env.nu
-                "
-            },
+            (use nu-hooks/nuenv/hook.nu; hook setup)
             (source nu-hooks/direnv/config.nu)
             {
                 condition: {|_, after| $after | path join 'dune-project' | path exists }
