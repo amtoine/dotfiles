@@ -30,7 +30,7 @@ $env.config.completions.external.completer = {|tokens: list<string>|
         let path = $tokens | last
 
         let res = try {
-            ls $"($path)*"
+            $"($path)*" | into glob | ls $in
         } catch {
             []
         }
