@@ -87,21 +87,47 @@ $env.EDITOR = 'nvim'
 $env.VISUAL = $env.EDITOR
 
 def --env _set_manpager [pager: string] {
-    $env.MANPAGER = (match $pager {
-        "bat" => "sh -c 'col -bx | bat -l man -p'",
-        "batcat" => "sh -c 'col -bx | batcat -l man -p'",
+    let pager = match $pager {
+        "bat" => (
+            if not (which bat | is-empty) {
+                "bat -l man -p"
+            } else if not (which batcat | is-empty) {
+                "batcat -l man -p"
+            } else {
+                error make {
+                    msg: $"(ansi red_bold)pager_not_found(ansi reset)",
+                    label: {
+                        text: $"could not find pager for (ansi cyan)bat(ansi reset)",
+                        span: (metadata $pager).span,
+                    },
+                    help: $"install either (ansi purple)bat(ansi reset) or (ansi purple)batcat(ansi reset)"
+                }
+            }
+        ),
         "vim" => '/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"',
         "nvim" => "nvim -c 'set ft=man' -",
-        _ => {
-            print $"unknown manpage '($pager)', defaulting to prettier `less`"
+        "less" => {
             $env.LESS_TERMCAP_mb = (tput bold; tput setaf 2)  # green
             $env.LESS_TERMCAP_md = (tput bold; tput setaf 2)  # green
             $env.LESS_TERMCAP_so = (tput bold; tput rev; tput setaf 3)  # yellow
             $env.LESS_TERMCAP_se = (tput smul; tput sgr0)
             $env.LESS_TERMCAP_us = (tput bold; tput bold; tput setaf 1)  # red
             $env.LESS_TERMCAP_me = (tput sgr0)
+            return
+        },
+        _ => {
+            error make {
+                msg: $"(ansi red_bold)unknown_pager(ansi reset)",
+                label: {
+                    text: $"($pager) is not supported",
+                    span: (metadata $pager).span,
+                },
+                help: $"use one of (ansi cyan)bat(ansi reset), (ansi cyan)vim(ansi reset), (ansi cyan)nvim(ansi reset) or (ansi cyan)less(ansi reset)"
+            }
          }
-    })
+    }
+
+    $env.MANPAGER = $pager
 }
 
 _set_manpager "bat"
