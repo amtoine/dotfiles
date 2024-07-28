@@ -192,3 +192,58 @@ do {
         }
     }
 }
+
+# # Examples
+# looking at a Nix profile
+# ```nushell
+# follow-symlink-chain ~/.local/state/nix/profile
+# ```
+# might give something like
+# ```nushell
+# [
+#     "~/.local/state/nix/profile",
+#     "~/.local/state/nix/profiles/profile",
+#     "~/.local/state/nix/profiles/profile-18-link",
+#     "/nix/store/lx5z3yl3765lyk91qw4iq8787kv1fyca-user-environment"
+# ]
+# ```
+def follow-symlink-chain [file: path]: [ nothing -> list<path> ] {
+    if not ($file | path exists) {
+        error make {
+            msg: $"(ansi red_bold)no_such_file(ansi reset)",
+            label: {
+                text: "no such file",
+                span: (metadata $file).span,
+            },
+        }
+    }
+
+    generate { |link|
+        let out = { out: $link }
+
+        let res = ls -lD $link
+        if ($res | length) == 0 {
+            error make --unspanned {
+                msg: $"(ansi red_bold)internal error(ansi reset): no files to list at ($link)"
+            }
+        } else if ($res | length) > 1 {
+            return $out
+        }
+
+        let target = $res.0.target
+        if ($target | is-empty) {
+            return $out
+        }
+
+        # the target might be relative to the symlink
+        let is_relative = $target | path parse | get parent | is-empty
+        let next = if $is_relative {
+            # recover the absolute path
+            $link | path dirname | path join $target
+        } else {
+            $target
+        }
+
+        $out | insert next $next
+    } ($file | path expand --no-symlink)
+}
