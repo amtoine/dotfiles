@@ -9,7 +9,7 @@
   home.packages = [
     pkgs.hello
 
-    (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" "Mononoki" "FiraCode" ]; })
 
     (pkgs.writeShellScriptBin "my-hello" ''
       echo "Hello, ${config.home.username}!"
