@@ -7,7 +7,7 @@
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   home.packages = [
-    (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" "Mononoki" "FiraCode" ]; })
+    (pkgs.nerdfonts.override { fonts = [ "Mononoki" "FiraCode" ]; })
 
     pkgs.neovim
   ];
