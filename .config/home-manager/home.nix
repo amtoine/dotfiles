@@ -10,6 +10,7 @@
     (pkgs.nerdfonts.override { fonts = [ "Mononoki" "FiraCode" ]; })
 
     pkgs.neovim
+    pkgs.nushell
   ];
 
   home.file = { };
