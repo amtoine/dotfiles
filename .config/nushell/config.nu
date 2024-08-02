@@ -174,6 +174,8 @@ use nu-git-manager-sugar extra *
 use nu-git-manager-sugar dotfiles *
 use nu-scripts misc back
 
+use nu-pager-help help
+
 use std formats ["from ndjson" "to ndjson"]
 
 source ($nu.default-config-dir | path join "aliases.nu")
