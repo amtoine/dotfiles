@@ -16,13 +16,22 @@ super + {_,shift + }{h, j, k, l}
 super + {_,shift + }c
     bspc node --focus {next,prev}.local.!hidden.window
 super + bracket{left,right}
-    bspc desktop --focus {prev,next}.local
+    bspc desktop --focus {prev,next}.local; \
+    if [ "$?" = 0 ]; then \
+        dunstify "bspwm/sxhkd" "Switching to $(bspc query -D -d --names)" --timeout=1000 --replace=128; \
+    fi
 super + shift + bracket{left,right}
-    bspc monitor --focus {prev,next}
+    bspc monitor --focus {prev,next}; \
+    if [ "$?" = 0 ]; then \
+        dunstify "bspwm/sxhkd" "Switching to $(bspc query -M -m --names)" --timeout=1000 --replace=128; \
+    fi
 super + {o,i}
     bspc wm --record-history off; \
     bspc node {older,newer} --focus; \
-    bspc wm --record-history on
+    bspc wm --record-history on; \
+    if [ "$?" = 0 ]; then \
+        dunstify "bspwm/sxhkd" "Switching to $(bspc query -D -d --names)" --timeout=1000 --replace=128; \
+    fi
 
 super + {_,shift + }{1-9,0}
     { \
@@ -38,7 +47,10 @@ super + {_,shift + }{1-9,0}
     fi
 
 super + Tab
-    bspc desktop -f last
+    bspc desktop -f last; \
+    if [ "$?" = 0 ]; then \
+        dunstify "bspwm/sxhkd" "Switching to $(bspc query -D -d --names)" --timeout=1000 --replace=128; \
+    fi
 
 super + ctrl + {h,j,k,l}
     bspc node --presel-dir {west,south,north,east}
