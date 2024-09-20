@@ -49,6 +49,7 @@ $env.config = ($env.config? | default {} | merge {
             }
         }
     }
+    display_errors: { exit_code: false, termination_signal: true }
 })
 
 use nu-hooks/nuenv/hook.nu [ "nuenv allow", "nuenv disallow" ]
