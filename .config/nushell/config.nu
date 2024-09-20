@@ -139,6 +139,16 @@ $env.config.keybindings = [
         mode: [emacs vi_normal vi_insert]
         event: { edit: insertnewline }
     }
+    {
+        name: oil,
+        modifier: NONE,
+        keycode: "char_-",
+        mode: [vi_normal],
+        event: {
+            send: executehostcommand,
+            cmd: "nvim -c ':Oil'",
+        },
+    }
 ]
 
 $env.PROMPT_INDICATOR = ' '
