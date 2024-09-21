@@ -49,6 +49,7 @@ $env.config = ($env.config? | default {} | merge {
             }
         }
     }
+    display_errors: { exit_code: false, termination_signal: true }
 })
 
 use nu-hooks/nuenv/hook.nu [ "nuenv allow", "nuenv disallow" ]
@@ -138,6 +139,16 @@ $env.config.keybindings = [
         keycode: enter
         mode: [emacs vi_normal vi_insert]
         event: { edit: insertnewline }
+    }
+    {
+        name: oil,
+        modifier: NONE,
+        keycode: "char_-",
+        mode: [vi_normal],
+        event: {
+            send: executehostcommand,
+            cmd: "nvim -c ':Oil'",
+        },
     }
 ]
 
