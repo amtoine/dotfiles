@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=ArduinoIDE
+StartupWMClass=arduino
+Exec=/home/amtoine/.local/bin/arduino-ide
+Icon=arduino
+Type=Application
+Path=/usr/bin
