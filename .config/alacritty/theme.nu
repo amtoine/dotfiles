@@ -20,24 +20,36 @@ def is_theme_name_set []: nothing -> bool {
     $THEME_NAME | path exists
 }
 
-export def "alacritty theme install" [] {
+export def "alacritty theme install" [--verbose] {
     if (is_downloaded) {
         error make --unspanned { msg: "themes are already installed" }
     }
 
     print --no-newline "installing themes... "
-    git clone --depth 1 $REMOTE ($THEMES | path dirname) out+err> /dev/null
+    let options = [ --depth 1 $REMOTE ($THEMES | path dirname) ]
+    if $verbose {
+        print ""
+        git clone ...$options
+    } else {
+        git clone ...$options out+err> /dev/null
+    }
     print "done"
 }
 
-export def "alacritty theme update" [] {
+export def "alacritty theme update" [--verbose] {
     if not (is_downloaded) {
         error make --unspanned { msg: "themes are not installed" }
     }
 
     print --no-newline "updating themes... "
-    git -C $LOCAL fetch origin master out+err> /dev/null
-    git -C $LOCAL rebase origin/master out> /dev/null
+    if $verbose {
+        print ""
+        git -C $LOCAL fetch origin master
+        git -C $LOCAL rebase origin/master
+    } else {
+        git -C $LOCAL fetch origin master out+err> /dev/null
+        git -C $LOCAL rebase origin/master out+err> /dev/null
+    }
     print "done"
 }
 
