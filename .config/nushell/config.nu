@@ -7,10 +7,13 @@ $env.config = ($env.config? | default {} | merge {
         always_trash: true
     }
     history: {
+        max_size: 100000,
+        sync_on_enter: true,
         file_format: "sqlite"
         isolation: false
     }
     cursor_shape: {
+        emacs: inherit,
         vi_insert: line
         vi_normal: block
     }
@@ -20,6 +23,12 @@ $env.config = ($env.config? | default {} | merge {
         show_empty: true
         padding: { left: 0, right: 0 }
         header_on_separator: true
+        trim: {
+            methodology: wrapping,
+            wrapping_try_keep_words: true
+        },
+        abbreviated_row_count: null,
+        footer_inheritance: false
     }
     footer_mode: 25
     edit_mode: vi
@@ -32,10 +41,19 @@ $env.config = ($env.config? | default {} | merge {
         algorithm: "prefix"
         case_sensitive: true
         use_ls_colors: true
+        sort: smart,
+        quick: true,
+        partial: true,
+        external: {
+            enable: true,
+            max_results: 100,
+            completer: null
+        },
     }
     bracketed_paste: true
     filesize: {
         metric: true
+        format: auto
     }
     plugins: {
         explore: {
