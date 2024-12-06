@@ -1,12 +1,12 @@
-const CONFIG = ($nu.home-path | path join ".config" "alacritty")
-const SHARE = ($nu.home-path | path join ".local" "share" "alacritty")
+const CONFIG = $nu.home-path | path join ".config" "alacritty"
+const SHARE = $nu.home-path | path join ".local" "share" "alacritty"
 
 const REMOTE = "https://github.com/alacritty/alacritty-theme"
-const LOCAL = ($SHARE | path join "themes")
-const THEMES = ($LOCAL | path join "themes")
+const LOCAL = $SHARE | path join "themes"
+const THEMES = $LOCAL | path join "themes"
 
-const THEME = ($SHARE | path join "theme.toml")
-const THEME_NAME = ($CONFIG | path join "theme.txt")
+const THEME = $SHARE | path join "theme.toml"
+const THEME_NAME = $CONFIG | path join "theme.txt"
 
 def is_downloaded []: nothing -> bool {
     $THEMES | path exists
