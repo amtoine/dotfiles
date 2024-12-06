@@ -124,3 +124,36 @@ export def "alacritty theme current" []: [
         colors: (open $THEME).colors,
     }
 }
+
+export def "alacritty theme sync" []: {
+    if not (is_downloaded) {
+        error make --unspanned { msg: "themes are not installed" }
+    }
+    if not (is_theme_set) {
+        error make --unspanned { msg: "theme is not set" }
+    }
+    if not (is_theme_name_set) {
+        error make --unspanned { msg: "unexpected: theme name could not be found" }
+    }
+
+    let theme_name = open $THEME_NAME | lines | first | str trim
+    let theme = $THEMES
+        | path join $theme_name
+        | path parse
+        | update extension toml
+        | path join
+
+    if not ($theme | path exists) {
+        let themes_list = mktemp --tmpdir XXXXXXX.txt
+        ls $THEMES | get name | path parse | get stem | sort | to text | save --force $themes_list
+
+        error make --unspanned {
+            msg: $"unknown theme ($theme_name)",
+            help: $"see the complete list of available themes in (ansi purple)($themes_list)(ansi reset)",
+        }
+    }
+
+    print --no-newline $"switching theme to '($theme_name)'... "
+    cp $theme $THEME
+    print "done"
+}
