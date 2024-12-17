@@ -166,7 +166,6 @@ use std "path add"
 #         make sure 'PATH' is a string, or add a 'to_string' entry for it in ENV_CONVERSIONS.
 # ```
 $env.PATH = ($env.PATH | split row ":")
-path add /nix/var/nix/profiles/default/bin
 path add ($env.XDG_DATA_HOME | path join "npm" "bin")
 path add ($env.CARGO_HOME | path join "bin")
 path add ($env.CLANG_HOME | path join "bin")
@@ -174,7 +173,6 @@ path add ($env.GOPATH | path join "bin")
 path add ($env.EMACS_HOME | path join "bin")
 path add ($env.RUBY_HOME | path join "bin")
 path add ($env.NUPM_HOME | path join "scripts")
-path add ($env.XDG_STATE_HOME | path join "nix/profile/bin")
 path add ($env.HOME | path join ".local" "bin")
 $env.PATH = ($env.PATH | uniq)
 
