@@ -1,4 +1,6 @@
 # hidden directories
+.arduino15/
+.arduinoIDE/
 .cache/
 .cargo/
 .docker/
@@ -10,8 +12,10 @@
 .npm/
 .opam/
 .pki/
+.screen/
 .snap/
 .ssh/
+.steam/
 .thunderbird/
 
 # regular directories
@@ -22,6 +26,7 @@ Screenshots/
 snap/
 
 # hidden files
+.Xauthority
 .bash_history
 .fzf.bash
 .grip
@@ -34,36 +39,43 @@ snap/
 .moc/softmixer
 .pam_environment
 .profile
+.pulse-cookie
 .python_history
+.steampath
+.steampid
 .sudo_as_admin_successful
 .viminfo
 .wget-hsts
-.Xauthority
 .zshenv
 
 # the config directories
 .config/.keymapp/
+.config/Arduino IDE/
+.config/Rocket.Chat/
+.config/arduino-ide/
 .config/autostart/
 .config/btop/
 .config/chromium/
+.config/cura/
 .config/discord/
 .config/enchant/
+.config/environment.d/
 .config/evolution/
+.config/fontconfig/
 .config/gedit/
+.config/glab-cli/
 .config/gnome-control-center/
 .config/goa-1.0/
 .config/grip/cache-*/
 .config/ibus/
 .config/irust/themes/
 .config/kdeconnect/
+.config/kicad/
 .config/libreoffice/
 .config/neofetch/
-# i symlink the Neovim config from Git repos elsewhere, no need to track that
-.config/nvim
-# ignore any other Neovim config that i might add there
 .config/nvim-*
 .config/pulse/
-.config/Rocket.Chat/
+.config/qutebrowser/qsettings/
 .config/rustup/downloads/
 .config/rustup/tmp/
 .config/rustup/toolchains/
@@ -71,6 +83,7 @@ snap/
 .config/session/
 .config/systemd/
 .config/vim/plugged/
+.config/wally/
 
 # the config files
 .config/alacritty/alacritty.yml.*
@@ -109,3 +122,6 @@ snap/
 .config/user-dirs.dirs
 .config/user-dirs.locale
 .config/vim/autoload/plug.vim
+
+# i symlink the Neovim config from Git repos elsewhere, no need to track that
+.config/nvim
