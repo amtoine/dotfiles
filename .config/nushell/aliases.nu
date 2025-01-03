@@ -54,3 +54,22 @@ alias lg = lazygit
 
 # get all the entries from `which`
 alias which = which --all
+
+def list-stations []: [ nothing -> list<string> ] {
+    iwctl station list
+        | str trim
+        | ansi strip
+        | lines --skip-empty
+        | skip 4
+        | parse --regex '\s*(?<name>\w+).*'
+        | get name
+}
+
+# connect to a network using iwctl
+export def connect [
+    --station: string@list-stations,
+    --signal: int = 3,
+] {
+    use nu-scripts iwctl
+    iwctl list-networks --station $station --signal $signal | iwctl connect
+}
