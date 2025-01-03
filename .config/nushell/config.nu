@@ -111,64 +111,38 @@ $env.config.hooks = {
     }
 }
 
-$env.config.keybindings = [
-    {
-        name: history_menu
-        modifier: alt
-        keycode: char_h
-        mode: [emacs, vi_insert, vi_normal]
-        event: { send: menu name: history_menu }
-    }
-    # basic shell features
-    {
-        name: reload
-        modifier: alt
-        keycode: char_r
-        mode: [emacs, vi_insert, vi_normal]
-        event: {
+export-env {
+    def cmd [cmd: string]: [ nothing -> record<send: string, cmd: string> ] {
+        {
             send: executehostcommand,
-            cmd: "exec nu"
+            cmd: $cmd,
         }
     }
-    {
-        name: clear
-        modifier: alt
-        keycode: char_l
-        mode: [emacs, vi_normal, vi_insert]
-        event: {
-            send: executehostcommand
-            cmd: "clear"
+
+    def vi [--insert (-i), --normal (-n)]: [ nothing -> list<string> ] {
+        if $insert and $normal {
+            [vi_insert, vi_normal]
+        } else if $insert {
+            [vi_insert]
+        } else if $normal {
+            [vi_normal]
+        } else {
+            [emacs]
         }
     }
-    {
-        name: exit
-        modifier: none
-        keycode: char_q
-        mode: [vi_normal]
-        event: {
-            send: executehostcommand
-            cmd: "exit"
-        }
-    }
-    # more
-    {
-        name: insert_newline
-        modifier: alt
-        keycode: enter
-        mode: [emacs vi_normal vi_insert]
-        event: { edit: insertnewline }
-    }
-    {
-        name: oil,
-        modifier: NONE,
-        keycode: "char_-",
-        mode: [vi_normal],
-        event: {
-            send: executehostcommand,
-            cmd: "nvim -c ':Oil'",
-        },
-    }
-]
+
+    $env.config.keybindings = [
+        [ name,           modifier, keycode,  mode,     event ];
+        [ history_menu,   alt,      char_h,   (vi -in), { send: menu, name: history_menu } ],
+        # basic shell features
+        [ reload,         alt,      char_r,   (vi -in), (cmd "exec nu") ],
+        [ clear,          alt,      char_l,   (vi -in), (cmd "clear") ]
+        [ exit,           none,     char_q,   (vi -n),  (cmd "exit") ],
+        # more
+        [ insert_newline, alt,      enter,    (vi -in), { edit: insertnewline } ],
+        [ oil,            NONE,     "char_-", (vi -n),  (cmd "nvim -c ':Oil'") ],
+    ]
+}
 
 $env.PROMPT_INDICATOR = ' '
 $env.PROMPT_INDICATOR_VI_INSERT = ' '
