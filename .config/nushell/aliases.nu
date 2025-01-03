@@ -51,3 +51,6 @@ alias sclip = do { clipboard copy | ignore }
 alias paste = clipboard paste
 
 alias lg = lazygit
+
+# get all the entries from `which`
+alias which = which --all
