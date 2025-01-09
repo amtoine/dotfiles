@@ -179,7 +179,7 @@ use nu-scripts misc back
 
 use nu-pager-help help
 
-use std formats ["from ndjson" "to ndjson"]
+use std formats [ "from ndjson", "to ndjson", "from ndnuon", "to ndnuon" ]
 
 source ($nu.default-config-dir | path join "aliases.nu")
 source ($nu.default-config-dir | path join "completion.nu")
