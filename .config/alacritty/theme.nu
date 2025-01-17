@@ -125,7 +125,7 @@ export def "alacritty theme current" []: [
     }
 }
 
-export def "alacritty theme sync" []: {
+export def "alacritty theme sync" [] {
     if not (is_downloaded) {
         error make --unspanned { msg: "themes are not installed" }
     }
