@@ -141,6 +141,7 @@ export-env {
         # more
         [ insert_newline, alt,      enter,    (vi -in), { edit: insertnewline } ],
         [ oil,            NONE,     "char_-", (vi -n),  (cmd "nvim -c ':Oil'") ],
+        [ md,             NONE,     "char_m", (vi -n),  (cmd "nvim -c ':set ft=markdown'") ],
     ]
 }
 
