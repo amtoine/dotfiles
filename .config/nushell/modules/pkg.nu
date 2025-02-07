@@ -32,26 +32,51 @@ export def INSTALLERS [] { {
 # # Examples
 # ```nushell
 # # install [Typst](https://github.com/typst/typst)
-# install "typst" --commands { |dest: path|
-#     cargo build --release
-#     cp target/release/typst $dest
-# }
+# install --app typst
 # ```
 # ```nushell
 # # install [Neovim](https://github.com/neovim/neovim)
-# install "nvim" --extra-sub-dirs [ "bin", "nvim" ] --commands { |dest: path|
-#     make CMAKE_BUILD_TYPE=Release
-#     make $"CMAKE_INSTALL_PREFIX=($dest)" install
+# install --app nvim
+# ```
+# ```nushell
+# # install some C program with a custom installer
+# install "my-c-program" --commands { |dest: path|
+#     gcc -std=c99 -Wall -Werror -o a.out main.c
+#     cp a.out $dest
 # }
 # ```
 export def install [
     name: string,
+    --app: string,
     --commands (-c): closure, # commands to build and copy the result to the destination, a closure with a single positional argument `dest: path`
     --extra-sub-dirs (-e): list<string> = [],
 ] {
     if not ($SHARE | path exists) {
         log debug $"creating (ansi purple)($SHARE)(ansi reset)"
         mkdir $SHARE
+    }
+
+    let installers = INSTALLERS
+
+    if $app != null and $app not-in $installers {
+        let builtin_apps = $installers | columns | str join ', '
+        error make {
+            msg: $"(ansi red_bold)pkg::invalid_builtin_app(ansi reset)",
+            label: {
+                text: $"(ansi yellow)($app)(ansi reset) is not a builtin app",
+                span: (metadata $app).span,
+            },
+            help: $"list of builtin apps: (ansi purple)($builtin_apps)(ansi reset)"
+        }
+    }
+
+    let commands = if $app != null { $installers | get $app | get installer } else { $commands }
+    let extra_sub_dirs = if $app != null { $installers | get $app | get extra_sub_dirs } else { $extra_sub_dirs }
+
+    if $commands == null {
+        error make --unspanned {
+            msg: $"(ansi red_bold)pkg::missing_argument(ansi reset): (ansi cyan)--commands(ansi reset) is required"
+        }
     }
 
     let dest = $SHARE | path join $"($name)-(git rev-parse HEAD)"
