@@ -10,6 +10,16 @@ def "log info" [msg: string] { __log green_bold INF $msg }
 def "log warning" [msg: string] { __log yellow_bold WRN $msg }
 def "log error" [msg: string] { __log red_bold ERR $msg }
 
+def pkg-rm [...pkgs: path] {
+    if ($pkgs | is-empty) { return }
+    $pkgs | each { |pkg| $SHARE | path join $pkg } | rm --verbose --force --recursive ...$in
+}
+
+def app-rm [...apps: path] {
+    if ($apps | is-empty) { return }
+    $apps | each { |app| $BIN | path join $app } | rm --verbose --force --recursive ...$in
+}
+
 export def INSTALLERS [] { {
     typst: {
         installer: { |dest: path|
@@ -100,4 +110,64 @@ export def list []: nothing -> table<name: string, pkg: string> {
 
     let pkgs = ls $SHARE | get name |  path basename | wrap pkg
     $bins | join $pkgs pkg --outer
+}
+
+def cmp-ls-apps []: nothing -> table<value: string, description: string> {
+    list | where $it.name != null | each {{ value: $in.name, description: $in.pkg }}
+}
+
+def cmp-ls-pkgs []: nothing -> table<value: string, description: string> {
+    let all = list
+    $all | each { |x| {
+        value: $x.pkg,
+        description: ($all | where pkg == $x.pkg | get name | where $it != null | str join ", "),
+    }}
+}
+
+export def activate [
+    pkg: string@cmp-ls-pkgs,
+    --name: string,
+    --extra-sub-dirs (-e): list<string> = [],
+] {
+    let name = $name | default ($pkg | parse "{pkg}-{rev}" | into record | get pkg)
+    let ln_src = $SHARE | path join $pkg ...$extra_sub_dirs
+    let ln_dest = $BIN | path join $name
+    log info $"linking (ansi purple)($ln_src)(ansi reset) to (ansi purple)($ln_dest)(ansi reset)"
+    ln --force -s $ln_src $ln_dest
+}
+
+export def deactivate [app: string@cmp-ls-apps] {
+    let all = list
+    if $app not-in $all.name {
+        error make {
+            msg: $"(ansi red_bold)pkg::application_not_found(ansi reset)",
+            label: {
+                text: $"(ansi yellow)($app)(ansi reset) not in (ansi purple)($BIN)(ansi reset)"
+                span: (metadata $app).span,
+            },
+            help: $"list of active applications: (ansi purple)($all.name | where $it != null)(ansi reset)"
+        }
+    }
+    app-rm $app
+}
+
+export def remove [pkg: string@cmp-ls-pkgs] {
+    let all = list
+    if $pkg not-in $all.pkg {
+        error make {
+            msg: $"(ansi red_bold)pkg::package_not_found(ansi reset)",
+            label: {
+                text: $"(ansi yellow)($pkg)(ansi reset) not in (ansi purple)($SHARE)(ansi reset)"
+                span: (metadata $pkg).span,
+            },
+            help: $"list of installed packages: (ansi purple)($all.pkg)(ansi reset)"
+        }
+    }
+
+    pkg-rm $pkg
+    app-rm ...($all | where pkg == $pkg and name != null).name
+}
+
+export def purge [] {
+    pkg-rm ...(list | where name == null).pkg
 }
