@@ -20,12 +20,16 @@ def app-rm [...apps: path] {
     $apps | each { |app| $BIN | path join $app } | rm --verbose --force --recursive ...$in
 }
 
+export def RUST-INSTALLER [name: string] {
+    { |dest: path|
+        cargo build --release
+        cp ("target/release" | path join $name) $dest
+    }
+}
+
 export def INSTALLERS [] { {
     typst: {
-        installer: { |dest: path|
-            cargo build --release
-            cp target/release/typst $dest
-        },
+        installer: (RUST-INSTALLER "typst"),
         extra_sub_dirs: [],
     }
     nvim: {
