@@ -89,6 +89,15 @@ export def install [
     ln --force -s $ln_src $ln_dest
 }
 
-export def list []: nothing -> list<path> {
-    ls $SHARE | get name
+export def list []: nothing -> table<name: string, pkg: string> {
+    let bins = ls $BIN
+        | where type == symlink
+        | select name
+        | insert pkg { readlink $in.name }
+        | where ($it.pkg | str starts-with $SHARE)
+        | update pkg { str replace $SHARE "" | path split | get 1 }
+        | update name { path basename }
+
+    let pkgs = ls $SHARE | get name |  path basename | wrap pkg
+    $bins | join $pkgs pkg --outer
 }
