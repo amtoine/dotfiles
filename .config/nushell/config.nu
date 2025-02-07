@@ -178,7 +178,7 @@ use nu-git-manager-sugar extra *
 use nu-git-manager-sugar dotfiles *
 use nu-scripts misc back
 
-use nu-pager-help help
+use nu-pager-help [ help, "core help" ]
 
 use std formats [ "from ndjson", "to ndjson", "from ndnuon", "to ndnuon" ]
 
