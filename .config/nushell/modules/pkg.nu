@@ -10,6 +10,23 @@ def "log info" [msg: string] { __log green_bold INF $msg }
 def "log warning" [msg: string] { __log yellow_bold WRN $msg }
 def "log error" [msg: string] { __log red_bold ERR $msg }
 
+export def INSTALLERS [] { {
+    typst: {
+        installer: { |dest: path|
+            cargo build --release
+            cp target/release/typst $dest
+        },
+        extra_sub_dirs: [],
+    }
+    nvim: {
+        installer: { |dest: path|
+            make CMAKE_BUILD_TYPE=Release
+            make $"CMAKE_INSTALL_PREFIX=($dest)" install
+        },
+        extra_sub_dirs: [ "bin", "nvim" ],
+    },
+} }
+
 # build and install applications locally
 #
 # # Examples
