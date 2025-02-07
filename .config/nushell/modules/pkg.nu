@@ -89,7 +89,17 @@ export def install [
         }
     }
 
-    let dest = $SHARE | path join $"($name)-(git rev-parse HEAD)"
+    let is_git_repo = not (git rev-parse --is-inside-work-tree err> /dev/null | is-empty)
+    let dest = if $is_git_repo {
+        $SHARE | path join $"($name)-(git rev-parse HEAD)"
+    } else {
+        log warning "not inside a Git repo, defaulting to random hash"
+        let hash = random dice --dice 32 --sides 16
+            | each { $in - 1}
+            | each { if $in >= 10 { 97 - $in + 15 | char -i $in } else { $in } }
+            | str join
+        $SHARE | path join $"($name)-($hash)"
+    }
     log info $"building to (ansi purple)($dest)(ansi reset)"
     do $commands $dest
 
