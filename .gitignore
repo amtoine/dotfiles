@@ -51,6 +51,7 @@ snap/
 # the config directories
 .config/.keymapp/
 .config/Arduino IDE/
+.config/GIMP/
 .config/Rocket.Chat/
 .config/arduino-ide/
 .config/autostart/
@@ -67,6 +68,7 @@ snap/
 .config/gnome-control-center/
 .config/goa-1.0/
 .config/grip/cache-*/
+.config/gtk-2.0/
 .config/ibus/
 .config/irust/themes/
 .config/kdeconnect/
