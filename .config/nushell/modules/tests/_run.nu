@@ -6,6 +6,8 @@ let test_files = $env.CURRENT_FILE
     | get name
     | where { |it| $it | path parse | $in.stem not-in $IGNORE }
 
+mut good = true
+
 for f in $test_files {
     print $"(ansi purple)($f)(ansi reset)"
     let failed_tests = ^$nu.current-exe $f | from json | where not passed
@@ -14,6 +16,7 @@ for f in $test_files {
         continue
     }
 
+    $good = false
     print $"(ansi red_reverse)woospies(ansi reset)"
 
     for t in $failed_tests {
@@ -29,4 +32,8 @@ for f in $test_files {
         print $"  code: ($t.code | nu-highlight)"
         print $diff
     }
+}
+
+if not $good {
+    exit 1
 }
