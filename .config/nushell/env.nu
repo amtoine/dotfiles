@@ -151,21 +151,6 @@ export-env {
 }
 
 use std "path add"
-# NOTE: this `split row` is here to prevent the following error
-# ```
-# Error: nu::shell::env_var_not_a_string
-#   × 'PATH' is not representable as a string.
-#      ╭─[/home/disc/a.stevan/.config/nushell/env.nu:146:1]
-#  146 │ path add ($env.HOME | path join ".local" "bin")
-#  147 │ $env.PATH = ($env.PATH | uniq)
-#      ·             ─────────┬────────
-#      ·                      ╰── value not representable as a string
-#  148 │
-#      ╰────
-#   help: The 'PATH' environment variable must be a string or be convertible to a string. Either
-#         make sure 'PATH' is a string, or add a 'to_string' entry for it in ENV_CONVERSIONS.
-# ```
-$env.PATH = ($env.PATH | split row ":")
 path add ($env.XDG_DATA_HOME | path join "npm" "bin")
 path add ($env.CARGO_HOME | path join "bin")
 path add ($env.CLANG_HOME | path join "bin")
