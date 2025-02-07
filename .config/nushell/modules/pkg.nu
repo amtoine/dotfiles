@@ -61,12 +61,12 @@ export def install [
     if $app != null and $app not-in $installers {
         let builtin_apps = $installers | columns | str join ', '
         error make {
-            msg: $"(ansi red_bold)pkg::invalid_builtin_app(ansi reset)",
+            msg: $"(ansi red_bold)pkg::invalid_builtin_application(ansi reset)",
             label: {
-                text: $"(ansi yellow)($app)(ansi reset) is not a builtin app",
+                text: $"(ansi yellow)($app)(ansi reset) is not a builtin application",
                 span: (metadata $app).span,
             },
-            help: $"list of builtin apps: (ansi purple)($builtin_apps)(ansi reset)"
+            help: $"list of builtin applications: (ansi purple)($builtin_apps)(ansi reset)"
         }
     }
 
