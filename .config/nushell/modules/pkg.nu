@@ -88,3 +88,7 @@ export def install [
     log info $"linking (ansi purple)($ln_src)(ansi reset) to (ansi purple)($ln_dest)(ansi reset)"
     ln --force -s $ln_src $ln_dest
 }
+
+export def list []: nothing -> list<path> {
+    ls $SHARE | get name
+}
