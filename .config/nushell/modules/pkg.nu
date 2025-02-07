@@ -111,6 +111,10 @@ export def install [
     let ln_dest = $BIN | path join $name
     log info $"linking (ansi purple)($ln_src)(ansi reset) to (ansi purple)($ln_dest)(ansi reset)"
     ln --force -s $ln_src $ln_dest
+
+    if not ($extra_sub_dirs | is-empty) {
+        $extra_sub_dirs | to nuon | save --force ($dest | path join .pkg.extra)
+    }
 }
 
 export def list []: nothing -> table<name: string, pkg: string> {
@@ -138,13 +142,14 @@ def cmp-ls-pkgs []: nothing -> table<value: string, description: string> {
     }}
 }
 
-export def activate [
-    pkg: string@cmp-ls-pkgs,
-    --name: string,
-    --extra-sub-dirs (-e): list<string> = [],
-] {
+export def activate [pkg: string@cmp-ls-pkgs, --name: string] {
     let name = $name | default ($pkg | parse "{pkg}-{rev}" | into record | get pkg)
-    let ln_src = $SHARE | path join $pkg ...$extra_sub_dirs
+    let ln_src = $SHARE | path join $pkg | if ($in | path type) == "dir" {
+        let dir = $in
+        $dir | path join ...($dir | path join ".pkg.extra" | open $in | from nuon)
+    } else {
+        $in
+    }
     let ln_dest = $BIN | path join $name
     log info $"linking (ansi purple)($ln_src)(ansi reset) to (ansi purple)($ln_dest)(ansi reset)"
     ln --force -s $ln_src $ln_dest
