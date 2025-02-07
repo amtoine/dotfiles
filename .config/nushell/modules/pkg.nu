@@ -190,3 +190,26 @@ export def remove [pkg: string@cmp-ls-pkgs] {
 export def purge [] {
     pkg-rm ...(list | where name == null).pkg
 }
+
+export def --wrapped run [pkg: string@cmp-ls-pkgs, ...args: string] {
+    let all = list
+    if $pkg not-in $all.pkg {
+        error make {
+            msg: $"(ansi red_bold)pkg::package_not_found(ansi reset)",
+            label: {
+                text: $"(ansi yellow)($pkg)(ansi reset) not in (ansi purple)($SHARE)(ansi reset)"
+                span: (metadata $pkg).span,
+            },
+            help: $"list of installed packages: (ansi purple)($all.pkg)(ansi reset)"
+        }
+    }
+
+    let exec = $SHARE | path join $pkg | if ($in | path type) == "dir" {
+        let dir = $in
+        $dir | path join ...($dir | path join ".pkg.extra" | open $in | from nuon)
+    } else {
+        $in
+    }
+
+    ^$exec ...$args
+}
