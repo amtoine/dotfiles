@@ -32,6 +32,14 @@ def pkg-to-path [pkg: string]: [ nothing -> path ] {
     }
 }
 
+export def info []: [
+    nothing -> record<share: path, bin: path, bin_path_file: string>
+] {{
+    share: $SHARE,
+    bin: $BIN,
+    bin_path_file: $BIN_PATH_FILE,
+}}
+
 export def RUST-INSTALLER [name: string, --build: string = "release"]: [
     nothing -> record<commands: closure, bin_path: list<string>>
 ] {
