@@ -52,8 +52,7 @@ $env.config = ($env.config? | default {} | merge {
     }
     bracketed_paste: true
     filesize: {
-        metric: true
-        format: auto
+        unit: metric,
     }
     plugins: {
         explore: {
