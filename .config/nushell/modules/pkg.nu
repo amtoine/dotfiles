@@ -33,17 +33,17 @@ def pkg-to-path [pkg: string]: [ nothing -> path ] {
 }
 
 export def RUST-INSTALLER [name: string, --build: string = "release"]: [
-    nothing -> record<installer: closure, bin_path: list<string>>
+    nothing -> record<commands: closure, bin_path: list<string>>
 ] {
-    let installer = match $build {
-        "release" => { |dest: path|
+    let commands = match $build {
+        "release" => {{ |dest: path|
             cargo build --release
             cp ("target/release" | path join $name) $dest
-        },
-        "debug" => { |dest: path|
+        }},
+        "debug" => {{ |dest: path|
             cargo build
             cp ("target/debug" | path join $name) $dest
-        },
+        }},
         _ => { error make {
             msg: $"(ansi red_bold)pkg::invalid_rust_build(ansi reset)",
             label: {
@@ -54,14 +54,14 @@ export def RUST-INSTALLER [name: string, --build: string = "release"]: [
         } }
     }
 
-    { installer: $installer, bin_path: [] }
+    { commands: $commands, bin_path: [] }
 }
 
 export def NVIM-INSTALLER [build_type: string]: [
-    nothing -> record<installer: closure, bin_path: list<string>>
+    nothing -> record<commands: closure, bin_path: list<string>>
 ] {
     {
-        installer: { |dest: path|
+        commands: { |dest: path|
             make $"CMAKE_BUILD_TYPE=($build_type)"
             make $"CMAKE_INSTALL_PREFIX=($dest)" install
         },
@@ -88,8 +88,7 @@ def cmp-builtin-installers []: [ nothing -> list<string> ] {
 # ```
 # ```nushell
 # # install [Typst](https://github.com/typst/typst) in DEBUG mode
-# RUST-INSTALLER "typst" --build debug
-#     | install "typst" --commands $in.installer --bin-path $in.bin_path
+# install "typst" --installer (RUST-INSTALLER "typst" --build debug)
 # ```
 # ```nushell
 # # install [Neovim](https://github.com/neovim/neovim)
@@ -97,16 +96,15 @@ def cmp-builtin-installers []: [ nothing -> list<string> ] {
 # ```
 # ```nushell
 # # install some C program with a custom installer
-# install "my-c-program" --commands { |dest: path|
+# install "my-c-program" --installer { commands: { |dest: path|
 #     gcc -std=c99 -Wall -Werror -o a.out main.c
 #     cp a.out $dest
-# }
+# } }
 # ```
 export def install [
     name: string,
     --app: string@cmp-builtin-installers,
-    --commands (-c): closure, # commands to build and copy the result to the destination, a closure with a single positional argument `dest: path`
-    --bin-path (-p): list<string>,
+    --installer: record< commands: closure, bin_path: list<string>>,
 ] {
     if not ($SHARE | path exists) {
         log debug $"creating (ansi purple)($SHARE)(ansi reset)"
@@ -127,13 +125,11 @@ export def install [
         }
     }
 
-    let commands = if $app != null { $installers | get $app | get installer } else { $commands }
-    let bin_path = if $app != null { $installers | get $app | get bin_path? } else { $bin_path }
-        | default []
+    let installer = if $app != null { $installers | get $app | get installer } else { $installer }
 
-    if $commands == null {
+    if $installer == null {
         error make --unspanned {
-            msg: $"(ansi red_bold)pkg::missing_argument(ansi reset): (ansi cyan)--commands(ansi reset) is required"
+            msg: $"(ansi red_bold)pkg::missing_argument(ansi reset): (ansi cyan)--installer(ansi reset) is required"
         }
     }
 
@@ -149,7 +145,9 @@ export def install [
         $SHARE | path join $"($name)-($hash)"
     }
     log info $"building to (ansi purple)($dest)(ansi reset)"
-    do $commands $dest
+    do $installer.commands $dest
+
+    let bin_path = $installer.bin_path? | default []
 
     let ln_src = $dest | path join ...$bin_path
     let ln_dest = $BIN | path join $name
