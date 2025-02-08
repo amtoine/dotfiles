@@ -1,6 +1,8 @@
 const SHARE = "~/.local/share/apps/" | path expand
 const BIN = "~/.local/bin/" | path expand
 
+const BIN_PATH_FILE = ".pkg.bin-path"
+
 def __log [color: string, label: string, msg: string] {
     print $"[(ansi $color)($label)(ansi reset)] ($msg)"
 }
@@ -23,7 +25,8 @@ def app-rm [...apps: path] {
 def pkg-to-path [pkg: string]: [ nothing -> path ] {
     $SHARE | path join $pkg | if ($in | path type) == "dir" {
         let dir = $in
-        $dir | path join ...($dir | path join ".pkg.extra" | open $in | from nuon)
+        let bin_path = $dir | path join $BIN_PATH_FILE | open $in | from nuon
+        $dir | path join ...$bin_path
     } else {
         $in
     }
@@ -37,16 +40,13 @@ export def RUST-INSTALLER [name: string] {
 }
 
 export def INSTALLERS [] { {
-    typst: {
-        installer: (RUST-INSTALLER "typst"),
-        extra_sub_dirs: [],
-    }
+    typst: { installer: (RUST-INSTALLER "typst") },
     nvim: {
         installer: { |dest: path|
             make CMAKE_BUILD_TYPE=Release
             make $"CMAKE_INSTALL_PREFIX=($dest)" install
         },
-        extra_sub_dirs: [ "bin", "nvim" ],
+        bin_path: [ "bin", "nvim" ],
     },
 } }
 
@@ -72,7 +72,7 @@ export def install [
     name: string,
     --app: string,
     --commands (-c): closure, # commands to build and copy the result to the destination, a closure with a single positional argument `dest: path`
-    --extra-sub-dirs (-e): list<string> = [],
+    --bin-path (-p): list<string>,
 ] {
     if not ($SHARE | path exists) {
         log debug $"creating (ansi purple)($SHARE)(ansi reset)"
@@ -94,7 +94,8 @@ export def install [
     }
 
     let commands = if $app != null { $installers | get $app | get installer } else { $commands }
-    let extra_sub_dirs = if $app != null { $installers | get $app | get extra_sub_dirs } else { $extra_sub_dirs }
+    let bin_path = if $app != null { $installers | get $app | get bin_path? } else { $bin_path }
+        | default []
 
     if $commands == null {
         error make --unspanned {
@@ -116,13 +117,13 @@ export def install [
     log info $"building to (ansi purple)($dest)(ansi reset)"
     do $commands $dest
 
-    let ln_src = $dest | path join ...$extra_sub_dirs
+    let ln_src = $dest | path join ...$bin_path
     let ln_dest = $BIN | path join $name
     log info $"linking (ansi purple)($ln_src)(ansi reset) to (ansi purple)($ln_dest)(ansi reset)"
     ln --force -s $ln_src $ln_dest
 
-    if not ($extra_sub_dirs | is-empty) {
-        $extra_sub_dirs | to nuon | save --force ($dest | path join .pkg.extra)
+    if not ($bin_path | is-empty) {
+        $bin_path | to nuon | save --force ($dest | path join $BIN_PATH_FILE)
     }
 }
 
