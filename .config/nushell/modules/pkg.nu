@@ -62,6 +62,10 @@ export def INSTALLERS [] { {
     nvim-release-with-deb-info: (NVIM-INSTALLER "RelWithDebInfo"),
 } }
 
+def cmp-builtin-installers []: [ nothing -> list<string> ] {
+    INSTALLERS | columns
+}
+
 # build and install applications locally
 #
 # # Examples
@@ -82,7 +86,7 @@ export def INSTALLERS [] { {
 # ```
 export def install [
     name: string,
-    --app: string,
+    --app: string@cmp-builtin-installers,
     --commands (-c): closure, # commands to build and copy the result to the destination, a closure with a single positional argument `dest: path`
     --bin-path (-p): list<string>,
 ] {
