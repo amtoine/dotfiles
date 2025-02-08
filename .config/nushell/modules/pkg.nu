@@ -105,6 +105,7 @@ export def install [
     name: string,
     --app: string@cmp-builtin-installers,
     --installer: record< commands: closure, bin_path: list<string>>,
+    --no-activate,
 ] {
     if not ($SHARE | path exists) {
         log debug $"creating (ansi purple)($SHARE)(ansi reset)"
@@ -149,10 +150,12 @@ export def install [
 
     let bin_path = $installer.bin_path? | default []
 
-    let ln_src = $dest | path join ...$bin_path
-    let ln_dest = $BIN | path join $name
-    log info $"linking (ansi purple)($ln_src)(ansi reset) to (ansi purple)($ln_dest)(ansi reset)"
-    ln --force -s $ln_src $ln_dest
+    if not $no_activate {
+        let ln_src = $dest | path join ...$bin_path
+        let ln_dest = $BIN | path join $name
+        log info $"linking (ansi purple)($ln_src)(ansi reset) to (ansi purple)($ln_dest)(ansi reset)"
+        ln --force -s $ln_src $ln_dest
+    }
 
     if not ($bin_path | is-empty) {
         $bin_path | to nuon | save --force ($dest | path join $BIN_PATH_FILE)
