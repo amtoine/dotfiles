@@ -32,6 +32,7 @@ def pkg-to-path [pkg: string]: [ nothing -> path ] {
     }
 }
 
+# get information about `pkg.nu`
 export def info []: [
     nothing -> record<share: path, bin: path, bin_path_file: string>
 ] {{
@@ -40,7 +41,13 @@ export def info []: [
     bin_path_file: $BIN_PATH_FILE,
 }}
 
-export def RUST-INSTALLER [name: string, --build: string = "release"]: [
+# build an installer for Rust projects
+#
+# > will throw an error if the `--build` is not supported
+export def RUST-INSTALLER [
+    name: string, # the name of the built package
+    --build: string = "release", # the build mode, i.e. "release" or "debug"
+]: [
     nothing -> record<commands: closure, bin_path: list<string>>
 ] {
     let commands = match $build {
@@ -65,7 +72,10 @@ export def RUST-INSTALLER [name: string, --build: string = "release"]: [
     { commands: $commands, bin_path: [] }
 }
 
-export def NVIM-INSTALLER [build_type: string]: [
+# build an installer for Neovim
+export def NVIM-INSTALLER [
+    build_type: string, # the build type, i.e. "Release", "Debug" or "RelWithDebInfo" according to [the doc](https://github.com/neovim/neovim/wiki/Building-Neovim/688be28f98c18e73b5043879b5963287a9b13d6c#building)
+]: [
     nothing -> record<commands: closure, bin_path: list<string>>
 ] {
     {
@@ -77,7 +87,19 @@ export def NVIM-INSTALLER [build_type: string]: [
     }
 }
 
-export def INSTALLERS [] { {
+# get all builtin installers
+#
+# > all inner records, e.g. in `$.typst` have the following type
+# > ```nushell
+# > record<commands: closure, bin_path: list<string>>
+# > ```
+export def INSTALLERS []: [
+    nothing -> record<
+        typst: record,
+        nvim-release: record,
+        nvim-release-with-deb-info: record,
+    >
+] { {
     typst: (RUST-INSTALLER "typst"),
     nvim-release: (NVIM-INSTALLER "Release"),
     nvim-release-with-deb-info: (NVIM-INSTALLER "RelWithDebInfo"),
@@ -110,10 +132,10 @@ def cmp-builtin-installers []: [ nothing -> list<string> ] {
 # } }
 # ```
 export def install [
-    name: string,
-    --app: string@cmp-builtin-installers,
-    --installer: record< commands: closure, bin_path: list<string>>,
-    --no-activate,
+    name: string, # the name to give to the package
+    --app: string@cmp-builtin-installers, # a builtin app to use the installer of
+    --installer: record< commands: closure, bin_path: list<string>>, # a custom installer
+    --no-activate, # do not activate the package after installation
 ] {
     if not ($SHARE | path exists) {
         log debug $"creating (ansi purple)($SHARE)(ansi reset)"
@@ -170,6 +192,7 @@ export def install [
     }
 }
 
+# list all installed packages, with the activated symlinks
 export def list []: nothing -> table<name: string, pkg: string> {
     let bins = ls $BIN
         | where type == symlink
@@ -195,6 +218,9 @@ def cmp-ls-pkgs []: nothing -> table<value: string, description: string> {
     }}
 }
 
+# activate a package with a name
+#
+# > the name will default to the name of the package
 export def activate [pkg: string@cmp-ls-pkgs, --name: string] {
     let name = $name | default ($pkg | parse "{pkg}-{rev}" | into record | get pkg)
     let ln_src = pkg-to-path $pkg
@@ -203,6 +229,7 @@ export def activate [pkg: string@cmp-ls-pkgs, --name: string] {
     ln --force -s $ln_src $ln_dest
 }
 
+# deactivate an application by name
 export def deactivate [app: string@cmp-ls-apps] {
     let all = list
     if $app not-in $all.name {
@@ -218,6 +245,7 @@ export def deactivate [app: string@cmp-ls-apps] {
     app-rm $app
 }
 
+# remove a package and all activated applications
 export def remove [pkg: string@cmp-ls-pkgs] {
     let all = list
     if $pkg not-in $all.pkg {
@@ -235,10 +263,12 @@ export def remove [pkg: string@cmp-ls-pkgs] {
     app-rm ...($all | where pkg == $pkg and name != null).name
 }
 
+# remove all unactivated packages
 export def purge [] {
     pkg-rm ...(list | where name == null).pkg
 }
 
+# run a package and forward arguments to it
 export def --wrapped run [pkg: string@cmp-ls-pkgs, ...args: string] {
     let all = list
     if $pkg not-in $all.pkg {
