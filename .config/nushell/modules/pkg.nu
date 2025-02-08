@@ -32,16 +32,29 @@ def pkg-to-path [pkg: string]: [ nothing -> path ] {
     }
 }
 
-export def RUST-INSTALLER [name: string]: [
+export def RUST-INSTALLER [name: string, --build: string = "release"]: [
     nothing -> record<installer: closure, bin_path: list<string>>
 ] {
-    {
-        installer: { |dest: path|
+    let installer = match $build {
+        "release" => { |dest: path|
             cargo build --release
             cp ("target/release" | path join $name) $dest
         },
-        bin_path: [],
+        "debug" => { |dest: path|
+            cargo build
+            cp ("target/debug" | path join $name) $dest
+        },
+        _ => { error make {
+            msg: $"(ansi red_bold)pkg::invalid_rust_build(ansi reset)",
+            label: {
+                text: $"(ansi yellow)($build)(ansi reset) is not a valid Rust build",
+                span: (metadata $build).span,
+            },
+            help: $"list of supported Rust builds: (ansi purple)[release, debug](ansi reset)"
+        } }
     }
+
+    { installer: $installer, bin_path: [] }
 }
 
 export def NVIM-INSTALLER [build_type: string]: [
@@ -72,6 +85,11 @@ def cmp-builtin-installers []: [ nothing -> list<string> ] {
 # ```nushell
 # # install [Typst](https://github.com/typst/typst)
 # install "typst" --app typst
+# ```
+# ```nushell
+# # install [Typst](https://github.com/typst/typst) in DEBUG mode
+# RUST-INSTALLER "typst" --build debug
+#     | install "typst" --commands $in.installer --bin-path $in.bin_path
 # ```
 # ```nushell
 # # install [Neovim](https://github.com/neovim/neovim)
