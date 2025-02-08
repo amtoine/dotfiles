@@ -98,11 +98,13 @@ export def INSTALLERS []: [
         typst: record,
         nvim-release: record,
         nvim-release-with-deb-info: record,
+        nushell: record,
     >
 ] { {
     typst: (RUST-INSTALLER "typst"),
     nvim-release: (NVIM-INSTALLER "Release"),
     nvim-release-with-deb-info: (NVIM-INSTALLER "RelWithDebInfo"),
+    nushell: (RUST-INSTALLER "nu" --build release),
 } }
 
 def cmp-builtin-installers []: [ nothing -> list<string> ] {
