@@ -193,7 +193,7 @@ export def install [
 }
 
 # list all installed packages, with the activated symlinks
-export def list []: nothing -> table<name: string, pkg: string> {
+export def list []: nothing -> table<bin: string, pkg: string> {
     let bins = ls $BIN
         | where type == symlink
         | select name
@@ -201,20 +201,21 @@ export def list []: nothing -> table<name: string, pkg: string> {
         | where ($it.pkg | str starts-with $SHARE)
         | update pkg { str replace $SHARE "" | path split | get 1 }
         | update name { path basename }
+        | rename --column { name: "bin" }
 
     let pkgs = ls $SHARE | get name |  path basename | wrap pkg
     $bins | join $pkgs pkg --outer
 }
 
 def cmp-ls-apps []: nothing -> table<value: string, description: string> {
-    list | where $it.name != null | each {{ value: $in.name, description: $in.pkg }}
+    list | where $it.bin != null | each {{ value: $in.bin, description: $in.pkg }}
 }
 
 def cmp-ls-pkgs []: nothing -> table<value: string, description: string> {
     let all = list
     $all | each { |x| {
         value: $x.pkg,
-        description: ($all | where pkg == $x.pkg | get name | where $it != null | str join ", "),
+        description: ($all | where pkg == $x.pkg | get bin | where $it != null | str join ", "),
     }}
 }
 
@@ -232,7 +233,7 @@ export def activate [pkg: string@cmp-ls-pkgs, --name: string] {
 # deactivate an application by name
 export def deactivate [app: string@cmp-ls-apps] {
     let all = list
-    if $app not-in $all.name {
+    if $app not-in $all.bin {
         error make {
             msg: $"(ansi red_bold)pkg::application_not_found(ansi reset)",
             label: {
