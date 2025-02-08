@@ -73,3 +73,5 @@ export def connect [
     use nu-scripts iwctl
     iwctl list-networks --station $station --signal $signal | iwctl connect
 }
+
+alias feh = feh --image-bg '#aaaaaa' --draw-tinted --draw-exif --draw-filename --fullscreen
