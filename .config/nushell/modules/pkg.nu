@@ -32,22 +32,34 @@ def pkg-to-path [pkg: string]: [ nothing -> path ] {
     }
 }
 
-export def RUST-INSTALLER [name: string] {
-    { |dest: path|
-        cargo build --release
-        cp ("target/release" | path join $name) $dest
+export def RUST-INSTALLER [name: string]: [
+    nothing -> record<installer: closure, bin_path: list<string>>
+] {
+    {
+        installer: { |dest: path|
+            cargo build --release
+            cp ("target/release" | path join $name) $dest
+        },
+        bin_path: [],
+    }
+}
+
+export def NVIM-INSTALLER [build_type: string]: [
+    nothing -> record<installer: closure, bin_path: list<string>>
+] {
+    {
+        installer: { |dest: path|
+            make $"CMAKE_BUILD_TYPE=($build_type)"
+            make $"CMAKE_INSTALL_PREFIX=($dest)" install
+        },
+        bin_path: [ "bin", "nvim" ],
     }
 }
 
 export def INSTALLERS [] { {
-    typst: { installer: (RUST-INSTALLER "typst") },
-    nvim: {
-        installer: { |dest: path|
-            make CMAKE_BUILD_TYPE=Release
-            make $"CMAKE_INSTALL_PREFIX=($dest)" install
-        },
-        bin_path: [ "bin", "nvim" ],
-    },
+    typst: (RUST-INSTALLER "typst"),
+    nvim-release: (NVIM-INSTALLER "Release"),
+    nvim-release-with-deb-info: (NVIM-INSTALLER "RelWithDebInfo"),
 } }
 
 # build and install applications locally
@@ -55,11 +67,11 @@ export def INSTALLERS [] { {
 # # Examples
 # ```nushell
 # # install [Typst](https://github.com/typst/typst)
-# install --app typst
+# install "typst" --app typst
 # ```
 # ```nushell
 # # install [Neovim](https://github.com/neovim/neovim)
-# install --app nvim
+# install "nvim" --app nvim-release
 # ```
 # ```nushell
 # # install some C program with a custom installer
