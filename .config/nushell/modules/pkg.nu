@@ -20,6 +20,15 @@ def app-rm [...apps: path] {
     $apps | each { |app| $BIN | path join $app } | rm --verbose --force --recursive ...$in
 }
 
+def pkg-to-path [pkg: string]: [ nothing -> path ] {
+    $SHARE | path join $pkg | if ($in | path type) == "dir" {
+        let dir = $in
+        $dir | path join ...($dir | path join ".pkg.extra" | open $in | from nuon)
+    } else {
+        $in
+    }
+}
+
 export def RUST-INSTALLER [name: string] {
     { |dest: path|
         cargo build --release
@@ -144,12 +153,7 @@ def cmp-ls-pkgs []: nothing -> table<value: string, description: string> {
 
 export def activate [pkg: string@cmp-ls-pkgs, --name: string] {
     let name = $name | default ($pkg | parse "{pkg}-{rev}" | into record | get pkg)
-    let ln_src = $SHARE | path join $pkg | if ($in | path type) == "dir" {
-        let dir = $in
-        $dir | path join ...($dir | path join ".pkg.extra" | open $in | from nuon)
-    } else {
-        $in
-    }
+    let ln_src = pkg-to-path $pkg
     let ln_dest = $BIN | path join $name
     log info $"linking (ansi purple)($ln_src)(ansi reset) to (ansi purple)($ln_dest)(ansi reset)"
     ln --force -s $ln_src $ln_dest
@@ -204,12 +208,5 @@ export def --wrapped run [pkg: string@cmp-ls-pkgs, ...args: string] {
         }
     }
 
-    let exec = $SHARE | path join $pkg | if ($in | path type) == "dir" {
-        let dir = $in
-        $dir | path join ...($dir | path join ".pkg.extra" | open $in | from nuon)
-    } else {
-        $in
-    }
-
-    ^$exec ...$args
+    ^(pkg-to-path $pkg) ...$args
 }
