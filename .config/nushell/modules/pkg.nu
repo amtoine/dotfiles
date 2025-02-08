@@ -126,7 +126,7 @@ export def install [
         }
     }
 
-    let installer = if $app != null { $installers | get $app | get installer } else { $installer }
+    let installer = if $app != null { $installers | get $app } else { $installer }
 
     if $installer == null {
         error make --unspanned {
