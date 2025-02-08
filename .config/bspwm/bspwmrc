@@ -6,6 +6,7 @@ def log [msg: string]: nothing -> nothing {
 }
 
 log "STARTING BSPWM"
+log ($env.PATH | to nuon)
 
 # connect a single monitor with xrandr
 #
@@ -106,7 +107,6 @@ if not (ps | find Xorg | is-empty) {
     log "DPMS disabled"
 }
 
-$env.PATH = ($env.PATH | split row ":" | prepend ("~/.local/share/nupm/scripts/" | path expand))
 if not (pgrep sxhkd | is-empty) {
     killall sxhkd
 }

@@ -4,7 +4,7 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 
-export PATH="$CARGO_HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$CARGO_HOME/bin:~/.local/share/nupm/scripts/:$PATH"
 
 if [[ $(fgconsole 2> /dev/null) == 1 ]]; then
     exec startx -- vt1;
