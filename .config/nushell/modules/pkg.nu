@@ -263,7 +263,7 @@ export def remove [pkg: string@cmp-ls-pkgs] {
     }
 
     pkg-rm $pkg
-    app-rm ...($all | where pkg == $pkg and name != null).name
+    app-rm ...($all | where pkg == $pkg and bin != null).bin
 }
 
 # remove all unactivated packages
