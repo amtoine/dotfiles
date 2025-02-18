@@ -88,12 +88,11 @@ $env.VISUAL = $env.EDITOR
 
 def --env _set_manpager [pager: string] {
     let pager = match $pager {
-        "bat" => (
-            if not (which bat | is-empty) {
-                "bat -l man -p"
-            } else if not (which batcat | is-empty) {
-                "batcat -l man -p"
-            } else {
+        "bat" => {
+            const BAT_PAGER_CMD = r#'sh -c 'sed -u -e "s/\x1B\[[0-9;]*m//g; s/.\x08//g" | {{CMD}} -p -lman''#
+
+            let bats = which bat batcat
+            if ($bats | is-empty) {
                 error make {
                     msg: $"(ansi red_bold)pager_not_found(ansi reset)",
                     label: {
@@ -103,7 +102,9 @@ def --env _set_manpager [pager: string] {
                     help: $"install either (ansi purple)bat(ansi reset) or (ansi purple)batcat(ansi reset)"
                 }
             }
-        ),
+
+            $BAT_PAGER_CMD | str replace "{{CMD}}" $bats.0.path
+        },
         "vim" => '/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"',
         "nvim" => "nvim -c 'set ft=man' -",
         "less" => {
