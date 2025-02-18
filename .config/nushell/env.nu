@@ -87,7 +87,7 @@ $env.EDITOR = 'nvim'
 $env.VISUAL = $env.EDITOR
 
 def --env _set_manpager [pager: string] {
-    let pager = match $pager {
+    $env.MANPAGER = match $pager {
         "bat" => {
             const BAT_PAGER_CMD = r#'sh -c 'sed -u -e "s/\x1B\[[0-9;]*m//g; s/.\x08//g" | {{CMD}} -p -lman''#
 
@@ -127,8 +127,6 @@ def --env _set_manpager [pager: string] {
             }
          }
     }
-
-    $env.MANPAGER = $pager
 }
 
 _set_manpager "bat"
