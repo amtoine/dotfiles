@@ -1,7 +1,7 @@
 export-env {
     let esep_list_converter = {
-        from_string: { |s| $s | split row (char esep) }
-        to_string: { |v| $v | str join (char esep) }
+        from_string: { split row (char esep) }
+        to_string: { str join (char esep) }
     }
 
     $env.ENV_CONVERSIONS = {
@@ -32,13 +32,10 @@ export-env {
     }
 }
 
-$env.TERMINFO_DIRS = (
-    [
-        ($env.XDG_DATA_HOME | path join "terminfo")
-        "/usr/share/terminfo"
-    ]
-    | str join ":"
-)
+$env.TERMINFO_DIRS = [
+    ($env.XDG_DATA_HOME | path join "terminfo"),
+    "/usr/share/terminfo",
+]
 
 $env.GEM_VERSION = "3.0.0"
 
