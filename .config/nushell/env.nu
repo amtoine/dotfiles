@@ -105,8 +105,8 @@ def --env _set_manpager [pager: string] {
 
             $BAT_PAGER_CMD | str replace "{{CMD}}" $bats.0.path
         },
-        "vim" => '/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"',
-        "nvim" => "nvim -c 'set ft=man' -",
+        "vim" => r#'/bin/sh -c "col -b | vim -u NONE -c 'set ft=man ts=8 nomod nolist nonu noma' -"'#,
+        "nvim" => "nvim +Man!",
         "less" => {
             $env.LESS_TERMCAP_mb = (tput bold; tput setaf 2)  # green
             $env.LESS_TERMCAP_md = (tput bold; tput setaf 2)  # green
@@ -114,7 +114,7 @@ def --env _set_manpager [pager: string] {
             $env.LESS_TERMCAP_se = (tput smul; tput sgr0)
             $env.LESS_TERMCAP_us = (tput bold; tput bold; tput setaf 1)  # red
             $env.LESS_TERMCAP_me = (tput sgr0)
-            return
+            "less"
         },
         _ => {
             error make {
