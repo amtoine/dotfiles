@@ -51,14 +51,11 @@
   rbc     = rebase --continue
   rbs     = rebase --skip
   rba     = rebase --abort
-  ga      = log --graph --branches --remotes --tags
-  tr      = log --graph --branches --remotes=origin --tags --oneline --decorate
-  tra     = log --graph --branches --remotes --tags --oneline --decorate
-  trb     = log --graph       --oneline --decorate
-  trd     = log --graph --branches --remotes --tags --decorate --color=always --pretty='%C(auto)%h %Cred -%ch- %C(auto)%d %s'
-  trm     = log --graph --branches --remotes --tags --oneline --decorate --stat
-  trs     = log --graph --branches --remotes --tags --oneline --decorate --simplify-by-decoration
-  trl     = log --graph --branches --remotes --tags --oneline --decorate --branches --not --remotes=*
+
+  tr      = log --graph --oneline --decorate
+  tra     = tr --all
+  trd     = tr --color=always --pretty='%C(auto)%h %Cred -%ch- %C(auto)%d %s'
+  trs     = tr --simplify-by-decoration
 
   lf      = ls-files                                            # list tracked files.
   lfs     = !git ls-files | xargs ls -1 | sort -nrk5            # sorts the tracked files by order of size.
