@@ -17,33 +17,28 @@
   tabs = 16
 
 [alias]
-; basic aliases.
-  i       = init
-  cl      = clone
   a       = add
   au      = add -u
   ae      = add --edit
-  ai      = add --interactive
-  ap      = add -p
-  aup     = add -up
+
   st      = status --short
   sti     = status --short --ignored
+
   cm      = commit --verbose
   cmm     = commit --verbose -m
   cma     = commit --verbose --amend
   cmane   = commit --verbose --amend --no-edit
   cme     = commit --verbose --allow-empty
   cmn     = commit --verbose --no-verify
-  sw      = switch
-  swc     = switch -c
+
   co      = checkout
   cob     = checkout -b
+
   br      = branch
   brf     = branch -f
   brm     = branch -m
   brd     = branch -D
 
-; to stash changes
   sh      = stash
   shp     = stash pop
   sha     = stash apply
@@ -51,16 +46,11 @@
   shd     = stash drop
   shs     = stash show
 
-; to move branches and commits around.
-  cp      = cherry-pick
   rb      = rebase
   rbi     = rebase -i
   rbc     = rebase --continue
   rbs     = rebase --skip
   rba     = rebase --abort
-  mg      = merge
-
-; to inspect the commit tree.
   ga      = log --graph --branches --remotes --tags
   tr      = log --graph --branches --remotes=origin --tags --oneline --decorate
   tra     = log --graph --branches --remotes --tags --oneline --decorate
@@ -70,7 +60,6 @@
   trs     = log --graph --branches --remotes --tags --oneline --decorate --simplify-by-decoration
   trl     = log --graph --branches --remotes --tags --oneline --decorate --branches --not --remotes=*
 
-; to inspect the tracked files.
   lf      = ls-files                                            # list tracked files.
   lfs     = !git ls-files | xargs ls -1 | sort -nrk5            # sorts the tracked files by order of size.
   lfsh    = !git ls-files | xargs ls -1 | sort -nrk5 | head -n  # show the n biggest tracked files.
@@ -78,30 +67,11 @@
   dfh     = diff HEAD
   dfs     = diff --stat
 
-; interact with remote repos.
-;   down stream;
-  ft      = fetch
-  ftp     = fetch -p
-  fto     = fetch origin
-  ftop    = fetch origin -p
-  ftu     = fetch upstream
-  ftup    = fetch upstream -p
-  fta     = fetch --all
   ftap    = fetch --all -p
-  pl      = pull
-  plaf    = pull          --autostash --ff
-  plo     = pull origin
-  plafo   = pull origin   --autostash --ff
-  plu     = pull upstream
-  plafu   = pull upstream --autostash --ff
-;   up stream
-  ps      = push
-  psf     = push --force
-  pom     = push origin main
-  pso     = push origin
-  psu     = push upstream
 
-; undo and clean the tree.
+  ps      = push
+  pso     = push origin
+
   rst     = restore
   rsts    = restore --staged
   rv      = revert
@@ -109,22 +79,10 @@
   rh      = reset --hard
   cdf     = clean -df
 
-; remote links actions.
   rmt     = remote
   rmtv    = remote -v
   rmta    = remote add
   rmtsu   = remote set-url
-
-; worktree actions.
-  wta     = worktree add
-  wtrm    = worktree remove
-  wtls    = worktree list
-
-; bisection
-  bis     = bisect start
-  big     = bisect good
-  bib     = bisect bad
-  bir     = bisect reset
 
 [pull]
   rebase = true
