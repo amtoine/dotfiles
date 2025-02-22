@@ -1,0 +1,3 @@
+set debuginfod enabled off
+set logging enabled on
+set logging file gdb.txt
