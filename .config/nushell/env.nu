@@ -155,7 +155,6 @@ path add ($env.EMACS_HOME | path join "bin")
 path add ($env.RUBY_HOME | path join "bin")
 path add ($env.NUPM_HOME | path join "scripts")
 path add ($env.HOME | path join ".local" "bin")
-path add ~/documents/lua-language-server/bin
 $env.PATH = ($env.PATH | uniq)
 
 $env.LD_LIBRARY_PATH = (
