@@ -56,6 +56,7 @@
   tra     = log --graph --oneline --decorate --all
   trd     = log --graph --oneline --decorate --color=always --pretty='%C(auto)%h %Cred -%ch- %C(auto)%d %s'
   trs     = log --graph --oneline --decorate --simplify-by-decoration
+  trf     = log --graph --pretty=format:'%C(auto)%h %G? %GS %C(dim)(%ci) %C(cyan)%<(10,trunc)<%an> %C(auto)%d %<(50,trunc)%s%C(reset)' --decorate
 
   lf      = ls-files                                            # list tracked files.
   lfs     = !git ls-files | xargs ls -1 | sort -nrk5            # sorts the tracked files by order of size.
