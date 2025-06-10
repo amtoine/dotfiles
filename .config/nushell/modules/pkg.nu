@@ -7,10 +7,10 @@ def __log [color: string, label: string, msg: string] {
     print $"[(ansi $color)($label)(ansi reset)] ($msg)"
 }
 
-def "log debug" [msg: string] { __log default_dimmed DBG $msg }
-def "log info" [msg: string] { __log green_bold INF $msg }
-def "log warning" [msg: string] { __log yellow_bold WRN $msg }
-def "log error" [msg: string] { __log red_bold ERR $msg }
+def "log debug"   [msg: string] { __log default_dimmed DBG $msg }
+def "log info"    [msg: string] { __log green_bold     INF $msg }
+def "log warning" [msg: string] { __log yellow_bold    WRN $msg }
+def "log error"   [msg: string] { __log red_bold       ERR $msg }
 
 def pkg-rm [...pkgs: path] {
     if ($pkgs | is-empty) { return }
