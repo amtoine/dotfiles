@@ -32,6 +32,14 @@ def pkg-to-path [pkg: string]: [ nothing -> path ] {
     }
 }
 
+def cmp-rust-build-modes []: [ nothing -> list<string> ] {
+    [ "release", "debug" ]
+}
+
+def cmp-nvim-build-types []: [ nothing -> list<string> ] {
+    [ "Release", "Debug", "RelWithDebInfo" ]
+}
+
 # get information about `pkg.nu`
 export def info []: [
     nothing -> record<share: path, bin: path, bin_path_file: string>
@@ -46,7 +54,7 @@ export def info []: [
 # > will throw an error if the `--build` is not supported
 export def RUST-INSTALLER [
     name: string, # the name of the built package
-    --build: string = "release", # the build mode, i.e. "release" or "debug"
+    --build: string@cmp-rust-build-modes = "release", # the build mode, i.e. "release" or "debug"
 ]: [
     nothing -> record<commands: closure, bin_path: list<string>>
 ] {
@@ -65,7 +73,7 @@ export def RUST-INSTALLER [
                 text: $"(ansi yellow)($build)(ansi reset) is not a valid Rust build",
                 span: (metadata $build).span,
             },
-            help: $"list of supported Rust builds: (ansi purple)[release, debug](ansi reset)"
+            help: $"list of supported Rust builds: (ansi purple)(cmp-rust-build-modes)(ansi reset)"
         } }
     }
 
@@ -74,10 +82,21 @@ export def RUST-INSTALLER [
 
 # build an installer for Neovim
 export def NVIM-INSTALLER [
-    build_type: string, # the build type, i.e. "Release", "Debug" or "RelWithDebInfo" according to [the doc](https://github.com/neovim/neovim/wiki/Building-Neovim/688be28f98c18e73b5043879b5963287a9b13d6c#building)
+    build_type: string@cmp-nvim-build-types, # the build type, i.e. "Release", "Debug" or "RelWithDebInfo" according to [the doc](https://github.com/neovim/neovim/wiki/Building-Neovim/688be28f98c18e73b5043879b5963287a9b13d6c#building)
 ]: [
     nothing -> record<commands: closure, bin_path: list<string>>
 ] {
+    if $build_type not-in (cmp-nvim-build-types) {
+        error make {
+            msg: $"(ansi red_bold)pkg::invalid_neovim_build(ansi reset)",
+            label: {
+                text: $"(ansi yellow)($build_type)(ansi reset) is not a valid Neovim build",
+                span: (metadata $build_type).span,
+            },
+            help: $"list of supported Neovim builds: (ansi purple)(cmp-nvim-build-types)(ansi reset)"
+        }
+    }
+
     {
         commands: { |dest: path|
             make $"CMAKE_BUILD_TYPE=($build_type)"
