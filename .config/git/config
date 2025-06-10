@@ -8,6 +8,11 @@
 [core]
   pager = delta
 
+[status]
+    branch = true
+    showStash = true
+    showUntrackedFiles = all
+
 [delta]
   side-by-side = false
   line-numbers = true
